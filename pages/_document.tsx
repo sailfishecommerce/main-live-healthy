@@ -14,8 +14,11 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           {/* Common meta */}
-          <meta name="description" content="Shop the latest fashion online" />
-          <meta name="application-name" content="Live healthy stores" />
+          <meta
+            name="description"
+            content="Imported Australian Goodes in Hong Kong - Buy Imported Vitamins, Supplements, Hair, Beauty, Skin Care, Baby Products, Smoking Deterrents from Live Healthy Store HK. Sensible Prices & Free Shipping"
+          />
+          <meta name="application-name" content="Live healthy Stores" />
           <meta
             name="apple-mobile-web-app-status-bar-style"
             content="default"

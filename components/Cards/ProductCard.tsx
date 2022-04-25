@@ -1,9 +1,19 @@
+import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import CartIcon from '@/components/Icons/CartIcon'
-import FormattedPrice from '@/components/Price/FormattedPrice'
 import type { ProductProps } from '@/types'
+
+const DynamicFormattedPrice = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'FormattedPrice' */ '@/components/Price/FormattedPrice'
+    ),
+  {
+    ssr: false,
+  }
+)
 
 interface ProductTypes extends ProductProps {
   row?: boolean
@@ -38,7 +48,7 @@ export default function Product({
       }
   return (
     <>
-      <Link passHref href={`/products/${product.slug}`}>
+      <Link passHref href={`/product/${product.slug}`}>
         <a
           className={`hover:bg-white hover:shadow-lg hover:rounded-lg product ${productClassName}  ${isRow} p-2 md:p-6 hover:border`}
           title={product.name}
@@ -61,7 +71,7 @@ export default function Product({
             <div className="product-name-view text-overflow md:mb-8 mb-2">
               <h3 className="text-xs md:text-md">{product.name}</h3>
             </div>
-            <FormattedPrice
+            <DynamicFormattedPrice
               price={product.price}
               className="text-sm md:text-md text-black font-semibold"
             />

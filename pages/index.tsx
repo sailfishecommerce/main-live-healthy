@@ -4,7 +4,7 @@ import { Configure } from 'react-instantsearch-dom'
 import ShippingBanner from '@/components/Banners/ShippingBanner'
 import Pagetitle from '@/components/Header/page-title'
 import MainProductShowcase from '@/components/Product/MainProductShowcase'
-import ProductReviews from '@/components/Reviews/ProductReviews'
+import TrustmateReview from '@/components/Reviews/TrustmateReview'
 import HomepageSlider from '@/components/Slider/HomepageSlider'
 import Values from '@/components/Values'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
@@ -103,7 +103,7 @@ export default function Home(props: SearchPageLayoutProps) {
         query="veterinary"
       />
       <ProductTabSlider />
-      <ProductReviews />
+      <TrustmateReview />
     </SearchPageLayout>
   )
 }

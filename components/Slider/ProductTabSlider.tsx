@@ -13,7 +13,7 @@ export default function ProductTabSlider() {
   const tabWidth = useMediaQuery('(max-width:768px)')
 
   return (
-    <section className="itemSlider items-start container mx-auto px-6 product-tab-slider">
+    <section className="itemSlider product-tab-slider items-start container mx-auto px-6">
       {tabWidth ? (
         <ProductTabDropdown />
       ) : (

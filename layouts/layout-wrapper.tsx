@@ -81,7 +81,7 @@ export default function LayoutWrapper({ children }: PropsWithChildren<Props>) {
       <div data-aos="fade-up" id="head" />
       {loading && <SpinnerOverlay />}
       {loadingState && <LoadingBar />}
-      <NextNProgress color="green" options={{ showSpinner: true }} />
+      <NextNProgress color="#95bf11" options={{ showSpinner: true }} />
       <ToastContainer />
       {displayAuthModal && (
         <DynamicAuthModal

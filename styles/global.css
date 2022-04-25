@@ -1,9 +1,9 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
 
 /* Your own custom component styles */
 
-@import "tailwindcss/utilities";
+@import 'tailwindcss/utilities';
 
 :root {
   --mountain-green: #95bf11;
@@ -118,7 +118,7 @@ header.header {
   display: none;
 }
 
-.product-tab-slider .splide__track.splide__track--slide,
+.product-tab-slider .splide__track,
 .itemSlider.itemSlider.recommendation-slider
   .splide__track.splide__track--slide,
 .values-slider .splide__track.splide__track--slide {

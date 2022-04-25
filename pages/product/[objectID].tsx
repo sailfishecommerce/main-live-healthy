@@ -14,6 +14,7 @@ export type ProductPageProps = SearchPageLayoutProps & {
 }
 
 export default function Product({ objectID, ...props }: ProductPageProps) {
+  console.log('objectID', objectID, 'props', props)
   return (
     <SearchPageLayout {...props}>
       <Container>

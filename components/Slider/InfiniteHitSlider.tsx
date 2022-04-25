@@ -47,7 +47,7 @@ function InfiniteHitsSliderComponent({
             },
           },
         }}
-        className="productSlider container mx-auto"
+        className="productSlider itemSlider container mx-auto"
       >
         <AnimatePresence>
           {hits?.map((product) => (

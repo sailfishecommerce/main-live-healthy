@@ -1,0 +1,26 @@
+[
+  {
+    "image": "/img/shop/cart/02.webp",
+    "link": "/shop-single-v1",
+    "title": "TH Jeans City Backpack",
+    "brand": "Tommy Hilfiger",
+    "color": "Khaki",
+    "price": 79.5
+  },
+  {
+    "image": "/img/shop/cart/03.webp",
+    "link": "/shop-single-v1",
+    "title": "3-Color Sun Stash Hat",
+    "brand": "The North Face",
+    "color": "Pink / Beige / Dark blue",
+    "price": 22.5
+  },
+  {
+    "image": "/img/shop/cart/04.webp",
+    "link": "/shop-single-v1",
+    "title": "Cotton Polo Regular Fit",
+    "size": 42,
+    "color": "Light blue",
+    "price": 9
+  }
+]

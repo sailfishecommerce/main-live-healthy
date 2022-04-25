@@ -1,0 +1,15 @@
+[
+    {
+        "icon":"/shipping-icon.png",
+        "title":"Free Shipping to HK",
+        "text":"7 - 14 days"
+    },  {
+      "icon": "/orange-check-icon.png",
+      "title": "Products verified",
+      "text": "From Australia"
+    }, {
+      "icon": "/secure-payment-icon.png",
+      "title": "Fast & secure",
+      "text": "Payments"
+    }
+]

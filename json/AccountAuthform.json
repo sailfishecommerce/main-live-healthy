@@ -1,0 +1,64 @@
+{
+  "signup": [
+    [
+      {
+        "name": "firstName",
+        "inputText": "text",
+        "placeholder": "First name",
+        "id": "account-signup-firstName",
+        "type": "input"
+      },
+      {
+        "name": "lastName",
+        "inputText": "text",
+        "placeholder": "Last name",
+        "id": "account-signup-lastName",
+        "type": "input"
+      }
+    ],
+    [
+      {
+        "name": "email",
+        "inputText": "email",
+        "placeholder": "E-mail",
+        "id": "account-signup-email",
+        "type": "input"
+      }
+    ],
+    [
+      {
+        "name": "password",
+        "inputText": "password",
+        "id": "account-signup-password",
+        "placeholder": "Password",
+
+        "type": "input"
+      },
+      {
+        "name": "confirmPassword",
+        "inputText": "password",
+        "id": "account-signup-confirm-password",
+        "placeholder": "Confirm password",
+        "type": "input"
+      }
+    ]
+  ],
+  "signin": [
+    {
+      "withIcon": true,
+      "name": "email",
+      "inputText": "email",
+      "type": "input",
+      "id": "account-form-email",
+      "placeholder": "Email"
+    },
+    {
+      "withIcon": true,
+      "name": "password",
+      "inputText": "password",
+      "type": "input",
+      "id": "account-password",
+      "placeholder": "Password"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+[
+  [
+    {
+      "name": "firstName",
+      "placeholder": "First Name",
+      "type": "input",
+      "inputText": "text"
+    },
+    {
+      "name": "lastName",
+      "placeholder": "Last Name",
+      "type": "input",
+      "inputText": "text"
+    }
+  ],
+  [
+    {
+      "name": "companyName",
+      "placeholder": "company Name",
+      "type": "input",
+      "inputText": "text"
+    }
+  ],
+  [
+    {
+      "name": "email",
+      "placeholder": "Email Address",
+      "type": "input",
+      "inputText": "email"
+    },
+    {
+      "name": "phoneNumber",
+      "placeholder": "Phone Number",
+      "type": "input",
+      "inputText": "text"
+    }
+  ],
+  [
+    {
+      "name": "message",
+      "placeholder": "A clear and concise summary of your requirement",
+      "type": "textarea",
+      "inputText": "text"
+    }
+  ]
+]

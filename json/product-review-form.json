@@ -1,0 +1,42 @@
+[
+  {
+    "label": "Your name",
+    "type": "input",
+    "id": "review-name",
+    "inputType": "text",
+    "helperText": "Will be displayed on the comment"
+  },
+  {
+    "label": "Your email",
+    "type": "input",
+    "id": "review-email",
+    "inputType": "email",
+    "helperText": "Authentication only - we wont' spam you"
+  },
+  {
+    "label": "Rating",
+    "type": "select",
+    "id": "review-rating",
+    "options": [5, 4, 3, 2, 1]
+  },
+  {
+    "label": "Review",
+    "type": "textarea",
+    "id": "review-text",
+    "helperText": "Your review must be at least 50 character"
+  },
+  {
+    "label": "Pros",
+    "type": "input",
+    "id": "review-pros",
+    "inputType": "text",
+    "placeholder": "Separated by commas"
+  },
+  {
+    "label": "Cons",
+    "type": "input",
+    "id": "review-cons",
+    "inputType": "text",
+    "placeholder": "Separated by commas"
+  }
+]

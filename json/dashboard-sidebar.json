@@ -1,0 +1,50 @@
+[
+  {
+    "name": "Dashboard",
+    "content": [
+      {
+        "name": "Orders",
+        "link": "/account-orders",
+        "icon": "ci-bag",
+        "count": 1
+      },
+      {
+        "name": "Wishlist",
+        "link": "/account-wishlist",
+        "icon": "ci-heart",
+        "count": 3
+      },
+      {
+        "name": "Support tickets",
+        "link": "/account-tickets",
+        "icon": "ci-help",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "name": "Account settings",
+    "content": [
+      {
+        "name": "Profile info",
+        "link": "/account-profile",
+        "icon": "ci-user"
+      },
+      {
+        "name": "Addresses",
+        "link": "/account-profile",
+        "icon": "ci-location"
+      },
+      {
+        "name": "Payment methods",
+        "link": "/account-payment",
+        "icon": "ci-card"
+      },
+      {
+        "name": "Sign out",
+        "link": "/account-signin",
+        "icon": "ci-sign-out"
+      }
+    ]
+  }
+]

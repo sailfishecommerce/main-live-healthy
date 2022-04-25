@@ -1,0 +1,61 @@
+{
+  "social": [
+    {
+      "name": "facebook",
+      "link": "#"
+    },
+    {
+      "name": "instagram",
+      "link": "#"
+    },
+    {
+      "name": "youtube",
+      "link": "#"
+    }
+  ],
+  "pageLinks": [
+    {
+      "name": "Outlets",
+      "link": "#"
+    },
+    {
+      "name": "Affiliates",
+      "link": "#"
+    },
+    {
+      "name": "Support",
+      "link": "#"
+    },
+    {
+      "name": "Privacy",
+      "link": "#"
+    },
+    {
+      "name": "Terms of use",
+      "link": "#"
+    }
+  ],
+  "features": [
+    {
+      "title": "Fast and free delivery",
+      "icon": "rocket",
+      "text": "Free delivery for all orders over $200"
+    },
+    {
+      "title": "Money back guarantee",
+      "icon": "currency-exchange",
+      "text": "We return money within 30 days"
+    },
+    {
+      "title": "24/7 customer support",
+      "icon": "headset",
+      "text": " Friendly 24/7 customer support"
+    },
+    {
+      "title": "Secure online payment",
+      "icon": "creditcard",
+      "text": "We possess SSL / Secure сertificate"
+    }
+  ],
+  "paymentImage": "/img/cards-alt.webp"
+}

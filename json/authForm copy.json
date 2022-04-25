@@ -1,0 +1,57 @@
+{
+  "signIn": [
+    {
+      "name": "email",
+      "inputText": "email",
+      "placeholder": "E-mail",
+      "id": "si-email",
+      "type": "input"
+    },
+    {
+      "name": "password",
+      "inputText": "password",
+      "placeholder": "Password",
+      "id": "si-password",
+      "type": "input"
+    }
+  ],
+  "signUp": [
+    [
+      {
+        "name": "firstName",
+        "inputText": "text",
+        "placeholder": "First name",
+        "id": "su-firstName",
+        "type": "input"
+      },
+      {
+        "name": "lastName",
+        "inputText": "text",
+        "placeholder": "Last name",
+        "id": "su-lastName",
+        "type": "input"
+      }
+    ],
+    {
+      "name": "email",
+      "inputText": "email",
+      "placeholder": "E-mail",
+      "id": "su-email",
+      "type": "input"
+    },
+    {
+      "name": "password",
+      "inputText": "password",
+      "id": "su-password",
+      "placeholder": "Password",
+      "type": "input"
+    },
+    {
+      "name": "confirmPassword",
+      "inputText": "password",
+      "id": "su-confirm-password",
+      "placeholder": "Confirm password",
+      "type": "input"
+    }
+  ]
+}

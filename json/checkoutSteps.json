@@ -1,0 +1,27 @@
+[
+  {
+    "count": 1,
+    "name": "cart",
+    "icon": "ci-cart"
+  },
+  {
+    "count": 2,
+    "name": "details",
+    "icon": "ci-user-circle"
+  },
+  {
+    "count": 3,
+    "name": "shipping",
+    "icon": "ci-package"
+  },
+  {
+    "count": 4,
+    "name": "payment",
+    "icon": "ci-card"
+  },
+  {
+    "count": 5,
+    "name": "review",
+    "icon": "ci-check-cirlce"
+  }
+]

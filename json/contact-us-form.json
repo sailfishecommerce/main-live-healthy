@@ -1,0 +1,27 @@
+[
+  {
+    "type": "input",
+    "label": "Your name",
+    "placeholder": "John Doe"
+  },
+  {
+    "type": "input",
+    "label": "Email address",
+    "placeholder": "johndoe@gmail.com"
+  },
+  {
+    "type": "input",
+    "label": "Your phone",
+    "placeholder": "+1(212) 00 000 000"
+  },
+  {
+    "type": "input",
+    "label": "Subject",
+    "placeholder": "Provide short title of your request"
+  },
+  {
+    "type": "textarea",
+    "label": "Message",
+    "placeholder": "Please describe in detail your request"
+  }
+]

@@ -1,0 +1,57 @@
+{
+  "AccountDetails": [
+    {
+      "placeholder": "First name",
+      "inputType": "text",
+      "name": "firstName",
+      "type": "input"
+    },
+    {
+      "placeholder": "Last name",
+      "inputType": "text",
+      "name": "lastName",
+      "type": "input"
+    },
+    {
+      "placeholder": "Phone",
+      "inputType": "text",
+      "name": "Phone",
+      "type": "input"
+    },
+    {
+      "placeholder": "Email",
+      "inputType": "email",
+      "name": "userEmail",
+      "type": "input"
+    }
+  ],
+  "ShippingAddress": [
+    {
+      "placeholder": "Select Order",
+      "inputType": "text",
+      "name": "selectOrder",
+      "type": "input"
+    },
+    {
+      "placeholder": "Email",
+      "inputType": "email",
+      "name": "userEmail",
+      "type": "input"
+    },
+    {
+      "placeholder": "Address",
+      "inputType": "text",
+      "name": "address",
+      "type": "input"
+    }
+  ],
+  "accountData": [
+    { "text": "Name", "value": "Nao Katsurou" },
+    { "text": "E-mail", "value": "naokatsurou@gmail.com" },
+    {
+      "text": "Address",
+      "value": "62 Chek Yan Yeng Tsuen, Fo Tsui Ak, Kowloon"
+    },
+    { "text": "Phone", "value": "23791973" }
+  ]
+}

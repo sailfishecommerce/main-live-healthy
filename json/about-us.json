@@ -1,0 +1,106 @@
+{
+  "aboutUs": [
+    {
+      "title": "Search, Select, Buy online",
+      "image": "/about/01.webp",
+      "imgPosition": "left",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id purus at risus pellentesque faucibus a quis eros. In eu fermentum leo. Integer ut eros lacus. Proin ut accumsan leo. Morbi vitae est eget dolor consequat aliquam eget quis dolor. Mauris rutrum fermentum erat, at euismod lorem pharetra nec. Duis erat lectus, ultrices euismod sagittis at, pharetra eu nisl. Phasellus id ante at velit tincidunt hendrerit. Aenean dolor dolor tristique nec. Tristique nulla aliquet enim tortor at auctor urna nunc. Sit amet aliquam id diam maecenas ultricies mi eget.",
+      "buttons": [
+        {
+          "text": "View products",
+          "link": "/collection",
+          "color": "btn-red"
+        }
+      ]
+    },
+    {
+      "title": "Fast delivery worldwide",
+      "image": "/about/02.webp",
+      "imgPosition": "right",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id purus at risus pellentesque faucibus a quis eros. In eu fermentum leo. Integer ut eros lacus. Proin ut accumsan leo. Morbi vitae est eget dolor consequat aliquam eget quis dolor. Mauris rutrum fermentum erat, at euismod lorem pharetra nec. Duis erat lectus, ultrices euismod sagittis at, pharetra eu nisl. Phasellus id ante at velit tincidunt hendrerit. Aenean dolor dolor tristique nec. Tristique nulla aliquet enim tortor at auctor urna nunc. Sit amet aliquam id diam maecenas ultricies mi eget.",
+      "buttons": [
+        {
+          "text": "Shipping details",
+          "link": "/collection",
+          "color": "btn-blue"
+        }
+      ]
+    },
+    {
+      "title": "Great mobile app. Shop on the go",
+      "image": "/about/03.webp",
+      "imgPosition": "left",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id purus at risus pellentesque faucibus a quis eros. In eu fermentum leo. Integer ut eros lacus. Proin ut accumsan leo. Morbi vitae est eget dolor consequat aliquam eget quis dolor. Mauris rutrum fermentum erat, at euismod lorem pharetra nec. Duis erat lectus, ultrices euismod sagittis at, pharetra eu nisl. Phasellus id ante at velit tincidunt hendrerit. Aenean dolor dolor tristique nec. Tristique nulla aliquet enim tortor at auctor urna nunc. Sit amet aliquam id diam maecenas ultricies mi eget.",
+      "imgLinks": ["", ""]
+    },
+    {
+      "title": "Shop offline. Cozy outlet stores",
+      "image": "/about/04.webp",
+      "imgPosition": "right",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam id purus at risus pellentesque faucibus a quis eros. In eu fermentum leo. Integer ut eros lacus. Proin ut accumsan leo. Morbi vitae est eget dolor consequat aliquam eget quis dolor. Mauris rutrum fermentum erat, at euismod lorem pharetra nec. Duis erat lectus, ultrices euismod sagittis at, pharetra eu nisl. Phasellus id ante at velit tincidunt hendrerit. Aenean dolor dolor tristique nec. Tristique nulla aliquet enim tortor at auctor urna nunc. Sit amet aliquam id diam maecenas ultricies mi eget.",
+      "buttons": [
+        {
+          "text": "See outlet stores",
+          "link": "/contact-us",
+          "color": "btn-yellow"
+        }
+      ]
+    }
+  ],
+  "coreTeam": {
+    "title": "Our core team",
+    "description": "People behind your great shopping experience",
+    "teams": [
+      {
+        "image": "/about/team-3.webp",
+        "name": "Jonathan Doe",
+        "role": "CEO, Co-founder",
+        "email": "johndoe@example.com"
+      },
+      {
+        "image": "/about/team-4.webp",
+        "name": "Barbara Palson",
+        "role": "Chief of Marketing",
+        "email": "b.palson@example.com"
+      },
+      {
+        "image": "/about/team-6.webp",
+        "name": "William Smith",
+        "role": "Financial director",
+        "email": "w.smith@example.com"
+      },
+      {
+        "image": "/about/team-2.webp",
+        "name": "Amanda Gallaher",
+        "role": "Lead UX designer",
+        "email": "a.gallaher@example.com"
+      },
+      {
+        "image": "/about/team-1.webp",
+        "name": "Benjamin Miller",
+        "role": "Website development",
+        "email": "b.miller@example.com"
+      },
+      {
+        "image": "/about/team-5.webp",
+        "name": "Miguel Rodrigez",
+        "role": "Content manager",
+        "email": "m.rodrigez@example.com"
+      }
+    ]
+  },
+  "hireTalent": {
+    "bgImage": "//about/03.webp"
+  },
+  "form": [
+    { "className": "col-sm-6", "placeholder": "Your name", "type": "text" },
+    { "className": "col-sm-6", "placeholder": "Your email", "type": "email" },
+    {
+      "className": "col-12",
+      "placeholder": "Message",
+      "rows": 4,
+      "type": "textarea"
+    },
+    { "className": "col-12", "placeholder": "upload cv", "type": "file" }
+  ]
+}

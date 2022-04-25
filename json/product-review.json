@@ -1,0 +1,41 @@
+{
+  "reviews": [
+    {
+      "authorImage": "/img/shop/reviews/review-1.webp",
+      "name": "Rafael Marquez",
+      "date": "June 28, 2019",
+      "rating": 4,
+      "note": "83% of users found this review helpful",
+      "text": "Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est...",
+      "pros": "Consequuntur magni, voluptatem sequi, tempora",
+      "cons": "Architecto beatae, quis autem",
+      "like": 15,
+      "dislike": 3
+    },
+    {
+      "authorImage": "/img/shop/reviews/review-2.webp",
+      "name": "Barbara Palson",
+      "date": "May 17, 2019",
+      "rating": 4,
+      "note": "99% of users found this review helpful",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "pros": "Consequuntur magni, voluptatem sequi, tempora",
+      "cons": "Architecto beatae, quis autem",
+      "like": 34,
+      "dislike": 1
+    },
+    {
+      "authorImage": "/img/shop/reviews/review-3.webp",
+      "name": "Daniel Adams",
+      "date": "May 8, 2019",
+      "rating": 3,
+      "note": "75% of users found this review helpful",
+      "text": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem.",
+      "pros": "Consequuntur magni, voluptatem sequi, tempora",
+      "cons": "Architecto beatae, quis autem",
+      "like": 26,
+      "dislike": 9
+    }
+  ],
+  "sortReviews": ["Newest", "Oldest", "Popular", "High rating", "Low rating"]
+}

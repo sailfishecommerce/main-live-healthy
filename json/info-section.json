@@ -1,0 +1,21 @@
+{
+  "content": [
+    {
+      "title": "Read the blog",
+      "description": "Latest store, fashion news and trends",
+      "bgColor": "#FEF1F1",
+      "link": "/blog-list-sidebar",
+      "icon": "ci-edit h3 mt-2 mb-4 text-primary"
+    },
+    {
+      "title": "Follow on Instagram",
+      "description": "Latest store, fashion news and trends",
+      "bgColor": "#EFEFFB",
+      "icon": "ci-instagram h3 mt-2 mb-4 text-accent"
+    }
+  ],
+  "productView": [
+    ["1 box", "100 qty"],
+    ["1 Carton", "10 boxes"]
+  ]
+}

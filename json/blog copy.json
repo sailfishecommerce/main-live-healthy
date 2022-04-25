@@ -1,0 +1,92 @@
+[
+  {
+    "title": "The best e-commerce platform in 2022",
+    "author": {
+      "image": {
+        "small": "/arabella-small.webp",
+        "big": "/arabella-big.webp"
+      },
+      "name": "Arabella Noakes",
+      "published": "April 10,2022",
+      "bio": "Arabella Noakes is a writer/editor and content specialist. She’s worked with retailers ranging from Fortune 100 companies to Etsy shop owners, and is always looking for innovative ways to help her clients."
+    },
+    "section1": {
+      "banner": "/e-commerce.webp",
+      "text": "<p>This guide will take a look at the best ecommerce platforms and how to evaluate which is best for your business needs. </p> <p>Starting an ecommerce business is exciting. You get to choose your business name, create your logo and branding, and build your website. And while it’s easy to consider your needs now, it’s also important to think about where your business is heading and what other tools you’ll need in the future.</p> <p>Today, it’s not enough to simply choose the best online store builder. Savvy entrepreneurs look for the best ecommerce platform: an ecosystem of tools that seamlessly integrate, giving you complete control over every aspect of your business and the ability to scale as you grow. </p>"
+    },
+    "section2": {
+      "banner": "/kinda.webp",
+      "title": "Best for easy, all-in-one ecommerce store building",
+      "list": [
+        "Shopify",
+        "Wix",
+        "BigCommerce",
+        "AdobeCommerce (formerly Magento)",
+        "WooCommerce"
+      ],
+      "text": "<p>Shopify is, arguably, the best software-as-a-service (SaaS) platform for ecommerce. Our robust platform comes with complementary tools and features for multichannel selling and dropshipping, so you can sell directly through your website, at your retail store, on social media and third-party marketplaces, and everywhere in between. Choose from over 100 paid and free themes to get your store up and running fast with zero learning curve.</p>",
+      "pros": [
+        "Quick start with slick onboarding process",
+        "Customizable themes",
+        "Fast and reliable sites",
+        "Community support",
+        "Excellent built-in marketing tools",
+        "Sell everywhere online and in-person",
+        "Access to over 6,000 apps through the Shopify App Store",
+        "Great SEO out of the box",
+        "Easy to obtain a custom domain"
+      ],
+      "cons": "Shopify Payments is limited to some countries ",
+      "consList": [
+        {
+          "text": "Price",
+          "value": "Price: Basic Shopify: $29.99/month; Shopify: $79/month; Advanced Shopify: $299/month; 10% discount on annual plans and 20% on biennial plans when paid upfront."
+        },
+
+        { "text": "Free trial length", "value": " 14 days." },
+
+        {
+          "text": "Customer support options",
+          "value": "Callback phone support; email support; support provided in 19 languages; community forum; support content."
+        },
+        {
+          "text": "Integrated sales channels",
+          "value": "Facebook, Instagram, Google, Walmart Marketplace, eBay, and Amazon."
+        },
+        {
+          "text": "Mobile app features",
+          "value": " Suite of mobile tools to fully manage your online business."
+        },
+        { "text": "POS", "value": " Yes. " }
+      ]
+    },
+    "section3": {
+      "banner": "/shopify.webp",
+      "title": "Video review",
+      "bannerLabel": "Video presentation of the latest Shopify update"
+    },
+    "tableOfContent": {
+      "title": "About best platform",
+      "subtitle": [
+        "The best ecommerce platforms for 2022",
+        [{ "title": "Shopify", "subtitle": ["Pros", "Cons"] }],
+        "Video review"
+      ]
+    },
+    "popularArticles": [
+      {
+        "thumbnailImg": "/thumbnail-1.webp",
+        "text": "Get to know and engage with your audience with customer segmentation"
+      },
+      {
+        "thumbnailImg": "/thumbnail-2.webp",
+        "text": "Serial Entrepreneurs: How Coco and Breezy Manage Multiple Businesses"
+      },
+      {
+        "thumbnailImg": "/thumbnail-3.webp",
+        "text": "Announcing New Customer Segmentation and Marketing Tools"
+      }
+    ],
+    "links": ["#whatsapp", "#facebook", "#twitter", "#instagram", "#pinterest"]
+  }
+]

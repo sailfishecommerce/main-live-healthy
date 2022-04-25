@@ -1,0 +1,29 @@
+{
+  "group1": [
+    { "title": "Shipped via", "text": "UPS Ground" },
+    { "title": "Status", "text": "Processing order" },
+    { "title": "Expected date", "text": "January 15, 2022" }
+  ],
+  "group2": [
+    {
+      "icon": "ci-bag",
+      "step": "First step",
+      "text": "Order placed"
+    },
+    {
+      "icon": "ci-settings",
+      "step": "Second step",
+      "text": "Processing Order"
+    },
+    {
+      "icon": "ci-star",
+      "step": "Third step",
+      "text": "Quality check"
+    },
+    {
+      "icon": "ci-package",
+      "step": "Fourth step",
+      "text": "Product dispatched"
+    }
+  ]
+}

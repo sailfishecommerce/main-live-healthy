@@ -1,0 +1,31 @@
+{
+  "language": [
+    {
+      "img": "/flags/en.webp",
+      "alt": "English",
+      "label": "EN"
+    }
+  ],
+  "currency": [
+    {
+      "label": "$ USD",
+      "value": "USD"
+    },
+    {
+      "label": "$ HKD",
+      "value": "HKD"
+    },
+    {
+      "label": "€ EUR",
+      "value": "EUR"
+    },
+    {
+      "label": "£ UKP",
+      "value": "UKP"
+    },
+    {
+      "label": "¥ JPY",
+      "value": "JPY"
+    }
+  ]
+}

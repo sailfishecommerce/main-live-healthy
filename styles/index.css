@@ -1,0 +1,331 @@
+/* top bar slider */
+.header-slider .splide__arrows {
+  display: none;
+}
+
+.header-slider ul.splide__pagination {
+  display: none;
+}
+
+.shopByBrand ul.splide__pagination {
+  display: none;
+}
+ul.splide__pagination {
+  height: 10px;
+  margin-top: -10px;
+}
+
+/* homepage slider */
+.carousel .splide__track {
+  margin: 0px;
+}
+
+/* .homepage-carousel ul.splide__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.homepage-carousel .splide__track {
+  height: 100%;
+  width: 100%;
+} */
+
+.homepage-carousel .splide__track {
+  height: 100%;
+  width: 100%;
+}
+
+.homepage-carousel .splide__slide {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.header-slider .splide__track {
+  margin-right: unset;
+}
+
+.carousel .splide__pagination {
+  display: none;
+}
+
+.related-products .splide__track {
+  margin-right: unset;
+}
+
+.splide__pagination li button.splide__pagination__page.is-active {
+  background: red;
+}
+.splide__pagination li button {
+  margin: 0px 5px;
+}
+
+/* style scrollbar */
+body::-webkit-scrollbar,
+.products-list::-webkit-scrollbar,
+.product-gallery-thumblist::-webkit-scrollbar,
+.quickView-description::-webkit-scrollbar,
+.widget-body::-webkit-scrollbar,
+.ais-RefinementList-list::-webkit-scrollbar {
+  width: 1em;
+}
+
+body::-webkit-scrollbar-track,
+.products-list::-webkit-scrollbar-track,
+.product-gallery-thumblist::-webkit-scrollbar-track,
+.quickView-description::-webkit-scrollbar-track,
+.widget-body::-webkit-scrollbar-track,
+.ais-RefinementList-list::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+body::-webkit-scrollbar-thumb,
+.products-list::-webkit-scrollbar-thumb,
+.product-gallery-thumblist::-webkit-scrollbar-thumb,
+.quickView-description::-webkit-scrollbar-thumb,
+.widget-body::-webkit-scrollbar-thumb,
+.ais-RefinementList-list::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: 1px solid slategrey;
+  border: 0px !important;
+}
+
+/* price range slider */
+
+.cz-range-slider-ui {
+  height: 0.1875rem;
+  margin: 3.5rem 0;
+  border: 0;
+  background-color: #eceff6;
+  box-shadow: none;
+}
+.cz-range-slider-ui .noUi-connect {
+  background-color: #fe696a;
+}
+div.noUi-horizontal .noUi-handle {
+  width: 28px;
+  height: 28px;
+  right: -17px;
+  top: -6px;
+}
+.cz-range-slider-ui .noUi-handle {
+  top: 50%;
+  margin-top: -0.6875rem;
+  border: 0;
+  border-radius: 50%;
+  box-shadow: 0 0.125rem 0.5625rem -0.125rem rgba(0, 0, 0, 0.25);
+}
+.cz-range-slider-ui .noUi-handle::before,
+.cz-range-slider-ui .noUi-handle::after {
+  display: none;
+}
+.cz-range-slider-ui .noUi-handle:focus {
+  outline: none;
+}
+.cz-range-slider-ui .noUi-marker-normal {
+  display: none;
+}
+.cz-range-slider-ui .noUi-marker-horizontal.noUi-marker {
+  width: 1px;
+  background-color: #d0dae4;
+}
+.cz-range-slider-ui .noUi-marker-horizontal.noUi-marker-large {
+  height: 0.75rem;
+}
+.cz-range-slider-ui .noUi-value {
+  padding-top: 0.125rem;
+  color: #4b566b;
+  font-size: 0.8125rem;
+}
+.cz-range-slider-ui .noUi-tooltip {
+  padding: 0.25rem 0.5rem;
+  border: 0;
+  background-color: #373f50;
+  color: #fff;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  border-radius: 0.1875rem;
+}
+html:not([dir='rtl']) .cz-range-slider-ui.noUi-horizontal .noUi-handle {
+  right: -0.6875rem;
+}
+
+/* refinement list style */
+ul.ais-Menu-list,
+ul.ais-RefinementList-list {
+  list-style: none;
+  padding: 0px;
+}
+
+ul.ais-Menu-list .ais-Menu-count,
+ul.ais-RefinementList-list .ais-RefinementList-count {
+  background-color: red;
+  padding: 2px;
+  color: white;
+  border-radius: 5px;
+  font-size: 13px;
+}
+
+.ais-RefinementList-checkbox {
+  margin: 0px 5px 0px 0px;
+}
+
+.refinement ul.ais-RefinementList-list {
+  max-height: 350px;
+  overflow: auto;
+}
+
+.ais-RefinementList-labelText {
+  font-size: 14px;
+}
+
+li.ais-Menu-item.ais-Menu-item--selected .ais-Menu-label {
+  font-weight: bold;
+}
+li.ais-Menu-item.ais-Menu-item--selected {
+  color: red;
+  font-weight: bold;
+}
+
+.tags ul {
+  max-height: 270px;
+  overflow: auto;
+  margin-bottom: 5px;
+}
+
+.vendor ul {
+  max-height: 250px;
+  overflow: auto;
+  margin-bottom: 5px;
+}
+
+button.ais-RefinementList-showMore:hover {
+  background-color: white;
+  border: 1px solid red;
+  color: red;
+}
+
+button.ais-RefinementList-showMore {
+  border: 1px solid red;
+  background-color: red;
+  color: white;
+  border-radius: 5px;
+  margin: 15px 30px 15px 0px;
+  font-size: 15px;
+  padding: 8px;
+}
+
+input.ais-SearchBox-input {
+  padding: 0.425rem 0.75rem;
+  font-size: 0.8125rem;
+  border-radius: 0.25rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #4b566b;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #dae1e7;
+  width: 100%;
+}
+
+input.ais-SearchBox-input:focus-visible {
+  outline: 1px solid red;
+}
+
+form.ais-SearchBox-form {
+  display: flex;
+}
+
+form.ais-SearchBox-form button svg {
+  height: 14px;
+  width: 14px;
+}
+
+form.ais-SearchBox-form button.ais-SearchBox-submit {
+  margin-left: -45px;
+}
+form.ais-SearchBox-form button.ais-SearchBox-reset {
+  margin-left: 5px;
+}
+.ais-RefinementList-searchBox,
+.ais-Menu-searchBox {
+  margin-bottom: 10px;
+}
+
+span.ais-Menu-label {
+  font-weight: normal;
+  font-size: 16px;
+  font-family: 'Rubik', sans-serif;
+}
+
+/* product page description */
+.productInfo div h2 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* product description */
+.container.productDescription h6 {
+  margin-bottom: 0px !important;
+}
+
+.container.productDescription h2 {
+  margin-bottom: 0px !important;
+  font-size: 21px;
+  font-weight: bold;
+}
+
+.productInfo p {
+  margin-bottom: 6px;
+}
+
+.blogGrid .splide__track {
+  margin-right: unset;
+}
+
+/* quick view modal */
+.quickView-description.description h2 {
+  font-weight: bold;
+}
+
+.product-gallery-thumblist.desktop {
+  height: 400px;
+  overflow-y: auto;
+}
+
+/* media query */
+@media (min-width: 768px) {
+  .related-products ul.splide__list {
+    min-height: 500px;
+  }
+  .item.slider-container {
+    width: 400px;
+  }
+  .product-gallery-thumblist {
+    height: 700px;
+    flex-wrap: unset;
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-container .carousel-inner .track {
+    display: flex;
+    width: 350px;
+  }
+  .header-slider ul.splide__pagination {
+    display: none;
+  }
+  .related-products .splide__track ul.splide__list {
+    height: 280px;
+  }
+
+  .categorySlider ul.splide__list {
+    height: 350px;
+  }
+
+  .search-results ul.ais-Hits-list {
+    height: 400px;
+    overflow-y: auto;
+  }
+}

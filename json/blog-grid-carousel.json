@@ -1,0 +1,32 @@
+[
+  {
+    "link": "/blog-single-sidebar",
+    "date": "Sep 10",
+    "image": "/sliders/post-1.webp",
+    "authorImage": "/sliders/author/author-4.webp",
+    "title": "Healthy Food - New Way of Living",
+    "author": "Olivia Reyes",
+    "category": [" Lifestyle", " Nutrition"],
+    "comment": 13
+  },
+  {
+    "link": "/blog-single-sidebar",
+    "date": "Sep 10",
+    "image": "/sliders/post-2.webp",
+    "title": "Online Payment Security Tips for Shoppers",
+    "authorImage": "/sliders/author/author-3.webp",
+    "author": "Rafael Marquez",
+    "category": [" Online shpopping"],
+    "comment": 9
+  },
+  {
+    "link": "/blog-single-sidebar",
+    "date": "Aug 16",
+    "image": "/sliders/post-3.webp",
+    "title": "We Launched New Store in San Francisco!",
+    "author": "Paul Woodred",
+    "authorImage": "/sliders/author/author-2.webp",
+    "category": ["Bandicoot news"],
+    "comment": 23
+  }
+]

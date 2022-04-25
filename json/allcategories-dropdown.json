@@ -1,0 +1,70 @@
+{
+  "sidebar": [
+    { "name": "Best sellers", "slug": "#best-sellers" },
+    { "name": "Customers also bought", "slug": "#customers-also-bought" },
+    { "name": "New arrivals", "slug": "#new-arrivals" }
+  ],
+  "main": {
+    "trending": [
+      { "image": "/baby-care.webp", "name": "Baby Care", "link": "#baby-care" },
+      { "image": "/skin-care.webp", "name": "Skin Care", "link": "#skin-care" },
+      { "image": "/vitamins.webp", "name": "Vitamins", "link": "#vitamins" },
+      {
+        "image": "/smoking-deterrents.webp",
+        "name": "Smoking Deterrents",
+        "link": "#smoking-deterrents"
+      },
+      { "image": "/dental.webp", "name": "Dental", "link": "#dental" }
+    ],
+    "medicines": [
+      {
+        "link": "#allergy-hayfever-&-anti-histamines",
+        "name": "Allergy Hayfever & Anti-Histamines"
+      },
+      {
+        "link": "#coughs",
+        "name": "Coughs",
+        "tag": "Hot",
+        "color": "#ED9B09"
+      },
+      {
+        "link": "#anti-fungal-&-warts",
+        "name": "Anti-fungal & Warts"
+      },
+      {
+        "link": "#fibre-supplements",
+        "name": "Fibre-Supplements"
+      },
+      {
+        "link": "#first-aid",
+        "name": "First Aid"
+      },
+      {
+        "link": "#cold-flu",
+        "name": "Cold Flu"
+      },
+      {
+        "link": "#stomach-anti-diarrhoea",
+        "name": "Stomach Anti Diarrhoea"
+      },
+      {
+        "link": "#laxatives",
+        "name": "Laxatives"
+      },
+      {
+        "link": "#irritable-bowerl-syndrome",
+        "name": "Irritable Bowerl Syndrome"
+      },
+      {
+        "link": "#topical-ointments",
+        "name": "Topical Ointments"
+      },
+      {
+        "link": "#eye-care-&-treatments",
+        "name": "Eye Care & Treatments",
+        "tag": "New",
+        "color": "#8C2DEC"
+      }
+    ]
+  }
+}

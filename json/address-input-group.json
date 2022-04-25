@@ -1,0 +1,30 @@
+[
+  [
+    {
+      "name": "city",
+      "type": "input",
+      "inputType": "text",
+      "label": "City *"
+    },
+    {
+      "name": "zip",
+      "type": "input",
+      "inputType": "text",
+      "label": "Zip code *"
+    }
+  ],
+  [
+    {
+      "name": "state",
+      "type": "input",
+      "inputType": "text",
+      "label": "State *"
+    },
+    {
+      "name": "address2",
+      "type": "input",
+      "inputType": "text",
+      "label": "Address - Line 2"
+    }
+  ]
+]

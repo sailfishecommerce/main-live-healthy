@@ -1,0 +1,6 @@
+declare module 'swell-js'
+declare module 'swell-node'
+declare module 'sharp'
+declare module 'imagemin'
+declare module 'imagemin-webp'
+declare module 'nouislider'

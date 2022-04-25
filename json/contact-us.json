@@ -1,0 +1,105 @@
+{
+  "info": [
+    {
+      "icon": "location",
+      "title": "Main store address",
+      "anchor": "#map",
+      "group": {
+        "text1": "396 Lillian Blvd, Holbrook, NY 11741, USA"
+      }
+    },
+    {
+      "icon": "time",
+      "title": "Working hours",
+      "group": {
+        "text1": "Mon - Fri: 10AM - 7PM",
+        "text2": "Saturday: 11AM - 5PM"
+      }
+    },
+    {
+      "icon": "phone",
+      "title": "Phone numbers",
+      "group": {
+        "text1": "For customers",
+        "text2": "Tech support",
+        "phoneNumber1": "+1 (080) 44 357 260",
+        "phoneNumber2": "+1 00 33 169 7720"
+      }
+    },
+    {
+      "icon": "mail",
+      "title": "Email addresses",
+      "group": {
+        "text1": "For customers",
+        "text2": "Tech support",
+        "email1": "customer@example.com",
+        "email2": "support@example.com"
+      }
+    }
+  ],
+  "outlet": [
+    {
+      "image": "/pages/contacts/orlando.webp",
+      "address": "Orlando, USA",
+      "info": [
+        {
+          "icon": "location",
+          "action": "Find us",
+          "text": "514 S. Magnolia St. Orlando, FL 32806, USA"
+        },
+        {
+          "icon": "phone",
+          "action": "Call us",
+          "text": "+1 (786) 322 560 40"
+        },
+        {
+          "icon": "mail",
+          "action": "Write us",
+          "text": "orlando@example.com"
+        }
+      ]
+    },
+    {
+      "image": "/pages/contacts/chicago.webp",
+      "address": "Chicago, USA",
+      "info": [
+        {
+          "icon": "location",
+          "action": "Find us",
+          "text": "769, Industrial, West Chicago, IL 60185, USA"
+        },
+        {
+          "icon": "phone",
+          "action": "Call us",
+          "text": "+1 (847) 252 765 33"
+        },
+        {
+          "icon": "mail",
+          "action": "Write us",
+          "text": "chicago@example.com"
+        }
+      ]
+    },
+    {
+      "image": "/pages/contacts/newyork.webp",
+      "address": "New York, USA",
+      "info": [
+        {
+          "icon": "location",
+          "action": "Find us",
+          "text": "396 Lillian Blvd, Holbrook, NY 11741, USA"
+        },
+        {
+          "icon": "phone",
+          "action": "Call us",
+          "text": "++1 (212) 477 690 000"
+        },
+        {
+          "icon": "mail",
+          "action": "Write us",
+          "text": "newyork@example.com"
+        }
+      ]
+    }
+  ]
+}

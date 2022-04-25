@@ -1,0 +1,16 @@
+[
+  {
+    "href": "#signin-tab",
+    "selected": true,
+    "icon": "ci-unlocked mx-2 mt-n1",
+    "className": "nav-link fw-medium active",
+    "text": "Sign in"
+  },
+  {
+    "href": "#signup-tab",
+    "selected": false,
+    "icon": "ci-user mx-2 mt-n1",
+    "className": "nav-link fw-medium",
+    "text": "Sign up"
+  }
+]

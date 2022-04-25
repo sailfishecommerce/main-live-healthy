@@ -1,0 +1,138 @@
+{
+  "post": [
+    {
+      "title": "Global Travel and Vacations on a Tight Budget",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea com consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt…",
+      "tags": ["Travel", "Personal finance"],
+      "author": "Emma Gallaher",
+      "authorImage": "/img/blog/meta/author-1.webp",
+      "date": "Aug 15",
+      "comment": 8
+    },
+    {
+      "title": "Top New Trends in Suburban High Fashion",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation…",
+      "tags": ["Shopping", "Fashion"],
+      "author": "Cynthia Gomez",
+      "authorImage": "/img/blog/meta/author-2.webp",
+      "date": "Jul 23",
+      "comment": 19,
+      "image": "/img/blog/blogImg-1.webp"
+    },
+    {
+      "title": "Google Pay is Now Available in All Outlets",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnaaliqua enim ad minim...",
+      "tags": ["Bandicoot news"],
+      "author": "Olivia Reyes",
+      "authorImage": "/img/blog/meta/author-2.webp",
+      "date": "Jul 6",
+      "comment": 7
+    },
+    {
+      "title": "We Launched Regular Drone Delivery in California. Watch Demo Video",
+      "text": " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation… ",
+      "tags": ["Bandicoot news"],
+      "author": "Rafael Marquez",
+      "authorImage": "/img/blog/meta/author-5.webp",
+      "date": "Jun 12",
+      "comment": 31,
+      "image": "/img/blog/blogImg-3.webp"
+    },
+    {
+      "title": "Shopping Tips. Places Where to Buy Cheap",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation… ",
+      "tags": ["Shopping", "Personal finance"],
+      "author": "Paul Woodred",
+      "authorImage": "/img/blog/meta/author-3.webp",
+      "date": "May 29",
+      "comment": 15,
+      "image": "/img/blog/blogImg-2.webp"
+    },
+    {
+      "title": "Payments Made Easy. How New Technology will Affect E-Commerce Industry Wo rldwide?",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea com consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt…",
+      "tags": ["Shopping", "Technology"],
+      "author": "Emma Gallaher",
+      "authorImage": "/img/blog/meta/author-1.webp",
+      "date": "May 13",
+      "comment": 28,
+      "image": "/img/blog/blogImg-4.webp"
+    },
+    {
+      "title": " Different Ways E-commerce Companies Can Capitalize on Apps",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation… ",
+      "tags": ["E-commerce"],
+      "author": "Paul Woodred",
+      "authorImage": "/img/blog/meta/author-3.webp",
+      "date": "Apr 15",
+      "comment": 22
+    },
+    {
+      "title": "Must Have Clothing On Your Next Trip",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation… ",
+      "tags": ["Travel", "Fashion"],
+      "author": " Olivia Reyes",
+      "authorImage": "/img/blog/meta/author-4.webp",
+      "date": "Apr 10",
+      "comment": 7
+    }
+  ],
+  "pagination": [
+    { "count": 1, "active": true },
+    { "count": 2, "active": false },
+    { "count": 3, "active": false },
+    { "count": 4, "active": false },
+    { "count": 5, "active": false }
+  ],
+  "categories": [
+    {
+      "name": "Online shopping",
+      "count": 18
+    },
+    {
+      "name": "Fashion",
+      "count": 25
+    },
+    {
+      "name": "Personal finance",
+      "count": 13
+    },
+    {
+      "name": "Travel & vacation",
+      "count": 7
+    },
+    {
+      "name": "Lifestyle",
+      "count": 34
+    },
+    {
+      "name": "Technology",
+      "count": 6
+    }
+  ],
+  "trendingPost": [
+    {
+      "image": "/img/blog/widget/01.jpg",
+      "title": "Retro Cameras are Trending. Why so Popular?",
+      "author": "Andy Williams"
+    },
+    {
+      "image": "/img/blog/widget/02.jpg",
+      "title": "New Trends in Suburban Fashion",
+      "author": "Susan Mayer"
+    },
+    {
+      "image": "/img/blog/widget/03.jpg",
+      "title": "Augmented Reality - Game Changing Technology",
+      "author": "John Doe"
+    }
+  ],
+  "popularTags": [
+    "fashion",
+    "gadgets",
+    "online shopping",
+    "top brands",
+    "travel",
+    "personal finance"
+  ]
+}

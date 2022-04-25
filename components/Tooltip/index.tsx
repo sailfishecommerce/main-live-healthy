@@ -47,7 +47,7 @@ export default function Tooltip({ children, text }: PropsWithChildren<Props>) {
             color: white;
             background: black;
             font-size: 14px;
-            font-family: sans-serif;
+            font-family: 'Commissioner', sans-serif;
             line-height: 1;
             z-index: 100;
             white-space: nowrap;

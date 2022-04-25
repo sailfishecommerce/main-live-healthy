@@ -5,6 +5,10 @@
 
 @import 'tailwindcss/utilities';
 
+body {
+  font-family: 'Commissioner', sans-serif;
+}
+
 :root {
   --mountain-green: #95bf11;
   --mountain-mist: #678800;

@@ -50,7 +50,7 @@ export default function Product({
     <>
       <Link passHref href={`/product/${product.slug}+${product.objectID}`}>
         <a
-          className={`hover:bg-white hover:shadow-lg hover:rounded-lg product ${productClassName}  ${isRow} p-2 md:p-6 hover:border`}
+          className={`hover:bg-white hover:shadow-lg product hover:rounded-lg product ${productClassName}  ${isRow} p-2 md:p-6 hover:border`}
           title={product.name}
         >
           <div
@@ -87,6 +87,9 @@ export default function Product({
       </Link>
       <style jsx>
         {`
+          .product {
+            font-family: 'Commissioner', sans-serif;
+          }
           .add-to-cart {
             background-color: var(--mountain-green);
           }

@@ -48,7 +48,7 @@ function SearchPageLayoutComponent({
   )
 
   return (
-    <main className="container">
+    <main>
       <Search
         indexName={indexName}
         searchClient={searchClient}

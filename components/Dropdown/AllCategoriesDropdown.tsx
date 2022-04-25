@@ -3,7 +3,7 @@ import { HiMenuAlt4 } from 'react-icons/hi'
 import useUI from '@/hooks/useUI'
 
 export default function AllCategoriesDropdown() {
-  const { toggleCategoriesDropdown }: any = useUI()
+  const { toggleCategoriesDropdown } = useUI()
 
   return (
     <>

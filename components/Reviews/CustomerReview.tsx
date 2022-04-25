@@ -1,11 +1,11 @@
-import Ratings from "@/components/Reviews/Ratings";
+import Ratings from '@/components/Reviews/Ratings'
 
 interface Props {
-  reviews: number;
-  ratings: number;
+  reviews: number
+  ratings: number
 }
 export default function CustomerReview({ reviews, ratings }: Props) {
-  const reviewText = reviews > 1 ? "reviews" : "review";
+  const reviewText = reviews > 1 ? 'reviews' : 'review'
   return (
     <div className="customer-review flex items-center my-2">
       <Ratings ratings={ratings} />
@@ -13,5 +13,5 @@ export default function CustomerReview({ reviews, ratings }: Props) {
         {reviews} customer&#39;s {reviewText}
       </p>
     </div>
-  );
+  )
 }

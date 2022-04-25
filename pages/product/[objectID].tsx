@@ -31,7 +31,6 @@ export default function Product({ objectID, ...props }: ProductPageProps) {
     <SearchPageLayout {...props}>
       <Container className="mt-14">
         <Configure filters={`objectID:${productObjectID}`} />
-        {/* <Hits hitComponent={ProductOverview} /> */}
         <DynamicProductOverview hit={hit} />
       </Container>
     </SearchPageLayout>

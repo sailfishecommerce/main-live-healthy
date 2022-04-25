@@ -26,7 +26,7 @@ export default function ProductOverview({ hit }: any) {
       <div className="flex flex-col px-4 md:px-0 lg:flex-row md:justify-start">
         <ProductMagnifier product={hit} />
         <ProductDetail product={hit} />
-        <ProductOffers className="" />
+        <ProductOffers className="md:hidden" />
       </div>
       <ProductReview />
       <div className="mt-6" />

@@ -1,84 +1,41 @@
-import dynamic from 'next/dynamic'
-import Link from 'next/link'
-import { useCallback, useState } from 'react'
+import PaymentMethodView from '@/components/Payment/PaymentMethodView'
+import ProductPriceView from '@/components/Product/ProductPriceView'
+import SeeMoreProductInfo from '@/components/Product/SeeMoreProductInfo'
+import CustomerReview from '@/components/Reviews/CustomerReview'
+import { useAppDispatch } from '@/hooks/useRedux'
+import useSlidingTab from '@/hooks/useSlidingTab'
+import { updateActiveProduct } from '@/redux/product-slice'
 
-import ProductForm from '@/components/Form/ProductForm'
-import FormattedPrice from '@/components/Price/FormattedPrice'
-import { PaymentNote, ShareProductLink } from '@/components/Product/ProductView'
-import Rating from '@/components/Rating'
-import { replaceSpaceWithHypen } from '@/lib/formatString'
-import type { productType } from '@/typings'
+export default function ProductDetail({ product }: any) {
+  const dispatch = useAppDispatch()
+  const { updateSlideTab } = useSlidingTab()
 
-interface Props {
-  product: productType
-}
-
-const DynamicContactModal = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'common' */ '@/components/Modal/ContactForMoreModal'
-    )
-)
-
-export default function ProductDetail({ product }: Props) {
-  const [modal, setModal] = useState(false)
-
-  const toggleModal = useCallback(() => setModal(!modal), [modal])
-
+  function seeMoreProductsHandler() {
+    updateSlideTab('SLIDING-INFO')
+    dispatch(updateActiveProduct(product))
+  }
   return (
-    <div className="w-full lg:w-1/3 pt-4 lg:pt-0">
-      <DynamicContactModal
-        show={modal}
-        productName={product.name}
-        onHide={toggleModal}
+    <div className="lg:w-1/2 w-full flex flex-col justify-start">
+      <h3 className="text-2xl font-bold">{product.name}</h3>
+      <p>
+        By <span className="text-green-500">{product.vendor}</span>
+      </p>
+      <CustomerReview
+        reviews={product?.review_rating}
+        ratings={product?.rating}
       />
-      <div className="flex justify-between items-center mb-2 w-full">
-        <div className="flex items-center flex-col md:flex-row">
-          <span className="text-blue-800 font-bold text-xl mx-1">
-            <FormattedPrice
-              isProduct
-              className="lg:text-xl"
-              price={product.price}
-            />
-          </span>
-          {product.rrp && (
-            <span className="text-blue-800 text-xl mx-1">
-              <del>
-                <FormattedPrice
-                  isProduct
-                  className="lg:text-xl"
-                  price={product.rrp}
-                />
-              </del>
-            </span>
-          )}
-        </div>
-        <Rating product={product} />
-      </div>
-      <ProductForm product={product} />
-      <div className="flex my-2 flex-col md:flex-row items-center justify-between">
-        <Link
-          passHref
-          href={`/shop/vendors/${replaceSpaceWithHypen(product.vendor)}`}
-        >
-          <a
-            aria-label={product.vendor}
-            className="underline px-0 text-blue-500 hover:text-red-500"
-          >
-            + All {product.vendor} products
-          </a>
-        </Link>
-        <button
-          type="button"
-          aria-label="Contact for more"
-          className="font-medium text-red-500 hover:underline"
-          onClick={toggleModal}
-        >
-          Not enough? Contact us for more
-        </button>
-      </div>
-      <ShareProductLink />
-      <PaymentNote />
+      <ProductPriceView product={product} />
+      <SeeMoreProductInfo
+        title="Product Information"
+        onClick={seeMoreProductsHandler}
+      />
+      <SeeMoreProductInfo
+        title="Ingredients"
+        onClick={seeMoreProductsHandler}
+      />
+      <SeeMoreProductInfo title="Directions" onClick={seeMoreProductsHandler} />
+      <hr className="my-4 border border-gray-100" />
+      <PaymentMethodView />
     </div>
   )
 }

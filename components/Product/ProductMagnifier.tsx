@@ -51,7 +51,7 @@ export default function ProductMagnifier({ product }: ProductProps) {
   }
 
   return (
-    <div className="p-3 w-full md:w-1/2">
+    <div className="p-3 w-full flex flex-col md:w-1/2">
       <div className="main-image">
         <div
           className="product-gallery-preview-item active w-full flex items-center mx-auto"
@@ -88,12 +88,12 @@ export default function ProductMagnifier({ product }: ProductProps) {
           />
         )}
       </div>
-      <div className="product-gallery-thumblist mt-4 flex flex-wrap w-full lg:order-1">
+      <div className="product-gallery-thumblist h-36 mt-4 flex order-1 flex-wrap w-full lg:order-1">
         {images?.map((image: any, index) => (
           // eslint-disable-next-line jsx-a11y/anchor-is-valid
           <a
             key={index}
-            className={`items-center justify-center flex p-1 md:px-2 cursor-pointer hover:border-green-500 w-1/6 border-gray-500 ${activethumbnailImg(
+            className={`items-center mx-auto justify-center flex p-1 md:px-2 cursor-pointer hover:border-green-500 w-1/6 h-36 border-gray-500 ${activethumbnailImg(
               index
             )}`}
             aria-label={product.image_alt_text[index]}
@@ -104,11 +104,12 @@ export default function ProductMagnifier({ product }: ProductProps) {
               width={imageView.width}
               src={image.file.url}
               alt={product.image_alt_text[index]}
+              // layout="responsive"
             />
           </a>
         ))}
       </div>
-      <ProductOffers className="hidden md:flex" />
+      <ProductOffers className="order-2" />
     </div>
   )
 }

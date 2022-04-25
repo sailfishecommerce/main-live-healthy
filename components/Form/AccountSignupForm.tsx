@@ -6,8 +6,8 @@ import { useAuth } from '@/hooks'
 import formContent from '@/json/AccountAuthform.json'
 
 export default function AccountSignupForm() {
-  const { useSignUp } = useAuth()
-  const { userSignup } = useSignUp()
+  const { signUp } = useAuth()
+
   return (
     <div className="col-md-6 pt-4 mt-3 mt-md-0">
       <h2 className="h4 mb-3">No account? Sign up</h2>
@@ -24,7 +24,7 @@ export default function AccountSignupForm() {
           confirmPassword: '',
         }}
         validationSchema={signupFormSchema}
-        onSubmit={(values, formik) => userSignup(values, formik, true)}
+        onSubmit={(values, formik) => signUp(values, formik, true)}
       >
         {(formik) => (
           <form

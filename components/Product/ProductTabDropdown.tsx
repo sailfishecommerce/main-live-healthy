@@ -1,19 +1,22 @@
-import Dropdown from "@/components/dropdown";
-import DropdownItem from "@/components/dropdown/DropdownItem";
+import Dropdown from '@/components/Dropdown'
+import DropdownItem from '@/components/Dropdown/DropdownItem'
 
 export default function ProductTabDropdown() {
-  const tabs = ["Special Products", "Featured Products"];
+  const tabs = ['Special Products', 'Featured Products']
   function selectedTabHandler(e: any) {
-    e.preventDefault();
-    console.log("e", e);
+    e.preventDefault()
+    console.log('e', e)
   }
   return (
-    <Dropdown className="bg-transparent text-lg text-black border-none shadow-none" dropdownText="New Products">
+    <Dropdown
+      className="bg-transparent text-lg text-black border-none shadow-none"
+      dropdownText="New Products"
+    >
       {tabs.map((tab, index) => (
-        <DropdownItem onClick={selectedTabHandler} key={index}>
+        <DropdownItem key={index} onClick={selectedTabHandler}>
           {tab}
         </DropdownItem>
       ))}
     </Dropdown>
-  );
+  )
 }

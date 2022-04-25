@@ -19,7 +19,7 @@ export default function CartDropdown({ cart, className }: Props) {
 
   return (
     <div className={className}>
-      <div className="w-40 tablet:w-80 px-3 pt-2 pb-3">
+      <div className="w-40 md:w-80 px-3 pt-2 pb-3">
         <div className="product-group flex flex-col">
           {cart?.items.map((item: cartType, index: number) => (
             <CartWidget
@@ -30,7 +30,7 @@ export default function CartDropdown({ cart, className }: Props) {
           ))}
         </div>
         <div className="flex flex-col flex-row justify-between items-center px-0 py-3">
-          <div className="flex flex-col tablet:flex-row items-center">
+          <div className="flex flex-col md:flex-row items-center">
             <span className="mr-1 font-bold">Subtotal:</span>
             <span className="font-bold text-red-500 text-md ms-1">
               <FormattedPrice className="lg:text-sm" price={cart?.subTotal} />

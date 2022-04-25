@@ -1,6 +1,6 @@
 export default function ContactMap() {
   return (
-    <div className="w-full tablet:w-1/2 order-2 tablet:order-1 iframe-full-height-wrap">
+    <div className="w-full md:w-1/2 order-2 md:order-1 iframe-full-height-wrap">
       <iframe
         className="iframe-full-height h-full w-full"
         width="600"

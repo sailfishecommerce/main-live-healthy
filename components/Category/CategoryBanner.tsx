@@ -4,7 +4,7 @@ import Image from '@/components/Image'
 
 export default function CategoryBanner() {
   return (
-    <div className="tablet:w-1/3 hidden lg:flex mr-4">
+    <div className="md:w-1/3 hidden lg:flex mr-4">
       <div className="categoryBannerColor flex flex-col h-100 overflow-hidden rounded-lg">
         <div className="flex justify-between">
           <div>

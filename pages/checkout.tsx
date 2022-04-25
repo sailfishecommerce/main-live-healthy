@@ -23,7 +23,7 @@ export default function Checkout() {
     <>
       <Pagetitle title="Checkout your order" />
       <div className="container checkout-page-content flex mx-auto">
-        <div className="w-full tablet:w-2/3 flex flex-col bg-white -mt-24 p-4 rounded-lg">
+        <div className="w-full md:w-2/3 flex flex-col bg-white -mt-24 p-4 rounded-lg">
           <CheckoutWelcomeBanner />
           <CheckoutForm />
         </div>

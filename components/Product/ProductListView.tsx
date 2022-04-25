@@ -19,11 +19,11 @@ export default function ProductListView({ product }: any) {
     <div className="card-body py-2 w-full">
       <a
         aria-label={product.vendor}
-        className="text-lg tablet:text-2xl font-medium mb-1"
+        className="text-lg md:text-2xl font-medium mb-1"
       >
         {product.vendor}
       </a>
-      <h3 className="text-md tablet:text-xl font-normal">
+      <h3 className="text-md md:text-xl font-normal">
         <Link passHref href={`/products/${product.slug}`}>
           <button type="button" onClick={productViewedHandler}>
             {product.name}

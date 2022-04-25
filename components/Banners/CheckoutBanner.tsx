@@ -12,8 +12,8 @@ export default function CheckoutBanner({
 }: CheckoutBannerProps) {
   return (
     <div className="w-full bg-gray-700 h-60 items-center flex">
-      <div className="container flex-col tablet:flex-row mx-auto items-center -mt-14 flex justify-between">
-        <div className="lg:order-2 mb-3 lg:mb-0 lg:pt-2 w-full tablet:w-1/2">
+      <div className="container flex-col md:flex-row mx-auto items-center -mt-14 flex justify-between">
+        <div className="lg:order-2 mb-3 lg:mb-0 lg:pt-2 w-full md:w-1/2">
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb breadcrumb-light flex-lg-nowrap justify-center justify-content-lg-start">
               <li className="breadcrumb-item">

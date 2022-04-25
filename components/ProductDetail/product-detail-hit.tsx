@@ -14,14 +14,14 @@ export type ProductDetailHitProps = HitComponentProps<ProductHit>
 
 export function ProductDetailHit({ hit }: ProductDetailHitProps) {
   const product: ProductDetailProps = {
-    image: hit?.image_urls[0],
+    image: hit?.images[0].file.url,
     label: hit?.brand,
     title: hit?.name,
     description: hit?.description,
     tags: [],
     sizes: [],
-    rating: hit?.reviews.rating,
-    reviews: hit?.reviews.count,
+    rating: hit?.reviews?.rating,
+    reviews: hit?.reviews?.count,
     price: hit?.price,
     currency: {
       symbol: '$',
@@ -50,7 +50,7 @@ export function ProductDetailHit({ hit }: ProductDetailHitProps) {
   }
 
   // Sizes
-  if (hit?.available_sizes.length) {
+  if (hit?.available_sizes?.length) {
     product.sizes?.push(
       ...hit?.available_sizes.map((size) => ({ size, available: true }))
     )

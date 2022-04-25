@@ -44,10 +44,10 @@ function NavbarDropdownComponent() {
         <NavCartView cart={cart} onClickHandler={onClickHandler} />
       )}
       {!tabWidth && dropdownStatus && cart?.items.length > 0 && (
-        <div className="absolute tablet:top-24 top-16 right-5 tablet:-right-10 flex items-center justify-center w-1/4 z-40">
+        <div className="absolute md:top-24 top-16 right-5 md:-right-10 flex items-center justify-center w-1/4 z-40">
           <HeaderCartDropdown
             cart={cart}
-            className="bg-white shadow-lg px-2 tablet:px-4 rounded-md"
+            className="bg-white shadow-lg px-2 md:px-4 rounded-md"
           />
         </div>
       )}

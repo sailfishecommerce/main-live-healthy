@@ -5,12 +5,12 @@ import contactData from '@/json/contact-us.json'
 
 export default function ContactusCard() {
   return (
-    <section className="flex w-full tablet:flex-row flex-col lg:px-10  justify-center mx-auto items-center">
+    <section className="flex w-full md:flex-row flex-col lg:px-10  justify-center mx-auto items-center">
       {contactData.info.map((content) => {
         return content.anchor ? (
           <div
             key={content.icon}
-            className="tablet:w-1/3 w-5/6 mx-auto my-4 border-2 border-gray-100 mx-2 p-6 py-12 rounded-md"
+            className="md:w-1/3 w-5/6 mx-auto my-4 border-2 border-gray-100 mx-2 p-6 py-12 rounded-md"
           >
             <a
               aria-label={content.title}
@@ -35,7 +35,7 @@ export default function ContactusCard() {
         ) : (
           <div
             key={content.icon}
-            className="tablet:w-1/3 w-5/6 mx-auto border-2 my-4 border-gray-100 mx-2 p-6 py-12 rounded-md"
+            className="md:w-1/3 w-5/6 mx-auto border-2 my-4 border-gray-100 mx-2 p-6 py-12 rounded-md"
           >
             <div className="card h-100">
               <div className="card-body text-center">

@@ -33,7 +33,7 @@ export default function ProductDetail({ product }: Props) {
         onHide={toggleModal}
       />
       <div className="flex justify-between items-center mb-2 w-full">
-        <div className="flex items-center flex-col tablet:flex-row">
+        <div className="flex items-center flex-col md:flex-row">
           <span className="text-blue-800 font-bold text-xl mx-1">
             <FormattedPrice
               isProduct
@@ -56,7 +56,7 @@ export default function ProductDetail({ product }: Props) {
         <Rating product={product} />
       </div>
       <ProductForm product={product} />
-      <div className="flex my-2 flex-col tablet:flex-row items-center justify-between">
+      <div className="flex my-2 flex-col md:flex-row items-center justify-between">
         <Link
           passHref
           href={`/shop/vendors/${replaceSpaceWithHypen(product.vendor)}`}

@@ -18,13 +18,13 @@ interface contentProps {
 
 export default function Aboutus({ content }: contentProps) {
   const imageOrder =
-    content.imgPosition === 'left' ? 'tablet:order-1' : 'tablet:order-2'
+    content.imgPosition === 'left' ? 'md:order-1' : 'md:order-2'
   const textOrder =
-    content.imgPosition === 'right' ? 'tablet:order-1' : 'tablet:order-2'
+    content.imgPosition === 'right' ? 'md:order-1' : 'md:order-2'
 
   return (
-    <section className="flex flex-col tablet:flex-row items-center">
-      <div className={`w-full tablet:w-1/2 bg-position-center ${imageOrder}`}>
+    <section className="flex flex-col md:flex-row items-center">
+      <div className={`w-full md:w-1/2 bg-position-center ${imageOrder}`}>
         <Image
           src={content.image}
           alt="about-us at livehealthy"
@@ -33,10 +33,10 @@ export default function Aboutus({ content }: contentProps) {
           layout="responsive"
         />
       </div>
-      <div className={`w-full tablet:w-1/2 py-5 px-4 lg:px-24  ${textOrder}`}>
+      <div className={`w-full md:w-1/2 py-5 px-4 lg:px-24  ${textOrder}`}>
         <div className="content-text mx-auto lg:py-5">
           <h2 className="text-2xl font-medium pb-3">{content.title}</h2>
-          <p className="pb-3 text-md tablet:text-lg">{content.text}</p>
+          <p className="pb-3 text-md md:text-lg">{content.text}</p>
           {content.buttons?.map((button) => (
             <Link key={button.color} href={button.link}>
               <button

@@ -9,7 +9,7 @@ const sliderArray: any = sliderContent
 
 function TopbarSliderComponent() {
   return (
-    <div className="header-slider flex items-center mx-auto w-full tablet:w-1/4 justify-center">
+    <div className="header-slider flex items-center mx-auto w-full md:w-1/4 justify-center">
       <Splide
         options={{
           type: 'loop',
@@ -29,7 +29,7 @@ function TopbarSliderComponent() {
                 alt={content.text}
               />
               {/* </div> */}
-              <p className="text-white font-bold text-center my-0 mb-0 mx-0 tablet:mx-2 text-sm tablet:text-sm ">
+              <p className="text-white font-bold text-center my-0 mb-0 mx-0 md:mx-2 text-sm md:text-sm ">
                 {content.text}
               </p>
             </div>

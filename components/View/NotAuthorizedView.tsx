@@ -17,7 +17,7 @@ export default function NotAuthorizedView({
     >
       <AiOutlineUser fontSize={24} className="mx-2" />
       <Tooltip text="Sign-in / Sign-up ">
-        <div className="w-full flex flex-col hidden tablet:flex items-start">
+        <div className="w-full flex flex-col hidden md:flex items-start">
           <span className="text-xs">Hello, Sign in</span>
           <h6 className="text-lg">My Account</h6>
         </div>

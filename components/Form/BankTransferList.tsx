@@ -17,10 +17,10 @@ export default function BankTransferList({ content, onChange }: any) {
             alt={content.country}
             height="30px"
             width="30px"
-            className="mx-3 hidden tablet:flex"
+            className="mx-3 hidden md:flex"
           />
           <div className="currency flex flex-col">
-            <h6 className="text-sm tablet:text-md font-bold">
+            <h6 className="text-sm md:text-md font-bold">
               {content.currencyCode}
             </h6>
             <p className="text-sm">{content.currency}</p>

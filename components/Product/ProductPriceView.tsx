@@ -3,7 +3,7 @@ import RatingStar from '@/components/Rating/RatingStar'
 
 export default function ProductPriceView({ product }: any) {
   return (
-    <div className="flex justify-between flex-col tablet:flex-row">
+    <div className="flex justify-between flex-col md:flex-row">
       <ul className="product-price flex flex-col items-start justify-between">
         <li className="text-md font-medium">
           <div className="text-blue-800">
@@ -20,7 +20,7 @@ export default function ProductPriceView({ product }: any) {
               <FormattedPrice
                 isProduct
                 price={product.rrp}
-                className="tablet:text-sm text-xs"
+                className="md:text-sm text-xs"
               />
             </del>
           </li>

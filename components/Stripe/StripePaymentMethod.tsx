@@ -44,7 +44,7 @@ function StripePaymentMethodComponent() {
       <PaymentInput inputRef={inputRef} />
       <Button
         disable={loadingState}
-        className={`${styles.uiElement} bg-red-500 border-2 border-red-500 hover:text-red-500 text-white w-1/4 tablet:w-1/6 h-8 hover:bg-transparent  mx-auto my-2 rounded`}
+        className={`${styles.uiElement} bg-red-500 border-2 border-red-500 hover:text-red-500 text-white w-1/4 md:w-1/6 h-8 hover:bg-transparent  mx-auto my-2 rounded`}
         text="Submit"
         type="submit"
         loading={loadingState}

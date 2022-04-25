@@ -19,7 +19,7 @@ function TrendingProductsCatalog() {
   }, [])
 
   return (
-    <section className="container tablet:pt-3 pb-0 tablet:mb-3">
+    <section className="container md:pt-3 pb-0 md:mb-3">
       <h2 className="text-center  lg:text-3xl text-xl font-bold capitalize">
         Trending products
       </h2>

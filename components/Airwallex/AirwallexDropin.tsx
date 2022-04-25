@@ -135,7 +135,7 @@ function AirwallexCardElement({
         />
         <button
           type="submit"
-          className="bg-red-500 flex justify-center items-center border-2 border-red-500 hover:text-red-500 text-white w-1/4 tablet:w-1/6 h-8 hover:bg-transparent  mx-auto my-2 rounded"
+          className="bg-red-500 flex justify-center items-center border-2 border-red-500 hover:text-red-500 text-white w-1/4 md:w-1/6 h-8 hover:bg-transparent  mx-auto my-2 rounded"
           aria-label="Make Payment"
           disabled={isSubmitting}
           onClick={triggerConfirm}

@@ -37,7 +37,7 @@ function CurrencyDropdownComponent() {
   //           layout="fixed"
   //         />
   //       </div>
-  //       <p className="m-0 text-xs tablet:text-sm tablet:ml-4 font-bold">{`En / ${currency}`}</p>
+  //       <p className="m-0 text-xs md:text-sm md:ml-4 font-bold">{`En / ${currency}`}</p>
   //     </div>
   //   )
   // }

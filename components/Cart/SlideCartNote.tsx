@@ -2,7 +2,7 @@ export default function SlideCartNote() {
   return (
     <div>
       <div className="note">
-        <h5 className="text-sm text-center tablet:text-md">
+        <h5 className="text-sm text-center md:text-md">
           Pro Club is our all-access community of doctors,medical professionals
           and administrators who receive first access to our new products,
           industry insights and enhanced data profiles.

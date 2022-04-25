@@ -8,14 +8,14 @@ export default function ProductdetailsView({ product }: any) {
   console.log('product', product)
   const { productToView } = product
   return (
-    <div className="w-full tablet:w-3/5 pt-4 pt-lg-0">
+    <div className="w-full md:w-3/5 pt-4 pt-lg-0">
       <div className="product-details ms-auto pb-3">
         <div className="flex justify-between items-center mb-2">
           <Rating product={productToView} />
         </div>
         <div className="price-group mb-2 flex justify-between items-center">
           <div className="flex price items-center">
-            <div className="mx-0 tablet:mx-2">
+            <div className="mx-0 md:mx-2">
               <FormattedPrice
                 price={productToView.price}
                 isProduct
@@ -36,7 +36,7 @@ export default function ProductdetailsView({ product }: any) {
         </div>
         <ProductForm product={productToView} />
         <div
-          className="description quickView-description hidden tablet:flex"
+          className="description quickView-description hidden md:flex"
           dangerouslySetInnerHTML={{
             __html: productToView['description'],
           }}

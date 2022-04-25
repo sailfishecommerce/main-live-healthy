@@ -3,15 +3,15 @@ import Icons from '@/components/Icons'
 
 export default function PartnerOutlet() {
   return (
-    <section className="container mx-auto pt-4 tablet:mt-4 mb-10">
-      <h2 className="text-xl mb-0 lg:text-3xl font-medium text-center tablet:mb-3">
+    <section className="container mx-auto pt-4 md:mt-4 mb-10">
+      <h2 className="text-xl mb-0 lg:text-3xl font-medium text-center md:mb-3">
         Partner outlet stores
       </h2>
-      <div className="flex flew-wrap w-full justify-center flex-col tablet:flex-row items-center">
+      <div className="flex flew-wrap w-full justify-center flex-col md:flex-row items-center">
         {partnerContent.outlet.map((content) => (
           <div
             key={content.address}
-            className="tablet:w-1/3 w-5/6 sm:w-1/2 mx-4 my-4 tablet:my-4 shadow-md hover:shadow-lg rounded-b-lg"
+            className="md:w-1/3 w-5/6 sm:w-1/2 mx-4 my-4 md:my-4 shadow-md hover:shadow-lg rounded-b-lg"
           >
             <div>
               <img className="rounded-t-lg" src={content.image} alt="Orlando" />
@@ -35,7 +35,7 @@ export default function PartnerOutlet() {
                         {content.action === 'Find us' ? (
                           <a
                             aria-label="reach us"
-                            className="text-sm tablet:text-md"
+                            className="text-sm md:text-md"
                             href="#"
                           >
                             {content.text}
@@ -43,7 +43,7 @@ export default function PartnerOutlet() {
                         ) : content.action === 'Call us' ? (
                           <a
                             aria-label="phone number"
-                            className="text-sm tablet:text-md"
+                            className="text-sm md:text-md"
                             href={`tel:${content.text.replace(' ', '')}`}
                           >
                             {content.text}
@@ -51,7 +51,7 @@ export default function PartnerOutlet() {
                         ) : (
                           <a
                             aria-label="email"
-                            className="text-sm tablet:text-md"
+                            className="text-sm md:text-md"
                             href={`mailto:${content.text}`}
                           >
                             {content.text}

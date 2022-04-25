@@ -48,7 +48,7 @@ export default function SlideCartProduct({
                 <Link passHref href={`/products/${item.product.slug}`}>
                   <a
                     aria-label={item.product.name}
-                    className="text-sm tablet:text-md font-bold"
+                    className="text-sm md:text-md font-bold"
                   >
                     {item.product.name}
                   </a>

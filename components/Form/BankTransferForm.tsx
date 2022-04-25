@@ -28,8 +28,8 @@ export default function BankTransferForm() {
       <table className="manualTransfer mb-3 w-full">
         <thead>
           <tr className="border-b">
-            <th className="text-sm tablet:text-md">CURRENCY</th>
-            <th className="text-sm tablet:text-md">BANK LOCATION</th>
+            <th className="text-sm md:text-md">CURRENCY</th>
+            <th className="text-sm md:text-md">BANK LOCATION</th>
           </tr>
         </thead>
         <tbody>

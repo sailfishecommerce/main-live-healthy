@@ -79,17 +79,17 @@ function ProductComponent({
       }
 
   const productClass = homepage
-    ? 'lg:w-1/4 tablet:w-1/3 sm:w-full w-1/2'
+    ? 'lg:w-1/4 md:w-1/3 sm:w-full w-1/2'
     : slider
     ? 'w-full'
-    : 'lg:w-1/3 tablet:w-1/4 w-1/2'
+    : 'lg:w-1/3 md:w-1/4 w-1/2'
 
   return (
     <div
       className={`${productClass} relative ${styles.product} hover:shadow-lg rounded-lg p-2`}
     >
       <DynamicProductMetatags product={product} />
-      <div className="flex relative flex-col card product-card p-1 tablet:p-2">
+      <div className="flex relative flex-col card product-card p-1 md:p-2">
         <div className="flex items-center justify-between absolute top-0 left-0 z-10">
           {product.rrp && (
             <div className="discount-price mt-2">
@@ -133,7 +133,7 @@ function ProductComponent({
               {product.vendor}
             </a>
           </Link>
-          <h3 className="sm:text-sm product-title sm:w-32  tablet:w-56 lg:w-72 text-md">
+          <h3 className="sm:text-sm product-title sm:w-32  md:w-56 lg:w-72 text-md">
             <Link passHref href={`/products/${product.slug}`}>
               <a
                 className="hover:text-red-500 product-link"
@@ -156,7 +156,7 @@ function ProductComponent({
           </div>
         )}
       </div>
-      <hr className="tablet:hidden" />
+      <hr className="md:hidden" />
       <style jsx>
         {`
           .product-title {

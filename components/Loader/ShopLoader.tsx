@@ -35,7 +35,7 @@ export default function ShopLoader() {
     : 'w-1/3 px-2'
 
   return (
-    <div className="flex flex-wrap mt-5 w-full px-2 tablet:pl-6">
+    <div className="flex flex-wrap mt-5 w-full px-2 md:pl-6">
       {loaderArray.map((_, index: number) => (
         <div key={index} className={mobileStyle}>
           <Loader />

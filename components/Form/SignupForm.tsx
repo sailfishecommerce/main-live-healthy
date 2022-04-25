@@ -31,7 +31,7 @@ export default function SignupForm() {
             return content?.length ? (
               <div key={content.name} className="flex flex-wrap">
                 {content.map((inputContent: any) => (
-                  <div key={inputContent} className="w-full tablet:w-1/2">
+                  <div key={inputContent} className="w-full md:w-1/2">
                     {displayFormElement(inputContent, formik)}
                   </div>
                 ))}

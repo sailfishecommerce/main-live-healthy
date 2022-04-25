@@ -9,7 +9,7 @@ export default function BankTransferPaymentMethod() {
       title="Bank Transfer"
       icon={<FaRegMoneyBillAlt size={32} />}
     >
-      <p className="mt-2 mb-0 text-sm tablet:text-md text-center">
+      <p className="mt-2 mb-0 text-sm md:text-md text-center">
         Please select your preferred country and currency pair for payment to
         our bank accounts
       </p>

@@ -48,7 +48,7 @@ export default function Product({
       }
   return (
     <>
-      <Link passHref href={`/product/${product.slug}`}>
+      <Link passHref href={`/product/${product.slug}+${product.objectID}`}>
         <a
           className={`hover:bg-white hover:shadow-lg hover:rounded-lg product ${productClassName}  ${isRow} p-2 md:p-6 hover:border`}
           title={product.name}

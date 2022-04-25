@@ -25,7 +25,7 @@ export default function FormatCurrency({
   const productItemPrice = isProduct ? priceRate : nPrice
   const itemPrice = formatPrice(productItemPrice)
   return (
-    <span className={`text-red-600 tablet:text-lg ${className}`}>
+    <span className={`text-red-600 md:text-lg ${className}`}>
       {currencySymbolFormatter(selectedCurrency[0])}
       {itemPrice}
     </span>

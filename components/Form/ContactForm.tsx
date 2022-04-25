@@ -2,7 +2,7 @@ import contactFormData from '@/json/contact-us-form.json'
 
 export default function ContactForm() {
   return (
-    <div className="w-full tablet:w-1/2 px-4 xl:px-5 py-5 border-t-2 border-gray-100">
+    <div className="w-full md:w-1/2 px-4 xl:px-5 py-5 border-t-2 border-gray-100">
       <h2 className="text-xl mb-4">Drop us a line</h2>
       <form className="needs-validation mb-3" noValidate>
         <div className="flex flex-wrap">

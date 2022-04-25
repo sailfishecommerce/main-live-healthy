@@ -56,8 +56,8 @@ export default function ProductGalleryView({ product, isMobile }: Props) {
   }
 
   return (
-    <div className="product-gallery w-full flex flex-col tablet:flex-row">
-      <div className="product-gallery-preview lg:order-2 w-full tablet:w-4/5">
+    <div className="product-gallery w-full flex flex-col md:flex-row">
+      <div className="product-gallery-preview lg:order-2 w-full md:w-4/5">
         <div
           onClick={onImgClick}
           className="product-gallery-preview-item active"
@@ -93,7 +93,7 @@ export default function ProductGalleryView({ product, isMobile }: Props) {
         )}
       </div>
       <div
-        className={`product-gallery-thumblist ${thumblistClass} flex hidden tablet:flex flex-wrap w-full lg:flex-col lg:order-1 lg:w-1/5`}
+        className={`product-gallery-thumblist ${thumblistClass} flex hidden md:flex flex-wrap w-full lg:flex-col lg:order-1 lg:w-1/5`}
       >
         {images?.map((image: any, index) => (
           <a

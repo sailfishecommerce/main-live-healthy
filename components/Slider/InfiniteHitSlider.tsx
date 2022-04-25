@@ -27,7 +27,6 @@ function InfiniteHitsSliderComponent({
   productClassName,
   randomColor,
 }: Props) {
-  console.log('hits', hits)
   return (
     <section className="w-full">
       {tags && <ProductTags tags={tags} tabColor={tabColor} />}
@@ -51,7 +50,7 @@ function InfiniteHitsSliderComponent({
         className="productSlider container mx-auto"
       >
         <AnimatePresence>
-          {hits.map((product) => (
+          {hits?.map((product) => (
             <SplideSlide key={product.id}>
               <Product
                 color={randomColor ? selectRandomColor() : tabColor}

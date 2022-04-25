@@ -1,18 +1,19 @@
-import { Splide, SplideSlide } from "@splidejs/react-splide";
+/* eslint-disable no-nested-ternary */
+import { Splide, SplideSlide } from '@splidejs/react-splide'
 
-import Product from "@/components/Cards/ProductCard";
-import useLiveHealthyProduct from "@/hooks/useLivehealthyProduct";
-import "@splidejs/splide/dist/css/splide.min.css";
-import selectRandomColor from "@/lib/selectRandomColor";
-import ProductTags from "@/components/Tag/ProductTags";
+import Product from '@/components/Cards/ProductCard'
+import ProductTags from '@/components/Tag/ProductTags'
+import useLiveHealthyProduct from '@/hooks/useLivehealthyProduct'
+import '@splidejs/splide/dist/css/splide.min.css'
+import selectRandomColor from '@/lib/selectRandomColor'
 
 interface Props {
-  title: string;
-  tags?: string[];
-  tabColor?: string;
-  productName?: string;
-  productClassName?: string;
-  randomColor?: boolean;
+  title: string
+  tags?: string[]
+  tabColor?: string
+  productName?: string
+  productClassName?: string
+  randomColor?: boolean
 }
 export default function ProductSlider({
   title,
@@ -22,7 +23,7 @@ export default function ProductSlider({
   productClassName,
   randomColor,
 }: Props) {
-  const [data, status] = useLiveHealthyProduct();
+  const [data, status] = useLiveHealthyProduct()
 
   return (
     <section className="itemSlider relative container mx-auto flex flex-col my-0 mb-2 md:my-4 px-4 md:px-0">
@@ -37,10 +38,10 @@ export default function ProductSlider({
       </div>
       {tags && <ProductTags tags={tags} tabColor={tabColor} />}
       <div className="products mx-auto container mt-4 flex items-center justify-between pb-0 md:pb-12">
-        {status === "error" ? (
-          "unable to load products"
-        ) : status === "loading" ? (
-          "loading"
+        {status === 'error' ? (
+          'unable to load products'
+        ) : status === 'loading' ? (
+          'loading'
         ) : (
           <Splide
             options={{
@@ -48,7 +49,7 @@ export default function ProductSlider({
               breakpoints: {
                 800: {
                   perPage: 2,
-                  padding: "2rem",
+                  padding: '2rem',
                 },
                 1200: {
                   perPage: 3,
@@ -73,5 +74,5 @@ export default function ProductSlider({
         )}
       </div>
     </section>
-  );
+  )
 }

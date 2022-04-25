@@ -3,8 +3,7 @@ import { Configure } from 'react-instantsearch-dom'
 
 import ShippingBanner from '@/components/Banners/ShippingBanner'
 import Pagetitle from '@/components/Header/page-title'
-import { ProductsShowcase } from '@/components/Product/ProductsShowcase'
-import { ProductCardHitShowcase } from '@/components/ProductCard/product-card-hit'
+import MainProductShowcase from '@/components/Product/MainProductShowcase'
 import ProductReviews from '@/components/Reviews/ProductReviews'
 import HomepageSlider from '@/components/Slider/HomepageSlider'
 import Values from '@/components/Values'
@@ -49,7 +48,6 @@ export default function Home(props: SearchPageLayoutProps) {
     <SearchPageLayout {...props}>
       <Pagetitle title="Welcome to Livehealthy stores" />
       <Configure
-        hitsPerPage={5}
         // We cannot retrieve the user token at build time, so we disable perso
         // feature to avoid an additional call to retrieve Algolia results at load time
         enablePersonalization={false}
@@ -57,60 +55,52 @@ export default function Home(props: SearchPageLayoutProps) {
       />
       <HomepageSlider />
       <Values />
-      <ProductsShowcase
+      <MainProductShowcase
         title="Weight Loss"
         indexId="weight_loss_product_type"
         query="weight loss"
         className="lg:bg-gray-50"
-        hitComponent={ProductCardHitShowcase}
       />
-      <ProductsShowcase
+      <MainProductShowcase
         title="Sport Nutrition"
         indexId="sport_nutrition_product_type"
         query="Sport nutrition"
-        hitComponent={ProductCardHitShowcase}
       />
       <ProductBanner />
-      <ProductsShowcase
+      <MainProductShowcase
         title="Quit Smoking"
         indexId="quit_smoking_product_type"
         query="cigarette"
         className="lg:bg-gray-50"
-        hitComponent={ProductCardHitShowcase}
       />
-      <ProductsShowcase
+      <MainProductShowcase
         title="Health"
         indexId="health_product_type"
         query="health"
-        hitComponent={ProductCardHitShowcase}
       />
       <ShippingBanner />
-      <ProductsShowcase
+      <MainProductShowcase
         title="Hair Colours"
         indexId="hair_colours_product_type"
         query="hair colours"
         className="lg:bg-gray-50"
-        hitComponent={ProductCardHitShowcase}
       />
-      <ProductsShowcase
+      <MainProductShowcase
         title="Medical Aids"
         indexId="medical_aid_product_type"
         query="medical aids"
-        hitComponent={ProductCardHitShowcase}
       />
       <BestSellerSlider />
-      <ProductsShowcase
+      <MainProductShowcase
         title="Confectionery"
         indexId="confectionery_product_type"
         query="confectionery"
         className="lg:bg-gray-50"
-        hitComponent={ProductCardHitShowcase}
       />
-      <ProductsShowcase
+      <MainProductShowcase
         title="Veterinary and Pet Care"
         indexId="veterinary_pet_care_product_type"
         query="veterinary"
-        hitComponent={ProductCardHitShowcase}
       />
       <ProductTabSlider />
       <ProductReviews />

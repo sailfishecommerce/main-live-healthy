@@ -5,9 +5,9 @@ import { Highlight, connectHitInsights, Snippet } from 'react-instantsearch-dom'
 import searchInsights from 'search-insights'
 
 import type { ProductTagType } from '@/components/Product/product-tag'
-import type { ViewMode } from '@/components/ViewModes'
 import type { ProductCardProps } from '@/components/ProductCard/product-card'
 import { ProductCard } from '@/components/ProductCard/product-card'
+import type { ViewMode } from '@/components/ViewModes'
 import type { HitComponentProps, ProductHit } from '@/typings/hits'
 
 export type ProductCardHitProps = HitComponentProps<ProductHit> & {
@@ -27,7 +27,7 @@ export function ProductCardHitComponent({
   snipetting = true,
 }: ProductCardHitProps | any) {
   const product: ProductCardProps = {
-    url: `/Product/${hit?.objectID}?queryID=${hit?.__queryID}`,
+    url: `/product/${hit?.objectID}?queryID=${hit?.__queryID}`,
     image: hit?.images[0]?.file?.url,
     tags: [],
     colors: [],

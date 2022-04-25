@@ -2,27 +2,25 @@ import classNames from 'classnames'
 import { Configure, Index } from 'react-instantsearch-dom'
 
 import { Container } from '@/components/Container'
+import InfiniteHitsSlider from '@/components/Slider/InfiniteHitSlider'
 import { indexName as defaultIndexName } from '@/utils/env'
-import { InfiniteHits } from '@instantsearch/widgets/infinite-hits/infinite-hits'
 
 export type ProductsShowcaseProps = {
   title?: string
   indexName?: string
   indexId?: string
   className?: string
-  hitComponent: React.ComponentType<any>
+  hitComponent?: React.ComponentType<any>
   [index: string]: any
 }
 
-export function ProductsShowcase({
+export default function MainProductShowcase({
   indexName = defaultIndexName,
   indexId,
   title,
   className,
-  hitComponent,
   ...searchParameters
 }: ProductsShowcaseProps) {
-  // console.log('searchParameters', searchParameters)
   return (
     <Index indexName={indexName} indexId={indexId}>
       <Configure {...searchParameters} />
@@ -35,11 +33,7 @@ export function ProductsShowcase({
               {title}
             </h4>
           )}
-          <InfiniteHits
-            hitComponent={hitComponent}
-            animation={false}
-            gridClassName="grid-cols-2 lg:grid-cols-5"
-          />
+          <InfiniteHitsSlider />
         </Container>
       </section>
     </Index>

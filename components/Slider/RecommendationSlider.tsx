@@ -1,11 +1,12 @@
-import { Splide, SplideSlide } from "@splidejs/react-splide";
+/* eslint-disable no-nested-ternary */
+import { Splide, SplideSlide } from '@splidejs/react-splide'
 
-import useLiveHealthyProduct from "@/hooks/useLivehealthyProduct";
-import RecommendedProductCard from "@/components/Cards/RecommendedProductCard";
-import "@splidejs/splide/dist/css/splide.min.css";
+import RecommendedProductCard from '@/components/Cards/RecommendedProductCard'
+import useLiveHealthyProduct from '@/hooks/useLivehealthyProduct'
+import '@splidejs/splide/dist/css/splide.min.css'
 
 export default function RecommendationSlider() {
-  const [data, status] = useLiveHealthyProduct();
+  const [data, status] = useLiveHealthyProduct()
 
   return (
     <section className="itemSlider recommendation-slider">
@@ -13,15 +14,15 @@ export default function RecommendationSlider() {
         <h3 className="text-xl font-bold">Recommended for you</h3>
       </div>
       <div className="content">
-        {status === "error" ? (
-          "unable to load products"
-        ) : status === "loading" ? (
-          "loading"
+        {status === 'error' ? (
+          'unable to load products'
+        ) : status === 'loading' ? (
+          'loading'
         ) : (
           <Splide
             options={{
               perPage: 2,
-              padding: "5rem",
+              padding: '5rem',
               breakpoints: {
                 800: {
                   perPage: 1,
@@ -38,5 +39,5 @@ export default function RecommendationSlider() {
         )}
       </div>
     </section>
-  );
+  )
 }

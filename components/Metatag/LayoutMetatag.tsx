@@ -1,9 +1,8 @@
-import Head from "next/head";
+import Head from 'next/head'
 
 export default function LayoutMetatag() {
   return (
     <>
-      
       <Head>
         <meta name="robots" content="noindex" />
         <meta charSet="utf-8" />
@@ -38,5 +37,5 @@ export default function LayoutMetatag() {
         />
       </Head>
     </>
-  );
+  )
 }

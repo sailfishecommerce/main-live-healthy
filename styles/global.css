@@ -119,8 +119,7 @@ header.header {
 }
 
 .product-tab-slider .splide__track,
-.itemSlider.itemSlider.recommendation-slider
-  .splide__track.splide__track--slide,
+.itemSlider.recommendation-slider .splide__track,
 .values-slider .splide__track.splide__track--slide {
   padding-left: 0px !important;
 }

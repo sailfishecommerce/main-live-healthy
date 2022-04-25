@@ -1,7 +1,8 @@
-import Image from "next/image";
-import { FaCcStripe } from "react-icons/fa";
-import StripePaymentMethod from "@/components/Stripe/StripePaymentMethod";
-import Accordion from "@/components/Accordion";
+import Image from 'next/image'
+import { FaCcStripe } from 'react-icons/fa'
+
+import Accordion from '@/components/Accordion'
+import StripePaymentMethod from '@/components/Stripe/StripePaymentMethod'
 
 export default function PaymentWithStripe() {
   return (
@@ -26,5 +27,5 @@ export default function PaymentWithStripe() {
       </div>
       <StripePaymentMethod />
     </Accordion>
-  );
+  )
 }

@@ -1,14 +1,15 @@
-import { useRef, MutableRefObject, useEffect, memo } from "react";
+import type { MutableRefObject } from 'react'
+import { useRef, useEffect, memo } from 'react'
 
-import useStripeElement from "@/hooks/useStripeElement";
-import AppButton from "@/components/button/AppButton";
-import SpinnerRipple from "@/components/loader/SpinnerLoader";
-import styles from "@/styles/ui.module.css";
-import { useAppSelector } from "@/hooks/useRedux";
-import { useProcessPayment } from "@/hooks";
+import AppButton from '@/components/Button/AppButton'
+import SpinnerRipple from '@/components/Loader/SpinnerLoader'
+import { useProcessPayment } from '@/hooks'
+import { useAppSelector } from '@/hooks/useRedux'
+import useStripeElement from '@/hooks/useStripeElement'
+import styles from '@/styles/ui.module.css'
 
 interface PaymentInputType {
-  inputRef: MutableRefObject<null>;
+  inputRef: MutableRefObject<null>
 }
 
 function PaymentInput({ inputRef }: PaymentInputType): JSX.Element {
@@ -16,23 +17,23 @@ function PaymentInput({ inputRef }: PaymentInputType): JSX.Element {
     <div className="mb-0 w-full">
       <div ref={inputRef} id="card-element-id"></div>
     </div>
-  );
+  )
 }
 
 function StripePaymentMethodComponent() {
-  const { createStripeElement } = useStripeElement();
+  const { createStripeElement } = useStripeElement()
 
   useEffect(() => {
-    createStripeElement();
-  }, []);
+    createStripeElement()
+  }, [])
 
-  const { paymentForm }: any = useAppSelector((state) => state.payment);
-  const inputRef = useRef(null);
+  const { paymentForm }: any = useAppSelector((state) => state.payment)
+  const inputRef = useRef(null)
 
-  const { makePayment, loadingState } = useProcessPayment();
+  const { makePayment, loadingState } = useProcessPayment()
 
   function makePaymentHandler() {
-    makePayment(paymentForm);
+    makePayment(paymentForm)
   }
 
   return (
@@ -45,13 +46,13 @@ function StripePaymentMethodComponent() {
         disable={loadingState}
         className={`${styles.uiElement} bg-red-500 border-2 border-red-500 hover:text-red-500 text-white w-1/4 md:w-1/6 h-8 hover:bg-transparent  mx-auto my-2 rounded`}
         text="Submit"
-        onClick={makePaymentHandler}
         type="submit"
         loading={loadingState}
+        onClick={makePaymentHandler}
       />
     </div>
-  );
+  )
 }
 
-const StripePaymentMethod = memo(StripePaymentMethodComponent);
-export default StripePaymentMethod;
+const StripePaymentMethod = memo(StripePaymentMethodComponent)
+export default StripePaymentMethod

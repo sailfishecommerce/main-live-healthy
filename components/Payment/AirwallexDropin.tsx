@@ -1,85 +1,87 @@
+/* eslint-disable unused-imports/no-unused-vars */
+/* eslint-disable no-alert */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState, memo } from "react";
+import type { ElementType } from 'airwallex-payment-elements'
 import {
   createElement,
   loadAirwallex,
   getElement,
   confirmPaymentIntent,
-  ElementType,
-} from "airwallex-payment-elements";
-import { useRouter } from "next/router";
+} from 'airwallex-payment-elements'
+import { useRouter } from 'next/router'
+import { useEffect, useState, memo } from 'react'
 
-import SpinnerRipple from "@/components/loader/SpinnerLoader";
-import { useToast } from "@/hooks";
+import SpinnerRipple from '@/components/Loader/SpinnerLoader'
+import { useToast } from '@/hooks'
 
 interface AirwallexDropinProps {
-  intent_id: string | any;
-  client_secret: string | any;
+  intent_id: any | string
+  client_secret: any | string
 }
 
 function AirwallexCardElement({
   intent_id,
   client_secret,
 }: AirwallexDropinProps) {
-  const [elementShow, setElementShow] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [elementShow, setElementShow] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
 
-  const router = useRouter();
+  const router = useRouter()
 
-  const { loadToast, successToast, errorToast } = useToast();
+  const { loadToast, successToast, errorToast } = useToast()
 
   useEffect(() => {
     if (errorMessage.length > 0) {
-      errorToast(errorMessage);
+      errorToast(errorMessage)
     }
-  }, [errorMessage]);
+  }, [errorMessage])
 
   useEffect(() => {
     loadAirwallex({
-      env: "demo",
+      env: 'demo',
       origin: window.location.origin,
       fonts: [
         {
-          src: "https://checkout.airwallex.com/fonts/CircularXXWeb/CircularXXWeb-Regular.woff2",
-          family: "AxLLCircular",
+          src: 'https://checkout.airwallex.com/fonts/CircularXXWeb/CircularXXWeb-Regular.woff2',
+          family: 'AxLLCircular',
           weight: 400,
         },
       ],
     }).then(() => {
-      createElement("card" as ElementType)?.mount("airwallexCard");
-    });
+      createElement('card' as ElementType)?.mount('airwallexCard')
+    })
 
     const onReady = (event: CustomEvent): void => {
-      setElementShow(true);
-      getElement("card")?.focus();
-    };
+      setElementShow(true)
+      getElement('card')?.focus()
+    }
 
     const onError = (event: CustomEvent): void => {
-      const { error } = event.detail;
-      setIsSubmitting(false);
-      errorToast(error);
-      setErrorMessage(error.message ?? JSON.stringify(error));
-    };
+      const { error } = event.detail
+      setIsSubmitting(false)
+      errorToast(error)
+      setErrorMessage(error.message ?? JSON.stringify(error))
+    }
 
-    window.addEventListener("onReady", onReady as EventListener);
-    window.addEventListener("onError", onError as EventListener);
+    window.addEventListener('onReady', onReady as EventListener)
+    window.addEventListener('onError', onError as EventListener)
     return () => {
-      window.removeEventListener("onReady", onReady as EventListener);
-      window.removeEventListener("onError", onError as EventListener);
-    };
-  }, []);
+      window.removeEventListener('onReady', onReady as EventListener)
+      window.removeEventListener('onError', onError as EventListener)
+    }
+  }, [])
 
   useEffect(() => {
     if (!isSubmitting && errorMessage.length > 0) {
-      errorToast(errorMessage);
+      errorToast(errorMessage)
     }
-  }, [errorMessage, isSubmitting]);
+  }, [errorMessage, isSubmitting])
 
   const triggerConfirm = (): void => {
-    setIsSubmitting(true);
-    loadToast();
-    const card: any = getElement("card");
+    setIsSubmitting(true)
+    loadToast()
+    const card: any = getElement('card')
     if (card) {
       confirmPaymentIntent({
         element: card,
@@ -92,25 +94,25 @@ function AirwallexCardElement({
         },
       })
         .then((response) => {
-          setIsSubmitting(false);
-          successToast("Payment successful");
+          setIsSubmitting(false)
+          successToast('Payment successful')
           window.alert(
             `Payment Intent confirmation was successful: ${JSON.stringify(
               response
             )}`
-          );
-          router.push("/checkout-complete");
+          )
+          router.push('/checkout-complete')
         })
         .catch((error) => {
-          setIsSubmitting(false);
-          setErrorMessage(error.message ?? JSON.stringify(error));
+          setIsSubmitting(false)
+          setErrorMessage(error.message ?? JSON.stringify(error))
           // console.error("There is an error", error);
-          errorToast(error);
-        });
+          errorToast(error)
+        })
     }
-  };
+  }
 
-  const fieldContainerStyle = elementShow ? "block" : "none";
+  const fieldContainerStyle = elementShow ? 'block' : 'none'
 
   return (
     <div>
@@ -133,10 +135,11 @@ function AirwallexCardElement({
           className="border border-gray-200 p-2 rounded-md h-10 items-center focus:text-gray-700 focus:bg-white focus:border-red-500 focus:outline-none"
         />
         <button
+          type="button"
           className="bg-red-500 flex justify-center items-center border-2 border-red-500 hover:text-red-500 text-white w-1/4 md:w-1/6 h-8 hover:bg-transparent  mx-auto my-2 rounded"
-          onClick={triggerConfirm}
           aria-label="Make Payment"
           disabled={isSubmitting}
+          onClick={triggerConfirm}
         >
           Submit
         </button>
@@ -150,9 +153,9 @@ function AirwallexCardElement({
         }
       `}</style>
     </div>
-  );
+  )
 }
 
-const AirwallexCard = memo(AirwallexCardElement);
+const AirwallexCard = memo(AirwallexCardElement)
 
-export default AirwallexCard;
+export default AirwallexCard

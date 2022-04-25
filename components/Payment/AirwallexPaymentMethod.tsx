@@ -1,25 +1,24 @@
-import { BsCreditCard } from "react-icons/bs";
+import { BsCreditCard } from 'react-icons/bs'
 
-import AirwallexDropin from "@/components/Payment/AirwallexDropin";
-import { useCart } from "@/hooks";
-import useAirwallexPayment from "@/hooks/useAirwallexPayment";
-import { useAppSelector } from "@/hooks/useRedux";
-import Accordion from "@/components/accordion";
+import Accordion from '@/components/Accordion'
+import AirwallexDropin from '@/components/Payment/AirwallexDropin'
+import { useCart } from '@/hooks'
+import useAirwallexPayment from '@/hooks/useAirwallexPayment'
+import { useAppSelector } from '@/hooks/useRedux'
 
-
-export default function AirwallexPaymentMethod({ isGray }:any) {
-  const { useCartData } = useCart();
-  const { paymentForm }: any = useAppSelector((state) => state.payment);
-  const { data: cart } = useCartData();
-  const { checkoutHandler } = useAirwallexPayment();
+export default function AirwallexPaymentMethod({ isGray }: any) {
+  const { useCartData } = useCart()
+  const { paymentForm }: any = useAppSelector((state) => state.payment)
+  const { data: cart } = useCartData()
+  const { checkoutHandler } = useAirwallexPayment()
 
   function onCheckout() {
-    checkoutHandler(cart, paymentForm);
+    checkoutHandler(cart, paymentForm)
   }
 
   const { clientSecret, paymentIntentId } = useAppSelector(
     (state) => state.airwallex
-  );
+  )
 
   // onClick = { onCheckout };
 
@@ -27,8 +26,7 @@ export default function AirwallexPaymentMethod({ isGray }:any) {
     <Accordion
       stage={2}
       icon={<BsCreditCard size={32} />}
-      isGray={isGray}
-      title="Pay with Airwallex"      
+      title="Pay with Airwallex"
     >
       <span className="font-medium">Airwallex</span> - the safer, easier way to
       pay
@@ -37,5 +35,5 @@ export default function AirwallexPaymentMethod({ isGray }:any) {
         client_secret={clientSecret}
       />
     </Accordion>
-  );
+  )
 }

@@ -8,7 +8,11 @@ interface Props {
 
 export default function AuthModal({ show, onHide }: Props) {
   return (
-    <Modal modal={show} modalHandler={onHide}>
+    <Modal
+      modalHeaderClassName="absolute z-40 -right-5 -top-5"
+      modal={show}
+      modalHandler={onHide}
+    >
       <Tabs />
     </Modal>
   )

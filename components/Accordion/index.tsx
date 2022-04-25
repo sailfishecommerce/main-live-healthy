@@ -1,10 +1,13 @@
-import { PropsWithChildren, useState } from 'react'
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+import type { PropsWithChildren } from 'react'
+import { useState } from 'react'
 
 interface Props {
   title: string
   stage: number
   icon?: JSX.Element
   isOpen?: boolean
+  isGray?: boolean
 }
 
 export default function Accordion({
@@ -13,23 +16,26 @@ export default function Accordion({
   children,
   icon,
   isOpen,
+  isGray,
 }: PropsWithChildren<Props>) {
   const initialAccordionState = isOpen ? isOpen : false
   const [showContent, setShowContent] = useState(initialAccordionState)
+
+  const colorMode = isGray ? 'bg-gray-200' : 'bg-white rounded-md'
 
   function onClickHandler() {
     setShowContent(!showContent)
   }
   return (
-    <div className="accordion mb-2" id="accordionExample">
-      <div className="accordion-item bg-white border border-gray-200">
+    <div className="accordion" id="accordionExample">
+      <div className="accordion-item bg-white my-1">
         <h2
           className="accordion-header mb-0"
-          onClick={onClickHandler}
           id="headingOne"
+          onClick={onClickHandler}
         >
           <button
-            className="
+            className={`
         accordion-button
         hover:text-red-500        
         relative
@@ -39,13 +45,13 @@ export default function Accordion({
         py-4
         px-5
         text-base text-gray-800 text-left
-        bg-gray-200
+        ${colorMode}
         border
-        border-gray-400
-        rounded-none
+        border-gray-300
+        rounded-xl
         transition
         focus:outline-none
-      "
+      `}
             type="button"
             data-bs-toggle="collapse"
             aria-label={title}

@@ -1,12 +1,14 @@
 interface Props {
-  color?: string;
+  color?: string
+  size?: number
 }
-export default function CartIcon({ color }: Props) {
-  const strokeColor = color ? color : "white";
+export default function CartIcon({ color, size }: Props) {
+  const iconSize = size ? size : 28
+  const strokeColor = color ? color : 'white'
   return (
     <svg
-      width="28"
-      height="28"
+      width={iconSize}
+      height={iconSize}
       viewBox="0 0 25 25"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -47,5 +49,5 @@ export default function CartIcon({ color }: Props) {
         strokeLinejoin="round"
       />
     </svg>
-  );
+  )
 }

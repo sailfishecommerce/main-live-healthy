@@ -1,6 +1,7 @@
-import useMediaQuery from '@/hooks/useMediaQuery'
 import { useMemo } from 'react'
 import ContentLoader from 'react-content-loader'
+
+import useMediaQuery from '@/hooks/useMediaQuery'
 
 function PopularCategoryLoader(props: any) {
   const loaderStyle = useMemo(() => ({ width: '100%' }), [])

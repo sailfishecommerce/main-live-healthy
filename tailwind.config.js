@@ -14,7 +14,6 @@ module.exports = {
   theme: {
     container: {
       center: true,
-
     },
     extend: {
       fontFamily: {
@@ -61,17 +60,7 @@ module.exports = {
         header: '15rem',
       },
     },
-    zIndex: {
-      dropdown: 5,
-      'overlay-header': 10,
-      header: 20,
-      'autocomplete-panel': 30,
-      dev: 40,
-      'overlay-full': 50,
-      refinements: 60,
-      loader: 70,
-      auto: 'auto',
-    },
+   
   },
   plugins: [require('@tailwindcss/aspect-ratio')],
 }

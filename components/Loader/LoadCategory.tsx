@@ -1,19 +1,19 @@
-import { useMemo } from "react";
-import ContentLoader from "react-content-loader";
+import { useMemo } from 'react'
+import ContentLoader from 'react-content-loader'
 
 export function CategoryLoader(props: any) {
-  const loaderStyle = useMemo(() => ({ width: "100%" }), []);
+  const loaderStyle = useMemo(() => ({ width: '100%' }), [])
 
   return (
     <div className="px-2">
       <ContentLoader
+        animate
         speed={2}
         viewBox="0 0 70 70"
         style={loaderStyle}
         backgroundColor="#e3d9d9"
         foregroundColor="#ada4a4"
         title="loading category..."
-        animate
         {...props}
       >
         <rect x="0%" y="5%" rx="3" ry="3" width="20%" height="7%" />
@@ -23,18 +23,18 @@ export function CategoryLoader(props: any) {
         <rect x="0" y="80%" rx="0" ry="0" width="100%" height="5%" />
       </ContentLoader>
     </div>
-  );
+  )
 }
 
 interface LoadCategoryProps {
-  arrayType: number;
-  gridStyle: string;
+  arrayType: number
+  gridStyle: string
 }
 export default function LoadCategory({
   arrayType,
   gridStyle,
 }: LoadCategoryProps) {
-  const categoryArray = new Array(arrayType).fill(0);
+  const categoryArray = new Array(arrayType).fill(0)
 
   return (
     <div className="flex">
@@ -44,5 +44,5 @@ export default function LoadCategory({
         </div>
       ))}
     </div>
-  );
+  )
 }

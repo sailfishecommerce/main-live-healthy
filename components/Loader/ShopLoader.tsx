@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import { useMemo } from 'react'
 import ContentLoader from 'react-content-loader'
 
@@ -8,13 +9,13 @@ export function Loader(props: any) {
 
   return (
     <ContentLoader
+      animate
       speed={2}
       viewBox="0 0 250 250"
       style={loaderStyle}
       backgroundColor="#e3d9d9"
       foregroundColor="#ada4a4"
       title="loading product..."
-      animate
       {...props}
     >
       <rect x="0" y="0%" rx="5px" ry="5px" width="100%" height="90%" />

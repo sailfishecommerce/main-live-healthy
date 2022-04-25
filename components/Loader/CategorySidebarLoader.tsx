@@ -1,8 +1,9 @@
-import ContentLoader, { IContentLoaderProps } from "react-content-loader";
+import type { IContentLoaderProps } from 'react-content-loader'
+import ContentLoader from 'react-content-loader'
 
 export function CategorySidebarLoader(
-  props: JSX.IntrinsicAttributes &
-    IContentLoaderProps & { children?: React.ReactNode }
+  props: IContentLoaderProps &
+    JSX.IntrinsicAttributes & { children?: React.ReactNode }
 ) {
   return (
     <ContentLoader
@@ -18,11 +19,11 @@ export function CategorySidebarLoader(
       <rect x="3" y="15" rx="3" ry="3" width="75%" height="6" />
       <circle cx="92%" cy="18" r="12" />
     </ContentLoader>
-  );
+  )
 }
 
 export default function LoadCategorySidebar() {
-  const numberOfCategories = new Array(5).fill(0);
+  const numberOfCategories = new Array(5).fill(0)
 
   return (
     <div className="flex flex-col">
@@ -30,5 +31,5 @@ export default function LoadCategorySidebar() {
         <CategorySidebarLoader key={index} />
       ))}
     </div>
-  );
+  )
 }

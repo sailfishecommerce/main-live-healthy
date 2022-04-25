@@ -1,6 +1,6 @@
 .RefinementsPanel {
   /* Mobile */
-  @apply flex justify-center bg-white shadow-medium z-refinements fixed w-[85%] h-full top-0 right-0 overflow-y-auto transition-all ease-out-expo duration-500 translate-x-[105%];
+  @apply flex justify-center bg-white shadow-medium z-40 fixed w-[85%] h-full top-0 right-0 overflow-y-auto transition-all ease-out-expo duration-500 translate-x-[105%];
 
   /* Laptop */
   @apply lg:block lg:bg-none lg:shadow-none lg:z-auto lg:flex-shrink-0 lg:sticky lg:w-0 lg:h-container lg:top-header lg:right-auto lg:overflow-y-hidden lg:transform-none lg:opacity-0;

@@ -17,7 +17,6 @@ import { Search } from '@instantsearch/search'
 import { urlToSearchState } from '@instantsearch/utils/url'
 
 import { searchClientAtom } from './app-layout'
-import { BasicPageLayout } from './basic-page-layout'
 import type { BasicPageLayoutProps } from './basic-page-layout'
 
 export type SearchPageLayoutProps = BasicPageLayoutProps & {
@@ -49,7 +48,7 @@ function SearchPageLayoutComponent({
   )
 
   return (
-    <BasicPageLayout>
+    <main className="container">
       <Search
         indexName={indexName}
         searchClient={searchClient}
@@ -62,7 +61,7 @@ function SearchPageLayoutComponent({
       >
         {children}
       </Search>
-    </BasicPageLayout>
+    </main>
   )
 }
 

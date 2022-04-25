@@ -31,8 +31,12 @@ export default function MenuLinks({ cart }: any) {
         9449 2060
       </div>
       <ul className="lg:flex items-center justify-between w-1/3">
-        {menuLinks.primaryMenu.map((menuItem, index: number) => (
-          <PageLink className="lg:text-md" key={index} menuItem={menuItem} />
+        {menuLinks.primaryMenu.map((menuItem) => (
+          <PageLink
+            className="lg:text-lg font-normal"
+            key={menuItem.name}
+            menuItem={menuItem}
+          />
         ))}
       </ul>
       <div className="icons flex items-center justify-between w-16">

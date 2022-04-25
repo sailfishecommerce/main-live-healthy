@@ -4,7 +4,7 @@ import Icons from '@/components/Icons'
 export default function PartnerOutlet() {
   return (
     <section className="container mx-auto pt-4 tablet:mt-4 mb-10">
-      <h2 className="text-xl mb-0 laptop:text-3xl font-medium text-center tablet:mb-3">
+      <h2 className="text-xl mb-0 lg:text-3xl font-medium text-center tablet:mb-3">
         Partner outlet stores
       </h2>
       <div className="flex flew-wrap w-full justify-center flex-col tablet:flex-row items-center">
@@ -16,7 +16,7 @@ export default function PartnerOutlet() {
             <div>
               <img className="rounded-t-lg" src={content.image} alt="Orlando" />
               <div className="p-4">
-                <h6 className="laptop:text-lg font-base text-md">
+                <h6 className="lg:text-lg font-base text-md">
                   {content.address}
                 </h6>
                 <ul className="mb-0">

@@ -47,7 +47,7 @@ function ExpandablePanelComponent({
   return (
     <div
       className={classNames(
-        'py-3.5 laptop:py-5 laptop:border-t laptop:border-neutral-light',
+        'py-3.5 lg:py-5 lg:border-t lg:border-neutral-light',
         {
           hidden: !hasRefinements,
         },
@@ -63,14 +63,14 @@ function ExpandablePanelComponent({
           }
         }}
       >
-        <div className="flex items-center w-full subhead laptop:small-bold laptop:uppercase">
+        <div className="flex items-center w-full subhead lg:small-bold lg:uppercase">
           {header || attributes[0]}
 
           {currentRefinementCount > 0 && (
             <Count className="ml-auto">{currentRefinementCount}</Count>
           )}
         </div>
-        <div className="text-neutral-dark can-hover:transition-colors can-hover:group-hover:text-neutral-light">
+        <div className="text-neutral-dark hover:transition-colors hover:group-hover:text-neutral-light">
           {isOpened ? <Icon icon={RemoveIcon} /> : <Icon icon={AddIcon} />}
         </div>
       </Button>

@@ -42,15 +42,15 @@ export default function Catalog(props: SearchPageLayoutProps) {
 
   return (
     <SearchPageLayout {...props}>
-      <Container className="flex flex-col gap-2 container laptop:mx-auto laptop:mb-10 laptop:mt-10 laptop:gap-10">
+      <Container className="flex flex-col gap-2 container lg:mx-auto lg:mb-10 lg:mt-10 lg:gap-10">
         <Breadcrumb attributes={breadcrumbAttributes} />
 
         <QueryRuleBanners limit={1} />
 
-        <div className="flex flex-col laptop:flex-row">
+        <div className="flex flex-col lg:flex-row">
           {(refinementsLayout === 'panel' || !isLaptop) && <RefinementsPanel />}
 
-          <div className="grow flex flex-col gap-2 laptop:gap-5">
+          <div className="grow flex flex-col gap-2 lg:gap-5">
             <RefinementsBar
               showRefinements={refinementsLayout === 'bar' && isLaptop}
             />

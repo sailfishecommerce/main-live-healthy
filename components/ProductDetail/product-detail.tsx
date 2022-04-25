@@ -75,20 +75,16 @@ export function ProductDetail({
   )
 
   return (
-    <div className="flex flex-col gap-6 mb-12 laptop:my-8 laptop:flex-row">
-      <div className="laptop:w-8/12">
-        <div className="flex flex-col items-center bg-brand-black laptop:min-h-[500px]">
+    <div className="flex flex-col gap-6 mb-12 lg:my-8 lg:flex-row">
+      <div className="lg:w-8/12">
+        <div className="flex flex-col items-center bg-brand-black lg:min-h-[500px]">
           {image && (
-            <ProductImage
-              src={image}
-              alt={title}
-              className="w-3/5 laptop:w-2/5"
-            />
+            <ProductImage src={image} alt={title} className="w-3/5 lg:w-2/5" />
           )}
         </div>
       </div>
 
-      <div className="laptop:w-4/12">
+      <div className="lg:w-4/12">
         {label && (
           <ProductLabel className="label-semibold">{label}</ProductLabel>
         )}

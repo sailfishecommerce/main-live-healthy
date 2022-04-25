@@ -61,7 +61,7 @@ export default function Home(props: SearchPageLayoutProps) {
         title="Weight Loss"
         indexId="weight_loss_product_type"
         query="weight loss"
-        className="laptop:bg-gray-50"
+        className="lg:bg-gray-50"
         hitComponent={ProductCardHitShowcase}
       />
       <ProductsShowcase
@@ -75,7 +75,7 @@ export default function Home(props: SearchPageLayoutProps) {
         title="Quit Smoking"
         indexId="quit_smoking_product_type"
         query="cigarette"
-        className="laptop:bg-gray-50"
+        className="lg:bg-gray-50"
         hitComponent={ProductCardHitShowcase}
       />
       <ProductsShowcase
@@ -89,7 +89,7 @@ export default function Home(props: SearchPageLayoutProps) {
         title="Hair Colours"
         indexId="hair_colours_product_type"
         query="hair colours"
-        className="laptop:bg-gray-50"
+        className="lg:bg-gray-50"
         hitComponent={ProductCardHitShowcase}
       />
       <ProductsShowcase
@@ -103,7 +103,7 @@ export default function Home(props: SearchPageLayoutProps) {
         title="Confectionery"
         indexId="confectionery_product_type"
         query="confectionery"
-        className="laptop:bg-gray-50"
+        className="lg:bg-gray-50"
         hitComponent={ProductCardHitShowcase}
       />
       <ProductsShowcase

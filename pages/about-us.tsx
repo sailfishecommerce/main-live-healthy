@@ -18,14 +18,14 @@ export default function About() {
           <Aboutus key={content.title} content={content} />
         ))}
         <hr />
-        <section className="container m-auto p-4 laptop:py-5 mt-4 mb-3">
+        <section className="container m-auto p-4 lg:py-5 mt-4 mb-3">
           <h2 className="text-2xl font-semibold my-2">
             {aboutUsContent.coreTeam.title}
           </h2>
           <p className="text-md">{aboutUsContent.coreTeam.description}</p>
           <div className="flex flex-wrap pt-3 w-full">
             {aboutUsContent.coreTeam.teams.map((team) => (
-              <div key={team.name} className="laptop:w-1/3 p-2 sm:w-1/6">
+              <div key={team.name} className="lg:w-1/3 p-2 sm:w-1/6">
                 <div className="flex items-center">
                   <img
                     className="rounded-full m-2"

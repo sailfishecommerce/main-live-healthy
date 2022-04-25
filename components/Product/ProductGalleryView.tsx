@@ -20,7 +20,7 @@ export default function ProductGalleryView({ product, isMobile }: Props) {
   const [activeImage, setActiveImage] = useState(0)
   const mobileView = useMediaQuery('(max-width:768px)')
 
-  const imageSize = isMobile ? 'w-1/3 laptop:w-full' : 'w-1/3 laptop:w-full'
+  const imageSize = isMobile ? 'w-1/3 lg:w-full' : 'w-1/3 lg:w-full'
   const thumblistClass = isMobile ? 'mobile' : 'desktop'
 
   const imageView = mobileView
@@ -57,7 +57,7 @@ export default function ProductGalleryView({ product, isMobile }: Props) {
 
   return (
     <div className="product-gallery w-full flex flex-col tablet:flex-row">
-      <div className="product-gallery-preview laptop:order-2 w-full tablet:w-4/5">
+      <div className="product-gallery-preview lg:order-2 w-full tablet:w-4/5">
         <div
           onClick={onImgClick}
           className="product-gallery-preview-item active"
@@ -93,7 +93,7 @@ export default function ProductGalleryView({ product, isMobile }: Props) {
         )}
       </div>
       <div
-        className={`product-gallery-thumblist ${thumblistClass} flex hidden tablet:flex flex-wrap w-full laptop:flex-col laptop:order-1 laptop:w-1/5`}
+        className={`product-gallery-thumblist ${thumblistClass} flex hidden tablet:flex flex-wrap w-full lg:flex-col lg:order-1 lg:w-1/5`}
       >
         {images?.map((image: any, index) => (
           <a

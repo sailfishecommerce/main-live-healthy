@@ -38,7 +38,7 @@ export default function ShippingCheckoutForm(): JSX.Element {
                 (formRow, index) => (
                   <div key={index} className="flex flex-wrap">
                     {formRow.map((formInput, index) => (
-                      <div key={index} className="w-full laptop:w-1/2">
+                      <div key={index} className="w-full lg:w-1/2">
                         {displayFormElement(formInput, formik)}
                       </div>
                     ))}

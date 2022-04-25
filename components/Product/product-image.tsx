@@ -28,7 +28,7 @@ export function ProductImage({ src, alt = '', className }: ProductImageProps) {
         width="20"
         height="27"
         className={classNames(
-          'transition-all duration-2000 ease-out-expo can-hover:group-hover:scale-110',
+          'transition-all duration-2000 ease-out-expo hover:group-hover:scale-110',
           {
             '!opacity-0': !loaded,
           }

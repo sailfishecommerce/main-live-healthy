@@ -4,7 +4,7 @@
 
 .aa-Form {
   /* Overrides */
-  @apply !shadow-none bg-neutral-lightest can-hover:hover:border-brand-nebula laptop:bg-white laptop:border laptop:border-solid laptop:border-neutral-dark laptop:rounded-sm laptop:transition;
+  @apply !shadow-none bg-neutral-lightest hover:hover:border-brand-nebula lg:bg-white lg:border lg:border-solid lg:border-neutral-dark lg:rounded-sm lg:transition;
 }
 
 .focused {
@@ -74,7 +74,7 @@
   @apply body-regular text-neutral-dark font-normal;
 }
 
-.aa-Item[aria-selected=true] {
+.aa-Item[aria-selected='true'] {
   @apply bg-neutral-lightest;
 }
 

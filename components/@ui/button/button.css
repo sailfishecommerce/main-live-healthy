@@ -13,7 +13,7 @@
   }
 
   .btn-native {
-    @apply can-hover:transition-colors can-hover:hover:text-neutral-dark disabled:cursor-not-allowed;
+    @apply hover:transition-colors hover:hover:text-neutral-dark disabled:cursor-not-allowed;
   }
 
   .btn--selected {
@@ -28,7 +28,7 @@
     @apply bg-brand-black text-white;
 
     &:hover {
-      @apply can-hover:bg-neutral-darkest;
+      @apply hover:bg-neutral-darkest;
     }
 
     &:active {
@@ -45,7 +45,7 @@
     @apply bg-white border border-brand-black text-brand-black;
 
     &:hover {
-      @apply can-hover:border-neutral-darkest can-hover:text-neutral-darkest;
+      @apply hover:border-neutral-darkest hover:text-neutral-darkest;
     }
 
     &:active {
@@ -62,7 +62,7 @@
     @apply bg-brand-nebula text-white;
 
     &:hover {
-      @apply can-hover:bg-nebula-dark can-hover:text-nebula-lightest;
+      @apply hover:bg-nebula-dark hover:text-nebula-lightest;
     }
 
     &:active {
@@ -79,7 +79,7 @@
     @apply px-3.5 border bg-white border-brand-black text-brand-black;
 
     &:hover {
-      @apply can-hover:text-white;
+      @apply hover:text-white;
     }
 
     &:disabled {

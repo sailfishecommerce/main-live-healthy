@@ -6,7 +6,5 @@ export type ContainerProps = {
 }
 
 export function Container({ children, className }: ContainerProps) {
-  return (
-    <div className={classNames('p-2 laptop:p-0', className)}>{children}</div>
-  )
+  return <div className={classNames('p-2 lg:p-0', className)}>{children}</div>
 }

@@ -66,7 +66,7 @@ export function ProductCard({
   return (
     <article
       className={classNames(
-        'w-full h-full hover:shadow-lg relative border border-transparent transition-all laptop:p-3 group can-hover:laptop:hover:shadow-lg can-hover:laptop:hover:rounded-lg can-hover:laptop:hover:border-neutral-light',
+        'w-full h-full hover:shadow-lg relative border border-transparent transition-all lg:p-3 group hover:lg:hover:shadow-lg hover:lg:hover:rounded-lg hover:lg:hover:border-neutral-light',
         { 'opacity-50': !available }
       )}
     >

@@ -9,7 +9,7 @@ export default function PrimaryMenu() {
   const { data: cart }: any = useCartData()
   return (
     <div className="flex justify-between items-center md:my-2 md:py-4">
-      <Logo className="w-1/3 md:w-44" />
+      <Logo className="w-1/3 lg:w-44" />
       {mobileWidth ? (
         <MobilePrimaryMenu cart={cart} />
       ) : (

@@ -47,7 +47,7 @@ function RefinementsBarComponent({
   return (
     <section
       className={classNames(
-        'w-full laptop:px-3',
+        'w-full lg:px-3',
         { hidden: searchResults?.nbHits === 0 },
         className
       )}

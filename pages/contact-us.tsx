@@ -26,7 +26,7 @@ export default function ContactUs() {
       <ContactusCard />
       <DynamicPartnerOutlet />
       <div
-        className="w-full flex-col laptop:flex-row flex m-auto justify-between"
+        className="w-full flex-col lg:flex-row flex m-auto justify-between"
         id="map"
       >
         <DynamicContactMap />

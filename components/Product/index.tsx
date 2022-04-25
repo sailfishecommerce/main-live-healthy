@@ -79,10 +79,10 @@ function ProductComponent({
       }
 
   const productClass = homepage
-    ? 'laptop:w-1/4 tablet:w-1/3 sm:w-full w-1/2'
+    ? 'lg:w-1/4 tablet:w-1/3 sm:w-full w-1/2'
     : slider
     ? 'w-full'
-    : 'laptop:w-1/3 tablet:w-1/4 w-1/2'
+    : 'lg:w-1/3 tablet:w-1/4 w-1/2'
 
   return (
     <div
@@ -104,7 +104,7 @@ function ProductComponent({
             onClick={algoliaClickedProductAfterSearch}
           >
             <div
-              className="laptop:h-72 laptop:80"
+              className="lg:h-72 lg:80"
               onMouseEnter={() => setHover(true)}
               onMouseLeave={() => setHover(false)}
             >
@@ -121,7 +121,7 @@ function ProductComponent({
             </div>
           </a>
         </Link>
-        <div className="flex flex-col p-1 laptop:py-3">
+        <div className="flex flex-col p-1 lg:py-3">
           <Link
             passHref
             href={`/shop/vendors/${replaceSpaceWithHypen(product.vendor)}`}
@@ -133,7 +133,7 @@ function ProductComponent({
               {product.vendor}
             </a>
           </Link>
-          <h3 className="sm:text-sm product-title sm:w-32  tablet:w-56 laptop:w-72 text-md">
+          <h3 className="sm:text-sm product-title sm:w-32  tablet:w-56 lg:w-72 text-md">
             <Link passHref href={`/products/${product.slug}`}>
               <a
                 className="hover:text-red-500 product-link"

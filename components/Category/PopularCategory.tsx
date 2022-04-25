@@ -27,7 +27,7 @@ function PopularCategoryComponent({ category }: PopularCategoryProps) {
     : { height: 250, width: 320 }
 
   return (
-    <div className="popularCategory w-full tablet:w-1/2 laptop:w-1/3 px-1 mx-0">
+    <div className="popularCategory w-full tablet:w-1/2 lg:w-1/3 px-1 mx-0">
       <Link passHref href={`/catalog/${category.slug}`}>
         <a
           aria-label={category.name}

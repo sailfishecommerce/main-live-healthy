@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import { useMemo } from 'react'
 
+import Header from '@/components/Header'
 import { Loader } from '@/components/Loader/Loader'
 import { Overlay } from '@/components/Overlay'
 import TrustmateWidget from '@/components/Widget/TrustmateWidget'
@@ -17,10 +18,6 @@ import '@/styles/index.css'
 import '@/styles/global.css'
 /// #if DEV
 /// #endif
-
-const Header = dynamic<any>(
-  () => import(/* webpackChunkName: 'header' */ '@/components/Header')
-)
 
 export const LayoutWrapper = dynamic(
   (): any =>

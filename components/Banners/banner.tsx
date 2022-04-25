@@ -66,11 +66,11 @@ export function Banner({
 
             'h-24': size === 's',
 
-            'h-36 laptop:h-40': size === 'm',
+            'h-36 lg:h-40': size === 'm',
 
-            'h-44 laptop:h-56': size === 'l',
+            'h-44 lg:h-56': size === 'l',
 
-            'h-48 laptop:h-96': size === 'xl',
+            'h-48 lg:h-96': size === 'xl',
           },
           className
         )}
@@ -99,20 +99,20 @@ export function Banner({
         )}
 
         {!children && (
-          <header className="absolute inset-0 flex flex-col justify-center p-6 text-shadow-medium gap-2 laptop:gap-0 laptop:flex-row laptop:items-center laptop:p-12">
+          <header className="absolute inset-0 flex flex-col justify-center p-6 text-shadow-medium gap-2 lg:gap-0 lg:flex-row lg:items-center lg:p-12">
             <div
               className={classNames(
-                'flex flex-col  gap-2 laptop:gap-4',
-                description ? 'w-full laptop:w-3/6' : 'w-full',
+                'flex flex-col  gap-2 lg:gap-4',
+                description ? 'w-full lg:w-3/6' : 'w-full',
                 { uppercase: size !== 's' }
               )}
             >
               {title && (
                 <h1
                   className={classNames(
-                    'heading-2 laptop:heading-1',
+                    'heading-2 lg:heading-1',
                     {
-                      'label-semibold laptop:subhead': size === 's',
+                      'label-semibold lg:subhead': size === 's',
                       'heading-3': size === 'm',
                     },
                     classNameTitle
@@ -124,7 +124,7 @@ export function Banner({
                 <p
                   className={classNames(
                     {
-                      'text-sm font-bold laptop:text-3xl': size !== 's',
+                      'text-sm font-bold lg:text-3xl': size !== 's',
                       'body-regular': size === 's',
                     },
                     classNameSubtitle
@@ -137,7 +137,7 @@ export function Banner({
             {description && (
               <p
                 className={classNames(
-                  'w-full laptop:w-3/6 font-bold hidden laptop:block',
+                  'w-full lg:w-3/6 font-bold hidden lg:block',
                   {
                     'text-xl': size === 'xl',
                   },
@@ -154,10 +154,7 @@ export function Banner({
 
       {description && (
         <p
-          className={classNames(
-            'block mt-4 laptop:hidden',
-            classNameDescription
-          )}
+          className={classNames('block mt-4 lg:hidden', classNameDescription)}
           dangerouslySetInnerHTML={{ __html: description }}
         />
       )}

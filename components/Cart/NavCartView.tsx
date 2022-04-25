@@ -7,7 +7,7 @@ function NavCartViewComponent({ cart, onClickHandler }: any) {
   return (
     <button
       type="button"
-      className="relative bg-gray-50 hover:bg-gray-100 shadow-lg cursor-pointer rounded-lg p-2 tablet:p-4 flex items-center w-3/8 laptop:w-1/2 flex price-overview flex-col"
+      className="relative bg-gray-50 hover:bg-gray-100 shadow-lg cursor-pointer rounded-lg p-2 tablet:p-4 flex items-center w-3/8 lg:w-1/2 flex price-overview flex-col"
       onClick={onClickHandler}
     >
       <span className="text-xs tablet:text-md text-center font-bold">

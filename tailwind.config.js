@@ -12,6 +12,10 @@ module.exports = {
   ],
   darkMode: 'class',
   theme: {
+    container: {
+      center: true,
+
+    },
     extend: {
       fontFamily: {
         sans: ['Inter', ...defaultTheme.fontFamily.sans],
@@ -57,7 +61,6 @@ module.exports = {
         header: '15rem',
       },
     },
-    screens,
     zIndex: {
       dropdown: 5,
       'overlay-header': 10,

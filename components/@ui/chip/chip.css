@@ -7,7 +7,7 @@
     }
 
     &:hover {
-      @apply can-hover:bg-white;
+      @apply hover:bg-white;
     }
 
     &.chip-selected {

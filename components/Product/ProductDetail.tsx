@@ -26,7 +26,7 @@ export default function ProductDetail({ product }: Props) {
   const toggleModal = useCallback(() => setModal(!modal), [modal])
 
   return (
-    <div className="w-full laptop:w-1/3 pt-4 laptop:pt-0">
+    <div className="w-full lg:w-1/3 pt-4 lg:pt-0">
       <DynamicContactModal
         show={modal}
         productName={product.name}
@@ -37,7 +37,7 @@ export default function ProductDetail({ product }: Props) {
           <span className="text-blue-800 font-bold text-xl mx-1">
             <FormattedPrice
               isProduct
-              className="laptop:text-xl"
+              className="lg:text-xl"
               price={product.price}
             />
           </span>
@@ -46,7 +46,7 @@ export default function ProductDetail({ product }: Props) {
               <del>
                 <FormattedPrice
                   isProduct
-                  className="laptop:text-xl"
+                  className="lg:text-xl"
                   price={product.rrp}
                 />
               </del>

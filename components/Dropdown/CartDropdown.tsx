@@ -33,10 +33,7 @@ export default function CartDropdown({ cart, className }: Props) {
           <div className="flex flex-col tablet:flex-row items-center">
             <span className="mr-1 font-bold">Subtotal:</span>
             <span className="font-bold text-red-500 text-md ms-1">
-              <FormattedPrice
-                className="laptop:text-sm"
-                price={cart?.subTotal}
-              />
+              <FormattedPrice className="lg:text-sm" price={cart?.subTotal} />
             </span>
           </div>
           <button

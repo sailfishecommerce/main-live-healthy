@@ -39,9 +39,9 @@ export function RefinementsPanel({
 
   return (
     <section className={cn}>
-      <div className="w-full laptop:w-64 laptop:h-full laptop:overflow-y-auto">
-        <div className="h-full w-full flex flex-col laptop:pr-5">
-          <div className="grow px-4 overflow-y-auto laptop:px-0 laptop:overflow-y-visible">
+      <div className="w-full lg:w-64 lg:h-full lg:overflow-y-auto">
+        <div className="h-full w-full flex flex-col lg:pr-5">
+          <div className="grow px-4 overflow-y-auto lg:px-0 lg:overflow-y-visible">
             <RefinementsPanelHeader />
             <RefinementsPanelBody dynamicWidgets={dynamicWidgets} />
           </div>

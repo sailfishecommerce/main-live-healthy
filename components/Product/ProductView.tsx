@@ -148,7 +148,7 @@ export function ProductQuantityCounter({
 
   return (
     <div className="flex items-center justify-between mb-2">
-      <div className="cartCounter w-1/2 laptop:w-50 flex items-center mb-0">
+      <div className="cartCounter w-1/2 lg:w-50 flex items-center mb-0">
         <button
           aria-label="Remove"
           onClick={() => updateCounter('decrement')}

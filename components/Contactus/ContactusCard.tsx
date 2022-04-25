@@ -5,7 +5,7 @@ import contactData from '@/json/contact-us.json'
 
 export default function ContactusCard() {
   return (
-    <section className="flex w-full tablet:flex-row flex-col laptop:px-10  justify-center mx-auto items-center">
+    <section className="flex w-full tablet:flex-row flex-col lg:px-10  justify-center mx-auto items-center">
       {contactData.info.map((content) => {
         return content.anchor ? (
           <div

@@ -75,7 +75,7 @@ function CurrentRefinementsComponent({
             hidden: refinements.length < 2,
           })}
         >
-          <ClearRefinements className="body-bold text-brand-nebula can-hover:transition-colors can-hover:hover:text-nebula-light">
+          <ClearRefinements className="body-bold text-brand-nebula hover:transition-colors hover:hover:text-nebula-light">
             Clear all
           </ClearRefinements>
         </li>

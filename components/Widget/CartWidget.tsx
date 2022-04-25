@@ -49,7 +49,7 @@ export default function CartWidget({ cart, className }: CartWidgetProps) {
           </h6>
           <div className="flex items-center">
             <span className="text-red-500 font-bold text-sm">
-              <FormattedPrice price={cart?.price} className="laptop:text-sm" />
+              <FormattedPrice price={cart?.price} className="lg:text-sm" />
             </span>
             <div className="items-center flex mx-1">
               <span className="items-center flex mx-1 text-2xl my-0">

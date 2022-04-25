@@ -33,10 +33,8 @@ export default function Aboutus({ content }: contentProps) {
           layout="responsive"
         />
       </div>
-      <div
-        className={`w-full tablet:w-1/2 py-5 px-4 laptop:px-24  ${textOrder}`}
-      >
-        <div className="content-text mx-auto laptop:py-5">
+      <div className={`w-full tablet:w-1/2 py-5 px-4 lg:px-24  ${textOrder}`}>
+        <div className="content-text mx-auto lg:py-5">
           <h2 className="text-2xl font-medium pb-3">{content.title}</h2>
           <p className="pb-3 text-md tablet:text-lg">{content.text}</p>
           {content.buttons?.map((button) => (

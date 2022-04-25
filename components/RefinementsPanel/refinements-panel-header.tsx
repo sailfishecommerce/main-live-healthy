@@ -36,8 +36,8 @@ export function RefinementsPanelHeader() {
   )
 
   return (
-    <header className="flex flex-col laptop:my-5 laptop:mt-0">
-      <div className="flex items-center gap-1 my-6 laptop:my-0">
+    <header className="flex flex-col lg:my-5 lg:mt-0">
+      <div className="flex items-center gap-1 my-6 lg:my-0">
         <Tablet className="grow">
           <div className="flex items-center justify-between">
             <IconLabel

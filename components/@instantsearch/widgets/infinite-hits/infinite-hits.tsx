@@ -46,8 +46,8 @@ function InfiniteHitsComponent({
   showMore = false,
   viewMode = 'grid',
   animation = true,
-  gridClassName = 'grid-cols-2 laptop:grid-cols-5',
-  listClassName = 'laptop:grid-cols-1',
+  gridClassName = 'grid-cols-2 lg:grid-cols-5',
+  listClassName = 'lg:grid-cols-1',
 }: InfiniteHitsProps) {
   const [hitsPerPage, setHitsPerPage] = useState(0)
   const shouldReduceMotion = useReducedMotion()
@@ -66,10 +66,8 @@ function InfiniteHitsComponent({
         className={classNames('overflow-hidden', {
           [classNames('grid grid-cols-2 gap-2', gridClassName)]:
             viewMode === 'grid',
-          [classNames(
-            'flex flex-col gap-4 laptop:grid laptop:gap-0',
-            listClassName
-          )]: viewMode === 'list',
+          [classNames('flex flex-col gap-4 lg:grid lg:gap-0', listClassName)]:
+            viewMode === 'list',
         })}
         initial="hidden"
         animate="show"

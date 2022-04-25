@@ -102,7 +102,7 @@ export function Select({
                 role="option"
                 aria-selected={isOptionSelected}
                 className={classNames(
-                  'flex items-center justify-between w-full text-left px-2 py-1 focus-visible:outline-none focus-visible:bg-neutral-lightest can-hover:hover:text-brand-black can-hover:hover:bg-neutral-lightest',
+                  'flex items-center justify-between w-full text-left px-2 py-1 focus-visible:outline-none focus-visible:bg-neutral-lightest hover:hover:text-brand-black hover:hover:bg-neutral-lightest',
                   {
                     'font-bold': isOptionSelected,
                   }

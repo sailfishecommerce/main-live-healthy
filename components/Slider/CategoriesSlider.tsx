@@ -12,14 +12,14 @@ function CategoriesSliderComponent() {
   const sliceCategories = (category: any[]) => category.slice(12)
 
   return (
-    <div className="laptop:w-2/3 w-full">
+    <div className="lg:w-2/3 w-full">
       {status === 'error' ? (
         'error loading categories'
       ) : status === 'loading' ? (
         <LoadCategory arrayType={2} gridStyle="w-1/2 m-auto" />
       ) : (
         <Splide
-          className="laptop:px-12 px-4 categorySlider"
+          className="lg:px-12 px-4 categorySlider"
           options={{
             type: 'loop',
             perPage: 2,

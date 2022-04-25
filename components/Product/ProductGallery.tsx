@@ -24,7 +24,7 @@ export default function ProductGallery({ product, isMobile }: Props) {
         strategy="afterInteractive"
         id="lightgalleryScript"
       />
-      <div className="w-full laptop:w-2/3 laptop:pr-0 laptop:pt-4">
+      <div className="w-full lg:w-2/3 lg:pr-0 lg:pt-4">
         <ProductGalleryView product={product} isMobile={isMobile} />
       </div>
     </>

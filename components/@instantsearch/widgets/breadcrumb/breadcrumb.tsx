@@ -54,7 +54,7 @@ function BreadcrumbComponent({ items, refine, createURL }: BreadcrumbProps) {
             >
               <a
                 href={createURL(item.value)}
-                className="can-hover:transition-colors can-hover:hover:text-brand-black"
+                className="hover:transition-colors hover:hover:text-brand-black"
                 onClick={(event) => {
                   event.preventDefault()
                   if (currentQuery && !items.length) {

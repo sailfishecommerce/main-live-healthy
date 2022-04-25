@@ -39,7 +39,7 @@ function DebugLayer({ children, name }: DebugLayerProps) {
       <div
         className={classNames(
           'z-dev absolute pointer-events-none w-full h-full inset-0 border transition-colors border-transparent',
-          isHovered && 'can-hover:border-venus-base'
+          isHovered && 'hover:border-venus-base'
         )}
       >
         <span
@@ -47,7 +47,7 @@ function DebugLayer({ children, name }: DebugLayerProps) {
           tabIndex={0}
           className={classNames(
             'pointer-events-auto cursor-pointer select-none absolute top-0 -left-px -translate-y-full p-1 text-xs font-mono font-bold bg-venus-base text-white rounded-tr-md transition-opacity opacity-0',
-            isHovered && 'can-hover:opacity-100 can-hover:hover:opacity-60'
+            isHovered && 'hover:opacity-100 hover:hover:opacity-60'
           )}
         >
           {name}

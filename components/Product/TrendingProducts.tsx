@@ -1,12 +1,13 @@
+/* eslint-disable no-nested-ternary */
 import Link from 'next/link'
 import { memo, useCallback } from 'react'
 import { AiOutlineArrowRight } from 'react-icons/ai'
 
-import Product from '@/components/Product'
 import LoadProducts from '@/components/Loader/ProductsLoader'
-import { useLiveHealthyProduct } from '@/hooks/useSwellProducts'
+import Product from '@/components/Product'
 import useMediaQuery from '@/hooks/useMediaQuery'
-import { productType } from '@/types'
+import { useLiveHealthyProduct } from '@/hooks/useSwellProducts'
+import type { productType } from '@/typings'
 
 function TrendingProductsCatalog() {
   const mobileView = useMediaQuery('(max-width:768px)')
@@ -33,10 +34,10 @@ function TrendingProductsCatalog() {
             {updateProductSize(liveHealthyProduct.data).map(
               (product: productType) => (
                 <Product
+                  homepage
                   key={product.id}
                   product={product}
                   algoliaEvent="click"
-                  homepage
                 />
               )
             )}

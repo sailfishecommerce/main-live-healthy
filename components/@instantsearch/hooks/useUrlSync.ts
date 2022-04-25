@@ -32,7 +32,7 @@ export function useUrlSync() {
   // Router
   const router = useRouter()
   const isCatalogPage = useMemo(
-    () => router?.pathname === '/catalog/[[...slugs]]',
+    () => router?.pathname === '/collection/[[...slugs]]',
     [router?.pathname]
   )
 
@@ -53,7 +53,7 @@ export function useUrlSync() {
     (nextSearchState: SearchState) => {
       if (!isCatalogPage) return
 
-      const newRoute = `/catalog${searchStateToUrl(nextSearchState)}`
+      const newRoute = `/collection${searchStateToUrl(nextSearchState)}`
       if (router.asPath !== newRoute) {
         router.push(newRoute, newRoute, { shallow: true })
       }

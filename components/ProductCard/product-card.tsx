@@ -1,4 +1,5 @@
 import classNames from 'classnames'
+import dynamic from 'next/dynamic'
 import type { MouseEventHandler } from 'react'
 import { useCallback } from 'react'
 
@@ -7,13 +8,22 @@ import { ProductDescription } from '@/components/Product/product-description'
 import { ProductImage } from '@/components/Product/product-image'
 import { ProductLabel } from '@/components/Product/product-label'
 import type { ProductPriceCurrency } from '@/components/Product/product-price'
-import { ProductPrice } from '@/components/Product/product-price'
 import { ProductRating } from '@/components/Product/product-rating'
 import type { ProductTagType } from '@/components/Product/product-tag'
 import { ProductTag } from '@/components/Product/product-tag'
 import { ProductTitle } from '@/components/Product/product-title'
 import type { ViewMode } from '@/components/ViewModes'
 import { Link } from '@ui/link/link'
+
+const DynamicFormattedPrice = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'FormattedPrice' */ '@/components/Price/FormattedPrice'
+    ),
+  {
+    ssr: false,
+  }
+)
 
 export type ProductCardProps = {
   url?: string
@@ -121,10 +131,9 @@ export function ProductCard({
           <footer className="flex flex-col gap-1">
             {colors && <ProductColorVariationList colors={colors} />}
             {price && (
-              <ProductPrice
+              <DynamicFormattedPrice
+                className="font-bold lg:text-xs"
                 price={price}
-                originalPrice={originalPrice}
-                currency={currency}
               />
             )}
             {typeof rating !== 'undefined' && (

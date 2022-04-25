@@ -35,7 +35,7 @@ function CategoryDropdownList({ category, categories }: Props) {
     <div className="w-1/4">
       <div className="mega-dropdown-column pt-3 pt-sm-4 px-2 px-lg-3 w-full">
         <div className="widget widget-links">
-          <Link passHref href={`/catalog/${category.slug}`}>
+          <Link passHref href={`/collection/${category.slug}`}>
             <button
               type="button"
               aria-label="category"
@@ -56,7 +56,7 @@ function CategoryDropdownList({ category, categories }: Props) {
           <ul className="widget-list">
             {displayThreeSubCat.map((cat) => (
               <li key={cat.id} className="widget-list-item mb-1">
-                <Link passHref href={`/catalog/${cat.slug}`}>
+                <Link passHref href={`/collection/${cat.slug}`}>
                   <a aria-label={cat.name} className="widget-list-link">
                     {cat.name}
                   </a>

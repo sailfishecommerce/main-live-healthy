@@ -6,18 +6,13 @@ import { useMemo } from 'react'
 
 import Header from '@/components/Header'
 import { Loader } from '@/components/Loader/Loader'
-import { Overlay } from '@/components/Overlay'
 import TrustmateWidget from '@/components/Widget/TrustmateWidget'
 import { AppLayout } from '@/layouts/app-layout'
-import { isDev } from '@/utils/env'
 import { scrollToTop } from '@/utils/scrollToTop'
-import { Dev } from '@dev/dev'
 
 import '@/styles/_index.css'
 import '@/styles/index.css'
 import '@/styles/global.css'
-/// #if DEV
-/// #endif
 
 export const LayoutWrapper = dynamic(
   (): any =>
@@ -33,7 +28,7 @@ export const Footer = dynamic(
 
 export default function App({ Component, pageProps, router }: AppProps) {
   const isCatalogPage = useMemo(
-    () => router?.pathname === '/catalog/[[...slugs]]',
+    () => router?.pathname === '/collection/[[...slugs]]',
     [router?.pathname]
   )
 
@@ -53,8 +48,6 @@ export default function App({ Component, pageProps, router }: AppProps) {
             <Component {...pageProps} key={router.route} />
           </AnimatePresence>
           <Footer />
-          <Overlay />
-          {isDev && <Dev />}
         </LayoutWrapper>
       </TrustmateWidget>
     </AppLayout>

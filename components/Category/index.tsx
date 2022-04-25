@@ -31,7 +31,7 @@ export default function Category({ category }: CategoryProps): JSX.Element {
   return (
     <div className="category">
       {category?.images && (
-        <Link passHref href={`/catalog/${category.slug}`}>
+        <Link passHref href={`/collection/${category.slug}`}>
           <a
             aria-label={category.name}
             className={`${styles.categoryLink} m-auto flex justify-center`}
@@ -50,7 +50,7 @@ export default function Category({ category }: CategoryProps): JSX.Element {
         </Link>
       )}
       <div className="card-body py-2">
-        <Link passHref href={`/catalog/${category.slug}`}>
+        <Link passHref href={`/collection/${category.slug}`}>
           <a aria-label={category.name} className="hover:text-red-500 text-md">
             {category.name}
           </a>

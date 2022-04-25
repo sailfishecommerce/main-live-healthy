@@ -89,7 +89,7 @@ export const urlToSearchState = (url: string | null = ''): SearchState => {
     parsedSearchState[typeof param !== 'undefined' ? param : key] = val
   }
 
-  const pathnameMatches = pathname.match(/catalog\/(.*?)\/?$/)
+  const pathnameMatches = pathname.match(/collection\/(.*?)\/?$/)
 
   const category = pathnameMatches?.[1]
     .split(categorySeparator)

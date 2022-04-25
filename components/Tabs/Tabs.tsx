@@ -1,11 +1,9 @@
-
 export default function Tabs() {
   return (
     <>
       <ul
         className="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4"
         id="tabs-tabFill"
-        role="tablist"
       >
         <li className="nav-item flex-auto text-center" role="presentation">
           <a
@@ -120,5 +118,5 @@ export default function Tabs() {
         </div>
       </div>
     </>
-  );
+  )
 }

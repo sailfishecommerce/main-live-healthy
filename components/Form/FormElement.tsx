@@ -1,6 +1,8 @@
 import dynamic from 'next/dynamic'
 import { useState } from 'react'
 
+import PasswordInput from './form-elements/PasswordInput'
+
 const SelectCountries = dynamic(
   () =>
     import(/* webpackChunkName: 'common' */ '@/components/Form/SelectCountries')
@@ -22,7 +24,7 @@ type inputContentType = {
   type: string
   placeholder?: string
   id: string
-  inputText: 'text' | 'email' | 'password'
+  inputText: 'email' | 'password' | 'text'
   withIcon?: boolean
 }
 
@@ -38,7 +40,6 @@ export function Input({ content, formik, className }: Props) {
   function passwordVisibilityHandler() {
     setShowPassword(!showPassword)
   }
-  const passwordInputType = showPassword ? 'text' : 'password'
   const inputClassName = className ? className : 'mb-3'
   return (
     <div className={`${inputClassName} mb-3 flex flex-col mx-2`}>
@@ -53,36 +54,18 @@ export function Input({ content, formik, className }: Props) {
           type={content.inputText}
           id={content.id}
           name={content.name}
-          onChange={formik.handleChange}
           placeholder={content.placeholder}
-          onBlur={formik.handleBlur}
           value={formik.values[content.name]}
+          onBlur={formik.handleBlur}
+          onChange={formik.handleChange}
         />
       ) : (
-        <div className="password-toggle">
-          <input
-            className="w-full border border-gray-200 px-2 rounded-md h-10 focus:text-gray-700 focus:bg-white focus:border-red-500 focus:outline-none"
-            type={passwordInputType}
-            name={content.name}
-            placeholder={content.placeholder}
-            id={content.id}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values[content.name]}
-          />
-          <label
-            className="password-toggle-btn"
-            aria-label="show/hide-password"
-          >
-            <input
-              onClick={passwordVisibilityHandler}
-              className="password-toggle-check"
-              checked={showPassword}
-              type="checkbox"
-            />
-            <span className="password-toggle-indicator"></span>
-          </label>
-        </div>
+        <PasswordInput
+          content={content}
+          formik={formik}
+          passwordVisibilityHandler={passwordVisibilityHandler}
+          showPassword={showPassword}
+        />
       )}
       <p className="text-red-500 text-sm">
         {formik.errors[content.name] &&
@@ -99,10 +82,10 @@ export function TextArea({ content, formik }: Props) {
       <textarea
         className="border-2 border-gray-200 rounded-md"
         rows={5}
-        onChange={formik.handleChange}
         name={content.name}
         value={formik.values[content.name]}
         placeholder={content.placeholder}
+        onChange={formik.handleChange}
       ></textarea>
       <p className="text-red-500 text-sm">
         {formik.errors[content.name] &&
@@ -142,5 +125,7 @@ export function displayFormElement(
     case 'textarea': {
       return <TextArea content={content} formik={_formik} />
     }
+    default:
+      return null
   }
 }

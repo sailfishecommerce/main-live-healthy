@@ -4,11 +4,13 @@ import { GrLogin, GrLogout } from 'react-icons/gr'
 import { IoPersonOutline } from 'react-icons/io5'
 
 import CartIcon from '@/components/Icons/CartIcon'
-import { useAccount } from '@/hooks'
+import { useAccount, useCart } from '@/hooks'
 import useSlidingTab from '@/hooks/useSlidingTab'
 import useUI from '@/hooks/useUI'
 
-export default function MenuIcons({ cart }: any) {
+export default function MenuIcons() {
+  const { useCartData } = useCart()
+  const { data: cart }: any = useCartData()
   const { updateSlideTab } = useSlidingTab()
   const { toggleAuthModalHandler }: any = useUI()
   const { getUserAccount } = useAccount()

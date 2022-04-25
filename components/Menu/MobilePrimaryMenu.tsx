@@ -5,10 +5,13 @@ import { HiMenuAlt4 } from 'react-icons/hi'
 import { IoPersonOutline } from 'react-icons/io5'
 
 import CartIcon from '@/components/Icons/CartIcon'
+import { useCart } from '@/hooks'
 import useNav from '@/hooks/useNav'
 import useSlidingTab from '@/hooks/useSlidingTab'
 
-export default function MobilePrimaryMenu({ cart }: any) {
+export default function MobilePrimaryMenu() {
+  const { useCartData } = useCart()
+  const { data: cart }: any = useCartData()
   const { showMobileSearch, toggleSearch, mobileMenu, toggleMobileMenu } =
     useNav()
   const { updateSlideTab } = useSlidingTab()

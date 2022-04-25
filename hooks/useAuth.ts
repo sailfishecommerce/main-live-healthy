@@ -8,98 +8,71 @@ import { authorizeError, authorizeUser, logout } from '@/redux/auth-slice'
 import { toggleAuthModal } from '@/redux/ui-slice'
 
 export default function useAuth() {
-  const { isLoading, isSuccessful, hasError } = useToast()
-  const { loginUser, signedUserDetails, createUserAccount } = useAccount()
+  const queryClient = useQueryClient()
   const dispatch = useAppDispatch()
+  const { isLoading, isSuccessful, hasError } = useToast()
+  const { loginUser, logoutUser, createUserAccount } = useAccount()
 
-  function useSignIn() {
+  function signIn(values: any, formik: any, notModal?: boolean) {
     const toastId = isLoading()
-    const queryClient = useQueryClient()
-
-    function userLogin(values: any, formik: any, notModal?: boolean) {
-      return loginUser(values)
-        .then((response) => {
-          if (response) {
-            isSuccessful(toastId, `Welcome back, ${values.email}`)
-            formik.resetForm()
-            formik.setSubmitting(false)
-            dispatch(authorizeUser(response))
-            queryClient.invalidateQueries('userdetails')
-            queryClient.invalidateQueries('cart')
-            if (!notModal) {
-              dispatch(toggleAuthModal())
-            }
+    loginUser(values)
+      .then((response) => {
+        if (response) {
+          isSuccessful(toastId, `Welcome back, ${values.email}`)
+          formik.resetForm()
+          formik.setSubmitting(false)
+          dispatch(authorizeUser(response))
+          queryClient.invalidateQueries('userdetails')
+          queryClient.invalidateQueries('cart')
+          if (!notModal) {
+            dispatch(toggleAuthModal())
           } else {
             hasError(toastId, 'login not successful')
             formik.setSubmitting(false)
           }
-        })
-        .catch((error) => {
-          hasError(toastId, error?.message)
-          dispatch(authorizeError())
-          formik.setSubmitting(false)
-        })
-    }
-    return { userLogin }
+        }
+      })
+      .catch((error) => {
+        hasError(toastId, error?.message)
+        dispatch(authorizeError())
+        formik.setSubmitting(false)
+      })
   }
 
-  function useSignUp() {
-    const queryClient = useQueryClient()
+  function signUp(values: any, formik: any, notModal?: boolean) {
     const toastId = isLoading()
-
-    function userSignup(values: any, formik: any, notModal?: boolean) {
-      addNewUserToList(values.email)
-      createUserAccount(values)
-        .then((response) => {
-          if (response?.email.code === 'UNIQUE') {
-            hasError(toastId, `${values.email} already exists `)
-          } else {
-            isSuccessful(toastId, `${values.email}, sign up successful`)
-            dispatch(authorizeUser(response))
-            formik.resetForm()
-            queryClient.invalidateQueries('userdetails')
-            if (!notModal) {
-              dispatch(toggleAuthModal())
-            }
+    addNewUserToList(values.email)
+    createUserAccount(values)
+      .then((response) => {
+        if (response?.email.code === 'UNIQUE') {
+          hasError(toastId, `${values.email} already exists `)
+        } else {
+          isSuccessful(toastId, `${values.email}, sign up successful`)
+          dispatch(authorizeUser(response))
+          formik.resetForm()
+          queryClient.invalidateQueries('userdetails')
+          if (!notModal) {
+            dispatch(toggleAuthModal())
           }
-          formik.setSubmitting(false)
-        })
-        .catch((error) => {
-          hasError(toastId, error?.message)
-          dispatch(authorizeError())
-          formik.setSubmitting(false)
-        })
-    }
-    return { userSignup }
+        }
+        formik.setSubmitting(false)
+      })
+      .catch((error) => {
+        hasError(toastId, error?.message)
+        dispatch(authorizeError())
+        formik.setSubmitting(false)
+      })
   }
-
-  async function getUserDetails() {
-    return await signedUserDetails()
-  }
-
-  return {
-    useSignIn,
-    useSignUp,
-    useLogout,
-    getUserDetails,
-  }
-}
-
-export function useLogout() {
-  const { logoutUser } = useAccount()
-  const { isLoading, isSuccessful, hasError } = useToast()
-  // const queryClient = useQueryClient()
-  const dispatch = useAppDispatch()
 
   function userLogout() {
     const toastId = isLoading()
-    return logoutUser()
+    logoutUser()
       .then((response) => {
         if (response?.success) {
           dispatch(logout())
           isSuccessful(toastId, 'logout successful')
-          // queryClient.invalidateQueries('userdetails')
-          // queryClient.invalidateQueries('cart')
+          queryClient.invalidateQueries('userdetails')
+          queryClient.invalidateQueries('cart')
         } else {
           hasError(toastId, 'unable to logout user')
         }
@@ -108,5 +81,10 @@ export function useLogout() {
         hasError(toastId, err?.message)
       })
   }
-  return { userLogout }
+
+  return {
+    signIn,
+    signUp,
+    userLogout,
+  }
 }

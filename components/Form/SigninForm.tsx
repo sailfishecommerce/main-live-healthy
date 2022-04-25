@@ -11,8 +11,7 @@ import authContent from '@/json/authForm.json'
 import { toggleAuthModal } from '@/redux/ui-slice'
 
 export default function SigninForm() {
-  const { useSignIn } = useAuth()
-  const { userLogin } = useSignIn()
+  const { signIn } = useAuth()
   const dispatch = useAppDispatch()
 
   function toggleAuthmodal() {
@@ -25,7 +24,7 @@ export default function SigninForm() {
         password: '',
       }}
       validationSchema={signinFormSchema}
-      onSubmit={(values, formik) => userLogin(values, formik)}
+      onSubmit={(values, formik) => signIn(values, formik)}
     >
       {(formik) => (
         <form
@@ -35,16 +34,16 @@ export default function SigninForm() {
           id="signin-tab"
           onSubmit={formik.handleSubmit}
         >
-          {authContent.signIn.map((content) => (
-            <div key={content.id} className="flex flex-col w-100">
+          {authContent.signIn.map((content, index) => (
+            <div key={index} className="flex flex-col w-100">
               {displayFormElement(content, formik)}
             </div>
           ))}
           <div className="mb-3 flex flex-wrap justify-between">
             <Link passHref href="/account-password-recovery">
               <a
-                aria-label="forgot password?"
-                className="fs-sm text-red-500"
+                title="Forgot password"
+                className="fs-sm mountain-green"
                 onClick={toggleAuthmodal}
               >
                 Forgot password?
@@ -53,8 +52,9 @@ export default function SigninForm() {
           </div>
           <button
             aria-label="Sign in"
-            className="bg-red-500 mx-auto rounded-md hover:bg-red-400 text-white px-3 py-2 flex"
+            className="bg-mountain-green mx-auto rounded-md text-white px-3 py-2 flex"
             type="submit"
+            title="Sign in"
           >
             Sign in
           </button>

@@ -46,7 +46,6 @@ export default function AccountSigninForm() {
                 <div className="flex flex-wrap justify-between">
                   <div className="form-check">
                     <input
-                      checked
                       className="form-check-input"
                       type="checkbox"
                       id="remember_me"

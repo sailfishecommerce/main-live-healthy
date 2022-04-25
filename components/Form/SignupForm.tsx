@@ -6,8 +6,7 @@ import { useAuth } from '@/hooks'
 import authContent from '@/json/authForm.json'
 
 export default function SignupForm() {
-  const { useSignUp } = useAuth()
-  const { userSignup } = useSignUp()
+  const { signUp } = useAuth()
   return (
     <Formik
       initialValues={{
@@ -18,7 +17,7 @@ export default function SignupForm() {
         confirmPassword: '',
       }}
       validationSchema={signupFormSchema}
-      onSubmit={(values, formik) => userSignup(values, formik)}
+      onSubmit={(values, formik) => signUp(values, formik)}
     >
       {(formik) => (
         <form

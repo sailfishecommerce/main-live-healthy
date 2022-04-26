@@ -9,9 +9,16 @@ function TrustmateReviewComponent() {
         strategy="lazyOnload"
         id="trustmate-widget-script-1"
       />
-      <div className="flex items-center">
+      <div className="flex items-center content">
         <div id="5c6b265a-9520-4676-9d01-2ecfca53d95c"></div>
       </div>
+      <style jsx>
+        {`
+          .content {
+            overflow: hidden;
+          }
+        `}
+      </style>
     </section>
   )
 }

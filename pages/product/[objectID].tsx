@@ -8,7 +8,6 @@ import {
   getServerSidePropsPage,
   SearchPageLayout,
 } from '@/layouts/search-page-layout'
-import getProductObjectID from '@/lib/getProductObjectId'
 
 const DynamicProductOverview = dynamic(
   () =>
@@ -25,12 +24,11 @@ export type ProductPageProps = SearchPageLayoutProps & {
 }
 
 export default function Product({ objectID, ...props }: ProductPageProps) {
-  const productObjectID = getProductObjectID(objectID)
   const hit = props?.resultsState?.rawResults[0]?.hits[0]
   return (
     <SearchPageLayout {...props}>
       <Container className="mt-14">
-        <Configure filters={`objectID:${productObjectID}`} />
+        <Configure filters={`slug:${objectID}`} />
         <DynamicProductOverview hit={hit} />
       </Container>
     </SearchPageLayout>

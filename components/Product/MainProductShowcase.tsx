@@ -10,6 +10,7 @@ export type ProductsShowcaseProps = {
   indexName?: string
   indexId?: string
   className?: string
+  tabColor?: string
   hitComponent?: React.ComponentType<any>
   [index: string]: any
 }
@@ -19,6 +20,7 @@ export default function MainProductShowcase({
   indexId,
   title,
   className,
+  tabColor,
   ...searchParameters
 }: ProductsShowcaseProps) {
   return (
@@ -33,7 +35,7 @@ export default function MainProductShowcase({
               {title}
             </h4>
           )}
-          <InfiniteHitsSlider />
+          <InfiniteHitsSlider tabColor={tabColor} />
         </Container>
       </section>
     </Index>

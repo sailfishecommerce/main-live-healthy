@@ -1,18 +1,27 @@
-import React from "react";
-import ShippingMethodTag from "@/components/Tag/ShippingMethodTag";
+import { useState } from 'react'
+
+import ShippingMethodTag from '@/components/Tag/ShippingMethodTag'
+import shippingTagsJson from '@/json/shipping.json'
 
 export default function ShippingMethod() {
-  const shippingTag = [
-    { title: "Standard Shipping (4-6 weeks", price: "Free" },
-  ];
+  const [shippingMethod, setShippingMethod] = useState<string | null>(null)
+
+  function updateShippingMethod(value: string) {
+    setShippingMethod(value)
+  }
   return (
-    <div>
-      <h4 className="text-xl font-bold">Shipping method</h4>
+    <div className="mt-6">
+      <h4 className="text-lg font-semibold mb-3">Shipping method</h4>
       <div className="shipping-methods flex flex-col">
-        {shippingTag.map((shippingMethod, index) => (
-          <ShippingMethodTag key={index} content={shippingMethod} />
+        {shippingTagsJson.map((shippingMethodItem, index) => (
+          <ShippingMethodTag
+            key={index}
+            content={shippingMethodItem}
+            shippingMethod={shippingMethod}
+            updateShippingMethod={updateShippingMethod}
+          />
         ))}
       </div>
     </div>
-  );
+  )
 }

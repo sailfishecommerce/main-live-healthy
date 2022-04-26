@@ -1,13 +1,13 @@
-import { BsFillCheckCircleFill } from 'react-icons/bs'
+import { BsArrowRight } from 'react-icons/bs'
 
 import ReviewOrderlist from '@/components/Checkout/ReviewOrderlist'
 import FormattedPrice from '@/components/Price/FormattedPrice'
+import ShippingMethod from '@/components/Shipping/ShippingMethod'
 import { useCart } from '@/hooks'
 
 export default function ReviewOrder() {
   const { useCartData } = useCart()
   const { data: cart } = useCartData()
-  const cartItem = cart?.items?.length > 1 ? 'ITEMS' : 'ITEM'
   return (
     <div className="bg-white rounded-md w-full my-2 md:my-0 lg:h-full lg:w-1/4 md:w-1/2 p-4">
       <h6 className="mb-2">
@@ -18,23 +18,17 @@ export default function ReviewOrder() {
       {cart?.items.map((item: any) => (
         <ReviewOrderlist key={item.productId} content={item} />
       ))}
-      <div className="subtotal flex items-center justify-between">
+      <div className="subtotal flex items-center justify-between border-b pb-5">
         <h4 className="font-bold">SUBTOTAL</h4>
         <FormattedPrice className="font-bold" price={cart?.subTotal} />
       </div>
-      <div className="select-delivery">
-        <h6 className="font-medium mb-2">Select delivery</h6>
-        <div className="delivery-type flex items-center justify-between border border-gray-100 p-4 bg-gray-100">
-          <h6 className="text-sm">FREE</h6>
-          <div className="type flex flex-col">
-            <h6 className="font-bold">Express</h6>
-            <p className="font-medium text-gray-400 text-sm">
-              (3 - 5 business days, tracking)
-            </p>
-          </div>
-          <BsFillCheckCircleFill fill="orange" />
-        </div>
-      </div>
+      <ShippingMethod />
+      <button
+        type="button"
+        className="bg-tan-hide flex items-center justify-center font-bold text-lg text-white w-full py-2 rounded-lg my-6"
+      >
+        Next step <BsArrowRight className="ml-3 font-bold mt-2" />
+      </button>
     </div>
   )
 }

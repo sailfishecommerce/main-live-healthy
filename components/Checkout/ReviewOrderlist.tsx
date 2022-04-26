@@ -7,7 +7,6 @@ import FormattedPrice from '@/components/Price/FormattedPrice'
 const selectOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 export default function ReviewOrderlist({ content }: any) {
-  console.log('content', content)
   return (
     <div className="relative my-2 flex items-center hover:bg-gray-100 border border-b border-gray-100 justify-between p-4">
       <Image
@@ -15,8 +14,9 @@ export default function ReviewOrderlist({ content }: any) {
         alt={content.product.name}
         height={70}
         width={100}
+        className="rounded-lg"
       />
-      <div className="text flex flex-col">
+      <div className="text flex flex-col ml-2">
         <span className="product-name-view">
           <h4 className="font-medium my-1 product-name">
             {content.product.name}

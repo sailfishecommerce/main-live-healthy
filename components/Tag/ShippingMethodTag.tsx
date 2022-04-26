@@ -7,7 +7,7 @@ interface Props {
     value: string
   }
   updateShippingMethod: (value: string) => void
-  shippingMethod: string
+  shippingMethod: string | null
 }
 
 export default function ShippingMethodTag({

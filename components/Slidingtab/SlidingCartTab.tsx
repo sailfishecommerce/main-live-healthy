@@ -50,6 +50,12 @@ export default function SlidingCartTab() {
             .cart-total {
               height: 40vh;
             }
+
+            @media (max-width: 768px) {
+              .slide-items {
+                height: 65vh;
+              }
+            }
           `}
         </style>
       </SlidingTab>

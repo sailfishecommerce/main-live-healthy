@@ -27,21 +27,21 @@ export default function SlideCardTotal() {
         <h1 className="md:text-xl text-lg font-medium mt-2">
           Subtotal: HK$ {cart?.subTotal}
         </h1>
-        <div className="discount flex flex-col md:flex-row items-start md:items-center justify-between my-2">
+        <div className="discount flex  md:flex-row  items-center justify-between my-2">
           <div className="input-wrapper md:w-1/2 w-full my-2 md:my-0 relative">
-            <div className="text absolute left-1 top-1 w-3/4 bg-white">
+            <div className="text absolute left-1 w-3/4 top-1 bg-white">
               <p className="text-xs mb-0">Promocode</p>
-              <h4 className="text-sm">BONUS-CODE</h4>
+              <h4 className="md:text-sm text-xs">BONUS-CODE</h4>
             </div>
             <input
               placeholder="Enter promocode"
               type="text"
-              className="border rounded-lg px-2 py-2 w-full"
+              className="border rounded-lg px-2 py-2"
             />
           </div>
           <button
             type="button"
-            className="rounded-xl w-2/5 bg-mountain-green text-white px-4 py-2  text-sm font-medium"
+            className="rounded-xl w-3/5  lg:w-2/5 bg-mountain-green text-white md:px-4 p-2 text-xs  lg:text-sm font-medium"
           >
             Add discount code
           </button>

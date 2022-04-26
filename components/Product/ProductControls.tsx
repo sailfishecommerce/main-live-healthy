@@ -33,14 +33,14 @@ export default function ProductControls({ cart }: Props) {
       <button
         type="button"
         title="decrease quantity"
-        className="w-8 h-8 flex justify-center items-center rounded-lg hover:bg-red-500 hover:text-white"
+        className="lg:w-8 w-4 h-4 lg:h-8 flex justify-center items-center rounded-lg hover:bg-red-500 hover:text-white"
         onClick={decreaseQuantity}
       >
         <AiOutlineMinus />
       </button>
       <input
         readOnly
-        className="w-16 h-8 flex items-center text-center justify-between rounded-md"
+        className="lg:w-16 w-8 h-8 flex items-center text-center justify-between rounded-md"
         type="text"
         value={cart.quantity}
       />

@@ -42,7 +42,7 @@ export default function MobilePrimaryMenu() {
         )}
       </span>
       <button type="button" onClick={toggleMobileMenu}>
-        {!mobileMenu ? <HiMenuAlt4 size={20} /> : <FaTimes size={16} />}
+        {!mobileMenu ? <HiMenuAlt4 /> : <FaTimes />}
       </button>
     </div>
   )

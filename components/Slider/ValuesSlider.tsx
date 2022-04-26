@@ -1,15 +1,15 @@
-import { Splide, SplideSlide } from "@splidejs/react-splide";
+import { Splide, SplideSlide } from '@splidejs/react-splide'
 
-import values from "@/json/values.json";
-import ValueCard from "@/components/Cards/ValueCard";
-import "@splidejs/splide/dist/css/splide.min.css";
+import ValueCard from '@/components/Cards/ValueCard'
+import values from '@/json/values.json'
+import '@splidejs/splide/dist/css/splide.min.css'
 
 export default function ValuesSlider() {
   return (
     <Splide
       options={{
         perPage: 1,
-        padding: "2rem",
+        padding: '2rem',
         breakpoints: {
           350: {
             perPage: 2,
@@ -24,5 +24,5 @@ export default function ValuesSlider() {
         </SplideSlide>
       ))}
     </Splide>
-  );
+  )
 }

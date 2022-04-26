@@ -200,7 +200,8 @@ header.header {
 
   .bestsellerSplide .splide__track,
   .trendingLinks .splide__track,
-  .productSlider .splide__track {
+  .productSlider .splide__track,
+  .values-slider .splide__track {
     padding-left: 0px !important;
   }
   .product-reviews

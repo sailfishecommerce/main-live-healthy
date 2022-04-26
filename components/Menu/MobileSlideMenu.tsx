@@ -43,8 +43,11 @@ export default function MobileSlideMenu() {
       <style jsx>
         {`
           .links {
-            max-height: 38vh;
+            max-height: 44vh;
             overflow-y: scroll;
+          }
+          .mobileslidemenu {
+            height: 100%;
           }
         `}
       </style>

@@ -31,12 +31,12 @@ export default function ProductRow({ cart }: any) {
         />
       </div>
       <div className="text-content flex flex-col w-3/4">
-        <h5 className="2xl:text-lg text-md">{cart.product.name}</h5>
+        <h5 className="2xl:text-lg md:text-md text-xs">{cart.product.name}</h5>
         <div className="row flex items-center justify-between mt-4">
           <ProductControls cart={cart} />
           <FormattedPrice
             price={cart.priceTotal}
-            className="font-bold text-black text-md"
+            className="font-bold text-black lg:text-md text-xs"
           />
           <button type="button" onClick={removeItemFromCart}>
             <TrashIcon />

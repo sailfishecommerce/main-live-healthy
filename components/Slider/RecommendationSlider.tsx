@@ -11,7 +11,7 @@ export default function RecommendationSlider() {
   return (
     <section className="itemSlider recommendation-slider">
       <div className="mb-2">
-        <h3 className="text-xl font-bold">Recommended for you</h3>
+        <h3 className="lg:text-xl text-xs font-bold">Recommended for you</h3>
       </div>
       <div className="content">
         {status === 'error' ? (

@@ -1,13 +1,13 @@
-import Image from "next/image";
+import Image from 'next/image'
 
 interface valuecardProps {
   content: {
-    icon: string;
-    title: string;
-    text: string;
-    color: string;
-    link?: string;
-  };
+    icon: string
+    title: string
+    text: string
+    color: string
+    link?: string
+  }
 }
 
 export default function ValueCard({ content }: valuecardProps) {
@@ -38,5 +38,5 @@ export default function ValueCard({ content }: valuecardProps) {
         `}
       </style>
     </>
-  );
+  )
 }

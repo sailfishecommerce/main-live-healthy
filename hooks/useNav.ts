@@ -1,20 +1,16 @@
-import { useState } from 'react'
+import { useAppSelector, useAppDispatch } from '@/hooks/useRedux'
+import { updateSearchView, updateMobileMenu } from '@/redux/ui-slice'
 
-import { useMediaQuery } from '@/hooks'
+export default function useNav() {
+  const dispatch = useAppDispatch()
+  const { mobileMenu, showMobileSearch } = useAppSelector((state) => state.UI)
+  const toggleSearch = () => dispatch(updateSearchView())
+  const toggleMobileMenu = () => dispatch(updateMobileMenu())
 
-export default function useNav(): any {
-  const tabWidth = useMediaQuery('(max-width:768px)')
-  const [nav, setNav] = useState<'desktopNav' | 'mobileNav' | undefined>(
-    undefined
-  )
-
-  const showNavMenuDesktop = () => setNav('desktopNav')
-
-  const toggleMobileMenuHandler = () => setNav('mobileNav')
-
-  const navMenuFunction = tabWidth
-    ? toggleMobileMenuHandler
-    : showNavMenuDesktop
-
-  return { navMenuFunction, nav }
+  return {
+    toggleSearch,
+    toggleMobileMenu,
+    mobileMenu,
+    showMobileSearch,
+  }
 }

@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { memo, useState } from 'react'
 
+import MobileSliderControls from '@/components/Slider/MobileSliderControls'
 import { useMediaQuery } from '@/hooks'
 import homepageSliderContent from '@/json/homepage-slider.json'
 import '@splidejs/splide/dist/css/splide.min.css'
@@ -22,7 +23,7 @@ function HomepageSliderComponent() {
   return (
     <section className="mt-6 md:mb-12 mb-8 homepage-slider container mx-auto">
       <Splide onActive={(item) => setActiveIndex(item.index)}>
-        {homepageSliderContent.map((content) => (
+        {homepageSliderContent.map((content, index) => (
           <SplideSlide key={content.title}>
             <div className="content px-4 md:px-0 flex flex-col md:flex-row w-full h-100">
               <div className="text order-2 md:order-1 rounded-b-xl md:rounded-l-3xl bg-gray-100 p-6 md:p-8 w-full md:w-2/5 lg:w-1/4">
@@ -43,6 +44,12 @@ function HomepageSliderComponent() {
                     View collection
                   </button>
                 </Link>
+                {mobileWidth && (
+                  <MobileSliderControls
+                    active={Number(index) + 1}
+                    end={homepageSliderContent.length}
+                  />
+                )}
               </div>
               <div className="image order-1 md:order-2 w-full md:w-4/6 lg:w-3/4">
                 <Image

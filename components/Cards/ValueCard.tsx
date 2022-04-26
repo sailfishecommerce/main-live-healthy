@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-interface valuecardProps {
+interface ValuecardProps {
   content: {
     icon: string
     title: string
@@ -10,7 +10,7 @@ interface valuecardProps {
   }
 }
 
-export default function ValueCard({ content }: valuecardProps) {
+export default function ValueCard({ content }: ValuecardProps) {
   return (
     <>
       <div

@@ -52,8 +52,8 @@ export default function ProductBannerCard({ product, color }: ProductTypes) {
         <h4 className="vendor text-xs md:text-md font-bold pl-2 my-0 py-0 h-3 mb-1 md:mb-0 md:h-5">
           {product.vendor}
         </h4>
-        <div className="product-name-view text-overflow md:mb-6 mb-2">
-          <h3 className="text-xs md:text-md">{product.name}</h3>
+        <div className="product-name-view md:mb-6 mb-2">
+          <h3 className="text-xs md:text-md product-name">{product.name}</h3>
         </div>
         <DynamicFormattedPrice
           price={product.price}

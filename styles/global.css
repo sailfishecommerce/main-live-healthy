@@ -131,12 +131,20 @@ header.header {
 .deletebtn:hover {
   fill: red;
 }
-
+/* product name overflow */
 .text-overflow {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   width: 90%;
+}
+
+.product-name {
+  display: -webkit-box;
+  max-width: 200px;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 /* social-ico ns */
@@ -196,6 +204,15 @@ header.header {
   .best-seller-slider.itemSlider .splide__arrows {
     right: 0%;
     top: -30px;
+  }
+
+  .product-name,
+  .vendor {
+    display: -webkit-box;
+    max-width: 200px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
   .bestsellerSplide .splide__track,

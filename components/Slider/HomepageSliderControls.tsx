@@ -1,19 +1,19 @@
 interface Props {
-  content: {
-    title: string;
-    category: string;
-  }[];
-  activeIndex: number;
+  content: Array<{
+    title: string
+    category: string
+  }>
+  activeIndex: number
 }
 export default function HomepageSliderControls({
   content,
   activeIndex,
 }: Props) {
   return (
-    <div  className="rounded-3xl border border-gray-100 flex items-center bg-white w-11/12 p-8 flex justify-between mx-auto h-36 mb-4 -mt-24 relative">
+    <div className="rounded-3xl border border-gray-100 flex items-center bg-white w-11/12 p-8 flex justify-between mx-auto h-36 mb-4 -mt-24 relative">
       {content.map((item, index) => {
-        const indexValue = Number(index) + 1;
-        const isActive = activeIndex === index ? "active" : "";
+        const indexValue = Number(index) + 1
+        const isActive = activeIndex === index ? 'active' : ''
         return (
           <div
             className={`slider-item splide__pagination__page flex flex-col border-t-2 pt-2 ${isActive}`}
@@ -24,7 +24,7 @@ export default function HomepageSliderControls({
             <h2 className="font-bold my-1">{item.title}</h2>
             <p>{item.category}</p>
           </div>
-        );
+        )
       })}
       <style jsx>
         {`
@@ -50,5 +50,5 @@ export default function HomepageSliderControls({
         `}
       </style>
     </div>
-  );
+  )
 }

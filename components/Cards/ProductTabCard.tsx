@@ -3,6 +3,7 @@ import Link from 'next/link'
 
 import useShoppingCart from '@/hooks/useShoppingCart'
 import type { productType } from '@/typings'
+import FormattedPrice from '../Price/FormattedPrice'
 
 interface Props {
   product: productType
@@ -32,7 +33,7 @@ export default function ProductTabCard({ product }: Props) {
           />
           <button
             type="button"
-            className="add-to-cart text-xs md:text-sm bg-mountain-green mx-auto absolute top-12 py-1 px-2 rounded-md text-white"
+            className="bg-mountain-green text-xs md:text-sm bg-mountain-green mx-auto absolute top-12 py-1 px-2 rounded-md text-white"
             onClick={addToCartHandler}
           >
             Add to cart
@@ -40,15 +41,23 @@ export default function ProductTabCard({ product }: Props) {
         </div>
         <Link passHref href={`/product/${product.slug}`}>
           <a className="content flex flex-col ml-3 w-2/3 md:w-3/5">
-            <h3 className="text-xs md:text-md">{product.name}</h3>
-            <h4 className="text-xs md:text-sm font-bold text-lg">
-              $ {product.price}
-            </h4>
+            <h3 className="text-xs md:text-md product-name mb-3">
+              {product.name}
+            </h3>
+            {product.price && (
+              <FormattedPrice
+                className="font-bold text-xs md:text-sm text-black"
+                price={product.price}
+              />
+            )}
           </a>
         </Link>
       </div>
       <style jsx>
         {`
+          .content {
+            font-family: 'Commissioner', sans-serif;
+          }
           .producttab-card:hover {
             background-color: var(--tan-light-hide);
           }

@@ -6,6 +6,7 @@ const uiSlice = createSlice({
   name: 'UI',
   initialState: {
     slideTab: null,
+    noticebar: true,
     sidebarRight: false,
     loading: false,
     mobileMenu: false,
@@ -30,6 +31,9 @@ const uiSlice = createSlice({
   reducers: {
     toggleSlideTab(state, action) {
       state.slideTab = action.payload
+    },
+    toggleNoticebar(state) {
+      state.noticebar = !state.noticebar
     },
     updateSearchView(state) {
       if (!state.mobileMenu) {
@@ -87,6 +91,7 @@ const uiSlice = createSlice({
 export const {
   toggleNav,
   toggleSlideTab,
+  toggleNoticebar,
   toggleSidebarRight,
   toggleModal,
   authModalForm,

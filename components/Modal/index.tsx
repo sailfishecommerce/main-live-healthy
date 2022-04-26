@@ -26,7 +26,7 @@ export default function Modal({
             role="dialog"
             className="border border-gray-100 justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 focus:outline-none"
           >
-            <div className="relative w-auto my-6 mx-auto max-w-5xl">
+            <div className="appmodal relative w-auto my-6 mx-auto max-w-5xl">
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 <div
                   className={`${headerClassName} header flex items-center p-5`}
@@ -61,6 +61,15 @@ export default function Modal({
             className="opacity-50 fixed inset-0 z-40 bg-black h-full w-full"
             onClick={modalHandler}
           />
+          <style jsx>
+            {`
+              @media (max-width: 768px) {
+                .appmodal {
+                  width: 80%;
+                }
+              }
+            `}
+          </style>
         </>
       ) : null}
     </>

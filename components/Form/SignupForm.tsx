@@ -44,7 +44,7 @@ export default function SignupForm() {
           })}
           <button
             aria-label="Sign up"
-            className="bg-red-500 hover:bg-red-400  mx-auto rounded-md text-white p-2 shadow-lg flex justify-center"
+            className="bg-mountain-green hover:bg-red-400  mx-auto rounded-md text-white p-2 shadow-lg flex justify-center"
             type="submit"
             disabled={formik.isSubmitting}
           >

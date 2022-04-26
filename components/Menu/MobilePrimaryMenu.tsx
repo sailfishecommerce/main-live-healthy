@@ -5,6 +5,7 @@ import { HiMenuAlt4 } from 'react-icons/hi'
 import { IoPersonOutline } from 'react-icons/io5'
 
 import CartIcon from '@/components/Icons/CartIcon'
+import AuthIcons from '@/components/Menu/AuthIcon'
 import { useCart } from '@/hooks'
 import useNav from '@/hooks/useNav'
 import useSlidingTab from '@/hooks/useSlidingTab'
@@ -17,30 +18,31 @@ export default function MobilePrimaryMenu() {
   const { updateSlideTab } = useSlidingTab()
   return (
     <div className="flex items-center w-2/5 justify-between">
-      <span className="mr-4 flex items-center">
+      <span className="mr-1 flex items-center">
+        <AuthIcons />
         <button
           type="button"
           className="cart-icon relative mx-2"
           onClick={() => updateSlideTab('SLIDING-CART')}
         >
-          <CartIcon color="black" />
+          <CartIcon color="#080708" />
           <div className="bg-yellow-500 rounded-full flex items-center text-white justify-center -mt-8 text-xs ml-2 z-5 absolute h-4 w-4">
             {cart?.items?.length}
           </div>
         </button>
         <Link passHref href="/account">
           <button type="button" title="account" className="account">
-            <IoPersonOutline className="hover:text-green-500" size={20} />
+            <IoPersonOutline className="hover:text-green-500" size={16} />
           </button>
         </Link>
         {!showMobileSearch && (
           <button type="button" className="mx-2" onClick={toggleSearch}>
-            <BsSearch />
+            <BsSearch size={16} />
           </button>
         )}
       </span>
       <button type="button" onClick={toggleMobileMenu}>
-        {!mobileMenu ? <HiMenuAlt4 /> : <FaTimes />}
+        {!mobileMenu ? <HiMenuAlt4 size={20} /> : <FaTimes size={16} />}
       </button>
     </div>
   )

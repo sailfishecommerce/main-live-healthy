@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic'
-import { useState } from 'react'
 
 import Noticebar from '@/components/Alerts/Noticebar'
 import Menu from '@/components/Menu'
@@ -23,11 +22,14 @@ const DynamicAllCategoriesDropdownView = dynamic(
 )
 
 export default function Header() {
-  const [showNoticebar, setShowNoticebar] = useState(true)
-  const toggleNoticebar = () => setShowNoticebar(!showNoticebar)
   const { navStyle } = useNavStyle()
   const { mobileMenu } = useNav()
-  const { categoryDropdown, toggleCategoriesDropdown } = useUI()
+  const {
+    categoryDropdown,
+    toggleCategoriesDropdown,
+    noticebar,
+    toggleNoticebarHandler,
+  } = useUI()
 
   const mobileWidth = useMediaQuery('(max-width:768px)')
   const displayShadow = mobileWidth ? 'header' : ''
@@ -36,7 +38,9 @@ export default function Header() {
       <header
         className={`${navStyle} ${displayShadow} bg-white w-full pb-0  md:pb-2`}
       >
-        {showNoticebar && <Noticebar toggleBarVisibility={toggleNoticebar} />}
+        {noticebar && (
+          <Noticebar toggleBarVisibility={toggleNoticebarHandler} />
+        )}
         <Menu />
         {mobileWidth && mobileMenu && <DynamicMobileSlideMenu />}
         {categoryDropdown && (

@@ -8,7 +8,7 @@ interface Props {
 export default function TabHeader({ onClickHandler, tab }: Props) {
   return (
     <ul
-      className="nav nav-tabs flex flex-col md:flex-row flex-wrap list-none border-b-0 pl-0 mb-4"
+      className="tab-header nav nav-tabs flex items-center list-none border-b-0 pl-0 mb-4"
       id="tabs-tabFill"
     >
       <TabList

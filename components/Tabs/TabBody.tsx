@@ -26,6 +26,11 @@ export default function TabBody({ tab }: Props) {
           .auth-tab {
             width: 40vw;
           }
+          @media (max-width: 768px) {
+            .auth-tab {
+              width: 100%;
+            }
+          }
         `}
       </style>
     </div>

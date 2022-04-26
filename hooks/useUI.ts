@@ -1,9 +1,13 @@
 import { useAppSelector } from '@/hooks/useRedux'
 import { useAppDispatch } from '@/redux/store'
-import { toggleAuthModal, updateCategoryDropdown } from '@/redux/ui-slice'
+import {
+  toggleAuthModal,
+  toggleNoticebar,
+  updateCategoryDropdown,
+} from '@/redux/ui-slice'
 
 export default function useUI() {
-  const { categoryDropdown, displayAuthModal } = useAppSelector(
+  const { categoryDropdown, displayAuthModal, noticebar } = useAppSelector(
     (state) => state.UI
   )
   const dispatch = useAppDispatch()
@@ -16,9 +20,15 @@ export default function useUI() {
     dispatch(toggleAuthModal())
   }
 
+  function toggleNoticebarHandler() {
+    dispatch(toggleNoticebar)
+  }
+
   return {
     categoryDropdown,
     displayAuthModal,
+    noticebar,
+    toggleNoticebarHandler,
     toggleCategoriesDropdown,
     toggleAuthModalHandler,
   }

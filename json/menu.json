@@ -7,12 +7,15 @@
     { "slug": "/contact-us", "name": "Contact Us" }
   ],
   "secondaryMenu": [
-    { "slug": "#vitamins-supplements", "name": "Vitamins & Supplements" },
-    { "slug": "#medicines", "name": "Medicines" },
-    { "slug": "#health-personal", "name": "Health & Personal" },
-    { "slug": "#skin-care", "name": "Skin Care" },
-    { "slug": "#hair-care", "name": "Hair Care" },
-    { "slug": "#baby-care", "name": "Baby Care" },
-    { "slug": "#pet-care", "name": "Pet Care" }
+    {
+      "slug": "/collection/vitamins-supplements",
+      "name": "Vitamins & Supplements"
+    },
+    { "slug": "/collection/medicines", "name": "Medicines" },
+    { "slug": "/collection/health-personal", "name": "Health & Personal" },
+    { "slug": "/collection/skin-care", "name": "Skin Care" },
+    { "slug": "/collection/hair-care", "name": "Hair Care" },
+    { "slug": "/collection/baby-care", "name": "Baby Care" },
+    { "slug": "/collection/pet-care", "name": "Pet Care" }
   ]
 }

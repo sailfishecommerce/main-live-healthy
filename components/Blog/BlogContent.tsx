@@ -1,9 +1,9 @@
-import Image from "next/image";
+import Image from 'next/image'
 
-import blogContent from "@/json/blog.json";
+import blogContent from '@/json/blog.json'
 
 export default function BlogContent() {
-  const content = blogContent[0];
+  const content = blogContent[0]
   return (
     <section className="content">
       <div className="row flex flex-col">
@@ -19,7 +19,7 @@ export default function BlogContent() {
         <div className="text">
           <p
             dangerouslySetInnerHTML={{
-              __html: content.section1["text"],
+              __html: content.section1['text'],
             }}
             className="mt-2 mb-4"
           />
@@ -36,7 +36,7 @@ export default function BlogContent() {
         </ul>
         <p
           dangerouslySetInnerHTML={{
-            __html: content.section2["text"],
+            __html: content.section2['text'],
           }}
           className="mt-2 mb-4"
         />
@@ -76,5 +76,5 @@ export default function BlogContent() {
         </ul>
       </div>
     </section>
-  );
+  )
 }

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
@@ -90,10 +91,9 @@ export default function ProductMagnifier({ product }: ProductProps) {
       </div>
       <div className="product-gallery-thumblist h-36 mt-4 flex order-1 flex-wrap w-full lg:order-1">
         {images?.map((image: any, index) => (
-          // eslint-disable-next-line jsx-a11y/anchor-is-valid
           <a
             key={index}
-            className={`items-center mx-auto justify-center flex p-1 md:px-2 cursor-pointer hover:border-green-500 w-1/6 h-36 border-gray-500 ${activethumbnailImg(
+            className={`items-start justify-center flex p-1 md:px-2 cursor-pointer hover:border-green-500 w-1/6 lg:h-24 2xl:lg-36 border-gray-500 ${activethumbnailImg(
               index
             )}`}
             aria-label={product.image_alt_text[index]}

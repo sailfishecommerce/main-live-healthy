@@ -1,7 +1,7 @@
-import blogContent from "@/json/blog.json";
+import blogContent from '@/json/blog.json'
 
 export default function TableofContent() {
-  const content = blogContent[0].tableOfContent;
+  const content = blogContent[0].tableOfContent
   return (
     <div className="border rounded-lg p-6 flex flex-col">
       <h3 className="font-bold">Table Of Content</h3>
@@ -10,7 +10,7 @@ export default function TableofContent() {
         <h5 className="font-bold text-md">{content.title}</h5>
         <ul>
           {content.subtitle.map((item, index) => {
-            return typeof item === "string" ? (
+            return typeof item === 'string' ? (
               <li className="text-sm font-medium my-2" key={index}>
                 {item}
               </li>
@@ -25,10 +25,10 @@ export default function TableofContent() {
                   ))}
                 </ul>
               ))
-            );
+            )
           })}
         </ul>
       </div>
     </div>
-  );
+  )
 }

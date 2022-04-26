@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import PaymentMethodView from '@/components/Payment/PaymentMethodView'
 import ProductPriceView from '@/components/Product/ProductPriceView'
 import SeeMoreProductInfo from '@/components/Product/SeeMoreProductInfo'
@@ -18,7 +20,10 @@ export default function ProductDetail({ product }: any) {
     <div className="lg:w-1/2 w-full flex flex-col justify-start">
       <h3 className="text-2xl font-bold">{product.name}</h3>
       <p>
-        By <span className="text-green-500">{product.vendor}</span>
+        By{' '}
+        <Link passHref href={`/collection/${product.name}`}>
+          <a className="text-green-500">{product.vendor}</a>
+        </Link>
       </p>
       <CustomerReview
         reviews={product?.review_rating}

@@ -1,3 +1,17 @@
+:root {
+  --mountain-green: #95bf11;
+  --mountain-mist: #678800;
+  --tan-hide: #faa916;
+  --tan-deep-hide: #ed9b09;
+  --gray-manatee: #9e9aa6;
+  --gray-lavender: #c3c0c8;
+  --gray-platinum: #e7e6e9;
+  --tan-light-hide: #ffe690;
+  --light-gray: #f7f8fa;
+  --light-red: #fd121240;
+  --light-green: #16a26740;
+}
+
 /* top bar slider */
 .header-slider .splide__arrows {
   display: none;
@@ -159,7 +173,7 @@ ul.ais-RefinementList-list {
 
 ul.ais-Menu-list .ais-Menu-count,
 ul.ais-RefinementList-list .ais-RefinementList-count {
-  background-color: red;
+  background-color: var(--mountain-green);
   padding: 2px;
   color: white;
   border-radius: 5px;
@@ -201,13 +215,13 @@ li.ais-Menu-item.ais-Menu-item--selected {
 
 button.ais-RefinementList-showMore:hover {
   background-color: white;
-  border: 1px solid red;
-  color: red;
+  border: 1px solid var(--mountain-green);
+  color: var(--mountain-green);
 }
 
 button.ais-RefinementList-showMore {
-  border: 1px solid red;
-  background-color: red;
+  border: 1px solid var(--mountain-green);
+  background-color: var(--mountain-green);
   color: white;
   border-radius: 5px;
   margin: 15px 30px 15px 0px;

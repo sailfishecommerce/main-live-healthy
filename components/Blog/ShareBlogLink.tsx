@@ -1,16 +1,16 @@
-import Image from "next/image";
+import Image from 'next/image'
 import {
   BsWhatsapp,
   BsFacebook,
   BsTwitter,
   BsInstagram,
   BsPinterest,
-} from "react-icons/bs";
+} from 'react-icons/bs'
 
-import blogContent from "@/json/blog.json";
+import blogContent from '@/json/blog.json'
 
 export default function ShareBlogLink() {
-  const content = blogContent[0].links;
+  const content = blogContent[0].links
   return (
     <div className="row flex items-center justify-between w-full mb-8">
       <div className="author flex items-center">
@@ -18,7 +18,7 @@ export default function ShareBlogLink() {
         <div className="content ml-3">
           <h6 className="font-bold mb text-sm">Arabella Noakes</h6>
           <p className="font-medium text-xs flex items-center">
-            April 10,2022{" "}
+            April 10,2022{' '}
             <li className="text-gray-400 ml-2">10 minutes read</li>
           </p>
         </div>
@@ -34,5 +34,5 @@ export default function ShareBlogLink() {
         </div>
       </div>
     </div>
-  );
+  )
 }

@@ -1,7 +1,7 @@
 {
   "product": [
     { "name": "Homepage", "link": "/" },
-    { "name": "All", "link": "#products" }
+    { "name": "All", "link": "/collection" }
   ],
   "account": [
     { "name": "Homepage", "link": "/" },

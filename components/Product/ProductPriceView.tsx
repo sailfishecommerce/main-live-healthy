@@ -1,6 +1,5 @@
-import Image from 'next/image'
-
 import CartIcon from '@/components/Icons/CartIcon'
+import CheckIcon from '@/components/Icons/CheckIcon'
 import DeliveryboxIcon from '@/components/Icons/DeliveryboxIcon'
 import LockIcon from '@/components/Icons/LockIcon'
 import FormattedPrice from '@/components/Price/FormattedPrice'
@@ -29,7 +28,7 @@ export default function ProductPriceView({ product }: any) {
         />
         <div className="buy-now-section flex flex-col">
           <div className="row-1 flex flex-col md:flex-row items-start md:items-center justify-between my-3">
-            <div className="button-group flex w-3/5 items-center my-2">
+            <div className="button-group flex 2xl:w-3/5 w-3/4 items-center my-2">
               <button
                 type="button"
                 className="add-to-cart rounded-lg mr-4 flex items-center bg-mountain-green text-white py-1 px-4"
@@ -45,15 +44,10 @@ export default function ProductPriceView({ product }: any) {
                 Buy now
               </button>
             </div>
-            <div className="row flex items-center  w-1/5 justify-between">
+            <div className="row flex items-center  2xl:w-1/5 w-1/4 justify-between">
               <div className="rounded-full border w-full  flex items-center justify-center px-1 my-2 py-1">
                 <div className="w-1/5 flex items-center">
-                  <Image
-                    src="/check-icon-green.png"
-                    alt="many in stock"
-                    height={20}
-                    width={20}
-                  />
+                  <CheckIcon />
                 </div>
                 <p className="font-normal text-sm ml-1">Many in stock</p>
               </div>

@@ -6,7 +6,7 @@ import { useCart } from '@/hooks'
 import useAirwallexPayment from '@/hooks/useAirwallexPayment'
 import { useAppSelector } from '@/hooks/useRedux'
 
-export default function AirwallexPaymentMethod({ isGray }: any) {
+export default function AirwallexPaymentMethod() {
   const { useCartData } = useCart()
   const { paymentForm }: any = useAppSelector((state) => state.payment)
   const { data: cart } = useCartData()
@@ -19,8 +19,6 @@ export default function AirwallexPaymentMethod({ isGray }: any) {
   const { clientSecret, paymentIntentId } = useAppSelector(
     (state) => state.airwallex
   )
-
-  // onClick = { onCheckout };
 
   return (
     <Accordion

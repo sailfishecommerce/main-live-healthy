@@ -1,4 +1,4 @@
-import AirwallexPaymentMethod from '@/components/Payment/AirwallexPaymentMethod'
+// import AirwallexPaymentMethod from '@/components/Payment/AirwallexPaymentMethod'
 import BankTransferPaymentMethod from '@/components/Payment/BankTransferPaymentMethod'
 import PaymentWithStripe from '@/components/Payment/PaymentWithStripe'
 
@@ -12,7 +12,7 @@ export default function SelectPaymentMethod() {
       </div>
       <>
         <PaymentWithStripe title="Stripe" />
-        <AirwallexPaymentMethod />
+        {/* <AirwallexPaymentMethod /> */}
         <BankTransferPaymentMethod />
       </>
     </div>

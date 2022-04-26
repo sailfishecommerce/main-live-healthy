@@ -13,7 +13,7 @@ export default function DeliveryAddress() {
   const dispatch = useAppDispatch()
 
   return (
-    <div className="w-full bg-white h-fullx md:w-1/2 lg:w-1/3 p-4 mx-4 rounded-md">
+    <div className="w-full bg-white h-fullx md:w-1/2 lg:w-1/3 p-4 my-4 md:my-0 lg:mx-4 mx-0 rounded-md">
       <h3 className="font-semibold mb-2 text-xl mr-2">2. Specify Details</h3>
       <p className="mb-4 text-sm">All fields required</p>
 
@@ -33,7 +33,7 @@ export default function DeliveryAddress() {
                 {checkoutFormContent.personalDetails.content.map(
                   (formRow, index) => (
                     <div key={index} className="flex flex-wrap">
-                      {formRow.map((formInput, index) => (
+                      {formRow.map((formInput, index: number) => (
                         <div key={index} className="w-full">
                           {displayFormElement(formInput, formik)}
                         </div>

@@ -11,7 +11,10 @@ const SearchLocationInput = dynamic(
   () =>
     import(
       /* webpackChunkName: 'common' */ '@/components/Form/SearchLocationInput'
-    )
+    ),
+  {
+    ssr: false,
+  }
 )
 
 const Select = dynamic(

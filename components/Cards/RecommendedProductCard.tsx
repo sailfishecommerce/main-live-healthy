@@ -3,6 +3,7 @@ import Link from 'next/link'
 
 import CartIcon from '@/components/Icons/CartIcon'
 import FormattedPrice from '@/components/Price/FormattedPrice'
+import useShoppingCart from '@/hooks/useShoppingCart'
 import type { ProductProps } from '@/types'
 
 interface ProductTypes extends ProductProps {
@@ -17,6 +18,12 @@ export default function RecommendedProductCard({
   smallerImage,
   imageClassName,
 }: ProductTypes) {
+  const { loadingState, addItemToCart } = useShoppingCart()
+
+  loadingState(addItemToCart, `${product.name} added to cart`)
+
+  const addToCartHandler = () => addItemToCart.mutate({ product, quantity: 1 })
+
   const productClassName = className ? className : ''
   const productImageClassName = imageClassName ? imageClassName : ''
   const imageSize = smallerImage
@@ -29,12 +36,12 @@ export default function RecommendedProductCard({
         width: 150,
       }
   return (
-    <Link passHref href={`/product/${product.slug}`}>
-      <a
-        className={`hov hover:shadow-lg mr-4 flex bg-gray-100 rounded-md flex-col hover:rounded-lg product ${productClassName}  p-4 hover:border`}
-        title={product.name}
-      >
-        <div className={`${productImageClassName} mx-auto image-wrapper`}>
+    <div
+      className={`hov hover:shadow-lg mr-4 flex bg-gray-100 rounded-md flex-col hover:rounded-lg product ${productClassName}  p-4 hover:border`}
+      title={product.name}
+    >
+      <div className={`${productImageClassName} mx-auto image-wrapper`}>
+        <Link passHref href={`/product/${product.slug}`}>
           <Image
             src={product.images[0].file.url}
             alt={product.name}
@@ -43,25 +50,26 @@ export default function RecommendedProductCard({
             className="rounded-xl"
             blurDataURL={product.images[0].file.url}
           />
+        </Link>
+      </div>
+      <div className="text">
+        <div className="product-name-view my-2">
+          <h3 className="text-xs product-name">{product.name}</h3>
         </div>
-        <div className="text">
-          <div className="product-name-view my-2">
-            <h3 className="text-xs text-overflow">{product.name}</h3>
-          </div>
-          <div className="price-view my-2 flex items-center justify-between">
-            <FormattedPrice
-              className="text-black font-bold text-sm"
-              price={product.price}
-            />
-            <button
-              type="button"
-              className="bg-mountain-green w-1/4 justify-center text-white px-2 py-1 flex items-center rounded-md"
-            >
-              <CartIcon />
-            </button>
-          </div>
+        <div className="price-view my-2 flex items-center justify-between">
+          <FormattedPrice
+            className="text-black font-bold text-sm"
+            price={product.price}
+          />
+          <button
+            type="button"
+            className="bg-mountain-green w-1/4 justify-center text-white px-2 py-1 flex items-center rounded-md"
+            onClick={addToCartHandler}
+          >
+            <CartIcon />
+          </button>
         </div>
-      </a>
-    </Link>
+      </div>
+    </div>
   )
 }

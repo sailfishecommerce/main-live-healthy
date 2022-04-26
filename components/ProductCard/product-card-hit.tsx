@@ -1,3 +1,4 @@
+import dynamic from 'next/dynamic'
 import { memo, useCallback } from 'react'
 import isEqual from 'react-fast-compare'
 import type { WrappedInsightsClient } from 'react-instantsearch-core'
@@ -6,9 +7,18 @@ import searchInsights from 'search-insights'
 
 import type { ProductTagType } from '@/components/Product/product-tag'
 import type { ProductCardProps } from '@/components/ProductCard/product-card'
-import { ProductCard } from '@/components/ProductCard/product-card'
 import type { ViewMode } from '@/components/ViewModes'
 import type { HitComponentProps, ProductHit } from '@/typings/hits'
+
+const ProductCard = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'ProductCard' */ '@/components/ProductCard/product-card'
+    ),
+  {
+    ssr: false,
+  }
+)
 
 export type ProductCardHitProps = HitComponentProps<ProductHit> & {
   insights: WrappedInsightsClient

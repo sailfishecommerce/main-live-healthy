@@ -49,7 +49,7 @@ export type ProductCardProps = {
   onLinkClick?: MouseEventHandler<HTMLElement>
 }
 
-export function ProductCard({
+export default function ProductCard({
   url = '',
   image,
   tags,

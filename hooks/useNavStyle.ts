@@ -7,7 +7,7 @@ export default function useNavStyle() {
   const scrollGap = tabWidth ? 200 : 350
   const { scroll } = useScroll()
   const scrollUp = Number(scroll) > scrollGap ? true : false
-  const navStyle = scrollUp ? 'fixed top-0 z-50 shadow-lg border-b' : ''
+  const navStyle = scrollUp ? 'fixed top-0 z-40 shadow-lg border-b' : ''
 
   return { navStyle, scrollUp }
 }

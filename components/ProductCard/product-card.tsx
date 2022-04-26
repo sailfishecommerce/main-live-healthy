@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic'
 import type { MouseEventHandler } from 'react'
 import { useCallback } from 'react'
 
+import CartIcon from '@/components/Icons/CartIcon'
 import { ProductColorVariationList } from '@/components/Product/product-color-variation-list'
 import { ProductDescription } from '@/components/Product/product-description'
 import { ProductImage } from '@/components/Product/product-image'
@@ -13,6 +14,7 @@ import type { ProductTagType } from '@/components/Product/product-tag'
 import { ProductTag } from '@/components/Product/product-tag'
 import { ProductTitle } from '@/components/Product/product-title'
 import type { ViewMode } from '@/components/ViewModes'
+import useShoppingCart from '@/hooks/useShoppingCart'
 import { Link } from '@ui/link/link'
 
 const DynamicFormattedPrice = dynamic(
@@ -43,6 +45,7 @@ export type ProductCardProps = {
   reviews?: number
   available?: boolean
   view?: ViewMode
+  product?: any
   onLinkClick?: MouseEventHandler<HTMLElement>
 }
 
@@ -58,11 +61,10 @@ export function ProductCard({
   descriptionSnippeting,
   colors,
   price,
-  originalPrice,
-  currency,
   rating,
   reviews,
   available = true,
+  product,
   view = 'grid',
   onLinkClick,
 }: ProductCardProps) {
@@ -72,6 +74,12 @@ export function ProductCard({
     },
     [onLinkClick]
   )
+
+  const { loadingState, addItemToCart } = useShoppingCart()
+
+  loadingState(addItemToCart, `${title} added to cart`)
+
+  const addToCartHandler = () => addItemToCart.mutate({ product, quantity: 1 })
 
   return (
     <article
@@ -89,7 +97,7 @@ export function ProductCard({
         })}
         onClick={handleLinkClick}
       >
-        <div
+        <a
           className={classNames('relative', {
             'w-32 h-auto flex-shrink-0': view === 'list',
           })}
@@ -107,41 +115,45 @@ export function ProductCard({
               ))}
             </div>
           )}
-        </div>
-
-        <div className="flex flex-col gap-1">
-          <header className="flex flex-col gap-1">
-            {(label || labelHighlighting) && (
-              <ProductLabel highlighting={labelHighlighting}>
-                {label}
-              </ProductLabel>
-            )}
-            {(title || titleHighlighting) && (
-              <ProductTitle highlighting={titleHighlighting}>
-                {title}
-              </ProductTitle>
-            )}
-            {(description || descriptionSnippeting) && view === 'list' && (
-              <ProductDescription snippeting={descriptionSnippeting}>
-                {description}
-              </ProductDescription>
-            )}
-          </header>
-
-          <footer className="flex flex-col gap-1">
-            {colors && <ProductColorVariationList colors={colors} />}
-            {price && (
-              <DynamicFormattedPrice
-                className="font-bold lg:text-xs"
-                price={price}
-              />
-            )}
-            {typeof rating !== 'undefined' && (
-              <ProductRating rating={rating} reviews={reviews} />
-            )}
-          </footer>
-        </div>
+        </a>
+        <header className="flex flex-col gap-1">
+          {(label || labelHighlighting) && (
+            <ProductLabel highlighting={labelHighlighting}>
+              {label}
+            </ProductLabel>
+          )}
+          {(title || titleHighlighting) && (
+            <ProductTitle highlighting={titleHighlighting}>
+              {title}
+            </ProductTitle>
+          )}
+          {(description || descriptionSnippeting) && view === 'list' && (
+            <ProductDescription snippeting={descriptionSnippeting}>
+              {description}
+            </ProductDescription>
+          )}
+        </header>
       </Link>
+      <footer className="flex flex-col gap-1">
+        {colors && <ProductColorVariationList colors={colors} />}
+        {price && (
+          <DynamicFormattedPrice
+            className="font-bold lg:text-xs"
+            price={price}
+          />
+        )}
+        <button
+          type="button"
+          className="bg-mountain-green mt-4 w-full md:w-4/5 justify-center h-8 text-white px-4 py-1 flex items-center mx-auto rounded-md"
+          onClick={addToCartHandler}
+        >
+          <CartIcon />
+          <p className="text-xs md:text-sm">Add to cart</p>
+        </button>
+        {typeof rating !== 'undefined' && (
+          <ProductRating rating={rating} reviews={reviews} />
+        )}
+      </footer>
     </article>
   )
 }

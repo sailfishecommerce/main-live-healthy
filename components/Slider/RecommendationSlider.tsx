@@ -22,7 +22,7 @@ export default function RecommendationSlider() {
           <Splide
             options={{
               perPage: 2,
-              padding: '5rem',
+              padding: '2rem',
               breakpoints: {
                 800: {
                   perPage: 1,

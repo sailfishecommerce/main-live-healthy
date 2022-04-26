@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Product from '@/components/Cards/ProductCard'
 import { useMediaQuery } from '@/hooks'
 import useLiveHealthyProduct from '@/hooks/useLivehealthyProduct'
+import ProductBannerCard from '../Cards/ProductBannerCard'
 
 export default function ProductBanner() {
   const [data, status] = useLiveHealthyProduct()
@@ -44,13 +45,11 @@ export default function ProductBanner() {
           ? 'loading'
           : data &&
             getThreeProducts.map((product: any, index: number) => (
-              <Product
-                row
+              <ProductBannerCard
                 key={index}
                 color="#24BFCE"
                 className="items-center justify-between"
                 product={product}
-                // smallerImage
               />
             ))}
       </div>

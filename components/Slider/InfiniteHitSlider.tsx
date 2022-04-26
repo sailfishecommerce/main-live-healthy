@@ -1,14 +1,24 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { AnimatePresence } from 'framer-motion'
+import dynamic from 'next/dynamic'
 import { memo } from 'react'
 import isEqual from 'react-fast-compare'
 import { connectInfiniteHits } from 'react-instantsearch-dom'
 
-import Product from '@/components/Cards/ProductCard'
 import ProductTags from '@/components/Tag/ProductTags'
 import selectRandomColor from '@/lib/selectRandomColor'
 import { withDebugLayer } from '@dev/debug-layer/debug-layer'
 import '@splidejs/splide/dist/css/splide.min.css'
+
+const Product = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'ProductCard' */ '@/components/Cards/ProductCard'
+    ),
+  {
+    ssr: false,
+  }
+)
 
 interface Props {
   title: string

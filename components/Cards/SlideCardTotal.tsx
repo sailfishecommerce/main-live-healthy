@@ -41,7 +41,7 @@ export default function SlideCardTotal() {
           </div>
           <button
             type="button"
-            className="rounded-xl w-full bg-mountain-green text-white px-4 py-2  text-sm font-medium"
+            className="rounded-xl w-2/5 bg-mountain-green text-white px-4 py-2  text-sm font-medium"
           >
             Add discount code
           </button>

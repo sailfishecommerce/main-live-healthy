@@ -1,22 +1,21 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Image from 'next/image'
 import { useEffect } from 'react'
-import { RiDeleteBin5Line } from 'react-icons/ri'
 
+import TrashIcon from '@/components/Icons/TrashIcon'
+import FormattedPrice from '@/components/Price/FormattedPrice'
 import ProductControls from '@/components/Product/ProductControls'
 import useShoppingCart from '@/hooks/useShoppingCart'
 
 export default function ProductRow({ cart }: any) {
   const { removeCartItem, updateCartItem, loadingState } = useShoppingCart()
+  const removeItemFromCart = () => removeCartItem.mutate(cart)
 
   useEffect(() => {
     loadingState(removeCartItem, `${cart.product.name} removed`)
   }, [removeItemFromCart])
 
   loadingState(updateCartItem, `${cart.product.name} updated`)
-
-  function removeItemFromCart() {
-    removeCartItem.mutate(cart)
-  }
 
   return (
     <div className="flex items-center  border-b p-4 hover:bg-gray-100">
@@ -32,17 +31,15 @@ export default function ProductRow({ cart }: any) {
         />
       </div>
       <div className="text-content flex flex-col w-3/4">
-        <h5 className="text-lg">{cart.product.name}</h5>
+        <h5 className="2xl:text-lg text-md">{cart.product.name}</h5>
         <div className="row flex items-center justify-between mt-4">
           <ProductControls cart={cart} />
-          <h4 className="text-xl">$ {cart.priceTotal}</h4>
+          <FormattedPrice
+            price={cart.priceTotal}
+            className="font-bold text-black text-md"
+          />
           <button type="button" onClick={removeItemFromCart}>
-            <RiDeleteBin5Line
-              title="delete"
-              size={30}
-              className="deletebtn"
-              fill="#9e9aa6"
-            />
+            <TrashIcon />
           </button>
         </div>
       </div>

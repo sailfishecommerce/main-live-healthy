@@ -4,6 +4,7 @@ import Link from 'next/link'
 
 import CartIcon from '@/components/Icons/CartIcon'
 import type { ProductProps } from '@/types'
+import useShoppingCart from '@/hooks/useShoppingCart'
 
 const DynamicFormattedPrice = dynamic(
   () =>
@@ -46,16 +47,22 @@ export default function Product({
         height: 500,
         width: 500,
       }
+
+  const { loadingState, addItemToCart } = useShoppingCart()
+
+  loadingState(addItemToCart, `${product.name} added to cart`)
+
+  const addToCartHandler = () => addItemToCart.mutate({ product, quantity: 1 })
+
   return (
-    <>
+    <div
+      className={`hover:bg-white hover:shadow-lg product hover:rounded-lg product ${productClassName}  ${isRow} p-2 md:p-6 hover:border`}
+    >
       <Link
         passHref
         href={`/product/${product.slug}?queryID=${product.__queryID}`}
       >
-        <a
-          className={`hover:bg-white hover:shadow-lg product hover:rounded-lg product ${productClassName}  ${isRow} p-2 md:p-6 hover:border`}
-          title={product.name}
-        >
+        <a title={product.name}>
           <div
             className={`${productImageClassName} ${imageWidth}  image-wrapper`}
           >
@@ -78,26 +85,21 @@ export default function Product({
               price={product.price}
               className="text-sm md:text-md text-black font-semibold"
             />
-            <button
-              type="button"
-              className="add-to-cart mt-4 w-full md:w-4/5 justify-center h-8 text-white px-4 py-1 flex items-center mx-auto rounded-md"
-            >
-              <CartIcon />
-              <p className="text-xs md:text-sm">Add to cart</p>
-            </button>
           </div>
         </a>
       </Link>
+      <button
+        type="button"
+        className="bg-mountain-green mt-4 w-full md:w-4/5 justify-center h-8 text-white px-4 py-1 flex items-center mx-auto rounded-md"
+        onClick={addToCartHandler}
+      >
+        <CartIcon />
+        <p className="text-xs md:text-sm">Add to cart</p>
+      </button>
       <style jsx>
         {`
           .product {
             font-family: 'Commissioner', sans-serif;
-          }
-          .add-to-cart {
-            background-color: var(--mountain-green);
-          }
-          .add-to-cart:hover {
-            background-color: var(--mountain-mist);
           }
           .vendor {
             border-left: 3px solid ${color};
@@ -111,6 +113,6 @@ export default function Product({
           }
         `}
       </style>
-    </>
+    </div>
   )
 }

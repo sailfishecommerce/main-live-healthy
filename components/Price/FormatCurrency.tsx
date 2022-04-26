@@ -16,6 +16,7 @@ export default function FormatCurrency({
   currency,
   className,
 }: FormatCurrencyProps): JSX.Element {
+  const priceClassName = className ? className : 'text-red-600 md:text-lg'
   const selectedCurrency = currencies?.filter(
     (currencyP: { code: string }) => currencyP.code === currency
   )
@@ -25,7 +26,7 @@ export default function FormatCurrency({
   const productItemPrice = isProduct ? priceRate : nPrice
   const itemPrice = formatPrice(productItemPrice)
   return (
-    <span className={`text-red-600 md:text-lg ${className}`}>
+    <span className={priceClassName}>
       {currencySymbolFormatter(selectedCurrency[0])}
       {itemPrice}
     </span>

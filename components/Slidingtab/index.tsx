@@ -1,29 +1,31 @@
-import { FaTimes } from "react-icons/fa";
-import { PropsWithChildren } from "react";
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+import type { PropsWithChildren } from 'react'
+import { FaTimes } from 'react-icons/fa'
 
-import useSlidingTab from "@/hooks/useSlidingTab";
+import useSlidingTab from '@/hooks/useSlidingTab'
 
 interface Props {
-  buttonColor?: string;
+  buttonColor?: string
 }
 
 export default function SlidingTab({
   children,
   buttonColor,
 }: PropsWithChildren<Props>) {
-  const { updateSlideTab } = useSlidingTab();
-  const defaultButtonColor = buttonColor ? buttonColor : "text-black";
+  const { updateSlideTab } = useSlidingTab()
+  const defaultButtonColor = buttonColor ? buttonColor : 'text-black'
 
   return (
     <aside className="fixed flex z-50 justify-between h-screen items-center w-full right-0 top-0">
       <div
-        onClick={() => updateSlideTab(null)}
         className="overlay lg:w-2/3 w-1/12 flex cursor-pointer h-full"
-      ></div>
+        onClick={() => updateSlideTab(null)}
+      />
       <div className="fixed top-0 items-start bg-white z-50 flex flex-col sliding-tab w-11/12 lg:w-1/3 h-full">
         <button
-          onClick={() => updateSlideTab(null)}
+          type="button"
           className={`${defaultButtonColor} closeButton absolute p-1 top-5 right-10 hover:text-white hover:rounded-full`}
+          onClick={() => updateSlideTab(null)}
         >
           <FaTimes size={20} />
         </button>
@@ -50,5 +52,5 @@ export default function SlidingTab({
         `}
       </style>
     </aside>
-  );
+  )
 }

@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import CartIcon from '@/components/Icons/CartIcon'
+import FormattedPrice from '@/components/Price/FormattedPrice'
 import type { ProductProps } from '@/types'
 
 interface ProductTypes extends ProductProps {
@@ -28,9 +29,9 @@ export default function RecommendedProductCard({
         width: 150,
       }
   return (
-    <Link passHref href={`/products/${product.slug}`}>
+    <Link passHref href={`/product/${product.slug}`}>
       <a
-        className={`hov hover:shadow-lg w-5/6 flex bg-gray-100 rounded-md flex-col hover:rounded-lg product ${productClassName}  p-4 hover:border`}
+        className={`hov hover:shadow-lg mr-4 flex bg-gray-100 rounded-md flex-col hover:rounded-lg product ${productClassName}  p-4 hover:border`}
         title={product.name}
       >
         <div className={`${productImageClassName} mx-auto image-wrapper`}>
@@ -48,25 +49,18 @@ export default function RecommendedProductCard({
             <h3 className="text-xs text-overflow">{product.name}</h3>
           </div>
           <div className="price-view my-2 flex items-center justify-between">
-            <h4 className="font-bold ">${product.price}</h4>
+            <FormattedPrice
+              className="text-black font-bold text-sm"
+              price={product.price}
+            />
             <button
               type="button"
-              className="add-to-cart w-1/4 justify-center text-white px-2 py-1 flex items-center rounded-md"
+              className="bg-mountain-green w-1/4 justify-center text-white px-2 py-1 flex items-center rounded-md"
             >
               <CartIcon />
             </button>
           </div>
         </div>
-        <style jsx>
-          {`
-            .add-to-cart {
-              background-color: var(--mountain-green);
-            }
-            .add-to-cart:hover {
-              background-color: var(--mountain-mist);
-            }
-          `}
-        </style>
       </a>
     </Link>
   )

@@ -16,7 +16,7 @@ export default function ShippingMethodTag({
   shippingMethod,
 }: Props) {
   const selectedMethodStyled =
-    shippingMethod === content.value ? 'bg-gray-400 text-white' : ''
+    shippingMethod === content.value ? 'bg-gray-300 text-white' : ''
   return (
     <button
       type="button"

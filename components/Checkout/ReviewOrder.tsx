@@ -1,5 +1,3 @@
-import { BsArrowRight } from 'react-icons/bs'
-
 import ReviewOrderlist from '@/components/Checkout/ReviewOrderlist'
 import FormattedPrice from '@/components/Price/FormattedPrice'
 import ShippingMethod from '@/components/Shipping/ShippingMethod'
@@ -23,12 +21,6 @@ export default function ReviewOrder() {
         <FormattedPrice className="font-bold" price={cart?.subTotal} />
       </div>
       <ShippingMethod />
-      <button
-        type="button"
-        className="bg-tan-hide flex items-center justify-center font-bold text-lg text-white w-full py-2 rounded-lg my-6"
-      >
-        Next step <BsArrowRight className="ml-3 font-bold mt-2" />
-      </button>
     </div>
   )
 }

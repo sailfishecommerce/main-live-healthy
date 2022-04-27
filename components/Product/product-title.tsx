@@ -12,7 +12,7 @@ export function ProductTitle({
   className = 'small-bold tracking-normal',
 }: ProductTitleProps) {
   return (
-    <h1 className={classNames('text-brand-black', className)}>
+    <h1 className={classNames('text-brand-black product-name', className)}>
       {Highlighting ? <Highlighting /> : children}
     </h1>
   )

@@ -139,7 +139,8 @@ header.header {
   width: 90%;
 }
 
-.product-name {
+.product-name,
+.text-brand-black.product-name span span {
   display: -webkit-box;
   max-width: 200px;
   -webkit-line-clamp: 2;

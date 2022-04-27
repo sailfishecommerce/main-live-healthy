@@ -10,8 +10,8 @@ import { Container } from '@/components/Container'
 import { ProductCardHit } from '@/components/ProductCard/product-card-hit'
 import { viewModeAtom } from '@/components/ViewModes'
 import { configAtom } from '@/config/config'
-import { useIsMounted } from '@/hooks/useIsMounted'
-import { useTailwindScreens } from '@/hooks/useTailwindScreens'
+// import { useIsMounted } from '@/hooks/useIsMounted'
+// import { useTailwindScreens } from '@/hooks/useTailwindScreens'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
 import {
   getServerSidePropsPage,
@@ -36,9 +36,9 @@ export default function Catalog(props: SearchPageLayoutProps) {
   const refinementsLayout = useAtomValue(refinementsLayoutAtom)
   const viewMode = useAtomValue(viewModeAtom)
 
-  const { laptop } = useTailwindScreens()
-  const isMounted = useIsMounted(true)
-  const isLaptop = laptop && isMounted()
+  // const { laptop } = useTailwindScreens()
+  // const isMounted = useIsMounted(true)
+  // const isLaptop = laptop && isMounted()
 
   return (
     <SearchPageLayout {...props}>
@@ -48,11 +48,11 @@ export default function Catalog(props: SearchPageLayoutProps) {
         <QueryRuleBanners limit={1} />
 
         <div className="flex flex-col lg:flex-row">
-          {(refinementsLayout === 'panel' || !isLaptop) && <RefinementsPanel />}
+          {(refinementsLayout === 'panel' || !true) && <RefinementsPanel />}
 
           <div className="grow flex flex-col gap-2 lg:gap-5">
             <RefinementsBar
-              showRefinements={refinementsLayout === 'bar' && isLaptop}
+              showRefinements={refinementsLayout === 'bar' && true}
             />
 
             <NoResultsHandler>

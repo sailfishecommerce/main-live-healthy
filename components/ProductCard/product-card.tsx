@@ -138,7 +138,7 @@ export default function ProductCard({
         {colors && <ProductColorVariationList colors={colors} />}
         {price && (
           <DynamicFormattedPrice
-            className="font-bold lg:text-xs"
+            className="font-bold lg:text-md"
             price={price}
           />
         )}

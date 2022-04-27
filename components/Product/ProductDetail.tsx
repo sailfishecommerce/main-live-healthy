@@ -18,7 +18,7 @@ export default function ProductDetail({ product }: any) {
   }
   return (
     <div className="lg:w-1/2 w-full flex flex-col justify-start">
-      <h3 className="text-2xl font-bold">{product.name}</h3>
+      <h3 className="lg:text-2xl text-lg font-bold">{product.name}</h3>
       <p>
         By{' '}
         <Link passHref href={`/collection/${product.name}`}>

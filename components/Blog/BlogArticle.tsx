@@ -6,7 +6,7 @@ import breadcrumb from '@/json/breadcrumb.json'
 
 export default function BlogArticle() {
   return (
-    <article className="w-3/4 pr-12">
+    <article className="lg:w-3/4 w-full lg:pr-12 px-4">
       <Breadcrumb breadcrumbItems={breadcrumb.blog} />
       <h1 className="blog-title text-3xl mb-8 font-bold">
         The best e-commerce platform in 2022

@@ -42,15 +42,29 @@ function getCategoryMenus(category: string, items: []) {
 function RefinementListMenu({ items, selectedCategory }: any) {
   const menuArray = getCategoryMenus(selectedCategory, items)
   return (
-    <div className="menu mt-3">
+    <div className="menu">
       <h1 className="text-lg mb-4 font-medium">{selectedCategory}</h1>
       <ul className="grid grid-cols-3 gap-2">
         {menuArray.map((item) => (
-          <li className="trendLink hover:text-green-500 my-1" key={item}>
+          <li className="hover:text-green-500 my-1" key={item}>
             {item}
           </li>
         ))}
       </ul>
+      <button
+        type="button"
+        className="bg-mountain-green mt-8 rounded-lg p-2 text-white"
+      >
+        Show all {selectedCategory}
+      </button>
+      <style jsx>
+        {`
+          .menu ul {
+            max-height: 150px;
+            overflow-y: scroll;
+          }
+        `}
+      </style>
     </div>
   )
 }

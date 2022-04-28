@@ -71,6 +71,10 @@ body {
   background-color: var(--mountain-mist);
 }
 
+.bg-mountain-mist:hover {
+  background-color: var(--mountain-green);
+}
+
 .bg-tan-hide {
   background-color: var(--tan-hide);
 }

@@ -76,6 +76,13 @@ export function Loader({ layout = 'overlay' }: LoaderProps) {
           <div className="loading-spinner-dot"></div>
         </div>
       )}
+      <style jsx>
+        {`
+          .loading-spinner-dot {
+            background-color: var(--mountain-mist);
+          }
+        `}
+      </style>
     </div>
   )
 }

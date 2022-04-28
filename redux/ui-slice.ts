@@ -12,6 +12,7 @@ const uiSlice = createSlice({
     mobileMenu: false,
     modal: false,
     categoryDropdown: false,
+    selectedCategory: 'Beauty',
     showNav: false,
     showMobileSearch: false,
     authModal: 'AUTHFORM',
@@ -34,6 +35,9 @@ const uiSlice = createSlice({
     },
     toggleNoticebar(state) {
       state.noticebar = !state.noticebar
+    },
+    updatedSelectedCategory(state, action) {
+      state.selectedCategory = action.payload
     },
     updateSearchView(state) {
       if (!state.mobileMenu) {
@@ -104,6 +108,7 @@ export const {
   checkoutModal,
   updateMobileMenu,
   displayCheckoutModalAction,
+  updatedSelectedCategory,
 } = uiSlice.actions
 
 export default uiSlice.reducer

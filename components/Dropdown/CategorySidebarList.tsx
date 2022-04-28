@@ -1,34 +1,55 @@
-import Link from "next/link";
-
-import allCategoryContent from "@/json/allcategories-dropdown.json";
-import useCategoryData from "@/hooks/useCategoryData";
+import useCategoryData from '@/hooks/useCategoryData'
+import { useAppSelector } from '@/hooks/useRedux'
+import allCategoryContent from '@/json/allcategories-dropdown.json'
+import { useAppDispatch } from '@/redux/store'
+import { updatedSelectedCategory } from '@/redux/ui-slice'
 
 type categoryType = {
-  slug: string;
-  name: string;
-};
-
-interface categoryProps {
-  categories: Array<categoryType>;
-  title: string;
-  className?: string;
+  slug: string
+  name: string
 }
 
-function CategoryLinks({ categories, title, className }: categoryProps) {
-  const categoryLinkClassName = className ? className : "";
+interface CategoryProps {
+  categories: categoryType[]
+  title: string
+  className?: string
+}
+
+function CategoryLinks({ categories, title, className }: CategoryProps) {
+  const categoryLinkClassName = className ? className : ''
+  const dispatch = useAppDispatch()
+  const { selectedCategory } = useAppSelector((state) => state.UI)
+
+  const selectCategoryHandler = (category: string) => {
+    if (title === 'Categories') {
+      dispatch(updatedSelectedCategory(category))
+    }
+  }
+
   return (
     <>
       <h1 className="text-xl font-bold my-2">{title}</h1>
       <ul
         className={`${categoryLinkClassName} border-gray-200 pb-2 category-list border-r mr-8 w-full`}
       >
-        {categories?.map((category: categoryType, index: number) => (
-          <li key={index} className="sidebar-list py-1 my-1 w-full">
-            <Link href={category.slug} passHref>
-              <a className="text-black">{category.name}</a>
-            </Link>
-          </li>
-        ))}
+        {categories?.map((category: categoryType, index: number) => {
+          const activeCategory =
+            category.name === selectedCategory ? 'active' : ''
+          return (
+            <li
+              key={index}
+              className={`${activeCategory} sidebar-list px-2 py-1 my-1 w-full`}
+            >
+              <button
+                type="button"
+                className="text-black"
+                onClick={() => selectCategoryHandler(category.name)}
+              >
+                {category.name}
+              </button>
+            </li>
+          )
+        })}
       </ul>
       <style jsx>
         {`
@@ -36,7 +57,11 @@ function CategoryLinks({ categories, title, className }: categoryProps) {
             max-height: 200px;
             overflow-y: scroll;
           }
-          .sidebar-list:hover {
+          .sidebar-list.active button {
+            font-weight: bold;
+          }
+          .sidebar-list:hover,
+          .sidebar-list.active {
             background-color: #ffe690;
           }
           .sidebar-list:hover a {
@@ -45,14 +70,13 @@ function CategoryLinks({ categories, title, className }: categoryProps) {
         `}
       </style>
     </>
-  );
+  )
 }
 
 export default function CategorySidebarList() {
-  const [data, status] = useCategoryData();
+  const [data, status] = useCategoryData()
 
-  const categories = status === "success" ? data?.results.slice(12, 20) : [];
-
+  const categories = status === 'success' ? data?.results.slice(12, 20) : []
   return (
     <div className="category-sidebar flex flex-col w-1/5">
       <CategoryLinks
@@ -62,5 +86,5 @@ export default function CategorySidebarList() {
       />
       <CategoryLinks categories={allCategoryContent.sidebar} title="Section" />
     </div>
-  );
+  )
 }

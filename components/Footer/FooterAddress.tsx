@@ -21,7 +21,7 @@ export default function FooterAddress() {
           </h6>
         </div>
       </div>
-      <div className="text text-sm w-full md:w-2/3">
+      <div className="text text-sm w-full">
         <p>
           We are an online business operating out of Sydney, Australia. All
           products are shipped weekly from Sydney to Hong Kong. No minimum

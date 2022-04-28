@@ -60,7 +60,7 @@ export default class MyDocument extends Document {
             href="/static/icons/safari-pinned-tab.svg"
             color="#5468ff"
           />
-          <link rel="manifest" href="/static/icons/manifest.json" />
+          <link rel="manifest" href="/site.webmanifest" />
 
           {/* OG meta */}
           <meta property="og:type" content="website" />

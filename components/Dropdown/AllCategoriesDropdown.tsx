@@ -6,24 +6,12 @@ export default function AllCategoriesDropdown() {
   const { toggleCategoriesDropdown } = useUI()
 
   return (
-    <>
-      <button
-        className="allCategories relative flex items-center font-bold hover:bg-green-500 text-white rounded-md px-2 py-1"
-        type="button"
-        onClick={toggleCategoriesDropdown}
-      >
-        <HiMenuAlt4 className="mr-2" /> Categories
-      </button>
-      <style jsx>
-        {`
-          .allCategories {
-            background-color: var(--mountain-green);
-          }
-          .allCategories:hover {
-            background-color: var(--mountain-mist);
-          }
-        `}
-      </style>
-    </>
+    <button
+      className="bg-mountain-green relative flex items-center font-bold hover:bg-green-500 text-white rounded-md px-2 py-1"
+      type="button"
+      onClick={toggleCategoriesDropdown}
+    >
+      <HiMenuAlt4 className="mr-2" /> Categories
+    </button>
   )
 }

@@ -16,11 +16,11 @@ export default function ProductReview() {
       <div className="trustmate-reviews flex flex-col md:flex-row items-center">
         <div className="trust-mate md:w-1/5 w-full">
           <Script
-            src="https://trustmate.io/api/widget/f28f0f77-0b7d-4700-a67f-2b9ae13a7a1d/script?product=tu_wstaw_identyfikator_produktu"
+            src="https://trustmate.io/api/widget/0be02447-549c-4b3d-96b1-3afbef251b11/script"
             strategy="lazyOnload"
             id="trustmate-widget-script-1"
           />
-          <div id="f28f0f77-0b7d-4700-a67f-2b9ae13a7a1d"></div>
+          <div id="0be02447-549c-4b3d-96b1-3afbef251b11"></div>
         </div>
         <div className="review-bar md:w-4/5 w-full flex flex-col">
           {reviewsStat.map((review) => (

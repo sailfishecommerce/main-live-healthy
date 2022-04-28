@@ -35,6 +35,11 @@ export default function SlidingInformation({ product }: Props) {
           )
         })}
       </div>
+      <h1 className="font-bold text-xl m-2 mx-6">
+        {slidingTabInfo === 'STORAGE INSTUCTIONS'
+          ? 'Storage Instructions'
+          : slidingTabInfo === 'Directions' && 'Directions'}
+      </h1>
       <div
         className="text-content sliding-tab bg-white px-6 pb-16"
         dangerouslySetInnerHTML={{

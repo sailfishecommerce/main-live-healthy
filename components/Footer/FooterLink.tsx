@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import FooterLinkGroup from '@/components/Footer/FooterLinkGroup'
 import useCategoryData from '@/hooks/useCategoryData'
@@ -10,7 +10,13 @@ export default function FooterLink() {
 
   const shortLinkArray = categories.slice(0, 5)
   const [viewMore, setViewMore] = useState(true)
-  const [linkArray, setLinkArray] = useState(shortLinkArray)
+  const [linkArray, setLinkArray] = useState([])
+
+  useEffect(() => {
+    if (linkArray.length === 0) {
+      setLinkArray(shortLinkArray)
+    }
+  }, [])
 
   const tagText = !viewMore ? 'Show Less' : 'View All'
 

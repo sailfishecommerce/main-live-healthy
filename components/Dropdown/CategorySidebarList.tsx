@@ -28,7 +28,7 @@ function CategoryLinks({ categories, title, className }: CategoryProps) {
 
   return (
     <>
-      <h1 className="text-xl font-bold my-2">{title}</h1>
+      <h1 className="text-2xl font-medium my-2">{title}</h1>
       <ul
         className={`${categoryLinkClassName} border-gray-200 pb-2 category-list border-r mr-8 w-full`}
       >

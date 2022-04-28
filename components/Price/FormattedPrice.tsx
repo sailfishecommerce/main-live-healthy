@@ -9,13 +9,11 @@ import { useAppSelector } from '@/hooks/useRedux'
 
 interface FormattedPriceProps {
   price: number | string
-  isProduct?: boolean
   className?: string
 }
 
 function FormattedPriceComponent({
   price,
-  isProduct,
   className,
 }: FormattedPriceProps): JSX.Element {
   const { listEnabledCurrencies } = useCurrency()
@@ -34,7 +32,6 @@ function FormattedPriceComponent({
       ) : (
         <FormatCurrency
           price={price}
-          isProduct={isProduct}
           currencies={currencyList}
           currency={currency}
           className={className}

@@ -33,10 +33,10 @@ const RefinementsPanel = dynamic<any>(() =>
 export default function Catalog(props: SearchPageLayoutProps) {
   const { breadcrumbAttributes, refinementsLayoutAtom } =
     useAtomValue(configAtom)
-  console.log('breadcrumbAttributes', breadcrumbAttributes)
+  // console.log('breadcrumbAttributes', breadcrumbAttributes)
   const refinementsLayout = useAtomValue(refinementsLayoutAtom)
   const viewMode = useAtomValue(viewModeAtom)
-  console.log('refinementsLayout', refinementsLayout)
+  // console.log('refinementsLayout', refinementsLayout)
   // const { laptop } = useTailwindScreens()
   // const isMounted = useIsMounted(true)
   // const isLaptop = laptop && isMounted()

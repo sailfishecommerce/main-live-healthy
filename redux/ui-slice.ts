@@ -11,6 +11,7 @@ const uiSlice = createSlice({
     loading: false,
     mobileMenu: false,
     modal: false,
+    slidingTabInfo: 'Product Information',
     categoryDropdown: false,
     selectedCategory: 'Beauty',
     showNav: false,
@@ -35,6 +36,9 @@ const uiSlice = createSlice({
     },
     toggleNoticebar(state) {
       state.noticebar = !state.noticebar
+    },
+    updateSlidingTabInfo(state, action) {
+      state.slidingTabInfo = action.payload
     },
     updatedSelectedCategory(state, action) {
       state.selectedCategory = action.payload
@@ -97,6 +101,7 @@ export const {
   toggleSlideTab,
   toggleNoticebar,
   toggleSidebarRight,
+  updateSlidingTabInfo,
   toggleModal,
   authModalForm,
   updateLoadingAction,

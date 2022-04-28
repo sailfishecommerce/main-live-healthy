@@ -49,9 +49,11 @@ export default function ProductPriceView({ product }: any) {
                   </button>
                 </Link>
               </div>
-              <div className="lg:rounded-full hidden md:flex lg:border w-1/2 lg:w-1/5 flex items-center justify-center px-1 my-2 py-1">
+              <div className="lg:rounded-full hidden md:flex lg:border w-1/2 lg:w-1/4 px-2 lg:py-3 flex items-center justify-center px-1 my-2">
                 <CheckIcon />
-                <p className="font-normal text-sm ml-1">Many in stock</p>
+                <p className="font-normal text-sm text-xs ml-1">
+                  Many in stock
+                </p>
               </div>
             </div>
             <div className="flex items-center w-full justify-between">

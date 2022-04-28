@@ -78,7 +78,9 @@ body {
 .bg-tan-hide {
   background-color: var(--tan-hide);
 }
-
+.bg-tan-hide:hover {
+  background-color: var(--tan-deep-hide);
+}
 .bg-gray-manatee {
   background-color: var(--gray-manatee);
 }

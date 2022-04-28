@@ -18,13 +18,12 @@ export default function ProductdetailsView({ product }: any) {
             <div className="mx-0 md:mx-2">
               <FormattedPrice
                 price={productToView.price}
-                isProduct
                 className="text-2xl"
               />
             </div>
             {product.rrp && (
               <del>
-                <FormattedPrice price={productToView.rrp} isProduct />
+                <FormattedPrice price={productToView.rrp} />
               </del>
             )}
           </div>

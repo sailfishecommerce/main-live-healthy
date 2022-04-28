@@ -32,18 +32,10 @@ export default function ProductListView({ product }: any) {
       </h3>
       <div className="flex justify-between">
         <div className="flex flex-col items">
-          <FormattedPrice
-            isProduct
-            price={product.price}
-            className="text-md font-bold"
-          />
+          <FormattedPrice price={product.price} className="text-md font-bold" />
           {product.rrp && (
             <del>
-              <FormattedPrice
-                isProduct
-                price={product.rrp}
-                className="text-sm"
-              />
+              <FormattedPrice price={product.rrp} className="text-sm" />
             </del>
           )}
         </div>

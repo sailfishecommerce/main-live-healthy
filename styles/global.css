@@ -201,6 +201,13 @@ header.header {
   background-color: var(--light-red);
 }
 
+/* sliding information tab */
+.text-content.sliding-tab div h2 {
+  font-weight: bold;
+  margin: 10px 0px;
+  font-size: 20px;
+}
+
 @media (max-width: 768px) {
   .itemSlider .splide__arrows {
     right: 0px;

@@ -3,7 +3,6 @@ import { formatPrice } from '@/lib/formatPrice'
 
 interface FormatCurrencyProps {
   price: any | number | string
-  isProduct?: boolean
   className?: string
   currencies: any[]
   currency: any
@@ -11,7 +10,6 @@ interface FormatCurrencyProps {
 
 export default function FormatCurrency({
   price,
-  isProduct,
   currencies,
   currency,
   className,
@@ -23,8 +21,7 @@ export default function FormatCurrency({
   const nPrice = Number(price)
   const priceRate = nPrice * selectedCurrency[0].rate
 
-  const productItemPrice = isProduct ? priceRate : nPrice
-  const itemPrice = formatPrice(productItemPrice)
+  const itemPrice = formatPrice(priceRate)
   return (
     <span className={priceClassName}>
       {currencySymbolFormatter(selectedCurrency[0])}

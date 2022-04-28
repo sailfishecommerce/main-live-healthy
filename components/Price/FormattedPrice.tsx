@@ -3,10 +3,9 @@ import { memo } from 'react'
 import { useQuery } from 'react-query'
 
 import { LineLoader } from '@/components/Loader/ProductsLoader'
+import FormatCurrency from '@/components/Price/FormatCurrency'
 import useCurrency from '@/hooks/useCurrency'
 import { useAppSelector } from '@/hooks/useRedux'
-
-import FormatCurrency from './FormatCurrency'
 
 interface FormattedPriceProps {
   price: number | string

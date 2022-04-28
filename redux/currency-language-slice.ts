@@ -1,21 +1,22 @@
-import { createSlice } from "@reduxjs/toolkit";
+/* eslint-disable no-param-reassign */
+import { createSlice } from '@reduxjs/toolkit'
 
 const currencyLanguageSlice = createSlice({
-  name: "currency-Language",
+  name: 'currency-Language',
   initialState: {
-    language: "En",
-    currency: "HKD",
+    language: 'En',
+    currency: 'HKD',
   },
-  reducers: {    
+  reducers: {
     updateCurrency(state, action) {
-      state.currency = action.payload;
+      state.currency = action.payload
     },
     updateLanguage(state, action) {
-      state.language = action.payload;
+      state.language = action.payload
     },
   },
-});
+})
 
-export const { updateLanguage, updateCurrency } = currencyLanguageSlice.actions;
+export const { updateLanguage, updateCurrency } = currencyLanguageSlice.actions
 
-export default currencyLanguageSlice.reducer;
+export default currencyLanguageSlice.reducer

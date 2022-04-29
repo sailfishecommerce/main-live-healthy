@@ -4,7 +4,7 @@ import { Configure } from 'react-instantsearch-dom'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
 import {
   getServerSidePropsPage,
-  SearchPageLayout
+  SearchPageLayout,
 } from '@/layouts/search-page-layout'
 
 export default function SearchPage(props: SearchPageLayoutProps) {

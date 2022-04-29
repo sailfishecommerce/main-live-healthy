@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 import algoliasearch from 'algoliasearch/lite'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -17,14 +18,10 @@ export default function HomepageSearch() {
     `${process.env.NEXT_PUBLIC_INSTANTSEARCH_APP_ID}`,
     `${process.env.NEXT_PUBLIC_INSTANTSEARCH_SEARCH_API_KEY}`
   )
-
   function showSearchResult(e: any) {
-    if (e.currentTarget.value?.length <= 1) {
+    if (e.target.value?.length >= 1) {
       setSearching(true)
     }
-    const newLocal = () =>
-      e.currentTarget.value?.length === 0 && setSearching(false)
-    newLocal()
   }
 
   return (
@@ -37,9 +34,11 @@ export default function HomepageSearch() {
           <Configure hitsPerPage={3} />
           <SearchBox
             showLoadingIndicator
-            autoFocus={false}
+            autoFocus={true}
             className="w-full bg-gray-100"
+            searchAsYouType={true}
             onChange={showSearchResult}
+            onReset={() => setSearching(false)}
           />
         </div>
         {searching && (

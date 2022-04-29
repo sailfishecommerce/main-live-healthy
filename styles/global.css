@@ -154,7 +154,7 @@ header.header {
   overflow: hidden;
 }
 
-/* social-ico ns */
+/* social-icons */
 .icon:hover {
   opacity: 0.5;
 }
@@ -214,6 +214,11 @@ header.header {
 input.ais-SearchBox-input {
   background-color: #f3f4f6;
   border: none;
+}
+
+span.ais-SearchBox-loadingIndicator {
+  margin-top: 10px;
+  margin-left: 5px;
 }
 
 @media (max-width: 768px) {

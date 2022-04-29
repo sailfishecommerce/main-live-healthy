@@ -1,6 +1,6 @@
 import AllCategoriesDropdown from '@/components/Dropdown/AllCategoriesDropdown'
 import PageLink from '@/components/Menu/PageLink'
-import Searchbar from '@/components/Search/Searchbar'
+import HomepageSearch from '@/components/Search/HomepageSearch'
 import useCategoryData from '@/hooks/useCategoryData'
 
 export default function SecondaryMenu() {
@@ -8,7 +8,7 @@ export default function SecondaryMenu() {
 
   const categories = status === 'success' ? data?.results.slice(12, 20) : []
   return (
-    <div className="md:flex items-center justify-between py-2">
+    <div className="md:flex items-center relative justify-between py-2">
       <AllCategoriesDropdown />
       <ul className="lg:flex items-center w-2/3 justify-between">
         {categories.length > 1
@@ -22,7 +22,7 @@ export default function SecondaryMenu() {
             ))
           : null}
       </ul>
-      <Searchbar />
+      <HomepageSearch />
     </div>
   )
 }

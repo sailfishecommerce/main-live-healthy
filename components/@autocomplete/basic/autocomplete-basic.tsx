@@ -21,7 +21,6 @@ import { Autocomplete } from '@autocomplete/_default/autocomplete'
 import { popularSearchesPluginCreator } from '@autocomplete/plugins/popular-searches/popular-searches'
 import { recentSearchesPluginCreator } from '@autocomplete/plugins/recent-searches'
 import { searchButtonPluginCreator } from '@autocomplete/plugins/search-button'
-import { voiceCameraIconsPluginCreator } from '@autocomplete/plugins/voice-camera-icons'
 import { withDebugLayer } from '@dev/debug-layer/debug-layer'
 
 export type AutocompleteBasicProps = AutocompleteProps & {
@@ -109,7 +108,6 @@ function AutocompleteBasicComponent({
       }),
       animatedPlaceholderPlugin,
       createClearLeftPlugin({ initialQuery }),
-      voiceCameraIconsPluginCreator(),
       searchButtonPluginCreator({
         initialQuery,
         onClick({ state }) {

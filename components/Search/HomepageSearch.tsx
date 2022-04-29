@@ -1,9 +1,13 @@
-import { getAlgoliaResults } from '@algolia/autocomplete-js'
-import algoliasearch from 'algoliasearch'
+import algoliasearch from 'algoliasearch/lite'
+import {
+  InstantSearch,
+  Hits,
+  SearchBox,
+  Highlight,
+  Configure,
+} from 'react-instantsearch-dom'
 
 import '@algolia/autocomplete-theme-classic'
-import AlgoliaAutocomplete from '@/components/Search/AlgoliaAutoComplete'
-import { SearchItem } from '@/components/Search/SearchItem'
 
 export default function HomepageSearch() {
   const searchClient = algoliasearch(
@@ -12,33 +16,33 @@ export default function HomepageSearch() {
   )
 
   return (
-    <div className="search flex bg-gray-100 rounded-md py-2 px-4 items-center">
-      <AlgoliaAutocomplete
-        openOnFocus={true}
-        getSources={({ query }: any) => [
-          {
-            sourceId: 'products',
-            // console.log('query',query),
-            getItems() {
-              return getAlgoliaResults({
-                searchClient,
-                queries: [
-                  {
-                    indexName: 'New_Livehealthy_products_index',
-                    query,
-                  },
-                ],
-              })
-            },
-            templates: {
-              item({ item, components }: any) {
-                console.log('item', item)
-                return <SearchItem hit={item} components={components} />
-              },
-            },
-          },
-        ]}
-      />
+    <InstantSearch
+      indexName="New_Livehealthy_products_index"
+      searchClient={searchClient}
+    >
+      <div className="search relative flex bg-gray-100 rounded-md py-2 px-4 items-center">
+        <Configure hitsPerPage={6} />
+        <SearchBox />
+        <div className="hits absolute">
+          <Hits hitComponent={Hit} />
+        </div>
+      </div>
+    </InstantSearch>
+  )
+}
+
+function Hit(props: any) {
+  console.log('props', props)
+  return (
+    <div>
+      {/* <img src={props.hit.image} align="left" alt={props.hit.name} /> */}
+      <div className="hit-name">
+        <Highlight attribute="name" hit={props.hit} />
+      </div>
+      <div className="hit-description">
+        <Highlight attribute="description" hit={props.hit} />
+      </div>
+      <div className="hit-price">${props.hit.price}</div>
     </div>
   )
 }

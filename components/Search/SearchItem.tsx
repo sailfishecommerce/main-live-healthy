@@ -1,9 +1,11 @@
-export function SearchItem({ hit, components }: any) {
+export default function SearchItem({ hit, components }: any) {
+  console.log('hit', hit)
   return (
     <a href={hit.url} className="aa-ItemLink">
       <div className="aa-ItemContent">
         <div className="aa-ItemTitle">
-          <components.Highlight hit={hit} attribute="name" />
+          {components && <components.Highlight hit={hit} attribute="name" />}
+          <h1>{hit.name}</h1>
         </div>
       </div>
     </a>

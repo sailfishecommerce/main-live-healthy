@@ -19,7 +19,7 @@ export default function AlgoliaAutocomplete(props: any) {
     return () => {
       search.destroy()
     }
-  }, [props])
+  }, [])
 
   return <div ref={containerRef} />
 }

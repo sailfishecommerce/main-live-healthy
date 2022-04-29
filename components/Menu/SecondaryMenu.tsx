@@ -1,6 +1,6 @@
 import AllCategoriesDropdown from '@/components/Dropdown/AllCategoriesDropdown'
 import PageLink from '@/components/Menu/PageLink'
-import HomepageSearch from '@/components/Search/HomepageSearch'
+import Searchbar from '@/components/Search/Searchbar'
 import useCategoryData from '@/hooks/useCategoryData'
 
 export default function SecondaryMenu() {
@@ -22,7 +22,7 @@ export default function SecondaryMenu() {
             ))
           : null}
       </ul>
-      <HomepageSearch />
+      <Searchbar />
     </div>
   )
 }

@@ -1,4 +1,5 @@
 import algoliasearch from 'algoliasearch/lite'
+import Link from 'next/link'
 import { useState } from 'react'
 import {
   InstantSearch,
@@ -33,17 +34,25 @@ export default function HomepageSearch() {
         searchClient={searchClient}
       >
         <div className="search relative flex bg-gray-100 w-1/5 rounded-md py-2 px-4 items-center">
-          <Configure hitsPerPage={4} />
+          <Configure hitsPerPage={3} />
           <SearchBox
             showLoadingIndicator
             autoFocus={false}
+            className="w-full bg-gray-100"
             onChange={showSearchResult}
-            className="w-full"
           />
         </div>
         {searching && (
           <div className="hits absolute top-16 w-1/2 right-0 p-4 bg-white z-50 rounded-md shadow-lg border">
             <Hits hitComponent={SearchbarHit} />
+            <Link passHref href={`/search/S{}`}>
+              <button
+                className="bg-mountain-green text-white mt-4 p-2 px-3 rounded-md"
+                type="button"
+              >
+                View more
+              </button>
+            </Link>
           </div>
         )}
       </InstantSearch>

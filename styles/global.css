@@ -210,6 +210,12 @@ header.header {
   font-size: 20px;
 }
 
+/* algolia search input */
+input.ais-SearchBox-input {
+  background-color: #f3f4f6;
+  border: none;
+}
+
 @media (max-width: 768px) {
   .itemSlider .splide__arrows {
     right: 0px;

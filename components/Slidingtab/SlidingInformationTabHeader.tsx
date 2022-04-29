@@ -10,7 +10,7 @@ export default function SlidingInformationTabHeader() {
         return (
           <button
             type="button"
-            key={index}
+            key={title}
             className={`${tabStyle} font-bold text-md 2xl:text-lg 2xl:mr-4 mx-2`}
           >
             {title}

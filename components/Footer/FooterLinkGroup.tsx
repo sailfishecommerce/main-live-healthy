@@ -49,8 +49,8 @@ export default function FooterLinkGroup({
           </button>
         )}
       </span>
-      {linkGroup.map((item: footerLinkType, index: number) => (
-        <FooterLinkItem item={item} key={index} />
+      {linkGroup.map((item: footerLinkType) => (
+        <FooterLinkItem item={item} key={item.slug} />
       ))}
     </ul>
   )

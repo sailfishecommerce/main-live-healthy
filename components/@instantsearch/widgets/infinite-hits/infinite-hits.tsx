@@ -6,6 +6,7 @@ import type { InfiniteHitsProvided } from 'react-instantsearch-core'
 import { connectInfiniteHits } from 'react-instantsearch-dom'
 
 import type { ViewMode } from '@/components/ViewModes'
+import selectRandomColor from '@/lib/selectRandomColor'
 import { withDebugLayer } from '@dev/debug-layer/debug-layer'
 import { LoadLess } from '@instantsearch/widgets/load-less/load-less'
 import { LoadMore } from '@instantsearch/widgets/load-more/load-more'
@@ -82,7 +83,11 @@ function InfiniteHitsComponent({
               variants={listItemVariants}
               custom={i % hitsPerPage}
             >
-              <HitComponent hit={hit} viewMode={viewMode} />
+              <HitComponent
+                hit={hit}
+                viewMode={viewMode}
+                color={selectRandomColor()}
+              />
             </m.li>
           ))}
         </AnimatePresence>
@@ -93,6 +98,8 @@ function InfiniteHitsComponent({
   )
 }
 
-export const InfiniteHits = connectInfiniteHits<any, any>(
+const InfiniteHits = connectInfiniteHits<any, any>(
   memo(withDebugLayer(InfiniteHitsComponent, 'InfiniteHitsWidget'), isEqual)
 )
+
+export default InfiniteHits

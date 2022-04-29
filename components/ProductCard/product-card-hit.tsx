@@ -118,7 +118,7 @@ export function ProductCardHitShowcase(props: ProductCardHitProps) {
     <ProductCardHit
       {...props}
       highlighting={false}
-      insightsEventName="Showcase: Product Clicked"
+      insightsEventName="Showcase:Product Clicked"
     />
   )
 }

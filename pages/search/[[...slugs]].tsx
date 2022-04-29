@@ -4,11 +4,11 @@ import dynamic from 'next/dynamic'
 import { Configure } from 'react-instantsearch-dom'
 
 import { Breadcrumb } from '@/components/@instantsearch/widgets/breadcrumb/breadcrumb'
-import { InfiniteHits } from '@/components/@instantsearch/widgets/infinite-hits/infinite-hits'
 import { NoResultsHandler } from '@/components/@instantsearch/widgets/no-results-handler/no-results-handler'
 import { QueryRuleBanners } from '@/components/@instantsearch/widgets/query-rule-banners/query-rule-banners'
+import ProductHitCard from '@/components/Cards/ProductHitCard'
 import { Container } from '@/components/Container'
-import { ProductCardHit } from '@/components/ProductCard/product-card-hit'
+// import { ProductCardHit } from '@/components/ProductCard/product-card-hit'
 import { viewModeAtom } from '@/components/ViewModes'
 import { configAtom } from '@/config/config'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
@@ -21,13 +21,23 @@ import {
 // import { useTailwindScreens } from '@/hooks/useTailwindScreens'
 
 export type SearchPageProps = SearchPageLayoutProps & {
-  vendor: string
+  searchQuery: string
 }
 
 const RefinementsBar = dynamic<any>(() =>
   import(
     /* webpackChunkName: 'search' */ '@/components/RefinementsBar/refinements-bar'
   ).then((mod) => mod.RefinementsBar)
+)
+
+const InfiniteHits = dynamic<any>(
+  () =>
+    import(
+      /* webpackChunkName: 'InfiniteHits' */ '@/components/@instantsearch/widgets/infinite-hits/infinite-hits'
+    ),
+  {
+    ssr: false,
+  }
 )
 
 const RefinementsPanel = dynamic<any>(() =>
@@ -56,7 +66,7 @@ export default function SearchPage({ searchQuery, ...props }: SearchPageProps) {
         <Configure query={searchQuery} />
         <div className="container flex items-center mx-auto justify-between">
           <h1 className="font-bold text-xl">
-            Showing {totalHits} {result} for &#34;{hitsObj.query}&#34;
+            Showing {totalHits} {result} for &#34;{hitsObj?.query}&#34;
           </h1>
           <h1></h1>
         </div>
@@ -75,7 +85,7 @@ export default function SearchPage({ searchQuery, ...props }: SearchPageProps) {
 
               <NoResultsHandler>
                 <InfiniteHits
-                  hitComponent={ProductCardHit}
+                  hitComponent={ProductHitCard}
                   viewMode={viewMode}
                   showLess={true}
                   showMore={true}

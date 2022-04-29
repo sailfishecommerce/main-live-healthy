@@ -150,9 +150,6 @@ export default function ProductCard({
           <CartIcon />
           <p className="text-xs md:text-sm">Add to cart</p>
         </button>
-        {typeof rating !== 'undefined' && (
-          <ProductRating rating={rating} reviews={reviews} />
-        )}
       </footer>
     </article>
   )

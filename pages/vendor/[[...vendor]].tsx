@@ -4,7 +4,7 @@ import dynamic from 'next/dynamic'
 import { Configure } from 'react-instantsearch-dom'
 
 import { Breadcrumb } from '@/components/@instantsearch/widgets/breadcrumb/breadcrumb'
-import { InfiniteHits } from '@/components/@instantsearch/widgets/infinite-hits/infinite-hits'
+import InfiniteHits from '@/components/@instantsearch/widgets/infinite-hits/infinite-hits'
 import { NoResultsHandler } from '@/components/@instantsearch/widgets/no-results-handler/no-results-handler'
 import { QueryRuleBanners } from '@/components/@instantsearch/widgets/query-rule-banners/query-rule-banners'
 import { Container } from '@/components/Container'
@@ -37,7 +37,6 @@ const RefinementsPanel = dynamic<any>(() =>
 )
 
 export default function VendorPage({ vendor, ...props }: SearchPageProps) {
-  const hit = props?.resultsState?.rawResults[0]?.hits[0]
   const { breadcrumbAttributes, refinementsLayoutAtom } =
     useAtomValue(configAtom)
   // console.log('breadcrumbAttributes', breadcrumbAttributes)

@@ -9,9 +9,11 @@ export default function CustomerReview({ reviews, ratings }: Props) {
   return (
     <div className="customer-review flex items-center my-2">
       {ratings && <Ratings ratings={ratings} />}
-      <p className="ml-2 mountain-mist">
-        {reviews} customer&#39;s {reviewText}
-      </p>
+      {reviews > 0 && (
+        <p className="ml-2 mountain-mist">
+          {reviews} customer&#39;s {reviewText}
+        </p>
+      )}
     </div>
   )
 }

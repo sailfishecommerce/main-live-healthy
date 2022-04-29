@@ -36,7 +36,7 @@ const RefinementsPanel = dynamic<any>(() =>
   ).then((mod) => mod.RefinementsPanel)
 )
 
-export default function SearchPage({ searchQuery, ...props }: SearchPageProps) {
+export default function VendorPage({ vendor, ...props }: SearchPageProps) {
   const hit = props?.resultsState?.rawResults[0]?.hits[0]
   const { breadcrumbAttributes, refinementsLayoutAtom } =
     useAtomValue(configAtom)
@@ -51,7 +51,7 @@ export default function SearchPage({ searchQuery, ...props }: SearchPageProps) {
   return (
     <SearchPageLayout {...props}>
       <Container className="mt-1">
-        <Configure query={searchQuery} />
+        <Configure filters={`vendor:${vendor}`} />
         <Container className="flex flex-col gap-2 container lg:mx-auto lg:mb-10 lg:mt-10 lg:gap-10">
           <Breadcrumb attributes={breadcrumbAttributes} />
 
@@ -84,7 +84,7 @@ export default function SearchPage({ searchQuery, ...props }: SearchPageProps) {
 export const getServerSideProps = (
   context: GetServerSidePropsContext | any
 ) => {
-  return getServerSidePropsPage(SearchPage, context, {
-    props: { searchQuery: context.params?.slugs[0] },
+  return getServerSidePropsPage(VendorPage, context, {
+    props: { vendor: context.params?.vendor[0] },
   })
 }

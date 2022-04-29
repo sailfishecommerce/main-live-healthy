@@ -23,7 +23,7 @@ export default function ProductDetail({ product }: any) {
       <h3 className="lg:text-2xl text-lg font-bold">{product.name}</h3>
       <p>
         By{' '}
-        <Link passHref href={`/collection/${product.name}`}>
+        <Link passHref href={`/vendor/${product.vendor}`}>
           <a className="text-green-500">{product.vendor}</a>
         </Link>
       </p>

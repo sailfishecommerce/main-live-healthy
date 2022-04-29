@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-expressions */
 import algoliasearch from 'algoliasearch/lite'
 import Link from 'next/link'
-import { useState } from 'react'
+import { memo, useState } from 'react'
 import {
   InstantSearch,
   Hits,
@@ -11,9 +10,9 @@ import {
 
 import SearchbarHit from '@/components/Search/SearchbarHit'
 
-export default function HomepageSearch() {
+function HomepageComponent() {
   const [searching, setSearching] = useState(false)
-
+  const [query, setQuery] = useState('')
   const searchClient = algoliasearch(
     `${process.env.NEXT_PUBLIC_INSTANTSEARCH_APP_ID}`,
     `${process.env.NEXT_PUBLIC_INSTANTSEARCH_SEARCH_API_KEY}`
@@ -21,6 +20,7 @@ export default function HomepageSearch() {
   function showSearchResult(e: any) {
     if (e.target.value?.length >= 1) {
       setSearching(true)
+      setQuery(e.target.value)
     }
   }
 
@@ -44,7 +44,7 @@ export default function HomepageSearch() {
         {searching && (
           <div className="hits absolute top-16 w-1/2 right-0 p-4 bg-white z-50 rounded-md shadow-lg border">
             <Hits hitComponent={SearchbarHit} />
-            <Link passHref href={`/search/S{}`}>
+            <Link passHref href={`/search/${query}`}>
               <button
                 className="bg-mountain-green text-white mt-4 p-2 px-3 rounded-md"
                 type="button"
@@ -58,3 +58,6 @@ export default function HomepageSearch() {
     </>
   )
 }
+
+const HomepageSearch = memo(HomepageComponent)
+export default HomepageSearch

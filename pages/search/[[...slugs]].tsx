@@ -37,7 +37,9 @@ const RefinementsPanel = dynamic<any>(() =>
 )
 
 export default function SearchPage({ searchQuery, ...props }: SearchPageProps) {
-  const hit = props?.resultsState?.rawResults[0]?.hits[0]
+  const hitsObj = props?.resultsState?.rawResults[0]
+  const totalHits = props?.resultsState?.rawResults[0].nbHits
+  const result = totalHits > 1 ? 'results' : 'result'
   const { breadcrumbAttributes, refinementsLayoutAtom } =
     useAtomValue(configAtom)
   // console.log('breadcrumbAttributes', breadcrumbAttributes)
@@ -52,6 +54,12 @@ export default function SearchPage({ searchQuery, ...props }: SearchPageProps) {
     <SearchPageLayout {...props}>
       <Container className="mt-1">
         <Configure query={searchQuery} />
+        <div className="container flex items-center mx-auto justify-between">
+          <h1 className="font-bold text-xl">
+            Showing {totalHits} {result} for &#34;{hitsObj.query}&#34;
+          </h1>
+          <h1></h1>
+        </div>
         <Container className="flex flex-col gap-2 container lg:mx-auto lg:mb-10 lg:mt-10 lg:gap-10">
           <Breadcrumb attributes={breadcrumbAttributes} />
 
@@ -60,7 +68,7 @@ export default function SearchPage({ searchQuery, ...props }: SearchPageProps) {
           <div className="flex flex-col lg:flex-row">
             {(refinementsLayout === 'panel' || true) && <RefinementsPanel />}
 
-            <div className="grow flex flex-col gap-2 lg:gap-5">
+            <div className="grow flex flex-col gap-2 lg:gap-4">
               <RefinementsBar
                 showRefinements={refinementsLayout === 'bar' && true}
               />

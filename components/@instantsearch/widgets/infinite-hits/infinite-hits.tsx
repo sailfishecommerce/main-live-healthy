@@ -46,7 +46,7 @@ function InfiniteHitsComponent({
   showMore = false,
   viewMode = 'grid',
   animation = true,
-  gridClassName = 'grid-cols-2 lg:grid-cols-5',
+  gridClassName = 'grid-cols-2 lg:grid-cols-4 w-full',
   listClassName = 'lg:grid-cols-1',
 }: InfiniteHitsProps) {
   const [hitsPerPage, setHitsPerPage] = useState(0)

@@ -21,7 +21,7 @@ export default function useUI() {
   }
 
   function toggleNoticebarHandler() {
-    dispatch(toggleNoticebar)
+    dispatch(toggleNoticebar())
   }
 
   return {

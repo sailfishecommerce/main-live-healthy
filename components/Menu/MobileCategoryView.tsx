@@ -6,7 +6,7 @@ import { updateMobileSlideMenuView } from '@/redux/ui-slice'
 
 export default function MobileCategoryView() {
   const dispatch = useAppDispatch()
-  const displayMenu = () => dispatch(updateMobileSlideMenuView('SUBMENU'))
+  const displayMenu = () => dispatch(updateMobileSlideMenuView('LINK'))
   return (
     <div className="submenus px-4">
       <div className="back-to-menu border-b border-gray-300 pb-4">

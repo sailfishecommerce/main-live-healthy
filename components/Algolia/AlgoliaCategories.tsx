@@ -69,6 +69,10 @@ function RefinementListMenu({ items, selectedCategory }: any) {
             .menu {
               height: 100vh;
             }
+            .menu ul {
+              max-height: 66%;
+              overflow-y: scroll;
+            }
           }
         `}
       </style>

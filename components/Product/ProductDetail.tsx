@@ -18,12 +18,15 @@ export default function ProductDetail({ product }: any) {
     dispatch(updateActiveProduct(product))
     dispatch(updateSlidingTabInfo(infoType))
   }
+  const productVendorLink = product.vendor.includes(' ')
+    ? `/search/${product.vendor}`
+    : `/vendor/${product.vendor}`
   return (
     <div className="lg:w-1/2 w-full flex flex-col justify-start">
       <h3 className="lg:text-2xl text-lg font-bold">{product.name}</h3>
       <p>
         By{' '}
-        <Link passHref href={`/vendor/${product.vendor}`}>
+        <Link passHref href={productVendorLink}>
           <a className="text-green-500">{product.vendor}</a>
         </Link>
       </p>

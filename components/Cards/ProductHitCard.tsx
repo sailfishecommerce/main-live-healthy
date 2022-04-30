@@ -5,16 +5,6 @@ import CartIcon from '@/components/Icons/CartIcon'
 import FormattedPrice from '@/components/Price/FormattedPrice'
 import useShoppingCart from '@/hooks/useShoppingCart'
 
-// const DynamicFormattedPrice = dynamic(
-//   () =>
-//     import(
-//       /* webpackChunkName: 'FormattedPrice' */ '@/components/Price/FormattedPrice'
-//     ),
-//   {
-//     ssr: false,
-//   }
-// )
-
 interface ProductHitTypes {
   row?: boolean
   hit?: any
@@ -53,7 +43,9 @@ export default function ProductHitCard({
   loadingState(addItemToCart, `${hit.name} added to cart`)
 
   const addToCartHandler = () => addItemToCart.mutate({ hit, quantity: 1 })
-
+  const productVendorLink = hit.vendor.includes(' ')
+    ? `/search/${hit.vendor}`
+    : `/vendor/${hit.vendor}`
   return (
     <div
       className={`hover:bg-white hover:shadow-lg product hover:rounded-lg product ${productClassName}  ${isRow} p-2 md:p-6 hover:border`}
@@ -72,9 +64,11 @@ export default function ProductHitCard({
             />
           </div>
           <div className={`${isRowText} ${imageWidth} text`}>
-            <h4 className="vendor text-xs md:text-md font-bold pl-2 my-0 py-0 h-3 mb-1 md:mb-0 md:h-5">
-              {hit.vendor}
-            </h4>
+            <Link passHref href={productVendorLink}>
+              <a className="vendor text-xs md:text-md font-bold pl-2 my-0 py-0 h-3 mb-1 md:mb-0 md:h-5">
+                {hit.vendor}
+              </a>
+            </Link>
             <div className="product-name-view md:mb-8 mb-2">
               <h3 className="text-xs md:text-md product-name">{hit.name}</h3>
             </div>

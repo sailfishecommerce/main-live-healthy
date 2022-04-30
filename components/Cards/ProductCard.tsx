@@ -53,7 +53,9 @@ export default function Product({
   loadingState(addItemToCart, `${product.name} added to cart`)
 
   const addToCartHandler = () => addItemToCart.mutate({ product, quantity: 1 })
-
+  const productVendorLink = product.vendor.includes(' ')
+    ? `/search/${product.vendor}`
+    : `/vendor/${product.vendor}`
   return (
     <div
       className={`hover:bg-white hover:shadow-lg product hover:rounded-lg product ${productClassName}  ${isRow} p-2 md:p-6 hover:border`}
@@ -75,9 +77,11 @@ export default function Product({
             />
           </div>
           <div className={`${isRowText} ${imageWidth} text`}>
-            <h4 className="vendor text-xs md:text-md font-bold pl-2 my-0 py-0 h-3 mb-1 md:mb-0 md:h-5">
-              {product.vendor}
-            </h4>
+            <Link passHref href={productVendorLink}>
+              <a className="vendor text-xs md:text-md font-bold pl-2 my-0 py-0 h-3 mb-1 md:mb-0 md:h-5">
+                {product.vendor}
+              </a>
+            </Link>
             <div className="product-name-view md:mb-8 mb-2">
               <h3 className="text-xs md:text-md product-name">
                 {product.name}

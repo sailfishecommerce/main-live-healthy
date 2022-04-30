@@ -18,7 +18,7 @@ export default function ProductDetail({ product }: any) {
     dispatch(updateActiveProduct(product))
     dispatch(updateSlidingTabInfo(infoType))
   }
-  const productVendorLink = product.vendor.includes(' ')
+  const productVendorLink = product?.vendor?.includes(' ')
     ? `/search/${product.vendor}`
     : `/vendor/${product.vendor}`
   return (

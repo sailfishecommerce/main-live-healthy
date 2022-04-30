@@ -19,7 +19,6 @@ export default function TrendingLinkSlider() {
           breakpoints: {
             500: {
               perPage: 3,
-              padding: '1rem',
             },
             800: {
               perPage: 3,

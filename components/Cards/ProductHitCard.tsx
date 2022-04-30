@@ -43,7 +43,7 @@ export default function ProductHitCard({
   loadingState(addItemToCart, `${hit.name} added to cart`)
 
   const addToCartHandler = () => addItemToCart.mutate({ hit, quantity: 1 })
-  const productVendorLink = hit.vendor.includes(' ')
+  const productVendorLink = hit?.vendor?.includes(' ')
     ? `/search/${hit.vendor}`
     : `/vendor/${hit.vendor}`
   return (

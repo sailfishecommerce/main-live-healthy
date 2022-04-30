@@ -44,7 +44,7 @@ function RefinementListMenu({ items, selectedCategory }: any) {
   return (
     <div className="menu">
       <h1 className="text-lg mb-4 font-medium">{selectedCategory}</h1>
-      <ul className="grid grid-cols-3 gap-2">
+      <ul className="flex flex-col lg:grid lg:grid-cols-3 lg:gap-2">
         {menuArray.map((item) => (
           <li className="hover:text-green-500 my-1" key={item}>
             {item}
@@ -59,9 +59,16 @@ function RefinementListMenu({ items, selectedCategory }: any) {
       </button>
       <style jsx>
         {`
-          .menu ul {
-            max-height: 150px;
-            overflow-y: scroll;
+          @media (min-width: 768px) {
+            .menu ul {
+              max-height: 150px;
+              overflow-y: scroll;
+            }
+          }
+          @media (max-width: 768px) {
+            .menu {
+              height: 100vh;
+            }
           }
         `}
       </style>
@@ -85,7 +92,6 @@ export default function AlgoliaCategories() {
       indexName="New_Livehealthy_products_index"
       searchClient={searchClient}
     >
-      {/* <Configure filters={`hierarchical_categories.lvl1`} /> */}
       <CustomRefinementListMenu
         attribute="hierarchical_categories.lvl1"
         limit={100}

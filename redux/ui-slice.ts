@@ -10,6 +10,7 @@ const uiSlice = createSlice({
     sidebarRight: false,
     loading: false,
     mobileMenu: false,
+    mobileSlideMenuView: 'LINK',
     modal: false,
     slidingTabInfo: 'Product Information',
     categoryDropdown: false,
@@ -36,6 +37,12 @@ const uiSlice = createSlice({
     },
     toggleNoticebar(state) {
       state.noticebar = !state.noticebar
+    },
+    updateMobileSlideMenuView(
+      state,
+      action: PayloadAction<'LINK' | 'SUBMENU'>
+    ) {
+      state.mobileSlideMenuView = action.payload
     },
     updateSlidingTabInfo(state, action) {
       state.slidingTabInfo = action.payload
@@ -103,6 +110,7 @@ export const {
   toggleSidebarRight,
   updateSlidingTabInfo,
   toggleModal,
+  updateMobileSlideMenuView,
   authModalForm,
   updateLoadingAction,
   quickViewModal,

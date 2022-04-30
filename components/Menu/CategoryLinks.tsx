@@ -1,8 +1,8 @@
-import Link from "next/link";
+import Link from 'next/link'
 
 interface Props {
-  title: string;
-  linkArray: Array<{ slug?: string; name: string }>;
+  title: string
+  linkArray: Array<{ slug?: string; name: string }>
 }
 
 export default function CategoryLinks({ title, linkArray }: Props) {
@@ -16,13 +16,13 @@ export default function CategoryLinks({ title, linkArray }: Props) {
               key={item.slug}
               className="sidebar-list py-1 md:p-2 my-1 md:my-2 w-full"
             >
-              <Link href={item.slug} passHref>
+              <Link passHref href={item.slug}>
                 <a className="text-black">{item.name}</a>
               </Link>
             </li>
-          ) : null;
+          ) : null
         })}
       </ul>
     </div>
-  );
+  )
 }

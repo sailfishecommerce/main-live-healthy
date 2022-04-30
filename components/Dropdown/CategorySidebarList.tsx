@@ -1,8 +1,12 @@
+import { useMediaQuery } from '@/hooks'
 import useCategoryData from '@/hooks/useCategoryData'
 import { useAppSelector } from '@/hooks/useRedux'
 import allCategoryContent from '@/json/allcategories-dropdown.json'
 import { useAppDispatch } from '@/redux/store'
-import { updatedSelectedCategory } from '@/redux/ui-slice'
+import {
+  updatedSelectedCategory,
+  updateMobileSlideMenuView,
+} from '@/redux/ui-slice'
 
 type categoryType = {
   slug: string
@@ -19,8 +23,12 @@ function CategoryLinks({ categories, title, className }: CategoryProps) {
   const categoryLinkClassName = className ? className : ''
   const dispatch = useAppDispatch()
   const { selectedCategory } = useAppSelector((state) => state.UI)
+  const mobileWidth = useMediaQuery('(max-width:768px)')
 
   const selectCategoryHandler = (category: string) => {
+    if (mobileWidth) {
+      dispatch(updateMobileSlideMenuView('SUBMENU'))
+    }
     if (title === 'Categories') {
       dispatch(updatedSelectedCategory(category))
     }
@@ -28,17 +36,17 @@ function CategoryLinks({ categories, title, className }: CategoryProps) {
 
   return (
     <>
-      <h1 className="text-2xl font-medium my-2">{title}</h1>
+      <h1 className="lg:text-2xl text-lg font-medium my-2">{title}</h1>
       <ul
         className={`${categoryLinkClassName} border-gray-200 pb-2 category-list border-r mr-8 w-full`}
       >
-        {categories?.map((category: categoryType, index: number) => {
+        {categories?.map((category: categoryType) => {
           const activeCategory =
             category.name === selectedCategory ? 'active' : ''
           return (
             <li
-              key={index}
-              className={`${activeCategory} sidebar-list px-2 py-1 my-1 w-full`}
+              key={category.name}
+              className={`${activeCategory} sidebar-list px-2 py-1 lg:my-1 my-0 w-full`}
             >
               <button
                 type="button"
@@ -78,7 +86,7 @@ export default function CategorySidebarList() {
 
   const categories = status === 'success' ? data?.results.slice(12, 20) : []
   return (
-    <div className="category-sidebar flex flex-col w-1/5">
+    <div className="category-sidebar flex flex-col lg:w-1/5 w-3/4">
       <CategoryLinks
         className="border-b"
         categories={categories}

@@ -3,12 +3,11 @@ import { useCallback } from 'react'
 import type { InfiniteHitsProvided } from 'react-instantsearch-core'
 
 import { Button } from '@/components/@ui/button/button'
-import type { ProductCardHitProps } from '@/components/ProductCard/product-card-hit'
 import { searchStateAtom } from '@instantsearch/hooks/useUrlSync'
 import { isSearchStalledAtom } from '@instantsearch/widgets/virtual-state-results/virtual-state-results'
 
 export type LoadLessProps = Pick<
-  InfiniteHitsProvided<ProductCardHitProps>,
+  InfiniteHitsProvided<any>,
   'hasPrevious' | 'refinePrevious'
 >
 

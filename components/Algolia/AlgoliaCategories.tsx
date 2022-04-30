@@ -73,6 +73,9 @@ function RefinementListMenu({ items, selectedCategory }: any) {
               max-height: 66%;
               overflow-y: scroll;
             }
+            .bg-mountain-green {
+              width: 100%;
+            }
           }
         `}
       </style>

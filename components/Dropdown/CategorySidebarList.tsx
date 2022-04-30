@@ -86,13 +86,28 @@ export default function CategorySidebarList() {
 
   const categories = status === 'success' ? data?.results.slice(12, 20) : []
   return (
-    <div className="category-sidebar flex flex-col lg:w-1/5 w-3/4">
-      <CategoryLinks
-        className="border-b"
-        categories={categories}
-        title="Categories"
-      />
-      <CategoryLinks categories={allCategoryContent.sidebar} title="Section" />
-    </div>
+    <>
+      <div className="category-sidebar flex flex-col lg:w-1/5 w-3/4">
+        <CategoryLinks
+          className="border-b"
+          categories={categories}
+          title="Categories"
+        />
+        <CategoryLinks
+          categories={allCategoryContent.sidebar}
+          title="Section"
+        />
+      </div>
+      <style jsx>
+        {`
+          @media (max-width: 768px) {
+            .category-sidebar {
+              max-height: 38%;
+              overflow-y: scroll;
+            }
+          }
+        `}
+      </style>
+    </>
   )
 }

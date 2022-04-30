@@ -30,7 +30,7 @@ function HomepageComponent() {
         indexName="New_Livehealthy_products_index"
         searchClient={searchClient}
       >
-        <div className="search relative flex bg-gray-100 w-1/5 rounded-md py-2 px-4 items-center">
+        <div className="search relative flex bg-gray-100 lg:w-1/5 w-full rounded-md py-2 px-4 items-center">
           <Configure hitsPerPage={3} />
           <SearchBox
             showLoadingIndicator
@@ -42,7 +42,7 @@ function HomepageComponent() {
           />
         </div>
         {searching && (
-          <div className="hits absolute top-16 w-1/2 right-0 p-4 bg-white z-50 rounded-md shadow-lg border">
+          <div className="hits absolute top-16 lg:w-1/2 w-full right-0 p-4 bg-white z-50 rounded-md shadow-lg border">
             <Hits hitComponent={SearchbarHit} />
             <Link passHref href={`/search/${query}`}>
               <button

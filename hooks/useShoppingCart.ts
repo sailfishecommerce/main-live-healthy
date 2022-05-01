@@ -1,8 +1,7 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable no-unused-expressions */
-import useMutationAction from './useMutationAction'
-
-import { useToast } from '.'
+import useMutationAction from '@/hooks/useMutationAction'
+import useToast from '@/hooks/useToast'
 
 export default function useShoppingCart() {
   const { useRemoveFromCart, useAddItemToCartModal, useUpdateCartItem } =

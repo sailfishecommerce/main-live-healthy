@@ -1,12 +1,16 @@
+/* eslint-disable jsx-a11y/no-onchange */
 import Image from 'next/image'
 import { FaTimes } from 'react-icons/fa'
 import { GiCancel } from 'react-icons/gi'
 
 import FormattedPrice from '@/components/Price/FormattedPrice'
+import useShoppingCart from '@/hooks/useShoppingCart'
 
 const selectOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 export default function ReviewOrderlist({ content }: any) {
+  const { updateCartItem, loadingState } = useShoppingCart()
+  loadingState(updateCartItem, `${content.product.name} quantity updated`)
   return (
     <div className="relative my-2 flex items-center hover:bg-gray-100 border border-b border-gray-100 justify-between p-4">
       <Image
@@ -24,9 +28,17 @@ export default function ReviewOrderlist({ content }: any) {
         </span>
         <div className="quantity">
           <span className="font-medium">Qty: </span>{' '}
-          <select className="w-12 border border-gray-100 p-1 mx-1 text-center font-bold">
-            {selectOptions.map((item, index) => (
-              <option key={index} value={item}>
+          <select
+            className="w-12 border border-gray-100 p-1 mx-1 text-center font-bold"
+            onChange={(e) =>
+              updateCartItem.mutate({
+                product: content,
+                quantity: e.target.value,
+              })
+            }
+          >
+            {selectOptions.map((item) => (
+              <option key={item} value={item}>
                 {item}
               </option>
             ))}

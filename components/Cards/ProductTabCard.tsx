@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import FormattedPrice from '@/components/Price/FormattedPrice'
 import useShoppingCart from '@/hooks/useShoppingCart'
 import type { productType } from '@/typings'
-import FormattedPrice from '../Price/FormattedPrice'
 
 interface Props {
   product: productType

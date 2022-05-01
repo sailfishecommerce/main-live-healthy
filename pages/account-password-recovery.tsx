@@ -1,39 +1,25 @@
 import dynamic from 'next/dynamic'
-import { useState } from 'react'
+import Image from 'next/image'
 
 import Pagetitle from '@/components/Header/page-title'
 import passwordResetForm from '@/json/password-reset.json'
 
-type stateType = { status: any; email?: string }
-
 const AccountRecoveryform = dynamic(
   () =>
     import(
-      /* webpackChunkName: 'common' */ '@/components/Form/AccountRecoveryForm'
+      /* webpackChunkName: 'AccountRecoveryForm' */ '@/components/Form/AccountRecoveryForm'
     )
 )
 
 export default function AccountPasswordRecovery() {
-  const [recoveryStatus] = useState<stateType | null>(null)
-
   return (
     <>
       <Pagetitle title="Recover your password with ease" />
-      <div className="container py-4 py-lg-5 my-4">
-        {recoveryStatus?.email && (
-          <div
-            data-aos="zoom-in-up"
-            className="alert bg-danger text-white text-center col-8 mb-5 mx-auto"
-          >
-            Reset password link has been sent to{' '}
-            <span className="font-bold">{recoveryStatus?.email}</span>, please
-            check your e-mail
-          </div>
-        )}
-        <div className="row justify-center">
-          <div className="col-lg-8 col-md-10">
-            <h2 className="h3 mb-4">Forgot your password?</h2>
-            <p className="fs-md">
+      <div className="container flex py-4 py-lg-5 my-4 mx-auto">
+        <div className="content flex mx-auto justify-center bg-gray-100 p-12 w-1/2">
+          <div className="flex mx-auto justify-center flex-col">
+            <h2 className="h3 mb-2 text-xl font-bold">Forgot your password?</h2>
+            <p className="my-2">
               Change your password in three easy steps. This helps to keep your
               new password secure.
             </p>
@@ -47,6 +33,15 @@ export default function AccountPasswordRecovery() {
             </ol>
             <AccountRecoveryform />
           </div>
+        </div>
+        <div className="w-1/2">
+          <Image
+            src="/forgotPassword.webp"
+            alt="account-recovery"
+            layout="responsive"
+            width={500}
+            height={500}
+          />
         </div>
       </div>
     </>

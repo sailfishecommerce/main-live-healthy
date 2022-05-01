@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
@@ -15,11 +16,14 @@ export default function PageLink({ menuItem, className, link }: Props) {
   const linkClassName = className
     ? className
     : 'font-semibold text-sm md:text-lg md:font-light'
-  const activeLinkStyle =
-    router?.query?.slugs[0].includes(menuItem.slug) ||
-    router.route.includes(menuItem.slug)
+  const activeLinkStyle = router.query.slugs
+    ? router?.query?.slugs[0]?.includes(menuItem.slug) ||
+      router.route.includes(menuItem.slug)
       ? 'mountain-green'
       : ''
+    : router.pathname.includes(menuItem.slug)
+    ? 'mountain-green'
+    : ''
   const pageLink = link ? `/${link}/${menuItem.slug}` : menuItem.slug
   return (
     <li className="md:mx-2 mx-0 mr-4" key={menuItem.slug}>

@@ -10,12 +10,14 @@ import useShippingPayment from '@/hooks/useShippingPayment'
 import checkoutFormContent from '@/json/checkout-form.json'
 import { updatePaymentForm } from '@/redux/payment-slice'
 
+import { AddressInputGroup } from '../Form/FormFields'
+
 export default function DeliveryAddress() {
   const { formValues } = useShippingPayment()
   const dispatch = useAppDispatch()
 
   return (
-    <div className="w-full bg-white h-full md:w-1/2 lg:w-1/3 p-4 my-4 md:my-0 lg:mx-4 mx-0 rounded-md">
+    <div className="w-full bg-white p-4 my-4 md:my-0 mx-0 rounded-md">
       <h3 className="font-semibold mb-2 text-xl mr-2">2. Specify details</h3>
       <ContactInformationForm />
       <div className="delivery-form">
@@ -49,7 +51,7 @@ export default function DeliveryAddress() {
                     </div>
                   )
                 )}
-                {/* <AddressInputGroup formik={formik} /> */}
+                <AddressInputGroup formik={formik} />
               </div>
               <div className="save-info border-b pb-4 mt-2 flex items-center">
                 <input type="checkbox" />{' '}

@@ -64,13 +64,13 @@ function handlePlaceSelect(updateQuery, dispatch) {
   }
 
   const address = {
-    address1: `${filterLocation('street_number')}  ${filterLocation(
+    address: `${filterLocation('street_number')}  ${filterLocation(
       'route'
     )}  ${filterLocation('neighborhood')} ${filterLocation(
       'locality'
     )}`?.replaceAll('undefined', ''),
-    city: filterLocation('locality')?.replace('undefined', ''),
-    state: filterLocation('administrative_area_level_1')?.replace(
+    district: filterLocation('locality')?.replace('undefined', ''),
+    region: filterLocation('administrative_area_level_1')?.replace(
       'undefined',
       ''
     ),
@@ -106,23 +106,20 @@ export default function SearchLocationInput({ formik }) {
   }
 
   return (
-    <div className="mb-1 flex flex-col px-2">
-      <label className="form-label" htmlFor="address1">
-        Address 1 *
-      </label>
+    <div className="mb-1 flex flex-col px-2">     
       <input
         ref={autoCompleteRef}
-        placeholder="Address - Line 1"
+        placeholder="Address"
         value={formik.values.address1}
-        name="address1"
-        className="border border-gray-200 rounded-md h-10 px-2 focus:text-gray-700 focus:bg-white focus:border-red-500 focus:outline-none"
+        name="address"
+        className="mb-2 border border-gray-200 rounded-md h-10 px-2 focus:text-gray-700 focus:bg-white focus:border-red-500 focus:outline-none"
         autoComplete="true"
         onChange={updateInput}
       />
       <p className="text-danger errorText">
-        {formik.errors['address1'] &&
-          formik.touched['address1'] &&
-          formik.errors['address1']}
+        {formik.errors['address'] &&
+          formik.touched['address'] &&
+          formik.errors['address']}
       </p>
       <style jsx>
         {`

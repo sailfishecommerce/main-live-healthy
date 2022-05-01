@@ -54,6 +54,13 @@ const DynamicAccountDetailsTab = dynamic(
     )
 )
 
+const DynamicLogoutModal = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'DynamicLogoutModal' */ '@/components/Modal/LogoutModal'
+    )
+)
+
 interface Props {
   children: JSX.Element
 }
@@ -61,7 +68,12 @@ interface Props {
 export default function LayoutWrapper({ children }: PropsWithChildren<Props>) {
   const { slideTab } = useSlidingTab()
   const { activeProduct } = useAppSelector((state) => state.product)
-  const { displayAuthModal, toggleAuthModalHandler } = useUI()
+  const {
+    displayAuthModal,
+    displayLogoutModal,
+    toggleAuthModalHandler,
+    toggleLogoutModalHandler,
+  } = useUI()
   const { scroll } = useScroll()
   const { loading: loadingState } = useAppSelector((state) => state.UI)
   const { loading } = useAppSelector((state) => state.checkout)
@@ -94,7 +106,12 @@ export default function LayoutWrapper({ children }: PropsWithChildren<Props>) {
       )}
       {slideTab === 'SLIDING-CART' && <DynamicSlidingCartTab />}
       {slideTab === 'SLIDING-ACCOUNT' && <DynamicAccountDetailsTab />}
-
+      {displayLogoutModal && (
+        <DynamicLogoutModal
+          show={displayLogoutModal}
+          onHide={toggleLogoutModalHandler}
+        />
+      )}
       <div className="content position-relative h-100">{children}</div>
 
       {showPointer && (

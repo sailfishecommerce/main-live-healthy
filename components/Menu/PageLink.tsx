@@ -11,12 +11,12 @@ interface Props {
 }
 
 export default function PageLink({ menuItem, className, link }: Props) {
-  const router = useRouter()
+  const router: any = useRouter()
   const linkClassName = className
     ? className
     : 'font-semibold text-sm md:text-lg md:font-light'
   const activeLinkStyle =
-    router.query.slug?.includes(menuItem.slug) ||
+    router?.query?.slugs[0].includes(menuItem.slug) ||
     router.route.includes(menuItem.slug)
       ? 'mountain-green'
       : ''

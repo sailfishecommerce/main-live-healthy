@@ -18,6 +18,7 @@ const uiSlice = createSlice({
     showNav: false,
     showMobileSearch: false,
     authModal: 'AUTHFORM',
+    displayLogoutModal: false,
     displayModal: {
       active: false,
       type: null,
@@ -37,6 +38,9 @@ const uiSlice = createSlice({
     },
     toggleNoticebar(state) {
       state.noticebar = !state.noticebar
+    },
+    toggleLogoutModal(state) {
+      state.displayLogoutModal = !state.displayLogoutModal
     },
     updateMobileSlideMenuView(
       state,
@@ -108,6 +112,7 @@ export const {
   toggleSlideTab,
   toggleNoticebar,
   toggleSidebarRight,
+  toggleLogoutModal,
   updateSlidingTabInfo,
   toggleModal,
   updateMobileSlideMenuView,

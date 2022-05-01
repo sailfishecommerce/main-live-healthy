@@ -1,10 +1,9 @@
 /* eslint-disable no-nested-ternary */
 import Image from 'next/image'
 
-import Product from '@/components/Cards/ProductCard'
+import ProductBannerCard from '@/components/Cards/ProductBannerCard'
 import { useMediaQuery } from '@/hooks'
 import useLiveHealthyProduct from '@/hooks/useLivehealthyProduct'
-import ProductBannerCard from '../Cards/ProductBannerCard'
 
 export default function ProductBanner() {
   const [data, status] = useLiveHealthyProduct()

@@ -1,45 +1,47 @@
-import { FormikProps } from "formik";
+/* eslint-disable unused-imports/no-unused-vars */
+/* eslint-disable jsx-a11y/no-onchange */
+import type { FormikProps } from 'formik'
 
-import countries from "@/json/countries.json";
-import { useAppDispatch } from "@/hooks/useRedux";
-import { updateCountry } from "@/redux/payment-slice";
-import { formType } from "@/types";
+import { useAppDispatch } from '@/hooks/useRedux'
+import countries from '@/json/countries.json'
+import { updateCountry } from '@/redux/payment-slice'
+import type { formType } from '@/types'
 
 type countriesType = {
-  name: string;
-  Iso2: string | any;
-  Iso3: string | null;
-};
+  name: string
+  Iso2: any | string
+  Iso3: string | null
+}
 
 interface SelectCountriesProps {
   content: {
-    name: string;
-    label: string;
-  };
-  formik: FormikProps<formType>;
+    name: string
+    label: string
+  }
+  formik: FormikProps<formType>
 }
 
 export default function SelectCountries({
   content,
   formik,
 }: SelectCountriesProps) {
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
   const validCountry: countriesType[] = countries.data?.filter(
     (country) => country.Iso2
-  );
+  )
   function selectHandler(e: any) {
-    const country = e.target.value.toLowerCase();
+    const country = e.target.value.toLowerCase()
     const selectedCountryArray = countries.data?.filter(
-      (country) => country.Iso2 === e.target.value
-    );
+      (countryItem) => countryItem.Iso2 === e.target.value
+    )
     const payload = {
       country,
-    };
+    }
     formik.setValues({
       ...formik.values,
       ...payload,
-    });
-    dispatch(updateCountry(payload));
+    })
+    dispatch(updateCountry(payload))
   }
 
   return (
@@ -69,17 +71,17 @@ export default function SelectCountries({
         onChange={selectHandler}
       >
         <option>Select country </option>
-        {validCountry.map(({ name, Iso2 }, index) => (
-          <option value={Iso2} key={index}>
+        {validCountry.map(({ name, Iso2 }) => (
+          <option value={Iso2} key={name}>
             {name}
           </option>
         ))}
       </select>
       <p className="text-red-500">
-        {formik.errors["country"] &&
-          formik.touched["country"] &&
-          formik.errors["country"]}
+        {formik.errors.country &&
+          formik.touched.country &&
+          formik.errors.country}
       </p>
     </div>
-  );
+  )
 }

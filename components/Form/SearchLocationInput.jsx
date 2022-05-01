@@ -36,7 +36,7 @@ function handleScriptLoad(
   dispatch
 ) {
   // assign autoComplete with Google maps place one time
-  autoComplete = new window()?.google.maps.places.Autocomplete(
+  autoComplete = new window.google.maps.places.Autocomplete(
     autoCompleteRef.current,
     { types: ['establishment'] }
   )

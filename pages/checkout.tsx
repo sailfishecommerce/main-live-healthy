@@ -1,4 +1,4 @@
-import CheckoutCustomer from '@/components/Checkout'
+import CheckoutCustomer from '@/components/Checkout/CheckoutCustomer'
 import Pagetitle from '@/components/Header/page-title'
 import MobileCheckoutView from '@/components/MobileCheckoutView'
 import { useMediaQuery } from '@/hooks'

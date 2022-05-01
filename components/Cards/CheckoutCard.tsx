@@ -1,7 +1,7 @@
-import { PropsWithChildren } from "react";
+import type { PropsWithChildren } from 'react'
 
 interface Props {
-  title: string;
+  title: string
 }
 
 export default function CheckoutCard({
@@ -13,5 +13,5 @@ export default function CheckoutCard({
       <h1 className="text-xl font-bold mb-6">{title}</h1>
       <div className="content">{children}</div>
     </div>
-  );
+  )
 }

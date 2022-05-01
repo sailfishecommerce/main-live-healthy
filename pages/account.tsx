@@ -19,8 +19,6 @@ export default function Account() {
     'listUserOrders',
     listUserOrders
   )
-  console.log('userOrders', userOrders)
-
   return (
     <>
       <Pagetitle title="Account Details" />

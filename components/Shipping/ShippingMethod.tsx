@@ -13,7 +13,7 @@ export default function ShippingMethod() {
     <div className="mt-6">
       <h4 className="text-lg font-semibold mb-3">Shipping method</h4>
       <div className="shipping-methods flex flex-col">
-        {shippingTagsJson.map((shippingMethodItem, index) => (
+        {shippingTagsJson.shipping.map((shippingMethodItem, index) => (
           <ShippingMethodTag
             key={index}
             content={shippingMethodItem}

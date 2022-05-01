@@ -1,13 +1,29 @@
-[
-  {
-    "title": "Standard Shipping (4-6 weeks)",
-    "price": "Free",
-    "value": "Standard"
-  },
-  {
-    "title": "Premium Shipping (1-3 weeks)",
-    "price": "HKD 300",
-    "value": "Premium"
-  },
-  { "title": "Air borne Delivery (1 week)", "price": "HKD 600", "value": "Air" }
-]
+{
+  "shipping": [
+    {
+      "title": "Standard Shipping (4-6 weeks)",
+      "price": "Free",
+      "value": "Standard"
+    },
+    {
+      "title": "Premium Shipping (1-3 weeks)",
+      "price": "HKD 300",
+      "value": "Premium"
+    },
+    {
+      "title": "Air borne Delivery (1 week)",
+      "price": "HKD 600",
+      "value": "Air"
+    }
+  ],
+  "billing": [
+    {
+      "title": "Same as shipping address",
+      "value": "same-shipping-address"
+    },
+    {
+      "title": "Use a different billing address",
+      "value": "use-a-different-billing-address"
+    }
+  ]
+}

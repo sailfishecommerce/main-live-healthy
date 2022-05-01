@@ -42,14 +42,16 @@ export default function RecommendedProductCard({
     >
       <div className={`${productImageClassName} mx-auto image-wrapper`}>
         <Link passHref href={`/product/${product.slug}`}>
-          <Image
-            src={product.images[0].file.url}
-            alt={product.name}
-            height={imageSize.height}
-            width={imageSize.width}
-            className="rounded-xl"
-            blurDataURL={product.images[0].file.url}
-          />
+          <a>
+            <Image
+              src={product.images[0].file.url}
+              alt={product.name}
+              height={imageSize.height}
+              width={imageSize.width}
+              className="rounded-xl"
+              blurDataURL={product.images[0].file.url}
+            />
+          </a>
         </Link>
       </div>
       <div className="text">

@@ -19,14 +19,14 @@ export default function ProductRow({ cart }: any) {
 
   return (
     <div className="flex items-center  border-b p-4 hover:bg-gray-100">
-      <div className="w-1/4 mr-4">
+      <div className="w-1/4 mr-4 rounded-lg bg-gray-200">
         <Image
           src={cart.product.images[0].file.url}
           alt={cart.product.name}
           height={90}
           width={120}
           blurDataURL={cart.product.images[0].file.url}
-          className="bg-gray-200 rounded-md"
+          className="bg-gray-200 rounded-lg"
           layout="responsive"
         />
       </div>
@@ -36,7 +36,7 @@ export default function ProductRow({ cart }: any) {
           <ProductControls cart={cart} />
           <FormattedPrice
             price={cart.priceTotal}
-            className="font-bold text-black lg:text-md text-xs"
+            className="font-bold text-black lg:text-base text-xs"
           />
           <button type="button" onClick={removeItemFromCart}>
             <TrashIcon />

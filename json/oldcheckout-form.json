@@ -3,58 +3,49 @@
     "content": [
       [
         {
-          "name": "country",
-          "type": "selectCountry",
-          "id": "checkout-country",
-          "Label": "Country *"
-        }
-      ],
-      [
-        {
           "name": "firstName",
           "id": "checkout-firstName",
-          "placeholder": "First name *",
+          "label": "First name *",
           "type": "input",
           "inputType": "text"
         },
         {
           "name": "lastName",
           "id": "checkout-lastName",
-          "placeholder": "Last name *",
+          "label": "Last name *",
           "type": "input",
           "inputType": "text"
         }
       ],
       [
         {
+          "name": "email",
+          "label": "E-mail *",
+          "id": "checkout-email",
+          "type": "input",
+          "inputType": "email"
+        },
+        {
+          "name": "companyName",
+          "id": "checkout-companyName",
+          "label": "Company's name *",
+          "type": "input",
+          "inputType": "text"
+        }
+      ],
+      [
+        {
+          "name": "country",
+          "type": "selectCountry",
+          "id": "checkout-country",
+          "label": "Country *"
+        },
+        {
           "name": "address1",
           "type": "searchLocationInput",
           "id": "checkout-address1",
           "inputType": "text",
-          "placeholder": "Address*"
-        }
-      ],
-      [
-        {
-          "name": "District",
-          "type": "input",
-          "id": "checkout-district",
-          "placeholder": "District"
-        },
-        {
-          "name": "Region",
-          "type": "input",
-          "id": "checkout-Region",
-          "inputType": "text",
-          "placeholder": "Region *"
-        }
-      ],
-      [
-        {
-          "name": "Phone",
-          "type": "input",
-          "id": "checkout-phone",
-          "placeholder": "Phone *"
+          "label": "Address - Line 1 *"
         }
       ]
     ]
@@ -104,19 +95,19 @@
         "name": "creditCardNumber",
         "type": "input",
         "inputType": "text",
-        "placeholder": "Credit Card Number"
+        "label": "Credit Card Number"
       },
       {
         "name": "mm/yy",
         "type": "input",
         "inputType": "text",
-        "placeholder": "MM / YY"
+        "label": "MM / YY"
       },
       {
         "name": "cvc",
         "type": "input",
         "inputType": "text",
-        "placeholder": "CVC"
+        "label": "CVC"
       }
     ]
   }

@@ -1,7 +1,9 @@
+/* eslint-disable react/no-array-index-key */
 import { Formik } from 'formik'
 
+import BillingAddress from '@/components/Checkout/BillingAddress'
+import ContactInformationForm from '@/components/Checkout/ContactInformationForm'
 import { displayFormElement } from '@/components/Form/FormElement'
-import { AddressInputGroup } from '@/components/Form/FormFields'
 import { checkoutFormSchema } from '@/components/Form/schema/CheckoutFormSchema'
 import { useAppDispatch } from '@/hooks/useRedux'
 import useShippingPayment from '@/hooks/useShippingPayment'
@@ -13,11 +15,11 @@ export default function DeliveryAddress() {
   const dispatch = useAppDispatch()
 
   return (
-    <div className="w-full bg-white h-fullx md:w-1/2 lg:w-1/3 p-4 my-4 md:my-0 lg:mx-4 mx-0 rounded-md">
-      <h3 className="font-semibold mb-2 text-xl mr-2">2. Specify Details</h3>
-      <p className="mb-4 text-sm">All fields required</p>
-
+    <div className="w-full bg-white h-full md:w-1/2 lg:w-1/3 p-4 my-4 md:my-0 lg:mx-4 mx-0 rounded-md">
+      <h3 className="font-semibold mb-2 text-xl mr-2">2. Specify details</h3>
+      <ContactInformationForm />
       <div className="delivery-form">
+        <h3 className="font-bold my-5 text-lg">Shipping address</h3>
         <Formik
           enableReinitialize
           initialValues={formValues}
@@ -33,19 +35,30 @@ export default function DeliveryAddress() {
                 {checkoutFormContent.personalDetails.content.map(
                   (formRow, index) => (
                     <div key={index} className="flex flex-wrap">
-                      {formRow.map((formInput, index: number) => (
-                        <div key={index} className="w-full">
-                          {displayFormElement(formInput, formik)}
-                        </div>
-                      ))}
+                      {formRow.map((formInput, indexN: number) => {
+                        const inputStyle =
+                          formRow.length === 1
+                            ? 'w-full'
+                            : `w-1/${formRow.length}`
+                        return (
+                          <div key={indexN} className={inputStyle}>
+                            {displayFormElement(formInput, formik)}
+                          </div>
+                        )
+                      })}
                     </div>
                   )
                 )}
-                <AddressInputGroup formik={formik} />
+                {/* <AddressInputGroup formik={formik} /> */}
+              </div>
+              <div className="save-info border-b pb-4 mt-2 flex items-center">
+                <input type="checkbox" />{' '}
+                <p className="ml-4">Save this information for next time</p>
               </div>
             </form>
           )}
         </Formik>
+        <BillingAddress />
       </div>
     </div>
   )

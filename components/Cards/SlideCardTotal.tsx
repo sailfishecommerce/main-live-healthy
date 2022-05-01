@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
 
+import FormattedPrice from '@/components/Price/FormattedPrice'
 import AppliedDiscountTag from '@/components/Tag/AppliedDiscountTag'
 import { useCart } from '@/hooks'
 import type { cartType } from '@/typings'
@@ -19,24 +20,30 @@ export default function SlideCardTotal() {
     <>
       <div className="cart-total absolute bottom-0 bg-white p-6 py-4 w-full right-0">
         <div className="total flex items-center">
-          <h4 className="text-gray-500 mr-8">Total: HK$ 180</h4>{' '}
+          <h4 className="text-gray-500 mr-8">
+            Total:{' '}
+            <FormattedPrice
+              className="font-bold text-black text-md"
+              price={cart?.grandTotal}
+            />
+          </h4>{' '}
           <div className="discount rounded-md border text-sm text-red-500 hover:bg-red-500 hover:text-white px-2 py-1 border-red-500">
             Discount: HK$ 136
           </div>
         </div>
         <h1 className="md:text-xl text-lg font-medium mt-2">
-          Subtotal: HK$ {cart?.subTotal}
+          Subtotal:{' '}
+          <FormattedPrice
+            className="font-bold text-black text-md"
+            price={cart?.subTotal}
+          />
         </h1>
         <div className="discount flex  md:flex-row  items-center justify-between my-2">
           <div className="input-wrapper md:w-1/2 w-full my-2 md:my-0 relative">
-            <div className="text absolute left-1 w-3/4 top-1 bg-white">
-              <p className="text-xs mb-0">Promocode</p>
-              <h4 className="md:text-sm text-xs">BONUS-CODE</h4>
-            </div>
             <input
               placeholder="Enter promocode"
               type="text"
-              className="border rounded-lg px-2 py-2"
+              className="border rounded-lg px-2 py-2 w-full"
             />
           </div>
           <button

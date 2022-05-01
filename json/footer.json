@@ -5,5 +5,6 @@
   { "slug": "#privacy-policy", "name": "Privacy Policy" },
   { "slug": "#return-refunds", "name": "Return & Refunds" },
   { "slug": "#shipping-deliveries", "name": "Shipping & Deliveries" },
-  { "slug": "#terms-of-service", "name": "Terms of Service" }
+  { "slug": "#terms-of-service", "name": "Terms of Service" },
+  { "slug": "/account-recovery", "name": "Account Recovery" }
 ]

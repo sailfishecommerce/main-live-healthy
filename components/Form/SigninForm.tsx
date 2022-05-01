@@ -40,7 +40,7 @@ export default function SigninForm() {
             </div>
           ))}
           <div className="mb-3 flex flex-wrap justify-between">
-            <Link passHref href="/account-password-recovery">
+            <Link passHref href="/account-recovery">
               <a
                 title="Forgot password"
                 className="fs-sm mountain-green"
@@ -56,7 +56,7 @@ export default function SigninForm() {
             type="submit"
             title="Sign in"
           >
-            Sign in
+            Login
           </button>
         </form>
       )}

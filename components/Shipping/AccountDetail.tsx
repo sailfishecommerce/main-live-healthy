@@ -1,20 +1,31 @@
 import Button from '@/components/Button'
 import useSlidingTab from '@/hooks/useSlidingTab'
 import accountDetails from '@/json/account-details-form.json'
+import getCountry from '@/lib/getCountry'
 
-export default function AccountDetail() {
+export default function AccountDetail({ userDetail }) {
   const { updateSlideTab } = useSlidingTab()
 
   return (
     <div className="account-details">
       <h3 className="font-bold md:text-xl mb-4 text-lg">Account Details</h3>
       <ul className="details mb-4 md:mb-6 ">
-        {accountDetails.accountData.map((data, index) => (
-          <li key={index} className="flex flex-col my-2">
-            <p className="mb-0">{data.text}</p>
-            <p className="font-medium">{data.value}</p>
-          </li>
-        ))}
+        <li className="flex flex-col lg:flex-row my-2">
+          <p className="mb-0 mr-1">Name:</p>
+          <p className="font-medium">{userDetail?.name}</p>
+        </li>
+        <li className="flex flex-col lg:flex-row my-2">
+          <p className="mb-0 mr-1">Email:</p>
+          <p className="font-medium">{userDetail?.email}</p>
+        </li>
+        <li className="flex flex-col lg:flex-row my-2">
+          <p className="mb-0 mr-1">Address:</p>
+          <p className="font-medium">
+            {userDetail?.shipping?.address1}, {userDetail?.shipping?.city},
+            {userDetail?.shipping?.state},{' '}
+            {getCountry(userDetail?.shipping?.country)}
+          </p>
+        </li>
       </ul>
       <div className="button-group flex flex-col md:flex-row  items-center mb-14">
         <Button

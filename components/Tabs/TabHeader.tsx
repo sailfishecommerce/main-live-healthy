@@ -14,7 +14,7 @@ export default function TabHeader({ onClickHandler, tab }: Props) {
       <TabList
         id="signin"
         tab={tab}
-        text="Sign in"
+        text="Login"
         index={0}
         onClick={onClickHandler}
       />

@@ -15,8 +15,8 @@ export default function AccountPasswordRecovery() {
   return (
     <>
       <Pagetitle title="Recover your password with ease" />
-      <div className="container flex py-4 py-lg-5 my-4 mx-auto">
-        <div className="content flex mx-auto justify-center bg-gray-100 p-12 w-1/2">
+      <div className="container flex flex-col lg:flex-row  py-4 my-4 mx-auto">
+        <div className="content w-full flex mx-auto justify-center bg-gray-100 p-12 lg:w-1/2">
           <div className="flex mx-auto justify-center flex-col">
             <h2 className="h3 mb-2 text-xl font-bold">Forgot your password?</h2>
             <p className="my-2">
@@ -34,7 +34,7 @@ export default function AccountPasswordRecovery() {
             <AccountRecoveryform />
           </div>
         </div>
-        <div className="w-1/2">
+        <div className="lg:w-1/2 w-full">
           <Image
             src="/forgotPassword.webp"
             alt="account-recovery"

@@ -6,7 +6,7 @@
           "name": "country",
           "type": "selectCountry",
           "id": "checkout-country",
-          "Label": "Country *"
+          "Label": "Country"
         }
       ],
       [
@@ -27,34 +27,40 @@
       ],
       [
         {
-          "name": "address1",
+          "name": "address",
           "type": "searchLocationInput",
           "id": "checkout-address1",
           "inputType": "text",
-          "placeholder": "Address*"
+          "placeholder": "Address"
         }
       ],
       [
         {
-          "name": "District",
+          "name": "district",
           "type": "input",
           "id": "checkout-district",
           "placeholder": "District"
         },
         {
-          "name": "Region",
+          "name": "region",
           "type": "input",
           "id": "checkout-Region",
           "inputType": "text",
-          "placeholder": "Region *"
+          "placeholder": "Region"
         }
       ],
       [
         {
+          "name": "zip",
+          "type": "input",
+          "id": "checkout-zip",
+          "placeholder": "Zip code"
+        },
+        {
           "name": "Phone",
           "type": "input",
           "id": "checkout-phone",
-          "placeholder": "Phone *"
+          "placeholder": "Phone"
         }
       ]
     ]

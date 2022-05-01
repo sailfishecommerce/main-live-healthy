@@ -10,7 +10,7 @@ import useShippingPayment from '@/hooks/useShippingPayment'
 import checkoutFormContent from '@/json/checkout-form.json'
 import { updatePaymentForm } from '@/redux/payment-slice'
 
-import { AddressInputGroup } from '../Form/FormFields'
+// import { AddressInputGroup } from '../Form/FormFields'
 
 export default function DeliveryAddress() {
   const { formValues } = useShippingPayment()
@@ -28,6 +28,7 @@ export default function DeliveryAddress() {
           validationSchema={checkoutFormSchema}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(false)
+            console.log('values', values)
             dispatch(updatePaymentForm({ form: values, completed: true }))
           }}
         >
@@ -51,7 +52,7 @@ export default function DeliveryAddress() {
                     </div>
                   )
                 )}
-                <AddressInputGroup formik={formik} />
+                {/* <AddressInputGroup formik={formik} /> */}
               </div>
               <div className="save-info border-b pb-4 mt-2 flex items-center">
                 <input type="checkbox" />{' '}

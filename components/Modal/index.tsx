@@ -24,7 +24,7 @@ export default function Modal({
         <>
           <div
             role="dialog"
-            className="border border-gray-100 justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 focus:outline-none"
+            className="modal border border-gray-100 justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 focus:outline-none"
           >
             <div className="appmodal relative w-auto my-6 mx-auto max-w-5xl">
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
@@ -58,11 +58,21 @@ export default function Modal({
           </div>
           <div
             aria-label="close"
-            className="opacity-50 fixed inset-0 z-40 bg-black h-full w-full"
+            className="overlay opacity-50 fixed inset-0 z-40 bg-black h-full w-full"
             onClick={modalHandler}
           />
           <style jsx>
             {`
+              .overlay {
+                height: 100%;
+                cursor: pointer;
+              }
+              .modal {
+                height: fit-content;
+                width: fit-content;
+                margin: auto;
+                border: none;
+              }
               @media (max-width: 768px) {
                 .appmodal {
                   width: 80%;

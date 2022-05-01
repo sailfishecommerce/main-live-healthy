@@ -1,7 +1,7 @@
 /* eslint-disable dot-notation */
 /* eslint-disable no-unused-expressions */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, memo } from 'react'
 
 import { updateUserAddress } from '@/redux/payment-slice'
 import { useAppDispatch } from '@/redux/store'
@@ -85,7 +85,7 @@ function handlePlaceSelect(updateQuery, dispatch) {
   )
 }
 
-export default function SearchLocationInput({ formik }) {
+function SearchLocationInputComponent({ formik }) {
   const autoCompleteRef = useRef(null)
   const countryCode = formik.values.country
   const dispatch = useAppDispatch()
@@ -106,11 +106,11 @@ export default function SearchLocationInput({ formik }) {
   }
 
   return (
-    <div className="mb-1 flex flex-col px-2">     
+    <div className="mb-1 flex flex-col px-2">
       <input
         ref={autoCompleteRef}
         placeholder="Address"
-        value={formik.values.address1}
+        value={formik.values.address}
         name="address"
         className="mb-2 border border-gray-200 rounded-md h-10 px-2 focus:text-gray-700 focus:bg-white focus:border-red-500 focus:outline-none"
         autoComplete="true"
@@ -131,3 +131,5 @@ export default function SearchLocationInput({ formik }) {
     </div>
   )
 }
+const SearchLocationInput = memo(SearchLocationInputComponent)
+export default SearchLocationInput

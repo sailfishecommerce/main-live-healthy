@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { useQuery } from 'react-query'
 
 import Breadcrumb from '@/components/Breadcrumb'
@@ -11,7 +12,15 @@ import breadcrumb from '@/json/breadcrumb.json'
 export default function Account() {
   const { getUserAccount } = useAccount()
   const { data, status } = useQuery('userDetails', getUserAccount)
-  console.log('data', data)
+  function listUserOrders() {
+    return axios.get('/api/list-user-orders', { accountID: data?.id })
+  }
+  const { data: userOrders, status: orderStatus } = useQuery(
+    'listUserOrders',
+    listUserOrders
+  )
+  console.log('userOrders', userOrders)
+
   return (
     <>
       <Pagetitle title="Account Details" />
@@ -31,8 +40,10 @@ export default function Account() {
           <>
             {' '}
             <h1 className="text-2xl font-bold lg:mt-8 mt-2">My Account</h1>
-            <OrderHistory />
-            {<AccountDetail userDetail={data} />}
+            {orderStatus === 'success' && (
+              <OrderHistory orders={userOrders.data} />
+            )}
+            {status === 'success' && <AccountDetail userDetail={data} />}
           </>
         )}
       </main>

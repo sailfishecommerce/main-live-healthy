@@ -1,29 +1,29 @@
-/* eslint-disable default-case */
 import type { NextApiRequest, NextApiResponse } from 'next'
 import swell from 'swell-node'
 
 import swellNodeInit from '../../lib/swellNode'
 
-export default async function fetchProductsHandler(
+export default async function ListUserOrderAPI(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   swellNodeInit()
-
   switch (req.method) {
     case 'GET': {
       return await swell
-        .get('/products', {
-          where: { select_store: 'livehealthy' },
-          limit: 100,
-          page: 1,
+        .get('/orders', {
+          where: {
+            account_id: req.body.accountID,
+          },
         })
         .then((response: any) => {
           return res.status(200).send(response.results)
         })
         .catch((error: any) => {
-          console.log('error', error?.message)
+          return res.status(200).send(error)
         })
     }
+    default:
+      return null
   }
 }

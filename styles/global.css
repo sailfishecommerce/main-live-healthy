@@ -175,31 +175,44 @@ header.header {
   margin-right: 5px;
 }
 
-.paid {
+.paid,
+.delivered {
   border: 1px solid var(--light-green);
   max-width: 60px;
 }
 
-.paid:hover {
+.delivered {
+  max-width: 70px;
+}
+
+.paid:hover,
+.delivered:hover {
   background-color: var(--light-green);
   color: white;
 }
 
-.not-paid {
+.not-paid,
+.not-delivered {
   border: 1px solid var(--light-red);
   max-width: 90px;
 }
+.not-delivered {
+  max-width: 130px;
+}
 
-.not-paid:hover {
+.not-paid:hover,
+.not-delivered:hover {
   background-color: var(--light-red);
   color: white;
 }
 
-.paid .indicator {
+.paid .indicator,
+.delivered .indicator {
   background-color: var(--light-green);
 }
 
-.not-paid .indicator {
+.not-paid .indicator,
+.not-delivered .indicator {
   background-color: var(--light-red);
 }
 

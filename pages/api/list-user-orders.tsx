@@ -9,7 +9,7 @@ export default async function ListUserOrderAPI(
 ) {
   swellNodeInit()
   switch (req.method) {
-    case 'GET': {
+    case 'POST': {
       return await swell
         .get('/orders', {
           where: {

@@ -1,9 +1,8 @@
 import Button from '@/components/Button'
 import useSlidingTab from '@/hooks/useSlidingTab'
-import accountDetails from '@/json/account-details-form.json'
 import getCountry from '@/lib/getCountry'
 
-export default function AccountDetail({ userDetail }) {
+export default function AccountDetail({ userDetail }: any) {
   const { updateSlideTab } = useSlidingTab()
 
   return (

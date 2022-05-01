@@ -13,7 +13,7 @@ export default function Account() {
   const { getUserAccount } = useAccount()
   const { data, status } = useQuery('userDetails', getUserAccount)
   function listUserOrders() {
-    return axios.get('/api/list-user-orders', { accountID: data?.id })
+    return axios.post('/api/list-user-orders', { accountID: data?.id })
   }
   const { data: userOrders, status: orderStatus } = useQuery(
     'listUserOrders',

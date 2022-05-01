@@ -1,21 +1,25 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { airwallexType } from "@/types";
+/* eslint-disable no-param-reassign */
+import type { PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
+
+import type { airwallexType } from '@/types'
 
 type payloadType = {
-  accessToken: null | string;
-  tokenExpiryDate: null | string;
-};
+  accessToken: string | null
+  tokenExpiryDate: string | null
+}
 
 type updatePaymentIntentType = {
-  clientSecret: null | string;
-  paymentIntentId: null | string;
-};
+  clientSecret: string | null
+  paymentIntentId: string | null
+}
 
 const airwallexSlice = createSlice({
-  name: "airwallexPayment",
+  name: 'airwallexPayment',
   initialState: {
     isAccessTokenValid: false,
     accessToken: null,
+    airwallexState: null,
     tokenExpiryDate: null,
     paymentIntentId: null,
     clientSecret: null,
@@ -28,27 +32,30 @@ const airwallexSlice = createSlice({
       state: airwallexType,
       action: PayloadAction<payloadType>
     ) {
-      state.tokenExpiryDate = action.payload.tokenExpiryDate;
-      state.accessToken = action.payload.accessToken;
+      state.tokenExpiryDate = action.payload.tokenExpiryDate
+      state.accessToken = action.payload.accessToken
     },
     paymentError(state, action) {
-      state.error = action.payload;
+      state.error = action.payload
     },
     updatePaymentIntent(
       state: airwallexType,
       action: PayloadAction<updatePaymentIntentType>
     ) {
-      state.clientSecret = action.payload.clientSecret;
-      state.paymentIntentId = action.payload.paymentIntentId;
+      state.clientSecret = action.payload.clientSecret
+      state.paymentIntentId = action.payload.paymentIntentId
     },
     updateClientSecretStatus(state, action) {
-      state.isClientSecretValid = action.payload;
+      state.isClientSecretValid = action.payload
     },
     updateAccessTokenStatus(state, action) {
-      state.isAccessTokenValid = action.payload;
+      state.isAccessTokenValid = action.payload
+    },
+    updateAirwallexState(state, action) {
+      state.airwallexState = action.payload
     },
   },
-});
+})
 
 export const {
   updateTokenStatus,
@@ -56,5 +63,6 @@ export const {
   updatePaymentIntent,
   updateClientSecretStatus,
   updateAccessTokenStatus,
-} = airwallexSlice.actions;
-export default airwallexSlice.reducer;
+  updateAirwallexState,
+} = airwallexSlice.actions
+export default airwallexSlice.reducer

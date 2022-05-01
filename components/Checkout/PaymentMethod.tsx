@@ -1,5 +1,5 @@
 import OrderSummary from '@/components/Checkout/OrderSummary'
-// import AirwallexPaymentMethod from '@/components/Payment/AirwallexPaymentMethod'
+import AirwallexPaymentMethod from '@/components/Payment/AirwallexPaymentMethod'
 import BankTransferPaymentMethod from '@/components/Payment/BankTransferPaymentMethod'
 import PaymentWithStripe from '@/components/Payment/PaymentWithStripe'
 
@@ -18,7 +18,7 @@ export default function PaymentMethod() {
         </p>
         <>
           <PaymentWithStripe title="Stripe" />
-          {/* <AirwallexPaymentMethod /> */}
+          <AirwallexPaymentMethod />
           <BankTransferPaymentMethod />
         </>
         <OrderSummary />

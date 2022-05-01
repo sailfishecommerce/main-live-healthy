@@ -133,7 +133,6 @@ export default function LayoutWrapper({ children }: PropsWithChildren<Props>) {
             bottom: 20px;
             z-index: 1000;
           }
-
           .goUp:hover {
             color: red;
             background-color: white;
@@ -141,7 +140,6 @@ export default function LayoutWrapper({ children }: PropsWithChildren<Props>) {
           .goUp:hover i {
             color: red;
           }
-
           .goUp i {
             position: fixed;
             right: 20px;

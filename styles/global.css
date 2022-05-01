@@ -26,7 +26,7 @@ body {
 .homepage-slider ul.splide__pagination {
   display: none;
 }
-
+/* utilities */
 .mountain-green {
   color: var(--mountain-green);
 }
@@ -91,6 +91,10 @@ body {
 
 .bg-gray-platinum {
   background-color: var(--gray-platinum);
+}
+
+.height-fit-content {
+  height: fit-content;
 }
 
 /* header */

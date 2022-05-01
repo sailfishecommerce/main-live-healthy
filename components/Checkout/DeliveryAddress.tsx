@@ -10,14 +10,12 @@ import useShippingPayment from '@/hooks/useShippingPayment'
 import checkoutFormContent from '@/json/checkout-form.json'
 import { updatePaymentForm } from '@/redux/payment-slice'
 
-// import { AddressInputGroup } from '../Form/FormFields'
-
 export default function DeliveryAddress() {
   const { formValues } = useShippingPayment()
   const dispatch = useAppDispatch()
 
   return (
-    <div className="w-full bg-white p-4 my-4 md:my-0 mx-0 rounded-md">
+    <div className="w-full height-fit-content bg-white p-4 my-4 md:my-0 mx-0 rounded-md">
       <h3 className="font-semibold mb-2 text-xl mr-2">2. Specify details</h3>
       <ContactInformationForm />
       <div className="delivery-form">
@@ -28,7 +26,6 @@ export default function DeliveryAddress() {
           validationSchema={checkoutFormSchema}
           onSubmit={(values, { setSubmitting }) => {
             setSubmitting(false)
-            console.log('values', values)
             dispatch(updatePaymentForm({ form: values, completed: true }))
           }}
         >

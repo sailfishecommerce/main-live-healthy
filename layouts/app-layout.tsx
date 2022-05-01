@@ -49,17 +49,17 @@ export function AppLayout({ children }: AppLayoutProps) {
 
   return (
     <Provider store={store}>
-      <JotaiProvider initialValues={get()}>
-        <PersistGate loading={null} persistor={persistor}>
-          <MediaContextProvider>
-            <LazyMotion features={loadFramerMotionFeatures} strict={true}>
-              <QueryClientProvider client={queryClient}>
+      <PersistGate loading={null} persistor={persistor}>
+        <JotaiProvider initialValues={get()}>
+          <QueryClientProvider client={queryClient}>
+            <MediaContextProvider>
+              <LazyMotion features={loadFramerMotionFeatures} strict={true}>
                 {children}
-              </QueryClientProvider>
-            </LazyMotion>
-          </MediaContextProvider>
-        </PersistGate>
-      </JotaiProvider>
+              </LazyMotion>
+            </MediaContextProvider>
+          </QueryClientProvider>
+        </JotaiProvider>
+      </PersistGate>
     </Provider>
   )
 }

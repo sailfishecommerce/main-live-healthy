@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import ShippingMethodTag from '@/components/Tag/ShippingMethodTag'
+import BillingTag from '@/components/Tag/BillingTag'
 import shippingTagsJson from '@/json/shipping.json'
 
 export default function BillingAddress() {
@@ -13,7 +13,7 @@ export default function BillingAddress() {
         Select the address that matches your card or payment method
       </p>
       {shippingTagsJson.billing.map((billing) => (
-        <ShippingMethodTag
+        <BillingTag
           key={billing.value}
           content={billing}
           shippingMethod={billingAddress}

@@ -13,18 +13,19 @@ export default function ReviewOrderlist({ content }: any) {
   loadingState(updateCartItem, `${content.product.name} quantity updated`)
   return (
     <div className="relative my-2 flex items-center hover:bg-gray-100 border border-b border-gray-100 justify-between p-4">
-      <Image
-        src={content.product.images[0].file.url}
-        alt={content.product.name}
-        height={70}
-        width={100}
-        className="rounded-lg"
-      />
-      <div className="text flex flex-col ml-2">
-        <span className="product-name-view">
-          <h4 className="font-medium my-1 product-name">
-            {content.product.name}
-          </h4>
+      <div className="image-wrapper w-1/4">
+        <Image
+          src={content.product.images[0].file.url}
+          alt={content.product.name}
+          height={70}
+          width={100}
+          className="rounded-lg"
+          layout="responsive"
+        />
+      </div>
+      <div className="text flex flex-col ml-2 w-3/4">
+        <span className="product-name-view mb-4">
+          <h4 className="font-medium my-1 product">{content.product.name}</h4>
         </span>
         <div className="quantity">
           <span className="font-medium">Qty: </span>{' '}

@@ -1,10 +1,12 @@
 import CheckedInputIcon from '@/components/Icons/CheckedInputIcon'
+import FormattedPrice from '@/components/Price/FormattedPrice'
 
 interface Props {
   content: {
-    title: string
-    price?: string
+    name: string
+    price: number
     value: string
+    description?: string
   }
   updateShippingMethod: (value: string) => void
   shippingMethod: string | null
@@ -23,18 +25,25 @@ export default function ShippingMethodTag({
   return (
     <button
       type="button"
-      className={`${tagClassName} shipping-method-tag ${selectedMethodStyled} my-1.5 rounded-xl border border-gray-300 p-2 justify-between flex items-cente`}
+      className={`${tagClassName} flex-col shipping-method-tag ${selectedMethodStyled} my-1.5 rounded-xl border border-gray-300 p-2 justify-between flex items-cente`}
       onClick={() => updateShippingMethod(content.value)}
     >
-      <span className="flex items-center">
-        {shippingMethod === content.value ? (
-          <CheckedInputIcon />
+      <div className="row flex items-center justify-between w-full">
+        <span className="flex items-center">
+          {shippingMethod === content.value ? (
+            <CheckedInputIcon />
+          ) : (
+            <input type="radio" className="mx-2" />
+          )}
+          <h4>{content.name}</h4>
+        </span>
+        {content.price === 0 ? (
+          <p className="font-bold">FREE</p>
         ) : (
-          <input type="radio" className="mx-2" />
+          <FormattedPrice className="font-bold" price={content.price} />
         )}
-        <h4>{content.title}</h4>
-      </span>
-      {content.price && <p className="font-bold">{content.price}</p>}
+      </div>
+      <p className="text-xs">{content?.description}</p>
     </button>
   )
 }

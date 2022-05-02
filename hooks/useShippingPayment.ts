@@ -34,13 +34,12 @@ export default function useShippingPayment() {
     firstName: formatFormValues('firstName'),
     lastName: formatFormValues('lastName'),
     email: formatFormValues('email'),
-    companyName: formatFieldValue('companyName'),
     country: formatFieldValue('country'),
-    address1: formatFieldValue('address1'),
-    state: formatFieldValue('state'),
-    city: formatFieldValue('city'),
+    address: formatFieldValue('address'),
+    region: formatFieldValue('region'),
+    district: formatFieldValue('district'),
     zip: formatFieldValue('zip'),
-    address2: formatFieldValue('address2'),
+    phone: formatFieldValue('phone'),
   }
 
   return {

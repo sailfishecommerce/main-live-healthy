@@ -1,5 +1,5 @@
 import type { MutableRefObject } from 'react'
-import { useRef, useEffect, memo } from 'react'
+import { useState, useRef, useEffect, memo } from 'react'
 
 import AppButton from '@/components/Button/AppButton'
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
@@ -22,14 +22,15 @@ function PaymentInput({ inputRef }: PaymentInputType): JSX.Element {
 
 function StripePaymentMethodComponent() {
   const { createStripeElement } = useStripeElement()
+  const [showSpinner, setShowSpinner] = useState(true)
 
   useEffect(() => {
-    createStripeElement()
+    createStripeElement().then(() => setShowSpinner(false))
   }, [])
 
   const { paymentForm }: any = useAppSelector((state) => state.payment)
   const inputRef = useRef(null)
-
+  console.log('paymentForm', paymentForm)
   const { makePayment, loadingState } = useProcessPayment()
 
   function makePaymentHandler() {
@@ -39,7 +40,7 @@ function StripePaymentMethodComponent() {
   return (
     <div className="px-0 flex flex-col">
       <div className="flex mx-auto justify-center">
-        {inputRef === null && <SpinnerRipple />}
+        {showSpinner && <SpinnerRipple />}
       </div>
       <PaymentInput inputRef={inputRef} />
       <AppButton

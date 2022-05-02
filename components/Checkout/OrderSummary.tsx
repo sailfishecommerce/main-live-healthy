@@ -1,9 +1,14 @@
+import type { PropsWithChildren } from 'react'
+
 import FormattedPrice from '@/components/Price/FormattedPrice'
 import { useCart } from '@/hooks'
 
-export default function OrderSummary() {
+export default function OrderSummary({
+  children,
+}: PropsWithChildren<Record<string, unknown>>) {
   const { useCartData } = useCart()
   const { data: cart } = useCartData()
+
   return (
     <div className="rounded-md pt-4 bg-white rounded-md p-4 my-2 h-full">
       <h4 className="text-xl font-semibold mb-4">Order Total</h4>
@@ -23,12 +28,7 @@ export default function OrderSummary() {
         />
       </div>
 
-      <button
-        type="button"
-        className="w-full p-3 text-xl mt-1 my-3 bg-tan-hide text-white text-center hover:bg-orange-700 font-normal shadow-lg rounded-xl"
-      >
-        Complete Order
-      </button>
+      {children}
     </div>
   )
 }

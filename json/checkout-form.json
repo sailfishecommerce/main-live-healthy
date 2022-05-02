@@ -57,7 +57,7 @@
           "placeholder": "Zip code"
         },
         {
-          "name": "Phone",
+          "name": "phone",
           "type": "input",
           "id": "checkout-phone",
           "placeholder": "Phone"

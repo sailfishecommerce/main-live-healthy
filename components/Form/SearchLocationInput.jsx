@@ -101,7 +101,7 @@ function SearchLocationInputComponent({ formik }) {
     e.preventDefault()
     formik.setValues({
       ...formik.values,
-      address1: e.target.value,
+      address: e.target.value,
     })
   }
 

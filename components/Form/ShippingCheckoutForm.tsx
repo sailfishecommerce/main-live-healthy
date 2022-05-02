@@ -61,5 +61,3 @@ export default function ShippingCheckoutForm(): JSX.Element {
     </Accordion>
   )
 }
-
-// ShippingCheckoutForm.whyDidYouRender = true;

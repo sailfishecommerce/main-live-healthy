@@ -1,9 +1,15 @@
+import type { PropsWithChildren } from 'react'
+
 import OrderSummary from '@/components/Checkout/OrderSummary'
 import AirwallexPaymentMethod from '@/components/Payment/AirwallexPaymentMethod'
 import BankTransferPaymentMethod from '@/components/Payment/BankTransferPaymentMethod'
 import PaymentWithStripe from '@/components/Payment/PaymentWithStripe'
+import { useAppSelector } from '@/hooks/useRedux'
 
-export default function PaymentMethod() {
+export default function PaymentMethod({
+  children,
+}: PropsWithChildren<Record<string, unknown>>) {
+  const { completeOrder } = useAppSelector((state) => state.payment)
   return (
     <div className="flex flex-col w-full">
       <div className="flex w-full flex-col bg-white rounded-md p-4 mb-2">
@@ -16,12 +22,14 @@ export default function PaymentMethod() {
           For credit/debit card, you can pay via Paypal. No Paypal account
           required.
         </p>
-        <>
-          <PaymentWithStripe title="Stripe" />
-          <AirwallexPaymentMethod />
-          <BankTransferPaymentMethod />
-        </>
-        <OrderSummary />
+        {completeOrder && (
+          <>
+            <PaymentWithStripe title="Stripe" />
+            <AirwallexPaymentMethod />
+            <BankTransferPaymentMethod />
+          </>
+        )}
+        <OrderSummary>{children}</OrderSummary>
       </div>
     </div>
   )

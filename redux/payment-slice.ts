@@ -25,8 +25,12 @@ const paymentSlice: any = createSlice({
     isShippingFormCompleted: false,
     stage: 1,
     proceedPayment: false,
+    completeOrder: false,
   },
   reducers: {
+    updateCompleteOrder(state, action) {
+      state.completeOrder = action.payload
+    },
     updatePaymentMethod(state: any, action: any) {
       state.paymentMethod = action.payload
     },
@@ -59,6 +63,7 @@ const paymentSlice: any = createSlice({
 })
 
 export const {
+  updateCompleteOrder,
   updatePaymentMethod,
   updateCountry,
   updatePaymentForm,

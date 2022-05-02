@@ -19,8 +19,8 @@ export function vboutOrderData(cart: any, order: any) {
       lastname: order.account.lastName,
       email: order.account.email,
       address: `${order.billing.address1} ${order.billing.address1}`,
-      city: order.billing.city,
-      statename: order.billing.state,
+      city: order.billing.district,
+      statename: order.billing.region,
       countryname: order.billing.country,
       zipcode: order.billing.zip,
     },
@@ -29,11 +29,11 @@ export function vboutOrderData(cart: any, order: any) {
       lastname: order.account.lastName,
       email: order.account.email,
       address: `${order.billing.address1} ${order.billing.address1}`,
-      city: order.billing.city,
-      statename: order.billing.state,
+      city: order.billing.district,
+      statename: order.billing.region,
       countryname: order.billing.country,
       zipcode: order.billing.zip,
     },
-  };
-  return data;
+  }
+  return data
 }

@@ -2,6 +2,7 @@ import { AnimatePresence } from 'framer-motion'
 import type { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
+import Script from 'next/script'
 import { useMemo } from 'react'
 
 import Header from '@/components/Header'
@@ -42,6 +43,22 @@ export default function App({ Component, pageProps, router }: AppProps) {
               content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"
             />
           </Head>
+          <Script
+            strategy="lazyOnload"
+            id="vboutTrackingCodeScript"
+            nonce="QRTYPCVBFGXZ"
+          >
+            {`
+          var _vbset = _vbset || [];
+          _vbset.push(['_account', 'VBT-43304-6887']);
+          _vbset.push(['_domain', 'https://livehealthy.hk']);
+
+          (function() {
+            var vbt = document.createElement('script'); vbt.type = 'text/javascript'; vbt.async = true; 
+            vbt.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'www.vbt.io/tracker?_account='+_vbset[0][1]+'&_domain='+_vbset[1][1];var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(vbt, s);
+          })();
+        `}
+          </Script>
           <Loader layout={isCatalogPage ? 'bar' : 'overlay'} />
           <Header />
           <AnimatePresence exitBeforeEnter={true} onExitComplete={scrollToTop}>

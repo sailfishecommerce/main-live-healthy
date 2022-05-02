@@ -1,7 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
+/* eslint-disable no-param-reassign */
+import { createSlice } from '@reduxjs/toolkit'
 
 const integrationSlice = createSlice({
-  name: "integrations",
+  name: 'integrations',
   initialState: {
     vbout: {
       createCart: false,
@@ -9,11 +10,11 @@ const integrationSlice = createSlice({
   },
   reducers: {
     createCartVbout(state) {
-      state.vbout.createCart = true;
+      state.vbout.createCart = true
     },
   },
-});
+})
 
-export const { createCartVbout } = integrationSlice.actions;
+export const { createCartVbout } = integrationSlice.actions
 
-export default integrationSlice.reducer;
+export default integrationSlice.reducer

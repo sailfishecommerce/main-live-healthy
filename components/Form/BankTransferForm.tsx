@@ -1,33 +1,39 @@
-import { useCallback, useState } from 'react'
+import { useState, useEffect } from 'react'
+import { toast } from 'react-toastify'
 
 import BankTransferList from '@/components/Form/BankTransferList'
-import { useToast } from '@/hooks'
 import { useAppSelector } from '@/hooks/useRedux'
 import { sendBankTransfer } from '@/hooks/useVbout'
 import checkoutFormContent from '@/json/checkout-form.json'
 
 export default function BankTransferForm() {
   const [bank, setBank] = useState('')
+  const [submit, setSubmit] = useState(false)
   const { paymentForm }: any = useAppSelector((state) => state.payment)
-  const { isLoading, hasError, isSuccessful } = useToast()
+  const setBankHandler = (e: any) => setBank(e.target.value)
 
-  const setBankHandler = useCallback((e: any) => setBank(e.target.value), [])
+  useEffect(() => {
+    if (submit) {
+      sendBankTransfer(paymentForm?.email, bank)
+        .then((response) => {
+          console.log('response', response)
+          setSubmit(false)
+          toast.success(`An email has been sent to ${paymentForm?.email}`)
+        })
+        .catch((error) => {
+          setSubmit(false)
+          console.log('response error', error)
+        })
+    }
+  }, [submit])
 
-  function submitHandler(e: any) {
+  function submitHandler(e: any, formState: boolean) {
     e.preventDefault()
-    const loading = isLoading()
-    sendBankTransfer(paymentForm?.email, bank)
-      .then((response) => {
-        console.log('response', response)
-        isSuccessful(loading, `An email has been sent to ${paymentForm?.email}`)
-      })
-      .catch((error) => {
-        console.log('response error', error)
-        hasError(loading, 'an error occured')
-      })
+    setSubmit(formState)
   }
+
   return (
-    <form onSubmit={submitHandler}>
+    <form onSubmit={(e) => submitHandler(e, true)}>
       <table className="manualTransfer mb-3 w-full mt-3">
         <thead>
           <tr className="border-b">

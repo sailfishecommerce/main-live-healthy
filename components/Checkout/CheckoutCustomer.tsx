@@ -8,7 +8,7 @@ import { checkoutFormSchema } from '@/components/Form/schema/CheckoutFormSchema'
 import { useAppDispatch } from '@/hooks/useRedux'
 import useShippingPayment from '@/hooks/useShippingPayment'
 import breadcrumbContent from '@/json/breadcrumb.json'
-import { updatePaymentForm } from '@/redux/payment-slice'
+import { updateCompleteOrder, updatePaymentForm } from '@/redux/payment-slice'
 
 export default function CheckoutCustomer() {
   const { formValues } = useShippingPayment()
@@ -24,9 +24,9 @@ export default function CheckoutCustomer() {
             initialValues={formValues}
             validationSchema={checkoutFormSchema}
             onSubmit={(values, { setSubmitting }) => {
-              setSubmitting(false)
-              console.log('values', values)
               dispatch(updatePaymentForm({ form: values, completed: true }))
+              setSubmitting(false)
+              dispatch(updateCompleteOrder(true))
             }}
           >
             {(formik) => {
@@ -41,8 +41,6 @@ export default function CheckoutCustomer() {
                     <button
                       type="submit"
                       className={`w-full ${buttonStyle} p-3 text-xl mt-1 my-3  text-white text-center hover:bg-orange-700 font-normal shadow-lg rounded-xl`}
-                      // onClick={() => completeOrderHandler(true)}
-                      disabled={formik.isValid}
                     >
                       Complete Order
                     </button>

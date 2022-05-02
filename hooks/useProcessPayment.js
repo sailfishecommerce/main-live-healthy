@@ -16,7 +16,7 @@ import { useAppDispatch } from '@/redux/store'
 export default function useProcessPayment() {
   const router = useRouter()
   const { tokenizePayment, submitUserOrder } = usePayment()
-  const { getUserDetails } = useAuth()
+  const { getUserAccount } = useAccount()
   const { getACart } = useSwellCart()
   const dispatch = useAppDispatch
   const { useCartData } = useCart()
@@ -91,7 +91,7 @@ export default function useProcessPayment() {
 
   function makePayment(data) {
     const loading = isLoading()
-    getUserDetails()
+    getUserAccount()
       .then((response) => {
         console.log('response getUserDetails', response)
         if (response === null) {

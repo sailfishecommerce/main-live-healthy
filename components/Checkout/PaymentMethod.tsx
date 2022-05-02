@@ -9,7 +9,7 @@ import { useAppSelector } from '@/hooks/useRedux'
 export default function PaymentMethod({
   children,
 }: PropsWithChildren<Record<string, unknown>>) {
-  const { completeOrder } = useAppSelector((state) => state.payment)
+  const { completeOrder }: any = useAppSelector((state) => state.payment)
   return (
     <div className="flex flex-col w-full">
       <div className="flex w-full flex-col bg-white rounded-md p-4 mb-2">
@@ -22,14 +22,15 @@ export default function PaymentMethod({
           For credit/debit card, you can pay via Paypal. No Paypal account
           required.
         </p>
-        {completeOrder && (
+        {completeOrder ? (
           <>
             <PaymentWithStripe title="Stripe" />
             <AirwallexPaymentMethod />
             <BankTransferPaymentMethod />
           </>
+        ) : (
+          <OrderSummary>{children}</OrderSummary>
         )}
-        <OrderSummary>{children}</OrderSummary>
       </div>
     </div>
   )

@@ -3,7 +3,6 @@ import { useQuery } from 'react-query'
 
 import ShippingMethodTag from '@/components/Tag/ShippingMethodTag'
 import useShipping from '@/hooks/useShipping'
-import shippingTagsJson from '@/json/shipping.json'
 
 export default function ShippingMethod() {
   const [shippingMethod, setShippingMethod] = useState<string | null>(null)
@@ -15,14 +14,12 @@ export default function ShippingMethod() {
 
   const { data, status } = useQuery('getShippingRate', getShippingRates)
 
-  console.log('data', data)
-
   return (
     <div className="mt-6">
       <h4 className="text-lg font-semibold mb-3">Shipping method</h4>
       <div className="shipping-methods flex flex-col">
         {status === 'success' &&
-          data.services.map((shippingMethodItem) => (
+          data.services.map((shippingMethodItem: any) => (
             <ShippingMethodTag
               key={shippingMethodItem.id}
               content={shippingMethodItem}

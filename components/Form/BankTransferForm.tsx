@@ -1,9 +1,10 @@
 import { useCallback, useState } from 'react'
-import checkoutFormContent from '@/json/checkout-form.json'
-import { sendBankTransfer } from '@/hooks/useVbout'
-import { useAppSelector } from '@/hooks/useRedux'
-import { useToast } from '@/hooks'
+
 import BankTransferList from '@/components/Form/BankTransferList'
+import { useToast } from '@/hooks'
+import { useAppSelector } from '@/hooks/useRedux'
+import { sendBankTransfer } from '@/hooks/useVbout'
+import checkoutFormContent from '@/json/checkout-form.json'
 
 export default function BankTransferForm() {
   const [bank, setBank] = useState('')
@@ -17,15 +18,17 @@ export default function BankTransferForm() {
     const loading = isLoading()
     sendBankTransfer(paymentForm?.email, bank)
       .then((response) => {
+        console.log('response', response)
         isSuccessful(loading, `An email has been sent to ${paymentForm?.email}`)
       })
       .catch((error) => {
+        console.log('response error', error)
         hasError(loading, 'an error occured')
       })
   }
   return (
     <form onSubmit={submitHandler}>
-      <table className="manualTransfer mb-3 w-full">
+      <table className="manualTransfer mb-3 w-full mt-3">
         <thead>
           <tr className="border-b">
             <th className="text-sm md:text-md">CURRENCY</th>

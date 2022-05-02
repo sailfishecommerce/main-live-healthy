@@ -1,11 +1,10 @@
-import { v4 as uuidv4 } from "uuid";
-import { cartType } from "@/types";
+import { v4 as uuidv4 } from 'uuid'
+
+import type { cartType } from '@/types'
 
 export function formatIntentData(cart: any, paymentForm: any) {
-  const products = formatCartProduct(cart);
-  const street = paymentForm.address1
-    ? paymentForm.address1
-    : paymentForm.state;
+  const products = formatCartProduct(cart)
+  const street = paymentForm.address1 ? paymentForm.address1 : paymentForm.state
   const cartData = {
     amount: cart.grandTotal,
     currency: cart.currency,
@@ -15,9 +14,9 @@ export function formatIntentData(cart: any, paymentForm: any) {
       products,
       shipping: {
         address: {
-          city: paymentForm.city,
+          city: paymentForm.district,
           country_code: paymentForm.country.toUpperCase(),
-          state: paymentForm.state,
+          state: paymentForm.region,
           postcode: paymentForm.zip,
           street,
         },
@@ -34,12 +33,12 @@ export function formatIntentData(cart: any, paymentForm: any) {
         },
       },
     },
-  };
-  return cartData;
+  }
+  return cartData
 }
 
 function formatCartProduct(cart: cartType) {
-  let productArray: any[] = [];
+  const productArray: any[] = []
   cart?.items.map((item: any, index: number) => {
     productArray[index] = {
       desc: item.product?.metaTitle,
@@ -48,7 +47,7 @@ function formatCartProduct(cart: cartType) {
       unit_price: item.price,
       url: `https://www.livehealthy.hk/products/${item.product.slug}`,
       sku: item?.product.sku,
-    };
-  });
-  return productArray;
+    }
+  })
+  return productArray
 }

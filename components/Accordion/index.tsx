@@ -8,6 +8,7 @@ interface Props {
   icon?: JSX.Element
   isOpen?: boolean
   isGray?: boolean
+  onClick?: () => void
 }
 
 export default function Accordion({
@@ -17,6 +18,7 @@ export default function Accordion({
   icon,
   isOpen,
   isGray,
+  onClick,
 }: PropsWithChildren<Props>) {
   const initialAccordionState = isOpen ? isOpen : false
   const [showContent, setShowContent] = useState(initialAccordionState)
@@ -24,6 +26,7 @@ export default function Accordion({
   const colorMode = isGray ? 'bg-gray-200' : 'bg-white rounded-md'
 
   function onClickHandler() {
+    if (onClick) onClick()
     setShowContent(!showContent)
   }
   return (

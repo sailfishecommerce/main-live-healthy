@@ -7,8 +7,8 @@ import useAirwallexPayment from '@/hooks/useAirwallexPayment'
 import { useAppSelector } from '@/hooks/useRedux'
 
 export default function AirwallexPaymentMethod() {
-  const { useCartData } = useCart()
   const { paymentForm }: any = useAppSelector((state) => state.payment)
+  const { useCartData } = useCart()
   const { data: cart } = useCartData()
   const { checkoutHandler } = useAirwallexPayment()
 
@@ -19,12 +19,14 @@ export default function AirwallexPaymentMethod() {
   const { clientSecret, paymentIntentId } = useAppSelector(
     (state) => state.airwallex
   )
+  console.log(' clientSecret, paymentIntentId', clientSecret, paymentIntentId)
 
   return (
     <Accordion
       stage={2}
       icon={<BsCreditCard size={32} />}
       title="Pay with Airwallex"
+      onClick={onCheckout}
     >
       <span className="font-medium">Airwallex</span> - the safer, easier way to
       pay

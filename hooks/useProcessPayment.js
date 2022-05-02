@@ -16,13 +16,16 @@ import { useAppDispatch } from '@/redux/store'
 export default function useProcessPayment() {
   const router = useRouter()
   const { tokenizePayment, submitUserOrder } = usePayment()
-  const { getUserAccount } = useAccount()
   const { getACart } = useSwellCart()
   const dispatch = useAppDispatch
   const { useCartData } = useCart()
   const { onShowModal } = useModal()
   const { data: cart } = useCartData()
-  const { updateUserBillingInfo, createUserAddresstAtCheckout } = useAccount()
+  const {
+    updateUserBillingInfo,
+    createUserAddresstAtCheckout,
+    getUserAccount,
+  } = useAccount()
   const [loadingState, setLoadingState] = useState(false)
   const { isLoading, isSuccessful, hasError } = useToast()
 

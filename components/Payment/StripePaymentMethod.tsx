@@ -30,7 +30,6 @@ function StripePaymentMethodComponent() {
 
   const { paymentForm }: any = useAppSelector((state) => state.payment)
   const inputRef = useRef(null)
-  console.log('paymentForm', paymentForm)
   const { makePayment, loadingState } = useProcessPayment()
 
   function makePaymentHandler() {

@@ -48,9 +48,9 @@ export function AppLayout({ children }: AppLayoutProps) {
   const queryClient = new QueryClient()
 
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <JotaiProvider initialValues={get()}>
+    <JotaiProvider initialValues={get()}>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
           <QueryClientProvider client={queryClient}>
             <MediaContextProvider>
               <LazyMotion features={loadFramerMotionFeatures} strict={true}>
@@ -58,8 +58,8 @@ export function AppLayout({ children }: AppLayoutProps) {
               </LazyMotion>
             </MediaContextProvider>
           </QueryClientProvider>
-        </JotaiProvider>
-      </PersistGate>
-    </Provider>
+        </PersistGate>
+      </Provider>
+    </JotaiProvider>
   )
 }

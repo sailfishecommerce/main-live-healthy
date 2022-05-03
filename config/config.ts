@@ -3,7 +3,6 @@ import { freezeAtom } from 'jotai/utils'
 
 import type { SetUserToken } from '@/hooks/useSearchInsights'
 import type { Refinement, RefinementLayout } from '@/typings/refinements'
-import { capitalize } from '@/utils/capitalize'
 import { indexName } from '@/utils/env'
 
 export type Config = typeof config
@@ -52,23 +51,6 @@ const refinements: Refinement[] = [
     options: {
       attribute: 'rating',
       limit: 8,
-    },
-  },
-  {
-    type: 'color',
-    header: 'Colors',
-    label: 'Color',
-    options: {
-      attribute: 'color.filter_group',
-      separator: ';',
-      limit: 9,
-      showMore: true,
-      showMoreLimit: 15,
-      transformItems: (items: any) =>
-        items.map((item: any) => ({
-          ...item,
-          label: capitalize(item.label),
-        })),
     },
   },
 ]

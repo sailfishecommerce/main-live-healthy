@@ -53,13 +53,15 @@ export function useUrlSync() {
     (nextSearchState: SearchState) => {
       if (!isCollectionPage) return
 
-      const newRoute = `/collection${searchStateToUrl(nextSearchState)}`
+      const newRoute = `/collection/${searchStateToUrl(nextSearchState)}`
       if (router.asPath !== newRoute) {
         router.push(newRoute, newRoute, { shallow: true })
       }
     },
-    [router?.asPath] // eslint-disable-line react-hooks/exhaustive-deps
+    [router] // eslint-disable-line react-hooks/exhaustive-deps
   )
+
+  console.log('router', router)
 
   const { url: urlConfig } = useAtomValue(configAtom)
   const debouncedPushRoute = useDebouncedCallback(
@@ -70,10 +72,12 @@ export function useUrlSync() {
   // Listen for route changes and update search state accordingly
   const autocomplete = useAtomValue(autocompleteAtom)
   const autocompleteState = useAtomValue(autocompleteStateAtom)
+
   useEffect(() => {
     const handleRouteChange = () => {
       const newSearchState = urlToSearchState(window.location.href)
       setSearchState(newSearchState)
+      console.log('newSearchState', newSearchState)
 
       if (!newSearchState.query) {
         autocomplete?.setQuery('')

@@ -3,7 +3,7 @@
 }
 
 .loader--bar {
-  @apply fixed bottom-0 left-0 w-full h-1 shadow-md bg-white to-invisible motion-reduce:hidden;
+  @apply fixed bottom-0 left-0 w-full h-1 sh adow-md bg-white to-invisible motion-reduce:hidden;
 
   &::after {
     @apply content-[""] absolute w-full h-full origin-left bg-brand-nebula motion-reduce:animate-none;

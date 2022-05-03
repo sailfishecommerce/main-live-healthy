@@ -3,6 +3,7 @@ import FormattedPrice from '@/components/Price/FormattedPrice'
 
 interface Props {
   content: {
+    id: string
     name: string
     price: number
     value: string
@@ -20,13 +21,13 @@ export default function ShippingMethodTag({
   className,
 }: Props) {
   const selectedMethodStyled =
-    shippingMethod === content.value ? 'bg-gray-300 text-white' : ''
+    shippingMethod === content.id ? 'bg-gray-300 text-white' : ''
   const tagClassName = className ? className : ''
   return (
     <button
       type="button"
       className={`${tagClassName} flex-col shipping-method-tag ${selectedMethodStyled} my-1.5 rounded-xl border border-gray-300 p-2 justify-between flex items-cente`}
-      onClick={() => updateShippingMethod(content.value)}
+      onClick={() => updateShippingMethod(content.id)}
     >
       <div className="row flex items-center justify-between w-full">
         <span className="flex items-center">

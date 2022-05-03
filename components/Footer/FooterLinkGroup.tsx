@@ -7,12 +7,14 @@ type footerLinkType = {
 
 interface Props {
   item: footerLinkType
+  linkPrefix?: string
 }
 
-function FooterLinkItem({ item }: Props) {
+function FooterLinkItem({ item, linkPrefix }: Props) {
+  const linkSlug = linkPrefix ? `${linkPrefix}${item.slug}` : item.slug
   return (
     <li className="my-2">
-      <Link passHref href={item.slug}>
+      <Link passHref href={linkSlug}>
         <a className="hover:text-green-500" title={item.name}>
           {item.name}
         </a>
@@ -26,6 +28,7 @@ interface FooterLinkGroupProps {
   tag?: string
   linkGroup: footerLinkType[] | []
   onViewLinks?: () => void
+  linkPrefix?: string
 }
 
 export default function FooterLinkGroup({
@@ -33,6 +36,7 @@ export default function FooterLinkGroup({
   tag,
   linkGroup,
   onViewLinks,
+  linkPrefix,
 }: FooterLinkGroupProps) {
   return (
     <ul className="mt-4">
@@ -50,7 +54,7 @@ export default function FooterLinkGroup({
         )}
       </span>
       {linkGroup.map((item: footerLinkType) => (
-        <FooterLinkItem item={item} key={item.slug} />
+        <FooterLinkItem linkPrefix={linkPrefix} item={item} key={item.slug} />
       ))}
     </ul>
   )

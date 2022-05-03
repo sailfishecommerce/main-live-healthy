@@ -39,6 +39,7 @@ export default function FooterLink() {
           tag={tagText}
           linkGroup={linkArray}
           onViewLinks={updateLinkList}
+          linkPrefix="/collection/"
         />
       ) : (
         'loading'

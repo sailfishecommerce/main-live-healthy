@@ -6,7 +6,6 @@ import { useAtom } from 'jotai'
 import { useCallback } from 'react'
 
 import { useLockedBody } from '@/hooks/useLockedBody'
-import { Laptop, Tablet } from '@/lib/media'
 import { CurrentRefinements } from '@instantsearch/widgets/current-refinements/current-refinements'
 import { Button } from '@ui/button/button'
 import { IconLabel } from '@ui/icon-label/icon-label'
@@ -38,8 +37,8 @@ export function RefinementsPanelHeader() {
   return (
     <header className="flex flex-col lg:my-5 lg:mt-0">
       <div className="flex items-center gap-1 my-6 lg:my-0">
-        <Tablet className="grow">
-          <div className="flex items-center justify-between">
+        <div className="grow">
+          <div className="lg:hidden flex items-center justify-between">
             <IconLabel
               icon={FilterIcon}
               label="Filter &amp; Sort"
@@ -52,9 +51,9 @@ export function RefinementsPanelHeader() {
               <Icon icon={CloseIcon} className="w-8 h-8" />
             </Button>
           </div>
-        </Tablet>
+        </div>
 
-        <Laptop className="grow flex items-center justify-between w-full">
+        <div className="grow hidden lg:flex items-center justify-between w-full">
           <IconLabel
             icon={FilterIcon}
             label="Filters"
@@ -75,12 +74,12 @@ export function RefinementsPanelHeader() {
               classNameLabel="body-regular"
             />
           </Button>
-        </Laptop>
+        </div>
       </div>
 
-      <Tablet>
+      <div className="flex lg:hidden">
         <CurrentRefinements header="Applied filters" className="mb-6" />
-      </Tablet>
+      </div>
     </header>
   )
 }

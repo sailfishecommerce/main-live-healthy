@@ -7,7 +7,6 @@ import { refinementsPanelMobileExpandedAtom } from '@/components/RefinementsPane
 import { ToggleFilters } from '@/components/ToggleFilters'
 import { ViewModes } from '@/components/ViewModes'
 import { configAtom } from '@/config/config'
-import { Laptop, Tablet } from '@/lib/media'
 import { withDebugLayer } from '@dev/debug-layer/debug-layer'
 import {
   CurrentRefinements,
@@ -52,8 +51,8 @@ function RefinementsBarComponent({
         className
       )}
     >
-      <Tablet className="flex flex-col gap-2">
-        <div className="flex justify-between">
+      <div className="flex flex-col gap-2">
+        <div className="flex md:hidden justify-between">
           <ViewModes />
 
           <Button
@@ -71,9 +70,9 @@ function RefinementsBarComponent({
         </div>
 
         <RelevantSort />
-      </Tablet>
+      </div>
 
-      <Laptop className="flex flex-col items-start gap-4">
+      <div className="flex flex-col items-start gap-4">
         <div className="w-full flex gap-6">
           {showRefinements && (
             <RefinementsBarDropdowns dynamicWidgets={dynamicWidgets} />
@@ -95,7 +94,7 @@ function RefinementsBarComponent({
         {showRefinements && <CurrentRefinements />}
 
         <RelevantSort />
-      </Laptop>
+      </div>
     </section>
   )
 }

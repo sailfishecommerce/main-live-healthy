@@ -10,8 +10,8 @@ import { useCallback, useEffect, useMemo, useRef, memo } from 'react'
 import { searchQueryAtom } from '@/components/@instantsearch/hooks/useUrlSync'
 import { overlayAtom } from '@/components/Overlay'
 import { configAtom } from '@/config/config'
+import { useMediaQuery } from '@/hooks'
 import { useIsMounted } from '@/hooks/useIsMounted'
-import { useTailwindScreens } from '@/hooks/useTailwindScreens'
 import { searchClientAtom } from '@/layouts/app-layout'
 import {
   AutocompleteBasic,
@@ -29,7 +29,7 @@ const isExpandedAtom = atom(
 )
 
 function SearchbarComponent() {
-  const { laptop } = useTailwindScreens()
+  const laptop = useMediaQuery('(min-width:1200px)')
 
   // Router
   const router = useRouter()

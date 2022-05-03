@@ -15,6 +15,7 @@ import { ExpandablePanel } from '@instantsearch/widgets/expandable-panel/expanda
 import { SortBy } from '@instantsearch/widgets/sort-by/sort-by'
 
 import type { RefinementsPanelProps } from './refinements-panel'
+import { useMediaQuery } from '@/hooks'
 
 export type RefinementsPanelBodyProps = Pick<
   RefinementsPanelProps,
@@ -73,8 +74,7 @@ export function RefinementsPanelBody({
   dynamicWidgets,
 }: RefinementsPanelBodyProps) {
   const { refinements } = useAtomValue(configAtom)
-  const { laptop } = useTailwindScreens()
-
+  const laptop = useMediaQuery('(min-width:1200px)')
   const [panels, setPanels] = useAtom(refinementsPanelsAtom)
 
   // Set initial panels value

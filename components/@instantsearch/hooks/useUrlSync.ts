@@ -31,7 +31,7 @@ export const searchQueryAtom = selectAtom<SearchState, string | undefined>(
 export function useUrlSync() {
   // Router
   const router = useRouter()
-  const isCatalogPage = useMemo(
+  const isCollectionPage = useMemo(
     () => router?.pathname === '/collection/[[...slugs]]',
     [router?.pathname]
   )
@@ -51,7 +51,7 @@ export function useUrlSync() {
   // Push new route based on the search state
   const pushRoute = useCallback(
     (nextSearchState: SearchState) => {
-      if (!isCatalogPage) return
+      if (!isCollectionPage) return
 
       const newRoute = `/collection${searchStateToUrl(nextSearchState)}`
       if (router.asPath !== newRoute) {
@@ -103,10 +103,10 @@ export function useUrlSync() {
 
   // Scroll to top when search query changes
   useEffect(() => {
-    if (isCatalogPage) {
+    if (isCollectionPage) {
       scrollToTop('smooth')
     }
-  }, [isCatalogPage, searchState.query])
+  }, [isCollectionPage, searchState.query])
 
   return {
     searchState,

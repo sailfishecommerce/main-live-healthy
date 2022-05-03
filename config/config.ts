@@ -46,19 +46,11 @@ const refinements: Refinement[] = [
     },
   },
   {
-    type: 'price',
-    header: 'Price',
-    label: 'Price',
+    type: 'list',
+    header: 'Ratings',
+    label: 'Rating',
     options: {
-      attribute: 'price',
-    },
-  },
-  {
-    type: 'size',
-    header: 'Sizes',
-    label: 'Size',
-    options: {
-      attribute: 'available_sizes',
+      attribute: 'rating',
       limit: 8,
     },
   },
@@ -77,14 +69,6 @@ const refinements: Refinement[] = [
           ...item,
           label: capitalize(item.label),
         })),
-    },
-  },
-  {
-    type: 'rating',
-    header: 'Rating',
-    label: 'Rating',
-    options: {
-      attribute: 'reviews.rating',
     },
   },
 ]

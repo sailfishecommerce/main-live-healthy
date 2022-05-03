@@ -9,8 +9,8 @@ import ProductHitCard from '@/components/Cards/ProductHitCard'
 import { Container } from '@/components/Container'
 import { viewModeAtom } from '@/components/ViewModes'
 import { configAtom } from '@/config/config'
-// import { useIsMounted } from '@/hooks/useIsMounted'
-// import { useTailwindScreens } from '@/hooks/useTailwindScreens'
+import { useMediaQuery } from '@/hooks'
+import { useIsMounted } from '@/hooks/useIsMounted'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
 import {
   getServerSidePropsPage,
@@ -42,13 +42,12 @@ const InfiniteHits = dynamic<any>(
 export default function Catalog(props: SearchPageLayoutProps) {
   const { breadcrumbAttributes, refinementsLayoutAtom } =
     useAtomValue(configAtom)
-  // console.log('breadcrumbAttributes', breadcrumbAttributes)
   const refinementsLayout = useAtomValue(refinementsLayoutAtom)
   const viewMode = useAtomValue(viewModeAtom)
-  // console.log('refinementsLayout', refinementsLayout)
-  // const { laptop } = useTailwindScreens()
-  // const isMounted = useIsMounted(true)
-  // const isLaptop = laptop && isMounted()
+  const laptop = useMediaQuery('(min-width:1200px)')
+
+  const isMounted = useIsMounted(true)
+  const isLaptop = laptop && isMounted()
 
   return (
     <SearchPageLayout {...props}>

@@ -15,7 +15,9 @@ export function getSearchClient(
   searchApiKey: string
 ): SearchClient {
   const client = algoliasearch(appId, searchApiKey)
-  client.addAlgoliaAgent(`pwa-ecom-react-ui-template (${packageJson.version})`)
+  client.addAlgoliaAgent(
+    `New_Livehealthy_products_index (${packageJson.version})`
+  )
 
   return {
     ...client,

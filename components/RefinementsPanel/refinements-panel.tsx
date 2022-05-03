@@ -3,12 +3,9 @@ import { atom } from 'jotai'
 import { useAtomValue } from 'jotai/utils'
 
 import { overlayAtom } from '@/components/Overlay'
-import { Tablet } from '@/lib/media'
+import { RefinementsPanelBody } from '@/components/RefinementsPanel/refinements-panel-body'
+import { RefinementsPanelHeader } from '@/components/RefinementsPanel/refinements-panel-header'
 import { searchResultsAtom } from '@instantsearch/widgets/virtual-state-results/virtual-state-results'
-
-import { RefinementsPanelBody } from './refinements-panel-body'
-import { RefinementsPanelFooter } from './refinements-panel-footer'
-import { RefinementsPanelHeader } from './refinements-panel-header'
 
 export type RefinementsPanelProps = {
   dynamicWidgets?: boolean
@@ -45,9 +42,6 @@ export function RefinementsPanel({
             <RefinementsPanelHeader />
             <RefinementsPanelBody dynamicWidgets={dynamicWidgets} />
           </div>
-          <Tablet>
-            <RefinementsPanelFooter />
-          </Tablet>
         </div>
       </div>
 

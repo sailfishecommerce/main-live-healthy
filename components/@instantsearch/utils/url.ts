@@ -46,7 +46,6 @@ export const createURL = (searchState: SearchState): string => {
 
   const hierarchicalCategory =
     parsedSearchState.hierarchicalMenu?.[hierarchicalAttribute]
-
   let categoryPath = ''
   if (hierarchicalCategory) {
     categoryPath = hierarchicalCategory
@@ -90,7 +89,6 @@ export const urlToSearchState = (url: string | null = ''): SearchState => {
   }
 
   const pathnameMatches = pathname.match(/collection\/(.*?)\/?$/)
-
   const category = pathnameMatches?.[1]
     .split(categorySeparator)
     .map(getCategoryName)
@@ -100,7 +98,6 @@ export const urlToSearchState = (url: string | null = ''): SearchState => {
     parsedSearchState.hierarchicalMenu = {}
     parsedSearchState.hierarchicalMenu[hierarchicalAttribute] = category
   }
-
   return parsedSearchState
 }
 

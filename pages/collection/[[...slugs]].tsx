@@ -9,8 +9,8 @@ import ProductHitCard from '@/components/Cards/ProductHitCard'
 import { Container } from '@/components/Container'
 import { viewModeAtom } from '@/components/ViewModes'
 import { configAtom } from '@/config/config'
-import { useMediaQuery } from '@/hooks'
-import { useIsMounted } from '@/hooks/useIsMounted'
+// import { useMediaQuery } from '@/hooks'
+// import { useIsMounted } from '@/hooks/useIsMounted'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
 import {
   getServerSidePropsPage,
@@ -44,10 +44,10 @@ export default function Catalog(props: SearchPageLayoutProps) {
     useAtomValue(configAtom)
   const refinementsLayout = useAtomValue(refinementsLayoutAtom)
   const viewMode = useAtomValue(viewModeAtom)
-  const laptop = useMediaQuery('(min-width:1200px)')
+  // const laptop = useMediaQuery('(min-width:1200px)')
 
-  const isMounted = useIsMounted(true)
-  const isLaptop = laptop && isMounted()
+  // const isMounted = useIsMounted(true)
+  // const isLaptop = laptop && isMounted()
 
   return (
     <SearchPageLayout {...props}>

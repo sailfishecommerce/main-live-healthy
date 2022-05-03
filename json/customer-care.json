@@ -1,0 +1,101 @@
+{
+  "sidebar": [
+    {
+      "title": "SUPPORT",
+      "links": [
+        { "name": "Shipping & Delivery", "link": "/shipping-delivery" },
+        { "name": "Returns & Exchanges", "link": "/returns-exchanges" },
+        { "name": "Orders", "link": "orders" }
+      ]
+    },
+    {
+      "title": "CONTACT",
+      "links": [
+        { "name": "Contact Us", "link": "/contact-us" },
+        { "name": "Support", "link": "/support" }
+      ]
+    },
+    {
+      "title": "LEGAL",
+      "links": [
+        { "name": "Terms & Conditions", "link": "/terms-condition" },
+        { "name": "Privacy Policy", "link": "/privacy-policy" },
+        { "name": "Cookie Policy", "link": "/cookie-policy" }
+      ]
+    }
+  ],
+  "content": [
+    {
+      "title": "Cookie Policy",
+      "reviewed-date": "03 May 2022",
+      "texts": [
+        {
+          "question": "What is a cookie?",
+          "answer": "A cookie is a small file that is set in your browser when you visit a website, and which may assign a unique identifier to you."
+        },
+        {
+          "question": "What cookies/tracking technologies do we use?",
+          "answer": "<p>There are a few different types of cookies that we and some of our affiliates and third-party service providers may use: persistent cookies (that are kept by your browser until removed) and session cookies (that your browser automatically removes after a period of time, or when you close it).</p><p>There are also other tracking technologies that we may used, such as web beacons and local storage. Web beacons allow us to monitor site behaviour by delivering your IP address, any cookies we may have set and information about the page you’re visiting to a server. We use local storage to keep track of your preferences, things you've seen, temporary personal identifiers and more; the data we store in local storage generally stays on your device.</p>"
+        },
+        {
+          "question": "Why do we use cookies/tracking technologies?",
+          "answer": "<p>We use cookies (and other tracking technologies – but for ease, let’s just call them cookies) for lots of reasons: they let us customise your experience (for example, seeing prices in the correct currency), operate the website (like enabling you to put things in your cart and then keep shopping) and generally make sure that your experience of our website is a good one.</p><p>We also use cookies to perform analytics and deliver advertising or marketing that is relevant to you.</p><p>There are also cookies set by third parties that allow us to provide interactive content, perform analytics and enable other third party features, like payment or links to social media.</p>"
+        },
+        {
+          "question": "Why do we use cookies/tracking technologies?",
+          "answer": "<p>We use cookies (and other tracking technologies – but for ease, let’s just call them cookies) for lots of reasons: they let us customise your experience (for example, seeing prices in the correct currency), operate the website (like enabling you to put things in your cart and then keep shopping) and generally make sure that your experience of our website is a good one.</p><p>We also use cookies to perform analytics and deliver advertising or marketing that is relevant to you.</p><p>There are also cookies set by third parties that allow us to provide interactive content, perform analytics and enable other third party features, like payment or links to social media.</p>"
+        }
+      ]
+    },
+    {
+      "title": "Privacy Policy",
+      "reviewed-date": "03 May 2022",
+      "texts": [
+        {
+          "question": "Introduction",
+          "answer": "<p>Live-heathy stores takes privacy seriously – we are committed to keeping your personal information private. All personal data we collect is kept strictly secured, and is only used for the purposes described in this privacy policy.</p><p>This privacy policy applies to information collected through our websites and any information we collect through our other interactions with you (for example, if you talk to our customer services team).</p>"
+        },
+        {
+          "question": "Who are ‘we’?",
+          "answer": "<p>When we talk about “we” (or “our” or “us”), we mean Livehealthy stores Ltd and all its wholly owned subsidiaries. We are based in Australia but we supply goods all over the world.</p>"
+        },
+        {
+          "question": "What is ‘Personal Data’?",
+          "answer": "<p>We treat any data that could directly or indirectly identify you (or your family or your personal device over time and across services) as “Personal Data”. This includes information like your name, address, telephone number and your email address but in some cases it may include less obviously identifying information, like your IP Address (see below).</p>"
+        },
+        {
+          "question": "What data do we collect?",
+          "answer": "<p>When you visit livehealthy.com or buy Livehealthy products online, we collect different types of Personal Data about you and your use of our website. We treat this information as falling into three categories: Customer Information, Usage Data and your IP Address.</p><p><b>Customer Information</b> is the information you explicitly provide to us when you make an online purchase, sign up to receive our newsletters or other communications, or participate in any program or competition which requires you to complete a form on our website. This includes:</p><p>Your name</p><p>Your email address</p><p>Your shipping and/or billing address</p><p>Your payment information</p><p>What products you purchased</p><p><b>Usage Data</b> is general information about how you interact with our website or other services, such as:</p><p>which pages you visited on our website</p><p>how you came to the website (for example, by clicking on a link in a newsletter or from an advertisement)</p><p>which buttons or links you clicked</p><p>whether you have been to the website before</p><p>geolocation data (that is, where you are located in the world - country/city)</p><p>inferences that we may draw about you from the usage data we collect</p>"
+        },
+        {
+          "question": "What is ‘Personal Data’?",
+          "answer": "<p>We treat any data that could directly or indirectly identify you (or your family or your personal device over time and across services) as “Personal Data”. This includes information like your name, address, telephone number and your email address but in some cases it may include less obviously identifying information, like your IP Address (see below).</p>"
+        }
+      ]
+    },{
+      "title": "Terms & Conditions",
+      "texts": [
+        {
+          "question": "Introduction",
+          "answer": "<p>Live-heathy stores takes privacy seriously – we are committed to keeping your personal information private. All personal data we collect is kept strictly secured, and is only used for the purposes described in this privacy policy.</p><p>This privacy policy applies to information collected through our websites and any information we collect through our other interactions with you (for example, if you talk to our customer services team).</p>"
+        },
+        {
+          "question": "Who are ‘we’?",
+          "answer": "<p>When we talk about “we” (or “our” or “us”), we mean Livehealthy stores Ltd and all its wholly owned subsidiaries. We are based in Australia but we supply goods all over the world.</p>"
+        },
+        {
+          "question": "What is ‘Personal Data’?",
+          "answer": "<p>We treat any data that could directly or indirectly identify you (or your family or your personal device over time and across services) as “Personal Data”. This includes information like your name, address, telephone number and your email address but in some cases it may include less obviously identifying information, like your IP Address (see below).</p>"
+        },
+        {
+          "question": "What data do we collect?",
+          "answer": "<p>When you visit livehealthy.com or buy Livehealthy products online, we collect different types of Personal Data about you and your use of our website. We treat this information as falling into three categories: Customer Information, Usage Data and your IP Address.</p><p><b>Customer Information</b> is the information you explicitly provide to us when you make an online purchase, sign up to receive our newsletters or other communications, or participate in any program or competition which requires you to complete a form on our website. This includes:</p><p>Your name</p><p>Your email address</p><p>Your shipping and/or billing address</p><p>Your payment information</p><p>What products you purchased</p><p><b>Usage Data</b> is general information about how you interact with our website or other services, such as:</p><p>which pages you visited on our website</p><p>how you came to the website (for example, by clicking on a link in a newsletter or from an advertisement)</p><p>which buttons or links you clicked</p><p>whether you have been to the website before</p><p>geolocation data (that is, where you are located in the world - country/city)</p><p>inferences that we may draw about you from the usage data we collect</p>"
+        },
+        {
+          "question": "What is ‘Personal Data’?",
+          "answer": "<p>We treat any data that could directly or indirectly identify you (or your family or your personal device over time and across services) as “Personal Data”. This includes information like your name, address, telephone number and your email address but in some cases it may include less obviously identifying information, like your IP Address (see below).</p>"
+        }
+      ]
+    }
+  ]
+}

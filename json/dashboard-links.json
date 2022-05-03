@@ -1,0 +1,37 @@
+[
+  {
+    "icons": "dashboard",
+    "text": "Dashboard",
+    "link": "/admin"
+  },
+  {
+    "icons": "privacy-and-policy",
+    "text": "Privacy Policy",
+    "link": "/admin/privacy-and-policy"
+  },
+  {
+    "icons": "terms-and-condition",
+    "text": "Terms & condition",
+    "link": "/admin/terms-and-condition"
+  },
+  {
+    "icons": "shipping-info",
+    "text": "Shipping Info",
+    "link": "/admin/shipping-info"
+  },
+  {
+    "icons": "faq",
+    "text": "FAQs",
+    "link": "/admin/faq"
+  },
+  {
+    "icons": "return-and-refunds",
+    "text": "Return & Refunds",
+    "link": "/admin/return-and-refunds"
+  },
+  {
+    "icons": "blog",
+    "text": "Blog",
+    "link": "/admin/blog"
+  }
+]

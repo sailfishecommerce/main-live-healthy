@@ -2,12 +2,12 @@ import axios from 'axios'
 import { useQuery } from 'react-query'
 
 import Breadcrumb from '@/components/Breadcrumb'
-import Pagetitle from '@/components/Header/page-title'
 import OrderHistory from '@/components/Order/OrderHistory'
 import AccountDetail from '@/components/Shipping/AccountDetail'
 import Tabs from '@/components/Tabs'
 import { useAccount } from '@/hooks'
 import breadcrumb from '@/json/breadcrumb.json'
+import Applayout from '@/layouts/app-layout'
 
 export default function Account() {
   const { getUserAccount } = useAccount()
@@ -20,8 +20,7 @@ export default function Account() {
     listUserOrders
   )
   return (
-    <>
-      <Pagetitle title="Account Details" />
+    <Applayout title="Account Details">
       <main className="container mx-auto px-4 md:px-0">
         <Breadcrumb breadcrumbItems={breadcrumb.account} />
 
@@ -45,6 +44,6 @@ export default function Account() {
           </>
         )}
       </main>
-    </>
+    </Applayout>
   )
 }

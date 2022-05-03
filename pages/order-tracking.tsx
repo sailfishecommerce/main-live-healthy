@@ -1,15 +1,14 @@
 import Link from 'next/link'
 
 import OrderTrackingBanner from '@/components/Banners/OrderTrackingBanner'
-import Pagetitle from '@/components/Header/page-title'
 import contentData from '@/json/order-tracking.json'
+import Applayout from '@/layouts/app-layout'
 import expectedOrderDate from '@/lib/formatOrderDate'
 
 export default function OrderTracking() {
   contentData.group1[2].text = expectedOrderDate()
   return (
-    <>
-      <Pagetitle title="Track your order" />
+    <Applayout title="Track your order">
       <OrderTrackingBanner />
       <div className="container py-5 mb-2 mb-md-3">
         <div className="flex items-center mx-auto justify-center mb-4">
@@ -55,6 +54,6 @@ export default function OrderTracking() {
           </Link>
         </div>
       </div>
-    </>
+    </Applayout>
   )
 }

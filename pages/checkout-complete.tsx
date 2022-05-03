@@ -4,9 +4,9 @@ import Link from 'next/link'
 import Script from 'next/script'
 import { useQuery } from 'react-query'
 
-import Pagetitle from '@/components/Header/page-title'
 import useOrder from '@/hooks/useOrder'
 import { useAppSelector } from '@/hooks/useRedux'
+import Applayout from '@/layouts/app-layout'
 
 export default function CheckoutComplete() {
   const { getLastOrderDetails } = useOrder()
@@ -14,8 +14,7 @@ export default function CheckoutComplete() {
   const paymentData: any = useAppSelector((state) => state.payment)
 
   return (
-    <>
-      <Pagetitle title="Checkout Completed" />
+    <Applayout title="Checkout Completed">
       <Script
         crossOrigin="use-credentials"
         id="trustMateInvitationScript"
@@ -109,6 +108,6 @@ export default function CheckoutComplete() {
           />
         </div>
       </div>
-    </>
+    </Applayout>
   )
 }

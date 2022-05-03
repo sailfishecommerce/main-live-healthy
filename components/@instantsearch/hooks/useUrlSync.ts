@@ -61,8 +61,6 @@ export function useUrlSync() {
     [router] // eslint-disable-line react-hooks/exhaustive-deps
   )
 
-  console.log('router', router)
-
   const { url: urlConfig } = useAtomValue(configAtom)
   const debouncedPushRoute = useDebouncedCallback(
     pushRoute,

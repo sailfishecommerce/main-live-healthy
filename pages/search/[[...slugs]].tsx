@@ -11,6 +11,7 @@ import { Container } from '@/components/Container'
 // import { ProductCardHit } from '@/components/ProductCard/product-card-hit'
 import { viewModeAtom } from '@/components/ViewModes'
 import { configAtom } from '@/config/config'
+import Applayout from '@/layouts/app-layout'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
 import {
   getServerSidePropsPage,
@@ -61,41 +62,43 @@ export default function SearchPage({ searchQuery, ...props }: SearchPageProps) {
   // const isLaptop = laptop && isMounted()
 
   return (
-    <SearchPageLayout {...props}>
-      <Container className="mt-1">
-        <Configure query={searchQuery} />
-        <div className="container flex items-center mx-auto justify-between">
-          <h1 className="font-bold text-xl">
-            Showing {totalHits} {result} for &#34;{hitsObj?.query}&#34;
-          </h1>
-          <h1></h1>
-        </div>
-        <Container className="flex flex-col gap-2 container lg:mx-auto lg:mb-10 lg:mt-10 lg:gap-10">
-          <Breadcrumb attributes={breadcrumbAttributes} />
-
-          <QueryRuleBanners limit={1} />
-
-          <div className="flex flex-col lg:flex-row">
-            {(refinementsLayout === 'panel' || true) && <RefinementsPanel />}
-
-            <div className="grow flex flex-col gap-2 lg:gap-4">
-              <RefinementsBar
-                showRefinements={refinementsLayout === 'bar' && true}
-              />
-
-              <NoResultsHandler>
-                <InfiniteHits
-                  hitComponent={ProductHitCard}
-                  viewMode={viewMode}
-                  showLess={true}
-                  showMore={true}
-                />
-              </NoResultsHandler>
-            </div>
+    <Applayout title="Search for products">
+      <SearchPageLayout {...props}>
+        <Container className="mt-1">
+          <Configure query={searchQuery} />
+          <div className="container flex items-center mx-auto justify-between">
+            <h1 className="font-bold text-xl">
+              Showing {totalHits} {result} for &#34;{hitsObj?.query}&#34;
+            </h1>
+            <h1></h1>
           </div>
+          <Container className="flex flex-col gap-2 container lg:mx-auto lg:mb-10 lg:mt-10 lg:gap-10">
+            <Breadcrumb attributes={breadcrumbAttributes} />
+
+            <QueryRuleBanners limit={1} />
+
+            <div className="flex flex-col lg:flex-row">
+              {(refinementsLayout === 'panel' || true) && <RefinementsPanel />}
+
+              <div className="grow flex flex-col gap-2 lg:gap-4">
+                <RefinementsBar
+                  showRefinements={refinementsLayout === 'bar' && true}
+                />
+
+                <NoResultsHandler>
+                  <InfiniteHits
+                    hitComponent={ProductHitCard}
+                    viewMode={viewMode}
+                    showLess={true}
+                    showMore={true}
+                  />
+                </NoResultsHandler>
+              </div>
+            </div>
+          </Container>
         </Container>
-      </Container>
-    </SearchPageLayout>
+      </SearchPageLayout>
+    </Applayout>
   )
 }
 

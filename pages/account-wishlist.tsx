@@ -2,20 +2,19 @@ import dynamic from 'next/dynamic'
 import Link from 'next/link'
 
 import WishlistItem from '@/components/WishlistItem'
-import Pagetitle from '@/components/Header/page-title'
 import wishlistItemContent from '@/json/wishlist-items.json'
+import Applayout from '@/layouts/app-layout'
 
 const DynamicDashboardSidebar = dynamic(
   () =>
     import(
-      /* webpackChunkName: 'common' */ '@/components/Sidebar/DashboardSidebar'
+      /* webpackChunkName: 'DashboardSidebar' */ '@/components/Sidebar/DashboardSidebar'
     )
 )
 
 export default function AccountWishlist() {
   return (
-    <>
-      <Pagetitle title="Your Wishlist" />
+    <Applayout title="Your Wishlist">
       <div className="page-title-overlap bg-dark pt-4">
         <div className="container d-lg-flex justify-between py-2 py-lg-3">
           <div className="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
@@ -65,6 +64,6 @@ export default function AccountWishlist() {
           </section>
         </div>
       </div>
-    </>
+    </Applayout>
   )
 }

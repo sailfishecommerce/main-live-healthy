@@ -12,7 +12,7 @@ import { overlayAtom } from '@/components/Overlay'
 import { configAtom } from '@/config/config'
 import { useMediaQuery } from '@/hooks'
 import { useIsMounted } from '@/hooks/useIsMounted'
-import { searchClientAtom } from '@/layouts/app-layout'
+import { searchClientAtom } from '@/layouts/provider-layout'
 import {
   AutocompleteBasic,
   autocompleteStateAtom,

@@ -1,11 +1,10 @@
 import BlogOverview from '@/components/Blog/BlogOverview'
-import Pagetitle from '@/components/Header/page-title'
+import Applayout from '@/layouts/app-layout'
 
 export default function Blog() {
   return (
-    <>
-      <Pagetitle title="Blog Gist" />
+    <Applayout title="Blog Gist">
       <BlogOverview />
-    </>
+    </Applayout>
   )
 }

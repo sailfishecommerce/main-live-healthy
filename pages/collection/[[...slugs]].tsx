@@ -11,6 +11,7 @@ import { viewModeAtom } from '@/components/ViewModes'
 import { configAtom } from '@/config/config'
 // import { useMediaQuery } from '@/hooks'
 // import { useIsMounted } from '@/hooks/useIsMounted'
+import Applayout from '@/layouts/app-layout'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
 import {
   getServerSidePropsPage,
@@ -50,32 +51,34 @@ export default function Catalog(props: SearchPageLayoutProps) {
   // const isLaptop = laptop && isMounted()
 
   return (
-    <SearchPageLayout {...props}>
-      <Container className="flex flex-col gap-2 container lg:mx-auto lg:mb-10 lg:mt-0 lg:gap-0">
-        <Breadcrumb attributes={breadcrumbAttributes} />
+    <Applayout title="Collection page">
+      <SearchPageLayout {...props}>
+        <Container className="flex flex-col gap-2 container lg:mx-auto lg:mb-10 lg:mt-0 lg:gap-0">
+          <Breadcrumb attributes={breadcrumbAttributes} />
 
-        <QueryRuleBanners limit={1} />
+          <QueryRuleBanners limit={1} />
 
-        <div className="flex flex-col lg:flex-row">
-          {(refinementsLayout === 'panel' || true) && <RefinementsPanel />}
+          <div className="flex flex-col lg:flex-row">
+            {(refinementsLayout === 'panel' || true) && <RefinementsPanel />}
 
-          <div className="grow flex flex-col gap-2 lg:gap-5">
-            <RefinementsBar
-              showRefinements={refinementsLayout === 'bar' && true}
-            />
-
-            <NoResultsHandler>
-              <InfiniteHits
-                hitComponent={ProductHitCard}
-                viewMode={viewMode}
-                showLess={true}
-                showMore={true}
+            <div className="grow flex flex-col gap-2 lg:gap-5">
+              <RefinementsBar
+                showRefinements={refinementsLayout === 'bar' && true}
               />
-            </NoResultsHandler>
+
+              <NoResultsHandler>
+                <InfiniteHits
+                  hitComponent={ProductHitCard}
+                  viewMode={viewMode}
+                  showLess={true}
+                  showMore={true}
+                />
+              </NoResultsHandler>
+            </div>
           </div>
-        </div>
-      </Container>
-    </SearchPageLayout>
+        </Container>
+      </SearchPageLayout>
+    </Applayout>
   )
 }
 

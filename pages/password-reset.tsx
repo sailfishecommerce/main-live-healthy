@@ -1,11 +1,10 @@
 import PasswordReset from '@/components/AccountRecovery/PasswordReset'
-import Pagetitle from '@/components/Header/page-title'
+import Applayout from '@/layouts/app-layout'
 
 export default function AccountPasswordRecovery() {
   return (
-    <>
-      <Pagetitle title="Reset your password" />
+    <Applayout title="Reset your password">
       <PasswordReset />
-    </>
+    </Applayout>
   )
 }

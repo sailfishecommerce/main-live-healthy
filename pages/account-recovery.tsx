@@ -1,8 +1,8 @@
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 
-import Pagetitle from '@/components/Header/page-title'
 import passwordResetForm from '@/json/password-reset.json'
+import Applayout from '@/layouts/app-layout'
 
 const AccountRecoveryform = dynamic(
   () =>
@@ -13,8 +13,7 @@ const AccountRecoveryform = dynamic(
 
 export default function AccountPasswordRecovery() {
   return (
-    <>
-      <Pagetitle title="Recover your password with ease" />
+    <Applayout title="Recover your password with ease">
       <div className="container flex flex-col lg:flex-row  py-4 my-4 mx-auto">
         <div className="content w-full flex mx-auto justify-center bg-gray-100 p-12 lg:w-1/2">
           <div className="flex mx-auto justify-center flex-col">
@@ -44,6 +43,6 @@ export default function AccountPasswordRecovery() {
           />
         </div>
       </div>
-    </>
+    </Applayout>
   )
 }

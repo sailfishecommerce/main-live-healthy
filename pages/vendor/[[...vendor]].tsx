@@ -10,6 +10,7 @@ import ProductHitCard from '@/components/Cards/ProductHitCard'
 import { Container } from '@/components/Container'
 import { viewModeAtom } from '@/components/ViewModes'
 import { configAtom } from '@/config/config'
+import Applayout from '@/layouts/app-layout'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
 import {
   getServerSidePropsPage,
@@ -57,35 +58,37 @@ export default function VendorPage({ vendor, ...props }: SearchPageProps) {
   // const isLaptop = laptop && isMounted()
 
   return (
-    <SearchPageLayout {...props}>
-      <Container className="mt-1">
-        <Configure filters={`vendor:${vendor}`} />
-        <Container className="flex flex-col gap-2 container lg:mx-auto lg:mb-10 lg:mt-10 lg:gap-10">
-          <Breadcrumb attributes={breadcrumbAttributes} />
+    <Applayout title="Vendor page">
+      <SearchPageLayout {...props}>
+        <Container className="mt-1">
+          <Configure filters={`vendor:${vendor}`} />
+          <Container className="flex flex-col gap-2 container lg:mx-auto lg:mb-10 lg:mt-10 lg:gap-10">
+            <Breadcrumb attributes={breadcrumbAttributes} />
 
-          <QueryRuleBanners limit={1} />
+            <QueryRuleBanners limit={1} />
 
-          <div className="flex flex-col lg:flex-row">
-            {(refinementsLayout === 'panel' || true) && <RefinementsPanel />}
+            <div className="flex flex-col lg:flex-row">
+              {(refinementsLayout === 'panel' || true) && <RefinementsPanel />}
 
-            <div className="grow flex flex-col gap-2 lg:gap-5">
-              <RefinementsBar
-                showRefinements={refinementsLayout === 'bar' && true}
-              />
-
-              <NoResultsHandler>
-                <InfiniteHits
-                  hitComponent={ProductHitCard}
-                  viewMode={viewMode}
-                  showLess={true}
-                  showMore={true}
+              <div className="grow flex flex-col gap-2 lg:gap-5">
+                <RefinementsBar
+                  showRefinements={refinementsLayout === 'bar' && true}
                 />
-              </NoResultsHandler>
+
+                <NoResultsHandler>
+                  <InfiniteHits
+                    hitComponent={ProductHitCard}
+                    viewMode={viewMode}
+                    showLess={true}
+                    showMore={true}
+                  />
+                </NoResultsHandler>
+              </div>
             </div>
-          </div>
+          </Container>
         </Container>
-      </Container>
-    </SearchPageLayout>
+      </SearchPageLayout>
+    </Applayout>
   )
 }
 

@@ -1,11 +1,10 @@
 import Error404 from '@/components/Error'
-import Pagetitle from '@/components/Header/page-title'
+import Applayout from '@/layouts/app-layout'
 
 export default function Error404Page() {
   return (
-    <>
-      <Pagetitle title="Error" />
+    <Applayout title="Error page">
       <Error404 />
-    </>
+    </Applayout>
   )
 }

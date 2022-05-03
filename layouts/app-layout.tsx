@@ -1,65 +1,41 @@
-import type { SearchClient } from 'algoliasearch/lite'
-import { LazyMotion } from 'framer-motion'
-import { atom, Provider as JotaiProvider } from 'jotai'
-import { useAtomValue } from 'jotai/utils'
-import { QueryClient, QueryClientProvider } from 'react-query'
-import { Provider } from 'react-redux'
-import { persistStore } from 'redux-persist'
-import { PersistGate } from 'redux-persist/integration/react'
+import dynamic from 'next/dynamic'
+import Head from 'next/head'
+import type { PropsWithChildren } from 'react'
 
-import { configAtom } from '@/config/config'
-import { useSearchClient } from '@/hooks/useSearchClient'
-import { useSearchInsights } from '@/hooks/useSearchInsights'
-import { MediaContextProvider } from '@/lib/media'
-import store from '@/redux/store'
-import { createInitialValues } from '@/utils/createInitialValues'
-import { appId, searchApiKey } from '@/utils/env'
+const Header = dynamic(
+  () => import(/* webpackChunkName: 'Header' */ '@/components/Header'),
+  {
+    ssr: false,
+  }
+)
 
-export type AppLayoutProps = {
-  children: React.ReactNode
+const Footer = dynamic(
+  () => import(/* webpackChunkName: 'Footer' */ '@/components/Footer'),
+  {
+    ssr: false,
+  }
+)
+
+interface Props {
+  title: string
 }
 
-const loadFramerMotionFeatures = () =>
-  import(/* webpackChunkName: 'lib' */ '@/lib/framer-motion-features').then(
-    (mod) => mod.default
-  )
-
-export const searchClientAtom = atom<SearchClient | undefined>(undefined)
-
-export function AppLayout({ children }: AppLayoutProps) {
-  const { setUserToken } = useAtomValue(configAtom)
-
-  // Initialize search client
-  const searchClient = useSearchClient({
-    appId,
-    searchApiKey,
-  })
-
-  const { get, set } = createInitialValues()
-  set(searchClientAtom, searchClient)
-
-  // Initialize search insights
-  useSearchInsights({
-    appId,
-    searchApiKey,
-    setUserToken,
-  })
-  const persistor = persistStore(store)
-  const queryClient = new QueryClient()
-
+export default function Applayout({
+  children,
+  title,
+}: PropsWithChildren<Props>) {
   return (
-    <JotaiProvider initialValues={get()}>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <QueryClientProvider client={queryClient}>
-            <MediaContextProvider>
-              <LazyMotion features={loadFramerMotionFeatures} strict={true}>
-                {children}
-              </LazyMotion>
-            </MediaContextProvider>
-          </QueryClientProvider>
-        </PersistGate>
-      </Provider>
-    </JotaiProvider>
+    <>
+      <Head>
+        <title>{title} | Sailfish e-commerce online store </title>
+        <meta
+          name="viewport"
+          content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"
+        />
+      </Head>
+      <Header />
+      {children}
+      <Footer />
+    </>
   )
 }

@@ -16,7 +16,7 @@ import { getResultsState } from '@/utils/getResultsState'
 import { Search } from '@instantsearch/search'
 import { urlToSearchState } from '@instantsearch/utils/url'
 
-import { searchClientAtom } from './app-layout'
+import { searchClientAtom } from './provider-layout'
 import type { BasicPageLayoutProps } from './basic-page-layout'
 
 export type SearchPageLayoutProps = BasicPageLayoutProps & {

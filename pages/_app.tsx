@@ -5,10 +5,9 @@ import Head from 'next/head'
 import Script from 'next/script'
 import { useMemo } from 'react'
 
-import Header from '@/components/Header'
 import { Loader } from '@/components/Loader/Loader'
 import TrustmateWidget from '@/components/Widget/TrustmateWidget'
-import { AppLayout } from '@/layouts/app-layout'
+import ProviderLayout from '@/layouts/provider-layout'
 import { scrollToTop } from '@/utils/scrollToTop'
 
 import '@/styles/_index.css'
@@ -34,21 +33,20 @@ export default function App({ Component, pageProps, router }: AppProps) {
   )
 
   return (
-    <AppLayout>
-      <TrustmateWidget>
-        <LayoutWrapper>
-          <Head>
-            <meta
-              name="viewport"
-              content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"
-            />
-          </Head>
-          <Script
-            strategy="lazyOnload"
-            id="vboutTrackingCodeScript"
-            nonce="QRTYPCVBFGXZ"
-          >
-            {`
+    <ProviderLayout>
+      <LayoutWrapper>
+        <Head>
+          <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"
+          />
+        </Head>
+        <Script
+          strategy="lazyOnload"
+          id="vboutTrackingCodeScript"
+          nonce="QRTYPCVBFGXZ"
+        >
+          {`
           var _vbset = _vbset || [];
           _vbset.push(['_account', 'VBT-43304-6887']);
           _vbset.push(['_domain', 'https://livehealthy.hk']);
@@ -58,15 +56,14 @@ export default function App({ Component, pageProps, router }: AppProps) {
             vbt.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'www.vbt.io/tracker?_account='+_vbset[0][1]+'&_domain='+_vbset[1][1];var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(vbt, s);
           })();
         `}
-          </Script>
-          <Loader layout={isCatalogPage ? 'bar' : 'overlay'} />
-          <Header />
+        </Script>
+        <Loader layout={isCatalogPage ? 'bar' : 'overlay'} />
+        <TrustmateWidget>
           <AnimatePresence exitBeforeEnter={true} onExitComplete={scrollToTop}>
             <Component {...pageProps} key={router.route} />
           </AnimatePresence>
-          <Footer />
-        </LayoutWrapper>
-      </TrustmateWidget>
-    </AppLayout>
+        </TrustmateWidget>
+      </LayoutWrapper>
+    </ProviderLayout>
   )
 }

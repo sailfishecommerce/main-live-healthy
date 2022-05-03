@@ -2,26 +2,30 @@ import dynamic from 'next/dynamic'
 
 import ContactBanner from '@/components/Banners/ContactBanner'
 import ContactusCard from '@/components/Contactus/ContactusCard'
-import Pagetitle from '@/components/Header/page-title'
+import Applayout from '@/layouts/app-layout'
 
 const DynamicContactMap = dynamic(
   () =>
-    import(/* webpackChunkName: 'common' */ '@/components/Contactus/ContactMap')
+    import(
+      /* webpackChunkName: 'ContactMap' */ '@/components/Contactus/ContactMap'
+    )
 )
 const DynamicContactForm = dynamic(
-  () => import(/* webpackChunkName: 'common' */ '@/components/Form/ContactForm')
+  () =>
+    import(
+      /* webpackChunkName: 'ContactForm' */ '@/components/Form/ContactForm'
+    )
 )
 const DynamicPartnerOutlet = dynamic(
   () =>
     import(
-      /* webpackChunkName: 'common' */ '@/components/Contactus/PartnerOutlet'
+      /* webpackChunkName: 'PartnerOutlet' */ '@/components/Contactus/PartnerOutlet'
     )
 )
 
 export default function ContactUs() {
   return (
-    <>
-      <Pagetitle title="Contact us" />
+    <Applayout title="Contact us">
       <ContactBanner />
       <ContactusCard />
       <DynamicPartnerOutlet />
@@ -32,6 +36,6 @@ export default function ContactUs() {
         <DynamicContactMap />
         <DynamicContactForm />
       </div>
-    </>
+    </Applayout>
   )
 }

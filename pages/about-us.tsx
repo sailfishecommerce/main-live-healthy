@@ -2,17 +2,16 @@
 import dynamic from 'next/dynamic'
 import { MdOutlineMailOutline } from 'react-icons/md'
 
-import Pagetitle from '@/components/Header/page-title'
 import aboutUsContent from '@/json/about-us.json'
+import Applayout from '@/layouts/app-layout'
 
 const Aboutus = dynamic(
-  () => import(/* webpackChunkName: 'common' */ '@/components/Aboutus')
+  () => import(/* webpackChunkName: 'Aboutus' */ '@/components/Aboutus')
 )
 
 export default function About() {
   return (
-    <>
-      <Pagetitle title="About us " />
+    <Applayout title="About us">
       <main className="w-full px-0">
         {aboutUsContent.aboutUs.map((content) => (
           <Aboutus key={content.title} content={content} />
@@ -51,6 +50,6 @@ export default function About() {
           </div>
         </section>
       </main>
-    </>
+    </Applayout>
   )
 }

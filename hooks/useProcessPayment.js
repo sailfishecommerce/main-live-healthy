@@ -1,9 +1,9 @@
-/* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable no-console */
-import { useRouter } from 'next/router'
+/* eslint-disable @typescript-eslint/no-shadow */
+import { useRouter, ReactText } from 'next/router'
 import { useState } from 'react'
 
-import { useAuth, useToast, useAccount, useCart } from '@/hooks'
+import { useToast, useAccount, useCart } from '@/hooks'
 import useModal from '@/hooks/useModal'
 import usePayment from '@/hooks/usePayment'
 import useSwellCart from '@/hooks/useSwellCart'

@@ -1,14 +1,15 @@
-import { useState, useMemo } from "react";
+/* eslint-disable jsx-a11y/no-onchange */
+import { useState, useMemo } from 'react'
 
-import { useAppDispatch, useAppSelector } from "@/hooks/useRedux";
-import { updateProduct } from "@/redux/product-slice";
+import { useAppDispatch, useAppSelector } from '@/hooks/useRedux'
+import { updateProduct } from '@/redux/product-slice'
 
 interface SelectInputProps {
   options: {
-    attributeId: string;
-    name: string;
-    values: { name: string; id: string }[];
-  };
+    attributeId: string
+    name: string
+    values: Array<{ name: string; id: string }>
+  }
 }
 export function SelectInput({ options }: SelectInputProps) {
   return (
@@ -30,32 +31,32 @@ export function SelectInput({ options }: SelectInputProps) {
         ))}
       </select>
     </div>
-  );
+  )
 }
 
 export function CartCounter({ counterType }: any) {
-  const [itemQty, setItemQty] = useState(1);
-  const [selectedQty, setSelectedQty] = useState(null);
+  const [itemQty, setItemQty] = useState(1)
+  const [selectedQty, setSelectedQty] = useState(null)
 
   function selectedQuantityHandler(e: any) {
-    setSelectedQty(e.target.value);
+    setSelectedQty(e.target.value)
   }
 
-  function updateCounter(type: "increment" | "decrement") {
-    if (type === "increment") {
-      setItemQty(itemQty + 1);
-    } else if (type === "decrement" && itemQty > 1) {
-      setItemQty(itemQty - 1);
+  function updateCounter(type: 'decrement' | 'increment') {
+    if (type === 'increment') {
+      setItemQty(itemQty + 1)
+    } else if (type === 'decrement' && itemQty > 1) {
+      setItemQty(itemQty - 1)
     }
   }
 
   function onSubmitHandler(e: any) {
-    e.preventDefault();
+    e.preventDefault()
   }
 
   const optionsClassName = counterType?.box
-    ? "mb-3 align-items-end"
-    : "mb-3 items-center";
+    ? 'mb-3 align-items-end'
+    : 'mb-3 items-center'
   return (
     <form onSubmit={onSubmitHandler}>
       {selectedQty && (
@@ -69,11 +70,11 @@ export function CartCounter({ counterType }: any) {
           <div className="flex flex-col w-50">
             <label htmlFor="selectProductQuantity">Carton</label>
             <select
+              required
               name="quantity"
               className="form-select"
               id="selectProductQuantity"
               onChange={selectedQuantityHandler}
-              required
             >
               <option value="">Select Quantity</option>
               <option value={10}>10</option>
@@ -86,23 +87,23 @@ export function CartCounter({ counterType }: any) {
         ) : (
           <div className="cartCounter w-50 flex items-center mb-0">
             <button
-              onClick={() => updateCounter("decrement")}
               type="button"
               aria-label="Remove Item"
               className="p-2 flex items-center justify-content-center btn btn-danger text-white"
+              onClick={() => updateCounter('decrement')}
             >
               <i className="fas fa-minus mb-0"></i>
             </button>
             <input
-              className="w-25 mx-2 text-center border"
               readOnly
+              className="w-25 mx-2 text-center border"
               value={itemQty}
             />
             <button
-              onClick={() => updateCounter("increment")}
               type="button"
               aria-label="Add Item"
               className={`p-2 flex items-center justify-content-center btn btn-success text-white`}
+              onClick={() => updateCounter('increment')}
             >
               <i className="fas fa-plus"></i>
             </button>
@@ -125,22 +126,22 @@ export function CartCounter({ counterType }: any) {
         `}
       </style>
     </form>
-  );
+  )
 }
 
-type selectType = { name: string; id: string };
+type selectType = { name: string; id: string }
 interface SelectProductOptionProps {
   product: {
-    options: {
-      id: string;
-      name: string;
-      values: selectType[];
-    }[];
-  };
+    options: Array<{
+      id: string
+      name: string
+      values: selectType[]
+    }>
+  }
 }
 export function SelectProductOption({ product }: SelectProductOptionProps) {
-  const dispatch = useAppDispatch();
-  const { productSpec }: any = useAppSelector((state) => state.product);
+  const dispatch = useAppDispatch()
+  const { productSpec }: any = useAppSelector((state) => state.product)
 
   function selectHandler(e: any) {
     return dispatch(
@@ -148,7 +149,7 @@ export function SelectProductOption({ product }: SelectProductOptionProps) {
         ...productSpec,
         [e.target.name]: { name: e.target.name, value: e.target.value },
       })
-    );
+    )
   }
 
   return (
@@ -171,8 +172,8 @@ export function SelectProductOption({ product }: SelectProductOptionProps) {
               <select
                 id={option.attributeId}
                 name={option.name}
-                onClick={selectHandler}
                 className="border border-gray-200 rounded-lg hover:border-red-500 focus:border-red-600 w-32 p-2 bg-white"
+                onClick={selectHandler}
               >
                 <option value="">Select {option.name.toLowerCase()}</option>
                 {option.values.map((item: selectType) => (
@@ -186,14 +187,14 @@ export function SelectProductOption({ product }: SelectProductOptionProps) {
         </div>
       )}
     </div>
-  );
+  )
 }
 
 export function SearchInput() {
   const svgStyle: any = useMemo(
-    () => ({ enableBackground: "new 0 0 56.966 56.966" }),
+    () => ({ enableBackground: 'new 0 0 56.966 56.966' }),
     []
-  );
+  )
   return (
     <div className="flex relative border border-gray-200 rounded-md my-1 mx-auto max-w-md">
       <input
@@ -202,7 +203,11 @@ export function SearchInput() {
         name="search"
         placeholder="Search"
       />
-      <button aria-label="search" type="submit" className="absolute right-2 top-3 mr-4">
+      <button
+        aria-label="search"
+        type="submit"
+        className="absolute right-2 top-3 mr-4"
+      >
         <svg
           className="text-black h-6 w-6 fill-current"
           xmlns="http://www.w3.org/2000/svg"
@@ -221,5 +226,5 @@ export function SearchInput() {
         </svg>
       </button>
     </div>
-  );
+  )
 }

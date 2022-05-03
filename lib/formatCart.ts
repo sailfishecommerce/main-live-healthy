@@ -1,7 +1,7 @@
 import {
   updateStoreCartCurrency,
   updateStoreCartItem,
-} from "@/redux/store-cart-slice";
+} from '@/redux/store-cart-slice'
 
 export default function formatCartItem(
   product: any,
@@ -19,8 +19,8 @@ export default function formatCartItem(
       slug: product.slug,
       vendor: product.vendor,
     },
-  };
-  return cartItem;
+  }
+  return cartItem
 }
 
 export function dispatchCartItem(
@@ -28,11 +28,7 @@ export function dispatchCartItem(
   currency: string,
   dispatch: any
 ) {
-  const cartItem = formatCartItem(product, currency, 1);
-  dispatch(updateStoreCartItem(cartItem));
-  dispatch(updateStoreCartCurrency(currency));
-}
-
-export function updateCart() {
-  return "";
+  const cartItem = formatCartItem(product, currency, 1)
+  dispatch(updateStoreCartItem(cartItem))
+  dispatch(updateStoreCartCurrency(currency))
 }

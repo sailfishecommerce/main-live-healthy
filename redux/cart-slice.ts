@@ -1,17 +1,18 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { useCartType } from "@/types";
+/* eslint-disable no-param-reassign */
+import type { PayloadAction } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
 
 const cartSlice = createSlice({
-  name: "cart",
+  name: 'cart',
   initialState: {
-    cart: null,    
+    cart: null,
   },
   reducers: {
-    updateCart(state: useCartType, action: PayloadAction<any>) {
-      state.cart = action.payload;
+    updateCart(state, action: PayloadAction<any>) {
+      state.cart = action.payload
     },
   },
-});
+})
 
-export const { updateCart } = cartSlice.actions;
-export default cartSlice.reducer;
+export const { updateCart } = cartSlice.actions
+export default cartSlice.reducer

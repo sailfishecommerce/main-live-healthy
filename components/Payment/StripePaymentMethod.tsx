@@ -1,12 +1,10 @@
 import type { MutableRefObject } from 'react'
 import { useState, useRef, useEffect, memo } from 'react'
 
-import AppButton from '@/components/Button/AppButton'
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import { useProcessPayment } from '@/hooks'
 import { useAppSelector } from '@/hooks/useRedux'
 import useStripeElement from '@/hooks/useStripeElement'
-import styles from '@/styles/ui.module.css'
 
 interface PaymentInputType {
   inputRef: MutableRefObject<null>
@@ -30,7 +28,7 @@ function StripePaymentMethodComponent() {
 
   const { paymentForm }: any = useAppSelector((state) => state.payment)
   const inputRef = useRef(null)
-  const { makePayment, loadingState } = useProcessPayment()
+  const { makePayment } = useProcessPayment()
 
   function makePaymentHandler() {
     makePayment(paymentForm)
@@ -42,14 +40,13 @@ function StripePaymentMethodComponent() {
         {showSpinner && <SpinnerRipple />}
       </div>
       <PaymentInput inputRef={inputRef} />
-      <AppButton
-        disable={loadingState}
-        className={`${styles.uiElement} bg-red-500 border-2 border-red-500 hover:text-red-500 text-white w-1/4 md:w-1/6 h-8 hover:bg-transparent  mx-auto my-2 rounded`}
-        text="Submit"
+      <button
+        className="bg-mountain-green border border-green-500 hover:text-red-500 text-white w-1/4 md:w-1/6 h-8 hover:bg-transparent  mx-auto my-2 rounded"
         type="submit"
-        loading={loadingState}
         onClick={makePaymentHandler}
-      />
+      >
+        Submit
+      </button>
     </div>
   )
 }

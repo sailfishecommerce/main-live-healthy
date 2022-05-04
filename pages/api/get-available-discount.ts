@@ -1,26 +1,21 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import swell from 'swell-node'
 
-import swellNodeInit from '../../lib/swellNode'
+import swellNodeInit from '@/lib/swellNode'
 
-export default async function fetchProductsHandler(
+export default async function getAvailableDiscountHandler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   swellNodeInit()
-  const category = req.body.category
   switch (req.method) {
-    case 'POST': {
+    case 'GET': {
       return await swell
-        .get('/products', {
-          where: { select_store: 'livehealthy' },
-          category,
+        .get('/coupons', {
+          where: { active: true },
         })
         .then((response: any) => {
           return res.status(200).send(response.results)
-        })
-        .catch((error: any) => {
-          console.log('error', error)
         })
     }
     default:

@@ -22,10 +22,24 @@ body {
   --light-red: #fd121240;
   --light-green: #16a26740;
 }
-
+/* splide slider */
 .homepage-slider ul.splide__pagination {
   display: none;
 }
+
+.splide__arrows {
+  display: none;
+}
+
+ul.splide__pagination {
+ display: flex;
+    flex-direction: column !important;
+    margin-right: 40px;
+    margin-top: -10px;
+    height: 70px;
+}
+
+
 /* utilities */
 .mountain-green {
   color: var(--mountain-green);

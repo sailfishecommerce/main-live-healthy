@@ -24,10 +24,6 @@
 .shopByBrand ul.splide__pagination {
   display: none;
 }
-ul.splide__pagination {
-  height: 10px;
-  margin-top: -10px;
-}
 
 /* homepage slider */
 .carousel .splide__track {

@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic'
 
 import Noticebar from '@/components/Alerts/Noticebar'
 import Menu from '@/components/Menu'
+import DiscountSlider from '@/components/Slider/DiscountSlider'
 import { useMediaQuery } from '@/hooks'
 import useNav from '@/hooks/useNav'
 import useNavStyle from '@/hooks/useNavStyle'
@@ -38,6 +39,7 @@ export default function Header() {
       <header
         className={`${navStyle} ${displayShadow} bg-white w-full pb-0  md:pb-2`}
       >
+        <DiscountSlider />
         {noticebar && (
           <Noticebar toggleBarVisibility={toggleNoticebarHandler} />
         )}

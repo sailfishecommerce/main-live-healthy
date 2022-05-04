@@ -2,9 +2,9 @@
   { "slug": "/about-us", "name": "About us" },
   { "slug": "/contact-us", "name": "Contact Us" },
   { "slug": "/blog", "name": "Blog" },
-  { "slug": "#privacy-policy", "name": "Privacy Policy" },
-  { "slug": "#return-refunds", "name": "Return & Refunds" },
-  { "slug": "#shipping-deliveries", "name": "Shipping & Deliveries" },
-  { "slug": "#terms-of-service", "name": "Terms of Service" },
+  { "slug": "/customer-care/privacy-policy", "name": "Privacy Policy" },
+  { "slug": "/customer-care/return-and-refunds", "name": "Return & Refunds" },
+  { "slug": "/customer-care/shipping-and-delivery", "name": "Shipping & Deliveries" },
+  { "slug": "/customer-care/terms-and-condition", "name": "Terms of Service" },
   { "slug": "/account-recovery", "name": "Account Recovery" }
 ]

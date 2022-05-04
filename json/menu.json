@@ -2,8 +2,7 @@
   "primaryMenu": [
     { "slug": "/about-us", "name": "About Us" },
     { "slug": "/blog", "name": "Blog" },
-    { "slug": "#shipping-info", "name": "Shipping Info" },
-    { "slug": "#faqs", "name": "FAQs" },
+    { "slug": "/customer-care/shipping-and-delivery", "name": "Shipping Info" },
     { "slug": "/contact-us", "name": "Contact Us" }
   ],
   "secondaryMenu": [

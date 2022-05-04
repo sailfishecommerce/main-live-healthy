@@ -5,10 +5,15 @@ import { toast } from 'react-toastify'
 import useSwellCart from '@/hooks/useSwellCart'
 
 export default function useMutationAction() {
-  const { emptyCart, deleteCart } = useSwellCart()
   const queryClient = useQueryClient()
-  const { updateCartItemQuantity, addToCart, addToCartModal, removeCartItem } =
-    useSwellCart()
+  const {
+    emptyCart,
+    deleteCart,
+    updateCartItemQuantity,
+    addToCart,
+    addToCartModal,
+    removeCartItem,
+  } = useSwellCart()
 
   function useUpdateCartItem() {
     return useMutation(

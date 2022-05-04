@@ -6,7 +6,6 @@ import useDiscount from '@/hooks/useDiscount'
 
 function DiscountSliderComponent() {
   const [discount, status] = useDiscount()
-  console.log('discount', discount)
   return (
     <div>
       {status === 'success' && (
@@ -26,16 +25,16 @@ function DiscountSliderComponent() {
                 <div
                   className={`${slideBg} w-full item h-full slider flex items-center m-auto justify-center text-white`}
                 >
-                  <div className="description font-thin mr-4">
+                  <div className="description hidden lg:block text-xs lg:text-sm font-thin mr-4">
                     Benefit from our awesome discount using this coupon code
                   </div>
-                  |
-                  <span className="font-bold text-xl flex mx-2 items-center">
-                    🔥 🛒
+                  <span className="hidden lg:block">|</span>
+                  <div className="font-bold text-xs lg:text-xl flex mx-2 items-center">
+                    <span className="hidden  lg:block">🔥 🛒</span>
                     <p className="ml-2">{item.code}</p>
-                  </span>{' '}
-                  |
-                  <p className="font-light text-center my-0 mb-0 mx-0 md:mx-2 text-sm md:text-sm ">
+                  </div>{' '}
+                  <span className="hidden lg:block">|</span>
+                  <p className="font-light lg:text-center my-0 mb-0 mx-0 md:mx-2 text-xs lg:text-sm ">
                     {item.description}
                   </p>
                 </div>

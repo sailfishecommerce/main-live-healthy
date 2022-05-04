@@ -1,5 +1,3 @@
-import { useQueryClient } from 'react-query'
-
 import useAccount from '@/hooks/useAccount'
 import { useAppDispatch } from '@/hooks/useRedux'
 import useToast from '@/hooks/useToast'
@@ -8,12 +6,11 @@ import { authorizeError, authorizeUser, logout } from '@/redux/auth-slice'
 import { toggleAuthModal } from '@/redux/ui-slice'
 
 export default function useAuth() {
-  const queryClient = useQueryClient()
   const dispatch = useAppDispatch()
   const { isLoading, isSuccessful, hasError } = useToast()
   const { loginUser, logoutUser, createUserAccount } = useAccount()
 
-  function signIn(values: any, formik: any, notModal?: boolean) {
+  function signIn(values: any, formik: any) {
     const toastId = isLoading()
     loginUser(values)
       .then((response) => {
@@ -22,14 +19,12 @@ export default function useAuth() {
           formik.resetForm()
           formik.setSubmitting(false)
           dispatch(authorizeUser(response))
-          queryClient.invalidateQueries('userdetails')
-          queryClient.invalidateQueries('cart')
-          if (!notModal) {
+          if (response !== null) {
             dispatch(toggleAuthModal())
-          } else {
-            hasError(toastId, 'login not successful')
-            formik.setSubmitting(false)
           }
+        } else {
+          hasError(toastId, 'login not successful')
+          formik.setSubmitting(false)
         }
       })
       .catch((error) => {
@@ -50,7 +45,6 @@ export default function useAuth() {
           isSuccessful(toastId, `${values.email}, sign up successful`)
           dispatch(authorizeUser(response))
           formik.resetForm()
-          queryClient.invalidateQueries('userdetails')
           if (!notModal) {
             dispatch(toggleAuthModal())
           }
@@ -71,8 +65,6 @@ export default function useAuth() {
         if (response?.success) {
           dispatch(logout())
           isSuccessful(toastId, 'logout successful')
-          queryClient.invalidateQueries('userdetails')
-          queryClient.invalidateQueries('cart')
         } else {
           hasError(toastId, 'unable to logout user')
         }

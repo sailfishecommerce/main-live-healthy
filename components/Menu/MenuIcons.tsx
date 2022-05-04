@@ -11,6 +11,7 @@ export default function MenuIcons() {
   const { useCartData } = useCart()
   const { data: cart }: any = useCartData()
   const { updateSlideTab } = useSlidingTab()
+
   return (
     <div className="icons flex flex-col w-1/5">
       <div className="row-1 flex items-center justify-between w-full">
@@ -34,11 +35,15 @@ export default function MenuIcons() {
           </button>
         </Link>
       </div>
-      {cart?.accountLoggedIn !== null && (
-        <h6 className="cart text-green-500 font-bold text-xs">
-          {greetUser()}, {cart?.account?.name}
-        </h6>
-      )}
+      <h6 className="cart mountain-green font-bold text-xs">
+        {cart?.accountLoggedIn !== null ? (
+          <>
+            {greetUser()}, {cart?.account?.name}{' '}
+          </>
+        ) : (
+          <>{`${greetUser()}, Guest`}</>
+        )}
+      </h6>
     </div>
   )
 }

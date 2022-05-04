@@ -5,6 +5,7 @@ import { toast } from 'react-toastify'
 import Modal from '@/components/Modal'
 import { useAccount, useMediaQuery } from '@/hooks'
 import useUI from '@/hooks/useUI'
+// import useAuthTemp from '@/hooks/useAuthTemp'
 
 interface Props {
   show: boolean
@@ -15,8 +16,10 @@ export default function LogoutModal({ show, onHide }: Props) {
   const mobileWidth = useMediaQuery('(max-width:768px)')
   const { getUserAccount, logoutUser } = useAccount()
   const { toggleLogoutModalHandler } = useUI()
+  // const { useLogout } = useAuthTemp()
   const { data } = useQuery('userDetails', getUserAccount)
   const iconSize = mobileWidth ? 16 : 22
+  // const logout = useLogout()
 
   function logoutHandler() {
     logoutUser()
@@ -28,6 +31,9 @@ export default function LogoutModal({ show, onHide }: Props) {
         toast.error(`unable to logout user, ${error}`)
       })
   }
+
+  // const toastId = logout.isLoading ? isLoading() : ''
+
   return (
     <Modal
       modalHeaderClassName="absolute z-40 -right-5 -top-5"

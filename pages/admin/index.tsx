@@ -2,7 +2,7 @@ import DashboardCard from '@/components/Dashboard/DashboardCard'
 import DashboardMainView from '@/components/Dashboard/DashboardMainView'
 import DashboardLayout from '@/layouts/dashboard-layout'
 
-export default function index() {
+export default function Admin() {
   return (
     <DashboardLayout title="Admin page">
       <DashboardMainView>

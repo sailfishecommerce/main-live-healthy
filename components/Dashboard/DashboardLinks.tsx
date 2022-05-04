@@ -10,7 +10,7 @@ export default function DashboardLinks() {
     <ul>
       {dashboardLinks.map((linkItem) => {
         const activeLink =
-          router.route === linkItem.link
+          router?.route === linkItem.link
             ? 'active hover:text-green-500 font-bold border-r-4 border-green-500 text-black'
             : 'text-gray'
         return (

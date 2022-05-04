@@ -11,6 +11,7 @@ export default function MenuIcons() {
   const { useCartData } = useCart()
   const { data: cart }: any = useCartData()
   const { updateSlideTab } = useSlidingTab()
+  console.log('cart', cart)
 
   return (
     <div className="icons flex flex-col w-1/5">

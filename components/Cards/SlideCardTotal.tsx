@@ -34,13 +34,23 @@ export default function SlideCardTotal() {
             Discount: HK$ 136
           </div>
         </div>
-        <h1 className="md:text-xl text-lg font-medium mt-2">
-          Subtotal:{' '}
-          <FormattedPrice
-            className="font-bold text-black text-md"
-            price={cart?.subTotal}
-          />
-        </h1>
+        {cart !== null ? (
+          <h1 className="md:text-xl text-lg font-medium mt-2">
+            Subtotal:{' '}
+            <FormattedPrice
+              className="font-bold text-black text-md"
+              price={cart?.subTotal}
+            />
+          </h1>
+        ) : (
+          <h1 className="md:text-xl text-lg font-medium mt-2">
+            Subtotal:{' '}
+            <FormattedPrice
+              className="font-bold text-black text-md"
+              price={0}
+            />
+          </h1>
+        )}
         <div className="discount flex  md:flex-row  items-center justify-between my-2">
           <div className="input-wrapper md:w-1/2 w-full my-2 md:my-0 relative">
             <input

@@ -14,9 +14,11 @@ export default function SlidingCartTab() {
           <div className="slide-items flex flex-col">
             <div className="cart flex items-center pt-1">
               <h3 className="text-xl font-medium">Cart </h3>
-              <span className="rounded-full text-xs ml-1 -mt-4 h-5 w-5 flex items-center justify-center text-white bg-tan-hide">
-                {cart?.items?.length}
-              </span>
+              {cart !== null && (
+                <span className="rounded-full text-xs ml-1 -mt-4 h-5 w-5 flex items-center justify-center text-white bg-tan-hide">
+                  {cart?.items?.length}
+                </span>
+              )}
             </div>
             <div className="content mb-4">
               {cart?.items.map((cartItem: any) => (

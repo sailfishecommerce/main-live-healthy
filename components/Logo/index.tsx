@@ -6,12 +6,10 @@ interface LogoProps {
 }
 
 export default function Logo({ className }: LogoProps) {
+  const logoClassName = className ? className : ' w-full h-full'
   return (
     <Link passHref href="/">
-      <a
-        title="welcome to live healthy"
-        className={`${className} w-full h-full`}
-      >
+      <a title="welcome to live healthy" className={logoClassName}>
         <Image
           src="/logo.webp"
           alt="logo"

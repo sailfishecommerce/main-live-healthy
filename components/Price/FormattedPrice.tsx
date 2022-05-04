@@ -21,8 +21,6 @@ function FormattedPriceComponent({
     'useCurrencies',
     listEnabledCurrencies
   )
-  console.log('price', price)
-
   const { currency } = useAppSelector((state) => state.currencyLanguage)
   return (
     <>

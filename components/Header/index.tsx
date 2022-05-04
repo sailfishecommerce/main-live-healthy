@@ -31,9 +31,9 @@ export default function Header() {
     noticebar,
     toggleNoticebarHandler,
   } = useUI()
-
   const mobileWidth = useMediaQuery('(max-width:768px)')
   const displayShadow = mobileWidth ? 'header' : ''
+  console.log('mobileWidth && mobileMenu', mobileWidth, mobileMenu)
   return (
     <>
       <header
@@ -45,6 +45,7 @@ export default function Header() {
         )}
         <Menu />
         {mobileWidth && mobileMenu && <DynamicMobileSlideMenu />}
+
         {categoryDropdown && (
           <DynamicAllCategoriesDropdownView
             updateDropdown={toggleCategoriesDropdown}

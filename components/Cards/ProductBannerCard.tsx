@@ -49,7 +49,7 @@ export default function ProductBannerCard({ product, color }: ProductTypes) {
         </a>
       </Link>
       <div className="w-3/5 text">
-        <h4 className="vendor text-xs md:text-md font-bold pl-2 my-0 py-0 h-3 mb-1 md:mb-0 md:h-5">
+        <h4 className="vendor text-xs md:text-md font-bold pl-2 my-0 py-0 mb-1 md:mb-0 md:h-5">
           {product.vendor}
         </h4>
         <div className="product-name-view md:mb-6 mb-2">

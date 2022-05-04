@@ -9,7 +9,7 @@ export default function Tabs() {
   const onTabChange = (tabIndex: number) => setTab(tabIndex)
 
   return (
-    <div className="w-100">
+    <div className="w-11/12 mx-auto lg:w-100">
       <TabHeader tab={tab} onClickHandler={onTabChange} />
       <TabBody tab={tab} />
     </div>

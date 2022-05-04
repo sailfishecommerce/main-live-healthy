@@ -80,7 +80,7 @@ export default function Product({
             <Link passHref href={productVendorLink}>
               <button
                 type="button"
-                className="vendor text-xs md:text-md font-bold pl-2 my-0 py-0 h-3 mb-1 md:mb-0 md:h-5"
+                className="vendor text-xs md:text-md font-bold pl-2 my-0 py-0 mb-1 md:mb-0 md:h-5"
               >
                 {product.vendor}
               </button>

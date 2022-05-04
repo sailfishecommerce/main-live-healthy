@@ -29,7 +29,7 @@ export default function Account() {
             <h1 className="text-center font-bold text-xl mb-4">
               Login / Sign up to access your account details
             </h1>
-            <div className="w-1/2 mx-auto flex">
+            <div className="w-full lg:w-1/2 mx-auto flex">
               <Tabs />
             </div>
           </div>

@@ -7,7 +7,7 @@ export default function DashboardLinks() {
   const router = useRouter()
 
   return (
-    <ul>
+    <ul className="border-t mt-4">
       {dashboardLinks.map((linkItem) => {
         const activeLink =
           router?.route === linkItem.link

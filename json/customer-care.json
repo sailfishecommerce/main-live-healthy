@@ -31,7 +31,7 @@
       "texts": [
         {
           "question": "What is a cookie?",
-          "answer": "A cookie is a small file that is set in your browser when you visit a website, and which may assign a unique identifier to you."
+          "answer": "<p>A cookie is a small file that is set in your browser when you visit a website, and which may assign a unique identifier to you.</p>"
         },
         {
           "question": "What cookies/tracking technologies do we use?",
@@ -42,8 +42,16 @@
           "answer": "<p>We use cookies (and other tracking technologies – but for ease, let’s just call them cookies) for lots of reasons: they let us customise your experience (for example, seeing prices in the correct currency), operate the website (like enabling you to put things in your cart and then keep shopping) and generally make sure that your experience of our website is a good one.</p><p>We also use cookies to perform analytics and deliver advertising or marketing that is relevant to you.</p><p>There are also cookies set by third parties that allow us to provide interactive content, perform analytics and enable other third party features, like payment or links to social media.</p>"
         },
         {
+          "question": "How can you control cookies?",
+          "answer": "<p>You can control cookies by amending your web browser controls. You can also delete existing cookies from your web browser and/or disabling cookies on your computer and other devices. Depending on the particular browser you are using (for example, Google Chrome, Safari, Internet Explorer, Mozilla Firefox), this can usually be done by accessing the ‘Browsing History’ through the ‘Settings’ or ‘Options’ menu (or equivalent) in your web browser, or if you are using a different device, then in the ‘Settings’ for that device.</p><p>Some cookies are essential to the proper operation of our website: if you disable cookies in your web browser, or delete existing cookies, our website may not work properly and your experience with our website will be less personalised and may make your shopping experience less enjoyable.</p><p>It is important to remember that if you delete existing cookies but do not disable cookies in your web browser, and then you subsequently visit our (or any) website, fresh cookies may be placed and you may need to repeat the process of deleting existing cookies</p>"
+        },
+        {
           "question": "Why do we use cookies/tracking technologies?",
           "answer": "<p>We use cookies (and other tracking technologies – but for ease, let’s just call them cookies) for lots of reasons: they let us customise your experience (for example, seeing prices in the correct currency), operate the website (like enabling you to put things in your cart and then keep shopping) and generally make sure that your experience of our website is a good one.</p><p>We also use cookies to perform analytics and deliver advertising or marketing that is relevant to you.</p><p>There are also cookies set by third parties that allow us to provide interactive content, perform analytics and enable other third party features, like payment or links to social media.</p>"
+        },
+        {
+          "question": "Do Not Track",
+          "answer": "<p>Some browsers allow you to automatically notify websites that you visit not to track you by using a ‘Do Not Track’ signal. If you have Do Not Track enabled when you visit our website, we will treat that as you having rejected cookies and not place any cookies other than those essential to the proper functioning of our website.</p><p>Additional cookie information for those who want to know more</p><p>We have two ways of collecting location information, both of which preserve your anonymity – either we use only the first three octets of your IP Address for a rough location that can sometimes be wrong, or we use a browser-based Geolocation API which can only work with your explicit consent to non-essential cookies (your browser will pop up a dialog asking for your consent).</p>"
         }
       ]
     },
@@ -72,7 +80,8 @@
           "answer": "<p>We treat any data that could directly or indirectly identify you (or your family or your personal device over time and across services) as “Personal Data”. This includes information like your name, address, telephone number and your email address but in some cases it may include less obviously identifying information, like your IP Address (see below).</p>"
         }
       ]
-    },{
+    },
+    {
       "title": "Terms & Conditions",
       "texts": [
         {

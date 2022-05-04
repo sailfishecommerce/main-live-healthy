@@ -19,11 +19,7 @@ export default function CustomerCareSidebar() {
                   : 'text-gray-400'
 
                 return (
-                  <Link
-                    passHref
-                    key={link.link}
-                    href={`/customer-care/${link.link}`}
-                  >
+                  <Link passHref key={link.link} href={link.link}>
                     <a className={`${activeLink} text-md my-2`}>{link.name}</a>
                   </Link>
                 )

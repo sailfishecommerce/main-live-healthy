@@ -20,6 +20,13 @@ export default function CustomercareLayout({
           <div className="w-3/4 p-8 bg-gray-100">{children}</div>
         </main>
       </div>
+      <style jsx>
+        {`
+          .content {
+            font-family: 'Commissioner', sans-serif;
+          }
+        `}
+      </style>
     </Applayout>
   )
 }

@@ -3,24 +3,30 @@
     {
       "title": "SUPPORT",
       "links": [
-        { "name": "Shipping & Delivery", "link": "/shipping-delivery" },
-        { "name": "Returns & Exchanges", "link": "/returns-exchanges" },
-        { "name": "Orders", "link": "orders" }
+        {
+          "name": "Shipping & Delivery",
+          "link": "/customer-care/shipping-and-delivery"
+        },
+        {
+          "name": "Returns & Exchanges",
+          "link": "/customer-care/return-and-refunds"
+        },
+        { "name": "Orders", "link": "/customer-care/order-tracking" }
       ]
     },
     {
       "title": "CONTACT",
-      "links": [
-        { "name": "Contact Us", "link": "/contact-us" },
-        { "name": "Support", "link": "/support" }
-      ]
+      "links": [{ "name": "Contact Us", "link": "/contact-us" }]
     },
     {
       "title": "LEGAL",
       "links": [
-        { "name": "Terms & Conditions", "link": "/terms-condition" },
-        { "name": "Privacy Policy", "link": "/privacy-policy" },
-        { "name": "Cookie Policy", "link": "/cookie-policy" }
+        {
+          "name": "Terms & Conditions",
+          "link": "/customer-care/terms-and-condition"
+        },
+        { "name": "Privacy Policy", "link": "/customer-care/privacy-policy" },
+        { "name": "Cookie Policy", "link": "/customer-care/cookie-policy" }
       ]
     }
   ],
@@ -103,6 +109,69 @@
         {
           "question": "What is ‘Personal Data’?",
           "answer": "<p>We treat any data that could directly or indirectly identify you (or your family or your personal device over time and across services) as “Personal Data”. This includes information like your name, address, telephone number and your email address but in some cases it may include less obviously identifying information, like your IP Address (see below).</p>"
+        }
+      ]
+    },
+    {
+      "title": "Shipping & Delivery",
+      "texts": [
+        {
+          "question": "Estimated Shipping Time",
+          "answer": "<p>Shipping cost and delivery times will be calculated at checkout.</p>"
+        },
+        {
+          "question": "Worldwide Shipping",
+          "answer": "<p>Live-healthy store customers live all across the globe, so we can ship to anywhere with a letterbox. For P.O. boxes outside Australia and Europe, please use the regular shipping option at checkout (our team of trained delivery owls aren’t allowed in government buildings just yet)</p>.<p>We usually dispatch orders within 2 working days. Delivery times vary based on selected service and destination. Regular post ranges from 3 to 28 working days depending on the shipping address.</p>"
+        },
+        {
+          "question": "Express Shipping",
+          "answer": "<p>We offer express delivery to most locations with tracking available. Express shipping is generally 1–3 working days for the US, UK and Australia, and anywhere from 2–8 working days for other countries. If you live down a kangaroo trail in Kalkarindji, please allow a bit of extra time.</p><p>​In a few locations around the world we don’t offer an express option. This is because the current express services in those regions aren’t reliable enough, or there are currently no options available in that region.</p>"
+        },
+        {
+          "question": "Customs Fees",
+          "answer": "<p>When you visit livehealthy.com or buy Livehealthy products online, we collect different types of Personal Data about you and your use of our website. We treat this information as falling into three categories: Customer Information, Usage Data and your IP Address.</p><p><b>Customer Information</b> is the information you explicitly provide to us when you make an online purchase, sign up to receive our newsletters or other communications, or participate in any program or competition which requires you to complete a form on our website. This includes:</p><p>Your name</p><p>Your email address</p><p>Your shipping and/or billing address</p><p>Your payment information</p><p>What products you purchased</p><p><b>Usage Data</b> is general information about how you interact with our website or other services, such as:</p><p>which pages you visited on our website</p><p>how you came to the website (for example, by clicking on a link in a newsletter or from an advertisement)</p><p>which buttons or links you clicked</p><p>whether you have been to the website before</p><p>geolocation data (that is, where you are located in the world - country/city)</p><p>inferences that we may draw about you from the usage data we collect</p>"
+        }
+      ]
+    },
+    {
+      "title": "Returns & Exchanges",
+      "texts": [
+        {
+          "question": "Returns",
+          "answer": "<p>We’re pretty stringent with our quality control, but occasionally something might slip through the cracks. If your product is faulty, or we sent you an incorrect order by mistake, send it back to us within 30 days of delivery for a full refund (including shipping*).</p><p>If you change your mind (it happens to the best of us), or wish to return an unwanted gift, please contact support@livehealthy.com as we would love to help you exchange or refund your purchase if returned within 30 days of delivery. There are a few things to note: the return shipping isn't covered and refunds need to be sent to the original purchaser's method of payment. All items must be returned in original condition and in the original Livehealthy packaging</p>"
+        },
+        {
+          "question": "Exchanges",
+          "answer": "<p>We will happily help you process an exchange within 30 days of delivery. The item will need to be returned to us in its original condition with packaging intact.</p>"
+        }
+      ]
+    },
+    {
+      "title": "Orders",
+      "texts": [
+        {
+          "question": "Order Tracking",
+          "answer": "<p>All express shipped orders can be tracked online. However, not all regular shipments have this option. You can find your tracking number two ways:</p><p>Check the shipping confirmation email we sent you (this should arrive in your inbox within 48 hours of purchase). The email will contain a tracking link if there’s one available.</p><p>If that doesn’t work:</p><p>Email our support team and quote your order number/customer reference number. We’ll help you with the rest.</p>"
+        },
+        {
+          "question": "What if my order doesn’t arrive?",
+          "answer": "<p>If your order doesn’t arrive within the maximum estimated timeframe we’ll send out a replacement using express shipping wherever it’s available. Simply email our support team with your order details.</p>"
+        },
+        {
+          "question": "How do I cancel my order?",
+          "answer": "<p>Contact support@livehealthy.com within 24–48hrs of placing your order. That way we should be able to catch any transaction settlement and shipping before it goes through. Anything after this window will be treated as a regular refund.</p>"
+        },
+        {
+          "question": "Can I add items to my order after I have hit the place order/confirmation button?",
+          "answer": "<p>If you want to add an item to your order please email our support team within 24hrs of your purchase and we’ll do what we can to adjust things.</p>"
+        },
+        {
+          "question": "What are my payment options?",
+          "answer": "<p>Payment options in your region will be displayed at checkout. These generally include most major credit cards, as well as Paypal, Google Pay and Apple Pay.</p>"
+        },
+        {
+          "question": "What currency can I pay in?",
+          "answer": "<p>Depending on where you're browsing from, we try to select the best currency for you to pay in. All transactions are processed in the currency shown on the product and checkout pages. Most countries have tax included in the price, if not, the tax will be shown on the checkout page before purchase.</p>"
         }
       ]
     }

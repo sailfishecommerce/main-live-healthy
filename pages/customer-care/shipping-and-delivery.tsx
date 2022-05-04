@@ -1,8 +1,8 @@
 import JsonContent from '@/json/customer-care.json'
 import CustomercareLayout from '@/layouts/customer-care-layout'
 
-export default function ReturnrefundsPage() {
-  const pageContent = JsonContent.content[4]
+export default function ShippingDeliveriesPage() {
+  const pageContent = JsonContent.content[3]
   return (
     <CustomercareLayout>
       <article className="w-3/4 bg-gray-100 content">

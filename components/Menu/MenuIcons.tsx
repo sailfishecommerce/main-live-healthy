@@ -38,11 +38,11 @@ export default function MenuIcons() {
       </div>
       <h6 className="cart mountain-green font-bold text-xs">
         {cart?.accountLoggedIn !== null ? (
-          <>
+          <p>
             {greetUser()}, {cart?.account?.name}{' '}
-          </>
+          </p>
         ) : (
-          <>{`${greetUser()}, Guest`}</>
+          <p>{`${greetUser()}, Guest`}</p>
         )}
       </h6>
     </div>

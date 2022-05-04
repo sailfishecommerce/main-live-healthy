@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useMediaQuery } from '@/hooks'
 import useCategoryData from '@/hooks/useCategoryData'
 import { useAppSelector } from '@/hooks/useRedux'
@@ -46,15 +47,10 @@ function CategoryLinks({ categories, title, className }: CategoryProps) {
           return (
             <li
               key={category.name}
-              className={`${activeCategory} sidebar-list px-2 py-1 lg:my-1 my-0 w-full`}
+              className={`${activeCategory} cursor-pointer sidebar-list px-2 py-1 lg:my-1 my-0 w-full`}
+              onClick={() => selectCategoryHandler(category.name)}
             >
-              <button
-                type="button"
-                className="text-black"
-                onClick={() => selectCategoryHandler(category.name)}
-              >
-                {category.name}
-              </button>
+              {category.name}
             </li>
           )
         })}
@@ -65,7 +61,7 @@ function CategoryLinks({ categories, title, className }: CategoryProps) {
             max-height: 200px;
             overflow-y: scroll;
           }
-          .sidebar-list.active button {
+          .sidebar-list.active {
             font-weight: bold;
           }
           .sidebar-list:hover,

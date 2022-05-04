@@ -1,14 +1,14 @@
-import DashboardCard from '@/components/Dashboard/DashboardCard'
+import DashboardEditor from '@/components/Dashboard/DashboardEditor'
 import DashboardMainView from '@/components/Dashboard/DashboardMainView'
 import DashboardLayout from '@/layouts/dashboard-layout'
 
-export default function index() {
+export default function PrivacyPolicy() {
   return (
     <DashboardLayout title="Admin page">
       <DashboardMainView>
-        <DashboardCard />
-        <div className="orders bg-white rounded-xl px-8 py-6 h-96">
-          <h1 className="text-xl font-bold mt-">Orders</h1>
+        <div className="policy mt-4">
+          <h1 className="text-2xl">Privacy Policy</h1>
+          <DashboardEditor />
         </div>
       </DashboardMainView>
     </DashboardLayout>

@@ -1,6 +1,5 @@
 /* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable no-alert */
-/* eslint-disable react-hooks/exhaustive-deps */
 import type { ElementType } from 'airwallex-payment-elements'
 import {
   createElement,
@@ -29,13 +28,7 @@ function AirwallexCardElement({
 
   const router = useRouter()
 
-  const { loadToast, successToast, errorToast } = useToast()
-
-  useEffect(() => {
-    if (errorMessage.length > 0) {
-      errorToast(errorMessage)
-    }
-  }, [errorMessage])
+  const { isLoading, isSuccessful, hasError } = useToast()
 
   useEffect(() => {
     loadAirwallex({
@@ -60,7 +53,6 @@ function AirwallexCardElement({
     const onError = (event: CustomEvent): void => {
       const { error } = event.detail
       setIsSubmitting(false)
-      errorToast(error)
       setErrorMessage(error.message ?? JSON.stringify(error))
     }
 
@@ -72,15 +64,9 @@ function AirwallexCardElement({
     }
   }, [])
 
-  useEffect(() => {
-    if (!isSubmitting && errorMessage.length > 0) {
-      errorToast(errorMessage)
-    }
-  }, [errorMessage, isSubmitting])
-
   const triggerConfirm = (): void => {
     setIsSubmitting(true)
-    loadToast()
+    const toastId = isLoading()
     const card: any = getElement('card')
     if (card) {
       confirmPaymentIntent({
@@ -95,7 +81,7 @@ function AirwallexCardElement({
       })
         .then((response) => {
           setIsSubmitting(false)
-          successToast('Payment successful')
+          isSuccessful(toastId, 'Payment successful')
           window.alert(
             `Payment Intent confirmation was successful: ${JSON.stringify(
               response
@@ -106,8 +92,7 @@ function AirwallexCardElement({
         .catch((error) => {
           setIsSubmitting(false)
           setErrorMessage(error.message ?? JSON.stringify(error))
-          // console.error("There is an error", error);
-          errorToast(error)
+          hasError(toastId, error)
         })
     }
   }

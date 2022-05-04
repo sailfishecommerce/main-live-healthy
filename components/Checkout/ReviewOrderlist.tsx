@@ -9,8 +9,11 @@ import useShoppingCart from '@/hooks/useShoppingCart'
 const selectOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 export default function ReviewOrderlist({ content }: any) {
-  const { updateCartItem, loadingState } = useShoppingCart()
+  const { updateCartItem, loadingState, removeCartItem } = useShoppingCart()
   loadingState(updateCartItem, `${content.product.name} quantity updated`)
+  loadingState(removeCartItem, `${content.product.name} removed`)
+
+  const removeItemFromCart = () => removeCartItem.mutate(content)
   return (
     <div className="relative my-2 flex items-center hover:bg-gray-100 border border-b border-gray-100 justify-between p-4">
       <div className="image-wrapper w-1/4">
@@ -58,7 +61,7 @@ export default function ReviewOrderlist({ content }: any) {
           )}
         </div>
       </div>
-      <button type="button">
+      <button type="button" onClick={removeItemFromCart}>
         <GiCancel
           size={32}
           aria-label="close"

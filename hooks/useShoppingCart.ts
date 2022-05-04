@@ -6,20 +6,19 @@ import useToast from '@/hooks/useToast'
 export default function useShoppingCart() {
   const { useRemoveFromCart, useAddItemToCartModal, useUpdateCartItem } =
     useMutationAction()
-  const { loadToast, successToast, errorToast } = useToast()
   const { useAddItemToCart } = useMutationAction()
   const removeCartItem = useRemoveFromCart()
   const addItemToCart = useAddItemToCart()
+  const { isLoading, isSuccessful, hasError } = useToast()
   const addItemToCartModal = useAddItemToCartModal()
   const updateCartItem = useUpdateCartItem()
 
   function loadingState(mutator: any, data: string) {
-    mutator.isLoading
-      ? loadToast()
-      : mutator.isError
-      ? errorToast('an error occured, please try again')
+    const loadingId = isLoading()
+    mutator.isError
+      ? hasError(loadingId, 'an error occured, please try again')
       : mutator.isSuccess
-      ? successToast(data)
+      ? isSuccessful(loadingId, data)
       : null
   }
 

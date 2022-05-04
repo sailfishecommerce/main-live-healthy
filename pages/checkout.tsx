@@ -10,7 +10,7 @@ export default function Checkout() {
   const { data: cart } = useCartData()
   return (
     <Applayout title="Checkout - Thanks for shopping with us">
-      {cart !== null ? (
+      {cart !== null && cart.items.length > 0 ? (
         <main className="mx-auto bg-light-gray">
           {mobileWidth ? <MobileCheckoutView /> : <CheckoutCustomer />}
         </main>

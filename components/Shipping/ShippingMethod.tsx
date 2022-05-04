@@ -19,7 +19,7 @@ export default function ShippingMethod() {
       <h4 className="text-lg font-semibold mb-3">Shipping method</h4>
       <div className="shipping-methods flex flex-col">
         {status === 'success' &&
-          data.services.map((shippingMethodItem: any) => (
+          data?.services?.map((shippingMethodItem: any) => (
             <ShippingMethodTag
               key={shippingMethodItem.id}
               content={shippingMethodItem}

@@ -75,7 +75,7 @@ export default function Modal({
               }
               @media (max-width: 768px) {
                 .appmodal {
-                  width: 80%;
+                  width: 80vw;
                 }
               }
             `}

@@ -34,7 +34,7 @@ export default function MenuIcons() {
           </button>
         </Link>
       </div>
-      {cart.accountLoggedIn !== null && (
+      {cart?.accountLoggedIn !== null && (
         <h6 className="cart text-green-500 font-bold text-xs">
           {greetUser()}, {cart?.account?.name}
         </h6>

@@ -4,17 +4,13 @@ import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
 import FormattedPrice from '@/components/Price/FormattedPrice'
 import AppliedDiscountTag from '@/components/Tag/AppliedDiscountTag'
 import { useCart } from '@/hooks'
+import useCoupon from '@/hooks/useCoupon'
 import type { cartType } from '@/typings'
 
 export default function SlideCardTotal() {
   const { useCartData } = useCart()
   const { data: cart }: cartType | any = useCartData()
-
-  const appliedDiscounts = [
-    '10% Off On All Vitamins',
-    'Buy 2 Get $30 Off!',
-    'Free Shipping',
-  ]
+  const { allDiscount, onSubmitCoupon, couponInputHandler } = useCoupon()
 
   return (
     <>
@@ -44,27 +40,31 @@ export default function SlideCardTotal() {
               placeholder="Enter promocode"
               type="text"
               className="border rounded-lg px-2 py-2 w-full"
+              onChange={couponInputHandler}
             />
           </div>
           <button
             type="button"
-            className="rounded-xl w-3/5  lg:w-2/5 bg-mountain-green text-white md:px-4 p-2 text-xs  lg:text-sm font-medium"
+            className="rounded-xl w-3/5 lg:w-2/5 bg-mountain-green text-white md:px-4 p-2 text-xs  lg:text-sm font-medium"
+            onClick={onSubmitCoupon}
           >
             Add discount code
           </button>
         </div>
-        <div className="applied-discounts">
-          <h3 className="font-bold text-sm">Applied Discounts</h3>
-          <div className="applied-discounts-tags flex flex-wrap">
-            {appliedDiscounts.map((discount, index) => (
-              <AppliedDiscountTag
-                key={index}
-                discountTitle={discount}
-                count={index}
-              />
-            ))}
+        {allDiscount.length > 0 && (
+          <div className="applied-discounts">
+            <h3 className="font-bold text-sm">Applied Discounts</h3>
+            <div className="applied-discounts-tags flex flex-wrap">
+              {allDiscount.map((discount, index: number) => (
+                <AppliedDiscountTag
+                  key={discount?.id}
+                  discountTitle={discount.description}
+                  count={index}
+                />
+              ))}
+            </div>
           </div>
-        </div>
+        )}
         <Link passHref href="/checkout">
           <button
             type="button"

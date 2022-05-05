@@ -19,7 +19,7 @@ export default function SlidingInformation({ product }: Props) {
 
   return (
     <SlidingTab buttonColor="text-white">
-      <div className="header h-40 flex items-end bg-mountain-green p-4 w-full">
+      <div className="header lg:h-40 flex lg:items-end bg-mountain-green p-4 w-full lg:flex-row flex-col items-start py-8">
         {slidingInfoTabs.map((tab) => {
           const tabStyle =
             tab.value === slidingTabInfo ? 'text-white' : 'text-gray-300'
@@ -27,7 +27,7 @@ export default function SlidingInformation({ product }: Props) {
             <button
               type="button"
               key={tab.value}
-              className={`${tabStyle} font-bold text-md 2xl:text-lg 2xl:mr-4 mx-2`}
+              className={`${tabStyle} font-bold text-lg 2xl:text-lg 2xl:mr-4 mx-2`}
               onClick={() => selectInformationTypeHandler(tab.value)}
             >
               {tab.title}

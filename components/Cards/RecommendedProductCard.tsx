@@ -18,9 +18,9 @@ export default function RecommendedProductCard({
   smallerImage,
   imageClassName,
 }: ProductTypes) {
-  const { loadingState, addItemToCart } = useShoppingCart()
+  const { addItemToCart } = useShoppingCart()
 
-  loadingState(addItemToCart, `${product.name} added to cart`)
+  // loadingState(addItemToCart, `${product.name} added to cart`)
 
   const addToCartHandler = () => addItemToCart.mutate({ product, quantity: 1 })
 

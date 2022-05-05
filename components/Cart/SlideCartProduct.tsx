@@ -4,7 +4,7 @@ import { MdCancel } from 'react-icons/md'
 import { CartControl } from '@/components/Cart/CartElements'
 import FormattedPrice from '@/components/Price/FormattedPrice'
 import useShoppingCart from '@/hooks/useShoppingCart'
-import { cartType } from '@/types'
+import type { cartType } from '@/types'
 
 interface SlideCartProductProps {
   item: cartType
@@ -13,9 +13,9 @@ interface SlideCartProductProps {
 export default function SlideCartProduct({
   item,
 }: SlideCartProductProps): JSX.Element {
-  const { loadingState, removeCartItem } = useShoppingCart()
+  const { removeCartItem } = useShoppingCart()
 
-  loadingState(removeCartItem, `${item.product.name} removed from cart`)
+  // loadingState(removeCartItem, `${item.product.name} removed from cart`)
 
   function removeItemFromCart() {
     removeCartItem.mutate(item)
@@ -27,8 +27,8 @@ export default function SlideCartProduct({
         <button
           className="text-red-500 absolute top-6 right-2"
           type="button"
-          onClick={removeItemFromCart}
           aria-label="remove"
+          onClick={removeItemFromCart}
         >
           <MdCancel size={32} />
         </button>

@@ -1,35 +1,35 @@
-import { memo, useCallback } from "react";
-import { BsCart4 } from "react-icons/bs";
-import { AiOutlineEye } from "react-icons/ai";
+/* eslint-disable jsx-a11y/no-onchange */
+/* eslint-disable no-nested-ternary */
+import { memo, useCallback } from 'react'
+import { AiOutlineEye } from 'react-icons/ai'
+import { BsCart4 } from 'react-icons/bs'
 
-import { ProductProps } from "@/types";
-import useAlgoliaEvents from "@/hooks/useAlgoliaEvents";
-import useShoppingCart from "@/hooks/useShoppingCart";
-import useProductOptions from "@/hooks/useProductOptions";
-import useEvent from "@/hooks/useEvent";
-import { useAppDispatch } from "@/redux/store";
-import { quickViewModal } from "@/redux/ui-slice";
+import useAlgoliaEvents from '@/hooks/useAlgoliaEvents'
+import useProductOptions from '@/hooks/useProductOptions'
+import useShoppingCart from '@/hooks/useShoppingCart'
+import { useAppDispatch } from '@/redux/store'
+import { quickViewModal } from '@/redux/ui-slice'
+import type { ProductProps } from '@/types'
 
 function ProductViewFormComonent({
   product,
   algoliaEvent,
   forCategory,
 }: ProductProps) {
-  const { optionHandler } = useProductOptions();
-  const categoryStyle = forCategory ? "flex flex-col" : "flex";
-  const { productAddedToCart, convertedItemAfterSearch } = useAlgoliaEvents();
-  const dispatch = useAppDispatch();
+  const { optionHandler } = useProductOptions()
+  const categoryStyle = forCategory ? 'flex flex-col' : 'flex'
+  const { productAddedToCart, convertedItemAfterSearch } = useAlgoliaEvents()
+  const dispatch = useAppDispatch()
 
-  const { algoliaQuickViewEvent } = useEvent();
   const formOptionBg = useCallback((name: string) => {
-    const style = { backgroundColor: name.toLowerCase() };
-    return style;
-  }, []);
+    const style = { backgroundColor: name.toLowerCase() }
+    return style
+  }, [])
 
-  const { addItemToCart, loadingState } = useShoppingCart();
+  const { addItemToCart } = useShoppingCart()
 
   const quickViewHandler = () => {
-    dispatch(quickViewModal(product));
+    dispatch(quickViewModal(product))
     // if (algoliaEvent === "search") {
     //   convertedItemAfterSearch("quick_view_after_search", product.__queryID, [
     //     product.objectID,
@@ -37,30 +37,30 @@ function ProductViewFormComonent({
     // } else {
     //   algoliaQuickViewEvent(product);
     // }
-  };
+  }
 
   function onSubmitHandler(e: any) {
-    e.preventDefault();
-    addItemToCart.mutate({ product, quantity: 1 });
-    if (algoliaEvent === "search") {
+    e.preventDefault()
+    addItemToCart.mutate({ product, quantity: 1 })
+    if (algoliaEvent === 'search') {
       convertedItemAfterSearch(
-        "product_added_to_cart_after_search",
+        'product_added_to_cart_after_search',
         product.__queryID,
         [product.objectID]
-      );
+      )
     } else {
-      productAddedToCart([product.id]);
+      productAddedToCart([product.id])
     }
   }
 
-  loadingState(addItemToCart, `${product.name} added to cart`);
+  // loadingState(addItemToCart, `${product.name} added to cart`)
 
   return (
     <div className="card-body card-body-hidden">
-      <form onSubmit={onSubmitHandler} className="flex justify-center">
+      <form className="flex justify-center" onSubmit={onSubmitHandler}>
         {product?.options?.length > 0 ? (
           product?.options?.map((option) => {
-            return option.name === "Color" ? (
+            return option.name === 'Color' ? (
               <div key={option.id} className="text-center pb-2">
                 {option.values.map((value: { name: string; id: string }) => (
                   <div
@@ -68,13 +68,13 @@ function ProductViewFormComonent({
                     className="form-check form-option form-check-inline mb-2"
                   >
                     <input
+                      required
                       className="form-check-input"
                       type="radio"
                       value={value.name}
-                      onChange={optionHandler}
                       name={option.name}
                       id={value.id}
-                      required
+                      onChange={optionHandler}
                     />
                     <label
                       className="form-option-label rounded-circle"
@@ -88,13 +88,13 @@ function ProductViewFormComonent({
                   </div>
                 ))}
               </div>
-            ) : option.name === "Size" ? (
+            ) : option.name === 'Size' ? (
               <div key={option.id} className={`mb-2 ${categoryStyle}`}>
                 <select
-                  onChange={optionHandler}
+                  required
                   name="Size"
                   className="form-select form-select-sm mx-2 mb-2"
-                  required
+                  onChange={optionHandler}
                 >
                   <option value="">Select Size</option>
                   {option.values.map((value: { name: string; id: string }) => (
@@ -112,7 +112,7 @@ function ProductViewFormComonent({
                   Add to Cart
                 </button>
               </div>
-            ) : null;
+            ) : null
           })
         ) : (
           <button
@@ -127,18 +127,19 @@ function ProductViewFormComonent({
       </form>
       <div className="text-center">
         <button
+          type="button"
           aria-label="Product Quick View"
           className="hover:text-red-500 text-sm flex items-center my-2"
-          onClick={quickViewHandler}
           data-bs-toggle="quickViewModal"
+          onClick={quickViewHandler}
         >
           <AiOutlineEye className="mr-1" />
           Quick view
         </button>
       </div>
     </div>
-  );
+  )
 }
 
-const ProductViewForm = memo(ProductViewFormComonent);
-export default ProductViewForm;
+const ProductViewForm = memo(ProductViewFormComonent)
+export default ProductViewForm

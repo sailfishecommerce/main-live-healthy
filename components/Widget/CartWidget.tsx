@@ -1,10 +1,9 @@
 import Link from 'next/link'
 
-import FormattedPrice from '@/components/Price/FormattedPrice'
-
 import Image from '@/components/Image'
+import FormattedPrice from '@/components/Price/FormattedPrice'
 import useShoppingCart from '@/hooks/useShoppingCart'
-import { cartType } from '@/types'
+import type { cartType } from '@/types'
 
 interface CartWidgetProps {
   cart: cartType
@@ -12,9 +11,9 @@ interface CartWidgetProps {
 }
 
 export default function CartWidget({ cart, className }: CartWidgetProps) {
-  const { loadingState, removeCartItem } = useShoppingCart()
+  const { removeCartItem } = useShoppingCart()
 
-  loadingState(removeCartItem, `${cart.product.name} removed`)
+  // loadingState(removeCartItem, `${cart.product.name} removed`)
 
   const removeItemFromCart = () => removeCartItem.mutate(cart)
 
@@ -23,8 +22,8 @@ export default function CartWidget({ cart, className }: CartWidgetProps) {
       <button
         className="hover:bg-red-500 flex  justify-center items-center hover:text-white p-1 w-6 h-6 m-auto rounded-full border-2 border-red-500 absolute z-40 right-0 top-10"
         type="button"
-        onClick={removeItemFromCart}
         aria-label="remove"
+        onClick={removeItemFromCart}
       >
         <span className="text-3xl -mt-1 leading-none">&times;</span>
       </button>

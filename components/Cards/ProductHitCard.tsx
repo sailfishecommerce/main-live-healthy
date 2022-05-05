@@ -38,9 +38,9 @@ export default function ProductHitCard({
         width: 500,
       }
 
-  const { loadingState, addItemToCart } = useShoppingCart()
+  const { addItemToCart } = useShoppingCart()
 
-  loadingState(addItemToCart, `${hit.name} added to cart`)
+  // loadingState(addItemToCart, `${hit.name} added to cart`)
 
   const addToCartHandler = () => addItemToCart.mutate({ hit, quantity: 1 })
   const productVendorLink = hit?.vendor?.includes(' ')
@@ -69,13 +69,13 @@ export default function ProductHitCard({
                 type="button"
                 className="vendor text-xs md:text-md font-bold pl-2 my-0 py-0 h-3 mb-1 md:mb-0 md:h-5"
               >
-                {hit.vendor}
+                {hit?.vendor}
               </button>
             </Link>
             <div className="product-name-view md:mb-8 mb-2">
               <h3 className="text-xs md:text-md product-name">{hit.name}</h3>
             </div>
-            {hit.price && (
+            {hit?.price && (
               <FormattedPrice
                 price={hit.price}
                 className="text-sm md:text-md text-black font-semibold"

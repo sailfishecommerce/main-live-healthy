@@ -1,16 +1,18 @@
+/* eslint-disable jsx-a11y/no-onchange */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable @next/next/no-img-element */
 import { useState } from 'react'
+import { AiFillLock } from 'react-icons/ai'
 import {
   BsCartPlusFill,
   BsFacebook,
   BsInstagram,
   BsTwitter,
 } from 'react-icons/bs'
-import { AiFillLock } from 'react-icons/ai'
 
 import useShoppingCart from '@/hooks/useShoppingCart'
-import { productType } from '@/types'
 import productBox from '@/json/info-section.json'
+import type { productType } from '@/types'
 
 export function PaymentNote() {
   return (
@@ -73,11 +75,11 @@ export function ProductOptionSelect({
         Size:
       </label>
       <select
-        onChange={selectedItemHandler}
+        required
         name="Size"
         className="form-select"
-        required
         id="product-size"
+        onChange={selectedItemHandler}
       >
         <option value="">Select size</option>
         {option.values.map((value: { id: string; name: string }) => (
@@ -103,11 +105,11 @@ export function ProductOptionSelectBox({
     <div className="flex flex-col w-50">
       <label htmlFor="selectProductQuantity font-bold">Cartons</label>
       <select
+        required
         name="productQty"
         className="form-select"
         id="selectProductQuantity"
         onChange={productQtyHandler}
-        required
       >
         <option value="">Select Quantity</option>
         {quantityArr.map((option) => (
@@ -126,11 +128,11 @@ export function ProductQuantityCounter({
   product,
 }: ProductQuantityCounterType) {
   const [itemQty, setItemQty] = useState(1)
-  const { loadingState, addItemToCartModal } = useShoppingCart()
+  const { addItemToCartModal } = useShoppingCart()
 
-  loadingState(addItemToCartModal, `${product.name} updated`)
+  // loadingState(addItemToCartModal, `${product.name} updated`)
 
-  function updateCounter(type: 'increment' | 'decrement') {
+  function updateCounter(type: 'decrement' | 'increment') {
     if (type === 'increment') {
       setItemQty(itemQty + 1)
     } else if (type === 'decrement' && itemQty > 1) {
@@ -151,22 +153,22 @@ export function ProductQuantityCounter({
       <div className="cartCounter w-1/2 lg:w-50 flex items-center mb-0">
         <button
           aria-label="Remove"
-          onClick={() => updateCounter('decrement')}
           type="button"
           className="h-8 text-xl font-bold flex items-center justify-center bg-red-500 hover:bg-red-400 text-white w-10 rounded-md"
+          onClick={() => updateCounter('decrement')}
         >
           -
         </button>
         <input
-          className="w-1/5 mx-2 text-center border focus-within:ring-1 focus-within:ring-red-500"
           readOnly
+          className="w-1/5 mx-2 text-center border focus-within:ring-1 focus-within:ring-red-500"
           value={itemQty}
         />
         <button
           aria-label="Add"
-          onClick={() => updateCounter('increment')}
           type="button"
           className="h-8 text-xl font-bold flex items-center justify-center bg-green-500 text-white w-10 hover:bg-green-400 rounded-md"
+          onClick={() => updateCounter('increment')}
         >
           +
         </button>

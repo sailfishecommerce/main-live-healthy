@@ -1,6 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import Image from 'next/image'
-import { useEffect } from 'react'
 
 import TrashIcon from '@/components/Icons/TrashIcon'
 import FormattedPrice from '@/components/Price/FormattedPrice'
@@ -8,14 +6,14 @@ import ProductControls from '@/components/Product/ProductControls'
 import useShoppingCart from '@/hooks/useShoppingCart'
 
 export default function ProductRow({ cart }: any) {
-  const { removeCartItem, updateCartItem, loadingState } = useShoppingCart()
+  const { removeCartItem } = useShoppingCart()
   const removeItemFromCart = () => removeCartItem.mutate(cart)
 
-  useEffect(() => {
-    loadingState(removeCartItem, `${cart.product.name} removed`)
-  }, [removeItemFromCart])
+  // useEffect(() => {
+  //   loadingState(removeCartItem, `${cart.product.name} removed`)
+  // }, [removeItemFromCart])
 
-  loadingState(updateCartItem, `${cart.product.name} updated`)
+  // loadingState(updateCartItem, `${cart.product.name} updated`)
 
   return (
     <div className="flex items-center  border-b p-4 hover:bg-gray-100">

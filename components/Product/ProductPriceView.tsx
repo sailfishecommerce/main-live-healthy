@@ -10,11 +10,11 @@ import useShoppingCart from '@/hooks/useShoppingCart'
 import useSlidingTab from '@/hooks/useSlidingTab'
 
 export default function ProductPriceView({ product }: any) {
-  const { loadingState, addItemToCart } = useShoppingCart()
+  const { addItemToCart } = useShoppingCart()
   const { productAddedToCart } = useAlgoliaEvents()
   const { updateSlideTab } = useSlidingTab()
 
-  loadingState(addItemToCart, `${product.name} added to cart`)
+  // loadingState(addItemToCart, `${product.name} added to cart`)
 
   function addToCartHandler() {
     updateSlideTab('SLIDING-CART')

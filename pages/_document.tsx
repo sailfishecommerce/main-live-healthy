@@ -67,7 +67,7 @@ export default class MyDocument extends Document {
           <meta property="og:title" content="Live healthy stores" />
           <meta
             property="og:description"
-            content="Shop the latest fashion online"
+            content="Imported Australian Goodes in Hong Kong - Buy Imported Vitamins, Supplements, Hair, Beauty, Skin Care, Baby Products, Smoking Deterrents from Live Healthy Store HK. Sensible Prices & Free Shipping."
           />
           <meta property="og:site_name" content="Live healthy stores" />
           <meta property="og:url" content="https://new-commerce.vercel.app" />
@@ -84,7 +84,7 @@ export default class MyDocument extends Document {
           <meta name="twitter:title" content="Live healthy stores" />
           <meta
             name="twitter:description"
-            content="Shop the latest fashion online"
+            content="Imported Australian Goodes in Hong Kong - Buy Imported Vitamins, Supplements, Hair, Beauty, Skin Care, Baby Products, Smoking Deterrents from Live Healthy Store HK. Sensible Prices & Free Shipping."
           />
           <meta
             name="twitter:image"

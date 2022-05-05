@@ -1,12 +1,13 @@
-import { Splide, SplideSlide } from "@splidejs/react-splide";
+/* eslint-disable no-nested-ternary */
+import { Splide, SplideSlide } from '@splidejs/react-splide'
 
-import Product from "@/components/Cards/ProductCard";
-import useLiveHealthyProduct from "@/hooks/useLivehealthyProduct";
-import "@splidejs/splide/dist/css/splide.min.css";
-import selectRandomColor from "@/lib/selectRandomColor";
+import Product from '@/components/Cards/ProductCard'
+import useLiveHealthyProduct from '@/hooks/useLivehealthyProduct'
+import '@splidejs/splide/dist/css/splide.min.css'
+import selectRandomColor from '@/lib/selectRandomColor'
 
 export default function BestSellerSlider() {
-  const [data, status] = useLiveHealthyProduct();
+  const [data, status] = useLiveHealthyProduct()
 
   return (
     <section className="itemSlider best-seller-slider py-4 px-4 md:py-8 relative w-full bg-gray-platinum mx-auto flex relative z-10 flex-col my-4">
@@ -16,19 +17,19 @@ export default function BestSellerSlider() {
         </div>
 
         <div className="2xl:pl-28 pl-0 products mx-auto mt-4 flex items-center justify-between pb-0 md:pb-12">
-          {status === "error" ? (
-            "unable to load products"
-          ) : status === "loading" ? (
-            "loading"
+          {status === 'error' ? (
+            'unable to load products'
+          ) : status === 'loading' ? (
+            'loading'
           ) : (
             <Splide
               options={{
                 perPage: 5,
-                padding: "5rem",
+                padding: '5rem',
                 breakpoints: {
                   500: {
                     perPage: 2,
-                    padding: "1rem",
+                    padding: '1rem',
                   },
                   800: {
                     perPage: 2,
@@ -55,5 +56,5 @@ export default function BestSellerSlider() {
         </div>
       </div>
     </section>
-  );
+  )
 }

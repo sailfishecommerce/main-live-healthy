@@ -9,9 +9,9 @@ import useShoppingCart from '@/hooks/useShoppingCart'
 const selectOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 export default function ReviewOrderlist({ content }: any) {
-  const { updateCartItem, loadingState, removeCartItem } = useShoppingCart()
-  loadingState(updateCartItem, `${content.product.name} quantity updated`)
-  loadingState(removeCartItem, `${content.product.name} removed`)
+  const { updateCartItem, removeCartItem } = useShoppingCart()
+  // loadingState(updateCartItem, `${content.product.name} quantity updated`)
+  // loadingState(removeCartItem, `${content.product.name} removed`)
 
   const removeItemFromCart = () => removeCartItem.mutate(content)
   return (

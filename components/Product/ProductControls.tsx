@@ -9,7 +9,7 @@ interface Props {
 }
 
 export default function ProductControls({ cart }: Props) {
-  const { updateCartItem, loadingState } = useShoppingCart()
+  const { updateCartItem } = useShoppingCart()
 
   const [counter, setCounter] = useState(cart.quantity)
 
@@ -23,10 +23,10 @@ export default function ProductControls({ cart }: Props) {
     }
   }
 
-  useEffect(() => {
-    updateCartItem.mutate({ product: cart, quantity: counter })
-    loadingState(updateCartItem, `${cart.product.name} updated`)
-  }, [counter])
+  // useEffect(() => {
+  //   updateCartItem.mutate({ product: cart, quantity: counter })
+  //   loadingState(updateCartItem, `${cart.product.name} updated`)
+  // }, [counter])
 
   return (
     <div className="flex items-center border rounded-md">

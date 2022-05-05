@@ -1,18 +1,18 @@
 import Link from 'next/link'
 
-import FormattedPrice from '@/components/Price/FormattedPrice'
 import Image from '@/components/Image'
+import FormattedPrice from '@/components/Price/FormattedPrice'
 import useShoppingCart from '@/hooks/useShoppingCart'
-import { cartType } from '@/types'
+import type { cartType } from '@/types'
 
 interface CartWidgetProps {
   cart: cartType
 }
 
 export default function CartWidget({ cart }: CartWidgetProps) {
-  const { loadingState, removeCartItem } = useShoppingCart()
+  const { removeCartItem } = useShoppingCart()
 
-  loadingState(removeCartItem, `${cart.product.name} removed`)
+  // loadingState(removeCartItem, `${cart.product.name} removed`)
 
   function removeItemFromCart() {
     removeCartItem.mutate(cart)
@@ -27,8 +27,8 @@ export default function CartWidget({ cart }: CartWidgetProps) {
       <button
         className="btn-close text-danger"
         type="button"
-        onClick={removeItemFromCart}
         aria-label="remove"
+        onClick={removeItemFromCart}
       >
         <span>&times;</span>
       </button>

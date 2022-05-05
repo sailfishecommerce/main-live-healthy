@@ -1,38 +1,40 @@
-import { useCallback } from "react";
-import { GiShoppingCart } from "react-icons/gi";
+/* eslint-disable jsx-a11y/no-onchange */
+/* eslint-disable no-nested-ternary */
+import { useCallback } from 'react'
+import { GiShoppingCart } from 'react-icons/gi'
 
-import { productType } from "@/types";
-import useAlgoliaEvents from "@/hooks/useAlgoliaEvents";
-import useProductOptions from "@/hooks/useProductOptions";
-import useShoppingCart from "@/hooks/useShoppingCart";
+import useAlgoliaEvents from '@/hooks/useAlgoliaEvents'
+import useProductOptions from '@/hooks/useProductOptions'
+import useShoppingCart from '@/hooks/useShoppingCart'
+import type { productType } from '@/types'
 
 interface ProductProps {
-  product: productType;
+  product: productType
 }
 
 export default function ProductListForm({ product }: ProductProps) {
-  const { productAddedToCart } = useAlgoliaEvents();
-  const { optionHandler } = useProductOptions();
-  const { loadingState, addItemToCart } = useShoppingCart();
+  const { productAddedToCart } = useAlgoliaEvents()
+  const { optionHandler } = useProductOptions()
+  const { addItemToCart } = useShoppingCart()
 
-  loadingState(addItemToCart, `${product.name} added to cart`);
+  // loadingState(addItemToCart, `${product.name} added to cart`);
 
   function onSubmitHandler(e: any) {
-    e.preventDefault();
-    addItemToCart.mutate({ product, quantity: 1 });
-    productAddedToCart([product.id]);
+    e.preventDefault()
+    addItemToCart.mutate({ product, quantity: 1 })
+    productAddedToCart([product.id])
   }
 
   const labelBg = useCallback((name: string) => {
-    const style = { backgroundColor: name.toLowerCase() };
-    return style;
-  }, []);
+    const style = { backgroundColor: name.toLowerCase() }
+    return style
+  }, [])
 
   return (
     <form onSubmit={onSubmitHandler}>
       {product?.options && product?.options.length > 0 ? (
         product?.options.map((option) => {
-          return option?.name === "Color" ? (
+          return option?.name === 'Color' ? (
             <div key={option.id} className="pb-2">
               {option?.values.map((value: { name: string; id: string }) => (
                 <div
@@ -40,13 +42,13 @@ export default function ProductListForm({ product }: ProductProps) {
                   className="form-check form-option form-check-inline mb-2"
                 >
                   <input
+                    required
                     className="form-check-input"
                     type="radio"
                     value={value.name}
-                    onChange={optionHandler}
                     name={option.name}
                     id={value.id}
-                    required
+                    onChange={optionHandler}
                   />
                   <label
                     className="form-option-label rounded-circle"
@@ -60,13 +62,13 @@ export default function ProductListForm({ product }: ProductProps) {
                 </div>
               ))}
             </div>
-          ) : option?.name === "Size" ? (
+          ) : option?.name === 'Size' ? (
             <div key={option.id} className="flex mb-2">
               <select
-                className="form-select select-size form-select-sm mx-2"
-                onChange={optionHandler}
-                name="Size"
                 required
+                className="form-select select-size form-select-sm mx-2"
+                name="Size"
+                onChange={optionHandler}
               >
                 <option value="">Select Size</option>
                 {option.values.map((value: { name: string; id: string }) => (
@@ -84,7 +86,7 @@ export default function ProductListForm({ product }: ProductProps) {
                 Add to Cart
               </button>
             </div>
-          ) : null;
+          ) : null
         })
       ) : (
         <button
@@ -104,5 +106,5 @@ export default function ProductListForm({ product }: ProductProps) {
         `}
       </style>
     </form>
-  );
+  )
 }

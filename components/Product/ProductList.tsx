@@ -1,9 +1,11 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import Link from 'next/link'
 
 import Image from '@/components/Image'
-import { productType } from '@/types'
 import useAlgoliaEvents from '@/hooks/useAlgoliaEvents'
-import useShoppingCart from '@/hooks/useShoppingCart'
+import type { productType } from '@/types'
+
 import ProductListView from './ProductListView'
 
 interface ProductProps {
@@ -12,9 +14,6 @@ interface ProductProps {
 
 export default function ProductList({ product }: ProductProps) {
   const { itemViewed } = useAlgoliaEvents()
-  const { loadingState, addItemToCart } = useShoppingCart()
-
-  loadingState(addItemToCart, `${product.name} added to cart`)
 
   function productViewedHandler() {
     itemViewed('product_viewed', [product.objectID])
@@ -43,8 +42,8 @@ export default function ProductList({ product }: ProductProps) {
         <Link passHref href={`/products/${product.slug}`}>
           <a
             aria-label={imageAlt}
-            onClick={productViewedHandler}
             className="product-list-thumb h-1/3 md:h-full"
+            onClick={productViewedHandler}
           >
             <Image
               height={300}

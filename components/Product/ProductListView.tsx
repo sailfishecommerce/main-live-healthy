@@ -4,13 +4,13 @@ import FormattedPrice from '@/components/Price/FormattedPrice'
 import ProductListQuickView from '@/components/Product/ProductListQuickView'
 import RatingStar from '@/components/Rating/RatingStar'
 import useAlgoliaEvents from '@/hooks/useAlgoliaEvents'
-import useShoppingCart from '@/hooks/useShoppingCart'
+// import useShoppingCart from '@/hooks/useShoppingCart'
 
 export default function ProductListView({ product }: any) {
   const { itemViewed } = useAlgoliaEvents()
-  const { loadingState, addItemToCart } = useShoppingCart()
+  // const { addItemToCart } = useShoppingCart()
 
-  loadingState(addItemToCart, `${product.name} added to cart`)
+  // loadingState(addItemToCart, `${product.name} added to cart`)
 
   function productViewedHandler() {
     itemViewed('product_viewed', [product.objectID])

@@ -35,6 +35,12 @@ export default function RecommendedProductCard({
         height: 150,
         width: 150,
       }
+
+  const productImage =
+    typeof product.images[0] === 'string'
+      ? product.images[0]
+      : product.images[0].file.url
+
   return (
     <div
       className={`hov hover:shadow-lg mr-4 flex bg-gray-100 rounded-md flex-col hover:rounded-lg product ${productClassName}  p-4 hover:border`}
@@ -44,12 +50,12 @@ export default function RecommendedProductCard({
         <Link passHref href={`/product/${product.slug}`}>
           <a>
             <Image
-              src={product.images[0]}
+              src={productImage}
               alt={product.name}
               height={imageSize.height}
               width={imageSize.width}
               className="rounded-xl"
-              blurDataURL={product.images[0]}
+              blurDataURL={productImage}
             />
           </a>
         </Link>

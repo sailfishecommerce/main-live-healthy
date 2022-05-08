@@ -1,9 +1,9 @@
-import { Splide, SplideSlide } from "@splidejs/react-splide";
-import Script from "next/script";
+import { Splide, SplideSlide } from '@splidejs/react-splide'
+import Script from 'next/script'
 
-import userChoice from "@/json/user-choice.json";
-import "@splidejs/splide/dist/css/splide.min.css";
-import UserChoiceCard from "@/components/Cards/UserChoiceCard";
+import UserChoiceCard from '@/components/Cards/UserChoiceCard'
+import userChoice from '@/json/user-choice.json'
+import '@splidejs/splide/dist/css/splide.min.css'
 
 export default function UserchoiceSlider() {
   return (
@@ -22,7 +22,7 @@ export default function UserchoiceSlider() {
               breakpoints: {
                 500: {
                   perPage: 1,
-                  padding: "3rem",
+                  padding: '3rem',
                 },
                 1000: {
                   perPage: 2,
@@ -43,5 +43,5 @@ export default function UserchoiceSlider() {
         </div>
       </section>
     </>
-  );
+  )
 }

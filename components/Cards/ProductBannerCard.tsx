@@ -4,7 +4,6 @@ import Link from 'next/link'
 
 import CartIcon from '@/components/Icons/CartIcon'
 import useShoppingCart from '@/hooks/useShoppingCart'
-import type { ProductProps } from '@/types'
 
 const DynamicFormattedPrice = dynamic(
   () =>
@@ -16,20 +15,16 @@ const DynamicFormattedPrice = dynamic(
   }
 )
 
-interface ProductTypes extends ProductProps {
-  row?: boolean
-  className?: string
-  color?: string
-  smallerImage?: boolean
-  imageClassName?: string
-}
-
-export default function ProductBannerCard({ product, color }: ProductTypes) {
+export default function ProductBannerCard({ product, color }: any) {
   const { addItemToCart } = useShoppingCart()
 
   // loadingState(addItemToCart, `${product.name} added to cart`)
 
   const addToCartHandler = () => addItemToCart.mutate({ product, quantity: 1 })
+  const productImage =
+    typeof product.images[0] === 'string'
+      ? product.images[0]
+      : product.images[0].file.url
 
   return (
     <div className="hover:bg-white flex ml-4 p-2  hover:shadow-lg product hover:rounded-lg product hover:border">
@@ -39,11 +34,11 @@ export default function ProductBannerCard({ product, color }: ProductTypes) {
       >
         <a title={product.name} className="w-2/5 image-wrapper">
           <Image
-            src={product.images[0]}
+            src={productImage}
             alt={product.name}
             height={250}
             width={250}
-            blurDataURL={product.images[0]}
+            blurDataURL={productImage}
             layout="responsive"
           />
         </a>

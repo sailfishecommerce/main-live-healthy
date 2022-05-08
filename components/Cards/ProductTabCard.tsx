@@ -3,19 +3,17 @@ import Link from 'next/link'
 
 import FormattedPrice from '@/components/Price/FormattedPrice'
 import useShoppingCart from '@/hooks/useShoppingCart'
-import type { productType } from '@/typings'
 
-interface Props {
-  product: productType
-}
-
-export default function ProductTabCard({ product }: Props) {
+export default function ProductTabCard({ product }: any) {
   const { addItemToCart } = useShoppingCart()
 
   // loadingState(addItemToCart, `${product.name} added to cart`)
 
   const addToCartHandler = () => addItemToCart.mutate({ product, quantity: 1 })
-
+  const productImage =
+    typeof product.images[0] === 'string'
+      ? product.images[0]
+      : product.images[0].file.url
   return (
     <>
       <div
@@ -24,7 +22,7 @@ export default function ProductTabCard({ product }: Props) {
       >
         <div className="image-wrapper flex flex-col w-1/2 md:w-1/3">
           <Image
-            src={product.images[0]}
+            src={productImage}
             alt={product.name}
             height={200}
             width={200}

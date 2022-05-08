@@ -2,7 +2,7 @@
 import { useState, useCallback, useEffect } from 'react'
 
 export default function useScroll() {
-  const [scroll, setScroll] = useState(window.scrollY)
+  const [scroll, setScroll] = useState<any>(null)
 
   const handleNavigation = useCallback(
     (e) => {

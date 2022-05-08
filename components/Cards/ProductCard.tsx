@@ -56,6 +56,12 @@ export default function Product({
   const productVendorLink = product?.vendor?.includes(' ')
     ? `/search/${product.vendor}`
     : `/vendor/${product.vendor}`
+
+  const productImage =
+    typeof product.images[0] === 'string'
+      ? product.images[0]
+      : product.images[0].file.url
+
   return (
     <div
       className={`hover:bg-white hover:shadow-lg product hover:rounded-lg product ${productClassName}  ${isRow} p-2 md:p-6 hover:border`}
@@ -70,11 +76,11 @@ export default function Product({
           >
             {product.images[0] && (
               <Image
-                src={product.images[0]}
+                src={productImage}
                 alt={product.name}
                 height={imageSize.height}
                 width={imageSize.width}
-                blurDataURL={product.images[0]}
+                blurDataURL={productImage}
               />
             )}
           </div>

@@ -14,10 +14,10 @@ export type productType = {
   __position?: any
   objectID?: any
   vendor: string
-  product_image?: string
+  product_image: Array<{ file: { url: string } }> | any
   product_images: Array<{ link: string; alt: string }>
   image_alt_text?: any
-  images: string[]
+  images: Array<{ file: { url: string } }> | string[]
   id: string
   options: any[]
   quantity: string

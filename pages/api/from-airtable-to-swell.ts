@@ -86,6 +86,7 @@ export default function createSwellProductHandler(
           )
       }
       default:
+        return null
     }
   })
 }

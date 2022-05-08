@@ -70,5 +70,7 @@ export default function UpdateAlgoliaIndexHandler(
           return res.status(400).json(error)
         })
     }
+    default:
+      return null
   }
 }

@@ -1,5 +1,6 @@
-import swell from 'swell-node'
+/* eslint-disable no-console */
 import type { NextApiRequest, NextApiResponse } from 'next'
+import swell from 'swell-node'
 
 swell.init(
   'sailfish-e-commerce-limited',

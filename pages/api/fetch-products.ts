@@ -25,5 +25,7 @@ export default async function fetchProductsHandler(
           console.log('error', error?.message)
         })
     }
+    default:
+      return null
   }
 }

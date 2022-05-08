@@ -37,10 +37,10 @@ function PopularCategoryComponent({ category }: PopularCategoryProps) {
           <Image
             height={size.height}
             width={size.width}
-            src={category.images[0].file.url}
+            src={category.images[0]}
             alt={category.name}
             placeholder="blur"
-            blurDataURL={category.images[0].file.url}
+            blurDataURL={category.images[0]}
             loading="lazy"
             size="true"
             className="block rounded-lg mx-1 mb-3"

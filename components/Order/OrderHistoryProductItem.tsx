@@ -18,7 +18,7 @@ export default function OrderHistoryProductItem({ item }: any) {
           <a className="order-history border-b pb-3 flex items-center my-4">
             <span className="w-1/12 mr-4">
               <Image
-                src={data.images[0].file.url}
+                src={data.images[0]}
                 alt={data.name}
                 height={70}
                 width={70}

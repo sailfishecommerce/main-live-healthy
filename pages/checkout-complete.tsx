@@ -36,7 +36,7 @@ export default function CheckoutComplete() {
               name:'${item.product.name}',
               brand:'${item.product.name}',
               product_url:'${`https://livehealthy.hk/products/${item?.product.slug}`}',
-              image_url:'${item.product.images[0].file.url}'
+              image_url:'${item.product.images[0]}'
             }`
           )}];
         `}

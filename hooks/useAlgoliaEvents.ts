@@ -20,7 +20,7 @@ export default function useAlgoliaEvents() {
     aa('viewedObjectIDs', {
       eventName,
       userToken,
-      index: 'New_Livehealthy_products_index',
+      index: 'LIVEHEALTHY_PRODUCTION_INDEX',
       objectIDs,
     })
   }
@@ -31,7 +31,7 @@ export default function useAlgoliaEvents() {
     aa('viewedFilters', {
       eventName: 'filter_viewed',
       userToken,
-      index: 'New_Livehealthy_products_index',
+      index: 'LIVEHEALTHY_PRODUCTION_INDEX',
       filters,
     })
   }
@@ -42,7 +42,7 @@ export default function useAlgoliaEvents() {
     aa('clickedFilters', {
       eventName: 'filter_clicked',
       userToken,
-      index: 'New_Livehealthy_products_index',
+      index: 'LIVEHEALTHY_PRODUCTION_INDEX',
       filters,
     })
   }
@@ -53,7 +53,7 @@ export default function useAlgoliaEvents() {
     aa('convertedObjectIDs', {
       eventName: 'product_added_to_cart',
       userToken,
-      index: 'New_Livehealthy_products_index',
+      index: 'LIVEHEALTHY_PRODUCTION_INDEX',
       objectIDs,
     })
   }
@@ -64,7 +64,7 @@ export default function useAlgoliaEvents() {
     aa('clickedObjectIDs', {
       eventName,
       userToken,
-      index: 'New_Livehealthy_products_index',
+      index: 'LIVEHEALTHY_PRODUCTION_INDEX',
       objectIDs,
     })
   }
@@ -79,7 +79,7 @@ export default function useAlgoliaEvents() {
     aa('convertedObjectIDsAfterSearch', {
       eventName,
       userToken,
-      index: 'New_Livehealthy_products_index',
+      index: 'LIVEHEALTHY_PRODUCTION_INDEX',
       queryID,
       objectIDs,
     })
@@ -94,7 +94,7 @@ export default function useAlgoliaEvents() {
     const aa = await searchInsight()
     initializeAlgolia(aa)
     aa('clickedObjectIDsAfterSearch', {
-      index: 'New_Livehealthy_products_index',
+      index: 'LIVEHEALTHY_PRODUCTION_INDEX',
       userToken,
       eventName,
       queryID,

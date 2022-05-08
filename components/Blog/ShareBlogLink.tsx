@@ -7,10 +7,7 @@ import {
   BsPinterest,
 } from 'react-icons/bs'
 
-import blogContent from '@/json/blog.json'
-
 export default function ShareBlogLink() {
-  const content = blogContent[0].links
   return (
     <div className="row flex items-center justify-between w-full mb-8">
       <div className="author flex items-center">

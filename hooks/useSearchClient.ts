@@ -16,7 +16,7 @@ export function getSearchClient(
 ): SearchClient {
   const client = algoliasearch(appId, searchApiKey)
   client.addAlgoliaAgent(
-    `New_Livehealthy_products_index (${packageJson.version})`
+    `LIVEHEALTHY_PRODUCTION_INDEX (${packageJson.version})`
   )
 
   return {

@@ -39,11 +39,11 @@ export default function ProductBannerCard({ product, color }: ProductTypes) {
       >
         <a title={product.name} className="w-2/5 image-wrapper">
           <Image
-            src={product.images[0].file.url}
+            src={product.images[0]}
             alt={product.name}
             height={250}
             width={250}
-            blurDataURL={product.images[0].file.url}
+            blurDataURL={product.images[0]}
             layout="responsive"
           />
         </a>

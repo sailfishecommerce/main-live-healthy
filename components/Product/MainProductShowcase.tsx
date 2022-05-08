@@ -25,7 +25,7 @@ export default function MainProductShowcase({
 }: ProductsShowcaseProps) {
   return (
     <Index indexName={indexName} indexId={indexId}>
-      <Configure {...searchParameters} />
+      <Configure hitsPerPage={15} {...searchParameters} />
       <section
         className={classNames('py-4 lg:py-10 container mx-auto', className)}
       >

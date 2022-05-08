@@ -68,13 +68,15 @@ export default function Product({
           <div
             className={`${productImageClassName} ${imageWidth}  image-wrapper`}
           >
-            <Image
-              src={product.images[0].file.url}
-              alt={product.name}
-              height={imageSize.height}
-              width={imageSize.width}
-              blurDataURL={product.images[0].file.url}
-            />
+            {product.images[0] && (
+              <Image
+                src={product.images[0]}
+                alt={product.name}
+                height={imageSize.height}
+                width={imageSize.width}
+                blurDataURL={product.images[0]}
+              />
+            )}
           </div>
           <div className={`${isRowText} ${imageWidth} text`}>
             <Link passHref href={productVendorLink}>

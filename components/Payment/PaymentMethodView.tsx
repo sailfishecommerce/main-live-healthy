@@ -1,11 +1,12 @@
+/* eslint-disable @next/next/no-img-element */
 export default function PaymentMethodView() {
   const paymentMethodIcons = [
-    "/visa.png",
-    "/mastercard.png",
-    "/paypal.png",
-    "/american-express.png",
-    "/bank-transfer.png",
-  ];
+    '/visa.png',
+    '/mastercard.png',
+    '/paypal.png',
+    '/american-express.png',
+    '/bank-transfer.png',
+  ]
   return (
     <div className="flex flex-col">
       <h5 className="text-lg my-2 font-medium">Payment methods</h5>
@@ -22,5 +23,5 @@ export default function PaymentMethodView() {
         manually verified. Additional documentation might be requested
       </p>
     </div>
-  );
+  )
 }

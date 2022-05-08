@@ -44,12 +44,12 @@ export default function RecommendedProductCard({
         <Link passHref href={`/product/${product.slug}`}>
           <a>
             <Image
-              src={product.images[0].file.url}
+              src={product.images[0]}
               alt={product.name}
               height={imageSize.height}
               width={imageSize.width}
               className="rounded-xl"
-              blurDataURL={product.images[0].file.url}
+              blurDataURL={product.images[0]}
             />
           </a>
         </Link>

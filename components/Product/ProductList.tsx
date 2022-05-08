@@ -48,11 +48,11 @@ export default function ProductList({ product }: ProductProps) {
             <Image
               height={300}
               width={300}
-              src={product.images[0]?.file?.url}
+              src={product.images[0]}
               alt={imageAlt}
               className="productImage"
               placeholder="blur"
-              blurDataURL={product.images[0]?.file?.url}
+              blurDataURL={product.images[0]}
               loading="lazy"
             />
           </a>

@@ -1,15 +1,16 @@
-import Image from "next/image";
-import React from "react";
-import Ratings from "@/components/Reviews/Ratings";
+import Image from 'next/image'
+import React from 'react'
+
+import Ratings from '@/components/Reviews/Ratings'
 
 interface Props {
   choice: {
-    time: string;
-    username: string;
-    rating: number;
-    review: string;
-    img: string;
-  };
+    time: string
+    username: string
+    rating: number
+    review: string
+    img: string
+  }
 }
 
 export default function UserChoiceCard({ choice }: Props) {
@@ -34,5 +35,5 @@ export default function UserChoiceCard({ choice }: Props) {
         <p className="text-sm text-gray-400">{choice.time}</p>
       </div>
     </div>
-  );
+  )
 }

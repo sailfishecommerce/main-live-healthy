@@ -5,7 +5,7 @@ interface TrendLinkProps {
   trendingItem: {
     slug: string
     name: string
-    images: Array<{ file: { url: string } }>
+    images: string[]
   }
 }
 
@@ -16,7 +16,7 @@ export function TrendLink({ trendingItem }: TrendLinkProps) {
         <a className="trending flex flex-col items-start md:items-center mr-4">
           <div className="image-wrapper lg:w-full w-11/12">
             <Image
-              src={trendingItem.images[0].file.url}
+              src={trendingItem.images[0]}
               height={120}
               width={180}
               className="hover:scale-105 rounded-xl"

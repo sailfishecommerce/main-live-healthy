@@ -19,11 +19,11 @@ export default function ProductRow({ cart }: any) {
     <div className="flex items-center  border-b p-4 hover:bg-gray-100">
       <div className="w-1/4 mr-4 rounded-lg bg-gray-200">
         <Image
-          src={cart.product.images[0].file.url}
+          src={cart.product.images[0]}
           alt={cart.product.name}
           height={90}
           width={120}
-          blurDataURL={cart.product.images[0].file.url}
+          blurDataURL={cart.product.images[0]}
           className="bg-gray-200 rounded-lg"
           layout="responsive"
         />

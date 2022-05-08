@@ -1,8 +1,9 @@
-import blogContent from "@/json/blog.json";
-import Image from "next/image";
+import Image from 'next/image'
+
+import blogContent from '@/json/blog.json'
 
 export default function PopularArticles() {
-  const content = blogContent[0].popularArticles;
+  const content = blogContent[0].popularArticles
   return (
     <div className="flex flex-col">
       <h3 className="font-bold">Popular Articles</h3>
@@ -24,5 +25,5 @@ export default function PopularArticles() {
         ))}
       </ul>
     </div>
-  );
+  )
 }

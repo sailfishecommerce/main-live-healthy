@@ -31,7 +31,7 @@ export default function CartWidget({ cart, className }: CartWidgetProps) {
         <Link passHref href={`/products/${cart.product.slug}`}>
           <a aria-label={cart.product.name} className="flex-shrink-0">
             <Image
-              src={cart.product.images[0].file.url.split(';')[0]}
+              src={cart.product.images[0]}
               alt={cart.product.name}
               width={64}
               height={64}

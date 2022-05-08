@@ -19,13 +19,15 @@ export default function FormatCurrency({
     (currencyP: { code: string }) => currencyP.code === currency
   )
   const nPrice = Number(price)
-  const priceRate = nPrice * selectedCurrency[0].rate
+  // const priceRate = nPrice * selectedCurrency[0].rate
 
-  const itemPrice = formatPrice(priceRate)
+  // const itemPrice = formatPrice(priceRate)
+  const itemNPrice = formatPrice(nPrice)
+
   return (
     <span className={priceClassName}>
       {currencySymbolFormatter(selectedCurrency[0])}
-      {itemPrice}
+      {itemNPrice}
     </span>
   )
 }

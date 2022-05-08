@@ -1,13 +1,15 @@
-import Magnifier from 'react-magnifier'
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import dynamic from 'next/dynamic'
 import { useState } from 'react'
+import Magnifier from 'react-magnifier'
+
 const Lightbox = dynamic(
   () => import(/* webpackChunkName: 'common' */ 'react-image-lightbox')
 )
-
-import { productType } from '@/types'
 import Image from '@/components/Image'
 import useMediaQuery from '@/hooks/useMediaQuery'
+import type { productType } from '@/types'
 import 'react-image-lightbox/style.css'
 
 interface Props {
@@ -59,36 +61,34 @@ export default function ProductGalleryView({ product, isMobile }: Props) {
     <div className="product-gallery w-full flex flex-col md:flex-row">
       <div className="product-gallery-preview lg:order-2 w-full md:w-4/5">
         <div
-          onClick={onImgClick}
           className="product-gallery-preview-item active"
+          onClick={onImgClick}
         >
           <Magnifier
             mgShowOverflow={false}
             mgWidth={2000}
             mgHeight={2000}
             className="img-fluid"
-            src={images[activeImage].file.url}
+            src={images[activeImage]}
             zoomFactor={0.11}
           />
           <div className="image-zoom-pane"></div>
         </div>
         {lightBoxOpen && (
           <Lightbox
-            mainSrc={images[activeImage].file.url}
-            nextSrc={images[(activeImage + 1) % images.length].file.url}
-            prevSrc={
-              images[(activeImage + images.length - 1) % images.length].file.url
-            }
-            onCloseRequest={() => setLightBoxOpen(false)}
+            mainSrc={images[activeImage]}
+            nextSrc={images[(activeImage + 1) % images.length]}
+            prevSrc={images[(activeImage + images.length - 1) % images.length]}
             imageCaption={product.image_alt_text[activeImage]}
+            enableZoom={false}
+            reactModalStyle={customStyles}
+            onCloseRequest={() => setLightBoxOpen(false)}
             onMovePrevRequest={() =>
               setActiveImage((activeImage + images.length - 1) % images.length)
             }
             onMoveNextRequest={() =>
               setActiveImage((activeImage + 1) % images.length)
             }
-            enableZoom={false}
-            reactModalStyle={customStyles}
           />
         )}
       </div>
@@ -97,17 +97,16 @@ export default function ProductGalleryView({ product, isMobile }: Props) {
       >
         {images?.map((image: any, index) => (
           <a
+            key={index}
             className={`items-center justify-center ${imageSize} flex px-2 hover:border border-red-500 ${activethumbnailImg(
               index
             )}`}
             onClick={() => updateActiveImage(index)}
-            key={index}
-            aria-label={product.image_alt_text[index]}
           >
             <Image
               height={imageView.height}
               width={imageView.width}
-              src={image.file.url}
+              src={image}
               alt={product.image_alt_text[index]}
               size="true"
             />

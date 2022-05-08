@@ -1,6 +1,4 @@
-import axios from 'axios'
 import dynamic from 'next/dynamic'
-import { useEffect } from 'react'
 import { Configure } from 'react-instantsearch-dom'
 
 import ShippingBanner from '@/components/Banners/ShippingBanner'
@@ -14,8 +12,6 @@ import {
   getStaticPropsPage,
   SearchPageLayout,
 } from '@/layouts/search-page-layout'
-
-// import airtableData from '../airtabletoShopifyproducts.json'
 
 const ProductBanner = dynamic(
   () =>
@@ -48,13 +44,6 @@ const ProductTabSlider = dynamic(
 )
 
 export default function Home(props: SearchPageLayoutProps) {
-  // useEffect(() => {
-  //   axios
-  //     .get('/api/from-airtable-to-swell')
-  //     .then((response) => console.log('response started', response))
-  //     .catch((err) => console.error('err', err))
-  // }, [])
-  // console.log('airtableData', airtableData.length)
   return (
     <Applayout title="Welcome to Livehealthy stores">
       <SearchPageLayout {...props}>
@@ -79,7 +68,7 @@ export default function Home(props: SearchPageLayoutProps) {
           query="Sport nutrition"
           tabColor="#C42340"
         />
-        <ProductBanner />
+        {/* <ProductBanner /> */}
         <MainProductShowcase
           title="Quit Smoking"
           indexId="quit_smoking_product_type"
@@ -107,7 +96,7 @@ export default function Home(props: SearchPageLayoutProps) {
           query="medical aids"
           tabColor="#C42340"
         />
-        <BestSellerSlider />
+        {/* <BestSellerSlider /> */}
         <MainProductShowcase
           title="Confectionery"
           indexId="confectionery_product_type"
@@ -121,7 +110,7 @@ export default function Home(props: SearchPageLayoutProps) {
           query="veterinary"
           tabColor="#4017E0"
         />
-        <ProductTabSlider />
+        {/* <ProductTabSlider /> */}
         <TrustmateReview />
         <div className="mb-6" />
       </SearchPageLayout>

@@ -96,7 +96,7 @@ export default function AlgoliaCategories() {
   const { selectedCategory } = useAppSelector((state) => state.UI)
   return (
     <InstantSearch
-      indexName="New_Livehealthy_products_index"
+      indexName="LIVEHEALTHY_PRODUCTION_INDEX"
       searchClient={searchClient}
     >
       <CustomRefinementListMenu

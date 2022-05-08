@@ -18,7 +18,7 @@ export default function ReviewOrderlist({ content }: any) {
     <div className="relative my-2 flex items-center hover:bg-gray-100 border border-b border-gray-100 justify-between p-4">
       <div className="image-wrapper w-1/4">
         <Image
-          src={content.product.images[0].file.url}
+          src={content.product.images[0]}
           alt={content.product.name}
           height={70}
           width={100}

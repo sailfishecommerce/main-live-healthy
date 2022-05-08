@@ -14,8 +14,8 @@ export default function Ratings({ ratings }: Props) {
     <div className="star-group flex items-center">
       {filledStarsArray.map((_, index) => (
         <Image
-          src="/filled-star.png"
           key={index}
+          src="/filled-star.png"
           className="mx-1"
           height={20}
           alt="star"

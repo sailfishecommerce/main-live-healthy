@@ -1,5 +1,8 @@
-import partnerContent from '@/json/contact-us.json'
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable no-nested-ternary */
 import Icons from '@/components/Icons'
+import partnerContent from '@/json/contact-us.json'
 
 export default function PartnerOutlet() {
   return (

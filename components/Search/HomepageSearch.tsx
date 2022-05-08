@@ -27,7 +27,7 @@ function HomepageComponent() {
   return (
     <>
       <InstantSearch
-        indexName="New_Livehealthy_products_index"
+        indexName="LIVEHEALTHY_PRODUCTION_INDEX"
         searchClient={searchClient}
       >
         <div className="search relative flex bg-gray-100 lg:w-1/5 w-full rounded-md py-2 px-4 items-center">

@@ -37,7 +37,7 @@ export default function AlgoliaInstantSearch({
 
   return (
     <InstantSearch
-      indexName="New_Livehealthy_products_index"
+      indexName="LIVEHEALTHY_PRODUCTION_INDEX"
       searchClient={optimizedSearchClient}
     >
       {children}

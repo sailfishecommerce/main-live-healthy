@@ -19,7 +19,7 @@ export default function BlogContent() {
         <div className="text">
           <p
             dangerouslySetInnerHTML={{
-              __html: content.section1['text'],
+              __html: content.section1.text,
             }}
             className="mt-2 mb-4"
           />
@@ -36,7 +36,7 @@ export default function BlogContent() {
         </ul>
         <p
           dangerouslySetInnerHTML={{
-            __html: content.section2['text'],
+            __html: content.section2.text,
           }}
           className="mt-2 mb-4"
         />

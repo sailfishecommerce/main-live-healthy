@@ -1,30 +1,32 @@
-import type { NextApiRequest, NextApiResponse } from "next";
-import algoliasearch from "algoliasearch";
+import algoliasearch from 'algoliasearch'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
 export default function AddProductToAlgoliaIndiceHandler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   const client = algoliasearch(
-    "CZT5MA7JLJ",
+    'CZT5MA7JLJ',
     `${process.env.NEXT_PUBLIC_ALGOLIA_ADMIN_API_KEY}`
-  );
-  const index = client.initIndex("New_Livehealthy_products_index");
+  )
+  const index = client.initIndex('Livehealthy__products')
 
-  console.log("req.method", req.method, "req.body", req.body);
+  console.log('req.method', req.method, 'req.body', req.body.productArray)
 
   switch (req.method) {
-    case "POST": {
-      index
-        .saveObjects(req.body, {
+    case 'POST': {
+      return index
+        .saveObjects(req.body.productArray, {
           autoGenerateObjectIDIfNotExist: true,
         })
         .then((response) => {
-          return res.status(200).json(response);
+          return res.status(200).json(response)
         })
         .catch((error) => {
-          return res.status(400).json(error);
-        });
+          return res.status(400).json(error)
+        })
     }
+    default:
+      return null
   }
 }

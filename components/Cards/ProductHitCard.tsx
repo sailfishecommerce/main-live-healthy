@@ -56,11 +56,11 @@ export default function ProductHitCard({
             className={`${productImageClassName} ${imageWidth}  image-wrapper`}
           >
             <Image
-              src={hit.images[0].file.url}
+              src={hit.images[0]}
               alt={hit.name}
               height={imageSize.height}
               width={imageSize.width}
-              blurDataURL={hit.images[0].file.url}
+              blurDataURL={hit.images[0]}
             />
           </div>
           <div className={`${isRowText} ${imageWidth} text`}>

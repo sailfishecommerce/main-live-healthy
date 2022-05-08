@@ -71,7 +71,7 @@ export default function ViewSearchQuery({ hits }: SearchHitsProps) {
                   >
                     <div className="hit-image pr-2">
                       <Image
-                        src={hit.images[0]?.file?.url}
+                        src={hit.images[0]}
                         alt={hit.name}
                         className="productImage"
                         height={100}

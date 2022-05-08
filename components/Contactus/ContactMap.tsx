@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/iframe-has-title */
 export default function ContactMap() {
   return (
     <div className="w-full md:w-1/2 order-2 md:order-1 iframe-full-height-wrap">

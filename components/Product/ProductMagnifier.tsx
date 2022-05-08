@@ -64,18 +64,16 @@ export default function ProductMagnifier({ product }: ProductProps) {
             mgHeight={magnifierDimens.mgHeight}
             height={magnifierDimens.height}
             className="img-fluid"
-            src={images[activeImage].file.url}
+            src={images[activeImage]}
             zoomFactor={0.11}
           />
           <div className="image-zoom-pane"></div>
         </div>
         {lightBoxOpen && (
           <Lightbox
-            mainSrc={images[activeImage].file.url}
-            nextSrc={images[(activeImage + 1) % images.length].file.url}
-            prevSrc={
-              images[(activeImage + images.length - 1) % images.length].file.url
-            }
+            mainSrc={images[activeImage]}
+            nextSrc={images[(activeImage + 1) % images.length]}
+            prevSrc={images[(activeImage + images.length - 1) % images.length]}
             enableZoom={false}
             imageCaption={product.image_alt_text[activeImage]}
             reactModalStyle={customStyles}
@@ -102,7 +100,7 @@ export default function ProductMagnifier({ product }: ProductProps) {
             <Image
               height={imageView.height}
               width={imageView.width}
-              src={image.file.url}
+              src={image}
               alt={product.image_alt_text[index]}
               // layout="responsive"
             />

@@ -19,7 +19,7 @@ function OrderSummaryItem({ item }: any) {
       <Link passHref href={`/products/${item.product.slug}`}>
         <a aria-label={item.product.name} className="d-block flex-shrink-0">
           <img
-            src={item.product.images[0].file.url}
+            src={item.product.images[0]}
             alt={item.product.name}
             width="64"
           />

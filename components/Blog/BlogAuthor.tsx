@@ -1,6 +1,6 @@
-import Image from "next/image";
+import Image from 'next/image'
 
-import blogContent from "@/json/blog.json";
+import blogContent from '@/json/blog.json'
 
 export default function BlogAuthor() {
   return (
@@ -18,5 +18,5 @@ export default function BlogAuthor() {
         <p>{blogContent[0].author.bio}</p>
       </div>
     </div>
-  );
+  )
 }

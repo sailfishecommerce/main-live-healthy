@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/prefer-optional-chain */
+/* eslint-disable @next/next/no-img-element */
 import Link from 'next/link'
 import { MdCancel } from 'react-icons/md'
 
@@ -36,7 +38,7 @@ export default function SlideCartProduct({
           <Link passHref href={`/products/${item.product.slug}`}>
             <a aria-label={item.product?.name} className="flex-shrink-0">
               <img
-                src={item.product?.images[0].file.url.split(';')[0]}
+                src={item.product?.images[0]}
                 alt={item.product?.name}
                 width="64"
               />
@@ -78,12 +80,12 @@ export default function SlideCartProduct({
       <div className="cartItem flex items-center justify-between">
         <CartControl item={item} />
         {item.options &&
-          item.options.map((item: any, index: number) => (
+          item.options.map((itemP: any, index: number) => (
             <p
-              className="small text-gray-500 mx-2 mb-0 border px-2 rounded"
               key={`item.name-${index}`}
+              className="small text-gray-500 mx-2 mb-0 border px-2 rounded"
             >
-              {item.name} | {item.value}{' '}
+              {itemP.name} | {itemP.value}{' '}
             </p>
           ))}
       </div>

@@ -10,7 +10,7 @@ interface Props {
 }
 
 export default function ProductTabCard({ product }: Props) {
-  const {  addItemToCart } = useShoppingCart()
+  const { addItemToCart } = useShoppingCart()
 
   // loadingState(addItemToCart, `${product.name} added to cart`)
 
@@ -24,12 +24,12 @@ export default function ProductTabCard({ product }: Props) {
       >
         <div className="image-wrapper flex flex-col w-1/2 md:w-1/3">
           <Image
-            src={product.images[0].file.url}
+            src={product.images[0]}
             alt={product.name}
             height={200}
             width={200}
             className="bg-white flex rounded-lg"
-            blurDataURL={product.images[0].file.url}
+            blurDataURL={product.images[0]}
           />
           <button
             type="button"

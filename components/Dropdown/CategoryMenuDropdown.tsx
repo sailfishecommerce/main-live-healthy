@@ -43,7 +43,7 @@ function CategoryDropdownList({ category, categories }: Props) {
               onClick={() => linkHandler(category)}
             >
               <Image
-                src={category?.images[0].file.url}
+                src={category?.images[0]}
                 alt={category.name}
                 height={170}
                 width={250}

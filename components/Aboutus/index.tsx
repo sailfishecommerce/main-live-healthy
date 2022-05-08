@@ -1,22 +1,22 @@
-import Link from 'next/link'
 import Image from 'next/image'
+import Link from 'next/link'
 
-interface contentProps {
+interface ContentProps {
   content: {
     image: string
     title: string
     text: string
     imgPosition: string
-    buttons?: {
+    buttons?: Array<{
       text: string
       link: string
       color: string
-    }[]
+    }>
     imgLinks?: string[]
   }
 }
 
-export default function Aboutus({ content }: contentProps) {
+export default function Aboutus({ content }: ContentProps) {
   const imageOrder =
     content.imgPosition === 'left' ? 'md:order-1' : 'md:order-2'
   const textOrder =
@@ -38,8 +38,9 @@ export default function Aboutus({ content }: contentProps) {
           <h2 className="text-2xl font-medium pb-3">{content.title}</h2>
           <p className="pb-3 text-md md:text-lg">{content.text}</p>
           {content.buttons?.map((button) => (
-            <Link key={button.color} href={button.link}>
+            <Link passHref key={button.color} href={button.link}>
               <button
+                type="button"
                 aria-label="about-us"
                 className={`btn p-2 px-4 rounded-md h-10 text-white ${button.color} shadow-lg`}
               >

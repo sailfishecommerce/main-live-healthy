@@ -1,26 +1,26 @@
-import Head from "next/head";
-import { memo } from "react";
+import Head from 'next/head'
+import { memo } from 'react'
 
 interface Props {
   pageProduct: {
-    description: string;
-    meta_title: string;
-    price: string;
-    slug: string;
+    description: string
+    meta_title: string
+    price: string
+    slug: string
     images: {
       file: {
-        url: string;
-      };
-    }[];
-    tags: string[];
-  };
+        url: string
+      }
+    }[]
+    tags: string[]
+  }
 }
 
- function ProductMetatagComponent({ pageProduct }: Props) {
+function ProductMetatagComponent({ pageProduct }: Props) {
   const productDescription = pageProduct.description.replace(
     /<\/?[^>]+(>|$)/g,
-    ""
-  );
+    ''
+  )
   return (
     <Head>
       {pageProduct.tags && (
@@ -40,14 +40,10 @@ interface Props {
         key="ogurl"
       />
       <meta property="og:price:currency" content="USD" />
-      <meta
-        property="og:image"
-        content={pageProduct.images[0].file.url}
-        key="ogimage"
-      />
+      <meta property="og:image" content={pageProduct.images[0]} key="ogimage" />
       <meta
         property="og:image:secure_url"
-        content={pageProduct.images[0].file.url}
+        content={pageProduct.images[0]}
         key="ogimage"
       />
       <meta property="og:site_name" content="Live healthy" key="ogsitename" />
@@ -64,9 +60,9 @@ interface Props {
       />
       <meta name="twitter:description" content={productDescription} />
     </Head>
-  );
+  )
 }
 
-const ProductMetatag = memo(ProductMetatagComponent);
+const ProductMetatag = memo(ProductMetatagComponent)
 
-export default ProductMetatag;
+export default ProductMetatag

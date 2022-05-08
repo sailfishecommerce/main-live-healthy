@@ -1,5 +1,6 @@
-import productReview from "@/json/product-review.json";
-import RatingStar from "@/components/Rating/RatingStar";
+/* eslint-disable @next/next/no-img-element */
+import RatingStar from '@/components/Rating/RatingStar'
+import productReview from '@/json/product-review.json'
 
 export default function ProductReviewView() {
   return (
@@ -54,5 +55,5 @@ export default function ProductReviewView() {
         </div>
       ))}
     </div>
-  );
+  )
 }

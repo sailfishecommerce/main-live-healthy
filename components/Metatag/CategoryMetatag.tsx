@@ -1,7 +1,7 @@
-import Head from "next/head";
+import Head from 'next/head'
 
 interface Props {
-  collection: any;
+  collection: any
 }
 
 export default function CategoryMetatag({ collection }: Props): JSX.Element {
@@ -17,14 +17,10 @@ export default function CategoryMetatag({ collection }: Props): JSX.Element {
         content={`https://www.livehealthy.hk/shop/${collection.slug}`}
         key="ogurl"
       />
-      <meta
-        property="og:image"
-        content={collection.images[0].file.url}
-        key="ogimage"
-      />
+      <meta property="og:image" content={collection.images[0]} key="ogimage" />
       <meta
         property="og:image:secure_url"
-        content={collection.images[0].file.url}
+        content={collection.images[0]}
         key="ogimage"
       />
       <meta property="og:site_name" content="Live healthy" key="ogsitename" />
@@ -41,5 +37,5 @@ export default function CategoryMetatag({ collection }: Props): JSX.Element {
       />
       <meta name="twitter:description" content={collection.meta_description} />
     </Head>
-  );
+  )
 }

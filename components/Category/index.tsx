@@ -40,9 +40,9 @@ export default function Category({ category }: CategoryProps): JSX.Element {
               height={imageSize.height}
               width={imageSize.width}
               className="rounded-lg m-auto flex justify-center"
-              src={category.images[0].file.url}
+              src={category.images[0]}
               alt={category.name}
-              blurDataURL={category.images[0].file.url}
+              blurDataURL={category.images[0]}
               loading="lazy"
               layout="responsive"
             />

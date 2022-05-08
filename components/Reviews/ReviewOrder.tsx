@@ -17,12 +17,12 @@ export default function ReviewOrder() {
         {cart?.items.map((item: any, index: number) => (
           <li key={index}>
             <Image
-              src={item.images[0].file.url}
+              src={item.images[0]}
               alt={item.name}
               height={150}
               width={150}
               className="rounded-xl"
-              blurDataURL={item.images[0].file.url}
+              blurDataURL={item.images[0]}
             />
             <div className="content">
               <h4>{item.name}</h4>

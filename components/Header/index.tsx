@@ -33,7 +33,7 @@ export default function Header() {
   } = useUI()
   const mobileWidth = useMediaQuery('(max-width:768px)')
   const displayShadow = mobileWidth ? 'header' : ''
-  console.log('mobileWidth && mobileMenu', mobileWidth, mobileMenu)
+
   return (
     <>
       <header

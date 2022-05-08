@@ -17,12 +17,7 @@ export type productType = {
   product_image?: string
   product_images: Array<{ link: string; alt: string }>
   image_alt_text?: any
-  images: Array<{
-    id: string
-    file: {
-      url: string
-    }
-  }>
+  images: string[]
   id: string
   options: any[]
   quantity: string

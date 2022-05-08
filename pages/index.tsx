@@ -55,7 +55,7 @@ export default function Home(props: SearchPageLayoutProps) {
         />
         <HomepageSlider />
         <Values />
-        <MainProductShowcase
+        {/* <MainProductShowcase
           title="Weight Loss"
           indexId="weight_loss_product_type"
           query="weight loss"
@@ -67,9 +67,9 @@ export default function Home(props: SearchPageLayoutProps) {
           indexId="sport_nutrition_product_type"
           query="Sport nutrition"
           tabColor="#C42340"
-        />
+        /> */}
         {/* <ProductBanner /> */}
-        <MainProductShowcase
+        {/* <MainProductShowcase
           title="Quit Smoking"
           indexId="quit_smoking_product_type"
           query="cigarette"
@@ -81,9 +81,9 @@ export default function Home(props: SearchPageLayoutProps) {
           indexId="health_product_type"
           query="health"
           tabColor="#50793E"
-        />
+        /> */}
         <ShippingBanner />
-        <MainProductShowcase
+        {/* <MainProductShowcase
           title="Hair Colours"
           indexId="hair_colours_product_type"
           query="hair colours"
@@ -95,9 +95,9 @@ export default function Home(props: SearchPageLayoutProps) {
           indexId="medical_aid_product_type"
           query="medical aids"
           tabColor="#C42340"
-        />
+        /> */}
         {/* <BestSellerSlider /> */}
-        <MainProductShowcase
+        {/* <MainProductShowcase
           title="Confectionery"
           indexId="confectionery_product_type"
           query="confectionery"
@@ -109,7 +109,7 @@ export default function Home(props: SearchPageLayoutProps) {
           indexId="veterinary_pet_care_product_type"
           query="veterinary"
           tabColor="#4017E0"
-        />
+        /> */}
         {/* <ProductTabSlider /> */}
         <TrustmateReview />
         <div className="mb-6" />

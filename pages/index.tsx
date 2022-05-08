@@ -68,7 +68,7 @@ export default function Home(props: SearchPageLayoutProps) {
           query="Sport nutrition"
           tabColor="#C42340"
         />
-        {/* <ProductBanner /> */}
+        <ProductBanner />
         <MainProductShowcase
           title="Quit Smoking"
           indexId="quit_smoking_product_type"
@@ -96,7 +96,7 @@ export default function Home(props: SearchPageLayoutProps) {
           query="medical aids"
           tabColor="#C42340"
         />
-        {/* <BestSellerSlider /> */}
+        <BestSellerSlider />
         <MainProductShowcase
           title="Confectionery"
           indexId="confectionery_product_type"
@@ -110,7 +110,7 @@ export default function Home(props: SearchPageLayoutProps) {
           query="veterinary"
           tabColor="#4017E0"
         />
-        {/* <ProductTabSlider /> */}
+        <ProductTabSlider />
         <TrustmateReview />
         <div className="mb-6" />
       </SearchPageLayout>

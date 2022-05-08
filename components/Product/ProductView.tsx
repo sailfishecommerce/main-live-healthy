@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable jsx-a11y/no-onchange */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable @next/next/no-img-element */
@@ -12,7 +13,6 @@ import {
 
 import useShoppingCart from '@/hooks/useShoppingCart'
 import productBox from '@/json/info-section.json'
-import type { productType } from '@/types'
 
 export function PaymentNote() {
   return (
@@ -49,7 +49,7 @@ export function ProductBoxTable() {
         <tbody>
           {productBox.productView.map((row, index) => (
             <tr key={`row-${index}`}>
-              {row.map((data, index) => (
+              {row.map((data, index: number) => (
                 <td key={`data-${index}`}>{data}</td>
               ))}
             </tr>
@@ -122,7 +122,7 @@ export function ProductOptionSelectBox({
   )
 }
 interface ProductQuantityCounterType {
-  product: productType
+  product: any
 }
 export function ProductQuantityCounter({
   product,

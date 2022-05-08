@@ -58,6 +58,11 @@ export default function ProductGalleryView({ product, isMobile }: Props) {
     },
   }
 
+  const productImage =
+    typeof product.images[activeImage] === 'string'
+      ? product.images[activeImage]
+      : product.images[activeImage].file.url
+
   return (
     <div className="product-gallery w-full flex flex-col md:flex-row">
       <div className="product-gallery-preview lg:order-2 w-full md:w-4/5">
@@ -70,7 +75,7 @@ export default function ProductGalleryView({ product, isMobile }: Props) {
             mgWidth={2000}
             mgHeight={2000}
             className="img-fluid"
-            src={images[activeImage]}
+            src={productImage}
             zoomFactor={0.11}
           />
           <div className="image-zoom-pane"></div>
@@ -96,7 +101,7 @@ export default function ProductGalleryView({ product, isMobile }: Props) {
       <div
         className={`product-gallery-thumblist ${thumblistClass} flex hidden md:flex flex-wrap w-full lg:flex-col lg:order-1 lg:w-1/5`}
       >
-        {images?.map((image: any, index) => (
+        {images?.map((image: any, index: number) => (
           <a
             key={index}
             className={`items-center justify-center ${imageSize} flex px-2 hover:border border-red-500 ${activethumbnailImg(

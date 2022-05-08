@@ -23,6 +23,11 @@ export default function SlideCartProduct({
     removeCartItem.mutate(item)
   }
 
+  const productImage =
+    typeof item.product.images[0] === 'string'
+      ? item.product.images[0]
+      : item.product.images[0].file.url
+
   return (
     <div className="slide-cart border-b p-2 relative">
       <div className="widget-cart-item py-1 relative">
@@ -37,11 +42,7 @@ export default function SlideCartProduct({
         <div className="flex items-center">
           <Link passHref href={`/products/${item.product.slug}`}>
             <a aria-label={item.product?.name} className="flex-shrink-0">
-              <img
-                src={item.product?.images[0]}
-                alt={item.product?.name}
-                width="64"
-              />
+              <img src={productImage} alt={item.product?.name} width="64" />
             </a>
           </Link>
           <div className="px-2">

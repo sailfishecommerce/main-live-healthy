@@ -1,8 +1,41 @@
+/* eslint-disable consistent-return */
 import NextImage from 'next/image'
 import { useEffect, useState } from 'react'
 import useInView from 'react-cool-inview'
 
-const Image = (props) => {
+declare global {
+  interface Navigator {
+    mozConnection: any
+    webkitConnection: any
+  }
+}
+
+const isMobileConnection = () => {
+  const connection: any =
+    navigator.connection ||
+    navigator?.mozConnection ||
+    navigator?.webkitConnection
+  return (
+    connection?.type === 'cellular' ||
+    connection?.effectiveType === 'slow-2g' ||
+    connection?.effectiveType === '2g' ||
+    connection?.effectiveType === '3g' ||
+    connection?.saveData === true
+  )
+}
+
+const defer = (callback: any) => {
+  // Check if we can use requestIdleCallback
+  if (window.requestIdleCallback) {
+    const handle = window.requestIdleCallback(callback)
+    return () => window.cancelIdleCallback(handle)
+  }
+  // Just defer using setTimeout with some random delay otherwise
+  const handle = setTimeout(callback, 2345 + Math.random() * 1000)
+  return () => clearTimeout(handle)
+}
+
+function Image(props: any) {
   const [loading, setLoading] = useState(props.loading)
   const { observe, inView } = useInView({
     unobserveOnEnter: true,
@@ -16,7 +49,7 @@ const Image = (props) => {
     }
 
     if (!isMobileConnection()) {
-      let clearDefer
+      let clearDefer: any
       // Set loading to eager if all resources of document are loaded, but defer it a bit
       const onLoad = () => {
         clearDefer = defer(() => setLoading('eager'))
@@ -43,31 +76,6 @@ const Image = (props) => {
       {inView && <NextImage {...props} loading={loading} />}
     </div>
   )
-}
-
-const isMobileConnection = () => {
-  const connection =
-    navigator.connection ||
-    navigator?.mozConnection ||
-    navigator?.webkitConnection
-  return (
-    connection?.type === 'cellular' ||
-    connection?.effectiveType === 'slow-2g' ||
-    connection?.effectiveType === '2g' ||
-    connection?.effectiveType === '3g' ||
-    connection?.saveData === true
-  )
-}
-
-const defer = (callback) => {
-  // Check if we can use requestIdleCallback
-  if (window.requestIdleCallback) {
-    const handle = window.requestIdleCallback(callback)
-    return () => window.cancelIdleCallback(handle)
-  }
-  // Just defer using setTimeout with some random delay otherwise
-  const handle = setTimeout(callback, 2345 + Math.random() * 1000)
-  return () => clearTimeout(handle)
 }
 
 export default Image

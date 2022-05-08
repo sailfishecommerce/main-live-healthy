@@ -55,7 +55,7 @@ export default function Home(props: SearchPageLayoutProps) {
         />
         <HomepageSlider />
         <Values />
-        <MainProductShowcase
+        {/* <MainProductShowcase
           title="Weight Loss"
           indexId="weight_loss_product_type"
           query="weight loss"
@@ -110,7 +110,7 @@ export default function Home(props: SearchPageLayoutProps) {
           query="veterinary"
           tabColor="#4017E0"
         />
-        <ProductTabSlider />
+        <ProductTabSlider /> */}
         <TrustmateReview />
         <div className="mb-6" />
       </SearchPageLayout>

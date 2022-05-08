@@ -1,37 +1,31 @@
-/**
- *
- * NProgress
- *
- */
-import { Component } from "react";
-import NProgress from "nprogress";
-import Router from "next/router";
+/* eslint-disable @typescript-eslint/member-ordering */
+import Router from 'next/router'
+import NProgress from 'nprogress'
+import { Component } from 'react'
 
-/* eslint-disable react/prefer-stateless-function */
-class NextNProgress extends Component {
+class NextNProgress extends Component<any> {
   static defaultProps = {
-    color: "red",
+    color: 'red',
     startPosition: 0.3,
     stopDelayMs: 200,
     height: 3,
-  };
-
-  timer = null;
+  }
+  timer: any = null
 
   routeChangeStart = () => {
-    NProgress.set(this.props.startPosition);
-    NProgress.start();
-  };
+    NProgress.set(this.props.startPosition)
+    NProgress.start()
+  }
 
   routeChangeEnd = () => {
-    clearTimeout(this.timer);
+    clearTimeout(this.timer)
     this.timer = setTimeout(() => {
-      NProgress.done(true);
-    }, this.props.stopDelayMs);
-  };
+      NProgress.done(true)
+    }, this.props.stopDelayMs)
+  }
 
   render() {
-    const { color, height } = this.props;
+    const { color, height }: any = this.props
 
     return (
       <div>
@@ -104,20 +98,20 @@ class NextNProgress extends Component {
           }
         `}</style>
       </div>
-    );
+    )
   }
 
   componentDidMount() {
-    const { options } = this.props;
+    const { options }: any = this.props
 
     if (options) {
-      NProgress.configure(options);
+      NProgress.configure(options)
     }
 
-    Router.events.on("routeChangeStart", this.routeChangeStart);
-    Router.events.on("routeChangeComplete", this.routeChangeEnd);
-    Router.events.on("routeChangeError", this.routeChangeEnd);
+    Router.events.on('routeChangeStart', this.routeChangeStart)
+    Router.events.on('routeChangeComplete', this.routeChangeEnd)
+    Router.events.on('routeChangeError', this.routeChangeEnd)
   }
 }
 
-export default NextNProgress;
+export default NextNProgress

@@ -13,35 +13,35 @@ import {
   SearchPageLayout,
 } from '@/layouts/search-page-layout'
 
-const ProductBanner = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'ProductsBanner' */ '@/components/Banners/ProductBanner'
-    ),
-  {
-    ssr: false,
-  }
-)
+// const ProductBanner = dynamic(
+//   () =>
+//     import(
+//       /* webpackChunkName: 'ProductsBanner' */ '@/components/Banners/ProductBanner'
+//     ),
+//   {
+//     ssr: false,
+//   }
+// )
 
-const BestSellerSlider = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'BestSellerSlider' */ '@/components/Slider/BestSellerSlider'
-    ),
-  {
-    ssr: false,
-  }
-)
+// const BestSellerSlider = dynamic(
+//   () =>
+//     import(
+//       /* webpackChunkName: 'BestSellerSlider' */ '@/components/Slider/BestSellerSlider'
+//     ),
+//   {
+//     ssr: false,
+//   }
+// )
 
-const ProductTabSlider = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'ProductTabSlider' */ '@/components/Slider/ProductTabSlider'
-    ),
-  {
-    ssr: false,
-  }
-)
+// const ProductTabSlider = dynamic(
+//   () =>
+//     import(
+//       /* webpackChunkName: 'ProductTabSlider' */ '@/components/Slider/ProductTabSlider'
+//     ),
+//   {
+//     ssr: false,
+//   }
+// )
 
 export default function Home(props: SearchPageLayoutProps) {
   return (
@@ -68,7 +68,7 @@ export default function Home(props: SearchPageLayoutProps) {
           query="Sport nutrition"
           tabColor="#C42340"
         />
-        <ProductBanner />
+        {/* <ProductBanner /> */}
         <MainProductShowcase
           title="Quit Smoking"
           indexId="quit_smoking_product_type"
@@ -96,7 +96,7 @@ export default function Home(props: SearchPageLayoutProps) {
           query="medical aids"
           tabColor="#C42340"
         />
-        <BestSellerSlider />
+        {/* <BestSellerSlider /> */}
         <MainProductShowcase
           title="Confectionery"
           indexId="confectionery_product_type"
@@ -110,7 +110,7 @@ export default function Home(props: SearchPageLayoutProps) {
           query="veterinary"
           tabColor="#4017E0"
         />
-        <ProductTabSlider />
+        {/* <ProductTabSlider /> */}
         <TrustmateReview />
         <div className="mb-6" />
       </SearchPageLayout>

@@ -6,10 +6,10 @@ import { useEffect, useRef, memo } from 'react'
 import { updateUserAddress } from '@/redux/payment-slice'
 import { useAppDispatch } from '@/redux/store'
 
-let autoComplete
+let autoComplete: any
 
-const loadScript = (url, callback) => {
-  const script = document.createElement('script') // create script tag
+const loadScript = (url: string, callback: () => void) => {
+  const script: any = document.createElement('script') // create script tag
   script.type = 'text/javascript'
 
   // when script state is ready and loaded or complete we will call callback
@@ -30,10 +30,10 @@ const loadScript = (url, callback) => {
 
 // handle when the script is loaded we will assign autoCompleteRef with google maps place autocomplete
 function handleScriptLoad(
-  updateQuery,
-  autoCompleteRef,
-  selectedCountry,
-  dispatch
+  updateQuery: any,
+  autoCompleteRef: any,
+  selectedCountry: any,
+  dispatch: any
 ) {
   // assign autoComplete with Google maps place one time
   autoComplete = new window.google.maps.places.Autocomplete(
@@ -49,13 +49,15 @@ function handleScriptLoad(
   )
 }
 
-function handlePlaceSelect(updateQuery, dispatch) {
+function handlePlaceSelect(updateQuery: any, dispatch: any) {
   const addressObject = autoComplete.getPlace() // get place from google api
   const query = addressObject?.address_components
   dispatch(updateUserAddress(query))
 
-  function filterLocation(location) {
-    const place = query?.filter((adr) => adr.types[0] === location)
+  function filterLocation(location: string) {
+    const place = query?.filter(
+      (adr: { types: string[] }) => adr.types[0] === location
+    )
 
     const rightPlace = place[0]?.long_name
       ? place[0]?.long_name
@@ -85,7 +87,7 @@ function handlePlaceSelect(updateQuery, dispatch) {
   )
 }
 
-function SearchLocationInputComponent({ formik }) {
+function SearchLocationInputComponent({ formik }: any) {
   const autoCompleteRef = useRef(null)
   const countryCode = formik.values.country
   const dispatch = useAppDispatch()

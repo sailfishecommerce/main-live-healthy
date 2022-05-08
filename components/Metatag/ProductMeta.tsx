@@ -1,8 +1,9 @@
-import Head from "next/head";
-import { productType } from "@/types";
+import Head from 'next/head'
+
+import type { productType } from '@/types'
 
 interface Props {
-  product: productType;
+  product: productType
 }
 
 export default function ProductMeta({ product }: Props) {
@@ -14,7 +15,7 @@ export default function ProductMeta({ product }: Props) {
             "@type":"Product",
             "name":"${product.name}",
             "description":"${product.description}",      
-            "image":"${product.images[0]?.file?.url}",
+            "image":"${product.images[0]}",
             "url":"https://livehealthy.hk/products/${product.slug}",        
             "aggregateRating": {
               "@type": "AggregateRating",
@@ -55,5 +56,5 @@ export default function ProductMeta({ product }: Props) {
       <meta title={product.meta_title} />
       <meta name="description" content={product.description} />
     </Head>
-  );
+  )
 }

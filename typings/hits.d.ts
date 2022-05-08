@@ -15,13 +15,7 @@ export type ProductHit = {
   hierarchical_categories: { lvl0: string; lvl1: string; lvl2: string }
   image_blurred: string
   image_urls: string[]
-  images: [
-    {
-      file: {
-        url: string
-      }
-    }
-  ]
+  images: string[]
   vendor: string
   list_categories: string[]
   name: string

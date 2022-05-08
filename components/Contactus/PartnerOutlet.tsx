@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-nested-ternary */
@@ -23,7 +24,7 @@ export default function PartnerOutlet() {
                   {content.address}
                 </h6>
                 <ul className="mb-0">
-                  {content.info.map((content) => (
+                  {content.info.map((content: any) => (
                     <li
                       key={content.action}
                       className="flex items-center pb-3 border-b-2 border-gray-100"

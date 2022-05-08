@@ -4,13 +4,14 @@ import dynamic from 'next/dynamic'
 import { useState } from 'react'
 import Magnifier from 'react-magnifier'
 
-const Lightbox = dynamic(
-  () => import(/* webpackChunkName: 'common' */ 'react-image-lightbox')
-)
 import Image from '@/components/Image'
 import useMediaQuery from '@/hooks/useMediaQuery'
 import type { productType } from '@/types'
 import 'react-image-lightbox/style.css'
+
+const Lightbox = dynamic(
+  () => import(/* webpackChunkName: 'common' */ 'react-image-lightbox')
+)
 
 interface Props {
   product: productType

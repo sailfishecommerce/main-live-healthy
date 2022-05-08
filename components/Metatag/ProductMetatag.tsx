@@ -7,11 +7,7 @@ interface Props {
     meta_title: string
     price: string
     slug: string
-    images: {
-      file: {
-        url: string
-      }
-    }[]
+    images: string[]
     tags: string[]
   }
 }
@@ -39,7 +35,7 @@ function ProductMetatagComponent({ pageProduct }: Props) {
         content={`https://www.livehealthy.hk/products/${pageProduct.slug}`}
         key="ogurl"
       />
-      <meta property="og:price:currency" content="USD" />
+      <meta property="og:price:currency" content="HKD" />
       <meta property="og:image" content={pageProduct.images[0]} key="ogimage" />
       <meta
         property="og:image:secure_url"

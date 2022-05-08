@@ -1,5 +1,4 @@
 /* eslint-disable dot-notation */
-/* eslint-disable no-unused-expressions */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef, memo } from 'react'
 
@@ -7,6 +6,12 @@ import { updateUserAddress } from '@/redux/payment-slice'
 import { useAppDispatch } from '@/redux/store'
 
 let autoComplete: any
+
+declare global {
+  interface Window {
+    google: any
+  }
+}
 
 const loadScript = (url: string, callback: () => void) => {
   const script: any = document.createElement('script') // create script tag
@@ -40,8 +45,8 @@ function handleScriptLoad(
     autoCompleteRef.current,
     { types: ['establishment'] }
   )
-  autoComplete.setComponentRestrictions({ country: selectedCountry }),
-    autoComplete.setFields(['address_components'])
+  autoComplete.setComponentRestrictions({ country: selectedCountry })
+  autoComplete.setFields(['address_components'])
 
   // add a listener to handle when the place is selected
   autoComplete.addListener('place_changed', () =>
@@ -99,7 +104,7 @@ function SearchLocationInputComponent({ formik }: any) {
     )
   }, [countryCode])
 
-  function updateInput(e) {
+  function updateInput(e: any) {
     e.preventDefault()
     formik.setValues({
       ...formik.values,

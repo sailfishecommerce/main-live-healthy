@@ -1,8 +1,6 @@
 // import axios from 'axios'
 import jwtDecode from 'jwt-decode'
 
-// import { updateTokenStatus, paymentError } from '@/redux/airwallex-slice'
-
 // type payloadType = {
 //   tokenExpiryDate: string | null
 //   accessToken: string | null

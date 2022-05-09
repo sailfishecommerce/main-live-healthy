@@ -9,8 +9,6 @@ import ProductHitCard from '@/components/Cards/ProductHitCard'
 import { Container } from '@/components/Container'
 import { viewModeAtom } from '@/components/ViewModes'
 import { configAtom } from '@/config/config'
-// import { useMediaQuery } from '@/hooks'
-// import { useIsMounted } from '@/hooks/useIsMounted'
 import Applayout from '@/layouts/app-layout'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
 import {

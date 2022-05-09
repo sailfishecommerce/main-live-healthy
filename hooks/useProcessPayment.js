@@ -1,7 +1,8 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-shadow */
-import { useRouter, ReactText } from 'next/router'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
+import { useAtom } from 'jotai'
 
 import { useToast, useAccount, useCart } from '@/hooks'
 import useModal from '@/hooks/useModal'
@@ -9,9 +10,6 @@ import usePayment from '@/hooks/usePayment'
 import useSwellCart from '@/hooks/useSwellCart'
 import { createVboutOrder } from '@/hooks/useVbout'
 import { vboutOrderData } from '@/lib/vbout'
-import { updateCart } from '@/redux/cart-slice'
-import { sendProductReview, updateSubmittedOrder } from '@/redux/payment-slice'
-import { useAtom } from 'jotai'
 import { sendProductReviewAtom, submitOrderAtom } from '@/lib/atomConfig'
 
 export default function useProcessPayment() {

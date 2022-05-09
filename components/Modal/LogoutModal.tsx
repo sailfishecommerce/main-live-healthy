@@ -1,11 +1,12 @@
+import { useAtom } from 'jotai'
 import { BiLogOut } from 'react-icons/bi'
 import { useQuery } from 'react-query'
 import { toast } from 'react-toastify'
 
 import Modal from '@/components/Modal'
 import { useAccount, useMediaQuery } from '@/hooks'
-import useUI from '@/hooks/useUI'
-// import useAuthTemp from '@/hooks/useAuthTemp'
+import { modalAtom } from '@/lib/atomConfig'
+import type { modalType } from '@/lib/atomConfigType'
 
 interface Props {
   show: boolean
@@ -15,7 +16,7 @@ interface Props {
 export default function LogoutModal({ show, onHide }: Props) {
   const mobileWidth = useMediaQuery('(max-width:768px)')
   const { getUserAccount, logoutUser } = useAccount()
-  const { toggleLogoutModalHandler } = useUI()
+  const [, setModal]: any = useAtom<modalType>(modalAtom)
   // const { useLogout } = useAuthTemp()
   const { data } = useQuery('userDetails', getUserAccount)
   const iconSize = mobileWidth ? 16 : 22
@@ -25,7 +26,7 @@ export default function LogoutModal({ show, onHide }: Props) {
     logoutUser()
       .then(() => {
         toast.success('Logout successful')
-        toggleLogoutModalHandler()
+        setModal('MODAL_LOGOUT')
       })
       .catch((error) => {
         toast.error(`unable to logout user, ${error}`)

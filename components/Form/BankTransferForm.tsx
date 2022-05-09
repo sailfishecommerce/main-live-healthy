@@ -1,24 +1,27 @@
+import { useAtom } from 'jotai'
 import { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
 
 import BankTransferList from '@/components/Form/BankTransferList'
-import { useAppSelector } from '@/hooks/useRedux'
 import { sendBankTransfer } from '@/hooks/useVbout'
 import checkoutFormContent from '@/json/checkout-form.json'
+import { paymentFormAtom } from '@/lib/atomConfig'
 
 export default function BankTransferForm() {
   const [bank, setBank] = useState('')
   const [submit, setSubmit] = useState(false)
-  const { paymentForm }: any = useAppSelector((state) => state.payment)
+  const [paymentForm] = useAtom(paymentFormAtom)
   const setBankHandler = (e: any) => setBank(e.target.value)
+
+  console.log('paymentForm', paymentForm)
 
   useEffect(() => {
     if (submit) {
-      sendBankTransfer(paymentForm?.email, bank)
+      sendBankTransfer(paymentForm?.form.email, bank)
         .then((response) => {
           console.log('response', response)
           setSubmit(false)
-          toast.success(`An email has been sent to ${paymentForm?.email}`)
+          toast.success(`An email has been sent to ${paymentForm?.form.email}`)
         })
         .catch((error) => {
           setSubmit(false)

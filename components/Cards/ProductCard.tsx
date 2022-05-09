@@ -88,12 +88,12 @@ export default function Product({
           </div>
           <div className={`${isRowText} ${imageWidth} text`}>
             <Link passHref href={productVendorLink}>
-              <button
+              <a
                 type="button"
                 className="vendor text-xs md:text-md font-bold pl-2 my-0 py-0 mb-1 md:mb-0 md:h-5"
               >
                 {product.vendor}
-              </button>
+              </a>
             </Link>
             <div className="product-name-view md:mb-8 mb-2">
               <h3 className="text-xs md:text-md product-name">

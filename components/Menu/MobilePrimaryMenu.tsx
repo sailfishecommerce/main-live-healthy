@@ -16,34 +16,38 @@ export default function MobilePrimaryMenu() {
   const { showMobileSearch, toggleSearch, mobileMenu, toggleMobileMenu } =
     useNav()
   const { updateSlideTab } = useSlidingTab()
+
+  console.log('cart', cart)
   return (
-    <div className="flex items-center w-2/5 justify-between">
-      <span className="mr-1 flex items-center">
-        <AuthIcons />
-        <button
-          type="button"
-          className="cart-icon relative mx-2"
-          onClick={() => updateSlideTab('SLIDING-CART')}
-        >
-          <CartIcon color="#080708" />
-          <div className="bg-yellow-500 rounded-full flex items-center text-white justify-center -mt-8 text-xs ml-2 z-5 absolute h-4 w-4">
-            {cart?.items?.length}
-          </div>
+    <div className="mobile-menu flex flex-col w-2/5">
+      <div className="flex items-center w-full justify-between">
+        <span className="mr-1 flex items-center">
+          <AuthIcons />
+          <button
+            type="button"
+            className="cart-icon relative mx-2"
+            onClick={() => updateSlideTab('SLIDING-CART')}
+          >
+            <CartIcon color="#080708" />
+            <div className="bg-yellow-500 rounded-full flex items-center text-white justify-center -mt-8 text-xs ml-2 z-5 absolute h-4 w-4">
+              {cart?.items?.length}
+            </div>
+          </button>
+          <Link passHref href="/account">
+            <button type="button" title="account" className="account">
+              <IoPersonOutline className="hover:text-green-500" size={16} />
+            </button>
+          </Link>
+          {!showMobileSearch && (
+            <button type="button" className="mx-2" onClick={toggleSearch}>
+              <BsSearch size={16} />
+            </button>
+          )}
+        </span>
+        <button type="button" onClick={toggleMobileMenu}>
+          {!mobileMenu ? <HiMenuAlt4 size={22} /> : <FaTimes size={22} />}
         </button>
-        <Link passHref href="/account">
-          <button type="button" title="account" className="account">
-            <IoPersonOutline className="hover:text-green-500" size={16} />
-          </button>
-        </Link>
-        {!showMobileSearch && (
-          <button type="button" className="mx-2" onClick={toggleSearch}>
-            <BsSearch size={16} />
-          </button>
-        )}
-      </span>
-      <button type="button" onClick={toggleMobileMenu}>
-        {!mobileMenu ? <HiMenuAlt4 size={22} /> : <FaTimes size={22} />}
-      </button>
+      </div>
     </div>
   )
 }

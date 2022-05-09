@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useEffect } from 'react'
 
 import PaymentMethodView from '@/components/Payment/PaymentMethodView'
+import ProductPriceView from '@/components/Product/ProductPriceView'
 import SeeMoreProductInfo from '@/components/Product/SeeMoreProductInfo'
 import CustomerReview from '@/components/Reviews/CustomerReview'
 import useSlidingTab from '@/hooks/useSlidingTab'
@@ -44,7 +45,7 @@ export default function ProductDetail({ product }: any) {
         reviews={product?.review_rating}
         ratings={product?.rating}
       />
-      {/* <ProductPriceView product={product} /> */}
+      <ProductPriceView product={product} />
       <SeeMoreProductInfo
         title="Product Information"
         onClick={() => setSeeMoreHandler('Product Information')}

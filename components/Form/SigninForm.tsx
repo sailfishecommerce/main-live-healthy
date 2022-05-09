@@ -8,15 +8,14 @@ import { toast } from 'react-toastify'
 import { displayFormElement } from '@/components/Form/FormElement'
 import { signinFormSchema } from '@/components/Form/schema/AuthSchema'
 // import { useAuth } from '@/hooks'
-import useAuthTemp from '@/hooks/useAuthTemp'
+import useAuth from '@/hooks/useAuth'
 import authContent from '@/json/authForm.json'
 import { modalAtom } from '@/lib/atomConfig'
 
 export default function SigninForm() {
-  // const { signIn } = useAuth()
-  const { useSignIn } = useAuthTemp()
+  const { useSignIn } = useAuth()
   const signIn = useSignIn()
-  const [, setModal]: any = useAtom<'SLIDING-CART' | null>(modalAtom)
+  const [, setModal]: any = useAtom<'MODAL_LOGIN' | null>(modalAtom)
 
   function toggleAuthmodal() {
     return setModal(null)

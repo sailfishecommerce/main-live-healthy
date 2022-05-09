@@ -9,10 +9,6 @@ export default function useCart() {
 
   const useCartData = () => useQuery('cart', getACart)
 
-  function toggleCart() {
-    // dispatch(toggleSlideCart())
-  }
-
   function applyDiscountCode(code: string) {
     const loading = isLoading()
     return applyGiftCode(code)
@@ -27,7 +23,6 @@ export default function useCart() {
   }
 
   return {
-    toggleCart,
     applyDiscountCode,
     useCartData,
   }

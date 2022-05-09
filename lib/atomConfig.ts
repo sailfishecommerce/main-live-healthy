@@ -1,7 +1,18 @@
 import { atom } from 'jotai'
 import { atomWithStorage } from 'jotai/utils'
 
+import type { typeModal } from '@/types'
+
 // ui
+export const appModalAtom = atom<{
+  active?: boolean
+  type: typeModal | null
+  data?: string | null
+}>({
+  active: false,
+  type: null,
+  data: null,
+})
 export const modalAtom = atom(null)
 export const slidingTabAtom = atom(null)
 export const noticebarAtom = atomWithStorage('noticebar', true)

@@ -1,32 +1,26 @@
-import { useAppDispatch } from '@/redux/store'
-import { toggleAppModal } from '@/redux/ui-slice'
+import { useAtom } from 'jotai'
+
+import { appModalAtom } from '@/lib/atomConfig'
 import type { typeModal } from '@/types'
 
-import { useAppSelector } from './useRedux'
-
 export default function useModal() {
-  const { displayModal } = useAppSelector((state) => state.UI)
-  const dispatch = useAppDispatch()
+  const [appModal, setAppModal] = useAtom(appModalAtom)
 
   function onShowModal(modalType: typeModal, data: string) {
-    dispatch(
-      toggleAppModal({
-        type: modalType,
-        data,
-      })
-    )
+    setAppModal({
+      type: modalType,
+      data,
+    })
   }
 
   function onHideModal() {
-    dispatch(
-      toggleAppModal({
-        type: null,
-      })
-    )
+    setAppModal({
+      type: null,
+    })
   }
 
   return {
-    modal: displayModal,
+    modal: appModal,
     onHideModal,
     onShowModal,
   }

@@ -3,12 +3,11 @@ import { toast } from 'react-toastify'
 
 import { displayFormElement } from '@/components/Form/FormElement'
 import { passwordRecoverySchema } from '@/components/Form/schema/AuthSchema'
-import { useAccount, useLoading } from '@/hooks'
+import { useAccount } from '@/hooks'
 import passwordResetForm from '@/json/password-reset.json'
 
 export default function AccountRecoveryform() {
   const { forgotPassword } = useAccount()
-  const { updateLoadingState } = useLoading()
 
   return (
     <div className="card py-2 mt-4">
@@ -18,15 +17,12 @@ export default function AccountRecoveryform() {
         }}
         validationSchema={passwordRecoverySchema}
         onSubmit={(values, { setSubmitting, resetForm }) => {
-          updateLoadingState()
           forgotPassword(values.email)
             .then(() => {
-              updateLoadingState()
               toast.success(`A reset link has been sent to ${values.email}`)
               resetForm()
             })
             .catch(() => {
-              updateLoadingState()
               toast.error('error sending reset link to your mail')
               resetForm()
             })

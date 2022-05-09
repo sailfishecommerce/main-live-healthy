@@ -5,17 +5,15 @@ import Script from 'next/script'
 import { useQuery } from 'react-query'
 
 import useOrder from '@/hooks/useOrder'
-import { useAppSelector } from '@/hooks/useRedux'
 import Applayout from '@/layouts/app-layout'
 
 export default function CheckoutComplete() {
   const { getLastOrderDetails } = useOrder()
   const { data, status } = useQuery('getLastOrderDetails', getLastOrderDetails)
-  const paymentData: any = useAppSelector((state) => state.payment)
 
   return (
     <Applayout title="Checkout Completed">
-      <Script
+      {/* <Script
         crossOrigin="use-credentials"
         id="trustMateInvitationScript"
         strategy="afterInteractive"
@@ -40,7 +38,7 @@ export default function CheckoutComplete() {
             }`
           )}];
         `}
-      </Script>
+      </Script> */}
       <Script
         strategy="afterInteractive"
         type="text/javascript"

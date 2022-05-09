@@ -74,8 +74,6 @@ export default function LayoutWrapper({ children }: PropsWithChildren<Props>) {
   const closeAuthModalHandler = () => setModal(null)
   const modalState = modal === 'MODAL_LOGIN' ? true : false
   const { scroll } = useScroll()
-  // const { loading: loadingState } = useAppSelector((state) => state.UI)
-  // const { loading } = useAppSelector((state) => state.checkout)
 
   const showPointer = scroll > 450 ? true : false
 

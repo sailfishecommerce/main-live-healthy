@@ -100,15 +100,15 @@ export default function Product({
                 {product.name}
               </h3>
             </div>
-            <div className="price-group flex items-center justify-between">
+            <div className="price-group flex flex-col md:flex-row items-start md:items-center justify-between px-0">
               <DynamicFormattedPrice
                 price={product.sale_price}
-                className="text-sm md:text-md text-black font-semibold"
+                className="text-xs md:text-sm my-1 md:my-0 lg:text-md text-black font-semibold"
               />
               {product.price !== 0 && (
                 <DynamicFormattedPrice
                   price={product.price}
-                  className="text-sm strike-through md:text-sm text-red-500 font-semibold"
+                  className="text-xs md:text-sm my-1 md:my-0 strike-through lg:text-md text-red-500 font-semibold"
                 />
               )}
             </div>

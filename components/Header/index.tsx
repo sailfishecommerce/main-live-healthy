@@ -5,10 +5,9 @@ import Noticebar from '@/components/Alerts/Noticebar'
 import Menu from '@/components/Menu'
 import DiscountSlider from '@/components/Slider/DiscountSlider'
 import { useMediaQuery } from '@/hooks'
-// import useNav from '@/hooks/useNav'
+import useNav from '@/hooks/useNav'
 import useNavStyle from '@/hooks/useNavStyle'
 import { categoryDropdownAtom, noticebarAtom } from '@/lib/atomConfig'
-// import useUI from '@/hooks/useUI'
 
 const DynamicMobileSlideMenu = dynamic(
   () =>
@@ -36,13 +35,7 @@ export default function Header() {
   function toggleNoticebar() {
     return setNoticebar((prevState) => !prevState)
   }
-  // const { mobileMenu } = useNav()
-  // const {
-  //   categoryDropdown,
-  //   toggleCategoriesDropdown,
-  //   noticebar,
-  //   toggleNoticebarHandler,
-  // } = useUI()
+  const { mobileMenu } = useNav()
   const mobileWidth = useMediaQuery('(max-width:768px)')
   const displayShadow = mobileWidth ? 'header' : ''
 
@@ -54,7 +47,7 @@ export default function Header() {
         <DiscountSlider />
         {noticebar && <Noticebar toggleBarVisibility={toggleNoticebar} />}
         <Menu />
-        {/* {mobileWidth && mobileMenu && <DynamicMobileSlideMenu />} */}
+        {mobileWidth && mobileMenu && <DynamicMobileSlideMenu />}
 
         {categoryDropdown && (
           <DynamicAllCategoriesDropdownView

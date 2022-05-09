@@ -1,12 +1,12 @@
+import { useAtom } from 'jotai'
 import { BsArrowLeft } from 'react-icons/bs'
 
 import AlgoliaCategories from '@/components/Algolia/AlgoliaCategories'
-import { useAppDispatch } from '@/hooks/useRedux'
-import { updateMobileSlideMenuView } from '@/redux/ui-slice'
+import { mobileSlideMenuViewAtom } from '@/lib/atomConfig'
 
 export default function MobileCategoryView() {
-  const dispatch = useAppDispatch()
-  const displayMenu = () => dispatch(updateMobileSlideMenuView('LINK'))
+  const [, setUpdateMobileSlideMenu] = useAtom(mobileSlideMenuViewAtom)
+  const displayMenu = () => setUpdateMobileSlideMenu('LINK')
   return (
     <div className="submenus px-4">
       <div className="back-to-menu border-b border-gray-300 pb-4">

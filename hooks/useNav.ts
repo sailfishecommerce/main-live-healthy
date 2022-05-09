@@ -1,11 +1,22 @@
-import { useAppSelector, useAppDispatch } from '@/hooks/useRedux'
-import { updateSearchView, updateMobileMenu } from '@/redux/ui-slice'
+import { useAtom } from 'jotai'
+
+import { mobileViewAtom } from '@/lib/atomConfig'
 
 export default function useNav() {
-  const dispatch = useAppDispatch()
-  const { mobileMenu, showMobileSearch } = useAppSelector((state) => state.UI)
-  const toggleSearch = () => dispatch(updateSearchView())
-  const toggleMobileMenu = () => dispatch(updateMobileMenu())
+  const [mobileView, setMobileView] = useAtom(mobileViewAtom)
+  const { mobileMenu, showMobileSearch } = mobileView
+
+  const toggleSearch = () =>
+    setMobileView((prev) => ({
+      mobileMenu: prev.mobileMenu,
+      showMobileSearch: !prev,
+    }))
+
+  const toggleMobileMenu = () =>
+    setMobileView((prev) => ({
+      mobileMenu: !prev.mobileMenu,
+      showMobileSearch: prev.showMobileSearch,
+    }))
 
   return {
     toggleSearch,

@@ -1,9 +1,10 @@
+import { useAtom } from 'jotai'
 import { useRouter } from 'next/router'
 
 import Image from '@/components/Image'
 import Modal from '@/components/Modal'
-import { useAppDispatch } from '@/hooks/useRedux'
-import { toggleAuthModal } from '@/redux/ui-slice'
+import { modalAtom } from '@/lib/atomConfig'
+import type { modalType } from '@/lib/atomConfigType'
 
 export default function ExistingUserNotificationModal({
   show,
@@ -11,7 +12,7 @@ export default function ExistingUserNotificationModal({
   data,
 }: any) {
   const router = useRouter()
-  const dispatch = useAppDispatch()
+  const [, setModal]: any = useAtom<modalType>(modalAtom)
 
   function forgotPassword() {
     onHide()
@@ -20,7 +21,7 @@ export default function ExistingUserNotificationModal({
 
   function loginHandler() {
     onHide()
-    dispatch(toggleAuthModal())
+    setModal('MODAL_LOGIN')
   }
 
   return (

@@ -5,7 +5,6 @@ import { useEffect } from 'react'
 import PaymentMethodView from '@/components/Payment/PaymentMethodView'
 import SeeMoreProductInfo from '@/components/Product/SeeMoreProductInfo'
 import CustomerReview from '@/components/Reviews/CustomerReview'
-// import { useAppDispatch } from '@/hooks/useRedux'
 import useSlidingTab from '@/hooks/useSlidingTab'
 import { activeProductSlideAtom, seemoreAtom } from '@/lib/atomConfig'
 import type { seemoreType } from '@/lib/atomConfigType'
@@ -28,15 +27,6 @@ export default function ProductDetail({ product }: any) {
     updateSlideTab('SLIDING-INFO')
     setSeeMoreState(infoType)
   }
-
-  // const dispatch = useAppDispatch()
-  // const { updateSlideTab } = useSlidingTab()
-
-  // function seeMoreProductsHandler(infoType: string) {
-  //   updateSlideTab('SLIDING-INFO')
-  //   dispatch(updateActiveProduct(product))
-  //   dispatch(updateSlidingTabInfo(infoType))
-  // }
 
   const productVendorLink = product?.vendor?.includes(' ')
     ? `/search/${product.vendor}`

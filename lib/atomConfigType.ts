@@ -9,3 +9,5 @@ export type slidingTabType =
   | 'SLIDING-CART'
   | 'SLIDING-INFO'
   | null
+
+export type modalType = 'MODAL_LOGIN' | 'MODAL_LOGOUT' | null

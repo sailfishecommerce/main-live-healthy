@@ -7,7 +7,6 @@ import { BsCart4 } from 'react-icons/bs'
 import useAlgoliaEvents from '@/hooks/useAlgoliaEvents'
 import useProductOptions from '@/hooks/useProductOptions'
 import useShoppingCart from '@/hooks/useShoppingCart'
-import { useAppDispatch } from '@/redux/store'
 import { quickViewModal } from '@/redux/ui-slice'
 import type { ProductProps } from '@/types'
 
@@ -19,7 +18,6 @@ function ProductViewFormComonent({
   const { optionHandler } = useProductOptions()
   const categoryStyle = forCategory ? 'flex flex-col' : 'flex'
   const { productAddedToCart, convertedItemAfterSearch } = useAlgoliaEvents()
-  const dispatch = useAppDispatch()
 
   const formOptionBg = useCallback((name: string) => {
     const style = { backgroundColor: name.toLowerCase() }

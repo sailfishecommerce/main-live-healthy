@@ -4,19 +4,18 @@ import { GrLogin } from 'react-icons/gr'
 import { useQuery } from 'react-query'
 
 import { useAccount, useMediaQuery } from '@/hooks'
-// import useUI from '@/hooks/useUI'
 import { modalAtom } from '@/lib/atomConfig'
+import type { modalType } from '@/lib/atomConfigType'
 
 export default function AuthIcons() {
-  const [, setModal]: any = useAtom<'SLIDING-CART' | null>(modalAtom)
-  // const { toggleAuthModalHandler, toggleLogoutModalHandler }: any = useUI()
+  const [, setModal]: any = useAtom<modalType>(modalAtom)
   const { getUserAccount } = useAccount()
   const mobileWidth = useMediaQuery('(max-width:768px)')
   const { data, status } = useQuery('userDetails', getUserAccount)
 
   const iconSize = mobileWidth ? 16 : 22
 
-  function updateModalView(modalState: 'MODAL_LOGIN' | 'MODAL_LOGOUT') {
+  function updateModalView(modalState: modalType) {
     return setModal(modalState)
   }
 

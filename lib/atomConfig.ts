@@ -11,7 +11,10 @@ export const appLoadingAtom = atom(false)
 export const categoryDropdownAtom = atom(false)
 export const selectedCategoryAtom = atom('Beauty')
 export const mobileSlideMenuViewAtom = atom('LINK')
-
+export const mobileViewAtom = atom({
+  mobileMenu: false,
+  showMobileSearch: false,
+})
 // form
 export const paymentFormAtom = atom<{ form: any; completed: boolean } | null>(
   null

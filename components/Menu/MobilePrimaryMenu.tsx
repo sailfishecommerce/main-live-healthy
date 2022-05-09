@@ -6,6 +6,7 @@ import { IoPersonOutline } from 'react-icons/io5'
 
 import CartIcon from '@/components/Icons/CartIcon'
 import AuthIcons from '@/components/Menu/AuthIcon'
+import GreetUser from '@/components/Menu/GreetUser'
 import { useCart } from '@/hooks'
 import useNav from '@/hooks/useNav'
 import useSlidingTab from '@/hooks/useSlidingTab'
@@ -17,9 +18,8 @@ export default function MobilePrimaryMenu() {
     useNav()
   const { updateSlideTab } = useSlidingTab()
 
-  console.log('cart', cart)
   return (
-    <div className="mobile-menu flex flex-col w-2/5">
+    <div className="mobile-menu flex flex-col w-2.5/5 pt-2">
       <div className="flex items-center w-full justify-between">
         <span className="mr-1 flex items-center">
           <AuthIcons />
@@ -48,6 +48,7 @@ export default function MobilePrimaryMenu() {
           {!mobileMenu ? <HiMenuAlt4 size={22} /> : <FaTimes size={22} />}
         </button>
       </div>
+      <GreetUser />
     </div>
   )
 }

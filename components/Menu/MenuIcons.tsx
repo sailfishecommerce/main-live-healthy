@@ -3,10 +3,10 @@ import { IoPersonOutline } from 'react-icons/io5'
 
 import CartIcon from '@/components/Icons/CartIcon'
 import AuthIcons from '@/components/Menu/AuthIcon'
+import GreetUser from '@/components/Menu/GreetUser'
 import { useCart } from '@/hooks'
 import useSlidingTab from '@/hooks/useSlidingTab'
 import type { slidingTabType } from '@/lib/atomConfigType'
-import greetUser from '@/lib/greetUser'
 
 export default function MenuIcons() {
   const { updateSlideTab } = useSlidingTab()
@@ -40,15 +40,7 @@ export default function MenuIcons() {
           </button>
         </Link>
       </div>
-      <h6 className="cart mountain-green font-bold text-xs">
-        {cart?.accountLoggedIn !== null ? (
-          <p>
-            {greetUser()}, {cart?.account?.name}{' '}
-          </p>
-        ) : (
-          <p>{`${greetUser()}, Guest`}</p>
-        )}
-      </h6>
+      <GreetUser />
     </div>
   )
 }

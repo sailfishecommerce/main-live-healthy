@@ -30,7 +30,7 @@ export default function ProductMagnifier({ product }: ProductProps) {
   const onImgClick = () => setLightBoxOpen(!lightBoxOpen)
   const magnifierDimens = tabletView
     ? { height: 300, mgHeight: 300, mgWidth: 300 }
-    : { height: 500, mgHeight: 500, mgWidth: 500 }
+    : { height: 650, mgHeight: 300, mgWidth: 300 }
 
   const imageView = tabletView
     ? {
@@ -87,11 +87,11 @@ export default function ProductMagnifier({ product }: ProductProps) {
           />
         )}
       </div>
-      <div className="product-gallery-thumblist lg:h-52 mt-4 flex order-1 flex-wrap w-full lg:order-1">
+      <div className="product-gallery-thumblist  mt-4  order-1 w-full lg:order-1">
         {images?.map((image: any, index) => (
           <a
             key={index}
-            className={`items-start md:h-32 h-auto justify-center flex p-1 md:px-2 cursor-pointer hover:border-green-500 w-1/6 2xl:lg-36 border-gray-500 ${activethumbnailImg(
+            className={`items-start justify-center flex p-1 md:px-2 cursor-pointer hover:border-green-500 border-gray-500 ${activethumbnailImg(
               index
             )}`}
             aria-label={product.image_alt_text[index]}
@@ -102,7 +102,6 @@ export default function ProductMagnifier({ product }: ProductProps) {
               width={imageView.width}
               src={image}
               alt={product.image_alt_text[index]}
-              // layout="responsive"
             />
           </a>
         ))}

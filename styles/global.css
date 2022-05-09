@@ -178,6 +178,14 @@ header.header {
   overflow: hidden;
 }
 
+/* product-gallery-thumblist */
+.product-gallery-thumblist {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  max-height: 300px;
+  height: 200px;
+}
+
 /* social-icons */
 .icon:hover {
   opacity: 0.5;

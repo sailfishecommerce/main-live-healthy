@@ -1,4 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
+import Image from 'next/image'
+
 export default function PaymentMethodView() {
   const paymentMethodIcons = [
     '/visa.png',
@@ -10,10 +11,10 @@ export default function PaymentMethodView() {
   return (
     <div className="flex flex-col">
       <h5 className="text-lg my-2 font-medium">Payment methods</h5>
-      <div className="payment-icons flex items-center my-4 justify-between">
+      <div className="payment-icons grid grid-cols-5 gap-4 items-center my-4 justify-between">
         {paymentMethodIcons.map((item, index) => (
-          <div key={index} className="md:w-24 ">
-            <img src={item} alt="payment-icon" />
+          <div key={index} className="">
+            <Image src={item} alt="payment-icon" height={25} width={100} />
           </div>
         ))}
       </div>

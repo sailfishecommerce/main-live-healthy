@@ -3,15 +3,12 @@ import { LazyMotion } from 'framer-motion'
 import { atom, Provider as JotaiProvider } from 'jotai'
 import { useAtomValue } from 'jotai/utils'
 import { QueryClient, QueryClientProvider } from 'react-query'
-import { Provider } from 'react-redux'
-import { persistStore } from 'redux-persist'
-import { PersistGate } from 'redux-persist/integration/react'
+import { ReactQueryDevtools } from 'react-query/devtools'
 
 import { configAtom } from '@/config/config'
 import { useSearchClient } from '@/hooks/useSearchClient'
 import { useSearchInsights } from '@/hooks/useSearchInsights'
 import { MediaContextProvider } from '@/lib/media'
-import store from '@/redux/store'
 import { createInitialValues } from '@/utils/createInitialValues'
 import { appId, searchApiKey } from '@/utils/env'
 
@@ -44,22 +41,18 @@ export default function ProviderLayout({ children }: AppLayoutProps) {
     searchApiKey,
     setUserToken,
   })
-  const persistor = persistStore(store)
   const queryClient = new QueryClient()
 
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <JotaiProvider initialValues={get()}>
-          <QueryClientProvider client={queryClient}>
-            <MediaContextProvider>
-              <LazyMotion features={loadFramerMotionFeatures} strict={true}>
-                {children}
-              </LazyMotion>
-            </MediaContextProvider>
-          </QueryClientProvider>
-        </JotaiProvider>
-      </PersistGate>
-    </Provider>
+    <JotaiProvider initialValues={get()}>
+      <QueryClientProvider client={queryClient}>
+        <MediaContextProvider>
+          <LazyMotion features={loadFramerMotionFeatures} strict={true}>
+            {children}
+          </LazyMotion>
+        </MediaContextProvider>
+        <ReactQueryDevtools />
+      </QueryClientProvider>
+    </JotaiProvider>
   )
 }

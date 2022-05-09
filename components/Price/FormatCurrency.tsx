@@ -5,23 +5,18 @@ interface FormatCurrencyProps {
   price: any | number | string
   className?: string
   currencies: any[]
-  currency: any
 }
 
 export default function FormatCurrency({
   price,
   currencies,
-  currency,
   className,
 }: FormatCurrencyProps): JSX.Element {
   const priceClassName = className ? className : 'text-red-600 md:text-lg'
   const selectedCurrency = currencies?.filter(
-    (currencyP: { code: string }) => currencyP.code === currency
+    (currencyP: { code: string }) => currencyP.code === 'HKD'
   )
   const nPrice = Number(price)
-  // const priceRate = nPrice * selectedCurrency[0].rate
-
-  // const itemPrice = formatPrice(priceRate)
   const itemNPrice = formatPrice(nPrice)
 
   return (

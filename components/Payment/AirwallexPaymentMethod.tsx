@@ -1,24 +1,24 @@
+/* eslint-disable no-console */
+import { useAtom } from 'jotai'
 import { BsCreditCard } from 'react-icons/bs'
 
 import Accordion from '@/components/Accordion'
 import AirwallexDropin from '@/components/Payment/AirwallexDropin'
 import { useCart } from '@/hooks'
 import useAirwallexPayment from '@/hooks/useAirwallexPayment'
-import { useAppSelector } from '@/hooks/useRedux'
+import { airwallexAtom, paymentFormAtom } from '@/lib/atomConfig'
 
 export default function AirwallexPaymentMethod() {
-  const { paymentForm }: any = useAppSelector((state) => state.payment)
+  const [paymentForm] = useAtom(paymentFormAtom)
   const { useCartData } = useCart()
   const { data: cart } = useCartData()
   const { checkoutHandler } = useAirwallexPayment()
-
+  const [airwallex] = useAtom(airwallexAtom)
   function onCheckout() {
     checkoutHandler(cart, paymentForm)
   }
 
-  const { clientSecret, paymentIntentId } = useAppSelector(
-    (state) => state.airwallex
-  )
+  const { clientSecret, paymentIntentId } = airwallex
   console.log(' clientSecret, paymentIntentId', clientSecret, paymentIntentId)
 
   return (

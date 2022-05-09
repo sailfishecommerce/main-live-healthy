@@ -1,14 +1,14 @@
 /* eslint-disable no-nested-ternary */
+import { useAtom } from 'jotai'
 import { useQuery } from 'react-query'
 
-import { useAppSelector } from './useRedux'
-
-import { useAccount } from '.'
+import { useAccount } from '@/hooks'
+import { paymentFormAtom } from '@/lib/atomConfig'
 
 export default function useShippingPayment() {
   const { getUserAccount } = useAccount()
   const { data: userDetail, status } = useQuery('userdetails', getUserAccount)
-  const { paymentForm }: any = useAppSelector((state) => state.payment)
+  const [paymentForm] = useAtom(paymentFormAtom)
 
   function formatFormValues(field: string) {
     const formValue =
@@ -19,14 +19,14 @@ export default function useShippingPayment() {
         : userDetail !== null
         ? userDetail[field]
         : paymentForm !== null
-        ? paymentForm[field]
+        ? paymentForm.form[field]
         : ''
 
     return formValue
   }
 
   function formatFieldValue(field: string) {
-    const formValue = paymentForm ? paymentForm[field] : ''
+    const formValue = paymentForm ? paymentForm.form[field] : ''
     return formValue
   }
 

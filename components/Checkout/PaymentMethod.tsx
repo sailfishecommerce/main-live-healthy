@@ -1,15 +1,17 @@
+import { useAtom } from 'jotai'
 import type { PropsWithChildren } from 'react'
 
 import OrderSummary from '@/components/Checkout/OrderSummary'
 import AirwallexPaymentMethod from '@/components/Payment/AirwallexPaymentMethod'
 import BankTransferPaymentMethod from '@/components/Payment/BankTransferPaymentMethod'
 import PaymentWithStripe from '@/components/Payment/PaymentWithStripe'
-import { useAppSelector } from '@/hooks/useRedux'
+import { completeOrderAtom } from '@/lib/atomConfig'
 
 export default function PaymentMethod({
   children,
 }: PropsWithChildren<Record<string, unknown>>) {
-  const { completeOrder }: any = useAppSelector((state) => state.payment)
+  const [completeOrder] = useAtom(completeOrderAtom)
+
   return (
     <div className="flex flex-col w-full">
       <div className="flex w-full flex-col bg-white rounded-md p-4 mb-2">

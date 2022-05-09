@@ -7,11 +7,6 @@ import DiscountTag from '@/components/Tag/DiscountTag'
 import useShoppingCart from '@/hooks/useShoppingCart'
 import type { ProductProps } from '@/types'
 
-function round(num: number) {
-  const m = Number((Math.abs(num) * 100).toPrecision(15))
-  return (Math.round(m) / 100) * Math.sign(num)
-}
-
 const DynamicFormattedPrice = dynamic(
   () =>
     import(
@@ -133,7 +128,6 @@ export default function Product({
           .product {
             font-family: 'Commissioner', sans-serif;
           }
-
           .vendor {
             border-left: 3px solid ${color};
             color: ${color};

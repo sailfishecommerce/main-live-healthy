@@ -1,18 +1,20 @@
 import { Formik } from 'formik'
+import { useAtom } from 'jotai'
 
 import Breadcrumb from '@/components/Breadcrumb'
 import DeliveryAddress from '@/components/Checkout/DeliveryAddress'
 import PaymentMethod from '@/components/Checkout/PaymentMethod'
 import ReviewOrder from '@/components/Checkout/ReviewOrder'
 import { checkoutFormSchema } from '@/components/Form/schema/CheckoutFormSchema'
-import { useAppDispatch } from '@/hooks/useRedux'
 import useShippingPayment from '@/hooks/useShippingPayment'
 import breadcrumbContent from '@/json/breadcrumb.json'
-import { updateCompleteOrder, updatePaymentForm } from '@/redux/payment-slice'
+import { completeOrderAtom, paymentFormAtom } from '@/lib/atomConfig'
 
 export default function CheckoutCustomer() {
   const { formValues } = useShippingPayment()
-  const dispatch = useAppDispatch()
+  const [, setPaymentForm] = useAtom(paymentFormAtom)
+  const [, setCompleteOrder] = useAtom(completeOrderAtom)
+
   return (
     <div className="w-full bg-gray-100 mx-auto p-4 pb-8">
       <div className="container flex flex-col mx-auto">
@@ -24,9 +26,9 @@ export default function CheckoutCustomer() {
             initialValues={formValues}
             validationSchema={checkoutFormSchema}
             onSubmit={(values, { setSubmitting }) => {
-              dispatch(updatePaymentForm({ form: values, completed: true }))
+              setPaymentForm({ form: values, completed: true })
               setSubmitting(false)
-              dispatch(updateCompleteOrder(true))
+              setCompleteOrder(true)
             }}
           >
             {(formik) => {

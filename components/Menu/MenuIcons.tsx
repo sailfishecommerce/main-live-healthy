@@ -5,12 +5,17 @@ import CartIcon from '@/components/Icons/CartIcon'
 import AuthIcons from '@/components/Menu/AuthIcon'
 import { useCart } from '@/hooks'
 import useSlidingTab from '@/hooks/useSlidingTab'
+import type { slidingTabType } from '@/lib/atomConfigType'
 import greetUser from '@/lib/greetUser'
 
 export default function MenuIcons() {
+  const { updateSlideTab } = useSlidingTab()
   const { useCartData } = useCart()
   const { data: cart }: any = useCartData()
-  const { updateSlideTab } = useSlidingTab()
+
+  function updateSlidingTabHandler(slidingTabState: slidingTabType) {
+    return updateSlideTab(slidingTabState)
+  }
 
   return (
     <div className="icons flex flex-col w-1/5">
@@ -20,7 +25,7 @@ export default function MenuIcons() {
           type="button"
           className="cart-icon relative mx-4"
           title="cart"
-          onClick={() => updateSlideTab('SLIDING-CART')}
+          onClick={() => updateSlidingTabHandler('SLIDING-CART')}
         >
           <CartIcon size={35} color="black" />
           {cart?.items?.length > 0 && (

@@ -44,7 +44,7 @@ export default function SlidingCartTab() {
               bottom: 0;
             }
             .slide-items {
-              height: 60vh;
+              height: 100vh;
               position: relative;
               overflow-y: scroll;
             }

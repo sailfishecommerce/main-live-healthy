@@ -3,6 +3,7 @@ import type { PropsWithChildren } from 'react'
 import { FaTimes } from 'react-icons/fa'
 
 import useSlidingTab from '@/hooks/useSlidingTab'
+import type { slidingTabType } from '@/lib/atomConfigType'
 
 interface Props {
   buttonColor?: string
@@ -12,20 +13,24 @@ export default function SlidingTab({
   children,
   buttonColor,
 }: PropsWithChildren<Props>) {
-  const { updateSlideTab } = useSlidingTab()
   const defaultButtonColor = buttonColor ? buttonColor : 'text-black'
+  const { updateSlideTab } = useSlidingTab()
+
+  function updateSlidingTabHandler(value: slidingTabType) {
+    return updateSlideTab(value)
+  }
 
   return (
     <aside className="fixed flex z-50 justify-between h-screen items-center w-full right-0 top-0">
       <div
         className="overlay lg:w-2/3 w-1/12 flex cursor-pointer h-full"
-        onClick={() => updateSlideTab(null)}
+        onClick={() => updateSlidingTabHandler(null)}
       />
       <div className="fixed top-0 items-start bg-white z-50 flex flex-col sliding-tab w-11/12 lg:w-1/3 h-full">
         <button
           type="button"
           className={`${defaultButtonColor} closeButton absolute p-1 top-5 right-10 hover:text-white hover:rounded-full`}
-          onClick={() => updateSlideTab(null)}
+          onClick={() => updateSlidingTabHandler(null)}
         >
           <FaTimes size={20} />
         </button>

@@ -1,17 +1,17 @@
 /* eslint-disable no-unneeded-ternary */
 import axios from 'axios'
+import { useAtom } from 'jotai'
 import { useRouter } from 'next/router'
-import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
 
+import { airwallexAtom } from '@/lib/atomConfig'
 import { formatIntentData } from '@/lib/formatAirwallex'
-import { updateAirwallexState } from '@/redux/airwallex-slice'
 import type { cartType } from '@/types'
 
 export default function useAirwallexPayment() {
   const router = useRouter()
-  const dispatch = useDispatch()
   const disableBtn = router.pathname.includes('checkout') ? true : false
+  const [, setAirwallex] = useAtom(airwallexAtom)
 
   function createAccessToken() {
     return axios.request({
@@ -38,12 +38,10 @@ export default function useAirwallexPayment() {
         })
       })
       .then(({ data }: any) => {
-        dispatch(
-          updateAirwallexState({
-            clientSecret: data.client_secret,
-            paymentIntentId: data.id,
-          })
-        )
+        setAirwallex({
+          clientSecret: data.client_secret,
+          paymentIntentId: data.id,
+        })
       })
       .catch((error) => {
         toast.error(error.response?.data?.message)

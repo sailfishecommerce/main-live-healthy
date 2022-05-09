@@ -1,12 +1,14 @@
+import { useAtom } from 'jotai'
 import dynamic from 'next/dynamic'
 
 import Noticebar from '@/components/Alerts/Noticebar'
 import Menu from '@/components/Menu'
 import DiscountSlider from '@/components/Slider/DiscountSlider'
 import { useMediaQuery } from '@/hooks'
-import useNav from '@/hooks/useNav'
+// import useNav from '@/hooks/useNav'
 import useNavStyle from '@/hooks/useNavStyle'
-import useUI from '@/hooks/useUI'
+import { categoryDropdownAtom, noticebarAtom } from '@/lib/atomConfig'
+// import useUI from '@/hooks/useUI'
 
 const DynamicMobileSlideMenu = dynamic(
   () =>
@@ -24,13 +26,23 @@ const DynamicAllCategoriesDropdownView = dynamic(
 
 export default function Header() {
   const { navStyle } = useNavStyle()
-  const { mobileMenu } = useNav()
-  const {
-    categoryDropdown,
-    toggleCategoriesDropdown,
-    noticebar,
-    toggleNoticebarHandler,
-  } = useUI()
+  const [noticebar, setNoticebar] = useAtom(noticebarAtom)
+  const [categoryDropdown, setCategoryDropdown] = useAtom(categoryDropdownAtom)
+
+  function toggleCategoryDropdownHandler() {
+    return setCategoryDropdown((prev) => !prev)
+  }
+
+  function toggleNoticebar() {
+    return setNoticebar((prevState) => !prevState)
+  }
+  // const { mobileMenu } = useNav()
+  // const {
+  //   categoryDropdown,
+  //   toggleCategoriesDropdown,
+  //   noticebar,
+  //   toggleNoticebarHandler,
+  // } = useUI()
   const mobileWidth = useMediaQuery('(max-width:768px)')
   const displayShadow = mobileWidth ? 'header' : ''
 
@@ -40,15 +52,13 @@ export default function Header() {
         className={`${navStyle} ${displayShadow} bg-white w-full pb-0  md:pb-2`}
       >
         <DiscountSlider />
-        {noticebar && (
-          <Noticebar toggleBarVisibility={toggleNoticebarHandler} />
-        )}
+        {noticebar && <Noticebar toggleBarVisibility={toggleNoticebar} />}
         <Menu />
-        {mobileWidth && mobileMenu && <DynamicMobileSlideMenu />}
+        {/* {mobileWidth && mobileMenu && <DynamicMobileSlideMenu />} */}
 
         {categoryDropdown && (
           <DynamicAllCategoriesDropdownView
-            updateDropdown={toggleCategoriesDropdown}
+            updateDropdown={toggleCategoryDropdownHandler}
           />
         )}
       </header>

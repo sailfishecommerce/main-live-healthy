@@ -1,9 +1,7 @@
-/* eslint-disable dot-notation */
-/* eslint-disable react-hooks/exhaustive-deps */
+import { useAtom } from 'jotai'
 import { useEffect, useRef, memo } from 'react'
 
-import { updateUserAddress } from '@/redux/payment-slice'
-import { useAppDispatch } from '@/redux/store'
+import { userAddressAtom } from '@/lib/atomConfig'
 
 let autoComplete: any
 
@@ -38,7 +36,7 @@ function handleScriptLoad(
   updateQuery: any,
   autoCompleteRef: any,
   selectedCountry: any,
-  dispatch: any
+  setUserAddress: (query: any) => void
 ) {
   // assign autoComplete with Google maps place one time
   autoComplete = new window.google.maps.places.Autocomplete(
@@ -50,14 +48,17 @@ function handleScriptLoad(
 
   // add a listener to handle when the place is selected
   autoComplete.addListener('place_changed', () =>
-    handlePlaceSelect(updateQuery, dispatch)
+    handlePlaceSelect(updateQuery, setUserAddress)
   )
 }
 
-function handlePlaceSelect(updateQuery: any, dispatch: any) {
+function handlePlaceSelect(
+  updateQuery: any,
+  setUserAddress: (query: any) => void
+) {
   const addressObject = autoComplete.getPlace() // get place from google api
   const query = addressObject?.address_components
-  dispatch(updateUserAddress(query))
+  setUserAddress(query)
 
   function filterLocation(location: string) {
     const place = query?.filter(
@@ -95,12 +96,13 @@ function handlePlaceSelect(updateQuery: any, dispatch: any) {
 function SearchLocationInputComponent({ formik }: any) {
   const autoCompleteRef = useRef(null)
   const countryCode = formik.values.country
-  const dispatch = useAppDispatch()
+  const [, setUserAddress] = useAtom(userAddressAtom)
 
   useEffect(() => {
     loadScript(
       `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_PLACE_API_KEY}&libraries=places`,
-      () => handleScriptLoad(formik, autoCompleteRef, countryCode, dispatch)
+      () =>
+        handleScriptLoad(formik, autoCompleteRef, countryCode, setUserAddress)
     )
   }, [countryCode])
 
@@ -124,9 +126,9 @@ function SearchLocationInputComponent({ formik }: any) {
         onChange={updateInput}
       />
       <p className="text-danger errorText">
-        {formik.errors['address'] &&
-          formik.touched['address'] &&
-          formik.errors['address']}
+        {formik.errors.address &&
+          formik.touched.address &&
+          formik.errors.address}
       </p>
       <style jsx>
         {`

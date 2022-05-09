@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/no-onchange */
 import Image from 'next/image'
+import { memo } from 'react'
 import { FaTimes } from 'react-icons/fa'
 import { GiCancel } from 'react-icons/gi'
 
@@ -8,17 +9,23 @@ import useShoppingCart from '@/hooks/useShoppingCart'
 
 const selectOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-export default function ReviewOrderlist({ content }: any) {
+function ReviewOrderlistComponent({ content }: any) {
   const { updateCartItem, removeCartItem } = useShoppingCart()
   // loadingState(updateCartItem, `${content.product.name} quantity updated`)
   // loadingState(removeCartItem, `${content.product.name} removed`)
 
   const removeItemFromCart = () => removeCartItem.mutate(content)
+
+  const productImage =
+    typeof content.product.images[0] === 'string'
+      ? content.product.images[0]
+      : content.product.images[0].file.url
+
   return (
     <div className="relative my-2 flex items-center hover:bg-gray-100 border border-b border-gray-100 justify-between p-4">
       <div className="image-wrapper w-1/4">
         <Image
-          src={content.product.images[0]}
+          src={productImage}
           alt={content.product.name}
           height={70}
           width={100}
@@ -53,12 +60,10 @@ export default function ReviewOrderlist({ content }: any) {
             {content.quantity} {content.quantity > 1 ? 'items' : 'item'}
           </span>
           <FaTimes size={15} className="mx-2 text-gray-400" />
-          {content.product.price && (
-            <FormattedPrice
-              className="font-medium text-sm"
-              price={content.product.sale_price}
-            />
-          )}
+          <FormattedPrice
+            className="font-medium text-sm"
+            price={content.price}
+          />
         </div>
       </div>
       <button type="button" onClick={removeItemFromCart}>
@@ -71,3 +76,6 @@ export default function ReviewOrderlist({ content }: any) {
     </div>
   )
 }
+
+const ReviewOrderlist = memo(ReviewOrderlistComponent)
+export default ReviewOrderlist

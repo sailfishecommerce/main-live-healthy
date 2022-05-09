@@ -1,23 +1,43 @@
+import { useAtom } from 'jotai'
 import Link from 'next/link'
+import { useEffect } from 'react'
 
 import PaymentMethodView from '@/components/Payment/PaymentMethodView'
-import ProductPriceView from '@/components/Product/ProductPriceView'
 import SeeMoreProductInfo from '@/components/Product/SeeMoreProductInfo'
 import CustomerReview from '@/components/Reviews/CustomerReview'
-import { useAppDispatch } from '@/hooks/useRedux'
+// import { useAppDispatch } from '@/hooks/useRedux'
 import useSlidingTab from '@/hooks/useSlidingTab'
-import { updateActiveProduct } from '@/redux/product-slice'
-import { updateSlidingTabInfo } from '@/redux/ui-slice'
+import { activeProductSlideAtom, seemoreAtom } from '@/lib/atomConfig'
+import type { seemoreType } from '@/lib/atomConfigType'
 
 export default function ProductDetail({ product }: any) {
-  const dispatch = useAppDispatch()
+  const [, setSeeMoreState]: any = useAtom<seemoreType>(seemoreAtom)
   const { updateSlideTab } = useSlidingTab()
 
-  function seeMoreProductsHandler(infoType: string) {
+  const [activeProductSlide, setActiveProductSlide]: any = useAtom<any>(
+    activeProductSlideAtom
+  )
+
+  useEffect(() => {
+    if (activeProductSlide === null) {
+      setActiveProductSlide(product)
+    }
+  }, [])
+
+  function setSeeMoreHandler(infoType: seemoreType) {
     updateSlideTab('SLIDING-INFO')
-    dispatch(updateActiveProduct(product))
-    dispatch(updateSlidingTabInfo(infoType))
+    setSeeMoreState(infoType)
   }
+
+  // const dispatch = useAppDispatch()
+  // const { updateSlideTab } = useSlidingTab()
+
+  // function seeMoreProductsHandler(infoType: string) {
+  //   updateSlideTab('SLIDING-INFO')
+  //   dispatch(updateActiveProduct(product))
+  //   dispatch(updateSlidingTabInfo(infoType))
+  // }
+
   const productVendorLink = product?.vendor?.includes(' ')
     ? `/search/${product.vendor}`
     : `/vendor/${product.vendor}`
@@ -34,18 +54,18 @@ export default function ProductDetail({ product }: any) {
         reviews={product?.review_rating}
         ratings={product?.rating}
       />
-      <ProductPriceView product={product} />
+      {/* <ProductPriceView product={product} /> */}
       <SeeMoreProductInfo
         title="Product Information"
-        onClick={() => seeMoreProductsHandler('Product Information')}
+        onClick={() => setSeeMoreHandler('Product Information')}
       />
       <SeeMoreProductInfo
         title="Storage Instructions"
-        onClick={() => seeMoreProductsHandler('STORAGE INSTUCTIONS')}
+        onClick={() => setSeeMoreHandler('STORAGE INSTUCTIONS')}
       />
       <SeeMoreProductInfo
         title="Directions"
-        onClick={() => seeMoreProductsHandler('Directions')}
+        onClick={() => setSeeMoreHandler('Directions')}
       />
       <hr className="my-4 border border-gray-100" />
       <PaymentMethodView />

@@ -1,10 +1,10 @@
 /* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable jsx-a11y/no-onchange */
 import type { FormikProps } from 'formik'
+import { useAtom } from 'jotai'
 
-import { useAppDispatch } from '@/hooks/useRedux'
 import countries from '@/json/countries.json'
-import { updateCountry } from '@/redux/payment-slice'
+import { countryAtom } from '@/lib/atomConfig'
 import type { formType } from '@/types'
 
 type countriesType = {
@@ -25,7 +25,7 @@ export default function SelectCountries({
   content,
   formik,
 }: SelectCountriesProps) {
-  const dispatch = useAppDispatch()
+  const [, setCountry] = useAtom(countryAtom)
   const validCountry: countriesType[] = countries.data?.filter(
     (country) => country.Iso2
   )
@@ -41,7 +41,7 @@ export default function SelectCountries({
       ...formik.values,
       ...payload,
     })
-    dispatch(updateCountry(payload))
+    setCountry(payload)
   }
 
   return (

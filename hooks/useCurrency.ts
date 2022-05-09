@@ -1,13 +1,10 @@
 /* eslint-disable no-else-return */
 import { QueryClient, useQuery } from 'react-query'
 
-import { useAppSelector } from '@/hooks/useRedux'
 import useSwell from '@/hooks/useSwell'
 
 export default function useCurrency() {
   const { swellInit } = useSwell()
-
-  const { currency } = useAppSelector((state) => state.currencyLanguage)
 
   async function listEnabledCurrencies() {
     const { swell } = await swellInit()
@@ -28,7 +25,6 @@ export default function useCurrency() {
     listEnabledCurrencies,
     selectCurrencies,
     getSelectedCurrencies,
-    currency,
   }
 }
 

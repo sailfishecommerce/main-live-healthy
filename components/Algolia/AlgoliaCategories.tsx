@@ -1,10 +1,11 @@
 /* eslint-disable array-callback-return */
 import algoliasearch from 'algoliasearch'
+import { useAtom } from 'jotai'
 import { memo } from 'react'
 import isEqual from 'react-fast-compare'
 import { InstantSearch, connectRefinementList } from 'react-instantsearch-dom'
 
-import { useAppSelector } from '@/hooks/useRedux'
+import { selectedCategoryAtom } from '@/lib/atomConfig'
 
 function getCategorySubMenu(items: any[]) {
   const itemLabelArray = items.map((item: { label: string }) => item.label)
@@ -93,7 +94,8 @@ const CustomRefinementListMenu = connectRefinementList<any>(
 )
 
 export default function AlgoliaCategories() {
-  const { selectedCategory } = useAppSelector((state) => state.UI)
+  const [selectedCategory] = useAtom(selectedCategoryAtom)
+
   return (
     <InstantSearch
       indexName="LIVEHEALTHY_PRODUCTION_INDEX"

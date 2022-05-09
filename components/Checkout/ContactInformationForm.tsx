@@ -1,11 +1,16 @@
+import { useAtom } from 'jotai'
 import type { PropsWithChildren } from 'react'
 
-import useUI from '@/hooks/useUI'
+import { modalAtom } from '@/lib/atomConfig'
 
 export default function ContactInformationForm({
   children,
 }: PropsWithChildren<Record<string, unknown>>) {
-  const { toggleAuthModalHandler }: any = useUI()
+  const [, setModal]: any = useAtom<'SLIDING-CART' | null>(modalAtom)
+
+  function updateModalView() {
+    return setModal('MODAL_LOGIN')
+  }
 
   return (
     <div className="contact-information border-b pb-2 mb-6">
@@ -16,7 +21,7 @@ export default function ContactInformationForm({
           <button
             type="button"
             className="mountain-mist font-semibold"
-            onClick={toggleAuthModalHandler}
+            onClick={updateModalView}
           >
             Log in
           </button>

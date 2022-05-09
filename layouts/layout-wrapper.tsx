@@ -1,15 +1,16 @@
 /* eslint-disable no-unneeded-ternary */
+import { useAtom } from 'jotai'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import type { PropsWithChildren } from 'react'
 import { ToastContainer } from 'react-toastify'
 
 import LayoutMetatag from '@/components/Metatag/LayoutMetatag'
-import { useAppSelector } from '@/hooks/useRedux'
 import useScroll from '@/hooks/useScroll'
-import useSlidingTab from '@/hooks/useSlidingTab'
-import useUI from '@/hooks/useUI'
 import 'react-toastify/dist/ReactToastify.css'
+import useSlidingTab from '@/hooks/useSlidingTab'
+import useToast from '@/hooks/useToast'
+import { activeProductSlideAtom, modalAtom } from '@/lib/atomConfig'
 
 const NextNProgress = dynamic(
   () =>
@@ -66,17 +67,15 @@ interface Props {
 }
 
 export default function LayoutWrapper({ children }: PropsWithChildren<Props>) {
-  const { slideTab } = useSlidingTab()
-  const { activeProduct } = useAppSelector((state) => state.product)
-  const {
-    displayAuthModal,
-    displayLogoutModal,
-    toggleAuthModalHandler,
-    toggleLogoutModalHandler,
-  } = useUI()
+  const [modal, setModal] = useAtom(modalAtom)
+  const { slidingTab } = useSlidingTab()
+  const [activeProductSlide]: any = useAtom<any>(activeProductSlideAtom)
+  const { appLoading } = useToast()
+  const closeAuthModalHandler = () => setModal(null)
+  const modalState = modal === 'MODAL_LOGIN' ? true : false
   const { scroll } = useScroll()
-  const { loading: loadingState } = useAppSelector((state) => state.UI)
-  const { loading } = useAppSelector((state) => state.checkout)
+  // const { loading: loadingState } = useAppSelector((state) => state.UI)
+  // const { loading } = useAppSelector((state) => state.checkout)
 
   const showPointer = scroll > 450 ? true : false
 
@@ -91,26 +90,20 @@ export default function LayoutWrapper({ children }: PropsWithChildren<Props>) {
       </Head>
       <LayoutMetatag />
       <div data-aos="fade-up" id="head" />
-      {loading && <SpinnerOverlay />}
-      {loadingState && <LoadingBar />}
+      {appLoading && <SpinnerOverlay />}
+      {appLoading && <LoadingBar />}
       <NextNProgress color="#95bf11" options={{ showSpinner: true }} />
       <ToastContainer />
-      {displayAuthModal && (
-        <DynamicAuthModal
-          show={displayAuthModal}
-          onHide={toggleAuthModalHandler}
-        />
+      {modal === 'MODAL_LOGIN' && (
+        <DynamicAuthModal show={modalState} onHide={closeAuthModalHandler} />
       )}
-      {slideTab === 'SLIDING-INFO' && activeProduct && (
-        <DynamicSlidingInformationTab product={activeProduct} />
+      {slidingTab === 'SLIDING-INFO' && activeProductSlide && (
+        <DynamicSlidingInformationTab product={activeProductSlide} />
       )}
-      {slideTab === 'SLIDING-CART' && <DynamicSlidingCartTab />}
-      {slideTab === 'SLIDING-ACCOUNT' && <DynamicAccountDetailsTab />}
-      {displayLogoutModal && (
-        <DynamicLogoutModal
-          show={displayLogoutModal}
-          onHide={toggleLogoutModalHandler}
-        />
+      {slidingTab === 'SLIDING-CART' && <DynamicSlidingCartTab />}
+      {slidingTab === 'SLIDING-ACCOUNT' && <DynamicAccountDetailsTab />}
+      {modal === 'MODAL_LOGOUT' && (
+        <DynamicLogoutModal show={modalState} onHide={closeAuthModalHandler} />
       )}
       <div className="content position-relative h-100">{children}</div>
 

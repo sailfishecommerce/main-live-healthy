@@ -29,7 +29,7 @@ export default function Product({ objectID, ...props }: ProductPageProps) {
   return (
     <Applayout title="Product page">
       <SearchPageLayout {...props}>
-        <Container className="mt-14">
+        <Container className="mt-0">
           <Configure filters={`slug:${objectID}`} />
           <DynamicProductOverview hit={hit} />
         </Container>

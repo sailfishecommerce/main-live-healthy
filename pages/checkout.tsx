@@ -8,9 +8,10 @@ export default function Checkout() {
   const mobileWidth = useMediaQuery('(max-width:768px)')
   const { useCartData } = useCart()
   const { data: cart } = useCartData()
+  console.log('cart', cart)
   return (
     <Applayout title="Checkout - Thanks for shopping with us">
-      {cart !== null && cart.items.length > 0 ? (
+      {cart !== null && cart?.items?.length > 0 ? (
         <main className="mx-auto bg-light-gray">
           {mobileWidth ? <MobileCheckoutView /> : <CheckoutCustomer />}
         </main>

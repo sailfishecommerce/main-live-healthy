@@ -1,13 +1,14 @@
+import { useAtom } from 'jotai'
 import type { ReactText } from 'react'
 import { toast } from 'react-toastify'
 
-import useLoading from '@/hooks/useLoading'
+import { appLoadingAtom } from '@/lib/atomConfig'
 
 export default function useToast() {
-  const { updateLoadingState } = useLoading()
+  const [appLoading, setAppLoading] = useAtom(appLoadingAtom)
 
   function isLoading(): ReactText {
-    updateLoadingState()
+    setAppLoading(true)
     const toastId = toast.loading('Processing...', {
       position: 'top-left',
     })
@@ -15,7 +16,7 @@ export default function useToast() {
   }
 
   function isSuccessful(toastId: any, message: string) {
-    updateLoadingState()
+    setAppLoading(false)
     toast.update(toastId, {
       render: message,
       type: 'success',
@@ -27,7 +28,7 @@ export default function useToast() {
   }
 
   function hasError(toastId: any, message: string) {
-    updateLoadingState()
+    setAppLoading(false)
     toast.update(toastId, {
       render: message,
       type: 'error',
@@ -39,6 +40,7 @@ export default function useToast() {
   }
 
   return {
+    appLoading,
     isLoading,
     isSuccessful,
     hasError,

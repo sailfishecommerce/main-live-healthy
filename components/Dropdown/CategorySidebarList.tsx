@@ -1,13 +1,10 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+import { useAtom } from 'jotai'
+
 import { useMediaQuery } from '@/hooks'
 import useCategoryData from '@/hooks/useCategoryData'
-import { useAppSelector } from '@/hooks/useRedux'
 import allCategoryContent from '@/json/allcategories-dropdown.json'
-import { useAppDispatch } from '@/redux/store'
-import {
-  updatedSelectedCategory,
-  updateMobileSlideMenuView,
-} from '@/redux/ui-slice'
+import { selectedCategoryAtom } from '@/lib/atomConfig'
 
 type categoryType = {
   slug: string
@@ -22,16 +19,17 @@ interface CategoryProps {
 
 function CategoryLinks({ categories, title, className }: CategoryProps) {
   const categoryLinkClassName = className ? className : ''
-  const dispatch = useAppDispatch()
-  const { selectedCategory } = useAppSelector((state) => state.UI)
+  const [selectedCategory, setSelectedCategory] = useAtom(selectedCategoryAtom)
+  const [, setMobileSlideMenuView] = useAtom(selectedCategoryAtom)
+
   const mobileWidth = useMediaQuery('(max-width:768px)')
 
   const selectCategoryHandler = (category: string) => {
     if (mobileWidth) {
-      dispatch(updateMobileSlideMenuView('SUBMENU'))
+      setMobileSlideMenuView('SUBMENU')
     }
     if (title === 'Categories') {
-      dispatch(updatedSelectedCategory(category))
+      setSelectedCategory(category)
     }
   }
 

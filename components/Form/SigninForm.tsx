@@ -1,6 +1,7 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import { Formik } from 'formik'
+import { useAtom } from 'jotai'
 import Link from 'next/link'
 import { toast } from 'react-toastify'
 
@@ -8,18 +9,17 @@ import { displayFormElement } from '@/components/Form/FormElement'
 import { signinFormSchema } from '@/components/Form/schema/AuthSchema'
 // import { useAuth } from '@/hooks'
 import useAuthTemp from '@/hooks/useAuthTemp'
-import { useAppDispatch } from '@/hooks/useRedux'
 import authContent from '@/json/authForm.json'
-import { toggleAuthModal } from '@/redux/ui-slice'
+import { modalAtom } from '@/lib/atomConfig'
 
 export default function SigninForm() {
   // const { signIn } = useAuth()
   const { useSignIn } = useAuthTemp()
   const signIn = useSignIn()
-  const dispatch = useAppDispatch()
+  const [, setModal]: any = useAtom<'SLIDING-CART' | null>(modalAtom)
 
   function toggleAuthmodal() {
-    dispatch(toggleAuthModal())
+    return setModal(null)
   }
 
   if (signIn.isSuccess) {

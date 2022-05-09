@@ -1,9 +1,9 @@
+import { useAtom } from 'jotai'
+
 import SlidingTab from '@/components/Slidingtab'
 import getProductInformationType from '@/components/Slidingtab/getProductInformationType'
-import { useAppSelector } from '@/hooks/useRedux'
 import slidingInfoTabs from '@/json/slidingInfoTab.json'
-import { useAppDispatch } from '@/redux/store'
-import { updateSlidingTabInfo } from '@/redux/ui-slice'
+import { seemoreAtom } from '@/lib/atomConfig'
 import type { productType } from '@/types'
 
 interface Props {
@@ -11,23 +11,22 @@ interface Props {
 }
 
 export default function SlidingInformation({ product }: Props) {
-  const { slidingTabInfo } = useAppSelector((state) => state.UI)
-  const dispatch = useAppDispatch()
+  const [seemoreTab, setSeemoreTab]: any = useAtom<string | null>(seemoreAtom)
 
   const selectInformationTypeHandler = (infoType: string) =>
-    dispatch(updateSlidingTabInfo(infoType))
+    setSeemoreTab(infoType)
 
   return (
     <SlidingTab buttonColor="text-white">
-      <div className="header lg:h-40 flex lg:items-end bg-mountain-green p-4 w-full lg:flex-row flex-col items-start py-8">
+      <div className="header lg:h-40 justify-between flex lg:items-end bg-mountain-green p-4 w-full lg:flex-row flex-col items-start py-8">
         {slidingInfoTabs.map((tab) => {
           const tabStyle =
-            tab.value === slidingTabInfo ? 'text-white' : 'text-gray-300'
+            tab.value === seemoreTab ? 'text-white' : 'text-gray-300'
           return (
             <button
               type="button"
               key={tab.value}
-              className={`${tabStyle} font-bold text-lg 2xl:text-lg 2xl:mr-4 mx-2`}
+              className={`${tabStyle} font-bold xl:text-md xl:mx-1 xl:mr-0 text-lg 2xl:text-lg 2xl:mr-4 mx-2`}
               onClick={() => selectInformationTypeHandler(tab.value)}
             >
               {tab.title}
@@ -36,17 +35,14 @@ export default function SlidingInformation({ product }: Props) {
         })}
       </div>
       <h1 className="font-bold text-xl m-2 mx-6">
-        {slidingTabInfo === 'STORAGE INSTUCTIONS'
+        {seemoreTab === 'STORAGE INSTUCTIONS'
           ? 'Storage Instructions'
-          : slidingTabInfo === 'Directions' && 'Directions'}
+          : seemoreTab === 'Directions' && 'Directions'}
       </h1>
       <div
         className="text-content sliding-tab bg-white px-6 pb-16"
         dangerouslySetInnerHTML={{
-          __html: getProductInformationType(
-            slidingTabInfo,
-            product.description
-          ),
+          __html: getProductInformationType(seemoreTab, product.description),
         }}
       />
       <style jsx>

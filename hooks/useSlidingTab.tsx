@@ -1,16 +1,18 @@
-import { useAppSelector, useAppDispatch } from '@/hooks/useRedux'
-import { toggleSlideTab } from '@/redux/ui-slice'
+import { useAtom } from 'jotai'
+
+import { slidingTabAtom } from '@/lib/atomConfig'
 
 export default function useSlidingTab() {
-  const dispatch = useAppDispatch()
-  const { slideTab } = useAppSelector((state) => state.UI)
+  const [slidingTab, setSlidingTab]: any = useAtom<boolean | null>(
+    slidingTabAtom
+  )
 
   const updateSlideTab = (
     slideTabState: 'SLIDING-ACCOUNT' | 'SLIDING-CART' | 'SLIDING-INFO' | null
-  ) => dispatch(toggleSlideTab(slideTabState))
+  ) => setSlidingTab(slideTabState)
 
   return {
     updateSlideTab,
-    slideTab,
+    slidingTab,
   }
 }

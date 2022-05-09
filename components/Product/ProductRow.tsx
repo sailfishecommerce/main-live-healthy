@@ -15,11 +15,16 @@ export default function ProductRow({ cart }: any) {
 
   // loadingState(updateCartItem, `${cart.product.name} updated`)
 
+  const productImage =
+    typeof cart.product.images[0] === 'string'
+      ? cart.product.images[0]
+      : cart.product.images[0].file.url
+
   return (
     <div className="flex items-center  border-b p-4 hover:bg-gray-100">
       <div className="w-1/4 mr-4 rounded-lg bg-gray-200">
         <Image
-          src={cart.product.images[0]}
+          src={productImage}
           alt={cart.product.name}
           height={90}
           width={120}

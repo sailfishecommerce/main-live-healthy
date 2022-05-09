@@ -5,7 +5,6 @@ import { useQuery } from 'react-query'
 import { LineLoader } from '@/components/Loader/ProductsLoader'
 import FormatCurrency from '@/components/Price/FormatCurrency'
 import useCurrency from '@/hooks/useCurrency'
-import { useAppSelector } from '@/hooks/useRedux'
 
 interface FormattedPriceProps {
   price: number | string
@@ -21,7 +20,6 @@ function FormattedPriceComponent({
     'useCurrencies',
     listEnabledCurrencies
   )
-  const { currency } = useAppSelector((state) => state.currencyLanguage)
   return (
     <>
       {status === 'error' ? (
@@ -32,7 +30,6 @@ function FormattedPriceComponent({
         <FormatCurrency
           price={price}
           currencies={currencyList}
-          currency={currency}
           className={className}
         />
       )}

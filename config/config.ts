@@ -26,6 +26,17 @@ const refinements: Refinement[] = [
   },
   {
     type: 'list',
+    header: 'Product Type',
+    label: 'Produt Type',
+    options: {
+      searchable: true,
+      attribute: 'product_type',
+      showMore: true,
+      showMoreLimit: 100,
+    },
+  },
+  {
+    type: 'list',
     header: 'Vendors',
     label: 'Vendor',
     options: {

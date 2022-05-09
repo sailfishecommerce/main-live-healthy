@@ -3,9 +3,9 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import CartIcon from '@/components/Icons/CartIcon'
+import DiscountTag from '@/components/Tag/DiscountTag'
 import useShoppingCart from '@/hooks/useShoppingCart'
 import type { ProductProps } from '@/types'
-import DiscountTag from '../Tag/DiscountTag'
 
 function round(num: number) {
   const m = Number((Math.abs(num) * 100).toPrecision(15))
@@ -133,7 +133,7 @@ export default function Product({
           .product {
             font-family: 'Commissioner', sans-serif;
           }
-         
+
           .vendor {
             border-left: 3px solid ${color};
             color: ${color};

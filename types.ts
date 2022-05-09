@@ -2,7 +2,7 @@ export type productType = {
   name: string
   description?: any | string
   attributes?: any
-  sale_price?: number
+  sale_price: number
   meta_title?: string
   content: {
     maxQuantity: number

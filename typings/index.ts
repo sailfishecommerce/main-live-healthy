@@ -7,6 +7,7 @@ export type productType = {
   description?: any | string
   attributes?: any
   meta_title?: string
+  sale_price: number
   content: {
     maxQuantity: number
     productBenefits: Array<{

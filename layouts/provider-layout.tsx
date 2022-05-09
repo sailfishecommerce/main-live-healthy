@@ -48,9 +48,9 @@ export default function ProviderLayout({ children }: AppLayoutProps) {
   const queryClient = new QueryClient()
 
   return (
-    <JotaiProvider initialValues={get()}>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <JotaiProvider initialValues={get()}>
           <QueryClientProvider client={queryClient}>
             <MediaContextProvider>
               <LazyMotion features={loadFramerMotionFeatures} strict={true}>
@@ -58,8 +58,8 @@ export default function ProviderLayout({ children }: AppLayoutProps) {
               </LazyMotion>
             </MediaContextProvider>
           </QueryClientProvider>
-        </PersistGate>
-      </Provider>
-    </JotaiProvider>
+        </JotaiProvider>
+      </PersistGate>
+    </Provider>
   )
 }

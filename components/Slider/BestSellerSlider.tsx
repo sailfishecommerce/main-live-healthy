@@ -24,7 +24,7 @@ export default function BestSellerSlider() {
           ) : (
             <Splide
               options={{
-                perPage: 5,
+                perPage: 4,
                 padding: '5rem',
                 breakpoints: {
                   500: {

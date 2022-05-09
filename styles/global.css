@@ -32,15 +32,17 @@ body {
 }
 
 ul.splide__pagination {
- display: flex;
-    flex-direction: column !important;
-    margin-right: 40px;
-    margin-top: -10px;
-    height: 70px;
+  display: flex;
+  flex-direction: column !important;
+  margin-right: 40px;
+  margin-top: -10px;
+  height: 70px;
 }
 
-
 /* utilities */
+.strike-through {
+  text-decoration: line-through;
+}
 .mountain-green {
   color: var(--mountain-green);
 }

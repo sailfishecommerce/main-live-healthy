@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import CartIcon from '@/components/Icons/CartIcon'
+import DiscountTag from '@/components/Tag/DiscountTag'
 import useShoppingCart from '@/hooks/useShoppingCart'
 
 const DynamicFormattedPrice = dynamic(
@@ -27,7 +28,9 @@ export default function ProductBannerCard({ product, color }: any) {
       : product.images[0].file.url
 
   return (
-    <div className="hover:bg-white flex ml-4 p-2  hover:shadow-lg product hover:rounded-lg product hover:border">
+    <div className="hover:bg-white flex ml-4 p-2 relative hover:shadow-lg product hover:rounded-lg product hover:border">
+      <DiscountTag price={product.price} salePrice={product.sale_price} />
+
       <Link
         passHref
         href={`/product/${product.slug}?queryID=${product.__queryID}`}
@@ -50,10 +53,18 @@ export default function ProductBannerCard({ product, color }: any) {
         <div className="product-name-view md:mb-6 mb-2">
           <h3 className="text-xs md:text-md product-name">{product.name}</h3>
         </div>
-        <DynamicFormattedPrice
-          price={product.price}
-          className="text-sm md:text-md text-black font-semibold"
-        />
+        <div className="price-group flex items-center justify-between">
+          <DynamicFormattedPrice
+            price={product.sale_price}
+            className="text-sm md:text-md text-black font-semibold"
+          />
+          {product.price !== 0 && (
+            <DynamicFormattedPrice
+              price={product.price}
+              className="text-sm strike-through md:text-sm text-red-500 font-semibold"
+            />
+          )}
+        </div>
         <button
           type="button"
           className="bg-mountain-green mt-4 w-full md:w-4/5 justify-center h-8 text-white px-4 py-1 flex items-center mx-auto rounded-md"

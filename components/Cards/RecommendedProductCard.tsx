@@ -67,7 +67,7 @@ export default function RecommendedProductCard({
         <div className="price-view my-2 flex items-center justify-between">
           <FormattedPrice
             className="text-black font-bold text-sm"
-            price={product.price}
+            price={product.sale_price}
           />
           <button
             type="button"

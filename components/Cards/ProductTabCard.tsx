@@ -45,7 +45,7 @@ export default function ProductTabCard({ product }: any) {
             {product.price && (
               <FormattedPrice
                 className="font-bold text-xs md:text-sm text-black"
-                price={product.price}
+                price={product.sale_price}
               />
             )}
           </a>

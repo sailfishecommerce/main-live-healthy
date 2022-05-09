@@ -77,7 +77,7 @@ export default function ProductHitCard({
             </div>
             {hit?.price && (
               <FormattedPrice
-                price={hit.price}
+                price={hit.sale_price}
                 className="text-sm md:text-md text-black font-semibold"
               />
             )}

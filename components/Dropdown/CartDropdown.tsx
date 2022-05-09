@@ -1,12 +1,11 @@
 import Link from 'next/link'
 
-import useCart from '@/hooks/useCart'
+import Icons from '@/components/Icons'
 import FormattedPrice from '@/components/Price/FormattedPrice'
-
-import { cartType } from '@/types'
 import CartWidget from '@/components/Widget/CartWidget'
 import useAirwallexPayment from '@/hooks/useAirwallexPayment'
-import Icons from '@/components/Icons'
+import useCart from '@/hooks/useCart'
+import type { cartType } from '@/types'
 
 interface Props {
   cart: cartType
@@ -37,9 +36,10 @@ export default function CartDropdown({ cart, className }: Props) {
             </span>
           </div>
           <button
-            onClick={toggleCart}
+            type="button"
             aria-label="expand cart"
             className="text-sm hover:bg-red-500 flex items-center cursor-pointer hover:text-white rounded-md px-1 py-1 border-red-500 border-2 text-red-500 font-bold"
+            onClick={toggleCart}
           >
             Expand cart
             <Icons icon="arrow-next" className="ml-1" />
@@ -47,6 +47,7 @@ export default function CartDropdown({ cart, className }: Props) {
         </div>
         <Link passHref href="/checkout">
           <button
+            type="button"
             aria-label="checkout"
             disabled={disableBtn}
             className="bg-red-500 items-center w-4/5 cursor-pointer justify-center mx-auto flex rounded-md text-white px-2 py-1 text-sm hover:bg-transparent border-red-500 border-2 hover:text-red-400 font-bold"

@@ -56,7 +56,7 @@ export default function ReviewOrderlist({ content }: any) {
           {content.product.price && (
             <FormattedPrice
               className="font-medium text-sm"
-              price={content.product.price}
+              price={content.product.sale_price}
             />
           )}
         </div>

@@ -1,7 +1,6 @@
-import FormattedPrice from '@/components/Price/FormattedPrice'
-
-import Rating from '@/components/Rating'
 import ProductForm from '@/components/Form/ProductForm'
+import FormattedPrice from '@/components/Price/FormattedPrice'
+import Rating from '@/components/Rating'
 import discountPrice from '@/lib/discountPrice'
 
 export default function ProductdetailsView({ product }: any) {
@@ -37,7 +36,7 @@ export default function ProductdetailsView({ product }: any) {
         <div
           className="description quickView-description hidden md:flex"
           dangerouslySetInnerHTML={{
-            __html: productToView['description'],
+            __html: productToView.description,
           }}
         />
       </div>

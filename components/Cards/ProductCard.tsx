@@ -5,6 +5,12 @@ import Link from 'next/link'
 import CartIcon from '@/components/Icons/CartIcon'
 import useShoppingCart from '@/hooks/useShoppingCart'
 import type { ProductProps } from '@/types'
+import DiscountTag from '../Tag/DiscountTag'
+
+function round(num: number) {
+  const m = Number((Math.abs(num) * 100).toPrecision(15))
+  return (Math.round(m) / 100) * Math.sign(num)
+}
 
 const DynamicFormattedPrice = dynamic(
   () =>
@@ -64,8 +70,9 @@ export default function Product({
 
   return (
     <div
-      className={`hover:bg-white hover:shadow-lg product hover:rounded-lg product ${productClassName}  ${isRow} p-2 md:p-6 hover:border`}
+      className={`hover:bg-white relative hover:shadow-lg product hover:rounded-lg product ${productClassName}  ${isRow} p-2 md:p-6 hover:border`}
     >
+      <DiscountTag price={product.price} salePrice={product.sale_price} />
       <Link
         passHref
         href={`/product/${product.slug}?queryID=${product.__queryID}`}
@@ -98,10 +105,18 @@ export default function Product({
                 {product.name}
               </h3>
             </div>
-            <DynamicFormattedPrice
-              price={product.price}
-              className="text-sm md:text-md text-black font-semibold"
-            />
+            <div className="price-group flex items-center justify-between">
+              <DynamicFormattedPrice
+                price={product.sale_price}
+                className="text-sm md:text-md text-black font-semibold"
+              />
+              {product.price !== 0 && (
+                <DynamicFormattedPrice
+                  price={product.price}
+                  className="text-sm strike-through md:text-sm text-red-500 font-semibold"
+                />
+              )}
+            </div>
           </div>
         </a>
       </Link>
@@ -118,6 +133,7 @@ export default function Product({
           .product {
             font-family: 'Commissioner', sans-serif;
           }
+         
           .vendor {
             border-left: 3px solid ${color};
             color: ${color};

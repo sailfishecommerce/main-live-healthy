@@ -136,9 +136,13 @@ header.header {
 }
 
 .itemSlider .splide__arrows button {
-  background: #ffffff;
+  background: #f1dfdfbf;
   border: 1px solid whitesmoke;
-  box-shadow: 0px 11px 32px 0px #0d022114;
+  box-shadow: 0px 11px 32px 0px #cb42c18f;
+}
+
+.itemSlider .splide__arrows {
+  display: block;
 }
 
 .itemSlider .splide__pagination,

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import axios from 'axios'
 import jwtDecode from 'jwt-decode'
 
@@ -15,11 +16,10 @@ export function isTokenValid(tokenExpiryDate: string | null) {
   if (tokenExpiryDate) {
     const formatTokenExpiryDate = new Date(tokenExpiryDate)
     const currentDate = new Date()
-    const isTokenNowValid = formatTokenExpiryDate > currentDate ? true : false
+    const isTokenNowValid = formatTokenExpiryDate > currentDate
     return isTokenNowValid
-  } else {
-    return false
   }
+  return false
 }
 
 export function fetchAirwallexAccessToken(
@@ -48,7 +48,7 @@ type decodeType = {
 }
 
 export function decodeAirwallexClientSecretToken(
-  clientSecret: string | any
+  clientSecret: any | string
 ): decodeType {
   const decodeClientSecret: decodeType = jwtDecode(clientSecret)
   // console.log("decodeClientSecret", decodeClientSecret);
@@ -61,18 +61,17 @@ export function isClientSecretStillValid(expTime: number) {
   const formatRemainingTime = remainingTime * 1000
   const currentTime = new Date()
   const tokenTime = new Date(formatRemainingTime)
-  const clientSecretIsValid = tokenTime > currentTime ? true : false
+  const clientSecretIsValid = tokenTime > currentTime
   return clientSecretIsValid
 }
 
-export function clientSecretValidity(clientSecret: string | any) {
+export function clientSecretValidity(clientSecret: any | string) {
   if (clientSecret) {
     const decodedClientSecret = decodeAirwallexClientSecretToken(clientSecret)
     const isClientSecretValid = isClientSecretStillValid(
       decodedClientSecret.exp
     )
     return isClientSecretValid
-  } else {
-    return false
   }
+  return false
 }

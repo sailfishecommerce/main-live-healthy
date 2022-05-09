@@ -1,41 +1,36 @@
-import { useAppSelector } from '@/hooks/useRedux'
-import { useAppDispatch } from '@/redux/store'
+import { useAtom } from 'jotai'
+
 import {
-  toggleAuthModal,
-  toggleLogoutModal,
-  toggleNoticebar,
-  updateCategoryDropdown,
-} from '@/redux/ui-slice'
+  categoryDropdownAtom,
+  modalAtom,
+  noticebarAtom,
+} from '@/lib/atomConfig'
+import type { modalType } from '@/lib/atomConfigType'
 
 export default function useUI() {
-  const { categoryDropdown, displayAuthModal, noticebar, displayLogoutModal } =
-    useAppSelector((state) => state.UI)
-  const dispatch = useAppDispatch()
+  const [noticebar, setNoticebar] = useAtom(noticebarAtom)
+  const [modal, setModal]: any = useAtom<'SLIDING-CART' | null>(modalAtom)
 
-  function toggleCategoriesDropdown() {
-    return dispatch(updateCategoryDropdown())
+  const [categoryDropdown, setCategoryDropdown] = useAtom(categoryDropdownAtom)
+
+  function toggleCategoryDropdownHandler() {
+    return setCategoryDropdown((prev) => !prev)
   }
 
-  function toggleAuthModalHandler() {
-    dispatch(toggleAuthModal())
+  function toggleNoticebar() {
+    return setNoticebar((prevState) => !prevState)
   }
 
-  function toggleNoticebarHandler() {
-    dispatch(toggleNoticebar())
-  }
-
-  function toggleLogoutModalHandler() {
-    dispatch(toggleLogoutModal())
+  function toggleModalHandler(value: modalType) {
+    return setModal(value)
   }
 
   return {
-    categoryDropdown,
-    displayAuthModal,
+    modal,
     noticebar,
-    toggleNoticebarHandler,
-    toggleCategoriesDropdown,
-    displayLogoutModal,
-    toggleAuthModalHandler,
-    toggleLogoutModalHandler,
+    categoryDropdown,
+    toggleCategoryDropdownHandler,
+    toggleNoticebar,
+    toggleModalHandler,
   }
 }

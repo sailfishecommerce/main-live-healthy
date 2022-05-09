@@ -1,12 +1,8 @@
 import useAccount from '@/hooks/useAccount'
-import { useAppDispatch } from '@/hooks/useRedux'
 import useToast from '@/hooks/useToast'
 import { addNewUserToList } from '@/hooks/useVbout'
-import { authorizeError, authorizeUser, logout } from '@/redux/auth-slice'
-import { toggleAuthModal } from '@/redux/ui-slice'
 
 export default function useAuth() {
-  const dispatch = useAppDispatch()
   const { isLoading, isSuccessful, hasError } = useToast()
   const { loginUser, logoutUser, createUserAccount } = useAccount()
 
@@ -18,9 +14,9 @@ export default function useAuth() {
           isSuccessful(toastId, `Welcome back, ${values.email}`)
           formik.resetForm()
           formik.setSubmitting(false)
-          dispatch(authorizeUser(response))
+          // dispatch(authorizeUser(response))
           if (response !== null) {
-            dispatch(toggleAuthModal())
+            // dispatch(toggleAuthModal())
           }
         } else {
           hasError(toastId, 'login not successful')
@@ -29,7 +25,7 @@ export default function useAuth() {
       })
       .catch((error) => {
         hasError(toastId, error?.message)
-        dispatch(authorizeError())
+        // dispatch(authorizeError())
         formik.setSubmitting(false)
       })
   }
@@ -43,17 +39,17 @@ export default function useAuth() {
           hasError(toastId, `${values.email} already exists `)
         } else {
           isSuccessful(toastId, `${values.email}, sign up successful`)
-          dispatch(authorizeUser(response))
+          // dispatch(authorizeUser(response))
           formik.resetForm()
           if (!notModal) {
-            dispatch(toggleAuthModal())
+            // dispatch(toggleAuthModal())
           }
         }
         formik.setSubmitting(false)
       })
       .catch((error) => {
         hasError(toastId, error?.message)
-        dispatch(authorizeError())
+        // dispatch(authorizeError())
         formik.setSubmitting(false)
       })
   }
@@ -63,7 +59,7 @@ export default function useAuth() {
     logoutUser()
       .then((response) => {
         if (response?.success) {
-          dispatch(logout())
+          // dispatch(logout())
           isSuccessful(toastId, 'logout successful')
         } else {
           hasError(toastId, 'unable to logout user')

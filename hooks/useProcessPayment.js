@@ -11,13 +11,11 @@ import { createVboutOrder } from '@/hooks/useVbout'
 import { vboutOrderData } from '@/lib/vbout'
 import { updateCart } from '@/redux/cart-slice'
 import { sendProductReview, updateSubmittedOrder } from '@/redux/payment-slice'
-import { useAppDispatch } from '@/redux/store'
 
 export default function useProcessPayment() {
   const router = useRouter()
   const { tokenizePayment, submitUserOrder } = usePayment()
   const { getACart } = useSwellCart()
-  const dispatch = useAppDispatch
   const { useCartData } = useCart()
   const { onShowModal } = useModal()
   const { data: cart } = useCartData()

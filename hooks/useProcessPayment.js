@@ -11,6 +11,8 @@ import { createVboutOrder } from '@/hooks/useVbout'
 import { vboutOrderData } from '@/lib/vbout'
 import { updateCart } from '@/redux/cart-slice'
 import { sendProductReview, updateSubmittedOrder } from '@/redux/payment-slice'
+import { useAtom } from 'jotai'
+import { sendProductReviewAtom, submitOrderAtom } from '@/lib/atomConfig'
 
 export default function useProcessPayment() {
   const router = useRouter()
@@ -26,6 +28,8 @@ export default function useProcessPayment() {
   } = useAccount()
   const [loadingState, setLoadingState] = useState(false)
   const { isLoading, isSuccessful, hasError } = useToast()
+  const [, setSubmitOrder] = useAtom(submitOrderAtom)
+  const [, setSendProductReview] = useAtom(sendProductReviewAtom)
 
   function processPayment(data, loading) {
     function vboutOrder(order) {
@@ -47,18 +51,15 @@ export default function useProcessPayment() {
                       console.log('submitOrder', response)
                       if (response.paid) {
                         setLoadingState(false)
-                        dispatch(sendProductReview(true))
+                        setSendProductReview(true)
                         vboutOrder(response)
                         isSuccessful(loading, 'payment successful')
-                        dispatch(
-                          updateSubmittedOrder({
-                            account: response?.account,
-                            orderNumber: response?.number,
-                            products: response?.items,
-                          })
-                        )
+                        setSubmitOrder({
+                          account: response?.account,
+                          orderNumber: response?.number,
+                          products: response?.items,
+                        })
                         router.push('/checkout-complete')
-                        dispatch(updateCart(null))
                       }
                       return response
                     })

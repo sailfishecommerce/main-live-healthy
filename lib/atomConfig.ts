@@ -42,3 +42,19 @@ export const airwallexAtom = atom<{
   clientSecret: null,
   paymentIntentId: null,
 })
+
+// order
+export const sendProductReviewAtom = atom<boolean | null>(null)
+export const submitOrderAtom = atom<{
+  account: null
+  orderNumber: null
+  products: null
+} | null>(null)
+
+// auth
+export const authAtom = atom<{
+  loading: boolean | null
+  authorized: any | null
+  userDetail: any | null
+  error: boolean | null
+} | null>(null)

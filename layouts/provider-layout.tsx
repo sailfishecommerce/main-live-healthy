@@ -44,15 +44,15 @@ export default function ProviderLayout({ children }: AppLayoutProps) {
   const queryClient = new QueryClient()
 
   return (
-    <JotaiProvider initialValues={get()}>
-      <QueryClientProvider client={queryClient}>
+    <QueryClientProvider client={queryClient}>
+      <JotaiProvider initialValues={get()}>
         <MediaContextProvider>
           <LazyMotion features={loadFramerMotionFeatures} strict={true}>
             {children}
           </LazyMotion>
         </MediaContextProvider>
         <ReactQueryDevtools />
-      </QueryClientProvider>
-    </JotaiProvider>
+      </JotaiProvider>
+    </QueryClientProvider>
   )
 }

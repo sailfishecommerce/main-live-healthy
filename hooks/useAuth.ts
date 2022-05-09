@@ -1,10 +1,14 @@
+import { useAtom } from 'jotai'
+
 import useAccount from '@/hooks/useAccount'
 import useToast from '@/hooks/useToast'
 import { addNewUserToList } from '@/hooks/useVbout'
+import { authAtom } from '@/lib/atomConfig'
 
 export default function useAuth() {
   const { isLoading, isSuccessful, hasError } = useToast()
   const { loginUser, logoutUser, createUserAccount } = useAccount()
+  const [, setAuth] = useAtom(authAtom)
 
   function signIn(values: any, formik: any) {
     const toastId = isLoading()
@@ -14,7 +18,12 @@ export default function useAuth() {
           isSuccessful(toastId, `Welcome back, ${values.email}`)
           formik.resetForm()
           formik.setSubmitting(false)
-          // dispatch(authorizeUser(response))
+          setAuth({
+            loading: false,
+            authorized: true,
+            userDetail: response,
+            error: null,
+          })
           if (response !== null) {
             // dispatch(toggleAuthModal())
           }
@@ -25,7 +34,12 @@ export default function useAuth() {
       })
       .catch((error) => {
         hasError(toastId, error?.message)
-        // dispatch(authorizeError())
+        setAuth({
+          loading: false,
+          authorized: null,
+          userDetail: null,
+          error: true,
+        })
         formik.setSubmitting(false)
       })
   }
@@ -39,7 +53,12 @@ export default function useAuth() {
           hasError(toastId, `${values.email} already exists `)
         } else {
           isSuccessful(toastId, `${values.email}, sign up successful`)
-          // dispatch(authorizeUser(response))
+          setAuth({
+            loading: false,
+            authorized: true,
+            userDetail: response,
+            error: null,
+          })
           formik.resetForm()
           if (!notModal) {
             // dispatch(toggleAuthModal())
@@ -49,7 +68,12 @@ export default function useAuth() {
       })
       .catch((error) => {
         hasError(toastId, error?.message)
-        // dispatch(authorizeError())
+        setAuth({
+          loading: false,
+          authorized: null,
+          userDetail: null,
+          error: true,
+        })
         formik.setSubmitting(false)
       })
   }

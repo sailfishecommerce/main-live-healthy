@@ -9,7 +9,7 @@ export default function useNav() {
   const toggleSearch = () =>
     setMobileView((prev) => ({
       mobileMenu: prev.mobileMenu,
-      showMobileSearch: !prev,
+      showMobileSearch: !prev.showMobileSearch,
     }))
 
   const toggleMobileMenu = () =>

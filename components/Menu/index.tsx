@@ -7,7 +7,7 @@ import useNav from '@/hooks/useNav'
 export default function Menu() {
   const mobileWidth = useMediaQuery('(max-width:768px)')
   const { showMobileSearch } = useNav()
-
+  console.log('showMobileSearch', showMobileSearch)
   return (
     <nav className=" mx-auto container md:px-0 px-4 pb-3 md:pb-0">
       <PrimaryMenu />

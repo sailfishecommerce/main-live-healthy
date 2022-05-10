@@ -22,6 +22,12 @@ export default function useMutationAction() {
         onSettled: () => {
           queryClient.invalidateQueries('cart')
         },
+        onSuccess: () => {
+          toast.success('product quantity updated')
+        },
+        onError: () => {
+          toast.error('error updating product quantity')
+        },
       }
     )
   }
@@ -33,6 +39,13 @@ export default function useMutationAction() {
         onSettled: () => {
           queryClient.invalidateQueries('cart')
         },
+        onSuccess: (response) => {
+          console.log('response useAddItemToCart', response)
+          toast.success('product added to cart')
+        },
+        onError: () => {
+          toast.error('error adding product to cart')
+        },
       }
     )
   }
@@ -42,34 +55,35 @@ export default function useMutationAction() {
       onSettled: () => {
         queryClient.invalidateQueries('cart')
       },
+      onSuccess: () => {
+        toast.success('product removed!')
+      },
+      onError: () => {
+        toast.error('error removing product from cart')
+      },
     })
-  }
-
-  function useAddItemToCartModal() {
-    return useMutation(
-      ({ product, productQty, selectedOptions }: any) =>
-        addToCartModal(product, productQty, selectedOptions),
-      {
-        onSettled: () => {
-          queryClient.invalidateQueries('cart')
-        },
-      }
-    )
   }
 
   function useEmptyCart() {
     return useMutation(emptyCart, {
-      onSuccess: (data: any) => {
-        queryClient.invalidateQueries('cart')
+      onSuccess: () => {
         toast.success('cart cleared')
+      },
+      onError: () => {
+        toast.error('error clearing the cart')
+      },
+      onSettled: () => {
+        queryClient.invalidateQueries('cart')
       },
     })
   }
 
   function useDeleteCart() {
     return useMutation(deleteCart, {
-      onSuccess: (data) => {
+      onSettled: () => {
         queryClient.invalidateQueries('cart')
+      },
+      onSuccess: (data) => {
         toast.success('cart deleted')
       },
       onError: (data) => {
@@ -83,7 +97,6 @@ export default function useMutationAction() {
     useAddItemToCart,
     useRemoveFromCart,
     useEmptyCart,
-    useAddItemToCartModal,
     useDeleteCart,
   }
 }

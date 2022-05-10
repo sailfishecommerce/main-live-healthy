@@ -5,12 +5,15 @@ import FormattedPrice from '@/components/Price/FormattedPrice'
 import AppliedDiscountTag from '@/components/Tag/AppliedDiscountTag'
 import { useCart } from '@/hooks'
 import useCoupon from '@/hooks/useCoupon'
+import useSlidingTab from '@/hooks/useSlidingTab'
 import type { cartType } from '@/typings'
 
 export default function SlideCardTotal() {
   const { useCartData } = useCart()
   const { data: cart }: cartType | any = useCartData()
+  const { updateSlideTab } = useSlidingTab()
   const { allDiscount, onSubmitCoupon, couponInputHandler } = useCoupon()
+  console.log('allDiscount', allDiscount)
 
   return (
     <>
@@ -86,6 +89,7 @@ export default function SlideCardTotal() {
           <button
             type="button"
             className="bg-tan-hide w-full flex items-center p-2 mt-2 font-bold text-white rounded-md justify-center"
+            onClick={() => updateSlideTab(null)}
           >
             Secure checkout <HiOutlineArrowNarrowRight className="ml-2" />
           </button>

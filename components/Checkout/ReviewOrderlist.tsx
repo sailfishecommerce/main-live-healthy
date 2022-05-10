@@ -11,8 +11,6 @@ const selectOptions = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
 function ReviewOrderlistComponent({ content }: any) {
   const { updateCartItem, removeCartItem } = useShoppingCart()
-  // loadingState(updateCartItem, `${content.product.name} quantity updated`)
-  // loadingState(removeCartItem, `${content.product.name} removed`)
 
   const removeItemFromCart = () => removeCartItem.mutate(content)
 

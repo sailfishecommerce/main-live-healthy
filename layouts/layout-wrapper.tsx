@@ -44,7 +44,7 @@ const DynamicAuthModal = dynamic(
 const DynamicSlidingCartTab = dynamic(
   () =>
     import(
-      /* webpackChunkName: 'SlidingCartTab' */ '@/components/Slidingtab/SlidingCartTab'
+      /* webpackChunkName: 'SlidingCart' */ '@/components/Slidingtab/SlidingCart'
     )
 )
 

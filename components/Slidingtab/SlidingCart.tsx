@@ -4,7 +4,7 @@ import RecommendationSlider from '@/components/Slider/RecommendationSlider'
 import SlidingTab from '@/components/Slidingtab'
 import { useCart } from '@/hooks'
 
-export default function SlidingCartTab() {
+export default function SlidingCart() {
   const { useCartData } = useCart()
   const { data: cart }: any = useCartData()
   return (

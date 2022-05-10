@@ -48,15 +48,13 @@ export default function useAuth() {
         },
         onSuccess: (response) => {
           if (response?.name) {
-            console.log('response', response)
             toast.success(`Sign up successful, welcome ${response.name}`)
             setModal(null)
           } else {
             toast.error(`Sign up failed, User ${response?.email.message}`)
           }
         },
-        onError: (error) => {
-          console.log('error', error)
+        onError: () => {
           toast.error('Sign up failed')
         },
       }
@@ -70,11 +68,12 @@ export default function useAuth() {
         queryClient.invalidateQueries('userdetails')
       },
       onSuccess: (response) => {
-        toast.success('Logout successful')
-        setModal(null)
+        if (response?.success) {
+          toast.success('Logout successful')
+          setModal(null)
+        }
       },
-      onError: (error) => {
-        console.log('error', error)
+      onError: () => {
         toast.error(`unable to logout user}`)
       },
     })

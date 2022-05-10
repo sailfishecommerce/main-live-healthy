@@ -59,6 +59,7 @@
         {
           "name": "phone",
           "type": "input",
+          "inputText": "number",
           "id": "checkout-phone",
           "placeholder": "Phone"
         }

@@ -39,12 +39,11 @@ export default function ProductHitCard({
       }
 
   const { addItemToCart } = useShoppingCart()
-
-  // loadingState(addItemToCart, `${hit.name} added to cart`)
   const productImage =
     typeof hit.images[0] === 'string' ? hit.images[0] : hit.images[0].file.url
 
-  const addToCartHandler = () => addItemToCart.mutate({ hit, quantity: 1 })
+  const addToCartHandler = () =>
+    addItemToCart.mutate({ product: hit, quantity: 1 })
   const productVendorLink = hit?.vendor?.includes(' ')
     ? `/search/${hit.vendor}`
     : `/vendor/${hit.vendor}`

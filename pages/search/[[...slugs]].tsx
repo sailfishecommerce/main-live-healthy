@@ -8,7 +8,6 @@ import { NoResultsHandler } from '@/components/@instantsearch/widgets/no-results
 import { QueryRuleBanners } from '@/components/@instantsearch/widgets/query-rule-banners/query-rule-banners'
 import ProductHitCard from '@/components/Cards/ProductHitCard'
 import { Container } from '@/components/Container'
-// import { ProductCardHit } from '@/components/ProductCard/product-card-hit'
 import { viewModeAtom } from '@/components/ViewModes'
 import { configAtom } from '@/config/config'
 import Applayout from '@/layouts/app-layout'
@@ -17,9 +16,6 @@ import {
   getServerSidePropsPage,
   SearchPageLayout,
 } from '@/layouts/search-page-layout'
-
-// import { useIsMounted } from '@/hooks/useIsMounted'
-// import { useTailwindScreens } from '@/hooks/useTailwindScreens'
 
 export type SearchPageProps = SearchPageLayoutProps & {
   searchQuery: string
@@ -53,13 +49,8 @@ export default function SearchPage({ searchQuery, ...props }: SearchPageProps) {
   const result = totalHits > 1 ? 'results' : 'result'
   const { breadcrumbAttributes, refinementsLayoutAtom } =
     useAtomValue(configAtom)
-  // console.log('breadcrumbAttributes', breadcrumbAttributes)
   const refinementsLayout = useAtomValue(refinementsLayoutAtom)
   const viewMode = useAtomValue(viewModeAtom)
-  // console.log('refinementsLayout', refinementsLayout)
-  // const { laptop } = useTailwindScreens()
-  // const isMounted = useIsMounted(true)
-  // const isLaptop = laptop && isMounted()
 
   return (
     <Applayout title="Search for products">

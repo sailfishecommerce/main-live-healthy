@@ -52,8 +52,6 @@ function ProductCardComponent({
 
   const { addItemToCart } = useShoppingCart()
 
-  // loadingState(addItemToCart, `${product.name} added to cart`)
-
   const addToCartHandler = () => addItemToCart.mutate({ product, quantity: 1 })
   const productVendorLink = product?.vendor?.includes(' ')
     ? `/search/${product.vendor}`

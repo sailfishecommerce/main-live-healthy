@@ -96,7 +96,7 @@ export default function useProcessPayment() {
         console.log('response getUserDetails', response)
         if (response === null) {
           console.log('data createUserAddresstAtCheckout', data)
-          createUserAddresstAtCheckout(data)
+          createUserAddresstAtCheckout(data.form)
             .then((response) => {
               console.log('createUserAddresstAtCheckout', response)
               if (response !== null && response?.email?.code === 'UNIQUE') {

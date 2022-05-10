@@ -11,6 +11,11 @@ export default function OrderHistoryProductItem({ item }: any) {
   const { data, status } = useQuery('productDetails', () =>
     getAProduct(item.product_id)
   )
+
+  const productImage =
+    typeof data?.images[0] === 'string'
+      ? data?.images[0]
+      : data?.images[0].file.url
   return (
     <>
       {status === 'success' && data !== null && (
@@ -18,7 +23,7 @@ export default function OrderHistoryProductItem({ item }: any) {
           <a className="order-history border-b pb-3 flex items-center my-4">
             <span className="w-1/12 mr-4">
               <Image
-                src={data.images[0]}
+                src={productImage}
                 alt={data.name}
                 height={70}
                 width={70}

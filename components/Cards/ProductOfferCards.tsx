@@ -17,7 +17,7 @@ export default function ProductOfferCards({ offer }: Props) {
       <div className="w-6 h-6 mb-0 md:mb-2">
         <Image src={offer.icon} alt={offer.title} height={50} width={50} />
       </div>
-      <h5 className="lg:text-lg text-sm font-bold md:mx-2 md:ml-0">
+      <h5 className="lg:text-md text-sm font-bold md:mx-2 md:ml-0">
         {offer.title}
       </h5>
       <p className="text-xs md:text-sm my-1">{offer.text}</p>

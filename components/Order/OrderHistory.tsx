@@ -20,7 +20,7 @@ export default function OrderHistory({ orders }: any) {
           </tr>
         </thead>
         <tbody>
-          {orders.map((item: any) => (
+          {orders?.map((item: any) => (
             <OrderHistoryItem key={item.id} item={item} />
           ))}
         </tbody>

@@ -7,7 +7,10 @@ export default function useDiscount() {
   }
   const { data, status, error } = useQuery(
     'availableDiscount',
-    getAvailableDiscounts
+    getAvailableDiscounts,
+    {
+      staleTime: Infinity,
+    }
   )
   return [data?.data, status, error]
 }

@@ -106,7 +106,7 @@ export default function ProductMagnifier({ product }: ProductProps) {
           </a>
         ))}
       </div>
-      <ProductOffers className="order-2" />
+      <ProductOffers className="order-2 hidden md:block" />
     </div>
   )
 }

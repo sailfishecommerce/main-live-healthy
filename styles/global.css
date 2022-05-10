@@ -285,6 +285,14 @@ span.ais-SearchBox-loadingIndicator {
     overflow: hidden;
   }
 
+  .product-gallery-thumblist a {
+    height: 80px;
+  }
+
+  .product-gallery-thumblist {
+    height: unset;
+  }
+
   .bestsellerSplide .splide__track,
   .trendingLinks .splide__track,
   .productSlider .splide__track,

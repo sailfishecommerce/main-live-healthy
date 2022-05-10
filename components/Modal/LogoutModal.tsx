@@ -1,12 +1,8 @@
-import { useAtom } from 'jotai'
 import { BiLogOut } from 'react-icons/bi'
 import { useQuery } from 'react-query'
-import { toast } from 'react-toastify'
 
 import Modal from '@/components/Modal'
-import { useAccount, useMediaQuery } from '@/hooks'
-import { modalAtom } from '@/lib/atomConfig'
-import type { modalType } from '@/lib/atomConfigType'
+import { useAccount, useAuth, useMediaQuery } from '@/hooks'
 
 interface Props {
   show: boolean
@@ -15,25 +11,11 @@ interface Props {
 
 export default function LogoutModal({ show, onHide }: Props) {
   const mobileWidth = useMediaQuery('(max-width:768px)')
-  const { getUserAccount, logoutUser } = useAccount()
-  const [, setModal]: any = useAtom<modalType>(modalAtom)
-  // const { useLogout } = useAuthTemp()
+  const { getUserAccount } = useAccount()
   const { data } = useQuery('userDetails', getUserAccount)
   const iconSize = mobileWidth ? 16 : 22
-  // const logout = useLogout()
-
-  function logoutHandler() {
-    logoutUser()
-      .then(() => {
-        toast.success('Logout successful')
-        setModal('MODAL_LOGOUT')
-      })
-      .catch((error) => {
-        toast.error(`unable to logout user, ${error}`)
-      })
-  }
-
-  // const toastId = logout.isLoading ? isLoading() : ''
+  const { useLogout } = useAuth()
+  const logout = useLogout()
 
   return (
     <Modal
@@ -54,7 +36,7 @@ export default function LogoutModal({ show, onHide }: Props) {
         <button
           type="button"
           className="mt-6 flex items-center text-white  px-4 py-1 rounded-xl mx-auto bg-mountain-green"
-          onClick={logoutHandler}
+          onClick={() => logout.mutate()}
         >
           <BiLogOut
             className="lg:mr-2 mr-0 hover:text-green-500"

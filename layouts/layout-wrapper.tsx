@@ -73,6 +73,8 @@ export default function LayoutWrapper({ children }: PropsWithChildren<Props>) {
   const { appLoading } = useToast()
   const closeAuthModalHandler = () => setModal(null)
   const modalState = modal === 'MODAL_LOGIN' ? true : false
+  const logoutModalState = modal === 'MODAL_LOGOUT' ? true : false
+
   const { scroll } = useScroll()
 
   const showPointer = scroll > 450 ? true : false
@@ -101,7 +103,10 @@ export default function LayoutWrapper({ children }: PropsWithChildren<Props>) {
       {slidingTab === 'SLIDING-CART' && <DynamicSlidingCartTab />}
       {slidingTab === 'SLIDING-ACCOUNT' && <DynamicAccountDetailsTab />}
       {modal === 'MODAL_LOGOUT' && (
-        <DynamicLogoutModal show={modalState} onHide={closeAuthModalHandler} />
+        <DynamicLogoutModal
+          show={logoutModalState}
+          onHide={closeAuthModalHandler}
+        />
       )}
       <div className="content position-relative h-100">{children}</div>
 

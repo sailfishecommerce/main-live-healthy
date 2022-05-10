@@ -52,7 +52,7 @@ export default function Modal({
                     <h3 className="text-3xl font-semibold">{title}</h3>
                   </div>
                 )}
-                <div className="relative p-6 flex-auto">{children}</div>
+                <div className="relative p-3 lg:p-6 flex-auto">{children}</div>
               </div>
             </div>
           </div>
@@ -75,7 +75,7 @@ export default function Modal({
               }
               @media (max-width: 768px) {
                 .appmodal {
-                  width: 80vw;
+                  width: 85vw;
                 }
               }
             `}

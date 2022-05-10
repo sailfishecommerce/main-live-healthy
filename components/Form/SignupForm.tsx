@@ -2,11 +2,13 @@ import { Formik } from 'formik'
 
 import { displayFormElement } from '@/components/Form/FormElement'
 import { signupFormSchema } from '@/components/Form/schema/AuthSchema'
-// import { useAuth } from '@/hooks'
+import useAuth from '@/hooks/useAuth'
 import authContent from '@/json/authForm.json'
 
 export default function SignupForm() {
-  // const { signUp } = useAuth()
+  const { useSignUp } = useAuth()
+  const signUp = useSignUp()
+
   return (
     <Formik
       initialValues={{
@@ -17,10 +19,10 @@ export default function SignupForm() {
         confirmPassword: '',
       }}
       validationSchema={signupFormSchema}
-      onSubmit={
-        (values, formik) => console.log('values', values)
-        // signUp(values, formik)
-      }
+      onSubmit={(values) => {
+        console.log('values', values)
+        signUp.mutate(values)
+      }}
     >
       {(formik) => (
         <form

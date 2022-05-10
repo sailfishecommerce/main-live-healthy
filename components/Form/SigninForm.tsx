@@ -3,7 +3,6 @@
 import { Formik } from 'formik'
 import { useAtom } from 'jotai'
 import Link from 'next/link'
-import { toast } from 'react-toastify'
 
 import { displayFormElement } from '@/components/Form/FormElement'
 import { signinFormSchema } from '@/components/Form/schema/AuthSchema'
@@ -19,15 +18,6 @@ export default function SigninForm() {
 
   function toggleAuthmodal() {
     return setModal(null)
-  }
-
-  if (signIn.isSuccess) {
-    if (signIn.data) {
-      toast.success(`sign in successful,Welcome ${signIn.data.name}`)
-    }
-    toggleAuthmodal()
-  } else if (signIn.isError) {
-    toast.error('sign in error')
   }
 
   return (

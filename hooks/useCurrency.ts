@@ -45,20 +45,11 @@ export function useCurrencies() {
 
   const { data: currencyList, status } = useQuery(
     'useCurrencies',
-    listEnabledCurrencies
+    listEnabledCurrencies,
+    {
+      staleTime: Infinity,
+    }
   )
 
   return { currencyList, status }
-}
-
-export async function getCurrencies(listEnabledCurrencies: any) {
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        staleTime: Infinity,
-      },
-    },
-  })
-
-  return await queryClient.fetchQuery('currencies', listEnabledCurrencies)
 }

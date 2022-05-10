@@ -41,6 +41,8 @@ export default function ProductHitCard({
   const { addItemToCart } = useShoppingCart()
 
   // loadingState(addItemToCart, `${hit.name} added to cart`)
+  const productImage =
+    typeof hit.images[0] === 'string' ? hit.images[0] : hit.images[0].file.url
 
   const addToCartHandler = () => addItemToCart.mutate({ hit, quantity: 1 })
   const productVendorLink = hit?.vendor?.includes(' ')
@@ -56,7 +58,7 @@ export default function ProductHitCard({
             className={`${productImageClassName} ${imageWidth}  image-wrapper`}
           >
             <Image
-              src={hit.images[0]}
+              src={productImage}
               alt={hit.name}
               height={imageSize.height}
               width={imageSize.width}

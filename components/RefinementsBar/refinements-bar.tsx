@@ -72,7 +72,7 @@ function RefinementsBarComponent({
         <RelevantSort />
       </div>
 
-      <div className="flex flex-col items-start gap-4">
+      <div className="lg:flex flex-col hidden  items-start gap-4">
         <div className="w-full flex gap-6">
           {showRefinements && (
             <RefinementsBarDropdowns dynamicWidgets={dynamicWidgets} />

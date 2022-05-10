@@ -1,10 +1,9 @@
 /* eslint-disable no-nested-ternary */
 import { memo } from 'react'
-import { useQuery } from 'react-query'
 
 import { LineLoader } from '@/components/Loader/ProductsLoader'
 import FormatCurrency from '@/components/Price/FormatCurrency'
-import useCurrency from '@/hooks/useCurrency'
+import { useCurrencies } from '@/hooks/useCurrency'
 
 interface FormattedPriceProps {
   price: number | string
@@ -15,11 +14,8 @@ function FormattedPriceComponent({
   price,
   className,
 }: FormattedPriceProps): JSX.Element {
-  const { listEnabledCurrencies } = useCurrency()
-  const { data: currencyList, status } = useQuery(
-    'useCurrencies',
-    listEnabledCurrencies
-  )
+  const { currencyList, status } = useCurrencies()
+
   return (
     <>
       {status === 'error' ? (

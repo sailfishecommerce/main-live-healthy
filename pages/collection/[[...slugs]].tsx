@@ -43,10 +43,6 @@ export default function Catalog(props: SearchPageLayoutProps) {
     useAtomValue(configAtom)
   const refinementsLayout = useAtomValue(refinementsLayoutAtom)
   const viewMode = useAtomValue(viewModeAtom)
-  // const laptop = useMediaQuery('(min-width:1200px)')
-
-  // const isMounted = useIsMounted(true)
-  // const isLaptop = laptop && isMounted()
 
   return (
     <Applayout title="Collection page">

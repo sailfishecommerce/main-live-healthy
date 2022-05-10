@@ -22,7 +22,6 @@ export function ProductsShowcase({
   hitComponent,
   ...searchParameters
 }: ProductsShowcaseProps) {
-  // console.log('searchParameters', searchParameters)
   return (
     <Index indexName={indexName} indexId={indexId}>
       <Configure {...searchParameters} />

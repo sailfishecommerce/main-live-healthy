@@ -28,7 +28,6 @@ export default function DeliveryAddress({ formik }: any) {
               {formRow.map((formInput, indexN: number) => {
                 const inputStyle =
                   formRow.length === 1 ? 'w-full' : `w-1/${formRow.length}`
-                console.log('formInput', formInput)
                 return (
                   <div key={indexN} className={inputStyle}>
                     {displayFormElement(formInput, formik)}

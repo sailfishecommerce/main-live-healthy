@@ -13,7 +13,6 @@ export default function SlideCardTotal() {
   const { data: cart }: cartType | any = useCartData()
   const { updateSlideTab } = useSlidingTab()
   const { allDiscount, onSubmitCoupon, couponInputHandler } = useCoupon()
-  console.log('allDiscount', allDiscount)
 
   return (
     <>
@@ -34,7 +33,7 @@ export default function SlideCardTotal() {
             )}
           </h4>{' '}
           <div className="discount rounded-md border text-sm text-red-500 hover:bg-red-500 hover:text-white px-2 py-1 border-red-500">
-            Discount: HK$ 136
+            Discount: HK$ 0
           </div>
         </div>
         {cart !== null ? (

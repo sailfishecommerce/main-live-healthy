@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
+import { memo } from 'react'
 
 import CartIcon from '@/components/Icons/CartIcon'
 import DiscountTag from '@/components/Tag/DiscountTag'
@@ -25,7 +26,7 @@ interface ProductTypes extends ProductProps {
   imageClassName?: string
 }
 
-export default function Product({
+function ProductCardComponent({
   product,
   className,
   row,
@@ -143,3 +144,6 @@ export default function Product({
     </div>
   )
 }
+
+const ProductCard = memo(ProductCardComponent)
+export default ProductCard

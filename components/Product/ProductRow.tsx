@@ -9,12 +9,6 @@ export default function ProductRow({ cart }: any) {
   const { removeCartItem } = useShoppingCart()
   const removeItemFromCart = () => removeCartItem.mutate(cart)
 
-  // useEffect(() => {
-  //   loadingState(removeCartItem, `${cart.product.name} removed`)
-  // }, [removeItemFromCart])
-
-  // loadingState(updateCartItem, `${cart.product.name} updated`)
-
   const productImage =
     typeof cart.product.images[0] === 'string'
       ? cart.product.images[0]

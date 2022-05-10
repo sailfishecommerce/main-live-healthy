@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import CartIcon from '@/components/Icons/CartIcon'
 import CheckIcon from '@/components/Icons/CheckIcon'
@@ -11,8 +11,12 @@ import useSlidingTab from '@/hooks/useSlidingTab'
 export default function ProductPriceView({ product }: any) {
   const { addItemToCart } = useShoppingCart()
   const { updateSlideTab } = useSlidingTab()
+  const router = useRouter()
 
-  // loadingState(addItemToCart, `${product.name} added to cart`)
+  function buyNowHandler() {
+    addItemToCart.mutate({ product, quantity: 1 })
+    router.push('/checkout')
+  }
 
   function addToCartHandler() {
     updateSlideTab('SLIDING-CART')
@@ -37,14 +41,13 @@ export default function ProductPriceView({ product }: any) {
                   <CartIcon />
                   Add to cart
                 </button>
-                <Link passHref href="/checkout">
-                  <button
-                    type="button"
-                    className="bg-tan-hide lg:text-lg  rounded-lg bg-tan-hide text-white py-2 lg:py-2 px-4"
-                  >
-                    Buy now
-                  </button>
-                </Link>
+                <button
+                  type="button"
+                  className="bg-tan-hide lg:text-lg  rounded-lg bg-tan-hide text-white py-2 lg:py-2 px-4"
+                  onClick={buyNowHandler}
+                >
+                  Buy now
+                </button>
               </div>
               <div className="lg:rounded-full hidden md:flex lg:border w-1/2 lg:w-1/4 px-2 lg:py-3 flex items-center justify-center px-1 my-2">
                 <CheckIcon />

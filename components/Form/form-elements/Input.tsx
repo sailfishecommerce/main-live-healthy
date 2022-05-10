@@ -1,11 +1,11 @@
-import React from "react";
+import React from 'react'
 
 interface InputProps {
   content: {
-    placeholder: string;
-    name: string;
-    inputType: "email" | "text" | "password" | string;
-  };
+    placeholder: string
+    name: string
+    inputType: 'email' | 'text' | 'password' | string
+  }
 }
 
 export default function Input({ content }: InputProps) {
@@ -37,5 +37,5 @@ export default function Input({ content }: InputProps) {
         </label> */}
       </div>
     </div>
-  );
+  )
 }

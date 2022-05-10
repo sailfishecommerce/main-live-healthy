@@ -27,9 +27,10 @@ export const mobileViewAtom = atom({
   showMobileSearch: false,
 })
 // form
-export const paymentFormAtom = atom<{ form: any; completed: boolean } | null>(
-  null
-)
+export const paymentFormAtom = atomWithStorage<{
+  form: any
+  completed: boolean
+} | null>('paymentForm', null)
 export const completeOrderAtom = atom(false)
 export const countryAtom = atom<{ country: string } | null>(null)
 export const userAddressAtom = atom(null)

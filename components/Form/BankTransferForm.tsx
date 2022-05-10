@@ -1,4 +1,5 @@
 import { useAtom } from 'jotai'
+import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
 import { toast } from 'react-toastify'
 
@@ -12,8 +13,7 @@ export default function BankTransferForm() {
   const [submit, setSubmit] = useState(false)
   const [paymentForm] = useAtom(paymentFormAtom)
   const setBankHandler = (e: any) => setBank(e.target.value)
-
-  console.log('paymentForm', paymentForm)
+  const router = useRouter()
 
   useEffect(() => {
     if (submit) {
@@ -22,6 +22,7 @@ export default function BankTransferForm() {
           console.log('response', response)
           setSubmit(false)
           toast.success(`An email has been sent to ${paymentForm?.form.email}`)
+          router.push('/checkout-complete')
         })
         .catch((error) => {
           setSubmit(false)
@@ -36,7 +37,7 @@ export default function BankTransferForm() {
   }
 
   return (
-    <form onSubmit={(e) => submitHandler(e, true)}>
+    <div>
       <table className="manualTransfer mb-3 w-full mt-3">
         <thead>
           <tr className="border-b">
@@ -60,9 +61,10 @@ export default function BankTransferForm() {
         type="submit"
         aria-label="Submit"
         className="border-2 border-red-500 rounded-md p-2 mx-auto flex my-4 hover:bg-red-500 hover:text-white"
+        onClick={(e) => submitHandler(e, true)}
       >
         Submit
       </button>
-    </form>
+    </div>
   )
 }

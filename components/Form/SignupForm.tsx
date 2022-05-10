@@ -19,10 +19,7 @@ export default function SignupForm() {
         confirmPassword: '',
       }}
       validationSchema={signupFormSchema}
-      onSubmit={(values) => {
-        console.log('values', values)
-        signUp.mutate(values)
-      }}
+      onSubmit={(values) => signUp.mutate(values)}
     >
       {(formik) => (
         <form

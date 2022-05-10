@@ -8,8 +8,8 @@ import { useAuth } from '@/hooks'
 import formContent from '@/json/AccountAuthform.json'
 
 export default function AccountSigninForm() {
-  const { signIn } = useAuth()
-
+  const { useSignIn } = useAuth()
+  const signIn = useSignIn()
   return (
     <div className="col-md-6">
       <div className="card border-0 shadow">
@@ -29,7 +29,9 @@ export default function AccountSigninForm() {
               password: '',
             }}
             validationSchema={signinFormSchema}
-            onSubmit={(values, formik) => signIn(values, formik)}
+            onSubmit={(values) =>
+              signIn.mutate({ email: values.email, password: values.password })
+            }
           >
             {(formik) => (
               <form

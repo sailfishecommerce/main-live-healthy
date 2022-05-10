@@ -1,5 +1,4 @@
 import useMutationAction from '@/hooks/useMutationAction'
-// import useToast from '@/hooks/useToast'
 
 export default function useShoppingCart() {
   const { useRemoveFromCart, useUpdateCartItem } = useMutationAction()

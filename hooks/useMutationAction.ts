@@ -1,4 +1,3 @@
-/* eslint-disable unused-imports/no-unused-vars */
 import { useMutation, useQueryClient } from 'react-query'
 import { toast } from 'react-toastify'
 
@@ -11,7 +10,6 @@ export default function useMutationAction() {
     deleteCart,
     updateCartItemQuantity,
     addToCart,
-    addToCartModal,
     removeCartItem,
   } = useSwellCart()
 
@@ -39,8 +37,7 @@ export default function useMutationAction() {
         onSettled: () => {
           queryClient.invalidateQueries('cart')
         },
-        onSuccess: (response) => {
-          console.log('response useAddItemToCart', response)
+        onSuccess: () => {
           toast.success('product added to cart')
         },
         onError: () => {
@@ -83,10 +80,10 @@ export default function useMutationAction() {
       onSettled: () => {
         queryClient.invalidateQueries('cart')
       },
-      onSuccess: (data) => {
+      onSuccess: () => {
         toast.success('cart deleted')
       },
-      onError: (data) => {
+      onError: () => {
         toast.error('error deleting cart')
       },
     })

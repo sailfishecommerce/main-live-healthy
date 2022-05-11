@@ -22,7 +22,7 @@ export default function SecondaryMenu() {
             ))
           : null}
       </ul>
-      {/* <HomepageSearch /> */}
+      <HomepageSearch />
     </div>
   )
 }

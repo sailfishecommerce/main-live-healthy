@@ -68,13 +68,13 @@ function SearchbarComponent() {
     []
   )
 
-  //   const handleSelect = useCallback(
-  //     (query: string = '') => {
-  //       router.push(`/catalog?q=${query}`)
-  //     },
-  //     // eslint-disable-next-line react-hooks/exhaustive-deps
-  //     []
-  //   )
+  const handleSelect = useCallback(
+    (query: string = '') => {
+      router.push(`/collection?q=${query}`)
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  )
 
   const handleShouldPanelOpen = useCallback(
     ({ state }: { state: AutocompleteState<any> }) =>
@@ -102,7 +102,7 @@ function SearchbarComponent() {
         shouldPanelOpen={handleShouldPanelOpen}
         openOnFocus={!laptop}
         onFocusBlur={handleFocusBlur}
-        // onSelect={handleSelect}
+        onSelect={handleSelect}
       />
     </m.div>
   )

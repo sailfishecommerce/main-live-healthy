@@ -53,7 +53,7 @@ export function useUrlSync() {
     (nextSearchState: SearchState) => {
       if (!isCollectionPage) return
 
-      const newRoute = `/collection/${searchStateToUrl(nextSearchState)}`
+      const newRoute = `/collection${searchStateToUrl(nextSearchState)}`
       if (router.asPath !== newRoute) {
         router.push(newRoute, newRoute, { shallow: true })
       }
@@ -75,7 +75,6 @@ export function useUrlSync() {
     const handleRouteChange = () => {
       const newSearchState = urlToSearchState(window.location.href)
       setSearchState(newSearchState)
-      console.log('newSearchState', newSearchState)
 
       if (!newSearchState.query) {
         autocomplete?.setQuery('')

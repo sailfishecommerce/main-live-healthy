@@ -49,9 +49,7 @@ export default function Catalog(props: SearchPageLayoutProps) {
       <SearchPageLayout {...props}>
         <Container className="flex flex-col gap-2 container lg:mx-auto lg:mb-10 lg:mt-0 lg:gap-0">
           <Breadcrumb attributes={breadcrumbAttributes} />
-
           <QueryRuleBanners limit={1} />
-
           <div className="flex flex-col lg:flex-row">
             {(refinementsLayout === 'panel' || true) && <RefinementsPanel />}
 

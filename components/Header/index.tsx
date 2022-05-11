@@ -45,7 +45,7 @@ export default function Header() {
     <header
       className={`${navStyle} ${displayShadow} bg-white w-full pb-0  md:pb-2`}
     >
-      <DiscountSlider />
+      {/* <DiscountSlider /> */}
       {noticebar && <Noticebar toggleBarVisibility={toggleNoticebar} />}
       <Menu />
       {mobileWidth && mobileMenu && <DynamicMobileSlideMenu />}

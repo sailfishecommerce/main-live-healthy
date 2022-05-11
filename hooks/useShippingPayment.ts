@@ -7,7 +7,7 @@ import { paymentFormAtom } from '@/lib/atomConfig'
 
 export default function useShippingPayment() {
   const { getUserAccount } = useAccount()
-  const { data: userDetail, status } = useQuery('userdetails', getUserAccount)
+  const { data: userDetail, status } = useQuery('userDetails', getUserAccount)
   const [paymentForm] = useAtom(paymentFormAtom)
 
   function formatFormValues(field: string) {

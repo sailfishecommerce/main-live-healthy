@@ -1,5 +1,5 @@
 /* eslint-disable no-else-return */
-import { QueryClient, useQuery } from 'react-query'
+import { useQuery } from 'react-query'
 
 import useSwell from '@/hooks/useSwell'
 

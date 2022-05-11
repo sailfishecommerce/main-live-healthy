@@ -20,7 +20,7 @@ export default function useAuth() {
       {
         onSettled: () => {
           queryClient.invalidateQueries('cart')
-          queryClient.invalidateQueries('userdetails')
+          queryClient.invalidateQueries('userDetails')
         },
         onSuccess: (response) => {
           if (response !== null) {
@@ -44,7 +44,7 @@ export default function useAuth() {
       {
         onSettled: () => {
           queryClient.invalidateQueries('cart')
-          queryClient.invalidateQueries('userdetails')
+          queryClient.invalidateQueries('userDetails')
         },
         onSuccess: (response) => {
           if (response?.name) {
@@ -65,7 +65,7 @@ export default function useAuth() {
     return useMutation(() => logoutUser(), {
       onSettled: () => {
         queryClient.invalidateQueries('cart')
-        queryClient.invalidateQueries('userdetails')
+        queryClient.invalidateQueries('userDetails')
       },
       onSuccess: (response) => {
         if (response?.success) {

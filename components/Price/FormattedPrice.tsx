@@ -1,9 +1,6 @@
-/* eslint-disable no-nested-ternary */
 import { memo } from 'react'
 
-import { LineLoader } from '@/components/Loader/ProductsLoader'
-import FormatCurrency from '@/components/Price/FormatCurrency'
-import { useCurrencies } from '@/hooks/useCurrency'
+import { formatPrice } from '@/lib/formatPrice'
 
 interface FormattedPriceProps {
   price: number | string
@@ -14,23 +11,12 @@ function FormattedPriceComponent({
   price,
   className,
 }: FormattedPriceProps): JSX.Element {
-  const { currencyList, status } = useCurrencies()
+  const priceClassName = className ? className : 'text-red-600 md:text-lg'
 
-  return (
-    <>
-      {status === 'error' ? (
-        <p>unable to fetch price</p>
-      ) : status === 'loading' ? (
-        <LineLoader />
-      ) : (
-        <FormatCurrency
-          price={price}
-          currencies={currencyList}
-          className={className}
-        />
-      )}
-    </>
-  )
+  const nPrice = Number(price)
+  const itemNPrice = formatPrice(nPrice)
+
+  return <span className={priceClassName}>HKD ${itemNPrice}</span>
 }
 
 const FormattedPrice = memo(FormattedPriceComponent)

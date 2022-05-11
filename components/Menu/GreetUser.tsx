@@ -5,7 +5,7 @@ import greetUser from '@/lib/greetUser'
 
 export default function GreetUser() {
   const { getUserAccount } = useAccount()
-  const { data: userDetails } = useQuery('userdetails', getUserAccount, {
+  const { data: userDetails } = useQuery('userDetails', getUserAccount, {
     staleTime: Infinity,
   })
 

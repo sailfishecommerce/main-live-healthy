@@ -48,6 +48,7 @@ export default function Home(props: SearchPageLayoutProps) {
     <Applayout title="Welcome to Livehealthy stores">
       <SearchPageLayout {...props}>
         <Configure
+          hitsPerPage={15}
           // We cannot retrieve the user token at build time, so we disable perso
           // feature to avoid an additional call to retrieve Algolia results at load time
           enablePersonalization={false}

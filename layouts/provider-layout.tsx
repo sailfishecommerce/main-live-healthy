@@ -12,7 +12,7 @@ import { MediaContextProvider } from '@/lib/media'
 import { createInitialValues } from '@/utils/createInitialValues'
 import { appId, searchApiKey } from '@/utils/env'
 
-export type AppLayoutProps = {
+export type ProviderLayoutProps = {
   children: React.ReactNode
 }
 
@@ -23,7 +23,7 @@ const loadFramerMotionFeatures = () =>
 
 export const searchClientAtom = atom<SearchClient | undefined>(undefined)
 
-export default function ProviderLayout({ children }: AppLayoutProps) {
+export default function ProviderLayout({ children }: ProviderLayoutProps) {
   const { setUserToken } = useAtomValue(configAtom)
 
   // Initialize search client
@@ -41,6 +41,7 @@ export default function ProviderLayout({ children }: AppLayoutProps) {
     searchApiKey,
     setUserToken,
   })
+
   const queryClient = new QueryClient()
 
   return (

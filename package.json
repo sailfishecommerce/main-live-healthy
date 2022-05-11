@@ -25,6 +25,7 @@
     "@splidejs/splide": "^3.6.12",
     "@stripe/stripe-js": "^1.24.0",
     "@tailwindcss/aspect-ratio": "^0.4.0",
+    "@welldone-software/why-did-you-render": "^7.0.1",
     "airtable": "^0.11.2",
     "airwallex-payment-elements": "^0.2.58",
     "algoliasearch": "^4.11.0",

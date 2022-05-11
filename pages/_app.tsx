@@ -1,3 +1,4 @@
+import '../lib/wdyr'
 import { AnimatePresence } from 'framer-motion'
 import type { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
@@ -31,7 +32,6 @@ export default function App({ Component, pageProps, router }: AppProps) {
     () => router?.pathname === '/collection/[[...slugs]]',
     [router?.pathname]
   )
-
   return (
     <ProviderLayout>
       <LayoutWrapper>

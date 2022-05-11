@@ -58,7 +58,7 @@ export function useUrlSync() {
         router.push(newRoute, newRoute, { shallow: true })
       }
     },
-    [router] // eslint-disable-line react-hooks/exhaustive-deps
+    [router?.asPath] // eslint-disable-line react-hooks/exhaustive-deps
   )
 
   const { url: urlConfig } = useAtomValue(configAtom)

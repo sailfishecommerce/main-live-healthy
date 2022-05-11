@@ -24,7 +24,6 @@ export default function ProductHitCard({
 }: ProductHitTypes) {
   const isRow = row ? 'flex' : 'flex flex-col'
   const isRowText = row ? 'ml-4' : ''
-  // const buttonClass = row ? 'mt-1' : 'mt-4'
   const imageWidth = row ? 'w-1/2' : ''
   const productClassName = className ? className : ''
   const productImageClassName = imageClassName ? imageClassName : ''

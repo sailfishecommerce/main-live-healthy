@@ -3,12 +3,14 @@ import type { GetServerSidePropsContext } from 'next'
 import dynamic from 'next/dynamic'
 
 import { Breadcrumb } from '@/components/@instantsearch/widgets/breadcrumb/breadcrumb'
+import InfiniteHits from '@/components/@instantsearch/widgets/infinite-hits/infinite-hits'
 import { NoResultsHandler } from '@/components/@instantsearch/widgets/no-results-handler/no-results-handler'
 import { QueryRuleBanners } from '@/components/@instantsearch/widgets/query-rule-banners/query-rule-banners'
-import ProductHitCard from '@/components/Cards/ProductHitCard'
 import { Container } from '@/components/Container'
 import { viewModeAtom } from '@/components/ViewModes'
 import { configAtom } from '@/config/config'
+import { useMediaQuery } from '@/hooks'
+import { useIsMounted } from '@/hooks/useIsMounted'
 import Applayout from '@/layouts/app-layout'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
 import {
@@ -28,21 +30,25 @@ const RefinementsPanel = dynamic<any>(() =>
   ).then((mod) => mod.RefinementsPanel)
 )
 
-const InfiniteHits = dynamic<any>(
+const ProductHitCard = dynamic<any>(
   () =>
     import(
-      /* webpackChunkName: 'InfiniteHits' */ '@/components/@instantsearch/widgets/infinite-hits/infinite-hits'
+      /* webpackChunkName: 'ProductHitCard' */ '@/components/Cards/ProductHitCard'
     ),
   {
     ssr: false,
   }
 )
 
-export default function Catalog(props: SearchPageLayoutProps) {
+function CollectionPage(props: SearchPageLayoutProps) {
   const { breadcrumbAttributes, refinementsLayoutAtom } =
     useAtomValue(configAtom)
   const refinementsLayout = useAtomValue(refinementsLayoutAtom)
   const viewMode = useAtomValue(viewModeAtom)
+
+  const laptop = useMediaQuery('(min-width:1200px)')
+  const isMounted = useIsMounted(true)
+  const isLaptop = laptop && isMounted()
 
   return (
     <Applayout title="Collection page">
@@ -51,11 +57,13 @@ export default function Catalog(props: SearchPageLayoutProps) {
           <Breadcrumb attributes={breadcrumbAttributes} />
           <QueryRuleBanners limit={1} />
           <div className="flex flex-col lg:flex-row">
-            {(refinementsLayout === 'panel' || true) && <RefinementsPanel />}
+            {(refinementsLayout === 'panel' || !isLaptop) && (
+              <RefinementsPanel />
+            )}
 
             <div className="grow flex flex-col gap-2 lg:gap-5">
               <RefinementsBar
-                showRefinements={refinementsLayout === 'bar' && true}
+                showRefinements={refinementsLayout === 'bar' && isLaptop}
               />
 
               <NoResultsHandler>
@@ -75,4 +83,8 @@ export default function Catalog(props: SearchPageLayoutProps) {
 }
 
 export const getServerSideProps = (context: GetServerSidePropsContext) =>
-  getServerSidePropsPage(Catalog, context)
+  getServerSidePropsPage(CollectionPage, context)
+
+CollectionPage.whyDidYouRender = true
+
+export default CollectionPage

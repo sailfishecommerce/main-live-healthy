@@ -55,7 +55,7 @@ export default function Header() {
           updateDropdown={toggleCategoryDropdownHandler}
         />
       )}
-      <NavAutocomplete />
+      {/* <NavAutocomplete /> */}
     </header>
   )
 }

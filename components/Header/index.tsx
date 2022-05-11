@@ -9,6 +9,8 @@ import useNav from '@/hooks/useNav'
 import useNavStyle from '@/hooks/useNavStyle'
 import { categoryDropdownAtom, noticebarAtom } from '@/lib/atomConfig'
 
+import { NavAutocomplete } from '../Nav'
+
 const DynamicMobileSlideMenu = dynamic(
   () =>
     import(
@@ -53,6 +55,7 @@ export default function Header() {
           updateDropdown={toggleCategoryDropdownHandler}
         />
       )}
+      <NavAutocomplete />
     </header>
   )
 }

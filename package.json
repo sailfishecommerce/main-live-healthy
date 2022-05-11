@@ -1,16 +1,14 @@
 {
-  "name": "new_livehealthy_products_index",
+  "name": "live_healthy_e-stores",
   "version": "1.0.2",
-  "description": "React/Next.js based starter kit, focused on delivering a rich Search & Discovery e-commerce experience.",
+  "description": "e-commerce web application built using Next.js, Algolia and Swell",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "analyze": "ANALYZE=true next build",
-    "cli": "cd cli && npm start",
-    "postinstall": "cd cli && npm install"
+    "analyze": "ANALYZE=true next build"
   },
   "dependencies": {
     "@algolia/autocomplete-js": "^1.5.1",

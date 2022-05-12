@@ -4,7 +4,7 @@ import { useAtom } from 'jotai'
 import { useMediaQuery } from '@/hooks'
 import useCategoryData from '@/hooks/useCategoryData'
 // import allCategoryContent from '@/json/allcategories-dropdown.json'
-import { selectedCategoryAtom } from '@/lib/atomConfig'
+import { mobileSlideMenuViewAtom, selectedCategoryAtom } from '@/lib/atomConfig'
 
 type categoryType = {
   slug: string
@@ -20,7 +20,7 @@ interface CategoryProps {
 function CategoryLinks({ categories, title, className }: CategoryProps) {
   const categoryLinkClassName = className ? className : ''
   const [selectedCategory, setSelectedCategory] = useAtom(selectedCategoryAtom)
-  const [, setMobileSlideMenuView] = useAtom(selectedCategoryAtom)
+  const [, setMobileSlideMenuView] = useAtom(mobileSlideMenuViewAtom)
 
   const mobileWidth = useMediaQuery('(max-width:768px)')
 
@@ -35,7 +35,7 @@ function CategoryLinks({ categories, title, className }: CategoryProps) {
 
   return (
     <>
-      <h1 className="lg:text-2xl text-lg font-medium my-2">{title}</h1>
+      <h1 className="lg:text-2xl text-lg font-medium mb-1">{title}</h1>
       <ul
         className={`${categoryLinkClassName} border-gray-200 pb-2 category-list border-r mr-8 w-full`}
       >

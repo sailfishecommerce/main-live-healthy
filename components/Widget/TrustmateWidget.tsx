@@ -16,7 +16,19 @@ function TrustmateWidgetComponent({ children }: PropsWithChildren<Props>) {
         id="trustmate-widget-1-script"
       />
       {children}
-      <div id="4420c1ed-e3a7-47c2-b6a2-2d7386a819da"></div>
+      <div
+        className="trustmateWidget"
+        id="4420c1ed-e3a7-47c2-b6a2-2d7386a819da"
+      ></div>
+      <style jsx>
+        {`
+          @media (max-width: 768px) {
+            .trustmateWidget {
+              display: none;
+            }
+          }
+        `}
+      </style>
     </>
   )
 }

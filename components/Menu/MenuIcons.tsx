@@ -18,8 +18,8 @@ export default function MenuIcons() {
   }
 
   return (
-    <div className="icons flex flex-col w-1/5">
-      <div className="row-1 flex items-center justify-between w-full">
+    <div className="icons flex flex-col w-1/4 items-end">
+      <div className="row-1 flex items-center justify-between w-2/3">
         <AuthIcons />
         <button
           type="button"

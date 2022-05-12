@@ -1,63 +1,60 @@
-/* eslint-disable array-callback-return */
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import algoliasearch from 'algoliasearch'
 import { useAtom } from 'jotai'
+import Link from 'next/link'
 import { memo } from 'react'
 import isEqual from 'react-fast-compare'
 import { InstantSearch, connectRefinementList } from 'react-instantsearch-dom'
 
-import { selectedCategoryAtom } from '@/lib/atomConfig'
-
-function getCategorySubMenu(items: any[]) {
-  const itemLabelArray = items.map((item: { label: string }) => item.label)
-  const uniqueItemLabel = new Set(itemLabelArray)
-  const uniqueItemLabelArray = Array.from(uniqueItemLabel)
-  return uniqueItemLabelArray
-}
-
-function getMenusInACategory(category: string, categories: string[]) {
-  let menuArray: string[] = []
-  categories.map((categoryItem: string) => {
-    if (categoryItem.includes(category)) {
-      menuArray = [...menuArray, categoryItem]
-    }
-  })
-  return menuArray
-}
-
-function splitCategory(category: string[]) {
-  let categoryArray: string[] = []
-  category.map((item) => {
-    const splittedWords = item.split(' > ')
-    categoryArray = [...categoryArray, splittedWords[1]]
-  })
-  return categoryArray
-}
-
-function getCategoryMenus(category: string, items: []) {
-  const categorySubMenuArray = getCategorySubMenu(items)
-  const beautyMenuArray = getMenusInACategory(category, categorySubMenuArray)
-  const formattedBeautyArray = splitCategory(beautyMenuArray)
-  return formattedBeautyArray
-}
+import { selectedCategoryAtom, categoryDropdownAtom } from '@/lib/atomConfig'
+import { getCategoryMenus, getCategorySlug } from '@/lib/formatCategories'
 
 function RefinementListMenu({ items, selectedCategory }: any) {
   const menuArray = getCategoryMenus(selectedCategory, items)
+  const [, setCategoryDropdown] = useAtom(categoryDropdownAtom)
+
+  function toggleCategoryDropdownHandler() {
+    return setCategoryDropdown((prev) => !prev)
+  }
+
   return (
     <div className="menu">
-      <h1 className="text-lg mb-4 font-medium">{selectedCategory}</h1>
+      <Link passHref href={`/collection/${getCategorySlug(selectedCategory)}`}>
+        <a
+          className="hover:text-red-500"
+          onClick={toggleCategoryDropdownHandler}
+        >
+          <h1 className="text-lg mb-4 font-medium">{selectedCategory}</h1>
+        </a>
+      </Link>
       <ul className="flex flex-col lg:grid lg:grid-cols-3 lg:gap-2">
-        {menuArray.map((item) => (
-          <li className="hover:text-green-500 my-1" key={item}>
-            {item}
-          </li>
-        ))}
+        {menuArray.map((item) => {
+          return (
+            <li className="hover:text-green-500 my-1" key={item}>
+              <Link
+                passHref
+                href={`/collection/${getCategorySlug(
+                  selectedCategory
+                )}/${getCategorySlug(item)}`}
+              >
+                <a title={item} onClick={toggleCategoryDropdownHandler}>
+                  {item}
+                </a>
+              </Link>
+            </li>
+          )
+        })}
       </ul>
-      <button
-        type="button"
-        className="bg-mountain-green mt-8 rounded-lg p-2 text-white"
-      >
-        Show all {selectedCategory}
-      </button>
+      <Link passHref href={`/collection/${getCategorySlug(selectedCategory)}`}>
+        <button
+          type="button"
+          className="bg-mountain-green mt-8 rounded-lg p-2 text-white"
+          onClick={toggleCategoryDropdownHandler}
+        >
+          Show all {selectedCategory}
+        </button>
+      </Link>
       <style jsx>
         {`
           @media (min-width: 768px) {

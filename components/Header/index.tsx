@@ -49,7 +49,7 @@ export default function Header() {
         <Menu />
         {mobileWidth && mobileMenu && <DynamicMobileSlideMenu />}
       </header>
-      {categoryDropdown && (
+      {categoryDropdown && !mobileWidth && (
         <DynamicAllCategoriesDropdownView
           updateDropdown={toggleCategoryDropdownHandler}
         />

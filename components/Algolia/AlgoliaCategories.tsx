@@ -7,15 +7,23 @@ import { memo } from 'react'
 import isEqual from 'react-fast-compare'
 import { InstantSearch, connectRefinementList } from 'react-instantsearch-dom'
 
+import { useMediaQuery } from '@/hooks'
+import useNav from '@/hooks/useNav'
 import { selectedCategoryAtom, categoryDropdownAtom } from '@/lib/atomConfig'
 import { getCategoryMenus, getCategorySlug } from '@/lib/formatCategories'
 
 function RefinementListMenu({ items, selectedCategory }: any) {
   const menuArray = getCategoryMenus(selectedCategory, items)
   const [, setCategoryDropdown] = useAtom(categoryDropdownAtom)
+  const { toggleMobileMenu } = useNav()
+  const mobileWidth = useMediaQuery('(max-width:768px)')
 
   function toggleCategoryDropdownHandler() {
-    return setCategoryDropdown((prev) => !prev)
+    if (mobileWidth) {
+      toggleMobileMenu()
+    } else if (!mobileWidth) {
+      setCategoryDropdown((prev) => !prev)
+    }
   }
 
   return (

@@ -11,30 +11,23 @@ interface ProductHitTypes {
   className?: string
   color?: string
   smallerImage?: boolean
-  imageClassName?: string
 }
 
 export default function ProductListCard({
   hit,
   className,
-  row,
   color,
   smallerImage,
-  imageClassName,
 }: ProductHitTypes) {
-  const isRow = row ? 'flex' : 'flex flex-col'
-  const isRowText = row ? 'ml-4' : ''
-  const imageWidth = row ? 'w-1/2' : ''
   const productClassName = className ? className : ''
-  const productImageClassName = imageClassName ? imageClassName : ''
   const imageSize = smallerImage
     ? {
         height: 300,
         width: 300,
       }
     : {
-        height: 500,
-        width: 500,
+        height: 300,
+        width: 300,
       }
 
   const { addItemToCart } = useShoppingCart()
@@ -46,15 +39,17 @@ export default function ProductListCard({
   const productVendorLink = hit?.vendor?.includes(' ')
     ? `/search/${hit.vendor}`
     : `/vendor/${hit.vendor}`
+
   return (
     <div
-      className={`hover:bg-white hover:shadow-lg product hover:rounded-lg product ${productClassName}  ${isRow} p-2 md:p-6 hover:border`}
+      className={`hover:bg-white hover:shadow-lg product hover:rounded-lg product ${productClassName}  p-2`}
     >
       <Link passHref href={`/product/${hit.slug}?queryID=${hit.__queryID}`}>
-        <a title={hit.name}>
-          <div
-            className={`${productImageClassName} ${imageWidth}  image-wrapper`}
-          >
+        <a
+          className="flex px-6 py-3 items-center border rounded-xl"
+          title={hit.name}
+        >
+          <div className="image-wrapper">
             <Image
               src={productImage}
               alt={hit.name}
@@ -63,41 +58,46 @@ export default function ProductListCard({
               blurDataURL={hit.images[0]}
             />
           </div>
-          <div className={`${isRowText} ${imageWidth} text`}>
-            <Link passHref href={productVendorLink}>
+          <div className="flex items-center text justify-around w-3/4">
+            <div className="group-1 w-3/5">
+              <Link passHref href={productVendorLink}>
+                <button
+                  type="button"
+                  className="vendor text-xs md:text-md font-bold pl-2 my-0 py-0 h-3 mb-1 md:mb-0 md:h-5"
+                >
+                  {hit?.vendor}
+                </button>
+              </Link>
+              <div className="product-n md:mb-8 mb-2">
+                <h3 className="text-xs md:text-md product">{hit.name}</h3>
+              </div>
+            </div>
+            <div className="group-2 flex w-1/4 flex-col">
+              <div className="price-group w-full flex flex-col md:flex-row items-start md:items-center justify-between px-0">
+                <FormattedPrice
+                  price={hit.sale_price}
+                  className="text-xs md:text-sm my-1 md:my-0 lg:text-md text-black font-semibold"
+                />
+                {hit.price !== 0 && (
+                  <FormattedPrice
+                    price={hit.price}
+                    className="text-xs md:text-xs my-1 md:my-0 strike-through lg:text-md text-red-500 font-semibold"
+                  />
+                )}
+              </div>
               <button
                 type="button"
-                className="vendor text-xs md:text-md font-bold pl-2 my-0 py-0 h-3 mb-1 md:mb-0 md:h-5"
+                className="bg-mountain-green mt-4 w-full justify-center h-8 text-white px-4 py-1 flex items-center mx-auto rounded-md"
+                onClick={addToCartHandler}
               >
-                {hit?.vendor}
+                <CartIcon />
+                <p className="text-xs md:text-sm">Add to cart</p>
               </button>
-            </Link>
-            <div className="product-name-view md:mb-8 mb-2">
-              <h3 className="text-xs md:text-md product-name">{hit.name}</h3>
-            </div>
-            <div className="price-group flex flex-col md:flex-row items-start md:items-center justify-between px-0">
-              <FormattedPrice
-                price={hit.sale_price}
-                className="text-xs md:text-sm my-1 md:my-0 lg:text-md text-black font-semibold"
-              />
-              {hit.price !== 0 && (
-                <FormattedPrice
-                  price={hit.price}
-                  className="text-xs md:text-xs my-1 md:my-0 strike-through lg:text-md text-red-500 font-semibold"
-                />
-              )}
             </div>
           </div>
         </a>
       </Link>
-      <button
-        type="button"
-        className="bg-mountain-green mt-4 w-full md:w-4/5 justify-center h-8 text-white px-4 py-1 flex items-center mx-auto rounded-md"
-        onClick={addToCartHandler}
-      >
-        <CartIcon />
-        <p className="text-xs md:text-sm">Add to cart</p>
-      </button>
+
       <style jsx>
         {`
           .product {

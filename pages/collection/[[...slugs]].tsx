@@ -51,7 +51,7 @@ function CollectionPage(props: SearchPageLayoutProps) {
               <RefinementsPanel />
             )}
 
-            <div className="grow flex flex-col gap-2 lg:gap-5">
+            <div className="grow flex flex-col gap-2 lg:gap-5 w-full">
               <RefinementsBar
                 showRefinements={refinementsLayout === 'bar' && isLaptop}
               />

@@ -8,6 +8,7 @@ export default function CreatePaymentIntentHandler(
 ) {
   switch (req.method) {
     case 'POST': {
+      console.log('req.body.paymentDetails', req.body.paymentDetails)
       axios
         .post(
           `${process.env.NEXT_PUBLIC_AIRWALLEX_BASE_API}/pa/payment_intents/create`,

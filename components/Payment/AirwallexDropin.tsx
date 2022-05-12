@@ -32,7 +32,7 @@ function AirwallexCardElement({
 
   useEffect(() => {
     loadAirwallex({
-      env: 'demo',
+      env: 'prod',
       origin: window.location.origin,
       fonts: [
         {
@@ -80,6 +80,7 @@ function AirwallexCardElement({
         },
       })
         .then((response) => {
+          console.log('response', response)
           setIsSubmitting(false)
           isSuccessful(toastId, 'Payment successful')
           window.alert(
@@ -90,9 +91,10 @@ function AirwallexCardElement({
           router.push('/checkout-complete')
         })
         .catch((error) => {
+          console.log('error airwallex', error)
           setIsSubmitting(false)
-          setErrorMessage(error.message ?? JSON.stringify(error))
-          hasError(toastId, error)
+          setErrorMessage(error.message)
+          hasError(toastId, error.message)
         })
     }
   }

@@ -6,7 +6,7 @@ import type { cartType } from '@/types'
 export function formatIntentData(cart: any, paymentForm: any) {
   const { form } = paymentForm
   const products = formatCartProduct(cart)
-  const street = form.address1 ? form.address1 : form.state
+  const street = form.address ? form.address : form.district
   const cartData = {
     amount: cart.grandTotal,
     currency: cart.currency,

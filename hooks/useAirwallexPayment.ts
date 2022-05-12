@@ -44,6 +44,7 @@ export default function useAirwallexPayment() {
         })
       })
       .catch((error) => {
+        console.log('airwallex error', error)
         toast.error(error.response?.data?.message)
       })
   }

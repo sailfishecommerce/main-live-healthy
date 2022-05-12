@@ -50,7 +50,6 @@ const refinements: Refinement[] = [
     label: 'Price',
     options: {
       attribute: 'sale_price',
-      symbol: 'HKD $',
     },
   },
   {

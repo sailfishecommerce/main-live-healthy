@@ -75,12 +75,18 @@ export default function ProductHitCard({
             <div className="product-name-view md:mb-8 mb-2">
               <h3 className="text-xs md:text-md product-name">{hit.name}</h3>
             </div>
-            {hit?.price && (
+            <div className="price-group flex flex-col md:flex-row items-start md:items-center justify-between px-0">
               <FormattedPrice
                 price={hit.sale_price}
-                className="text-sm md:text-md text-black font-semibold"
+                className="text-xs md:text-sm my-1 md:my-0 lg:text-md text-black font-semibold"
               />
-            )}
+              {hit.price !== 0 && (
+                <FormattedPrice
+                  price={hit.price}
+                  className="text-xs md:text-xs my-1 md:my-0 strike-through lg:text-md text-red-500 font-semibold"
+                />
+              )}
+            </div>
           </div>
         </a>
       </Link>

@@ -9,11 +9,11 @@ export type RangeInputCurrencyProps = {
 
 export function RangeInputCurrency({
   children,
-  currency = '€',
+  currency = 'HKD',
 }: RangeInputCurrencyProps) {
   const child = Children.only(children) as ReactElement
   const props = {
-    className: classNames(child.props.className, '!pl-5'),
+    className: classNames(child.props.className, '!pl-10'),
   }
 
   return (

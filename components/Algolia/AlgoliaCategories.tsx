@@ -49,7 +49,7 @@ function RefinementListMenu({ items, selectedCategory }: any) {
                 <a title={item} onClick={toggleCategoryDropdownHandler}>
                   {item}
                 </a>
-              </Link>x
+              </Link>
             </li>
           )
         })}

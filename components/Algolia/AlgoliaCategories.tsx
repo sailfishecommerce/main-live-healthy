@@ -49,7 +49,7 @@ function RefinementListMenu({ items, selectedCategory }: any) {
                 <a title={item} onClick={toggleCategoryDropdownHandler}>
                   {item}
                 </a>
-              </Link>
+              </Link>x
             </li>
           )
         })}
@@ -76,8 +76,9 @@ function RefinementListMenu({ items, selectedCategory }: any) {
               height: 100vh;
             }
             .menu ul {
-              max-height: 66%;
+              max-height: calc(60% - 50px);
               overflow-y: scroll;
+              margin-top: -15px;
             }
             .bg-mountain-green {
               width: 100%;

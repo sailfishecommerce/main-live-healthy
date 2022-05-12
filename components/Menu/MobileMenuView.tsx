@@ -7,7 +7,7 @@ import menu from '@/json/menu.json'
 export default function MobileMenuView() {
   return (
     <>
-      <div className="fixed z-30 bg-white pl-4 mobileslidemenu flex flex-col">
+      <div className="fixed z-30 bg-white p-4 mobileslidemenu flex flex-col">
         <ul className="flex items-center lg:my-4 my-2">
           {menu.primaryMenu.map((item) => (
             <PageLink menuItem={item} key={item.slug} />
@@ -36,6 +36,7 @@ export default function MobileMenuView() {
           }
           .mobileslidemenu {
             height: 100%;
+            width: 100%;
           }
         `}
       </style>

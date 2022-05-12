@@ -37,7 +37,7 @@ function CategoryLinks({ categories, title, className }: CategoryProps) {
     <>
       <h1 className="lg:text-2xl text-lg font-medium mb-1">{title}</h1>
       <ul
-        className={`${categoryLinkClassName} border-gray-200 pb-2 category-list border-r mr-8 w-full`}
+        className={`${categoryLinkClassName} lg:border-gray-200 pb-2 category-list lg:border-r lg:mr-8 w-full`}
       >
         {categories?.map((category: categoryType) => {
           const activeCategory =
@@ -81,9 +81,9 @@ export default function CategorySidebarList() {
   const categories = status === 'success' ? data?.results.slice(12, 20) : []
   return (
     <>
-      <div className="category-sidebar flex flex-col lg:w-1/5 w-3/4">
+      <div className="category-sidebar flex flex-col lg:w-1/5 w-full">
         <CategoryLinks
-          className="border-b"
+          className="lg:border-b"
           categories={categories}
           title="Categories"
         />

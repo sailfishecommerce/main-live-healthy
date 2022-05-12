@@ -55,7 +55,7 @@ function ProductCardComponent({
   const addToCartHandler = () => addItemToCart.mutate({ product, quantity: 1 })
   const productVendorLink = product?.vendor?.includes(' ')
     ? `/search/${product.vendor}`
-    : `/vendor/${product.vendor}`
+    : `/collection/${product.vendor}`
 
   const productImage =
     typeof product.images[0] === 'string'

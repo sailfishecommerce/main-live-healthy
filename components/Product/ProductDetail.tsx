@@ -31,7 +31,7 @@ export default function ProductDetail({ product }: any) {
 
   const productVendorLink = product?.vendor?.includes(' ')
     ? `/search/${product.vendor}`
-    : `/vendor/${product.vendor}`
+    : `/collection/${product.vendor}`
   return (
     <div className="lg:w-1/2 w-full flex flex-col justify-start">
       <h3 className="lg:text-2xl text-lg font-bold">{product.name}</h3>

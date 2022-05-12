@@ -1,9 +1,12 @@
+import { useRef } from 'react'
 import { useMutation, useQueryClient } from 'react-query'
 import { toast } from 'react-toastify'
 
 import useSwellCart from '@/hooks/useSwellCart'
+import useToast from '@/hooks/useToast'
 
 export default function useMutationAction() {
+  const { loadingToast, updateToast } = useToast()
   const queryClient = useQueryClient()
   const {
     emptyCart,
@@ -14,60 +17,87 @@ export default function useMutationAction() {
   } = useSwellCart()
 
   function useUpdateCartItem() {
+    const toastID = useRef(null)
+
     return useMutation(
       ({ product, quantity }: any) => updateCartItemQuantity(product, quantity),
       {
+        onMutate: () => {
+          loadingToast(toastID)
+        },
         onSettled: () => {
           queryClient.invalidateQueries('cart')
         },
         onSuccess: () => {
-          toast.success('product quantity updated')
+          updateToast(toastID, toast.TYPE.SUCCESS, 'product quantity updated')
         },
         onError: () => {
-          toast.error('error updating product quantity')
+          updateToast(
+            toastID,
+            toast.TYPE.ERROR,
+            'error updating product quantity'
+          )
         },
       }
     )
   }
 
   function useAddItemToCart() {
+    const toastID = useRef(null)
     return useMutation(
       ({ product, quantity }: any) => addToCart(product, quantity),
       {
+        onMutate: () => {
+          loadingToast(toastID)
+        },
         onSettled: () => {
           queryClient.invalidateQueries('cart')
         },
         onSuccess: () => {
-          toast.success('product added to cart')
+          updateToast(toastID, toast.TYPE.SUCCESS, 'Product added to cart')
         },
         onError: () => {
-          toast.error('error adding product to cart')
+          updateToast(toastID, toast.TYPE.ERROR, 'error adding product to cart')
         },
       }
     )
   }
 
   function useRemoveFromCart() {
+    const toastID = useRef(null)
+
     return useMutation((item: any) => removeCartItem(item), {
+      onMutate: () => {
+        loadingToast(toastID)
+      },
       onSettled: () => {
         queryClient.invalidateQueries('cart')
       },
       onSuccess: () => {
-        toast.success('product removed!')
+        updateToast(toastID, toast.TYPE.SUCCESS, 'product removed!')
       },
       onError: () => {
-        toast.error('error removing product from cart')
+        updateToast(
+          toastID,
+          toast.TYPE.ERROR,
+          'error removing product from cart'
+        )
       },
     })
   }
 
   function useEmptyCart() {
+    const toastID = useRef(null)
+
     return useMutation(emptyCart, {
+      onMutate: () => {
+        loadingToast(toastID)
+      },
       onSuccess: () => {
-        toast.success('cart cleared')
+        updateToast(toastID, toast.TYPE.SUCCESS, 'cart cleared')
       },
       onError: () => {
-        toast.error('error clearing the cart')
+        updateToast(toastID, toast.TYPE.SUCCESS, 'error clearing the cart')
       },
       onSettled: () => {
         queryClient.invalidateQueries('cart')
@@ -76,15 +106,20 @@ export default function useMutationAction() {
   }
 
   function useDeleteCart() {
+    const toastID = useRef(null)
+
     return useMutation(deleteCart, {
+      onMutate: () => {
+        loadingToast(toastID)
+      },
       onSettled: () => {
         queryClient.invalidateQueries('cart')
       },
       onSuccess: () => {
-        toast.success('cart deleted')
+        updateToast(toastID, toast.TYPE.SUCCESS, 'cart deleted')
       },
       onError: () => {
-        toast.error('error deleting cart')
+        updateToast(toastID, toast.TYPE.SUCCESS, 'error deleting the cart')
       },
     })
   }

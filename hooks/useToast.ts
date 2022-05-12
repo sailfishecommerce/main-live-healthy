@@ -1,5 +1,6 @@
+/* eslint-disable no-param-reassign */
 import { useAtom } from 'jotai'
-import type { ReactText } from 'react'
+import type { MutableRefObject, ReactText } from 'react'
 import { toast } from 'react-toastify'
 
 import { appLoadingAtom } from '@/lib/atomConfig'
@@ -7,6 +8,19 @@ import { appLoadingAtom } from '@/lib/atomConfig'
 export default function useToast() {
   const [appLoading, setAppLoading] = useAtom(appLoadingAtom)
 
+  const loadingToast = (toastId: MutableRefObject<any>) =>
+    (toastId.current = toast('Processing ...', { autoClose: false }))
+
+  const updateToast = (
+    toastId: MutableRefObject<any>,
+    toastType: any,
+    message: string
+  ) =>
+    toast.update(toastId.current, {
+      type: toastType,
+      autoClose: 500,
+      render: message,
+    })
   function isLoading(): ReactText {
     setAppLoading(true)
     const toastId = toast.loading('Processing...', {
@@ -44,5 +58,7 @@ export default function useToast() {
     isLoading,
     isSuccessful,
     hasError,
+    loadingToast,
+    updateToast,
   }
 }

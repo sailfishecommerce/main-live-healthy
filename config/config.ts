@@ -26,24 +26,12 @@ const refinements: Refinement[] = [
   },
   {
     type: 'list',
-    header: 'Product Type',
-    label: 'Produt Type',
-    options: {
-      searchable: true,
-      attribute: 'product_type',
-      showMore: true,
-      showMoreLimit: 100,
-    },
-  },
-  {
-    type: 'list',
     header: 'Vendors',
     label: 'Vendor',
     options: {
       searchable: true,
       attribute: 'vendor',
       showMore: true,
-      showMoreLimit: 100,
     },
   },
   {
@@ -53,15 +41,25 @@ const refinements: Refinement[] = [
     options: {
       searchable: true,
       attribute: 'tags',
+      showMore: true,
     },
   },
   {
-    type: 'list',
+    type: 'price',
+    header: 'Price',
+    label: 'Price',
+    options: {
+      attribute: 'sale_price',
+      symbol: 'HKD $',
+    },
+  },
+  {
+    type: 'rating',
     header: 'Ratings',
     label: 'Rating',
+    isExpanded: true,
     options: {
       attribute: 'rating',
-      limit: 8,
     },
   },
 ]

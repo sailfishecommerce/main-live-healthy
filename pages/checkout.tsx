@@ -3,6 +3,7 @@ import EmptyCart from '@/components/Checkout/EmptyCart'
 import MobileCheckoutView from '@/components/MobileCheckoutView'
 import { useCart, useMediaQuery } from '@/hooks'
 import Applayout from '@/layouts/app-layout'
+import VboutScript from '@/lib/vbout-script'
 
 export default function Checkout() {
   const mobileWidth = useMediaQuery('(max-width:768px)')
@@ -11,6 +12,7 @@ export default function Checkout() {
 
   return (
     <Applayout title="Checkout - Thanks for shopping with us">
+      <VboutScript />
       {cart !== null && cart?.items?.length > 0 ? (
         <main className="mx-auto bg-light-gray">
           {mobileWidth ? <MobileCheckoutView /> : <CheckoutCustomer />}

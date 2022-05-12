@@ -40,20 +40,20 @@ export default function Header() {
   const displayShadow = mobileWidth ? 'header' : ''
 
   return (
-    <header
-      className={`${navStyle} ${displayShadow} bg-white w-full pb-0  md:pb-2`}
-    >
-      <DiscountSlider />
-      {noticebar && <Noticebar toggleBarVisibility={toggleNoticebar} />}
-      <Menu />
-      {mobileWidth && mobileMenu && <DynamicMobileSlideMenu />}
-
+    <>
+      <header
+        className={`${navStyle} ${displayShadow} bg-white w-full pb-0  md:pb-2`}
+      >
+        <DiscountSlider />
+        {noticebar && <Noticebar toggleBarVisibility={toggleNoticebar} />}
+        <Menu />
+        {mobileWidth && mobileMenu && <DynamicMobileSlideMenu />}
+      </header>
       {categoryDropdown && (
         <DynamicAllCategoriesDropdownView
           updateDropdown={toggleCategoryDropdownHandler}
         />
       )}
-      {/* <NavAutocomplete /> */}
-    </header>
+    </>
   )
 }

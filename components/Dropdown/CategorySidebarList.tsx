@@ -3,7 +3,7 @@ import { useAtom } from 'jotai'
 
 import { useMediaQuery } from '@/hooks'
 import useCategoryData from '@/hooks/useCategoryData'
-import allCategoryContent from '@/json/allcategories-dropdown.json'
+// import allCategoryContent from '@/json/allcategories-dropdown.json'
 import { selectedCategoryAtom } from '@/lib/atomConfig'
 
 type categoryType = {
@@ -56,8 +56,8 @@ function CategoryLinks({ categories, title, className }: CategoryProps) {
       <style jsx>
         {`
           .category-list {
-            max-height: 200px;
             overflow-y: scroll;
+            height: 100%;
           }
           .sidebar-list.active {
             font-weight: bold;
@@ -87,16 +87,15 @@ export default function CategorySidebarList() {
           categories={categories}
           title="Categories"
         />
-        <CategoryLinks
+        {/* <CategoryLinks
           categories={allCategoryContent.sidebar}
           title="Section"
-        />
+        /> */}
       </div>
       <style jsx>
         {`
           @media (max-width: 768px) {
             .category-sidebar {
-              max-height: 38%;
               overflow-y: scroll;
             }
           }

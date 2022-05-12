@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { memo, useCallback, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai'
 
 import useShoppingCart from '@/hooks/useShoppingCart'
@@ -13,17 +13,22 @@ function ProductControlsComponent({ cart }: Props) {
   const { updateCartItem } = useShoppingCart()
   const [counter, setCounter] = useState(cart.quantity)
 
-  const increaseQuantity = useCallback(() => {
-    setCounter(counter + 1)
+  function updateQuantity() {
     updateCartItem.mutate({ product: cart, quantity: counter })
+  }
+
+  useEffect(() => {
+    updateQuantity()
   }, [counter])
 
-  const decreaseQuantity = useCallback(() => {
+  function increaseQuantity() {
+    setCounter(counter + 1)
+  }
+  function decreaseQuantity() {
     if (counter > 1) {
       setCounter(counter - 1)
-      updateCartItem.mutate({ product: cart, quantity: counter })
     }
-  }, [counter])
+  }
 
   return (
     <div className="flex items-center border rounded-md">

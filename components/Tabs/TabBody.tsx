@@ -9,7 +9,7 @@ interface Props {
 export default function TabBody({ tab }: Props) {
   return (
     <div className="tab-content" id="tabs-tabContentFill">
-      <div className="auth-tab">
+      <div className="auth-tab mx-auto">
         {tab === 0 && (
           <Tabpanel id="signin">
             <SigninForm />

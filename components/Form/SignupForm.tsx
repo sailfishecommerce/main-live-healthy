@@ -1,4 +1,5 @@
 import { Formik } from 'formik'
+import { v4 as uuidv4 } from 'uuid'
 
 import { displayFormElement } from '@/components/Form/FormElement'
 import { signupFormSchema } from '@/components/Form/schema/AuthSchema'
@@ -31,15 +32,15 @@ export default function SignupForm() {
         >
           {authContent.signUp.map((content: any) => {
             return content?.length ? (
-              <div key={content.name} className="flex flex-wrap">
+              <div key={content.id} className="flex flex-wrap">
                 {content.map((inputContent: any) => (
-                  <div key={inputContent} className="w-full md:w-1/2">
+                  <div key={uuidv4()} className="w-full md:w-1/2">
                     {displayFormElement(inputContent, formik)}
                   </div>
                 ))}
               </div>
             ) : (
-              <div key={content.name} className="flex flex-col">
+              <div key={content.id} className="flex flex-col">
                 {displayFormElement(content, formik)}
               </div>
             )

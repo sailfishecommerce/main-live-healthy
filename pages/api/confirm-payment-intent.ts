@@ -14,7 +14,7 @@ export default function CreatePaymentIntentHandler(
     case 'POST': {
       axios
         .post(
-          `${process.env.NEXT_PUBLIC_AIRWALLEX_DEMO_BASE_API}/pa/payment_intents/${req.body.id}/confirm`,
+          `${process.env.NEXT_PUBLIC_AIRWALLEX_BASE_API}/pa/payment_intents/${req.body.id}/confirm`,
           req.body.cardDetails,
           {
             headers: {

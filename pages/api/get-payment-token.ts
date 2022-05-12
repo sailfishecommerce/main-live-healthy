@@ -5,12 +5,11 @@ export default function getPaymentTokenHandler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  // eslint-disable-next-line default-case
   switch (req.method) {
     case 'GET': {
       axios
         .request({
-          url: `${process.env.NEXT_PUBLIC_AIRWALLEX_DEMO_BASE_API}/authentication/login`,
+          url: `${process.env.NEXT_PUBLIC_AIRWALLEX_BASE_API}/authentication/login`,
           method: 'post',
           headers: {
             'Content-Type': 'application/json',

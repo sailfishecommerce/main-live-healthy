@@ -52,7 +52,7 @@ export default function Modal({
                     <h3 className="text-3xl font-semibold">{title}</h3>
                   </div>
                 )}
-                <div className="relative p-3 lg:p-6 flex mx-auto">
+                <div className="relative p-3 lg:p-6 w-full flex mx-auto">
                   {children}
                 </div>
               </div>

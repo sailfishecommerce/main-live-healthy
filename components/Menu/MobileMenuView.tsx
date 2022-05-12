@@ -8,12 +8,12 @@ export default function MobileMenuView() {
   return (
     <>
       <div className="fixed z-30 bg-white pl-4 mobileslidemenu flex flex-col">
-        <ul className="flex items-center my-4">
+        <ul className="flex items-center lg:my-4 my-2">
           {menu.primaryMenu.map((item) => (
             <PageLink menuItem={item} key={item.slug} />
           ))}
         </ul>
-        <div className="contacts px-2 flex border-b mb-6 md:pr-4 pr-0">
+        <div className="contacts px-2 flex border-b lg:mb-6 mb-4 md:pr-4 pr-0">
           <div className="reach-us border rounded-md p-4 mb-4">
             <div className="flex items-center">
               <Whatsapp />

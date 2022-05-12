@@ -1,5 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { memo, useEffect, useState } from 'react'
+import { memo } from 'react'
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai'
 
 import useShoppingCart from '@/hooks/useShoppingCart'
@@ -11,23 +10,10 @@ interface Props {
 
 function ProductControlsComponent({ cart }: Props) {
   const { updateCartItem } = useShoppingCart()
-  const [counter, setCounter] = useState(cart.quantity)
 
-  function updateQuantity() {
-    updateCartItem.mutate({ product: cart, quantity: counter })
-  }
-
-  useEffect(() => {
-    updateQuantity()
-  }, [counter])
-
-  function increaseQuantity() {
-    setCounter(counter + 1)
-  }
-  function decreaseQuantity() {
-    if (counter > 1) {
-      setCounter(counter - 1)
-    }
+  function updateQuantity(type: 'DEC' | 'INC'): void {
+    const operationType = type === 'INC' ? cart.quantity + 1 : cart.quantity - 1
+    updateCartItem.mutate({ product: cart, quantity: operationType })
   }
 
   return (
@@ -36,7 +22,7 @@ function ProductControlsComponent({ cart }: Props) {
         type="button"
         title="decrease quantity"
         className="lg:w-8 w-4 h-4 lg:h-8 flex justify-center items-center rounded-lg hover:bg-red-500 hover:text-white"
-        onClick={decreaseQuantity}
+        onClick={() => updateQuantity('DEC')}
       >
         <AiOutlineMinus />
       </button>
@@ -50,7 +36,7 @@ function ProductControlsComponent({ cart }: Props) {
         type="button"
         title="increase quantity"
         className="w-8 h-8 flex justify-center items-center rounded-lg hover:bg-green-500 hover:text-white"
-        onClick={increaseQuantity}
+        onClick={() => updateQuantity('INC')}
       >
         <AiOutlinePlus />
       </button>

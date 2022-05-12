@@ -12,7 +12,6 @@ import { overlayAtom } from '@/components/Loader/Overlay'
 import { configAtom } from '@/config/config'
 import { useMediaQuery } from '@/hooks'
 import { useIsMounted } from '@/hooks/useIsMounted'
-import { useTailwindScreens } from '@/hooks/useTailwindScreens'
 import { searchClientAtom } from '@/layouts/provider-layout'
 import {
   AutocompleteBasic,

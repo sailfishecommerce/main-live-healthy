@@ -30,16 +30,6 @@ const RefinementsPanel = dynamic<any>(() =>
   ).then((mod) => mod.RefinementsPanel)
 )
 
-const ProductHitCard = dynamic<any>(
-  () =>
-    import(
-      /* webpackChunkName: 'ProductHitCard' */ '@/components/Cards/ProductHitCard'
-    ),
-  {
-    ssr: false,
-  }
-)
-
 function CollectionPage(props: SearchPageLayoutProps) {
   const { breadcrumbAttributes, refinementsLayoutAtom } =
     useAtomValue(configAtom)
@@ -68,7 +58,6 @@ function CollectionPage(props: SearchPageLayoutProps) {
 
               <NoResultsHandler>
                 <InfiniteHits
-                  hitComponent={ProductHitCard}
                   viewMode={viewMode}
                   showLess={true}
                   showMore={true}

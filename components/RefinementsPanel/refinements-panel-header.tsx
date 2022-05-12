@@ -35,7 +35,7 @@ export function RefinementsPanelHeader() {
   )
 
   return (
-    <header className="flex flex-col lg:my-5 lg:mt-0">
+    <header className="flex flex-col lg:my-5 lg:mt-6">
       <div className="flex items-center gap-1 my-6 lg:my-0">
         <div className="grow">
           <div className="lg:hidden flex items-center justify-between">

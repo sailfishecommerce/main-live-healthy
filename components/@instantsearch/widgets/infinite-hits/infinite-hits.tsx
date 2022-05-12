@@ -1,10 +1,11 @@
-import classNames from 'classnames'
-import { AnimatePresence, m, useReducedMotion } from 'framer-motion'
+import { useReducedMotion } from 'framer-motion'
 import { memo, useEffect, useState } from 'react'
 import isEqual from 'react-fast-compare'
 import type { InfiniteHitsProvided } from 'react-instantsearch-core'
 import { connectInfiniteHits } from 'react-instantsearch-dom'
 
+import ProductGridView from '@/components/View/ProductGridView'
+import ProductListView from '@/components/View/ProductListView'
 import type { ViewMode } from '@/components/ViewModes'
 import selectRandomColor from '@/lib/selectRandomColor'
 import { withDebugLayer } from '@dev/debug-layer/debug-layer'
@@ -42,13 +43,10 @@ function InfiniteHitsComponent({
   hits,
   hasPrevious,
   refinePrevious,
-  hitComponent: HitComponent,
   showLess = false,
   showMore = false,
   viewMode = 'grid',
   animation = true,
-  gridClassName = 'grid-cols-2 lg:grid-cols-4 w-full',
-  listClassName = 'lg:grid-cols-1',
 }: InfiniteHitsProps) {
   const [hitsPerPage, setHitsPerPage] = useState(0)
   const shouldReduceMotion = useReducedMotion()
@@ -62,37 +60,58 @@ function InfiniteHitsComponent({
       {showLess && (
         <LoadLess hasPrevious={hasPrevious} refinePrevious={refinePrevious} />
       )}
-
-      <m.ol
-        className={classNames('overflow-hidden', {
-          [classNames('grid grid-cols-2 gap-2', gridClassName)]:
-            viewMode === 'grid',
-          [classNames('flex flex-col gap-4 lg:grid lg:gap-0', listClassName)]:
-            viewMode === 'list',
-        })}
-        initial="hidden"
-        animate="show"
-        exit="hidden"
-      >
-        <AnimatePresence>
-          {hits.map((hit, i) => (
-            <m.li
-              key={hit?.objectID}
-              layout={shouldReduceMotion || !animation ? false : 'position'}
-              transition={listItemTransition}
-              variants={listItemVariants}
-              custom={i % hitsPerPage}
-            >
-              <HitComponent
-                hit={hit}
-                viewMode={viewMode}
-                color={selectRandomColor()}
-              />
-            </m.li>
-          ))}
-        </AnimatePresence>
-      </m.ol>
-
+      {viewMode === 'grid' ? (
+        <ProductGridView
+          hits={hits}
+          animation={animation}
+          listItemTransition={listItemTransition}
+          listItemVariants={listItemVariants}
+          shouldReduceMotion={shouldReduceMotion}
+          hitsPerPage={hitsPerPage}
+          color={selectRandomColor()}
+        />
+      ) : (
+        <ProductListView
+          hits={hits}
+          animation={animation}
+          listItemTransition={listItemTransition}
+          listItemVariants={listItemVariants}
+          shouldReduceMotion={shouldReduceMotion}
+          hitsPerPage={hitsPerPage}
+          color={selectRandomColor()}
+        />
+      )}
+      <>
+        {/* <m.ol
+          className={classNames('overflow-hidden', {
+            [classNames('grid grid-cols-2 gap-2', gridClassName)]:
+              viewMode === 'grid',
+            [classNames('flex flex-col gap-4 lg:grid lg:gap-0', listClassName)]:
+              viewMode === 'list',
+          })}
+          initial="hidden"
+          animate="show"
+          exit="hidden"
+        >
+          <AnimatePresence>
+            {hits.map((hit, i) => (
+              <m.li
+                key={hit?.objectID}
+                layout={shouldReduceMotion || !animation ? false : 'position'}
+                transition={listItemTransition}
+                variants={listItemVariants}
+                custom={i % hitsPerPage}
+              >
+                <HitComponent
+                  hit={hit}
+                  viewMode={viewMode}
+                  color={selectRandomColor()}
+                />
+              </m.li>
+            ))}
+          </AnimatePresence>
+        </m.ol> */}
+      </>
       {showMore && <LoadMore />}
     </section>
   )

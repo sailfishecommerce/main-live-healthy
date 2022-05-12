@@ -3,6 +3,7 @@ import Link from 'next/link'
 
 import CartIcon from '@/components/Icons/CartIcon'
 import FormattedPrice from '@/components/Price/FormattedPrice'
+import { useMediaQuery } from '@/hooks'
 import useShoppingCart from '@/hooks/useShoppingCart'
 
 interface ProductHitTypes {
@@ -40,6 +41,8 @@ export default function ProductListCard({
     ? `/search/${hit.vendor}`
     : `/vendor/${hit.vendor}`
 
+  const isMobile = useMediaQuery('max-width:768px')
+  const productTClassName = isMobile ? 'p-name' : 'product-name'
   return (
     <div
       className={`hover:bg-white hover:shadow-lg product hover:rounded-lg product ${productClassName}  p-2`}
@@ -58,8 +61,8 @@ export default function ProductListCard({
               blurDataURL={hit.images[0]}
             />
           </div>
-          <div className="flex items-center text justify-around w-3/4">
-            <div className="group-1 w-3/5">
+          <div className="flex items-center text justify-around lg:w-3/4 w-full flex-col lg:flex-row">
+            <div className="group-1 lg:w-3/5 w-full">
               <Link passHref href={productVendorLink}>
                 <button
                   type="button"
@@ -69,10 +72,12 @@ export default function ProductListCard({
                 </button>
               </Link>
               <div className="product-n md:mb-8 mb-2">
-                <h3 className="text-xs md:text-md product">{hit.name}</h3>
+                <h3 className={`text-xs md:text-md ${productTClassName}`}>
+                  {hit.name}
+                </h3>
               </div>
             </div>
-            <div className="group-2 flex w-1/4 flex-col">
+            <div className="group-2 flex lg:w-2/5 w-full flex-col">
               <div className="price-group w-full flex flex-col md:flex-row items-start md:items-center justify-between px-0">
                 <FormattedPrice
                   price={hit.sale_price}

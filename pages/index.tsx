@@ -1,8 +1,6 @@
 import dynamic from 'next/dynamic'
 import { Configure } from 'react-instantsearch-dom'
 
-import ShippingBanner from '@/components/Banners/ShippingBanner'
-import Values from '@/components/Values'
 import Applayout from '@/layouts/app-layout'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
 import {
@@ -14,10 +12,11 @@ const HomepageSlider = dynamic(
   () =>
     import(
       /* webpackChunkName: 'HomepageSlider' */ '@/components/Slider/HomepageSlider'
-    ),
-  {
-    ssr: false,
-  }
+    )
+)
+
+const Values = dynamic(
+  () => import(/* webpackChunkName: 'Values' */ '@/components/Values')
 )
 
 const MainProductShowcase = dynamic(
@@ -38,6 +37,13 @@ const BestSellerSlider = dynamic(
   {
     ssr: false,
   }
+)
+
+const ShippingBanner = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'ShippingBanner' */ '@/components/Banners/ShippingBanner'
+    )
 )
 
 const ProductTabSlider = dynamic(
@@ -64,14 +70,11 @@ const TrustmateReview = dynamic(
   () =>
     import(
       /* webpackChunkName: 'TrustmateReview' */ '@/components/Reviews/TrustmateReview'
-    ),
-  {
-    ssr: false,
-  }
+    )
 )
 
 export default function Home(props: SearchPageLayoutProps) {
-  return (
+  return ( 
     <Applayout title="Welcome to Livehealthy stores">
       <SearchPageLayout {...props}>
         <Configure

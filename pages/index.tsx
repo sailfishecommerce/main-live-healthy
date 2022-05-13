@@ -10,20 +10,20 @@ import {
   SearchPageLayout,
 } from '@/layouts/search-page-layout'
 
-const ProductBanner = dynamic(
+const HomepageSlider = dynamic(
   () =>
     import(
-      /* webpackChunkName: 'ProductsBanner' */ '@/components/Banners/ProductBanner'
+      /* webpackChunkName: 'HomepageSlider' */ '@/components/Slider/HomepageSlider'
     ),
   {
     ssr: false,
   }
 )
 
-const HomepageSlider = dynamic(
+const MainProductShowcase = dynamic(
   () =>
     import(
-      /* webpackChunkName: 'HomepageSlider' */ '@/components/Slider/HomepageSlider'
+      /* webpackChunkName: 'MainProductShowcase' */ '@/components/Product/MainProductShowcase'
     ),
   {
     ssr: false,
@@ -50,20 +50,20 @@ const ProductTabSlider = dynamic(
   }
 )
 
-const TrustmateReview = dynamic(
+const ProductBanner = dynamic(
   () =>
     import(
-      /* webpackChunkName: 'TrustmateReview' */ '@/components/Reviews/TrustmateReview'
+      /* webpackChunkName: 'ProductsBanner' */ '@/components/Banners/ProductBanner'
     ),
   {
     ssr: false,
   }
 )
 
-const MainProductShowcase = dynamic(
+const TrustmateReview = dynamic(
   () =>
     import(
-      /* webpackChunkName: 'MainProductShowcase' */ '@/components/Product/MainProductShowcase'
+      /* webpackChunkName: 'TrustmateReview' */ '@/components/Reviews/TrustmateReview'
     ),
   {
     ssr: false,

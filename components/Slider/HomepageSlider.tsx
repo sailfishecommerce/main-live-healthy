@@ -57,8 +57,8 @@ function HomepageSliderComponent() {
                   <Image
                     priority
                     src={content.image}
-                    height={400}
-                    width={1000}
+                    height={500}
+                    width={1300}
                     alt={content.title}
                     className="rounded-t-xl md:rounded-l-none md:rounded-r-3xl h-full"
                     layout="responsive"

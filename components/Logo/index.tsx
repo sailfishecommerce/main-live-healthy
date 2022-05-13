@@ -1,10 +1,11 @@
 import Link from 'next/link'
+import { memo } from 'react'
 
 interface LogoProps {
   className: string
 }
 
-export default function Logo({ className }: LogoProps) {
+function LogoComponent({ className }: LogoProps) {
   const logoClassName = className ? className : ' w-full h-full'
   return (
     <Link passHref href="/">
@@ -265,3 +266,6 @@ export default function Logo({ className }: LogoProps) {
     </Link>
   )
 }
+
+const Logo = memo(LogoComponent)
+export default Logo

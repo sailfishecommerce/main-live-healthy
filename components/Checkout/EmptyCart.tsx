@@ -11,6 +11,7 @@ export default function EmptyCart() {
         <Link passHref href="/collection">
           <button
             type="button"
+            aria-label="continue shopping"
             className="border hover:border-none hover:bg-green-300 hover:text-white border-gray-500 p-3  mx-auto flex justify-center my-4"
           >
             Continue Shopping

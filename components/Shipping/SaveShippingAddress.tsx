@@ -10,6 +10,7 @@ export default function SaveShippingAddress() {
           <Input content={content} key={index} />
         ))}
         <button
+          aria-label="save info"
           type="button"
           className="saveInformation border hover:text-white font-bold rounded-xl w-full p-3 mt-2"
         >

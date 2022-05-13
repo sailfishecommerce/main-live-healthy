@@ -71,6 +71,7 @@ export default function RecommendedProductCard({
           />
           <button
             type="button"
+            aria-label="add to cart"
             className="bg-mountain-green w-1/4 justify-center text-white px-2 py-1 flex items-center rounded-md"
             onClick={addToCartHandler}
           >

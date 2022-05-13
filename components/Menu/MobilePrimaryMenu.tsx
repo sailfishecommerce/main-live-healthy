@@ -25,6 +25,7 @@ export default function MobilePrimaryMenu() {
           <AuthIcons />
           <button
             type="button"
+            aria-label="cart"
             className="cart-icon relative mx-2"
             onClick={() => updateSlideTab('SLIDING-CART')}
           >
@@ -34,17 +35,27 @@ export default function MobilePrimaryMenu() {
             </div>
           </button>
           <Link passHref href="/account">
-            <button type="button" title="account" className="account">
+            <button
+              aria-label="account"
+              type="button"
+              title="account"
+              className="account"
+            >
               <IoPersonOutline className="hover:text-green-500" size={16} />
             </button>
           </Link>
           {!showMobileSearch && (
-            <button type="button" className="mx-2" onClick={toggleSearch}>
+            <button
+              type="button"
+              aria-label="search"
+              className="mx-2"
+              onClick={toggleSearch}
+            >
               <BsSearch size={16} />
             </button>
           )}
         </span>
-        <button type="button" onClick={toggleMobileMenu}>
+        <button aria-label="button" type="button" onClick={toggleMobileMenu}>
           {!mobileMenu ? <HiMenuAlt4 size={22} /> : <FaTimes size={22} />}
         </button>
       </div>

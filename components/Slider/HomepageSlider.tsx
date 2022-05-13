@@ -39,6 +39,7 @@ function HomepageSliderComponent() {
                 <Link passHref href="/collection">
                   <button
                     type="button"
+                    aria-label="view collection"
                     className="view-collection rounded-md py-1 px-2 text-white mt-6 md:mt-12 2xl:mt-20"
                   >
                     View collection

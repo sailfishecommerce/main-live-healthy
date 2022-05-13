@@ -1,8 +1,9 @@
-import { PropsWithChildren, useState } from 'react'
+import type { PropsWithChildren } from 'react'
+import { useState } from 'react'
 import { AiFillCaretUp } from 'react-icons/ai'
 
 interface Props {
-  dropupText: string | JSX.Element
+  dropupText: JSX.Element | string
   className?: string
 }
 
@@ -11,7 +12,7 @@ export default function index({
   children,
   className,
 }: PropsWithChildren<Props>) {
-  const [active, setActive] = useState(false)
+  const [active, setActive] = useState<any>(false)
 
   function onClickHandler() {
     setActive(!active)
@@ -20,7 +21,6 @@ export default function index({
     <div className="flex justify-center">
       <div className="dropup relative">
         <button
-          onClick={onClickHandler}
           className={`
           dropdown-toggle ${className}
           px-2 ml-2 lg:px-4
@@ -48,6 +48,7 @@ export default function index({
           id="dropdownMenuButton1u"
           data-bs-toggle="dropdown"
           aria-expanded="false"
+          onClick={onClickHandler}
         >
           {dropupText}
           <AiFillCaretUp className="ml-2" />

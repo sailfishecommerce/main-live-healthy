@@ -55,6 +55,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         type="button"
         title={title}
+        aria-label="button"
         className={type === 'native' ? classNames('btn-native', className) : cn}
         disabled={disabled}
         ref={ref}

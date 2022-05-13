@@ -38,6 +38,7 @@ export default function OrderHistoryItem({ item }: OrderItemProps) {
           {item.number}{' '}
           <button
             type="button"
+            aria-label="navigate"
             className="mx-2 hover:border-green-500 hover:border px-2 py-1 hover:rounded-xl"
             onClick={toggleProductVisibility}
           >

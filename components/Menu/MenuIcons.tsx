@@ -22,6 +22,7 @@ export default function MenuIcons() {
       <div className="row-1 flex items-center justify-between w-2/3">
         <AuthIcons />
         <button
+          aria-label="cart"
           type="button"
           className="cart-icon relative mx-4"
           title="cart"
@@ -35,7 +36,12 @@ export default function MenuIcons() {
           )}
         </button>
         <Link passHref href="/account">
-          <button type="button" title="account" className="account">
+          <button
+            aria-label="account"
+            type="button"
+            title="account"
+            className="account"
+          >
             <IoPersonOutline className="hover:text-green-500" size={25} />
           </button>
         </Link>

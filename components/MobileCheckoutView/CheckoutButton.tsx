@@ -13,6 +13,7 @@ export default function CheckoutButton({
   return (
     <button
       type="button"
+      aria-label="button"
       className={`${className} flex items-center justify-center text-lg  w-full py-2 rounded-lg my-6`}
       onClick={onClick}
     >

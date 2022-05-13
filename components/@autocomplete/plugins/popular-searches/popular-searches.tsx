@@ -90,6 +90,7 @@ export function popularSearchesPluginCreator({
                 <div className="aa-ItemActions">
                   <button
                     type="button"
+                    aria-label="search"
                     className="aa-ItemActionButton"
                     title={`Fill query with "${item.query}"`}
                     onClick={(event) => {

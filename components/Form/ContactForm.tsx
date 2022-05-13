@@ -4,7 +4,7 @@ export default function ContactForm() {
   return (
     <div className="w-full md:w-1/2 px-4 xl:px-5 py-5 border-t-2 border-gray-100">
       <h2 className="text-xl mb-4">Drop us a line</h2>
-      <form className="needs-validation mb-3" noValidate>
+      <form noValidate className="needs-validation mb-3">
         <div className="flex flex-wrap">
           {contactFormData.map((input) =>
             input.type === 'input' ? (
@@ -14,11 +14,11 @@ export default function ContactForm() {
                   <span className="text-danger">*</span>
                 </label>
                 <input
+                  required
                   className="border-2 border-gray-200 rounded-md p-1 px-4 w-full"
                   type="text"
                   id="cf-name"
                   placeholder={input.placeholder}
-                  required
                 />
               </div>
             ) : (
@@ -28,11 +28,11 @@ export default function ContactForm() {
                   <span className="text-danger">*</span>
                 </label>
                 <textarea
+                  required
                   className="border-2 border-gray-200 rounded-md p-1 px-4 w-full"
                   id="cf-message"
                   rows={6}
                   placeholder={input.placeholder}
-                  required
                 ></textarea>
                 <button
                   aria-label="Send Message"

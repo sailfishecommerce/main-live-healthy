@@ -4,6 +4,7 @@ export default function NavCartViewMobile({ cart, onClickHandler }: any) {
   return (
     <button
       type="button"
+      aria-label="cart"
       className="cart-icon relative flex flex-col border bg-gray-300 rounded-full h-10 items-center justify-center w-10 mr-2"
       onClick={onClickHandler}
     >

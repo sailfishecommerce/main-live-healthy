@@ -63,6 +63,7 @@ export default function SlideCardTotal() {
             />
           </div>
           <button
+            aria-label="add discount code"
             type="button"
             className="rounded-xl w-3/5 lg:w-2/5 bg-mountain-green text-white md:px-4 p-2 text-xs  lg:text-sm font-medium"
             onClick={onSubmitCoupon}

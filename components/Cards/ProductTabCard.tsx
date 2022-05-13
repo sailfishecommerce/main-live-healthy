@@ -31,6 +31,7 @@ export default function ProductTabCard({ product }: any) {
           />
           <button
             type="button"
+            aria-label="add to cart"
             className="bg-mountain-green text-xs md:text-sm bg-mountain-green mx-auto absolute top-12 py-1 px-2 rounded-md text-white"
             onClick={addToCartHandler}
           >

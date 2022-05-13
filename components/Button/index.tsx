@@ -1,14 +1,19 @@
 interface Props {
-  className: string;
-  text: string;
-  onClick?: () => void;
-  type: "button" | "reset" | "submit";
+  className: string
+  text: string
+  onClick?: () => void
+  type: 'button' | 'reset' | 'submit'
 }
 
 export default function Button({ className, text, onClick, type }: Props) {
   return (
     <>
-      <button type={type} className={className} onClick={onClick}>
+      <button
+        aria-label="button"
+        type={type}
+        className={className}
+        onClick={onClick}
+      >
         {text}
       </button>
       <style jsx>
@@ -35,5 +40,5 @@ export default function Button({ className, text, onClick, type }: Props) {
         `}
       </style>
     </>
-  );
+  )
 }

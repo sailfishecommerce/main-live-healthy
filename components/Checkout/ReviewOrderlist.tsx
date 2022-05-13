@@ -64,7 +64,11 @@ function ReviewOrderlistComponent({ content }: any) {
           />
         </div>
       </div>
-      <button type="button" onClick={removeItemFromCart}>
+      <button
+        aria-label="continue shopping"
+        type="button"
+        onClick={removeItemFromCart}
+      >
         <GiCancel
           size={32}
           aria-label="close"

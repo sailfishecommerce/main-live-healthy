@@ -41,6 +41,7 @@ export default function CheckoutCustomer() {
                   <DeliveryAddress formik={formik} />
                   <PaymentMethod>
                     <button
+                      aria-label="complete order"
                       type="submit"
                       className={`w-full ${buttonStyle} p-3 text-xl mt-1 my-3  text-white text-center hover:bg-orange-700 font-normal shadow-lg rounded-xl`}
                     >

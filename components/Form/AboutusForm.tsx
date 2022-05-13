@@ -1,5 +1,6 @@
-import aboutUsContent from "@/json/about-us.json";
-import { TextArea, Input } from "@/components/Form/FormFields";
+/* eslint-disable no-unused-expressions */
+import aboutUsContent from '@/json/about-us.json'
+import { TextArea, Input } from '@/components/Form/FormFields'
 
 export default function AboutusForm() {
   return (
@@ -14,11 +15,11 @@ export default function AboutusForm() {
           </p>
           <form className="needs-validation row g-4" method="post" noValidate>
             {aboutUsContent.form.map((formContent, index) => {
-              formContent.type === "textarea" ? (
+              formContent.type === 'textarea' ? (
                 <TextArea key={index} formContent={formContent} />
               ) : (
                 <Input key={index} formContent={formContent} />
-              );
+              )
             })}
             <div className="col-12">
               <button
@@ -44,5 +45,5 @@ export default function AboutusForm() {
         `}
       </style>
     </section>
-  );
+  )
 }

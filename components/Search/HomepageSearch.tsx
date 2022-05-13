@@ -46,6 +46,7 @@ function HomepageComponent() {
             <Hits hitComponent={SearchbarHit} />
             <Link passHref href={`/search/${query}`}>
               <button
+                aria-label="view more"
                 className="bg-mountain-green text-white mt-4 p-2 px-3 rounded-md"
                 type="button"
               >

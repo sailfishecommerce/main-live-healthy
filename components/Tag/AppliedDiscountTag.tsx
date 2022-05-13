@@ -13,7 +13,7 @@ export default function AppliedDiscountTag({ discountTitle, count }: Props) {
         {tagCount}
       </span>
       <p className="mb-0 text-xs mx-2">{discountTitle}</p>
-      <button type="button" className="text-gray-400">
+      <button aria-label="button" type="button" className="text-gray-400">
         <FaTimes />
       </button>
     </div>

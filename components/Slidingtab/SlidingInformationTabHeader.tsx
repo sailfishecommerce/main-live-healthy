@@ -10,6 +10,7 @@ export default function SlidingInformationTabHeader() {
         return (
           <button
             type="button"
+            aria-label="button"
             key={title}
             className={`${tabStyle} font-bold text-md 2xl:text-lg xl:text-md 2xl:mr-4 mx-2`}
           >

@@ -21,6 +21,7 @@ function ProductControlsComponent({ cart }: Props) {
       <button
         type="button"
         title="decrease quantity"
+        aria-label="decrease quantity"
         className="lg:w-8 w-4 h-4 lg:h-8 flex justify-center items-center rounded-lg hover:bg-red-500 hover:text-white"
         onClick={() => updateQuantity('DEC')}
       >
@@ -34,6 +35,7 @@ function ProductControlsComponent({ cart }: Props) {
       />
       <button
         type="button"
+        aria-label="increase"
         title="increase quantity"
         className="w-8 h-8 flex justify-center items-center rounded-lg hover:bg-green-500 hover:text-white"
         onClick={() => updateQuantity('INC')}

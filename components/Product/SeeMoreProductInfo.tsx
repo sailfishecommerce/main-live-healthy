@@ -8,6 +8,7 @@ export default function SeeMoreProductInfo({ title, onClick }: Props) {
     <div className="flex justify-start my-4">
       <h3 className="text-xl lg:text-2xl font-bold">{title}</h3>
       <button
+        aria-label="see more"
         type="button"
         className="mountain-mist ml-2 -mt-4 lg:text-lg text-xs hover:px-1 font-medium hover:border hover:rounded-full"
         onClick={onClick}

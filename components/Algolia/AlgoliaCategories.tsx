@@ -57,6 +57,7 @@ function RefinementListMenu({ items, selectedCategory }: any) {
       <Link passHref href={`/collection/${getCategorySlug(selectedCategory)}`}>
         <button
           type="button"
+          aria-label="show all categories"
           className="bg-mountain-green mt-8 rounded-lg p-2 text-white"
           onClick={toggleCategoryDropdownHandler}
         >

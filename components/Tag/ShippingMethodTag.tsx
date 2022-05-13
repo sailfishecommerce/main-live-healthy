@@ -26,6 +26,7 @@ export default function ShippingMethodTag({
   return (
     <button
       type="button"
+      aria-label="button"
       className={`${tagClassName} flex-col shipping-method-tag ${selectedMethodStyled} my-1.5 rounded-xl border border-gray-300 p-2 justify-between flex items-cente`}
       onClick={() => updateShippingMethod(content.id)}
     >

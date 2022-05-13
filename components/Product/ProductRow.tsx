@@ -35,7 +35,11 @@ export default function ProductRow({ cart }: any) {
             price={cart.priceTotal}
             className="font-bold text-black lg:text-base text-xs"
           />
-          <button type="button" onClick={removeItemFromCart}>
+          <button
+            aria-label="delete"
+            type="button"
+            onClick={removeItemFromCart}
+          >
             <TrashIcon />
           </button>
         </div>

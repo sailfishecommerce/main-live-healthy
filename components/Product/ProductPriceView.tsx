@@ -43,6 +43,7 @@ export default function ProductPriceView({ product }: any) {
                 </button>
                 <button
                   type="button"
+                  aria-label="buy now"
                   className="bg-tan-hide lg:text-lg  rounded-lg bg-tan-hide text-white py-2 lg:py-2 px-4"
                   onClick={buyNowHandler}
                 >

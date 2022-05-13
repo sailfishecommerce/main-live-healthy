@@ -57,6 +57,7 @@ export function recentSearchesPluginCreator({
                 <div className="aa-ItemActions">
                   <button
                     type="button"
+                    aria-label="close"
                     className="aa-ItemActionButton"
                     title="Remove this search"
                     onClick={(event) => {
@@ -69,6 +70,7 @@ export function recentSearchesPluginCreator({
                   </button>
                   <button
                     type="button"
+                    aria-label="search"
                     className="aa-ItemActionButton"
                     title={`Fill query with "${item.label}"`}
                     onClick={(event) => {

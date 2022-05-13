@@ -12,7 +12,7 @@ function NavCartViewComponent({ cart, onClickHandler }: any) {
     >
       <span className="text-xs md:text-md text-center font-bold">My Cart</span>
       {cart?.grandTotal ? (
-        <button type="button" className="flex items-center">
+        <button aria-label="cart" type="button" className="flex items-center">
           <div className="cart-icon relative flex flex-col mr-2">
             <span className="absolute top-0 right-0 -mt-2 text-white justify-center bg-red-500 rounded-full h-4 w-4 flex items-center">
               {cart?.items?.length}

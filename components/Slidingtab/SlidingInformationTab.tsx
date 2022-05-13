@@ -26,6 +26,7 @@ export default function SlidingInformation({ product }: Props) {
             <button
               type="button"
               key={tab.value}
+              aria-label="button"
               className={`${tabStyle} font-bold xl:text-md xl:mx-1 xl:mr-0 text-lg 2xl:text-lg 2xl:mr-4 mx-2`}
               onClick={() => selectInformationTypeHandler(tab.value)}
             >

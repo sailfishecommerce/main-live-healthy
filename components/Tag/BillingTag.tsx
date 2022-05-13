@@ -23,6 +23,7 @@ export default function BillingTag({
   return (
     <button
       type="button"
+      aria-label="button"
       className={`${tagClassName} shipping-method-tag ${selectedMethodStyled} my-1.5 rounded-xl border border-gray-300 p-2 justify-between flex items-cente`}
       onClick={() => updateShippingMethod(content.value)}
     >

@@ -25,6 +25,7 @@ export default function AuthIcons() {
         <button
           type="button"
           title="Login"
+          aria-label="Login"
           onClick={() => updateModalView('MODAL_LOGIN')}
         >
           <GrLogin
@@ -36,6 +37,7 @@ export default function AuthIcons() {
         <button
           type="button"
           title="Logout"
+          aria-label="Logut"
           onClick={() => updateModalView('MODAL_LOGOUT')}
         >
           <BiLogOut

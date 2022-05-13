@@ -29,6 +29,7 @@ export default function SlidingTab({
       <div className="fixed top-0 items-start bg-white z-50 flex flex-col sliding-tab w-11/12 lg:w-1/3 h-full">
         <button
           type="button"
+          aria-label="button"
           className={`${defaultButtonColor} closeButton absolute p-1 top-5 right-10 hover:text-white hover:rounded-full`}
           onClick={() => updateSlidingTabHandler(null)}
         >

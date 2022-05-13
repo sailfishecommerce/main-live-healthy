@@ -88,6 +88,7 @@ function ProductCardComponent({
           <div className={`${isRowText} ${imageWidth} text`}>
             <Link passHref href={productVendorLink}>
               <button
+                aria-label="vendor"
                 type="button"
                 className="vendor text-xs md:text-md font-bold pl-2 my-0 py-0 mb-1 md:mb-0 md:h-5"
               >
@@ -116,6 +117,7 @@ function ProductCardComponent({
       </Link>
       <button
         type="button"
+        aria-label="add to cart"
         className="bg-mountain-green mt-4 w-full md:w-4/5 justify-center h-8 text-white px-4 py-1 flex items-center mx-auto rounded-md"
         onClick={addToCartHandler}
       >

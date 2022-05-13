@@ -12,6 +12,7 @@ export default function MobileSearchbar() {
       <button
         type="button"
         title="close"
+        aria-label="search"
         className="h-10 search bar w-1/12 flex justify-center items-center"
         onClick={toggleSearch}
       >

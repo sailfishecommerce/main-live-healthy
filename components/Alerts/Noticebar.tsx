@@ -12,6 +12,7 @@ export default function Noticebar({ toggleBarVisibility }: Props) {
         </p>
         <button
           type="button"
+          aria-label="close"
           className="text-white hover:bg-white hover:text-black hover:rounded-full h-6 w-6 flex items-center font-bold justify-center"
           onClick={toggleBarVisibility}
         >

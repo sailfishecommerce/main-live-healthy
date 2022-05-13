@@ -35,6 +35,7 @@ export default function LogoutModal({ show, onHide }: Props) {
         </h3>
         <button
           type="button"
+          aria-label="logout"
           className="mt-6 flex items-center text-white  px-4 py-1 rounded-xl mx-auto bg-mountain-green"
           onClick={() => logout.mutate()}
         >

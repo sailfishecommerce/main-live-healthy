@@ -24,6 +24,7 @@ export default function ContactInformationForm({
             Already have an account?{' '}
             <button
               type="button"
+              aria-label="log in"
               className="mountain-mist font-semibold"
               onClick={updateModalView}
             >

@@ -39,6 +39,7 @@ export default function CustomercarePage() {
                             {link.name}
                             <button
                               type="button"
+                              aria-label="button"
                               className="go-back border-2 p-1 left-2 top-4"
                             >
                               <MdArrowForward className="text-white" />

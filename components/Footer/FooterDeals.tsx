@@ -28,7 +28,11 @@ export default function FooterDeals() {
           className="bg-transparent border-b-2 border-black w-full"
           onChange={subscribeToNewsletterHanndler}
         />
-        <button type="submit" className="mb-0 border-b-2 border-black">
+        <button
+          aria-label="join"
+          type="submit"
+          className="mb-0 border-b-2 border-black"
+        >
           Join
         </button>
       </form>

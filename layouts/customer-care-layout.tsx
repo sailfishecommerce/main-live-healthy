@@ -19,6 +19,7 @@ export default function CustomercareLayout({
           <Link passHref href="/customer-care">
             <button
               type="button"
+              aria-label="button"
               className="go-back lg:hidden absolute border p-2 left-2 top-4"
             >
               <MdArrowBackIosNew className="text-white" />

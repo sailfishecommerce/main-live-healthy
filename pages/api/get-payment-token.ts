@@ -13,8 +13,8 @@ export default function getPaymentTokenHandler(
           method: 'post',
           headers: {
             'Content-Type': 'application/json',
-            'x-client-id': `${process.env.NEXT_PUBLIC_AIRWALLEX_DEMO_ID}`,
-            'x-api-key': `${process.env.NEXT_PUBLIC_AIRWALLEX_DEMO_API_KEY}`,
+            'x-client-id': `${process.env.NEXT_PUBLIC_AIRWALLEX_ID}`,
+            'x-api-key': `${process.env.NEXT_PUBLIC_AIRWALLEX_API_KEY}`,
           },
         })
         .then((response) => {

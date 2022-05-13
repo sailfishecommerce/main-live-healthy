@@ -1,7 +1,16 @@
-import SocialIcons from '@/components/Icons/SocialIcons'
+// import dynamic from 'next/dynamic'
+
+import FooterText from '@/components/Footer/FooterText'
 import Logo from '@/components/Logo'
 
-import FooterText from './FooterText'
+import SocialIcons from '../Icons/SocialIcons'
+
+// const DynamicSocialIcons = dynamic(
+//   () =>
+//     import(
+//       /* webpackChunkName: 'DynamicSocialIcons' */ '@/components/Menu/LaptopPrimaryMenu'
+//     )
+// )
 
 export default function FooterAddress() {
   return (

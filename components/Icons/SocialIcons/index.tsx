@@ -1,19 +1,17 @@
-import {
-  FaWhatsapp,
-  FaFacebook,
-  FaTwitter,
-  FaInstagram,
-  FaPinterest,
-} from 'react-icons/fa'
+import FacebookIcon from '@/components/Icons/FacebookIcon'
+import InstagramIcon from '@/components/Icons/InstagramIcon'
+import PinterestIcon from '@/components/Icons/PinterestIcon'
+import TwitterIcon from '@/components/Icons/TwitterIcon'
+import WhatsappIcon from '@/components/Icons/WhatsappIcon'
 
 export default function SocialIcons() {
   return (
     <div className="social-icon-group flex items-center justify-between w-1/2">
-      <FaWhatsapp size={24} />
-      <FaFacebook size={24} />
-      <FaTwitter size={24} />
-      <FaInstagram size={24} />
-      <FaPinterest size={24} />
+      <WhatsappIcon />
+      <FacebookIcon />
+      <TwitterIcon />
+      <InstagramIcon />
+      <PinterestIcon />
     </div>
   )
 }

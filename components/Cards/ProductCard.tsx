@@ -1,23 +1,13 @@
-import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { memo } from 'react'
 
 import CartIcon from '@/components/Icons/CartIcon'
 import Image from '@/components/Image'
+import FormattedPrice from '@/components/Price/FormattedPrice'
 import DiscountTag from '@/components/Tag/DiscountTag'
 import { useMediaQuery } from '@/hooks'
 import useShoppingCart from '@/hooks/useShoppingCart'
 import type { ProductProps } from '@/types'
-
-const DynamicFormattedPrice = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'FormattedPrice' */ '@/components/Price/FormattedPrice'
-    ),
-  {
-    ssr: false,
-  }
-)
 
 interface ProductTypes extends ProductProps {
   row?: boolean
@@ -104,12 +94,12 @@ function ProductCardComponent({
               </h3>
             </div>
             <div className="price-group flex flex-col md:flex-row items-start md:items-center justify-between px-0">
-              <DynamicFormattedPrice
+              <FormattedPrice
                 price={product.sale_price}
                 className="text-xs md:text-sm my-1 md:my-0 lg:text-md text-black font-semibold"
               />
               {product.price !== 0 && (
-                <DynamicFormattedPrice
+                <FormattedPrice
                   price={product.price}
                   className="text-xs md:text-sm my-1 md:my-0 strike-through lg:text-md text-red-500 font-semibold"
                 />

@@ -1,20 +1,10 @@
-import dynamic from 'next/dynamic'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import CartIcon from '@/components/Icons/CartIcon'
+import FormattedPrice from '@/components/Price/FormattedPrice'
 import DiscountTag from '@/components/Tag/DiscountTag'
 import useShoppingCart from '@/hooks/useShoppingCart'
-
-const DynamicFormattedPrice = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'FormattedPrice' */ '@/components/Price/FormattedPrice'
-    ),
-  {
-    ssr: false,
-  }
-)
 
 export default function ProductBannerCard({ product, color }: any) {
   const { addItemToCart } = useShoppingCart()
@@ -54,12 +44,12 @@ export default function ProductBannerCard({ product, color }: any) {
           <h3 className="text-xs md:text-md product-name">{product.name}</h3>
         </div>
         <div className="price-group flex items-center justify-between">
-          <DynamicFormattedPrice
+          <FormattedPrice
             price={product.sale_price}
             className="text-sm md:text-md text-black font-semibold"
           />
           {product.price !== 0 && (
-            <DynamicFormattedPrice
+            <FormattedPrice
               price={product.price}
               className="text-sm strike-through md:text-sm text-red-500 font-semibold"
             />

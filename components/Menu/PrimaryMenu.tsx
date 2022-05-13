@@ -1,10 +1,22 @@
+import dynamic from 'next/dynamic'
 import { memo } from 'react'
 
 import Logo from '@/components/Logo'
-import MenuIcons from '@/components/Menu/MenuIcons'
-import MenuLinks from '@/components/Menu/MenuLinks'
-import MobilePrimaryMenu from '@/components/Menu/MobilePrimaryMenu'
 import { useMediaQuery } from '@/hooks'
+
+const DynamicMobilePrimaryMenu = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'DynamicMobilePrimaryMenu' */ '@/components/Menu/MobilePrimaryMenu'
+    )
+)
+
+const DynamicLaptopPrimaryMenu = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'DynamicLaptopPrimaryMenu' */ '@/components/Menu/LaptopPrimaryMenu'
+    )
+)
 
 function PrimaryMenuComponent() {
   const mobileWidth = useMediaQuery('(max-width:768px)')
@@ -12,12 +24,9 @@ function PrimaryMenuComponent() {
     <div className="flex justify-between items-center md:my-2 md:py-4">
       <Logo className="w-1/3 md:w-1/6" />
       {mobileWidth ? (
-        <MobilePrimaryMenu />
+        <DynamicMobilePrimaryMenu />
       ) : (
-        <div className="flex w-4/6 justify-between">
-          <MenuLinks />
-          <MenuIcons />
-        </div>
+        <DynamicLaptopPrimaryMenu />
       )}
     </div>
   )

@@ -1,8 +1,28 @@
-import PrimaryMenu from '@/components/Menu/PrimaryMenu'
-import SecondaryMenu from '@/components/Menu/SecondaryMenu'
-import MobileSearchbar from '@/components/Search/MobileSearchbar'
+import dynamic from 'next/dynamic'
+
 import { useMediaQuery } from '@/hooks'
 import useNav from '@/hooks/useNav'
+
+const DynamicPrimaryMenu = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'DynamicPrimaryMenu' */ '@/components/Menu/PrimaryMenu'
+    )
+)
+
+const DynamicSecondaryMenu = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'DynamicSecondaryMenu' */ '@/components/Menu/SecondaryMenu'
+    )
+)
+
+const DynamicMobileSearchbar = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'DynamicMobileSearchbar' */ '@/components/Search/MobileSearchbar'
+    )
+)
 
 export default function Menu() {
   const mobileWidth = useMediaQuery('(max-width:768px)')
@@ -10,9 +30,9 @@ export default function Menu() {
 
   return (
     <nav className=" mx-auto container md:px-0 px-4 pb-3 md:pb-0">
-      <PrimaryMenu />
-      {!mobileWidth && <SecondaryMenu />}
-      {mobileWidth && showMobileSearch && <MobileSearchbar />}
+      <DynamicPrimaryMenu />
+      {!mobileWidth && <DynamicSecondaryMenu />}
+      {mobileWidth && showMobileSearch && <DynamicMobileSearchbar />}
     </nav>
   )
 }

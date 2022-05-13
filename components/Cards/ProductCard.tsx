@@ -5,6 +5,7 @@ import { memo } from 'react'
 import CartIcon from '@/components/Icons/CartIcon'
 import Image from '@/components/Image'
 import DiscountTag from '@/components/Tag/DiscountTag'
+import { useMediaQuery } from '@/hooks'
 import useShoppingCart from '@/hooks/useShoppingCart'
 import type { ProductProps } from '@/types'
 
@@ -31,7 +32,6 @@ function ProductCardComponent({
   className,
   row,
   color,
-  smallerImage,
   imageClassName,
 }: ProductTypes) {
   const isRow = row ? 'flex' : 'flex flex-col'
@@ -39,11 +39,12 @@ function ProductCardComponent({
   // const buttonClass = row ? 'mt-1' : 'mt-4'
   const imageWidth = row ? 'w-1/2' : ''
   const productClassName = className ? className : ''
+  const mobileWidth = useMediaQuery('(max-width:768px)')
   const productImageClassName = imageClassName ? imageClassName : ''
-  const imageSize = smallerImage
+  const imageSize = mobileWidth
     ? {
-        height: 100,
-        width: 100,
+        height: 150,
+        width: 150,
       }
     : {
         height: 200,

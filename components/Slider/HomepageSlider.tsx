@@ -1,9 +1,9 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import dynamic from 'next/dynamic'
+import Image from 'next/image'
 import Link from 'next/link'
 import { memo, useState } from 'react'
 
-import Image from '@/components/Image'
 import MobileSliderControls from '@/components/Slider/MobileSliderControls'
 import { useMediaQuery } from '@/hooks'
 import homepageSliderContent from '@/json/homepage-slider.json'

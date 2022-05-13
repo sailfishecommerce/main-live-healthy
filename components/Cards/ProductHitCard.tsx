@@ -3,6 +3,7 @@ import Link from 'next/link'
 import CartIcon from '@/components/Icons/CartIcon'
 import Image from '@/components/Image'
 import FormattedPrice from '@/components/Price/FormattedPrice'
+import { useMediaQuery } from '@/hooks'
 import useShoppingCart from '@/hooks/useShoppingCart'
 
 interface ProductHitTypes {
@@ -19,18 +20,18 @@ export default function ProductHitCard({
   className,
   row,
   color,
-  smallerImage,
   imageClassName,
 }: ProductHitTypes) {
   const isRow = row ? 'flex' : 'flex flex-col'
   const isRowText = row ? 'ml-4' : ''
   const imageWidth = row ? 'w-1/2' : ''
   const productClassName = className ? className : ''
+  const mobileWidth = useMediaQuery('(max-width:768px)')
   const productImageClassName = imageClassName ? imageClassName : ''
-  const imageSize = smallerImage
+  const imageSize = mobileWidth
     ? {
-        height: 100,
-        width: 100,
+        height: 150,
+        width: 150,
       }
     : {
         height: 200,
@@ -53,7 +54,7 @@ export default function ProductHitCard({
       <Link passHref href={`/product/${hit.slug}?queryID=${hit.__queryID}`}>
         <a title={hit.name}>
           <div
-            className={`${productImageClassName} ${imageWidth}  image-wrapper`}
+            className={`${productImageClassName} ${imageWidth} flex justify-center mx-auto mb-4 image-wrapper`}
           >
             <Image
               src={productImage}

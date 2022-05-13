@@ -1,5 +1,5 @@
 /* Autocomplete */
-@import "@algolia/autocomplete-theme-classic";
+/* @import "@algolia/autocomplete-theme-classic"; */
 
 /* InstantSearch widgets */
 @import "@algolia/react-instantsearch-widget-loadmore-with-progressbar/dist/style.css";

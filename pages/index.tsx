@@ -2,7 +2,6 @@ import dynamic from 'next/dynamic'
 import { Configure } from 'react-instantsearch-dom'
 
 import ShippingBanner from '@/components/Banners/ShippingBanner'
-import HomepageSlider from '@/components/Slider/HomepageSlider'
 import Values from '@/components/Values'
 import Applayout from '@/layouts/app-layout'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
@@ -15,6 +14,16 @@ const ProductBanner = dynamic(
   () =>
     import(
       /* webpackChunkName: 'ProductsBanner' */ '@/components/Banners/ProductBanner'
+    ),
+  {
+    ssr: false,
+  }
+)
+
+const HomepageSlider = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'HomepageSlider' */ '@/components/Slider/HomepageSlider'
     ),
   {
     ssr: false,

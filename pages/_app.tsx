@@ -5,16 +5,13 @@ import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import { useMemo } from 'react'
 
-import { Loader } from '@/components/Loader/Loader'
-import TrustmateWidget from '@/components/Widget/TrustmateWidget'
-import ProviderLayout from '@/layouts/provider-layout'
 import { scrollToTop } from '@/utils/scrollToTop'
 
 import '@/styles/_index.css'
 import '@/styles/index.css'
 import '@/styles/global.css'
 
-export const LayoutWrapper = dynamic(
+const LayoutWrapper = dynamic(
   (): any =>
     import(/* webpackChunkName: 'common' */ '@/layouts/layout-wrapper'),
   {
@@ -22,8 +19,21 @@ export const LayoutWrapper = dynamic(
   }
 )
 
-export const Footer = dynamic(
-  () => import(/* webpackChunkName: 'common' */ '@/components/Footer')
+const ProviderLayout = dynamic(
+  (): any =>
+    import(/* webpackChunkName: 'ProviderLayout' */ '@/layouts/provider-layout')
+)
+
+const TrustmateWidget = dynamic(
+  (): any =>
+    import(
+      /* webpackChunkName: 'TrustmateWidget' */ '@/components/Widget/TrustmateWidget'
+    )
+)
+
+const Loader: any = dynamic(
+  (): any =>
+    import(/* webpackChunkName: 'Loader' */ '@/components/Loader/Loader')
 )
 
 export default function App({ Component, pageProps, router }: AppProps) {

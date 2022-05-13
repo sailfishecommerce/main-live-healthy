@@ -11,7 +11,7 @@ export type LoaderProps = {
 
 const routeLoadingThreshold = 400 // im ms
 
-export function Loader({ layout = 'overlay' }: LoaderProps) {
+export default function Loader({ layout = 'overlay' }: LoaderProps) {
   const router = useRouter()
   const [isRouteLoading, setIsRouteLoading] = useState(false)
 

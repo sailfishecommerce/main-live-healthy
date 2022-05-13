@@ -3,7 +3,6 @@ import { Configure } from 'react-instantsearch-dom'
 
 import ShippingBanner from '@/components/Banners/ShippingBanner'
 import MainProductShowcase from '@/components/Product/MainProductShowcase'
-import TrustmateReview from '@/components/Reviews/TrustmateReview'
 import HomepageSlider from '@/components/Slider/HomepageSlider'
 import Values from '@/components/Values'
 import Applayout from '@/layouts/app-layout'
@@ -37,6 +36,16 @@ const ProductTabSlider = dynamic(
   () =>
     import(
       /* webpackChunkName: 'ProductTabSlider' */ '@/components/Slider/ProductTabSlider'
+    ),
+  {
+    ssr: false,
+  }
+)
+
+const TrustmateReview = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'TrustmateReview' */ '@/components/Reviews/TrustmateReview'
     ),
   {
     ssr: false,

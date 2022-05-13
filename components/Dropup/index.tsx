@@ -7,12 +7,12 @@ interface Props {
   className?: string
 }
 
-export default function index({
+export default function Index({
   dropupText,
   children,
   className,
 }: PropsWithChildren<Props>) {
-  const [active, setActive] = useState<any>(false)
+  const [active, setActive] = useState(false)
 
   function onClickHandler() {
     setActive(!active)

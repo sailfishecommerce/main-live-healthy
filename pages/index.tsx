@@ -2,7 +2,6 @@ import dynamic from 'next/dynamic'
 import { Configure } from 'react-instantsearch-dom'
 
 import ShippingBanner from '@/components/Banners/ShippingBanner'
-import MainProductShowcase from '@/components/Product/MainProductShowcase'
 import HomepageSlider from '@/components/Slider/HomepageSlider'
 import Values from '@/components/Values'
 import Applayout from '@/layouts/app-layout'
@@ -46,6 +45,16 @@ const TrustmateReview = dynamic(
   () =>
     import(
       /* webpackChunkName: 'TrustmateReview' */ '@/components/Reviews/TrustmateReview'
+    ),
+  {
+    ssr: false,
+  }
+)
+
+const MainProductShowcase = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'MainProductShowcase' */ '@/components/Product/MainProductShowcase'
     ),
   {
     ssr: false,

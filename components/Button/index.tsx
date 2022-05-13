@@ -1,8 +1,9 @@
+/* eslint-disable react/button-has-type */
 interface Props {
   className: string
   text: string
   onClick?: () => void
-  type: 'button' | 'reset' | 'submit'
+  type: any | 'button' | 'reset' | 'submit'
 }
 
 export default function Button({ className, text, onClick, type }: Props) {

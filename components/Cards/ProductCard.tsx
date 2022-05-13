@@ -1,9 +1,9 @@
 import dynamic from 'next/dynamic'
-import Image from 'next/image'
 import Link from 'next/link'
 import { memo } from 'react'
 
 import CartIcon from '@/components/Icons/CartIcon'
+import Image from '@/components/Image'
 import DiscountTag from '@/components/Tag/DiscountTag'
 import useShoppingCart from '@/hooks/useShoppingCart'
 import type { ProductProps } from '@/types'
@@ -42,12 +42,12 @@ function ProductCardComponent({
   const productImageClassName = imageClassName ? imageClassName : ''
   const imageSize = smallerImage
     ? {
-        height: 300,
-        width: 300,
+        height: 100,
+        width: 100,
       }
     : {
-        height: 500,
-        width: 500,
+        height: 200,
+        width: 200,
       }
 
   const { addItemToCart } = useShoppingCart()
@@ -73,7 +73,7 @@ function ProductCardComponent({
       >
         <a title={product.name}>
           <div
-            className={`${productImageClassName} ${imageWidth}  image-wrapper`}
+            className={`${productImageClassName} ${imageWidth}   image-wrapper`}
           >
             {product.images[0] && (
               <Image
@@ -82,6 +82,8 @@ function ProductCardComponent({
                 height={imageSize.height}
                 width={imageSize.width}
                 blurDataURL={productImage}
+                placeholder="blur"
+                layout="responsive"
               />
             )}
           </div>

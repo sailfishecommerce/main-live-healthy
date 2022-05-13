@@ -47,7 +47,7 @@ export default function BestSellerSlider() {
                     className="md:mr-8 mr-4 bg-white rounded-xl relative z-20"
                     color={selectRandomColor()}
                     product={product}
-                    imageClassName="border-gray-300 pb-4 mb-4 border-b"
+                    imageClassName="border-gray-300 pb-4 mb-4 flex items-center justify-center"
                   />
                 </SplideSlide>
               ))}

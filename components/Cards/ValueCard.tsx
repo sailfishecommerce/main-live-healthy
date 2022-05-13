@@ -26,7 +26,7 @@ export default function ValueCard({ content }: ValuecardProps) {
             layout="responsive"
           />
         </div>
-        <h3 className="font-medium text-xl my-2">{content.title}</h3>
+        <h2 className="font-medium text-xl my-2">{content.title}</h2>
         <p>{content.text}</p>
         {<span className="font-bold text-blue-500">{content?.link}</span>}
       </div>

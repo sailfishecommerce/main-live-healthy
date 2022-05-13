@@ -1,9 +1,9 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import dynamic from 'next/dynamic'
-import Image from 'next/image'
 import Link from 'next/link'
 import { memo, useState } from 'react'
 
+import Image from '@/components/Image'
 import MobileSliderControls from '@/components/Slider/MobileSliderControls'
 import { useMediaQuery } from '@/hooks'
 import homepageSliderContent from '@/json/homepage-slider.json'
@@ -53,15 +53,17 @@ function HomepageSliderComponent() {
                 )}
               </div>
               <div className="image order-1 md:order-2 w-full md:w-4/6 lg:w-3/4">
-                <Image
-                  priority
-                  src={content.image}
-                  height={500}
-                  width={1300}
-                  alt={content.title}
-                  className="rounded-t-xl md:rounded-l-none md:rounded-r-3xl h-full"
-                  layout="responsive"
-                />
+                <div className="rounded-t-xl md:rounded-l-none md:rounded-r-3xl h-full">
+                  <Image
+                    priority
+                    src={content.image}
+                    height={400}
+                    width={1000}
+                    alt={content.title}
+                    className="rounded-t-xl md:rounded-l-none md:rounded-r-3xl h-full"
+                    layout="responsive"
+                  />
+                </div>
               </div>
             </div>
           </SplideSlide>

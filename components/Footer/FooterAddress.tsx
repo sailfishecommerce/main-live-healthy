@@ -11,7 +11,7 @@ export default function FooterAddress() {
       <div className="call-us bg-white rounded-lg p-3 w-5/6 my-4 md:my-3">
         <span className="flex items-center">
           <FaWhatsapp fill="green" />
-          <h6 className="font-bold mx-2">Call Us: 9442 2060</h6>
+          <p className="font-bold mx-2">Call Us: 9442 2060</p>
         </span>
         <hr />
         <div className="opening-hrs">

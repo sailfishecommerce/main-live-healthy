@@ -1,7 +1,7 @@
-import Image from 'next/image'
 import Link from 'next/link'
 
 import CartIcon from '@/components/Icons/CartIcon'
+import Image from '@/components/Image'
 import FormattedPrice from '@/components/Price/FormattedPrice'
 import useShoppingCart from '@/hooks/useShoppingCart'
 
@@ -29,12 +29,12 @@ export default function ProductHitCard({
   const productImageClassName = imageClassName ? imageClassName : ''
   const imageSize = smallerImage
     ? {
-        height: 300,
-        width: 300,
+        height: 100,
+        width: 100,
       }
     : {
-        height: 500,
-        width: 500,
+        height: 200,
+        width: 200,
       }
 
   const { addItemToCart } = useShoppingCart()
@@ -61,6 +61,7 @@ export default function ProductHitCard({
               height={imageSize.height}
               width={imageSize.width}
               blurDataURL={hit.images[0]}
+              placeholder="blur"
             />
           </div>
           <div className={`${isRowText} ${imageWidth} text`}>

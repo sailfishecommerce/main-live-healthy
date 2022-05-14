@@ -1,8 +1,10 @@
+import { memo } from 'react'
+
 interface Props {
   toggleBarVisibility: () => void
 }
 
-export default function Noticebar({ toggleBarVisibility }: Props) {
+function NoticebarComponent({ toggleBarVisibility }: Props) {
   return (
     <div className="noticebar bg-black p-2 md:p-4">
       <div className="container mx-auto flex items-center justify-between">
@@ -22,3 +24,7 @@ export default function Noticebar({ toggleBarVisibility }: Props) {
     </div>
   )
 }
+
+const Noticebar = memo(NoticebarComponent)
+
+export default Noticebar

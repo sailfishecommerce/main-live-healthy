@@ -1,5 +1,6 @@
 import { useAtom } from 'jotai'
 import dynamic from 'next/dynamic'
+import { memo } from 'react'
 
 import Noticebar from '@/components/Alerts/Noticebar'
 import DiscountSlider from '@/components/Slider/DiscountSlider'
@@ -26,7 +27,7 @@ const DynamicAllCategoriesDropdownView = dynamic(
     )
 )
 
-export default function Header() {
+function HeaderComponent() {
   const { navStyle } = useNavStyle()
   const [noticebar, setNoticebar] = useAtom(noticebarAtom)
   const [categoryDropdown, setCategoryDropdown] = useAtom(categoryDropdownAtom)
@@ -60,3 +61,5 @@ export default function Header() {
     </>
   )
 }
+const Header = memo(HeaderComponent)
+export default Header

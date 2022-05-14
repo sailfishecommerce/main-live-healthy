@@ -7,6 +7,7 @@
 
 body {
   font-family: 'Commissioner', sans-serif;
+  font-display: swap;
 }
 
 :root {
@@ -184,6 +185,12 @@ header.header {
   grid-template-columns: repeat(4, 1fr);
   max-height: 300px;
   height: 200px;
+}
+
+.product-list-view {
+  width: 100% !important;
+  display: flex;
+  align-items: center;
 }
 
 /* social-icons */

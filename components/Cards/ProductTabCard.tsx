@@ -56,6 +56,7 @@ export default function ProductTabCard({ product }: any) {
         {`
           .content {
             font-family: 'Commissioner', sans-serif;
+            font-display: swap;
           }
           .producttab-card:hover {
             background-color: var(--tan-light-hide);

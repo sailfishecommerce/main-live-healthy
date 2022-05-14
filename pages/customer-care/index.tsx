@@ -59,6 +59,7 @@ export default function CustomercarePage() {
         {`
           .content {
             font-family: 'Commissioner', sans-serif;
+            font-display: swap;
           }
         `}
       </style>

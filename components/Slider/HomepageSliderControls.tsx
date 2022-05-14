@@ -1,3 +1,5 @@
+import { memo } from 'react'
+
 interface Props {
   content: Array<{
     title: string
@@ -5,10 +7,7 @@ interface Props {
   }>
   activeIndex: number
 }
-export default function HomepageSliderControls({
-  content,
-  activeIndex,
-}: Props) {
+function HomepageSliderControlsComponent({ content, activeIndex }: Props) {
   return (
     <div className="rounded-3xl border border-gray-100 flex items-center bg-white w-11/12 p-8 flex justify-between mx-auto h-36 mb-4 -mt-24 relative">
       {content.map((item, index) => {
@@ -52,3 +51,5 @@ export default function HomepageSliderControls({
     </div>
   )
 }
+const HomepageSliderControls = memo(HomepageSliderControlsComponent)
+export default HomepageSliderControls

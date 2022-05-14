@@ -55,7 +55,7 @@ function HomepageSliderComponent() {
               <div className="image order-1 md:order-2 w-full md:w-4/6 lg:w-3/4">
                 <div className="rounded-t-xl md:rounded-l-none md:rounded-r-3xl h-full">
                   <Image
-                    priority
+                    priority={true}
                     src={content.image}
                     height={500}
                     width={1300}

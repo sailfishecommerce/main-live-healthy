@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic'
+import { memo } from 'react'
 
 import { useMediaQuery } from '@/hooks'
 import useNav from '@/hooks/useNav'
@@ -24,7 +25,7 @@ const DynamicMobileSearchbar = dynamic(
     )
 )
 
-export default function Menu() {
+function MenuComponent() {
   const mobileWidth = useMediaQuery('(max-width:768px)')
   const { showMobileSearch } = useNav()
 
@@ -36,3 +37,6 @@ export default function Menu() {
     </nav>
   )
 }
+const Menu = memo(MenuComponent)
+
+export default Menu

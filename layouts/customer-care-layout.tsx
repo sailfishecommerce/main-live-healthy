@@ -37,6 +37,7 @@ export default function CustomercareLayout({
         {`
           .content {
             font-family: 'Commissioner', sans-serif;
+            font-display: swap;
           }
         `}
       </style>

@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic'
 import { Configure } from 'react-instantsearch-dom'
 
+import ListView from '@/components/ListView'
 import Applayout from '@/layouts/app-layout'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
 import {
@@ -74,7 +75,7 @@ const TrustmateReview = dynamic(
 )
 
 export default function Home(props: SearchPageLayoutProps) {
-  return ( 
+  return (
     <Applayout title="Welcome to Livehealthy stores">
       <SearchPageLayout {...props}>
         <Configure
@@ -93,6 +94,13 @@ export default function Home(props: SearchPageLayoutProps) {
           className="lg:bg-gray-50"
           tabColor="#4017E0"
         />
+        {/* <ListView
+          title="Weight Loss"
+          indexId="weight_loss_product_type"
+          query="weight loss"
+          className="lg:bg-gray-50"
+          tabColor="#4017E0"
+        /> */}
         <MainProductShowcase
           title="Sport Nutrition"
           indexId="sport_nutrition_product_type"

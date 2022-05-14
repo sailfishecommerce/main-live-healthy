@@ -68,6 +68,7 @@ export default function ProductBannerCard({ product, color }: any) {
         {`
           .product {
             font-family: 'Commissioner', sans-serif;
+            font-display: swap;
           }
           .vendor {
             border-left: 3px solid ${color};

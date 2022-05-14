@@ -1,4 +1,4 @@
-import '../lib/wdyr'
+// import '../lib/wdyr'
 import { AnimatePresence } from 'framer-motion'
 import type { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'

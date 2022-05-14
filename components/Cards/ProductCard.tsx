@@ -121,6 +121,7 @@ function ProductCardComponent({
         {`
           .product {
             font-family: 'Commissioner', sans-serif;
+            font-display: swap;
           }
           .vendor {
             border-left: 3px solid ${color};

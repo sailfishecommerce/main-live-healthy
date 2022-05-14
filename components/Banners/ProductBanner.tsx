@@ -2,6 +2,7 @@
 import Image from 'next/image'
 
 import ProductBannerCard from '@/components/Cards/ProductBannerCard'
+import LazyLoader from '@/components/Loader/LazyLoader'
 import { useMediaQuery } from '@/hooks'
 import useLiveHealthyProduct from '@/hooks/useLivehealthyProduct'
 
@@ -27,31 +28,33 @@ export default function ProductBanner() {
   const bannerDimension = mobileWidth ? imageSize[1] : imageSize[0]
 
   return (
-    <div className="container mx-auto justify-between px-4 md:px-0 flex flex-col md:flex-row items-start h-1/2">
-      <div className="banner w-full md:w-4/5">
-        <Image
-          src={bannerImage}
-          height={bannerDimension.height}
-          width={bannerDimension.width}
-          alt="skin care"
-          layout="responsive"
-        />
+    <LazyLoader height={600} mobileHeight={320}>
+      <div className="lg:pt-6 container mx-auto justify-between px-4 md:px-0 flex flex-col md:flex-row items-start h-1/2">
+        <div className="banner w-full md:w-4/5">
+          <Image
+            src={bannerImage}
+            height={bannerDimension.height}
+            width={bannerDimension.width}
+            alt="skin care"
+            layout="responsive"
+          />
+        </div>
+        <div className="product-group w-full md:w-2/6 ml-0 md:ml-4">
+          {status === 'error'
+            ? 'unable to load products'
+            : status === 'loading'
+            ? 'loading'
+            : data &&
+              getThreeProducts.map((product: any, index: number) => (
+                <ProductBannerCard
+                  key={index}
+                  color="#24BFCE"
+                  className="items-center justify-between"
+                  product={product}
+                />
+              ))}
+        </div>
       </div>
-      <div className="product-group w-full md:w-2/6 ml-0 md:ml-4">
-        {status === 'error'
-          ? 'unable to load products'
-          : status === 'loading'
-          ? 'loading'
-          : data &&
-            getThreeProducts.map((product: any, index: number) => (
-              <ProductBannerCard
-                key={index}
-                color="#24BFCE"
-                className="items-center justify-between"
-                product={product}
-              />
-            ))}
-      </div>
-    </div>
+    </LazyLoader>
   )
 }

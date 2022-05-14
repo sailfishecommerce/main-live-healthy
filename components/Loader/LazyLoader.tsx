@@ -20,7 +20,6 @@ export default function LazyLoader({
       <LazyLoad height={componentHeight} offsetVertical={50}>
         {children}
       </LazyLoad>
-      {/* <div className="filler"></div> */}
     </>
   )
 }

@@ -124,8 +124,13 @@ header.header {
 .itemSlider .splide__arrows {
   position: absolute;
   right: 20px;
-  top: -50px;
+  top: -30px;
   width: 120px;
+}
+
+button.splide__arrow:disabled {
+  color: gray;
+  opacity: 0.3;
 }
 
 .itemSlider.recommendation-slider .splide__arrows {

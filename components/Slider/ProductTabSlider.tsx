@@ -19,7 +19,7 @@ export default function ProductTabSlider() {
   const [data, status] = useLiveHealthyProduct()
 
   return (
-    <LazyLoader height={240} mobileHeight={320}>
+    <LazyLoader height={240} mobileHeight={200}>
       <section className="itemSlider py-6 product-tab-slider items-start container mx-auto px-6">
         <ProductTabSliderDropdown />
         <div className="tab-products mt-2 md:mt-0 flex items-center">

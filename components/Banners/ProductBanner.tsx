@@ -28,7 +28,7 @@ export default function ProductBanner() {
   const bannerDimension = mobileWidth ? imageSize[1] : imageSize[0]
 
   return (
-    <LazyLoader height={600} mobileHeight={320}>
+    <LazyLoader height={650} mobileHeight={630}>
       <div className="lg:pt-6 container mx-auto justify-between px-4 md:px-0 flex flex-col md:flex-row items-start h-1/2">
         <div className="banner w-full md:w-4/5">
           <Image

@@ -11,7 +11,7 @@ export default function BestSellerSlider() {
   const [data, status] = useLiveHealthyProduct()
 
   return (
-    <LazyLoader height={650} mobileHeight={320}>
+    <LazyLoader height={650} mobileHeight={4}>
       <section className="itemSlider best-seller-slider py-4 px-4 md:py-8 relative w-full bg-gray-platinum mx-auto flex relative z-10 flex-col my-4">
         <div className="w-full">
           <div className="mx-auto container top md:mb-8 flex items-center justify-between">

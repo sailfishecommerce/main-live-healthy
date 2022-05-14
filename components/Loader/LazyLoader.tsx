@@ -13,7 +13,7 @@ export default function LazyLoader({
   children,
   mobileHeight,
 }: PropsWithChildren<Props>) {
-  const mobileDevice = useMediaQuery('(mx-width:768px)')
+  const mobileDevice = useMediaQuery('(max-width:768px)')
   const componentHeight = mobileDevice ? mobileHeight : height
   return (
     <>

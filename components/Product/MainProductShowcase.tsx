@@ -23,7 +23,7 @@ export default function MainProductShowcase({
   ...searchParameters
 }: ProductsShowcaseProps) {
   return (
-    <LazyLoader height={500} mobileHeight={320}>
+    <LazyLoader height={500} mobileHeight={370}>
       <Index indexName={indexName} indexId={indexId}>
         <Configure
           enablePersonalization={true}
@@ -31,7 +31,10 @@ export default function MainProductShowcase({
           {...searchParameters}
         />
         <section
-          className={classNames('lg:pt-6 my-3 container mx-auto', className)}
+          className={classNames(
+            'lg:pt-6 my-3 pl-3 container mx-auto',
+            className
+          )}
         >
           {title && (
             <h4 className="text-2xl -mt-3 font-bold  mb-2 lg:mb-4 lg:ml-3">

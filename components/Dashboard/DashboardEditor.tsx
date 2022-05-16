@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import type { BaseEditor } from 'slate'
 import { createEditor } from 'slate'
 import type { ReactEditor } from 'slate-react'
@@ -7,7 +7,7 @@ import { Slate, Editable, withReact } from 'slate-react'
 type CustomElement = { type: 'paragraph'; children: CustomText[] }
 type CustomText = { text: string }
 
-const initialValue = [
+const initialValue: any = [
   {
     type: 'paragraph',
     children: [{ text: 'A line of text in a paragraph.' }],

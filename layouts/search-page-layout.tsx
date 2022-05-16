@@ -4,6 +4,7 @@ import type {
   GetServerSidePropsResult,
   GetStaticPropsResult,
 } from 'next'
+import type { ElementType } from 'react'
 import { memo, useMemo } from 'react'
 import isEqual from 'react-fast-compare'
 
@@ -71,7 +72,7 @@ export type GetServerSidePropsOptions = GetServerSidePropsResult<any>
 export type GetStaticPropsOptions = GetStaticPropsResult<any>
 
 export const getPropsPage = async (
-  component: React.ElementType,
+  component: ElementType,
   url?: string,
   options?: GetServerSidePropsOptions | GetStaticPropsOptions
 ) => {
@@ -98,7 +99,7 @@ export const getPropsPage = async (
 }
 
 export const getServerSidePropsPage = (
-  component: React.ElementType,
+  component: ElementType,
   context: GetServerSidePropsContext,
   options?: GetServerSidePropsOptions,
   url?: string
@@ -108,20 +109,20 @@ export const getServerSidePropsPage = (
   const userTokenCookie = context.req.cookies._ALGOLIA
   if (userTokenCookie) {
     customOptions.props = {
-      ...customOptions.props,
+      ...customOptions?.props,
       userToken: userTokenCookie,
     }
   }
 
   return getPropsPage(
     component,
-    url || context.resolvedUrl || '',
+    url || context?.resolvedUrl || '',
     customOptions
   )
 }
 
 export const getStaticPropsPage = (
-  component: React.ElementType,
+  component: ElementType,
   url?: string,
   options?: GetServerSidePropsOptions
 ) => getPropsPage(component, url, options)

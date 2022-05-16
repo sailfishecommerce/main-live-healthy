@@ -20,7 +20,7 @@ import {
 
 // Atoms
 export const searchStateAtom = atom<SearchState>(
-  urlToSearchState(isomorphicWindow ? isomorphicWindow.location.href : null)
+  urlToSearchState(isomorphicWindow ? isomorphicWindow?.location?.href : null)
 )
 
 export const searchQueryAtom = selectAtom<SearchState, string | undefined>(

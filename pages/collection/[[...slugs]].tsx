@@ -2,7 +2,6 @@ import { useAtomValue } from 'jotai/utils'
 import type { GetServerSidePropsContext } from 'next'
 import dynamic from 'next/dynamic'
 
-import { useEffect } from 'react'
 import { Breadcrumb } from '@/components/@instantsearch/widgets/breadcrumb/breadcrumb'
 import InfiniteHits from '@/components/@instantsearch/widgets/infinite-hits/infinite-hits'
 import { NoResultsHandler } from '@/components/@instantsearch/widgets/no-results-handler/no-results-handler'
@@ -19,16 +18,22 @@ import {
 } from '@/layouts/search-page-layout'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
 
-const RefinementsBar = dynamic<any>(() =>
-  import(
-    /* webpackChunkName: 'search' */ '@/components/RefinementsBar/refinements-bar'
-  ).then((mod) => mod.RefinementsBar)
+const RefinementsBar = dynamic<any>(
+  () =>
+    import(
+      /* webpackChunkName: 'search' */ '@/components/RefinementsBar/refinements-bar'
+    ),
+  {
+    ssr: false,
+  }
 )
 
-const RefinementsPanel = dynamic<any>(() =>
-  import(
-    /* webpackChunkName: 'refinements-panel' */ '@/components/RefinementsPanel/refinements-panel'
-  ).then((mod) => mod.RefinementsPanel)
+const RefinementsPanel = dynamic<any>(
+  () =>
+    import(
+      /* webpackChunkName: 'refinements-panel' */ '@/components/RefinementsPanel/refinements-panel'
+    ),
+  { ssr: false }
 )
 
 function CollectionPage(props: SearchPageLayoutProps) {
@@ -40,10 +45,6 @@ function CollectionPage(props: SearchPageLayoutProps) {
   const laptop = useMediaQuery('(min-width:1200px)')
   const isMounted = useIsMounted(true)
   const isLaptop = laptop && isMounted()
-
-  useEffect(() => {
-    console.log('page loaded')
-  }, [])
 
   return (
     <Applayout title="Collection page">

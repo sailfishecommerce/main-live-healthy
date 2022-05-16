@@ -99,7 +99,6 @@ function RefinementsBarComponent({
   )
 }
 
-export const RefinementsBar = withDebugLayer(
-  RefinementsBarComponent,
-  'RefinementsBar'
-)
+const RefinementsBar = withDebugLayer(RefinementsBarComponent, 'RefinementsBar')
+
+export default RefinementsBar

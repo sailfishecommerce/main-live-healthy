@@ -9,12 +9,12 @@ export default function getPaymentTokenHandler(
     case 'GET': {
       axios
         .request({
-          url: `${process.env.NEXT_PUBLIC_AIRWALLEX_BASE_API}/authentication/login`,
+          url: `${process.env.NEXT_PUBLIC_AIRWALLEX_DEMO_BASE_API}/authentication/login`,
           method: 'post',
           headers: {
             'Content-Type': 'application/json',
-            'x-client-id': `${process.env.NEXT_PUBLIC_AIRWALLEX_ID}`,
-            'x-api-key': `${process.env.NEXT_PUBLIC_AIRWALLEX_API_KEY}`,
+            'x-client-id': `${process.env.NEXT_PUBLIC_AIRWALLEX_DEMO_ID}`,
+            'x-api-key': `${process.env.NEXT_PUBLIC_AIRWALLEX_DEMO_ID}`,
           },
         })
         .then((response) => {

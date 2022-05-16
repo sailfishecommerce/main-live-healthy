@@ -21,6 +21,9 @@ export default function TabBody({ tab }: Props) {
           </Tabpanel>
         )}
       </div>
+      <div className="social-login my-2 mt-4">
+        <div className="text-center">OR</div>
+      </div>
       <style jsx>
         {`
           .auth-tab {

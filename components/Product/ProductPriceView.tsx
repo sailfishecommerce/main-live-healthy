@@ -26,7 +26,7 @@ export default function ProductPriceView({ product }: any) {
     <div className="border border-gray-300 my-4 lg:my-6 rounded-3xl p-6 lg:p-8 flex flex-col">
       <div className="price flex flex-col">
         <FormattedPrice
-          price={product.price}
+          price={product.sale_price}
           className="font-semibold text-black text-xl lg:text-2xl"
         />
         <div className="buy-now-section flex flex-col">

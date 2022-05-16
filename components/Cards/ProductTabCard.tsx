@@ -43,12 +43,18 @@ export default function ProductTabCard({ product }: any) {
             <h3 className="text-xs md:text-md product-name mb-3">
               {product.name}
             </h3>
-            {product.price && (
+            <div className="price-view flex items-center justify-between">
               <FormattedPrice
                 className="font-bold text-xs md:text-sm text-black"
                 price={product.sale_price}
               />
-            )}
+              {product.price !== 0 && (
+                <FormattedPrice
+                  price={product.price}
+                  className="text-xs md:text-sm my-1 md:my-0 strike-through lg:text-md text-red-500 font-semibold"
+                />
+              )}
+            </div>
           </a>
         </Link>
       </div>

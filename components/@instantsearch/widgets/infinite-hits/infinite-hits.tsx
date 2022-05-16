@@ -58,39 +58,39 @@ function InfiniteHitsComponent({
   console.log('hits', hits.length)
   return (
     <>
-      {typeof window === "undefined" && (
-          <section className="w-full">
-            {showLess && (
-              <LoadLess
-                hasPrevious={hasPrevious}
-                refinePrevious={refinePrevious}
-              />
-            )}
-            {viewMode === 'grid' ? (
-              <ProductGridView
-                hits={hits}
-                animation={animation}
-                listItemTransition={listItemTransition}
-                listItemVariants={listItemVariants}
-                shouldReduceMotion={shouldReduceMotion}
-                hitsPerPage={hitsPerPage}
-                color={selectRandomColor()}
-              />
-            ) : (
-              <ProductListView
-                hits={hits}
-                animation={animation}
-                listItemTransition={listItemTransition}
-                listItemVariants={listItemVariants}
-                shouldReduceMotion={shouldReduceMotion}
-                hitsPerPage={hitsPerPage}
-                color={selectRandomColor()}
-              />
-            )}
+      {typeof window === 'undefined' && (
+        <section className="w-full">
+          {showLess && (
+            <LoadLess
+              hasPrevious={hasPrevious}
+              refinePrevious={refinePrevious}
+            />
+          )}
+          {viewMode === 'grid' ? (
+            <ProductGridView
+              hits={hits}
+              animation={animation}
+              listItemTransition={listItemTransition}
+              listItemVariants={listItemVariants}
+              shouldReduceMotion={shouldReduceMotion}
+              hitsPerPage={hitsPerPage}
+              color={selectRandomColor()}
+            />
+          ) : (
+            <ProductListView
+              hits={hits}
+              animation={animation}
+              listItemTransition={listItemTransition}
+              listItemVariants={listItemVariants}
+              shouldReduceMotion={shouldReduceMotion}
+              hitsPerPage={hitsPerPage}
+              color={selectRandomColor()}
+            />
+          )}
 
-            {showMore && <LoadMore />}
-          </section>
-        ))}
+          {showMore && <LoadMore />}
+        </section>
+      )}
     </>
   )
 }

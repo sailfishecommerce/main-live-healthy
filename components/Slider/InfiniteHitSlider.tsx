@@ -1,11 +1,12 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { AnimatePresence } from 'framer-motion'
 import dynamic from 'next/dynamic'
-import { memo } from 'react'
+import { memo, useMemo } from 'react'
 import isEqual from 'react-fast-compare'
 import { connectInfiniteHits } from 'react-instantsearch-dom'
 
 import ProductTags from '@/components/Tag/ProductTags'
+import getThreeVendors from '@/lib/getThreeVendors'
 import selectRandomColor from '@/lib/selectRandomColor'
 import { withDebugLayer } from '@dev/debug-layer/debug-layer'
 import '@splidejs/splide/dist/css/splide.min.css'
@@ -32,14 +33,17 @@ interface Props {
 
 function InfiniteHitsSliderComponent({
   hits,
-  tags,
   tabColor,
   productClassName,
   randomColor,
 }: Props) {
+  const threeFirstVendors = useMemo(() => getThreeVendors(hits), [hits])
+
   return (
     <section className="w-full">
-      {tags && <ProductTags tags={tags} tabColor={tabColor} />}
+      {threeFirstVendors.length > 0 && (
+        <ProductTags tags={threeFirstVendors} tabColor={tabColor} />
+      )}
 
       <Splide
         options={{

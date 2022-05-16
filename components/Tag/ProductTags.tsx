@@ -2,10 +2,10 @@ export default function ProductTags({ tags, tabColor }: any) {
   return (
     <>
       <ul className="flex items-center">
-        {tags.map((tag: any, index: number) => (
+        {tags.map((tag: any) => (
           <li
-            className="productTag flex mr-2 items-center text-xs p-1 border  bg-white rounded-xl"
-            key={index}
+            className="productTag mb-4 flex mr-2 items-center text-xs p-1 border  bg-white rounded-xl"
+            key={tag}
             title={tag}
           >
             {tag}
@@ -25,5 +25,5 @@ export default function ProductTags({ tags, tabColor }: any) {
         `}
       </style>
     </>
-  );
+  )
 }

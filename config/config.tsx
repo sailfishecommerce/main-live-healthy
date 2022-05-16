@@ -78,7 +78,7 @@ const breadcrumbAttributes = [
 
 const searchParameters = {
   hitsPerPage: 10,
-  maxValuesPerFacet: 50,
+  maxValuesPerFacet: 20,
   attributesToSnippet: ['description:60'],
   snippetEllipsisText: '…',
   analytics: true,

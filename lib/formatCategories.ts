@@ -1,5 +1,6 @@
 /* eslint-disable array-callback-return */
 export function getCategorySubMenu(items: any[]) {
+  console.log('items', items)
   const itemLabelArray = items.map((item: { label: string }) => item.label)
   const uniqueItemLabel = new Set(itemLabelArray)
   const uniqueItemLabelArray = Array.from(uniqueItemLabel)

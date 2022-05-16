@@ -20,6 +20,7 @@ export type InfiniteHitsProps = InfiniteHitsProvided & {
   animation?: boolean
   gridClassName?: string
   listClassName?: string
+  setCollectionHit: any[]
 }
 
 const listItemTransition = {
@@ -54,66 +55,44 @@ function InfiniteHitsComponent({
   useEffect(() => {
     if (!hitsPerPage) setHitsPerPage(hits.length)
   }, [hitsPerPage, hits.length])
-
+  console.log('hits', hits)
   return (
-    <section className="w-full">
-      {showLess && (
-        <LoadLess hasPrevious={hasPrevious} refinePrevious={refinePrevious} />
-      )}
-      {viewMode === 'grid' ? (
-        <ProductGridView
-          hits={hits}
-          animation={animation}
-          listItemTransition={listItemTransition}
-          listItemVariants={listItemVariants}
-          shouldReduceMotion={shouldReduceMotion}
-          hitsPerPage={hitsPerPage}
-          color={selectRandomColor()}
-        />
-      ) : (
-        <ProductListView
-          hits={hits}
-          animation={animation}
-          listItemTransition={listItemTransition}
-          listItemVariants={listItemVariants}
-          shouldReduceMotion={shouldReduceMotion}
-          hitsPerPage={hitsPerPage}
-          color={selectRandomColor()}
-        />
-      )}
-      <>
-        {/* <m.ol
-          className={classNames('overflow-hidden', {
-            [classNames('grid grid-cols-2 gap-2', gridClassName)]:
-              viewMode === 'grid',
-            [classNames('flex flex-col gap-4 lg:grid lg:gap-0', listClassName)]:
-              viewMode === 'list',
-          })}
-          initial="hidden"
-          animate="show"
-          exit="hidden"
-        >
-          <AnimatePresence>
-            {hits.map((hit, i) => (
-              <m.li
-                key={hit?.objectID}
-                layout={shouldReduceMotion || !animation ? false : 'position'}
-                transition={listItemTransition}
-                variants={listItemVariants}
-                custom={i % hitsPerPage}
-              >
-                <HitComponent
-                  hit={hit}
-                  viewMode={viewMode}
-                  color={selectRandomColor()}
-                />
-              </m.li>
-            ))}
-          </AnimatePresence>
-        </m.ol> */}
-      </>
-      {showMore && <LoadMore />}
-    </section>
+    <>
+      {hits.length !== 0 ||
+        (hits !== null && (
+          <section className="w-full">
+            {showLess && (
+              <LoadLess
+                hasPrevious={hasPrevious}
+                refinePrevious={refinePrevious}
+              />
+            )}
+            {viewMode === 'grid' ? (
+              <ProductGridView
+                hits={hits}
+                animation={animation}
+                listItemTransition={listItemTransition}
+                listItemVariants={listItemVariants}
+                shouldReduceMotion={shouldReduceMotion}
+                hitsPerPage={hitsPerPage}
+                color={selectRandomColor()}
+              />
+            ) : (
+              <ProductListView
+                hits={hits}
+                animation={animation}
+                listItemTransition={listItemTransition}
+                listItemVariants={listItemVariants}
+                shouldReduceMotion={shouldReduceMotion}
+                hitsPerPage={hitsPerPage}
+                color={selectRandomColor()}
+              />
+            )}
+
+            {showMore && <LoadMore />}
+          </section>
+        ))}
+    </>
   )
 }
 

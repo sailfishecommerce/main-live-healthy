@@ -58,7 +58,7 @@ function InfiniteHitsComponent({
   console.log('hits', hits.length)
   return (
     <>
-      {typeof window === 'undefined' && (
+      {hits.length !== 0 && (
         <section className="w-full">
           {showLess && (
             <LoadLess

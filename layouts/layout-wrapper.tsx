@@ -89,7 +89,7 @@ export default function LayoutWrapper({ children }: PropsWithChildren<Props>) {
         />
       </Head>
       <LayoutMetatag />
-      <div data-aos="fade-up" id="head" />
+      <div id="head" />
       {appLoading && <SpinnerOverlay />}
       {appLoading && <LoadingBar />}
       <NextNProgress color="#95bf11" options={{ showSpinner: true }} />
@@ -111,12 +111,7 @@ export default function LayoutWrapper({ children }: PropsWithChildren<Props>) {
       <div className="content position-relative h-100">{children}</div>
 
       {showPointer && (
-        <a
-          aria-label="go up"
-          href="#head"
-          data-aos="fade-right-up"
-          className="goUp position-fixed flex"
-        >
+        <a aria-label="go up" href="#head" className="goUp position-fixed flex">
           <i className="fas fa-arrow-circle-up"></i>
         </a>
       )}

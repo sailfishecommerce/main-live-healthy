@@ -24,7 +24,7 @@ export default function MobileCheckoutView() {
 
   return (
     <div>
-      <div className="content" data-aos="fade-up" data-aos-duration="3000">
+      <div className="content">
         <Formik
           enableReinitialize
           initialValues={formValues}

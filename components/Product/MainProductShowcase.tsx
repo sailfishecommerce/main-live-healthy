@@ -23,7 +23,7 @@ export default function MainProductShowcase({
   ...searchParameters
 }: ProductsShowcaseProps) {
   return (
-    <LazyLoader height={500} mobileHeight={370}>
+    <LazyLoader height={500} mobileHeight={420}>
       <Index indexName={indexName} indexId={indexId}>
         <Configure
           enablePersonalization={true}

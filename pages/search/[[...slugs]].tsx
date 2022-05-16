@@ -23,7 +23,7 @@ export type SearchPageProps = SearchPageLayoutProps & {
 
 const RefinementsBar = dynamic<any>(() =>
   import(
-    /* webpackChunkName: 'search' */ '@/components/RefinementsBar/refinements-bar'
+    /* webpackChunkName: 'RefinementsBar' */ '@/components/RefinementsBar/refinements-bar'
   ).then((mod) => mod.RefinementsBar)
 )
 

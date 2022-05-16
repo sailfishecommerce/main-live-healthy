@@ -1,9 +1,23 @@
-import CheckoutCustomer from '@/components/Checkout/CheckoutCustomer'
+import dynamic from 'next/dynamic'
+
 import EmptyCart from '@/components/Checkout/EmptyCart'
-import MobileCheckoutView from '@/components/MobileCheckoutView'
 import { useCart, useMediaQuery } from '@/hooks'
 import Applayout from '@/layouts/app-layout'
 import VboutScript from '@/lib/vbout-script'
+
+const CheckoutCustomer = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'CheckoutCustomer' */ '@/components/Checkout/CheckoutCustomer'
+    )
+)
+
+const MobileCheckoutView = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'CheckoutCustomer' */ '@/components/MobileCheckoutView'
+    )
+)
 
 export default function Checkout() {
   const mobileWidth = useMediaQuery('(max-width:768px)')

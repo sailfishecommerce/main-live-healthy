@@ -29,31 +29,24 @@ export default class MyDocument extends Document {
           />
           <meta name="format-detection" content="telephone=no" />
           <meta name="mobile-web-app-capable" content="yes" />
-          <meta
-            name="msapplication-config"
-            content="/static/icons/browserconfig.xml"
-          />
+          <meta name="msapplication-config" />
           <meta name="msapplication-TileColor" content="#5468ff" />
           <meta name="msapplication-tap-highlight" content="no" />
           <meta name="theme-color" content="#5468ff" />
 
           {/* Icons */}
-          <link
-            rel="apple-touch-icon"
-            href="/static/icons/apple-touch-icon.png"
-          />
+          <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
           <link rel="shortcut icon" href="/favicon.ico" />
           <link
             rel="icon"
             type="image/png"
-            sizes="16x16"
-            href="/static/icons/icon-16x16.png"
+            href="/android-chrome-192x192.png"
           />
           <link
             rel="icon"
             type="image/png"
             sizes="32x32"
-            href="/static/icons/icon-32x32.png"
+            href="/android-chrome-512x512.png"
           />
           <link
             rel="mask-icon"

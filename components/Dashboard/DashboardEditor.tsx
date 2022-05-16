@@ -1,21 +1,33 @@
-import { EditorState } from 'draft-js'
-import { useState } from 'react'
-import { Editor } from 'react-draft-wysiwyg'
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
+import { useMemo, useState } from 'react'
+import type { BaseEditor } from 'slate'
+import { createEditor } from 'slate'
+import type { ReactEditor } from 'slate-react'
+import { Slate, Editable, withReact } from 'slate-react'
+
+type CustomElement = { type: 'paragraph'; children: CustomText[] }
+type CustomText = { text: string }
+
+const initialValue = [
+  {
+    type: 'paragraph',
+    children: [{ text: 'A line of text in a paragraph.' }],
+  },
+]
+
+declare module 'slate' {
+  interface CustomTypes {
+    Editor: BaseEditor & ReactEditor
+    Element: CustomElement
+    Text: CustomText
+  }
+}
 
 export default function DashboardEditor() {
-  const [editorState, setEditorState] = useState(EditorState.createEmpty())
-  console.log('editorState', editorState)
-  const onEditorStateChange = (textEditorState: any) =>
-    setEditorState(textEditorState)
+  const editor = useMemo(() => withReact(createEditor()), [])
 
   return (
-    <Editor
-      editorState={editorState}
-      toolbarClassName="toolbarClassName"
-      wrapperClassName="bg-white h-96 mt-4 px-4 rounded-xl"
-      editorClassName="editorClassName"
-      onEditorStateChange={onEditorStateChange}
-    />
+    <Slate value={initialValue} editor={editor}>
+      <Editable />
+    </Slate>
   )
 }

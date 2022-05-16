@@ -40,7 +40,7 @@ function InfiniteHitsSliderComponent({
   const threeFirstVendors = useMemo(() => getThreeVendors(hits), [hits])
 
   return (
-    <section className="w-full">
+    <div className="w-full">
       {threeFirstVendors.length > 0 && (
         <ProductTags tags={threeFirstVendors} tabColor={tabColor} />
       )}
@@ -75,7 +75,7 @@ function InfiniteHitsSliderComponent({
           ))}
         </AnimatePresence>
       </Splide>
-    </section>
+    </div>
   )
 }
 

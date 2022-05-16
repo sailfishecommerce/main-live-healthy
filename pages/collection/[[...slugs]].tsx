@@ -9,10 +9,7 @@ import {
 } from '@/layouts/search-page-layout'
 
 const Collection = dynamic<any>(
-  () => import(/* webpackChunkName: 'Collections' */ '@/components/Collection'),
-  {
-    ssr: false,
-  }
+  () => import(/* webpackChunkName: 'Collections' */ '@/components/Collection')
 )
 
 function CollectionPage(props: SearchPageLayoutProps) {
@@ -27,7 +24,5 @@ function CollectionPage(props: SearchPageLayoutProps) {
 
 export const getServerSideProps = (context: GetServerSidePropsContext) =>
   getServerSidePropsPage(CollectionPage, context)
-
-// CollectionPage.whyDidYouRender = true
 
 export default CollectionPage

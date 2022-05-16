@@ -43,31 +43,29 @@ function CollectionPage(props: SearchPageLayoutProps) {
   return (
     <Applayout title="Collection page">
       <SearchPageLayout {...props}>
-        {isMounted && (
-          <Container className="flex flex-col gap-2 container lg:mx-auto lg:mb-10 lg:mt-0 lg:gap-0">
-            <Breadcrumb attributes={breadcrumbAttributes} />
-            <QueryRuleBanners limit={1} />
-            <div className="flex flex-col lg:flex-row">
-              {(refinementsLayout === 'panel' || !isLaptop) && (
-                <RefinementsPanel />
-              )}
+        <Container className="flex flex-col gap-2 container lg:mx-auto lg:mb-10 lg:mt-0 lg:gap-0">
+          <Breadcrumb attributes={breadcrumbAttributes} />
+          <QueryRuleBanners limit={1} />
+          <div className="flex flex-col lg:flex-row">
+            {(refinementsLayout === 'panel' || !isLaptop) && (
+              <RefinementsPanel />
+            )}
 
-              <div className="grow flex flex-col gap-2 lg:gap-5 w-full">
-                <RefinementsBar
-                  showRefinements={refinementsLayout === 'bar' && isLaptop}
+            <div className="grow flex flex-col gap-2 lg:gap-5 w-full">
+              <RefinementsBar
+                showRefinements={refinementsLayout === 'bar' && isLaptop}
+              />
+
+              <NoResultsHandler>
+                <InfiniteHits
+                  viewMode={viewMode}
+                  showLess={true}
+                  showMore={true}
                 />
-
-                <NoResultsHandler>
-                  <InfiniteHits
-                    viewMode={viewMode}
-                    showLess={true}
-                    showMore={true}
-                  />
-                </NoResultsHandler>
-              </div>
+              </NoResultsHandler>
             </div>
-          </Container>
-        )}
+          </div>
+        </Container>
       </SearchPageLayout>
     </Applayout>
   )

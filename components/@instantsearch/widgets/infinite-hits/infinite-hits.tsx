@@ -55,7 +55,7 @@ function InfiniteHitsComponent({
   useEffect(() => {
     if (!hitsPerPage) setHitsPerPage(hits.length)
   }, [hitsPerPage, hits.length])
-  console.log('hits', hits.length)
+
   return (
     <>
       {hits.length !== 0 && (

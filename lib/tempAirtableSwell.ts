@@ -1,19 +1,20 @@
 import fs from 'fs'
+
 import Airtable from 'airtable'
-import { NextApiRequest, NextApiResponse } from 'next'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
 const base = new Airtable({
   apiKey: `${process.env.NEXT_PUBLIC_AIRTABLE_API_KEY}`,
 }).base(`${process.env.NEXT_PUBLIC_AIRTABLE_BASE_KEY}`)
 
-export default async function createSwellProductHandler(
+export default function createSwellProductHandler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   // const filePath = "./airtableproducts.json";
   const filePath = './airtabletoShopifyproducts.json'
 
-  let productArray: any = []
+  const productArray: any = []
   switch (req.method) {
     case 'GET': {
       base('To Shopify')
@@ -54,7 +55,6 @@ export default async function createSwellProductHandler(
             if (err) {
               res.status(400).json({ status: err })
               console.error(err)
-              return
             }
           }
         )

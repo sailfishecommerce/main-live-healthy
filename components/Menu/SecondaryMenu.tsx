@@ -10,14 +10,14 @@ export default function SecondaryMenu() {
   return (
     <div className="md:flex lg:px-4 xl:px-0 items-center relative justify-between py-2">
       <AllCategoriesDropdown />
-      <ul className="lg:flex items-center md:w-3/4 w-2/3 justify-between">
+      <ul className="lg:flex items-center md:w-3/4 w-2/3 xl:w-4/5 justify-between">
         {categories.length > 1
           ? categories.map((menuItem: { slug: string; name: string }) => (
               <PageLink
                 key={menuItem.slug}
                 menuItem={menuItem}
                 link="collection"
-                className="font-semibold hover:text-green-500 lg:text-sm xl:text-lg"
+                className="font-semibold hover:text-green-500 lg:text-sm xl:text-md"
               />
             ))
           : null}

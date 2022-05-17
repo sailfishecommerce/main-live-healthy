@@ -120,6 +120,10 @@ header.header {
     0px 2px 3px rgba(0, 0, 0, 0.03), 0px 0px 0px rgba(0, 0, 0, 0.03);
 }
 
+header {
+  height: 270px;
+}
+
 /* product slider controls */
 .itemSlider .splide__arrows {
   position: absolute;
@@ -354,5 +358,9 @@ span.ais-SearchBox-loadingIndicator {
   .itemSlider .splide__track {
     overflow-x: scroll !important;
     padding-bottom: 5px;
+  }
+
+  header {
+    height: 160px;
   }
 }

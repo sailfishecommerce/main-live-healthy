@@ -18,7 +18,7 @@ export default function PasswordReset() {
   return (
     <div className="container flex flex-col lg:flex-row items-center mx-auto py-4 py-lg-5 my-4">
       <div className="row lg:w-1/2 w-full justify-center">
-        <div className="col-lg-8 col-md-10">
+        <div className="text-content">
           <h2 className="h3 mb-4">Forgot your password?</h2>
           <p className="fs-md">
             Reset your password, ensure to fill details appropriately
@@ -36,7 +36,7 @@ export default function PasswordReset() {
                   .then((response) => {
                     if (response?.success) {
                       isSuccessful(loading, 'Password reset successful')
-                      router.push('/my-account')
+                      router.push('/account')
                     } else {
                       hasError(loading, 'error resetting password')
                     }

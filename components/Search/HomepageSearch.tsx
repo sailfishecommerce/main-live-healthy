@@ -30,7 +30,7 @@ function HomepageComponent() {
         indexName="LIVEHEALTHY_PRODUCTION_INDEX"
         searchClient={searchClient}
       >
-        <div className="search relative flex bg-gray-100 lg:w-1/5 w-full rounded-md py-2 px-4 items-center">
+        <div className="search relative flex bg-gray-100 md:w-28 xl:w-1/5 w-full rounded-md py-2 px-1 xl:px-4 items-center">
           <Configure hitsPerPage={3} />
           <SearchBox
             showLoadingIndicator

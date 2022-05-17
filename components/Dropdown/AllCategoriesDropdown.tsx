@@ -11,7 +11,7 @@ export default function AllCategoriesDropdown() {
   }
   return (
     <button
-      className="bg-mountain-green relative flex items-center font-bold hover:bg-green-500 text-white rounded-md px-2 py-1"
+      className="bg-mountain-green lg:mr-3 relative flex items-center font-bold hover:bg-green-500 text-white rounded-md px-2 py-1"
       type="button"
       aria-label="Caatgories"
       onClick={toggleCategoryDropdownHandler}

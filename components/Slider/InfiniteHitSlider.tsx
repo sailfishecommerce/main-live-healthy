@@ -49,12 +49,16 @@ function InfiniteHitsSliderComponent({
         options={{
           perPage: 6,
           breakpoints: {
-            800: {
+            500: {
               perPage: 2,
               padding: '2rem',
             },
-            1200: {
+            800: {
               perPage: 3,
+              padding: '2rem',
+            },
+            1200: {
+              perPage: 4,
             },
             1440: {
               perPage: 5,

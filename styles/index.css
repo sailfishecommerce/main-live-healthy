@@ -226,6 +226,11 @@ div.product-list-view + div {
   margin-right: unset;
 }
 
+/* best seller slider */
+.best-seller-slider .splide__track {
+  padding-left: 0px !important;
+}
+
 /* quick view modal */
 .quickView-description.description h2 {
   font-weight: bold;
@@ -248,6 +253,18 @@ div.product-list-view + div {
     height: 700px;
     flex-wrap: unset;
     overflow-y: auto;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  input.ais-SearchBox-input {
+    padding: 0px 5px;
+  }
+  header.bg-white {
+    height: 230px;
+  }
+  .homepage-slider.container .splide {
+    height: 400px;
   }
 }
 

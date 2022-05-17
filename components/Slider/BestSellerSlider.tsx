@@ -3,18 +3,20 @@ import { Splide, SplideSlide } from '@splidejs/react-splide'
 
 import Product from '@/components/Cards/ProductCard'
 import LazyLoader from '@/components/Loader/LazyLoader'
+import { useMediaQuery } from '@/hooks'
 import useLiveHealthyProduct from '@/hooks/useLivehealthyProduct'
 import '@splidejs/splide/dist/css/splide.min.css'
 import selectRandomColor from '@/lib/selectRandomColor'
 
 export default function BestSellerSlider() {
   const [data, status] = useLiveHealthyProduct()
+  const tablet = useMediaQuery('(max-width:1024px)')
 
   return (
     <LazyLoader height={650} mobileHeight={450}>
-      <section className="itemSlider best-seller-slider py-4 px-4 md:py-8 relative w-full bg-gray-platinum mx-auto flex relative z-10 flex-col my-4">
+      <section className="itemSlider best-seller-slider py-4 px-4 xl:py-8 relative w-full bg-gray-platinum mx-auto flex relative z-10 flex-col my-4">
         <div className="w-full">
-          <div className="mx-auto container top md:mb-8 flex items-center justify-between">
+          <div className="mx-auto container top mb-0 xl:mb-8 flex items-center justify-between">
             <h1 className="font-bold text-xl md:text-3xl">Best Sellers</h1>
           </div>
 

@@ -20,7 +20,7 @@ export default function ShippingBanner() {
   ]
   const imageDimension = mobileWidth ? imageSize[1] : imageSize[0]
   return (
-    <section className="container mb-8 lg:mb-0 flex justify-center mx-auto my-1">
+    <section className="container mb-8 px-4 xl:px-0 lg:mb-0 flex justify-center mx-auto my-1">
       <div className="w-full">
         <Image
           src={imageSrc}

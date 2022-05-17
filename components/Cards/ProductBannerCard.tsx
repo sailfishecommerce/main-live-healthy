@@ -9,8 +9,6 @@ import useShoppingCart from '@/hooks/useShoppingCart'
 export default function ProductBannerCard({ product, color }: any) {
   const { addItemToCart } = useShoppingCart()
 
-  // loadingState(addItemToCart, `${product.name} added to cart`)
-
   const addToCartHandler = () => addItemToCart.mutate({ product, quantity: 1 })
   const productImage =
     typeof product.images[0] === 'string'
@@ -36,17 +34,17 @@ export default function ProductBannerCard({ product, color }: any) {
           />
         </a>
       </Link>
-      <div className="w-3/5 text">
+      <div className="w-3/5 pl-2 text">
         <h4 className="vendor text-xs md:text-md font-bold pl-2 my-0 py-0 mb-1 md:mb-0 md:h-5">
           {product.vendor}
         </h4>
-        <div className="product-name-view md:mb-6 mb-2">
+        <div className="product-name-view xl:mb-6 mb-2">
           <h3 className="text-xs md:text-md product-name">{product.name}</h3>
         </div>
-        <div className="price-group flex items-center justify-between">
+        <div className="price-group xl:flex-row flex-col items-start flex xl:items-center justify-between">
           <FormattedPrice
             price={product.sale_price}
-            className="text-sm md:text-md text-black font-semibold"
+            className="text-sm md:text-md text-black mb-1 xl:mb-0 font-semibold"
           />
           {product.price !== 0 && (
             <FormattedPrice
@@ -57,7 +55,7 @@ export default function ProductBannerCard({ product, color }: any) {
         </div>
         <button
           type="button"
-          className="bg-mountain-green mt-4 w-full md:w-4/5 justify-center h-8 text-white px-4 py-1 flex items-center mx-auto rounded-md"
+          className="bg-mountain-green mt-4 w-full w-3/4 xl:w-4/5 justify-center h-8 text-white xl:px-4 py-1 flex items-center mx-auto rounded-md"
           onClick={addToCartHandler}
         >
           <CartIcon />

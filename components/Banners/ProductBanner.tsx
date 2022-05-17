@@ -10,6 +10,7 @@ export default function ProductBanner() {
   const [data, status] = useLiveHealthyProduct()
   const getThreeProducts = data?.slice(5, 8)
   const mobileWidth = useMediaQuery('(max-width:768px)')
+  const tablet = useMediaQuery('(max-width:1024px)')
 
   const bannerImage = mobileWidth
     ? '/skin-care-small.webp'
@@ -21,15 +22,21 @@ export default function ProductBanner() {
       width: 900,
     },
     {
-      height: 220,
+      height: 200,
       width: 382,
+    },
+    {
+      height: 650,
+    },
+    {
+      height: 450,
     },
   ]
   const bannerDimension = mobileWidth ? imageSize[1] : imageSize[0]
-
+  const loaderHeight = tablet ? imageSize[3] : imageSize[2]
   return (
-    <LazyLoader height={650} mobileHeight={690}>
-      <div className="lg:pt-6 py-4 container mx-auto justify-between px-4 md:px-0 flex flex-col md:flex-row items-start h-1/2">
+    <LazyLoader height={loaderHeight.height} mobileHeight={690}>
+      <div className="lg:pt-6 py-4 container mx-auto justify-between px-4 xl:px-0 flex flex-col md:flex-row items-start h-1/2">
         <div className="banner w-full md:w-4/5">
           <Image
             src={bannerImage}

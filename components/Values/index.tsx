@@ -7,7 +7,7 @@ export default function Values() {
   const tabWidth = useMediaQuery('(max-width:768px)')
 
   return (
-    <section className="container values mx-auto mb-8 px-4 md:px-0">
+    <section className="container values mx-auto mb-8 px-4 xl:px-0">
       {tabWidth ? (
         <ValuesSlider />
       ) : (

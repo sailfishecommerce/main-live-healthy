@@ -7,6 +7,7 @@ import { memo, useState } from 'react'
 import MobileSliderControls from '@/components/Slider/MobileSliderControls'
 import { useMediaQuery } from '@/hooks'
 import homepageSliderContent from '@/json/homepage-slider.json'
+
 import '@splidejs/splide/dist/css/splide.min.css'
 
 const DynamicHomepageSliderControls = dynamic<any>(
@@ -19,9 +20,20 @@ const DynamicHomepageSliderControls = dynamic<any>(
 function HomepageSliderComponent() {
   const [activeIndex, setActiveIndex] = useState(0)
   const mobileWidth = useMediaQuery('(max-width:768px)')
+  const tabletWidth = useMediaQuery('(max-width:1024px)')
+
+  const imageDimension = tabletWidth
+    ? {
+        height: 650,
+        width: 1300,
+      }
+    : {
+        height: 550,
+        width: 1300,
+      }
 
   return (
-    <section className="mt-6 md:mb-12 mb-8 homepage-slider container mx-auto">
+    <section className="mt-6 md:mb-8 md:px-4 px-0 xl:px-0 xl:mb-12 mb-8 homepage-slider container mx-auto">
       <Splide onActive={(item) => setActiveIndex(item.index)}>
         {homepageSliderContent.map((content, index) => (
           <SplideSlide key={content.title}>
@@ -35,12 +47,14 @@ function HomepageSliderComponent() {
                     {content.category}
                   </span>
                 </div>
-                <p className="mb-2 text-sm">{content.description}</p>
+                <p className="mb-2 text-sm lg:text-md xl:text-lg">
+                  {content.description}
+                </p>
                 <Link passHref href="/collection">
                   <button
                     type="button"
                     aria-label="view collection"
-                    className="view-collection rounded-md py-1 px-2 text-white mt-6 md:mt-12 2xl:mt-20"
+                    className="view-collection rounded-md py-1 px-2 text-white mt-6 md:mt-12 lg:mt-6 2xl:mt-20"
                   >
                     View collection
                   </button>
@@ -57,8 +71,8 @@ function HomepageSliderComponent() {
                   <Image
                     priority={true}
                     src={content.image}
-                    height={500}
-                    width={1300}
+                    height={imageDimension.height}
+                    width={imageDimension.width}
                     alt={content.title}
                     className="rounded-t-xl md:rounded-l-none md:rounded-r-3xl h-full"
                     layout="responsive"

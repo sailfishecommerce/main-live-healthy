@@ -9,7 +9,7 @@ interface Props {
 }
 function HomepageSliderControlsComponent({ content, activeIndex }: Props) {
   return (
-    <div className="rounded-3xl border border-gray-100 flex items-center bg-white w-11/12 p-8 flex justify-between mx-auto h-36 mb-4 -mt-24 relative">
+    <div className="rounded-3xl border border-gray-100 flex items-center bg-white w-11/12 p-8 flex justify-between mx-auto h-36 mb-4 -mt-20 lg:-mt-24 relative">
       {content.map((item, index) => {
         const indexValue = Number(index) + 1
         const isActive = activeIndex === index ? 'active' : ''

@@ -11,6 +11,9 @@ export default function ValuesSlider() {
         perPage: 1,
         padding: '2rem',
         breakpoints: {
+          450: {
+            perPage: 1,
+          },
           780: {
             perPage: 2,
           },

@@ -1,4 +1,4 @@
-import Head from "next/head";
+import Head from 'next/head'
 
 export default function Metatag() {
   return (
@@ -48,5 +48,5 @@ export default function Metatag() {
           }`}
       </script>
     </Head>
-  );
+  )
 }

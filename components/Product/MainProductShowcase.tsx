@@ -37,7 +37,7 @@ export default function MainProductShowcase({
           )}
         >
           {title && (
-            <h4 className="text-2xl -mt-3 font-bold  mb-2 lg:mb-4 lg:ml-3">
+            <h4 className="xl:text-2xl md:text-xl text-lg  -mt-3 font-bold  mb-2 lg:mb-4 lg:ml-3">
               {title}
             </h4>
           )}

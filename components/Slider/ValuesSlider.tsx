@@ -10,6 +10,11 @@ export default function ValuesSlider() {
       options={{
         perPage: 1,
         padding: '2rem',
+        breakpoints: {
+          780: {
+            perPage: 2,
+          },
+        },
       }}
       className="values-slider container mx-auto"
     >

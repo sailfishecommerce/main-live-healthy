@@ -31,7 +31,7 @@ export default function FooterLink() {
   }
 
   return (
-    <div className="pl-0 md:pl-12 order-2 md:order-1 flex items-start justify-around flex flex-col md:grid grid-cols-2 w-full md:w-2/4">
+    <div className="pl-0 ml-6 lg:ml-0 lg:pl-12 order-2 md:order-1 flex items-start justify-around flex flex-col md:grid grid-cols-2 w-full md:w-2/4">
       <FooterLinkGroup title="About LiveHealthy" linkGroup={footerLinks} />
       {status === 'success' ? (
         <FooterLinkGroup

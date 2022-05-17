@@ -17,7 +17,7 @@ export default function FooterDeals() {
   }
   return (
     <div className="flex flex-col w-full md:mb-4 mb-0 order-1 md:w-1/4">
-      <h4 className="font-bold mt-4 mb-2 md:mb-6 text-lg md:text-xl">
+      <h4 className="font-bold mt-4 mb-2 md:mb-6 text-lg lg:text-xl">
         Get deals in your inbox
       </h4>
       <form className="deal-form flex items-center" onSubmit={onSubmitHandler}>

@@ -1,9 +1,6 @@
-// import dynamic from 'next/dynamic'
-
 import FooterText from '@/components/Footer/FooterText'
+import SocialIcons from '@/components/Icons/SocialIcons'
 import Logo from '@/components/Logo'
-
-import SocialIcons from '../Icons/SocialIcons'
 
 export default function FooterAddress() {
   return (

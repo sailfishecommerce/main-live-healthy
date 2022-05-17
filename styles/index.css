@@ -301,3 +301,9 @@ div.product-list-view + div {
     height: unset;
   }
 }
+
+@media (min-width: 1440px) {
+  .carousel-and-title-wrapper.carousel-and-title-wrapper--with-score {
+    flex-direction: column;
+  }
+}

@@ -21,10 +21,14 @@ export type SearchPageProps = SearchPageLayoutProps & {
   searchQuery: string
 }
 
-const RefinementsBar = dynamic<any>(() =>
-  import(
-    /* webpackChunkName: 'RefinementsBar' */ '@/components/RefinementsBar/refinements-bar'
-  ).then((mod) => mod.RefinementsBar)
+const RefinementsBar = dynamic<any>(
+  () =>
+    import(
+      /* webpackChunkName: 'RefinementsBar' */ '@/components/RefinementsBar/refinements-bar'
+    ),
+  {
+    ssr: false,
+  }
 )
 
 const InfiniteHits = dynamic<any>(
@@ -37,10 +41,14 @@ const InfiniteHits = dynamic<any>(
   }
 )
 
-const RefinementsPanel = dynamic<any>(() =>
-  import(
-    /* webpackChunkName: 'refinements-panel' */ '@/components/RefinementsPanel/refinements-panel'
-  ).then((mod) => mod.RefinementsPanel)
+const RefinementsPanel = dynamic<any>(
+  () =>
+    import(
+      /* webpackChunkName: 'refinements-panel' */ '@/components/RefinementsPanel/refinements-panel'
+    ),
+  {
+    ssr: false,
+  }
 )
 
 export default function SearchPage({ searchQuery, ...props }: SearchPageProps) {

@@ -11,16 +11,24 @@ import { configAtom } from '@/config/config'
 import { useMediaQuery } from '@/hooks'
 import { useIsMounted } from '@/hooks/useIsMounted'
 
-const RefinementsBar = dynamic<any>(() =>
-  import(
-    /* webpackChunkName: 'search' */ '@/components/RefinementsBar/refinements-bar'
-  ).then((mod) => mod.RefinementsBar)
+const RefinementsBar = dynamic<any>(
+  () =>
+    import(
+      /* webpackChunkName: 'RefinementsBar' */ '@/components/RefinementsBar/refinements-bar'
+    ),
+  {
+    ssr: false,
+  }
 )
 
-const RefinementsPanel = dynamic<any>(() =>
-  import(
-    /* webpackChunkName: 'refinements-panel' */ '@/components/RefinementsPanel/refinements-panel'
-  ).then((mod) => mod.RefinementsPanel)
+const RefinementsPanel = dynamic<any>(
+  () =>
+    import(
+      /* webpackChunkName: 'refinements-panel' */ '@/components/RefinementsPanel/refinements-panel'
+    ),
+  {
+    ssr: false,
+  }
 )
 
 export default function Index() {

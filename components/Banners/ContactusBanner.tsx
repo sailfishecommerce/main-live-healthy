@@ -1,5 +1,5 @@
-import Link from "next/link";
-import { HiHome } from "react-icons/hi";
+import Link from 'next/link'
+import { HiHome } from 'react-icons/hi'
 
 export default function ContactBanner() {
   return (
@@ -9,7 +9,7 @@ export default function ContactBanner() {
           <nav aria-label="nav">
             <ol className="flex lg:flex-nowrap justify-center">
               <li className="hover:text-red-500 text-gray-500">
-                <Link href="/" passHref>
+                <Link passHref href="/">
                   <a aria-label="home" className="flex items-center">
                     <HiHome className="mx-1" />
                     Home
@@ -30,5 +30,5 @@ export default function ContactBanner() {
         </div>
       </div>
     </div>
-  );
+  )
 }

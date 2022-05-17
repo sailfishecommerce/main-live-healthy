@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import Dropdown from '@/components/Dropdown'
 import DropdownItem from '@/components/Dropdown/DropdownItem'
 
@@ -12,8 +13,8 @@ export default function ProductTabDropdown() {
       className="bg-transparent text-lg text-black border-none shadow-none"
       dropdownText="New Products"
     >
-      {tabs.map((tab, index) => (
-        <DropdownItem key={index} onClick={selectedTabHandler}>
+      {tabs.map((tab) => (
+        <DropdownItem key={tab} onClick={selectedTabHandler}>
           {tab}
         </DropdownItem>
       ))}

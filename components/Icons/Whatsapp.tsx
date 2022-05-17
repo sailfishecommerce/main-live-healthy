@@ -13,5 +13,5 @@ export default function Whatsapp() {
         fill="white"
       />
     </svg>
-  );
+  )
 }

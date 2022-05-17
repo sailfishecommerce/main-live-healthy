@@ -36,7 +36,7 @@ export default function Breadcrumb({ breadcrumbItems }: Props) {
       {breadcrumbItems.map((item, index) => {
         const crumbIndex = index + 1
         return crumbIndex % 2 === 0 ? (
-          <li className="flex items-center" key={index}>
+          <li className="flex items-center" key={item.name}>
             <AiOutlineMinus className="mx-2 font-bold gray-manatee" />
             <BreadCrumbItem item={item} />
             {crumbIndex < breadcrumbItems.length && (
@@ -44,7 +44,7 @@ export default function Breadcrumb({ breadcrumbItems }: Props) {
             )}
           </li>
         ) : (
-          <li key={index}>
+          <li key={item.link}>
             <BreadCrumbItem item={item} />
           </li>
         )

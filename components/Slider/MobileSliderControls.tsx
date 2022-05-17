@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 interface Props {
   active: number
   end: number

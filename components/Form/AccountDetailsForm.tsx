@@ -6,8 +6,8 @@ export default function AccountDetailsForm() {
   return (
     <form className="account-details-form my-4">
       <div className="content flex flex-col">
-        {AccountformContent.AccountDetails.map((content, index) => (
-          <Input content={content} key={index} />
+        {AccountformContent.AccountDetails.map((content) => (
+          <Input content={content} key={content.name} />
         ))}
         <button
           type="button"

@@ -8,9 +8,9 @@ export default function PopularArticles() {
     <div className="flex flex-col">
       <h3 className="font-bold">Popular Articles</h3>
       <ul>
-        {content.map((item, index) => (
+        {content.map((item) => (
           <li
-            key={index}
+            key={item.text}
             className="flex items-center my-4 hover:bg-gray-100 hover:rounded-md"
           >
             <Image

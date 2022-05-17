@@ -21,7 +21,7 @@ export default function LoadingBar() {
             overflow: hidden;
           }
           #bar div::before {
-            content: "";
+            content: '';
             position: absolute;
             top: 0px;
             left: 0px;
@@ -43,7 +43,7 @@ export default function LoadingBar() {
             }
           }
           #bar div:after {
-            content: "";
+            content: '';
             position: absolute;
             top: 0px;
             left: 0px;
@@ -67,5 +67,5 @@ export default function LoadingBar() {
         `}
       </style>
     </>
-  );
+  )
 }

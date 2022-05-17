@@ -1,13 +1,16 @@
-import { Formik, FormikProps } from 'formik'
+/* eslint-disable no-alert */
+import type { FormikProps } from 'formik'
+import { Formik } from 'formik'
+
+import { displayFormElement } from '@/components/Form/FormElement'
 import { contactForMore } from '@/components/Form/schema/FormSchema'
 import formContent from '@/json/contactForMore.json'
-import { displayFormElement } from '@/components/Form/FormElement'
-import { contentType } from '@/types'
+import type { contentType } from '@/types'
 
 export function mapContent(
   content: contentType,
   className: string,
-  formik: FormikProps<{}> | FormikProps<any>
+  formik: FormikProps<any> | FormikProps<Record<string, unknown>>
 ) {
   return content.map((formElement, index: number) => (
     <div className={className} key={index}>
@@ -28,7 +31,7 @@ export default function ContactForMoreForm({ setStage }: any): JSX.Element {
         message: '',
       }}
       validationSchema={contactForMore}
-      onSubmit={(values, { setSubmitting }) => {
+      onSubmit={(values) => {
         alert(JSON.stringify(values))
         setStage(1)
       }}

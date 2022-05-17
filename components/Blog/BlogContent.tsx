@@ -28,8 +28,8 @@ export default function BlogContent() {
       <div className="row flex flex-col">
         <h4 className="font-bold mb-2 text-xl">{content.section2.title}</h4>
         <ul className="list">
-          {content.section2.list.map((item, index) => (
-            <li className="my-1" key={index}>
+          {content.section2.list.map((item) => (
+            <li className="my-1" key={item}>
               {item}
             </li>
           ))}
@@ -43,8 +43,8 @@ export default function BlogContent() {
         <ul>
           <ul className="mb-4">
             <p className="font-bold text-lg mb-2">Pros:</p>
-            {content.section2.pros.map((item, index) => (
-              <li key={index} className="ml-6 list-disc ">
+            {content.section2.pros.map((item) => (
+              <li key={item} className="ml-6 list-disc ">
                 {item}
               </li>
             ))}
@@ -55,8 +55,8 @@ export default function BlogContent() {
           </ul>
 
           <span className="con-list mt-2">
-            {content.section2.consList.map((item, index) => (
-              <li className="flex my-2" key={index}>
+            {content.section2.consList.map((item) => (
+              <li className="flex my-2" key={item.value}>
                 <span className="font-bold">{item.text}:</span>
                 <p>{item.value}</p>
               </li>

@@ -1,6 +1,6 @@
 interface Props {
-  barWidth: number;
-  count: number;
+  barWidth: number
+  count: number
 }
 export default function ReviewBars({ barWidth, count }: Props) {
   return (
@@ -18,5 +18,5 @@ export default function ReviewBars({ barWidth, count }: Props) {
         `}
       </style>
     </div>
-  );
+  )
 }

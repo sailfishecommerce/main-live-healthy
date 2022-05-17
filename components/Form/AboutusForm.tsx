@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-expressions */
-import aboutUsContent from '@/json/about-us.json'
 import { TextArea, Input } from '@/components/Form/FormFields'
+import aboutUsContent from '@/json/about-us.json'
 
 export default function AboutusForm() {
   return (
@@ -13,14 +13,14 @@ export default function AboutusForm() {
             If you want to be part of our team please submit you CV using the
             form below:
           </p>
-          <form className="needs-validation row g-4" method="post" noValidate>
-            {aboutUsContent.form.map((formContent, index) => {
+          <form noValidate className="needs-validation row g-4" method="post">
+            {aboutUsContent.form.map((formContent, index) =>
               formContent.type === 'textarea' ? (
                 <TextArea key={index} formContent={formContent} />
               ) : (
                 <Input key={index} formContent={formContent} />
               )
-            })}
+            )}
             <div className="col-12">
               <button
                 aria-label="submit cv"

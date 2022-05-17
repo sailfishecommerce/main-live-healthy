@@ -1,7 +1,7 @@
-import { PropsWithChildren } from "react";
+import type { PropsWithChildren } from 'react'
 
 interface Props {
-  id: string;
+  id: string
 }
 
 export default function Tabpanel({ id, children }: PropsWithChildren<Props>) {
@@ -14,5 +14,5 @@ export default function Tabpanel({ id, children }: PropsWithChildren<Props>) {
     >
       {children}
     </div>
-  );
+  )
 }

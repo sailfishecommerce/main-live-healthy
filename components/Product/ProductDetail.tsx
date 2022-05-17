@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useAtom } from 'jotai'
 import Link from 'next/link'
 import { useEffect } from 'react'

@@ -1,5 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
-import { productType } from '@/types'
+import type { productType } from '@/types'
 
 interface Props {
   product: productType
@@ -14,7 +13,7 @@ export default function ProductDescription({ product }: Props) {
         <div
           className="productInfo"
           dangerouslySetInnerHTML={{
-            __html: product['description'],
+            __html: product.description,
           }}
         />
       </div>

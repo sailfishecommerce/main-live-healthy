@@ -1,4 +1,4 @@
-import productReview from "@/json/product-review.json";
+import productReview from '@/json/product-review.json'
 
 export default function ProductReviewSort() {
   return (
@@ -18,5 +18,5 @@ export default function ProductReviewSort() {
         </select>
       </div>
     </div>
-  );
+  )
 }

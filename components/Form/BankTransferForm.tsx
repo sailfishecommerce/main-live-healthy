@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-console */
 import { useAtom } from 'jotai'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'

@@ -16,7 +16,7 @@ export default function ProductTabSliderDropdown() {
             const activeTab = index === 0 ? 'text-black' : 'text-gray-500'
             return (
               <h4
-                key={index}
+                key={tab}
                 className={`${activeTab} text-xs md:text-xl lg:text-2xl font-bold mr-8`}
               >
                 {tab}

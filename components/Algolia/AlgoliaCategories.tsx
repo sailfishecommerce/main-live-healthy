@@ -65,7 +65,7 @@ function RefinementListMenu({ items, selectedCategory }: any) {
         </button>
       </Link>
       <style jsx>
-        {` 
+        {`
           @media (min-width: 768px) {
             .menu ul {
               max-height: 150px;

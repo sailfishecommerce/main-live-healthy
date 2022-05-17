@@ -1,8 +1,9 @@
-import { PropsWithChildren } from "react";
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import type { PropsWithChildren } from 'react'
 
 interface DropupItem {
-  onClick: (e?: any) => void;
-  className?: string;
+  onClick: (e?: any) => void
+  className?: string
 }
 
 export default function DropupItem({
@@ -13,7 +14,6 @@ export default function DropupItem({
     <li>
       <a
         aria-label="dropup"
-        onClick={onClick}
         className="
               dropdown-item
               text-sm
@@ -28,9 +28,10 @@ export default function DropupItem({
               hover:bg-gray-100
             "
         href="#"
+        onClick={onClick}
       >
         {children}
       </a>
     </li>
-  );
+  )
 }

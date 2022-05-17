@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 export default function DeliveryboxIcon() {
   return (
@@ -47,5 +47,5 @@ export default function DeliveryboxIcon() {
         strokeLinejoin="round"
       />
     </svg>
-  );
+  )
 }

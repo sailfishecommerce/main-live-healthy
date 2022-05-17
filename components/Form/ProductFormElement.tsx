@@ -16,25 +16,25 @@ export function ProductColorOption({
               <div key={value.id}>
                 {value.name} <span className="mx-1">/</span>
               </div>
-            );
+            )
           })}
         </span>
       </div>
       <div className="position-relative me-n4 mb-3">
-        {option?.name === "Color" &&
+        {option?.name === 'Color' &&
           option?.values.map((value: any) => (
             <div
               key={value.id}
               className="form-check form-option form-check-inline mb-2"
             >
               <input
+                required
                 className="form-check-input ms-1"
                 type="radio"
                 name={option.name}
                 id={value.id}
-                onChange={optionHandler}
                 value={value.name}
-                required
+                onChange={optionHandler}
               />
               <label
                 className="form-option-label rounded-circle"
@@ -55,5 +55,5 @@ export function ProductColorOption({
         )}
       </div>
     </div>
-  );
+  )
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 export default function LockIcon() {
   return (
@@ -40,5 +40,5 @@ export default function LockIcon() {
         strokeLinejoin="round"
       />
     </svg>
-  );
+  )
 }

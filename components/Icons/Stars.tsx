@@ -1,8 +1,8 @@
-interface Props{
-  fill:string;
+interface Props {
+  fill: string
 }
 
-export default function Stars({fill}:Props) {
+export default function Stars({ fill }: Props) {
   return (
     <svg
       width="20"
@@ -22,5 +22,5 @@ export default function Stars({fill}:Props) {
         strokeLinejoin="round"
       />
     </svg>
-  );
+  )
 }

@@ -1,8 +1,6 @@
-import mobileOrderHistory from "@/json/order-history.json";
-import { useState } from "react";
+import mobileOrderHistory from '@/json/order-history.json'
 
 export default function MobileOrderHistory() {
-  const [cartView, setCartView] = useState([])
   return (
     <div className="order-history mb-6">
       <h4 className="font-medium text-lg my-3">Order History</h4>
@@ -25,10 +23,10 @@ export default function MobileOrderHistory() {
         <tbody>
           {mobileOrderHistory.body.map((item, index) => {
             const paymentStyle =
-              item.paymentStatus === "Paid" ? "paid" : "not-paid";
+              item.paymentStatus === 'Paid' ? 'paid' : 'not-paid'
 
             const deliveryStyle =
-              item.deliveryStatus === "Paid" ? "paid" : "not-paid";
+              item.deliveryStatus === 'Paid' ? 'paid' : 'not-paid'
             return (
               <tr key={index} className="hover:bg-gray-100 border-b">
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
@@ -53,10 +51,10 @@ export default function MobileOrderHistory() {
                   </div>
                 </td>
               </tr>
-            );
+            )
           })}
         </tbody>
       </table>
     </div>
-  );
+  )
 }

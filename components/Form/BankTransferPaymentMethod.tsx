@@ -1,5 +1,6 @@
-import Accordion from '@/components/Accordion'
 import { FaRegMoneyBillAlt } from 'react-icons/fa'
+
+import Accordion from '@/components/Accordion'
 import BankTransferForm from '@/components/Form/BankTransferForm'
 
 export default function BankTransferPaymentMethod() {

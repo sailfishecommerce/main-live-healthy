@@ -1,15 +1,16 @@
+/* eslint-disable jsx-a11y/no-onchange */
 interface SelectProps {
-  content: selectInputType;
-  formik: any;
+  content: selectInputType
+  formik: any
 }
 
 type selectInputType = {
-  name: string;
-  placeholder: string;
-  selectText: string;
-  type: string;
-  options: { value: string; name: string }[];
-};
+  name: string
+  placeholder: string
+  selectText: string
+  type: string
+  options: Array<{ value: string; name: string }>
+}
 
 export default function Select({ content, formik }: SelectProps) {
   return (
@@ -18,7 +19,6 @@ export default function Select({ content, formik }: SelectProps) {
         {content.placeholder}
       </label>
       <select
-        onChange={formik.handleChange}
         value={formik.values[content.name]}
         name={content.name}
         className="form-select appearance-none
@@ -38,6 +38,7 @@ export default function Select({ content, formik }: SelectProps) {
         focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
         id="checkout-country"
         aria-label="select"
+        onChange={formik.handleChange}
       >
         <option>Choose {content.selectText}</option>
         {content?.options.map((option) => (
@@ -52,5 +53,5 @@ export default function Select({ content, formik }: SelectProps) {
           formik.errors[content.name]}
       </p>
     </div>
-  );
+  )
 }

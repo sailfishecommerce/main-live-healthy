@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useAtom } from 'jotai'
 import type { MutableRefObject } from 'react'
 import { useState, useRef, useEffect, memo } from 'react'

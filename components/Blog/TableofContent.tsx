@@ -9,9 +9,9 @@ export default function TableofContent() {
       <div className="content">
         <h5 className="font-bold text-md">{content.title}</h5>
         <ul>
-          {content.subtitle.map((item, index) => {
+          {content.subtitle.map((item) => {
             return typeof item === 'string' ? (
-              <li className="text-sm font-medium my-2" key={index}>
+              <li className="text-sm font-medium my-2" key={item}>
                 {item}
               </li>
             ) : (

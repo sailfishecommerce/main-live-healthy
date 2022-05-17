@@ -15,9 +15,9 @@ export default function ValueCard({ content }: ValuecardProps) {
     <>
       <div
         title={content.title}
-        className="value-card w-11/12 md:w-full rounded-3xl p-6 flex flex-col h-48 hover:opacity-80"
+        className="value-card px-6 justify-center w-11/12 lg:w-full rounded-3xl p-3 md:p-6 flex h-40 flex-col xl:h-48 hover:opacity-80"
       >
-        <div className="w-2/12">
+        <div className="w-1/6 md:w-2/12">
           <Image
             src={content.icon}
             alt={content.title}
@@ -26,9 +26,13 @@ export default function ValueCard({ content }: ValuecardProps) {
             layout="responsive"
           />
         </div>
-        <h2 className="font-medium text-xl my-2">{content.title}</h2>
+        <h2 className="font-medium text-lg md:text-xl my-2">{content.title}</h2>
         <p>{content.text}</p>
-        {<span className="font-bold text-blue-500">{content?.link}</span>}
+        {content.link && (
+          <span className="font-bold text-sm text-blue-500 text-wrap flex-wrap">
+            {content.link}
+          </span>
+        )}
       </div>
       <style jsx>
         {`

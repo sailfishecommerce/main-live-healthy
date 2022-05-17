@@ -23,7 +23,7 @@ const DynamicFooterAddress = dynamic(
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-gray-100 py-8 border-t">
+    <footer className="w-full bg-gray-100 py-8 px-6 xl:px-0 border-t">
       <div className="container mx-auto flex flex-col md:flex-row  items-start px-6 md:px-0">
         <DynamicFooterAddress />
         <DynamicFooterLink />

@@ -9,6 +9,7 @@ import {
 } from 'react-instantsearch-dom'
 
 import SearchbarHit from '@/components/Search/SearchbarHit'
+import { useMediaQuery } from '@/hooks'
 
 function HomepageComponent() {
   const [searching, setSearching] = useState(false)
@@ -17,6 +18,10 @@ function HomepageComponent() {
     `${process.env.NEXT_PUBLIC_INSTANTSEARCH_APP_ID}`,
     `${process.env.NEXT_PUBLIC_INSTANTSEARCH_SEARCH_API_KEY}`
   )
+  const mobileWidth = useMediaQuery('(max-width:768px)')
+
+  const searchbarWidth = mobileWidth ? 'w-full' : 'md:w-32'
+
   function showSearchResult(e: any) {
     if (e.target.value?.length >= 1) {
       setSearching(true)
@@ -30,7 +35,9 @@ function HomepageComponent() {
         indexName="LIVEHEALTHY_PRODUCTION_INDEX"
         searchClient={searchClient}
       >
-        <div className="search relative flex bg-gray-100 md:w-28 xl:w-1/5 w-full rounded-md py-2 px-1 xl:px-4 items-center">
+        <div
+          className={`search relative flex bg-gray-100 xl:w-1/5 ${searchbarWidth} rounded-md py-2 px-1 xl:px-4 items-center`}
+        >
           <Configure hitsPerPage={3} />
           <SearchBox
             showLoadingIndicator

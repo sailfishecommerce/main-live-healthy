@@ -55,7 +55,7 @@ function ProductCardComponent({
 
   return (
     <div
-      className={`hover:bg-white relative hover:shadow-lg product hover:rounded-lg product ${productClassName}  ${isRow} p-2 md:p-6 hover:border`}
+      className={`hover:bg-white relative hover:shadow-lg product hover:rounded-lg product ${productClassName}  ${isRow} p-2 md:p-4 lg:p-6 hover:border`}
     >
       <DiscountTag price={product.price} salePrice={product.sale_price} />
       <Link

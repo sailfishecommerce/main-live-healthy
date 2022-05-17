@@ -268,6 +268,15 @@ div.product-list-view + div {
   }
 }
 
+@media (width: 768px) {
+  .image span {
+    height: 100% !important;
+  }
+  .homepage-slider.container .splide {
+    height: unset;
+  }
+}
+
 @media (max-width: 768px) {
   .carousel-container .carousel-inner .track {
     display: flex;
@@ -287,5 +296,8 @@ div.product-list-view + div {
   .search-results ul.ais-Hits-list {
     height: 400px;
     overflow-y: auto;
+  }
+  header.bg-white {
+    height: unset;
   }
 }

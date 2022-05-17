@@ -30,7 +30,7 @@ function MenuComponent() {
   const { showMobileSearch } = useNav()
 
   return (
-    <nav className=" mx-auto container md:px-0 px-4 pb-3 md:pb-0">
+    <nav className=" mx-auto container px-4 pb-3 md:pb-0">
       <DynamicPrimaryMenu />
       {!mobileWidth && <DynamicSecondaryMenu />}
       {mobileWidth && showMobileSearch && <DynamicMobileSearchbar />}

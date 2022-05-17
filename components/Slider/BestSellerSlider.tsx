@@ -12,15 +12,17 @@ export default function BestSellerSlider() {
   const [data, status] = useLiveHealthyProduct()
   const tablet = useMediaQuery('(max-width:1024px)')
 
+  const loaderHeight = tablet ? 530 : 650
+
   return (
-    <LazyLoader height={650} mobileHeight={450}>
+    <LazyLoader height={loaderHeight} mobileHeight={450}>
       <section className="itemSlider best-seller-slider py-4 px-4 xl:py-8 relative w-full bg-gray-platinum mx-auto flex relative z-10 flex-col my-4">
         <div className="w-full">
-          <div className="mx-auto container top mb-0 xl:mb-8 flex items-center justify-between">
+          <div className="container mb-0 xl:mb-8 mx-auto">
             <h1 className="font-bold text-xl md:text-3xl">Best Sellers</h1>
           </div>
 
-          <div className="2xl:pl-28 pl-0 products mx-auto mt-4 flex items-center justify-between pb-0 md:pb-12">
+          <div className="2xl:pl-20 pl-0 products mx-auto mt-4 flex items-center justify-between pb-4 xl:pb-6">
             {status === 'error' ? (
               'unable to load products'
             ) : status === 'loading' ? (
@@ -28,7 +30,7 @@ export default function BestSellerSlider() {
             ) : (
               <Splide
                 options={{
-                  perPage: 4,
+                  perPage: 5,
                   padding: '5rem',
                   breakpoints: {
                     500: {

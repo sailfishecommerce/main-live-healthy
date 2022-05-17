@@ -32,7 +32,7 @@ export default function ProductTabCard({ product }: any) {
           <button
             type="button"
             aria-label="add to cart"
-            className="bg-mountain-green text-xs md:text-sm bg-mountain-green mx-auto absolute top-12 py-1 px-2 rounded-md text-white"
+            className="bg-mountain-green text-xs xl:text-sm bg-mountain-green mx-auto absolute top-12 py-1 px-2 rounded-md text-white"
             onClick={addToCartHandler}
           >
             Add to cart
@@ -43,7 +43,7 @@ export default function ProductTabCard({ product }: any) {
             <h3 className="text-xs md:text-md product-name mb-3">
               {product.name}
             </h3>
-            <div className="price-view flex items-center justify-between">
+            <div className="price-view xl:flex-row flex-col flex xl:items-center justify-between">
               <FormattedPrice
                 className="font-bold text-xs md:text-sm text-black"
                 price={product.sale_price}

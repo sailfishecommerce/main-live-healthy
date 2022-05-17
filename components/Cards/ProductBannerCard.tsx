@@ -41,7 +41,7 @@ export default function ProductBannerCard({ product, color }: any) {
         <div className="product-name-view xl:mb-6 mb-2">
           <h3 className="text-xs md:text-md product-name">{product.name}</h3>
         </div>
-        <div className="price-group xl:flex-row flex-col items-start flex xl:items-center justify-between">
+        <div className="price-group md:flex-row flex-col items-start flex xl:items-center justify-between">
           <FormattedPrice
             price={product.sale_price}
             className="text-sm md:text-md text-black mb-1 xl:mb-0 font-semibold"

@@ -19,9 +19,9 @@ export default function MobilePrimaryMenu() {
   const { updateSlideTab } = useSlidingTab()
 
   return (
-    <div className="mobile-menu flex flex-col w-2.5/5 pt-2">
+    <div className="mobile-menu flex flex-col w-2/5 pt-2">
       <div className="flex items-center w-full justify-between">
-        <span className="mr-1 flex items-center">
+        <span className="mr-1 md:w-4/5 w-full justify-between flex items-center">
           <AuthIcons />
           <button
             type="button"
@@ -30,9 +30,11 @@ export default function MobilePrimaryMenu() {
             onClick={() => updateSlideTab('SLIDING-CART')}
           >
             <CartIcon color="#080708" />
-            <div className="bg-yellow-500 rounded-full flex items-center text-white justify-center -mt-8 text-xs ml-2 z-5 absolute h-4 w-4">
-              {cart?.items?.length}
-            </div>
+            {cart?.items?.length && (
+              <div className="bg-yellow-500 rounded-full flex items-center text-white justify-center -mt-8 text-xs ml-2 z-5 absolute h-4 w-4">
+                {cart?.items?.length}
+              </div>
+            )}
           </button>
           <Link passHref href="/account">
             <button

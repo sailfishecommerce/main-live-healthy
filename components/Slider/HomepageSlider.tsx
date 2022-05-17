@@ -28,17 +28,17 @@ function HomepageSliderComponent() {
         width: 1300,
       }
     : {
-        height: 550,
+        height: 650,
         width: 1300,
       }
 
   return (
-    <section className="mt-6 md:mb-8 md:px-4 px-0 xl:px-0 xl:mb-12 mb-8 homepage-slider container mx-auto">
+    <section className="mt-6 md:px-4 px-0 xl:px-0 xl:mb-12 mb-2 lg:mb-8 homepage-slider container mx-auto">
       <Splide onActive={(item) => setActiveIndex(item.index)}>
         {homepageSliderContent.map((content, index) => (
           <SplideSlide key={content.title}>
             <div className="content px-4 md:px-0 flex flex-col md:flex-row w-full h-100">
-              <div className="text order-2 md:order-1 rounded-b-xl md:rounded-l-3xl bg-gray-100 p-6 md:p-8 w-full md:w-2/5 lg:w-1/4">
+              <div className="text order-2 md:order-1 rounded-b-xl my-0 md:rounded-l-3xl bg-gray-100 p-6 lg:p-8 w-full md:w-2/5 lg:w-1/4">
                 <div className="top flex items-center mb-6 justify-between">
                   <h1 className="lg:text-2xl text-lg font-bold">
                     {content.title}
@@ -66,18 +66,16 @@ function HomepageSliderComponent() {
                   />
                 )}
               </div>
-              <div className="image order-1 md:order-2 w-full md:w-4/6 lg:w-3/4">
-                <div className="rounded-t-xl md:rounded-l-none md:rounded-r-3xl h-full">
-                  <Image
-                    priority={true}
-                    src={content.image}
-                    height={imageDimension.height}
-                    width={imageDimension.width}
-                    alt={content.title}
-                    className="rounded-t-xl md:rounded-l-none md:rounded-r-3xl h-full"
-                    layout="responsive"
-                  />
-                </div>
+              <div className="my-0 image order-1 md:order-2 w-full md:w-4/6 lg:w-3/4">
+                <Image
+                  priority={true}
+                  src={content.image}
+                  height={imageDimension.height}
+                  width={imageDimension.width}
+                  alt={content.title}
+                  className="rounded-t-xl md:rounded-l-none md:rounded-r-3xl"
+                  layout="responsive"
+                />
               </div>
             </div>
           </SplideSlide>

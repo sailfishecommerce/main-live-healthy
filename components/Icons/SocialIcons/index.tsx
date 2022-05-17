@@ -6,7 +6,7 @@ import WhatsappIcon from '@/components/Icons/WhatsappIcon'
 
 export default function SocialIcons() {
   return (
-    <div className="social-icon-group flex items-center justify-between w-1/2">
+    <div className="social-icon-group flex items-center justify-between w-3/4 xl:w-1/2">
       <WhatsappIcon />
       <FacebookIcon />
       <TwitterIcon />

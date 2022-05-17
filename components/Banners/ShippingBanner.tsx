@@ -4,6 +4,8 @@ import { useMediaQuery } from '@/hooks'
 
 export default function ShippingBanner() {
   const mobileWidth = useMediaQuery('(max-width:768px)')
+  const exactTabWidth = useMediaQuery('(width:768px)')
+
   const imageSrc = mobileWidth
     ? '/free-shipping-mobile.webp'
     : '/free-shipping.webp'
@@ -20,7 +22,7 @@ export default function ShippingBanner() {
   ]
   const imageDimension = mobileWidth ? imageSize[1] : imageSize[0]
   return (
-    <section className="container mb-8 px-4 xl:px-0 lg:mb-0 flex justify-center mx-auto my-1">
+    <section className="container mb-8 -ml-2  md:pl-0 px-4 xl:px-0 lg:mb-0 flex justify-center lg:mx-auto my-1">
       <div className="w-full">
         <Image
           src={imageSrc}

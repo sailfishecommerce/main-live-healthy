@@ -5,9 +5,6 @@ export default function SendProductInvitationHandler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  console.log('req.method', req.method)
-  console.log('req.trustmateData', req.body.trustmateData)
-
   switch (req.method) {
     case 'POST': {
       axios
@@ -21,12 +18,9 @@ export default function SendProductInvitationHandler(
           }
         )
         .then((response) => {
-          console.log('response SendProductInvitationHandler', response)
-          console.log('SendProductInvitationHandler ', response.data)
           res.status(200).send(response.data)
         })
         .catch((error) => {
-          console.log('error SendProductInvitationHandler', error)
           res.status(400).send(error)
         })
     }

@@ -22,14 +22,12 @@ export default function BankTransferForm() {
     if (submit) {
       sendBankTransfer(paymentForm?.form.email, bank)
         .then((response) => {
-          console.log('response', response)
           setSubmit(false)
           toast.success(`An email has been sent to ${paymentForm?.form.email}`)
           router.push('/checkout-complete')
         })
         .catch((error) => {
           setSubmit(false)
-          console.log('response error', error)
         })
     }
   }, [submit])

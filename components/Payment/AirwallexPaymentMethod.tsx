@@ -19,7 +19,6 @@ export default function AirwallexPaymentMethod() {
   }
 
   const { clientSecret, paymentIntentId } = airwallex
-  console.log(' clientSecret, paymentIntentId', clientSecret, paymentIntentId)
 
   return (
     <Accordion

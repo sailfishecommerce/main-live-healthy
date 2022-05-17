@@ -1,12 +1,15 @@
+/* eslint-disable prefer-const */
+/* eslint-disable unused-imports/no-unused-vars */
+/* eslint-disable no-fallthrough */
 import axios from 'axios'
-import sharp from 'sharp'
 import type { NextApiRequest, NextApiResponse } from 'next'
+import sharp from 'sharp'
 
 export default function uploadImageHander(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  async function displayImageData(url: string, name: string) {
+  function displayImageData(url: string, name: string) {
     return axios
       .get(url, {
         responseType: 'arraybuffer',
@@ -29,7 +32,7 @@ export default function uploadImageHander(
             }
             return imageData
           })
-          .catch((error: any) => console.log('error', error))
+        // .catch((error: any) =>
       })
   }
 
@@ -38,7 +41,8 @@ export default function uploadImageHander(
       displayImageData(
         'http://host-62-113-119-20.hosted-by-vdsina.ru/Pictures/nature-s-way-beauty-rosehip-40-gummies_1.jpg',
         'Product one'
-      ).then((data) => console.log('imageData', data))
+      )
+      // .then((data) =>
     }
     default:
       return null

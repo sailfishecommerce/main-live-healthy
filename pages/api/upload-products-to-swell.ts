@@ -25,13 +25,13 @@ export default function UploadProductToSwellHandler(
     //     .post('/products', swellProducts)
     //     .then((response: any) => {
     //       total = total + 1
-    //       console.log('total', total)
+    //
     //       if (!response?.errors) {
     //         count = count + 1
-    //         console.log('count', count, 'createSwellProductHandler')
+    //
     //         return res.status(200).send({ status: 'ok', response })
     //       }
-    //       console.log('count', count, response?.errors)
+    //
     //       return res.status(200).send({ status: 'ok', response })
     //     })
     //     .catch((error: any) => {

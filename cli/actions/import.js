@@ -40,8 +40,6 @@ async function importAction(
     }
   }
 
-  console.log()
-
   // Read the data files
   const [
     productsDataset,
@@ -103,9 +101,7 @@ async function importAction(
   // Products replicas - Set settings
   console.info(
     dim(
-      `Update ${
-        useVirtualReplicas ? 'virtual ' : ''
-      }replicas custom ranking...`
+      `Update ${useVirtualReplicas ? 'virtual ' : ''}replicas custom ranking...`
     )
   )
 
@@ -151,7 +147,6 @@ async function importAction(
     productsQuerySuggestionsFormatted
   )
 
-  console.log()
   console.info(bold().green('✔ Datasets imported successfully'))
 }
 

@@ -110,7 +110,6 @@ const questions = [
   })
 
   if (cancelled || !confirm) {
-    console.log()
     console.info(bold().red('✖ Cancelled, nothing was done'))
     return
   }

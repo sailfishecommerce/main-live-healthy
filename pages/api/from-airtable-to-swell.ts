@@ -41,13 +41,13 @@ export default function createSwellProductHandler(
                             .then((response: any) => {
                               if (!response?.errors) {
                                 count = count + 1
-                                console.log(
+                                
                                   'count',
                                   count,
                                   'createSwellProductHandler'
                                 )
                               } else {
-                                console.log(
+                                
                                   'count',
                                   count,
                                   response?.errors.slug.message
@@ -67,7 +67,7 @@ export default function createSwellProductHandler(
                   }
                 })
               } catch (e) {
-                console.log('error inside each page', e)
+                
                 return res.status(400).send(e)
               }
               fetchNextPage()
@@ -79,7 +79,7 @@ export default function createSwellProductHandler(
                 reject()
                 return res.status(400).send(err)
               }
-              console.log('All products uploaded successfully')
+              
               resolve()
               return res.status(200).send({ status: 'ok' })
             }

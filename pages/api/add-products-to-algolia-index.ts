@@ -11,8 +11,6 @@ export default function AddProductToAlgoliaIndiceHandler(
   )
   const index = client.initIndex('Livehealthy__products')
 
-  console.log('req.method', req.method, 'req.body', req.body.productArray)
-
   switch (req.method) {
     case 'POST': {
       return index

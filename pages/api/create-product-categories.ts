@@ -29,7 +29,7 @@ export default function createSwellCategoriesHandler(
   //       active: true,
   //       store_name: 'livehealthy store',
   //     })
-  //     .then((response: any) => console.log('response', response))
+  //     .then((response: any) =>
   //     .catch((error: any) => console.error('error', error))
   // }
 
@@ -66,7 +66,7 @@ export default function createSwellCategoriesHandler(
     //       response.map((category: any) => createCategories(category))
     //       res.status(200).json(response)
     //     })
-    //     .catch((err: any) => console.log('error', err))
+    //     .catch((err: any) =>
     // }
     default:
       return null

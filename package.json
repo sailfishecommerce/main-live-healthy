@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint-page": "eslint components/**/*.ts components/**/*.tsx",
+    "lint-page": "eslint components/**/*.ts components/**/*.tsx hooks/**/*.ts lib/**/*.ts",
     "cli": "cd cli && npm start",
     "analyze": "ANALYZE=true next build",
     "postinstall": "cd cli && npm install"

@@ -21,9 +21,7 @@ export default async function fetchProductsHandler(
         .then((response: any) => {
           return res.status(200).send(response.results)
         })
-        .catch((error: any) => {
-          console.log('error', error?.message)
-        })
+        .catch((error: any) => {})
     }
     default:
       return null

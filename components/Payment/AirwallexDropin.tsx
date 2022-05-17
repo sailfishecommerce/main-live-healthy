@@ -81,7 +81,6 @@ function AirwallexCardElement({
         },
       })
         .then((response) => {
-          console.log('response', response)
           setIsSubmitting(false)
           isSuccessful(toastId, 'Payment successful')
           window.alert(
@@ -92,7 +91,6 @@ function AirwallexCardElement({
           router.push('/checkout-complete')
         })
         .catch((error) => {
-          console.log('error airwallex', error)
           setIsSubmitting(false)
           setErrorMessage(error.message)
           hasError(toastId, error.message)

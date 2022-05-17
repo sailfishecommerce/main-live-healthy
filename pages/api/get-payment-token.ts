@@ -18,11 +18,9 @@ export default function getPaymentTokenHandler(
           },
         })
         .then((response) => {
-          console.log('getAccessTokenData', response?.data)
           return res.status(200).json(response.data)
         })
         .catch((error) => {
-          console.log('getAccessTokenError', error)
           return res.status(400).json(error)
         })
     }

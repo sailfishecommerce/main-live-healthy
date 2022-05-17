@@ -1,5 +1,8 @@
-import swell from 'swell-node'
+/* eslint-disable no-console */
+/* eslint-disable unused-imports/no-unused-vars */
 import type { NextApiRequest, NextApiResponse } from 'next'
+import swell from 'swell-node'
+
 import productModel from './productModel'
 
 swell.init('sailfish-e-commerce-limited', '5qBYeK0FS6djOP7TzCWOQ5hWQZZzzvnr')
@@ -24,7 +27,7 @@ export default async function createSwellProductHandler(
           description: product['Product Description'],
           meta_description: product['cwh-Meta_Description_EN'],
           meta_title: product['Product SEO Title'],
-          review_rating: product['reviews'],
+          review_rating: product.reviews,
           sale: true,
           sku: product['cwh-SKU'],
           // stock_tracking: true,
@@ -35,14 +38,14 @@ export default async function createSwellProductHandler(
           rrp: product['cwh-rrp'],
           bestseller: product['cwh-bestseller'],
           discount: product['cwh-discount'],
-          exclude: product['Exclude'],
-          percentage_chinese: product['percentage_chinese'],
+          exclude: product.Exclude,
+          percentage_chinese: product.percentage_chinese,
           low_stock: product['cwh-low_stock'],
           link: product['cwh-link'],
           new_sailfish: product['New Sailfish'],
-          max_quantity: product['max_qty'],
+          max_quantity: product.max_qty,
           on_line: product['cwh-on_line'],
-          margin: product['Margin'],
+          margin: product.Margin,
           airtable_group: 'goldCleanLatest',
           product_categories: [
             product['Cat 2'],
@@ -120,7 +123,6 @@ export default async function createSwellProductHandler(
           brand: product['cwh-brand'],
         })
         .then((response: any) => {
-          console.log('response createSwellProductHandler', response)
           return res.status(200).json(response)
         })
         .catch((error: any) => {

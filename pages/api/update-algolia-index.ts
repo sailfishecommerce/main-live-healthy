@@ -17,8 +17,6 @@ export default function UpdateAlgoliaIndexHandler(
   )
   const index = client.initIndex('LIVEHEALTHY_PRODUCTION_INDEX')
 
-  console.log('req.method', req.method, 'req.body', req.body)
-
   // const algoliaProducsArray: any = algoliaProducts;
 
   // eslint-disable-next-line prefer-const
@@ -50,10 +48,8 @@ export default function UpdateAlgoliaIndexHandler(
         JSON.stringify(productArray),
         (err: any) => {
           if (err) {
-            console.log('Error writing file', err)
             throw err
           } else {
-            console.log('Successfully wrote file')
           }
         }
       )

@@ -104,17 +104,17 @@ export default function UploadToAlgoliaHandler(
     //     productObj = { ...hierarchicalCategoryObj, ...product }
     //     productArray.push(productObj)
     //   })
-    //   console.log('productArray', productArray)
+    //
     //   return fs.writeFile(
     //     filePath,
     //     JSON.stringify(productArray),
     //     (err: any) => {
     //       if (err) {
-    //         console.log('Error writing file', err)
+    //
     //         res.status(400).json({ status: err })
     //         throw err
     //       } else {
-    //         console.log('Successfully wrote file')
+    //
     //         res.status(200).json({ status: 'ok' })
     //       }
     //     }

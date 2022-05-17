@@ -6,7 +6,6 @@ export default function ProductTabDropdown() {
   const tabs = ['Special Products', 'Featured Products']
   function selectedTabHandler(e: any) {
     e.preventDefault()
-    console.log('e', e)
   }
   return (
     <Dropdown

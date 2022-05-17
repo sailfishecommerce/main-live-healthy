@@ -48,7 +48,7 @@ export function createVboutOrder(item: createVboutOrderType) {
       `https://api.vbout.com/1/ecommerce/createorder?api_key=${process.env.NEXT_PUBLIC_VBOUT_API_KEY}`,
       data
     )
-    .then((response) => console.log('createVboutOrder', response))
+    .then((response) => 
     .catch((error) => console.error('error createVboutOrder', error))
 }
 

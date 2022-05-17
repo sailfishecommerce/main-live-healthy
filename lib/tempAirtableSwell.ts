@@ -1,3 +1,5 @@
+/* eslint-disable no-fallthrough */
+/* eslint-disable no-console */
 import fs from 'fs'
 
 import Airtable from 'airtable'

@@ -42,7 +42,6 @@ export default function PasswordReset() {
                     }
                   })
                   .catch((err) => {
-                    console.log('error', err)
                     hasError(loading, 'error resetting password')
                   })
                 resetForm()

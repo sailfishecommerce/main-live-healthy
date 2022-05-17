@@ -13,7 +13,6 @@ export default async function compressImageHandler(
         .webp({ lossless: true })
         .toFile('allensretropartymix190g.webp')
         .then((response: any) => {
-          console.log('response', response)
           return res.send(response)
         })
     }

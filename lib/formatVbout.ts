@@ -1,8 +1,8 @@
-import { addCategoryViewType, createVboutOrderType } from "@/types";
+import type { addCategoryViewType, createVboutOrderType } from '@/types'
 
 export function formatCreateVboutOrder(item: createVboutOrderType) {
   const data = {
-    domain: "VBT-88360-6048",
+    domain: 'VBT-88360-6048',
     cartid: item.cartId,
     uniqueid: item.uniqueId,
     orderid: item.orderId,
@@ -10,24 +10,24 @@ export function formatCreateVboutOrder(item: createVboutOrderType) {
     paymentmethod: item.paymentMethod,
     grandTotal: item.grandTotal,
     subtotal: item.subtotal,
-    currency: "USD",
+    currency: 'USD',
     status: item.status,
-    storename: "livehealthy",
+    storename: 'livehealthy',
     customerinfo: item.customerInfo,
     billinginfo: item.billingInfo,
     shippinginfo: item.shippingInfo,
-  };
-  return data;
+  }
+  return data
 }
 
 export function formatVboutCategoryView(content: addCategoryViewType) {
   const data = {
-    domain: "VBT-88360-6048",
+    domain: 'VBT-88360-6048',
     uniqueid: content.id,
     categoryid: content.categoryId,
     name: content.categoryName,
     link: content.categoryLink,
     image: content.categoryImage,
-  };
-  return data;
+  }
+  return data
 }

@@ -25,7 +25,7 @@ export function isTokenValid(tokenExpiryDate: string | null) {
 //   return axios
 //     .get('/api/get-payment-token')
 //     .then(({ data }) => {
-//       console.log('paymentToken', data)
+//
 //       const paymentPayload = {
 //         accessToken: data.token,
 //         tokenExpiryDate: data.expires_at,
@@ -34,7 +34,7 @@ export function isTokenValid(tokenExpiryDate: string | null) {
 //       dispatch(paymentError(null))
 //     })
 //     .catch((error) => {
-//       console.log('error', error)
+//
 //       dispatch(paymentError(error?.message))
 //     })
 // }
@@ -48,7 +48,7 @@ export function decodeAirwallexClientSecretToken(
   clientSecret: any | string
 ): decodeType {
   const decodeClientSecret: decodeType = jwtDecode(clientSecret)
-  // console.log("decodeClientSecret", decodeClientSecret);
+  //
   return decodeClientSecret
 }
 

@@ -120,7 +120,7 @@ header.header {
     0px 2px 3px rgba(0, 0, 0, 0.03), 0px 0px 0px rgba(0, 0, 0, 0.03);
 }
 
-header {
+header.bg-white {
   height: 270px;
 }
 

@@ -32,7 +32,7 @@ export default function ProductBanner() {
   ]
   const bannerDimension = mobileWidth ? imageSize[1] : imageSize[0]
   return (
-    <div className="lg:pt-6 py-4 container mx-auto justify-between px-4 xl:px-0 flex flex-col md:flex-row items-start">
+    <div className="lg:pt-6 py-4 container mx-auto justify-between px-4 xl:px-0 flex flex-col lg:flex-row items-start">
       <div className="banner w-full lg:w-4/6">
         <Image
           src={bannerImage}
@@ -42,7 +42,7 @@ export default function ProductBanner() {
           layout="responsive"
         />
       </div>
-      <div className="product-group mt-4 md:mt-0 w-full lg:w-2/6 ml-0 md:ml-4">
+      <div className="product-group mt-4 lg:mt-0 w-full lg:w-2/6 ml-0 lg:ml-4">
         {status === 'error'
           ? 'unable to load products'
           : status === 'loading'

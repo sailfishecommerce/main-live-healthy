@@ -3,7 +3,6 @@ import type { GetServerSidePropsContext } from 'next'
 import dynamic from 'next/dynamic'
 
 import { Breadcrumb } from '@/components/@instantsearch/widgets/breadcrumb/breadcrumb'
-import InfiniteHits from '@/components/@instantsearch/widgets/infinite-hits/infinite-hits'
 import { NoResultsHandler } from '@/components/@instantsearch/widgets/no-results-handler/no-results-handler'
 import { QueryRuleBanners } from '@/components/@instantsearch/widgets/query-rule-banners/query-rule-banners'
 import { Container } from '@/components/Container'
@@ -18,10 +17,10 @@ import {
 } from '@/layouts/search-page-layout'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
 
-const RefinementsBar = dynamic<any>(
+const RefinementsBar = dynamic(
   () =>
     import(
-      /* webpackChunkName: 'search' */ '@/components/RefinementsBar/refinements-bar'
+      /* webpackChunkName: 'RefinementsBar' */ '@/components/RefinementsBar/refinements-bar'
     ),
   {
     ssr: false,
@@ -32,6 +31,14 @@ const RefinementsPanel = dynamic<any>(
   () =>
     import(
       /* webpackChunkName: 'refinements-panel' */ '@/components/RefinementsPanel/refinements-panel'
+    ),
+  { ssr: false }
+)
+
+const InfiniteHits = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'InfiniteHits' */ '@/components/@instantsearch/widgets/infinite-hits/infinite-hits'
     ),
   { ssr: false }
 )

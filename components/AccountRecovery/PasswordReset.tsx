@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Formik } from 'formik'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
@@ -41,9 +40,7 @@ export default function PasswordReset() {
                       hasError(loading, 'error resetting password')
                     }
                   })
-                  .catch((err) => {
-                    hasError(loading, 'error resetting password')
-                  })
+                  .catch(() => hasError(loading, 'error resetting password'))
                 resetForm()
                 setSubmitting(false)
               }}

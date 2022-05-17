@@ -1,3 +1,4 @@
+/* eslint-disable no-fallthrough */
 import axios from 'axios'
 import type { NextApiRequest, NextApiResponse } from 'next'
 

@@ -1,6 +1,5 @@
 /* eslint-disable no-fallthrough */
 /* eslint-disable no-console */
-/* eslint-disable default-case */
 import fs from 'fs'
 
 import algoliasearch from 'algoliasearch'
@@ -16,6 +15,8 @@ export default function UpdateAlgoliaIndexHandler(
     `${process.env.NEXT_PUBLIC_ALGOLIA_ADMIN_API_KEY}`
   )
   const index = client.initIndex('LIVEHEALTHY_PRODUCTION_INDEX')
+
+  console.log('req.method', req.method, 'req.body', req.body)
 
   // const algoliaProducsArray: any = algoliaProducts;
 
@@ -48,8 +49,10 @@ export default function UpdateAlgoliaIndexHandler(
         JSON.stringify(productArray),
         (err: any) => {
           if (err) {
+            console.log('Error writing file', err)
             throw err
           } else {
+            console.log('Successfully wrote file')
           }
         }
       )

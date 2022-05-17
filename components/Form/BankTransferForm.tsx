@@ -1,6 +1,5 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-console */
 import { useAtom } from 'jotai'
 import { useRouter } from 'next/router'
 import { useState, useEffect } from 'react'
@@ -21,12 +20,12 @@ export default function BankTransferForm() {
   useEffect(() => {
     if (submit) {
       sendBankTransfer(paymentForm?.form.email, bank)
-        .then((response) => {
+        .then(() => {
           setSubmit(false)
           toast.success(`An email has been sent to ${paymentForm?.form.email}`)
           router.push('/checkout-complete')
         })
-        .catch((error) => {
+        .catch(() => {
           setSubmit(false)
         })
     }

@@ -27,5 +27,5 @@ export default function Select() {
         </select>
       </div>
     </div>
-  );
+  )
 }

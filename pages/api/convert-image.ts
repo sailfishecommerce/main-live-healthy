@@ -1,5 +1,6 @@
-import sharp from 'sharp'
+/* eslint-disable no-fallthrough */
 import type { NextApiRequest, NextApiResponse } from 'next'
+import sharp from 'sharp'
 
 export default async function compressImageHandler(
   req: NextApiRequest,

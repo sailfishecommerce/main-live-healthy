@@ -1,3 +1,4 @@
+/* eslint-disable no-fallthrough */
 import imagemin from 'imagemin'
 import imageminWebp from 'imagemin-webp'
 import type { NextApiRequest, NextApiResponse } from 'next'

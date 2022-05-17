@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { useAtom } from 'jotai'
 import { BsCreditCard } from 'react-icons/bs'
 

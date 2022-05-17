@@ -1,3 +1,4 @@
+/* eslint-disable no-fallthrough */
 import axios from 'axios'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
@@ -5,11 +6,6 @@ export default function CreatePaymentIntentHandler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  
-  
-    'req.body.payment_method',
-    req.body.cardDetails.payment_method.card
-  )
   switch (req.method) {
     case 'POST': {
       axios
@@ -24,11 +20,9 @@ export default function CreatePaymentIntentHandler(
           }
         )
         .then((response) => {
-          
           return res.status(200).json(response.data)
         })
         .catch((error) => {
-          
           return res.status(400).json(error)
         })
     }

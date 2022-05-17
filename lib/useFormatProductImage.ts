@@ -1,6 +1,5 @@
 /* eslint-disable prefer-const */
 /* eslint-disable dot-notation */
-/* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-shadow */
 import axios from 'axios'
 import imagemin from 'imagemin'
@@ -13,34 +12,35 @@ async function formatProductImage(url: string, name: string, index: number) {
     .get(url, {
       responseType: 'arraybuffer',
     })
-    .then((response) =>
-      sharp(response.data)
-        .webp()
-        .toBuffer({ resolveWithObject: true })
-        .then((response: any) => {
-          return imagemin.buffer(response.data, {
-            plugins: [
-              imageminWebp({
-                quality: 40,
-              }),
-            ],
+    .then(
+      (response) =>
+        sharp(response.data)
+          .webp()
+          .toBuffer({ resolveWithObject: true })
+          .then((response: any) => {
+            return imagemin.buffer(response.data, {
+              plugins: [
+                imageminWebp({
+                  quality: 40,
+                }),
+              ],
+            })
           })
-        })
-        .then((response: any) => {
-          let imageData: any = {}
-          imageData.file = {
-            data: {
-              $binary: response.toString('base64'),
-              $type: '00',
-            },
-            filename: formattedName,
-            content_type: 'image/webp',
-            width: 800,
-            height: 800,
-          }
-          return imageData
-        })
-        .catch((error: any) => 
+          .then((response: any) => {
+            let imageData: any = {}
+            imageData.file = {
+              data: {
+                $binary: response.toString('base64'),
+                $type: '00',
+              },
+              filename: formattedName,
+              content_type: 'image/webp',
+              width: 800,
+              height: 800,
+            }
+            return imageData
+          })
+      // .catch((error: any) =>
     )
 }
 

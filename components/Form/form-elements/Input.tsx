@@ -4,7 +4,7 @@ interface InputProps {
   content: {
     placeholder: string
     name: string
-    inputType: 'email' | 'text' | 'password' | string
+    inputType: string | 'email' | 'password' | 'text'
   }
 }
 

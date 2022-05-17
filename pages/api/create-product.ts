@@ -1,5 +1,6 @@
-import swell from 'swell-node'
 import type { NextApiRequest, NextApiResponse } from 'next'
+import swell from 'swell-node'
+
 import productModel from '../../lib/productModel'
 
 swell.init('sailfish-e-commerce-limited', '5qBYeK0FS6djOP7TzCWOQ5hWQZZzzvnr')
@@ -19,9 +20,11 @@ export default async function createSwellProductHandler(
           return res.status(200).json(response)
         })
         .catch((error: any) => {
-          console.error('error createSwellProductHandler', error)
+          // console.error('error createSwellProductHandler', error)
           return res.status(400).json(error)
         })
     }
+    default:
+      return null
   }
 }

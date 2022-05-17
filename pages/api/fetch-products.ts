@@ -1,4 +1,3 @@
-/* eslint-disable default-case */
 import type { NextApiRequest, NextApiResponse } from 'next'
 import swell from 'swell-node'
 
@@ -21,7 +20,7 @@ export default async function fetchProductsHandler(
         .then((response: any) => {
           return res.status(200).send(response.results)
         })
-        .catch((error: any) => {})
+      // .catch((error: any) => {})
     }
     default:
       return null

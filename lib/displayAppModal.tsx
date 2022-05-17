@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-sort-props */
 import AuthModal from '@/components/Modal/AuthModal'
 import ExistingUserNotificationModal from '@/components/Modal/ExistingUserNotificationModal'
 import type { typeModal } from '@/types'

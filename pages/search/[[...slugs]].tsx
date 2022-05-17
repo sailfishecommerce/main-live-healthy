@@ -5,7 +5,6 @@ import { Configure } from 'react-instantsearch-dom'
 
 import { Breadcrumb } from '@/components/@instantsearch/widgets/breadcrumb/breadcrumb'
 import { NoResultsHandler } from '@/components/@instantsearch/widgets/no-results-handler/no-results-handler'
-import { QueryRuleBanners } from '@/components/@instantsearch/widgets/query-rule-banners/query-rule-banners'
 import ProductHitCard from '@/components/Cards/ProductHitCard'
 import { Container } from '@/components/Container'
 import { viewModeAtom } from '@/components/ViewModes'
@@ -73,8 +72,6 @@ export default function SearchPage({ searchQuery, ...props }: SearchPageProps) {
           </div>
           <Container className="flex flex-col gap-2 container lg:mx-auto lg:mb-10 lg:mt-10 lg:gap-10">
             <Breadcrumb attributes={breadcrumbAttributes} />
-
-            <QueryRuleBanners limit={1} />
 
             <div className="flex flex-col lg:flex-row">
               {(refinementsLayout === 'panel' || true) && <RefinementsPanel />}

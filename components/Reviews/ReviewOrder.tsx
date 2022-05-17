@@ -14,8 +14,8 @@ export default function ReviewOrder() {
   return (
     <CheckoutCard title="1. Review Your Order">
       <ul className="cart-items border-b pb-6">
-        {cart?.items.map((item: any, index: number) => (
-          <li key={index}>
+        {cart?.items.map((item: any) => (
+          <li key={item.name}>
             <Image
               src={item.images[0]}
               alt={item.name}

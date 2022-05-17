@@ -10,8 +10,8 @@ export default function ProductOffers({ className }: Props) {
     <div
       className={`${className} product-offers justify-between my-4 flex flex-wrap md:flex-row items-center grid grid-cols-2 md:grid-cols-3 md:gap-4 gap-2`}
     >
-      {productOffers.map((offer, index) => (
-        <ProductOfferCards offer={offer} key={index} />
+      {productOffers.map((offer) => (
+        <ProductOfferCards offer={offer} key={offer.text} />
       ))}
     </div>
   )

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import Image from 'next/image'
 
 export default function PaymentMethodView() {

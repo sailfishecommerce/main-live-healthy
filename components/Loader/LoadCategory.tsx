@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import { useMemo } from 'react'
 import ContentLoader from 'react-content-loader'
 

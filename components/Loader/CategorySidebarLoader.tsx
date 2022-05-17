@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import type { IContentLoaderProps } from 'react-content-loader'
 import ContentLoader from 'react-content-loader'
 

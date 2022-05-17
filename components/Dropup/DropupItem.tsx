@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import type { PropsWithChildren } from 'react'
 
-interface DropupItem {
+interface DropupItemProps {
   onClick: (e?: any) => void
   className?: string
 }
@@ -9,7 +9,7 @@ interface DropupItem {
 export default function DropupItem({
   onClick,
   children,
-}: PropsWithChildren<DropupItem>) {
+}: PropsWithChildren<DropupItemProps>) {
   return (
     <li>
       <a

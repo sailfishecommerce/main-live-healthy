@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import mobileOrderHistory from '@/json/order-history.json'
 
 export default function MobileOrderHistory() {

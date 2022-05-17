@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-expressions */
+/* eslint-disable react/no-array-index-key */
 import { TextArea, Input } from '@/components/Form/FormFields'
 import aboutUsContent from '@/json/about-us.json'
 

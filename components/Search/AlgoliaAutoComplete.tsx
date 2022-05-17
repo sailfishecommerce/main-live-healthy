@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { autocomplete } from '@algolia/autocomplete-js'
 import React, { createElement, Fragment, useEffect, useRef } from 'react'
 import { render } from 'react-dom'

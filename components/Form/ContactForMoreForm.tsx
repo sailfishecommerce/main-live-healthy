@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable no-alert */
 import type { FormikProps } from 'formik'
 import { Formik } from 'formik'

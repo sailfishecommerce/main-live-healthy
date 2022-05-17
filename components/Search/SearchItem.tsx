@@ -1,5 +1,4 @@
 export default function SearchItem({ hit, components }: any) {
-  console.log('hit', hit)
   return (
     <a href={hit.url} className="aa-ItemLink">
       <div className="aa-ItemContent">

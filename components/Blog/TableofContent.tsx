@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import blogContent from '@/json/blog.json'
 
 export default function TableofContent() {

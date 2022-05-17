@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import Input from '@/components/Form/form-elements/Input'
 import AccountDetailsFormContent from '@/json/account-details-form.json'
 

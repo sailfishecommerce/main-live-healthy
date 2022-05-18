@@ -57,8 +57,8 @@ const questions = [
     type: 'text',
     name: 'indexNamePrefix',
     message: 'Choose the prefix used for each index name created',
-    initial: 'pwa_ecom_ui_template_',
-    validate: validateNotEmpty,
+    initial: '',
+    // validate: validateNotEmpty,
   },
   {
     type: 'text',

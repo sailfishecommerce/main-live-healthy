@@ -15,6 +15,7 @@ export default function FacebookScript() {
           });
           FB.getLoginStatus(function(response) {
             statusChangeCallback(response);
+            console.log('response', response);
           });
 
         };`}

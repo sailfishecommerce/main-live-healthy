@@ -6,10 +6,10 @@ import { FacebookButton } from '@/scripts/facebook-script'
 export default function Index() {
   return (
     <div className="social-button mt-4 flex items-center mx-auto justify-center">
+      <FacebookButton />
       <button type="button" className="mx-2">
         <GoogleFillIcon />
       </button>
-      <FacebookButton />
       <button type="button" className="mx-4">
         <FacebookIconFill />
       </button>

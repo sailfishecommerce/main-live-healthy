@@ -6,6 +6,17 @@ export default function FacebookScript() {
     <>
       <Script id="facebook-script" strategy="afterInteractive">
         {`
+          function statusChangeCallback(response) {  
+            console.log('statusChangeCallback');
+            console.log('response-fb',response);                   
+            if (response.status === 'connected') {   
+              testAPI();  
+            } else {                                
+              document.getElementById('status').innerHTML = 'Please log ' +
+                'into this webpage.';
+            }
+          }
+
           window.fbAsyncInit = function() {
           FB.init({
             appId            : ${process.env.NEXT_PUBLIC_FACEBOOK_APP_ID},
@@ -13,9 +24,13 @@ export default function FacebookScript() {
             xfbml            : true,
             version          : 'v13.0'
           });
+
+          FB.logout(function(response) {
+              // Person is now logged out
+          });
+
           FB.getLoginStatus(function(response) {
             statusChangeCallback(response);
-            console.log('response', response);
           });
 
         };`}

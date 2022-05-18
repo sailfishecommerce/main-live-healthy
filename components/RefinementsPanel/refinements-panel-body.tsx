@@ -4,7 +4,6 @@ import { useCallback, useEffect, useMemo } from 'react'
 
 import { configAtom } from '@/config/config'
 import { useMediaQuery } from '@/hooks'
-import { Tablet } from '@/lib/media'
 import { useGetRefinementWidgets } from '@instantsearch/hooks/useGetRefinementWidgets'
 import {
   getPanelAttributes,
@@ -151,7 +150,7 @@ export function RefinementsPanelBody({
 
   return (
     <div>
-      <Tablet>{sortWidget}</Tablet>
+      <div>{sortWidget}</div>
       <DynamicWidgets enabled={dynamicWidgets}>{widgetsPanels}</DynamicWidgets>
     </div>
   )

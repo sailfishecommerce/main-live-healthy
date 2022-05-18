@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useAtom } from 'jotai'
 import { useAtomValue } from 'jotai/utils'
 import { useRouter } from 'next/router'
@@ -5,7 +6,7 @@ import { useEffect, useRef } from 'react'
 import { Pane as Tweakpane } from 'tweakpane'
 
 import { configAtom } from '@/config/config'
-import { debugLayerEnabledAtom } from '@dev/debug-layer/debug-layer'
+// import { debugLayerEnabledAtom } from '@dev/debug-layer/debug-layer'
 import { gridsHiddenAtom } from '@dev/grids/grids'
 
 export function Pane() {
@@ -18,9 +19,9 @@ export function Pane() {
   const [refinementsLayout, setRefinementsLayout] = useAtom(
     refinementsLayoutAtom
   )
-  const [debugLayerEnabled, setDebugLayerEnabled] = useAtom(
-    debugLayerEnabledAtom
-  )
+  // const [debugLayerEnabled, setDebugLayerEnabled] = useAtom(
+  //   debugLayerEnabledAtom
+  // )
 
   useEffect(() => {
     const pane = new Tweakpane({
@@ -37,9 +38,6 @@ export function Pane() {
         options: {
           index: '/',
           collection: '/collection',
-          'kit/buttons': '/kit/buttons',
-          'kit/chips': '/kit/chips',
-          'kit/banners': '/kit/banners',
         },
       })
       .on('change', (ev) => {
@@ -68,20 +66,19 @@ export function Pane() {
         setGridsHidden(ev.value)
       })
 
-    // Debug layer
-    const debugLayerFolder = pane.addFolder({ title: 'Debug Layer' })
-    debugLayerFolder
-      .addInput({ debugLayerEnabled }, 'debugLayerEnabled', {
-        label: 'Enabled',
-      })
-      .on('change', (ev) => {
-        setDebugLayerEnabled(ev.value)
-      })
+    // // Debug layer
+    // const debugLayerFolder = pane.addFolder({ title: 'Debug Layer' })
+    // debugLayerFolder
+    //   .addInput({ debugLayerEnabled }, 'debugLayerEnabled', {
+    //     label: 'Enabled',
+    //   })
+    //   .on('change', (ev) => {
+    //     setDebugLayerEnabled(ev.value)
+    //   })
 
     return () => {
       pane.dispose()
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [paneContainer])
 
   return <div className="fixed bottom-3 left-3" ref={paneContainer} />

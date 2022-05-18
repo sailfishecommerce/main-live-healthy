@@ -16,7 +16,7 @@ export type ProviderLayoutProps = {
   children: React.ReactNode
 }
 
-const loadFramerMotionFeatures = dynamic(
+const loadFramerMotionFeatures: any = dynamic(
   () =>
     import(/* webpackChunkName: 'lib' */ '@/lib/framer-motion-features').then(
       (mod: any) => mod.default

@@ -16,7 +16,12 @@ const refinements: Refinement[] = [
     label: 'Category',
     isExpanded: true,
     options: {
-      attributes: 'hierarchical_categories',
+      attributes: [
+        'hierarchical_categories.lvl0',
+        'hierarchical_categories.lvl1',
+        'hierarchical_categories.lvl2',
+        'hierarchical_categories.lvl3',
+      ],
     },
   },
   {

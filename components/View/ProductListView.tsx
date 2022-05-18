@@ -1,15 +1,6 @@
 import { AnimatePresence, m } from 'framer-motion'
-import dynamic from 'next/dynamic'
 
-const ProductListCard = dynamic<any>(
-  () =>
-    import(
-      /* webpackChunkName: 'ProductHitCard' */ '@/components/Cards/ProductListCard'
-    ),
-  {
-    ssr: false,
-  }
-)
+import ProductListCard from '@/components/Cards/ProductListCard'
 
 export default function ProductListView({
   hits,

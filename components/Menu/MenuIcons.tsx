@@ -1,8 +1,8 @@
-import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { IoPersonOutline } from 'react-icons/io5'
 
 import CartIcon from '@/components/Icons/CartIcon'
+import AuthIcons from '@/components/Menu/AuthIcon'
 import GreetUser from '@/components/Menu/GreetUser'
 import { useCart } from '@/hooks'
 import useSlidingTab from '@/hooks/useSlidingTab'
@@ -17,17 +17,10 @@ export default function MenuIcons() {
     return updateSlideTab(slidingTabState)
   }
 
-  const DynamicAuthIcons = dynamic(
-    () =>
-      import(
-        /* webpackChunkName: 'DynamicAuthIcons' */ '@/components/Menu/AuthIcon'
-      )
-  )
-
   return (
     <div className="icons flex flex-col w-1/4 items-end">
       <div className="row-1 flex items-center justify-between w-2/3">
-        <DynamicAuthIcons />
+        <AuthIcons />
         <button
           aria-label="cart"
           type="button"

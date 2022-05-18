@@ -4,7 +4,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { memo, useState } from 'react'
 
-import MobileSliderControls from '@/components/Slider/MobileSliderControls'
 import { useMediaQuery } from '@/hooks'
 import homepageSliderContent from '@/json/homepage-slider.json'
 
@@ -14,6 +13,13 @@ const DynamicHomepageSliderControls = dynamic<any>(
   () =>
     import(
       /* webpackChunkName: 'HomepageSliderControls' */ '@/components/Slider/HomepageSliderControls'
+    )
+)
+
+const MobileSliderControls = dynamic<any>(
+  () =>
+    import(
+      /* webpackChunkName: 'MobileSliderControls' */ '@/components/Slider/MobileSliderControls'
     )
 )
 

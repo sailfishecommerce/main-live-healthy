@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic'
 import { memo } from 'react'
 
 import Noticebar from '@/components/Alerts/Noticebar'
+import Menu from '@/components/Menu'
 import DiscountSlider from '@/components/Slider/DiscountSlider'
 import { useMediaQuery } from '@/hooks'
 import useNav from '@/hooks/useNav'
@@ -14,10 +15,6 @@ const DynamicMobileSlideMenu = dynamic(
     import(
       /* webpackChunkName: 'MobileSlideMenu' */ '@/components/Menu/MobileSlideMenu'
     )
-)
-
-const DynamicMenu = dynamic(
-  () => import(/* webpackChunkName: 'DynamicMenu' */ '@/components/Menu')
 )
 
 const DynamicAllCategoriesDropdownView = dynamic(
@@ -50,7 +47,7 @@ function HeaderComponent() {
       >
         <DiscountSlider />
         {noticebar && <Noticebar toggleBarVisibility={toggleNoticebar} />}
-        <DynamicMenu />
+        <Menu />
         {mobileWidth && mobileMenu && <DynamicMobileSlideMenu />}
       </header>
       {categoryDropdown && !mobileWidth && (

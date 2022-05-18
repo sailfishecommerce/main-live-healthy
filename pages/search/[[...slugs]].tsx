@@ -1,6 +1,5 @@
 import { useAtomValue } from 'jotai/utils'
 import type { GetServerSidePropsContext } from 'next'
-import dynamic from 'next/dynamic'
 import { Configure } from 'react-instantsearch-dom'
 
 import { Breadcrumb } from '@/components/@instantsearch/widgets/breadcrumb/breadcrumb'
@@ -8,6 +7,7 @@ import InfiniteHits from '@/components/@instantsearch/widgets/infinite-hits/infi
 import { NoResultsHandler } from '@/components/@instantsearch/widgets/no-results-handler/no-results-handler'
 import ProductHitCard from '@/components/Cards/ProductHitCard'
 import { Container } from '@/components/Container'
+import RefinementsBar from '@/components/RefinementsBar/refinements-bar'
 import RefinementsPanel from '@/components/RefinementsPanel/refinements-panel'
 import { viewModeAtom } from '@/components/ViewModes'
 import { configAtom } from '@/config/config'
@@ -21,16 +21,6 @@ import {
 export type SearchPageProps = SearchPageLayoutProps & {
   searchQuery: string
 }
-
-const RefinementsBar = dynamic<any>(
-  () =>
-    import(
-      /* webpackChunkName: 'RefinementsBar' */ '@/components/RefinementsBar/refinements-bar'
-    ),
-  {
-    ssr: false,
-  }
-)
 
 export default function SearchPage({ searchQuery, ...props }: SearchPageProps) {
   const hitsObj = props?.resultsState?.rawResults[0]

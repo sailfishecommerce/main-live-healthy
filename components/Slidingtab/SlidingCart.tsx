@@ -1,22 +1,8 @@
-import dynamic from 'next/dynamic'
-
+import SlideCardTotal from '@/components/Cards/SlideCardTotal'
 import ProductRow from '@/components/Product/ProductRow'
+import RecommendationSlider from '@/components/Slider/RecommendationSlider'
 import SlidingTab from '@/components/Slidingtab'
 import { useCart } from '@/hooks'
-
-const RecommendationSlider = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'RecommendationSlider' */ '@/components/Slider/RecommendationSlider'
-    )
-)
-
-const SlideCardTotal = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'SlideCardTotal' */ '@/components/Cards/SlideCardTotal'
-    )
-)
 
 export default function SlidingCart() {
   const { useCartData } = useCart()

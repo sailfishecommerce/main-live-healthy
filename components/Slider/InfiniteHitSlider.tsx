@@ -1,25 +1,16 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { AnimatePresence } from 'framer-motion'
-import dynamic from 'next/dynamic'
 import { memo, useMemo } from 'react'
 import isEqual from 'react-fast-compare'
 import { connectInfiniteHits } from 'react-instantsearch-dom'
 
+import Product from '@/components/Cards/ProductCard'
 import ProductTags from '@/components/Tag/ProductTags'
 import getThreeVendors from '@/lib/getThreeVendors'
 import selectRandomColor from '@/lib/selectRandomColor'
-import { withDebugLayer } from '@dev/debug-layer/debug-layer'
-import '@splidejs/splide/dist/css/splide.min.css'
+// import { withDebugLayer } from '@dev/debug-layer/debug-layer'
 
-const Product = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'ProductCard' */ '@/components/Cards/ProductCard'
-    ),
-  {
-    ssr: false,
-  }
-)
+import '@splidejs/splide/dist/css/splide.min.css'
 
 interface Props {
   title: string
@@ -87,10 +78,7 @@ function InfiniteHitsSliderComponent({
 }
 
 const InfiniteHitsSlider = connectInfiniteHits<any, any>(
-  memo(
-    withDebugLayer(InfiniteHitsSliderComponent, 'InfiniteHitsWidget'),
-    isEqual
-  )
+  memo(InfiniteHitsSliderComponent, isEqual)
 )
 
 export default InfiniteHitsSlider

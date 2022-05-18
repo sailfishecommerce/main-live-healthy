@@ -1,33 +1,14 @@
-import dynamic from 'next/dynamic'
-
-const DynamicFooterLink = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'DynamicFooterLink' */ '@/components/Footer/FooterLink'
-    )
-)
-
-const DynamicFooterDeals = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'DynamicFooterDeals' */ '@/components/Footer/FooterDeals'
-    )
-)
-
-const DynamicFooterAddress = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'DynamicFooterAddress' */ '@/components/Footer/FooterAddress'
-    )
-)
+import FooterAddress from '@/components/Footer/FooterAddress'
+import FooterDeals from '@/components/Footer/FooterDeals'
+import FooterLink from '@/components/Footer/FooterLink'
 
 export default function Footer() {
   return (
     <footer className="w-full bg-gray-100 py-8 md:px-4 xl:px-0 border-t">
       <div className="container mx-auto flex flex-col md:flex-row  items-start px-6 md:px-0">
-        <DynamicFooterAddress />
-        <DynamicFooterLink />
-        <DynamicFooterDeals />
+        <FooterAddress />
+        <FooterLink />
+        <FooterDeals />
       </div>
     </footer>
   )

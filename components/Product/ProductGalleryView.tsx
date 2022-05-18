@@ -11,7 +11,7 @@ import type { productType } from '@/types'
 import 'react-image-lightbox/style.css'
 
 const Lightbox = dynamic(
-  () => import(/* webpackChunkName: 'common' */ 'react-image-lightbox')
+  () => import(/* webpackChunkName: 'Lightbox' */ 'react-image-lightbox')
 )
 
 interface Props {

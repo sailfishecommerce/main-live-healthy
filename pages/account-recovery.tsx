@@ -1,15 +1,8 @@
-import dynamic from 'next/dynamic'
 import Image from 'next/image'
 
+import AccountRecoveryform from '@/components/Form/AccountRecoveryForm'
 import passwordResetForm from '@/json/password-reset.json'
 import Applayout from '@/layouts/app-layout'
-
-const AccountRecoveryform = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'AccountRecoveryForm' */ '@/components/Form/AccountRecoveryForm'
-    )
-)
 
 export default function AccountPasswordRecovery() {
   return (

@@ -1,15 +1,6 @@
 import { AnimatePresence, m } from 'framer-motion'
-import dynamic from 'next/dynamic'
 
-const ProductHitCard = dynamic<any>(
-  () =>
-    import(
-      /* webpackChunkName: 'ProductHitCard' */ '@/components/Cards/ProductHitCard'
-    ),
-  {
-    ssr: false,
-  }
-)
+import ProductHitCard from '@/components/Cards/ProductHitCard'
 
 export default function ProductGridView({
   hits,

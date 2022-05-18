@@ -1,21 +1,7 @@
-import dynamic from 'next/dynamic'
-
 import Breadcrumb from '@/components/Breadcrumb'
+import CheckoutForm from '@/components/Checkout/CheckoutForm'
+import ReviewOrder from '@/components/Checkout/ReviewOrder'
 import breadcrumbContent from '@/json/breadcrumb.json'
-
-const CheckoutForm = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'CheckoutForm' */ '@/components/Checkout/CheckoutForm'
-    )
-)
-
-const ReviewOrder = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'ReviewOrder' */ '@/components/Checkout/ReviewOrder'
-    )
-)
 
 export default function CheckoutCustomer() {
   return (

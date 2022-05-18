@@ -3,6 +3,8 @@ import dynamic from 'next/dynamic'
 import Breadcrumb from '@/components/Breadcrumb'
 import ProductDetail from '@/components/Product/ProductDetail'
 import ProductMagnifier from '@/components/Product/ProductMagnifier'
+import ProductReview from '@/components/Product/ProductReview'
+import ProductSlider from '@/components/Slider/ProductSlider'
 import breadcrumb from '@/json/breadcrumb.json'
 
 type breadcrumbType = Array<{
@@ -15,20 +17,6 @@ const ProductOffers = dynamic(
   () =>
     import(
       /* webpackChunkName: 'ProductOffers' */ '@/components/Product/ProductOffers'
-    )
-)
-
-const ProductReview = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'ProductReview' */ '@/components/Product/ProductReview'
-    )
-)
-
-const ProductSlider = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'ProductSlider' */ '@/components/Slider/ProductSlider'
     )
 )
 

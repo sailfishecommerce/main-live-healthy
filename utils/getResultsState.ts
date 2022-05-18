@@ -50,7 +50,7 @@ export async function getResultsState({
   })
 
   // Strips down unserializable values so Next.js doesn't show an error
-  resultsState = JSON.parse(JSON.stringify(resultsState))
+  resultsState = JSON.parse(JSON?.stringify(resultsState))
 
   return resultsState
 }

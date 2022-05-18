@@ -1,15 +1,9 @@
 import dynamic from 'next/dynamic'
 import { memo } from 'react'
 
+import PrimaryMenu from '@/components/Menu/PrimaryMenu'
 import { useMediaQuery } from '@/hooks'
 import useNav from '@/hooks/useNav'
-
-const DynamicPrimaryMenu = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'DynamicPrimaryMenu' */ '@/components/Menu/PrimaryMenu'
-    )
-)
 
 const DynamicSecondaryMenu = dynamic(
   () =>
@@ -31,7 +25,7 @@ function MenuComponent() {
 
   return (
     <nav className=" mx-auto container px-4 pb-3 md:pb-0">
-      <DynamicPrimaryMenu />
+      <PrimaryMenu />
       {!mobileWidth && <DynamicSecondaryMenu />}
       {mobileWidth && showMobileSearch && <DynamicMobileSearchbar />}
     </nav>

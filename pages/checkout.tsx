@@ -1,6 +1,5 @@
 import dynamic from 'next/dynamic'
 
-import EmptyCart from '@/components/Checkout/EmptyCart'
 import { useCart, useMediaQuery } from '@/hooks'
 import Applayout from '@/layouts/app-layout'
 import VboutScript from '@/lib/vbout-script'
@@ -16,6 +15,13 @@ const MobileCheckoutView = dynamic(
   () =>
     import(
       /* webpackChunkName: 'CheckoutCustomer' */ '@/components/MobileCheckoutView'
+    )
+)
+
+const EmptyCart = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'EmptyCart' */ '@/components/Checkout/EmptyCart'
     )
 )
 

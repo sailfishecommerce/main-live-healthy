@@ -1,19 +1,12 @@
 /* eslint-disable no-nested-ternary */
 import { Splide, SplideSlide } from '@splidejs/react-splide'
-import dynamic from 'next/dynamic'
 
 import ProductTabCard from '@/components/Cards/ProductTabCard'
 import LazyLoader from '@/components/Loader/LazyLoader'
+import ProductTabSliderDropdown from '@/components/Slider/ProductTabSliderDropdown'
 import useLiveHealthyProduct from '@/hooks/useLivehealthyProduct'
 
 import '@splidejs/splide/dist/css/splide.min.css'
-
-const ProductTabSliderDropdown = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'ProductTabSliderDropdown' */ '@/components/Slider/ProductTabSliderDropdown'
-    )
-)
 
 export default function ProductTabSlider() {
   const [data, status] = useLiveHealthyProduct()

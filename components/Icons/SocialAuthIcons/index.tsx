@@ -1,6 +1,7 @@
 import FacebookIconFill from '@/components/Icons/FacebookIconFill'
 import GoogleFillIcon from '@/components/Icons/GoogleFillIcon'
 import InstagramFillIcon from '@/components/Icons/InstagramIconFill'
+import { FacebookButton } from '@/scripts/facebook-script'
 
 export default function Index() {
   return (
@@ -8,6 +9,7 @@ export default function Index() {
       <button type="button" className="mx-2">
         <GoogleFillIcon />
       </button>
+      <FacebookButton />
       <button type="button" className="mx-4">
         <FacebookIconFill />
       </button>

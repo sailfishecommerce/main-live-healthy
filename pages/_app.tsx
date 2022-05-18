@@ -1,18 +1,40 @@
 // import '../lib/wdyr'
 import { AnimatePresence } from 'framer-motion'
 import type { AppProps } from 'next/app'
+import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import { useMemo } from 'react'
 
-import Loader from '@/components/Loader/Loader'
-import TrustmateWidget from '@/components/Widget/TrustmateWidget'
-import LayoutWrapper from '@/layouts/layout-wrapper'
-import ProviderLayout from '@/layouts/provider-layout'
 import { scrollToTop } from '@/utils/scrollToTop'
 
 import '@/styles/_index.css'
 import '@/styles/index.css'
 import '@/styles/global.css'
+
+const LayoutWrapper = dynamic(
+  (): any =>
+    import(/* webpackChunkName: 'LayoutWrapper' */ '@/layouts/layout-wrapper'),
+  {
+    ssr: false,
+  }
+)
+
+const ProviderLayout = dynamic(
+  (): any =>
+    import(/* webpackChunkName: 'ProviderLayout' */ '@/layouts/provider-layout')
+)
+
+const TrustmateWidget = dynamic(
+  (): any =>
+    import(
+      /* webpackChunkName: 'TrustmateWidget' */ '@/components/Widget/TrustmateWidget'
+    )
+)
+
+const Loader: any = dynamic(
+  (): any =>
+    import(/* webpackChunkName: 'Loader' */ '@/components/Loader/Loader')
+)
 
 export default function App({ Component, pageProps, router }: AppProps) {
   const isCatalogPage = useMemo(

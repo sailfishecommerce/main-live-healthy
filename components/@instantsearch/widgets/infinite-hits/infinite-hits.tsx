@@ -1,16 +1,45 @@
 import { useReducedMotion } from 'framer-motion'
+import dynamic from 'next/dynamic'
 import { memo, useEffect, useState } from 'react'
 import isEqual from 'react-fast-compare'
 import type { InfiniteHitsProvided } from 'react-instantsearch-core'
 import { connectInfiniteHits } from 'react-instantsearch-dom'
 
-import ProductGridView from '@/components/View/ProductGridView'
-import ProductListView from '@/components/View/ProductListView'
 import type { ViewMode } from '@/components/ViewModes'
 import selectRandomColor from '@/lib/selectRandomColor'
 import { withDebugLayer } from '@dev/debug-layer/debug-layer'
-import { LoadLess } from '@instantsearch/widgets/load-less/load-less'
-import { LoadMore } from '@instantsearch/widgets/load-more/load-more'
+
+const ProductGridView = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'ProductGridView' */ '@/components/View/ProductGridView'
+    ),
+  { ssr: false }
+)
+
+const ProductListView = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'ProductListView' */ '@/components/View/ProductListView'
+    ),
+  { ssr: false }
+)
+
+const LoadLess = dynamic<any>(
+  () =>
+    import(
+      /* webpackChunkName: 'LoadLess' */ '@instantsearch/widgets/load-less/load-less'
+    ).then((mod) => mod.LoadLess),
+  { ssr: false }
+)
+
+const LoadMore = dynamic<any>(
+  () =>
+    import(
+      /* webpackChunkName: 'LoadMore' */ '@instantsearch/widgets/load-more/load-more'
+    ).then((mod) => mod.LoadMore),
+  { ssr: false }
+)
 
 export type InfiniteHitsProps = InfiniteHitsProvided & {
   hitComponent: React.ComponentType<any>
@@ -58,7 +87,7 @@ function InfiniteHitsComponent({
 
   return (
     <>
-      {hits.length !== 0 && (
+      {hits?.length !== 0 && (
         <section className="w-full">
           {showLess && (
             <LoadLess

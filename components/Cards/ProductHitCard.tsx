@@ -44,9 +44,8 @@ export default function ProductHitCard({
 
   const addToCartHandler = () =>
     addItemToCart.mutate({ product: hit, quantity: 1 })
-  const productVendorLink = hit?.vendor?.includes(' ')
-    ? `/search/${hit.vendor}`
-    : `/collection/${hit.vendor}`
+  const productVendorLink = `/vendor/${hit.vendor}`
+
   return (
     <div
       className={`hover:bg-white hover:shadow-lg product hover:rounded-lg product ${productClassName}  ${isRow} p-2 md:p-6 hover:border`}

@@ -1,5 +1,7 @@
 import { useAtomValue } from 'jotai/utils'
 import type { GetServerSidePropsContext } from 'next'
+import { Configure } from 'react-instantsearch-dom'
+
 // import dynamic from 'next/dynamic'
 
 import { Breadcrumb } from '@/components/@instantsearch/widgets/breadcrumb/breadcrumb'
@@ -17,7 +19,6 @@ import {
   getServerSidePropsPage,
   SearchPageLayout,
 } from '@/layouts/search-page-layout'
-import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
 
 // const RefinementsBar = dynamic(
 //   () =>
@@ -29,7 +30,7 @@ import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
 //   }
 // )
 
-function CollectionPage(props: SearchPageLayoutProps) {
+function CollectionPage({ slugs, ...props }: any) {
   const { breadcrumbAttributes, refinementsLayoutAtom } =
     useAtomValue(configAtom)
   const refinementsLayout = useAtomValue(refinementsLayoutAtom)
@@ -42,16 +43,19 @@ function CollectionPage(props: SearchPageLayoutProps) {
   return (
     <Applayout title="Collection page">
       <SearchPageLayout {...props}>
+        <Configure filters={`vendor:${slugs}`} />
         <Container className="flex flex-col gap-2 container lg:mx-auto lg:mb-10 lg:mt-0 lg:gap-0">
           <Breadcrumb attributes={breadcrumbAttributes} />
           <div className="flex flex-col lg:flex-row">
             {(refinementsLayout === 'panel' || !isLaptop) && (
               <RefinementsPanel />
             )}
+
             <div className="grow flex flex-col gap-2 lg:gap-5 w-full">
               <RefinementsBar
                 showRefinements={refinementsLayout === 'bar' && isLaptop}
               />
+
               <NoResultsHandler>
                 <InfiniteHits
                   viewMode={viewMode}
@@ -68,6 +72,8 @@ function CollectionPage(props: SearchPageLayoutProps) {
 }
 
 export const getServerSideProps = (context: GetServerSidePropsContext) =>
-  getServerSidePropsPage(CollectionPage, context)
+  getServerSidePropsPage(CollectionPage, context, {
+    props: { slugs: context.params?.slugs },
+  })
 
 export default CollectionPage

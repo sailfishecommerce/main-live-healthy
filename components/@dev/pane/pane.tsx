@@ -6,7 +6,7 @@ import { useEffect, useRef } from 'react'
 import { Pane as Tweakpane } from 'tweakpane'
 
 import { configAtom } from '@/config/config'
-// import { debugLayerEnabledAtom } from '@dev/debug-layer/debug-layer'
+import { debugLayerEnabledAtom } from '@dev/debug-layer/debug-layer'
 import { gridsHiddenAtom } from '@dev/grids/grids'
 
 export function Pane() {
@@ -19,9 +19,9 @@ export function Pane() {
   const [refinementsLayout, setRefinementsLayout] = useAtom(
     refinementsLayoutAtom
   )
-  // const [debugLayerEnabled, setDebugLayerEnabled] = useAtom(
-  //   debugLayerEnabledAtom
-  // )
+  const [debugLayerEnabled, setDebugLayerEnabled] = useAtom(
+    debugLayerEnabledAtom
+  )
 
   useEffect(() => {
     const pane = new Tweakpane({
@@ -66,15 +66,15 @@ export function Pane() {
         setGridsHidden(ev.value)
       })
 
-    // // Debug layer
-    // const debugLayerFolder = pane.addFolder({ title: 'Debug Layer' })
-    // debugLayerFolder
-    //   .addInput({ debugLayerEnabled }, 'debugLayerEnabled', {
-    //     label: 'Enabled',
-    //   })
-    //   .on('change', (ev) => {
-    //     setDebugLayerEnabled(ev.value)
-    //   })
+    // Debug layer
+    const debugLayerFolder = pane.addFolder({ title: 'Debug Layer' })
+    debugLayerFolder
+      .addInput({ debugLayerEnabled }, 'debugLayerEnabled', {
+        label: 'Enabled',
+      })
+      .on('change', (ev) => {
+        setDebugLayerEnabled(ev.value)
+      })
 
     return () => {
       pane.dispose()

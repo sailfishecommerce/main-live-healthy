@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { memo } from 'react'
 
 import CartIcon from '@/components/Icons/CartIcon'
 import Image from '@/components/Image'
@@ -17,7 +16,7 @@ interface ProductTypes extends ProductProps {
   imageClassName?: string
 }
 
-function ProductCardComponent({
+export default function ProductCard({
   product,
   className,
   row,
@@ -44,9 +43,7 @@ function ProductCardComponent({
   const { addItemToCart } = useShoppingCart()
 
   const addToCartHandler = () => addItemToCart.mutate({ product, quantity: 1 })
-  const productVendorLink = product?.vendor?.includes(' ')
-    ? `/search/${product.vendor}`
-    : `/collection/${product.vendor}`
+  const productVendorLink = `/vendor/${product.vendor}`
 
   const productImage =
     typeof product.images[0] === 'string'
@@ -138,6 +135,3 @@ function ProductCardComponent({
     </div>
   )
 }
-
-const ProductCard = memo(ProductCardComponent)
-export default ProductCard

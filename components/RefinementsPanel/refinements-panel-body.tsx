@@ -150,7 +150,7 @@ export function RefinementsPanelBody({
 
   return (
     <div>
-      <div>{sortWidget}</div>
+      <div className="lg:hidden">{sortWidget}</div>
       <DynamicWidgets enabled={dynamicWidgets}>{widgetsPanels}</DynamicWidgets>
     </div>
   )

@@ -1,15 +1,42 @@
 import { useAtomValue } from 'jotai/utils'
+import dynamic from 'next/dynamic'
 
 import { Breadcrumb } from '@/components/@instantsearch/widgets/breadcrumb/breadcrumb'
-import InfiniteHits from '@/components/@instantsearch/widgets/infinite-hits/infinite-hits'
 import { NoResultsHandler } from '@/components/@instantsearch/widgets/no-results-handler/no-results-handler'
-import { Container } from '@/components/Container'
-import RefinementsBar from '@/components/RefinementsBar/refinements-bar'
-import RefinementsPanel from '@/components/RefinementsPanel/refinements-panel'
 import { viewModeAtom } from '@/components/ViewModes'
 import { configAtom } from '@/config/config'
 import { useMediaQuery } from '@/hooks'
 import { useIsMounted } from '@/hooks/useIsMounted'
+
+const RefinementsBar = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'RefinementsBar' */ '@/components/RefinementsBar/refinements-bar'
+    ),
+  {
+    ssr: false,
+  }
+)
+
+const RefinementsPanel = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'RefinementsPanel' */ '@/components/RefinementsPanel/refinements-panel'
+    ),
+  {
+    ssr: false,
+  }
+)
+
+const InfiniteHits = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'InfiniteHits' */ '@/components/@instantsearch/widgets/infinite-hits/infinite-hits'
+    ),
+  {
+    ssr: false,
+  }
+)
 
 export default function Index() {
   const { breadcrumbAttributes, refinementsLayoutAtom } =
@@ -21,7 +48,7 @@ export default function Index() {
   const isMounted = useIsMounted(true)
   const isLaptop = laptop && isMounted()
   return (
-    <Container className="flex flex-col gap-2 container lg:mx-auto lg:mb-10 lg:mt-0 lg:gap-0">
+    <div className="flex flex-col gap-2 container lg:mx-auto lg:mb-10 lg:mt-0 lg:gap-0">
       <Breadcrumb attributes={breadcrumbAttributes} />
       <div className="flex flex-col lg:flex-row">
         {(refinementsLayout === 'panel' || !isLaptop) && <RefinementsPanel />}
@@ -36,6 +63,6 @@ export default function Index() {
           </NoResultsHandler>
         </div>
       </div>
-    </Container>
+    </div>
   )
 }

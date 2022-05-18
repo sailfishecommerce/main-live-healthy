@@ -1,14 +1,11 @@
 import { useAtomValue } from 'jotai/utils'
 import type { GetServerSidePropsContext } from 'next'
+import dynamic from 'next/dynamic'
 import { Configure } from 'react-instantsearch-dom'
 
 import { Breadcrumb } from '@/components/@instantsearch/widgets/breadcrumb/breadcrumb'
-import InfiniteHits from '@/components/@instantsearch/widgets/infinite-hits/infinite-hits'
 import { NoResultsHandler } from '@/components/@instantsearch/widgets/no-results-handler/no-results-handler'
 import ProductHitCard from '@/components/Cards/ProductHitCard'
-import { Container } from '@/components/Container'
-import RefinementsBar from '@/components/RefinementsBar/refinements-bar'
-import RefinementsPanel from '@/components/RefinementsPanel/refinements-panel'
 import { viewModeAtom } from '@/components/ViewModes'
 import { configAtom } from '@/config/config'
 import Applayout from '@/layouts/app-layout'
@@ -17,6 +14,36 @@ import {
   getServerSidePropsPage,
   SearchPageLayout,
 } from '@/layouts/search-page-layout'
+
+const RefinementsBar = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'RefinementsBar' */ '@/components/RefinementsBar/refinements-bar'
+    ),
+  {
+    ssr: false,
+  }
+)
+
+const RefinementsPanel = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'RefinementsPanel' */ '@/components/RefinementsPanel/refinements-panel'
+    ),
+  {
+    ssr: false,
+  }
+)
+
+const InfiniteHits = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'InfiniteHits' */ '@/components/@instantsearch/widgets/infinite-hits/infinite-hits'
+    ),
+  {
+    ssr: false,
+  }
+)
 
 export type SearchPageProps = SearchPageLayoutProps & {
   searchQuery: string
@@ -34,35 +61,32 @@ export default function SearchPage({ searchQuery, ...props }: SearchPageProps) {
   return (
     <Applayout title="Search for products">
       <SearchPageLayout {...props}>
-        <Container className="mt-1">
-          <Configure query={searchQuery} />
-          <div className="container flex items-center mx-auto justify-between">
-            <h1 className="font-bold text-xl">
-              Showing {totalHits} {result} for &#34;{hitsObj?.query}&#34;
-            </h1>
-            <h1></h1>
-          </div>
-          <Container className="flex flex-col gap-2 container lg:mx-auto lg:mb-10 lg:mt-10 lg:gap-10">
-            <Breadcrumb attributes={breadcrumbAttributes} />
-            <div className="flex flex-col lg:flex-row">
-              {(refinementsLayout === 'panel' || true) && <RefinementsPanel />}
-              <div className="grow flex flex-col gap-2 lg:gap-4">
-                <RefinementsBar
-                  showRefinements={refinementsLayout === 'bar' && true}
-                />
+        <Configure query={searchQuery} />
+        <div className="container flex items-center mx-auto justify-between">
+          <h1 className="font-bold text-xl">
+            Showing {totalHits} {result} for &#34;{hitsObj?.query}&#34;
+          </h1>
+        </div>
+        <div className="flex flex-col gap-2 container lg:mx-auto lg:mb-10 lg:mt-10 lg:gap-0">
+          <Breadcrumb attributes={breadcrumbAttributes} />
+          <div className="flex flex-col lg:flex-row">
+            {(refinementsLayout === 'panel' || true) && <RefinementsPanel />}
+            <div className="grow flex flex-col gap-2 lg:gap-4">
+              <RefinementsBar
+                showRefinements={refinementsLayout === 'bar' && true}
+              />
 
-                <NoResultsHandler>
-                  <InfiniteHits
-                    hitComponent={ProductHitCard}
-                    viewMode={viewMode}
-                    showLess={true}
-                    showMore={true}
-                  />
-                </NoResultsHandler>
-              </div>
+              <NoResultsHandler>
+                <InfiniteHits
+                  hitComponent={ProductHitCard}
+                  viewMode={viewMode}
+                  showLess={true}
+                  showMore={true}
+                />
+              </NoResultsHandler>
             </div>
-          </Container>
-        </Container>
+          </div>
+        </div>
       </SearchPageLayout>
     </Applayout>
   )

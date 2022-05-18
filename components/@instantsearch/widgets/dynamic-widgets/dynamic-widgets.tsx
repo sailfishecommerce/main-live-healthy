@@ -1,4 +1,4 @@
-// import { ExperimentalDynamicWidgets } from 'react-instantsearch-dom'
+import { ExperimentalDynamicWidgets } from 'react-instantsearch-dom'
 
 export type DynamicWidgetsProps = {
   children: React.ReactNode
@@ -8,18 +8,18 @@ export type DynamicWidgetsProps = {
 
 export function DynamicWidgets({
   children,
-  // enabled = true,
+  enabled = true,
   ...props
 }: DynamicWidgetsProps) {
   return (
     <>
-      {/* {enabled ? (
+      {enabled ? (
         <ExperimentalDynamicWidgets {...props}>
           {children}
         </ExperimentalDynamicWidgets>
-      ) : ( */}
-      <div {...props}>{children}</div>
-      {/* )} */}
+      ) : (
+        <div {...props}>{children}</div>
+      )}
     </>
   )
 }

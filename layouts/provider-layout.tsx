@@ -3,12 +3,12 @@ import { LazyMotion } from 'framer-motion'
 import { atom, Provider as JotaiProvider } from 'jotai'
 import { useAtomValue } from 'jotai/utils'
 import { QueryClient, QueryClientProvider } from 'react-query'
-// import { ReactQueryDevtools } from 'react-query/devtools'
+import { ReactQueryDevtools } from 'react-query/devtools'
 
 import { configAtom } from '@/config/config'
 import { useSearchClient } from '@/hooks/useSearchClient'
 import { useSearchInsights } from '@/hooks/useSearchInsights'
-// import { MediaContextProvider } from '@/lib/media'
+import { MediaContextProvider } from '@/lib/media'
 import { createInitialValues } from '@/utils/createInitialValues'
 import { appId, searchApiKey } from '@/utils/env'
 
@@ -47,12 +47,12 @@ export default function ProviderLayout({ children }: ProviderLayoutProps) {
   return (
     <QueryClientProvider client={queryClient}>
       <JotaiProvider initialValues={get()}>
-        {/* <MediaContextProvider> */}
-        <LazyMotion features={loadFramerMotionFeatures} strict={true}>
-          {children}
-        </LazyMotion>
-        {/* </MediaContextProvider> */}
-        {/* <ReactQueryDevtools /> */}
+        <MediaContextProvider>
+          <LazyMotion features={loadFramerMotionFeatures} strict={true}>
+            {children}
+          </LazyMotion>
+        </MediaContextProvider>
+        <ReactQueryDevtools />
       </JotaiProvider>
     </QueryClientProvider>
   )

@@ -4,7 +4,6 @@ import type {
   GetServerSidePropsResult,
   GetStaticPropsResult,
 } from 'next'
-import type { ElementType } from 'react'
 import { memo, useMemo } from 'react'
 import isEqual from 'react-fast-compare'
 
@@ -66,13 +65,14 @@ function SearchPageLayoutComponent({
   )
 }
 
-export const SearchPageLayout = memo(SearchPageLayoutComponent, isEqual)
+const SearchPageLayout = memo(SearchPageLayoutComponent, isEqual)
+export default SearchPageLayout
 
 export type GetServerSidePropsOptions = GetServerSidePropsResult<any>
 export type GetStaticPropsOptions = GetStaticPropsResult<any>
 
 export const getPropsPage = async (
-  component: ElementType,
+  component: any,
   url?: string,
   options?: GetServerSidePropsOptions | GetStaticPropsOptions
 ) => {
@@ -99,14 +99,14 @@ export const getPropsPage = async (
 }
 
 export const getServerSidePropsPage = (
-  component: ElementType,
+  component: any,
   context: GetServerSidePropsContext,
   options?: GetServerSidePropsOptions,
   url?: string
 ) => {
   const customOptions = (options as { props: any }) || {}
 
-  const userTokenCookie = context.req.cookies._ALGOLIA
+  const userTokenCookie = context?.req?.cookies?._ALGOLIA
   if (userTokenCookie) {
     customOptions.props = {
       ...customOptions?.props,
@@ -122,7 +122,7 @@ export const getServerSidePropsPage = (
 }
 
 export const getStaticPropsPage = (
-  component: ElementType,
+  component: any,
   url?: string,
   options?: GetServerSidePropsOptions
 ) => getPropsPage(component, url, options)

@@ -1,12 +1,17 @@
 import type { GetServerSidePropsContext } from 'next'
+import dynamic from 'next/dynamic'
 import { Configure } from 'react-instantsearch-dom'
 
 import Collection from '@/components/Collection'
 import Applayout from '@/layouts/app-layout'
-import {
-  getServerSidePropsPage,
-  SearchPageLayout,
-} from '@/layouts/search-page-layout'
+import { getServerSidePropsPage } from '@/layouts/search-page-layout'
+
+const SearchPageLayout = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'SearchPageLayout' */ '@/layouts/search-page-layout'
+    )
+)
 
 function CollectionPage({ slugs, ...props }: any) {
   return (

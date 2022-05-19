@@ -5,7 +5,7 @@ import type { createLocalStorageRecentSearchesPlugin } from '@algolia/autocomple
 import type { SearchOptions } from '@algolia/client-search'
 import type { SearchClient } from 'algoliasearch/lite'
 
-import { indexName, querySuggestionsIndexName } from '@/utils/env'
+import { querySuggestionsIndexName } from '@/utils/env'
 
 type PopularSearchesPluginCreatorParams = {
   searchClient: SearchClient
@@ -24,7 +24,7 @@ export function popularSearchesPluginCreator({
     searchClient,
     indexName: querySuggestionsIndexName,
     categoryAttribute: [
-      indexName,
+      'instant_search',
       'facets',
       'exact_matches',
       'hierarchical_categories.lvl1',

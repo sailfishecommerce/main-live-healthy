@@ -2,7 +2,7 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 
 import ProductTabCard from '@/components/Cards/ProductTabCard'
-import LazyLoader from '@/components/Loader/PLazyLoader'
+import LazyLoader from '@/components/Loader/LazyLoader'
 import ProductTabSliderDropdown from '@/components/Slider/ProductTabSliderDropdown'
 import useLiveHealthyProduct from '@/hooks/useLivehealthyProduct'
 

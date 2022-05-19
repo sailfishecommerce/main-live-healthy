@@ -45,17 +45,15 @@ export default function Index() {
   const viewMode = useAtomValue(viewModeAtom)
 
   const laptop = useMediaQuery('(min-width:1200px)')
-  const isMounted = useIsMounted(true)
-  const isLaptop = laptop && isMounted()
   return (
     <div className="flex flex-col gap-2 container lg:mx-auto lg:mb-10 lg:mt-0 lg:gap-0">
       <Breadcrumb attributes={breadcrumbAttributes} />
       <div className="flex flex-col lg:flex-row">
-        {(refinementsLayout === 'panel' || !isLaptop) && <RefinementsPanel />}
+        {(refinementsLayout === 'panel' || !laptop) && <RefinementsPanel />}
 
         <div className="grow flex flex-col gap-2 lg:gap-5 w-full">
           <RefinementsBar
-            showRefinements={refinementsLayout === 'bar' && isLaptop}
+            showRefinements={refinementsLayout === 'bar' && laptop}
           />
 
           <NoResultsHandler>

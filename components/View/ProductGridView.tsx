@@ -21,7 +21,7 @@ export default function ProductGridView({
       exit="hidden"
     >
       <AnimatePresence>
-        {hits.map((hit: any, i: number) => (
+        {hits?.map((hit: any, i: number) => (
           <m.li
             key={hit?.objectID}
             layout={shouldReduceMotion || !animation ? false : 'position'}

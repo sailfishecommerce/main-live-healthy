@@ -97,10 +97,6 @@ export default class MyDocument extends Document {
           />
 
           {/* Media styles */}
-          <style
-            type="text/css"
-            dangerouslySetInnerHTML={{ __html: mediaStyles }}
-          />
         </Head>
 
         <body>

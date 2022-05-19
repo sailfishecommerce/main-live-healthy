@@ -2,7 +2,6 @@ import type { SearchClient } from 'algoliasearch/lite'
 import { LazyMotion } from 'framer-motion'
 import { atom, Provider as JotaiProvider } from 'jotai'
 import { useAtomValue } from 'jotai/utils'
-import dynamic from 'next/dynamic'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 
@@ -20,16 +19,6 @@ const loadFramerMotionFeatures: any = () =>
   import(/* webpackChunkName: 'lib' */ '@/lib/framer-motion-features').then(
     (mod: any) => mod.default
   )
-
-const MediaContextProvider = dynamic(
-  () =>
-    import(/* webpackChunkName: 'MediaContextProvider' */ '@/lib/media').then(
-      (mod: any) => mod.MediaContextProvider
-    ),
-  {
-    ssr: false,
-  }
-)
 
 export const searchClientAtom = atom<SearchClient | undefined>(undefined)
 
@@ -57,11 +46,7 @@ export default function ProviderLayout({ children }: ProviderLayoutProps) {
   return (
     <JotaiProvider initialValues={get()}>
       <QueryClientProvider client={queryClient}>
-        <MediaContextProvider>
-          <LazyMotion features={loadFramerMotionFeatures} strict={true}>
-            {children}
-          </LazyMotion>
-        </MediaContextProvider>
+        <LazyMotion features={loadFramerMotionFeatures}>{children}</LazyMotion>
         <ReactQueryDevtools />
       </QueryClientProvider>
     </JotaiProvider>

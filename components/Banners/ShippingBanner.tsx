@@ -40,6 +40,7 @@ export default function ShippingBanner() {
           height={imageDimension.height}
           width={imageDimension.width}
           layout="responsive"
+          priority={true}
         />
       </div>
     </section>

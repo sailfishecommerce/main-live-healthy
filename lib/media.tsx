@@ -17,7 +17,7 @@ export const AppMedia = createMedia({
   },
 })
 
-export const mediaStyles = AppMedia?.createMediaStyle()
+export const mediaStyles = AppMedia.createMediaStyle()
 
 export const { Media, MediaContextProvider } = AppMedia
 

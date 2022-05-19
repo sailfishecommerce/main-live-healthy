@@ -7,7 +7,7 @@ import { connectInfiniteHits } from 'react-instantsearch-dom'
 
 import type { ViewMode } from '@/components/ViewModes'
 import selectRandomColor from '@/lib/selectRandomColor'
-import { withDebugLayer } from '@dev/debug-layer/debug-layer'
+// import { wit hDebugLayer } from '@dev/debug-layer/debug-layer'
 
 const ProductGridView = dynamic(
   () =>
@@ -82,8 +82,8 @@ function InfiniteHitsComponent({
   const shouldReduceMotion = useReducedMotion()
 
   useEffect(() => {
-    if (!hitsPerPage) setHitsPerPage(hits.length)
-  }, [hitsPerPage, hits.length])
+    if (!hitsPerPage) setHitsPerPage(hits?.length)
+  }, [hitsPerPage, hits?.length])
 
   return (
     <>
@@ -125,7 +125,7 @@ function InfiniteHitsComponent({
 }
 
 const InfiniteHits = connectInfiniteHits<any, any>(
-  memo(withDebugLayer(InfiniteHitsComponent, 'InfiniteHitsWidget'), isEqual)
+  memo(InfiniteHitsComponent, isEqual)
 )
 
 export default InfiniteHits

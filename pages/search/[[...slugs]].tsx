@@ -9,14 +9,9 @@ import { viewModeAtom } from '@/components/ViewModes'
 import { configAtom } from '@/config/config'
 import Applayout from '@/layouts/app-layout'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
-import { getServerSidePropsPage } from '@/layouts/search-page-layout'
-
-const SearchPageLayout = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'SearchPageLayout' */ '@/layouts/search-page-layout'
-    )
-)
+import SearchPageLayout, {
+  getServerSidePropsPage,
+} from '@/layouts/search-page-layout'
 
 const RefinementsBar = dynamic(
   () =>

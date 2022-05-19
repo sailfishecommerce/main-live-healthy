@@ -16,15 +16,10 @@ export type ProviderLayoutProps = {
   children: React.ReactNode
 }
 
-const loadFramerMotionFeatures: any = dynamic(
-  () =>
-    import(/* webpackChunkName: 'lib' */ '@/lib/framer-motion-features').then(
-      (mod: any) => mod.default
-    ),
-  {
-    ssr: false,
-  }
-)
+const loadFramerMotionFeatures: any = () =>
+  import(/* webpackChunkName: 'lib' */ '@/lib/framer-motion-features').then(
+    (mod: any) => mod.default
+  )
 
 const MediaContextProvider = dynamic(
   () =>

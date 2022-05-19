@@ -5,6 +5,7 @@ import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import { useMemo } from 'react'
 
+import ErrorBoundary from '@/components/ErrorBoundary'
 import { scrollToTop } from '@/utils/scrollToTop'
 
 import '@/styles/_index.css'

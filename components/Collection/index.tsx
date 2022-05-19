@@ -1,12 +1,20 @@
 import { useAtomValue } from 'jotai/utils'
 import dynamic from 'next/dynamic'
 
-import { Breadcrumb } from '@/components/@instantsearch/widgets/breadcrumb/breadcrumb'
 import { NoResultsHandler } from '@/components/@instantsearch/widgets/no-results-handler/no-results-handler'
 import { viewModeAtom } from '@/components/ViewModes'
 import { configAtom } from '@/config/config'
 import { useMediaQuery } from '@/hooks'
-import { useIsMounted } from '@/hooks/useIsMounted'
+
+const Breadcrumb = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'Breadcrumb' */ '@/components/@instantsearch/widgets/breadcrumb/breadcrumb'
+    ),
+  {
+    ssr: false,
+  }
+)
 
 const RefinementsBar = dynamic(
   () =>

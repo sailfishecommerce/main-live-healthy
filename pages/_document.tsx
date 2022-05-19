@@ -46,11 +46,7 @@ export default class MyDocument extends Document {
             sizes="32x32"
             href="/android-chrome-512x512.png"
           />
-          <link
-            rel="mask-icon"
-            href="/static/icons/safari-pinned-tab.svg"
-            color="#5468ff"
-          />
+          <link rel="mask-icon" href="/favicon-32x32.png" color="#5468ff" />
           <link rel="manifest" href="/site.webmanifest" />
 
           {/* OG meta */}
@@ -61,26 +57,20 @@ export default class MyDocument extends Document {
             content="Imported Australian Goods in Hong Kong - Buy Imported Vitamins, Supplements, Hair, Beauty, Skin Care, Baby Products, Smoking Deterrents from Live Healthy Store HK. Sensible Prices & Free Shipping."
           />
           <meta property="og:site_name" content="Live healthy stores" />
-          <meta property="og:url" content="https://new-commerce.vercel.app" />
-          <meta
-            property="og:image"
-            content="https://new-commerce.vercel.app/static/images/socials/logo.webp"
-          />
+          <meta property="og:url" content="https://www.livehealthy.hk" />
+          <meta property="og:image" content="/android-chrome-192x192.png" />
           <meta property="og:image:width" content="1200" />
           <meta property="og:image:height" content="630" />
 
           {/* Twitter meta */}
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:url" content="https://new-commerce.vercel.app" />
+          <meta name="twitter:url" content="https://www.livehealthy.hk" />
           <meta name="twitter:title" content="Live healthy stores" />
           <meta
             name="twitter:description"
             content="Imported Australian Goods in Hong Kong - Buy Imported Vitamins, Supplements, Hair, Beauty, Skin Care, Baby Products, Smoking Deterrents from Live Healthy Store HK. Sensible Prices & Free Shipping."
           />
-          <meta
-            name="twitter:image"
-            content="https://new-commerce.vercel.app/static/images/socials/logo.webp"
-          />
+          <meta name="twitter:image" content="/android-chrome-192x192.png" />
 
           {/* Fonts */}
           <link rel="preconnect" href="https://fonts.googleapis.com" />

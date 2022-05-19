@@ -87,4 +87,5 @@ function BreadcrumbComponent({ items, refine, createURL }: BreadcrumbProps) {
   )
 }
 
-export const Breadcrumb = connectBreadcrumb(memo(BreadcrumbComponent, isEqual))
+const Breadcrumb = connectBreadcrumb(memo(BreadcrumbComponent, isEqual))
+export default Breadcrumb

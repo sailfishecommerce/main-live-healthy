@@ -187,11 +187,6 @@
   dependencies:
     "@jridgewell/trace-mapping" "^0.3.0"
 
-"@artsy/fresnel@^3.0.2":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@artsy/fresnel/-/fresnel-3.4.0.tgz#513f139e1d2326fd8a07e32c6fc9c03167cce91f"
-  integrity sha512-wK1pmOEm38oHfwlcyO26n2vr2QTMnn9AawfrJsixT4K4IjyGlI+aa8vS6osUiw2fIdaNIvBqPmXlsCVN+5/kNw==
-
 "@babel/code-frame@7.12.11":
   version "7.12.11"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.12.11.tgz#f4ad435aa263db935b8f10f2c552d23fb716a63f"

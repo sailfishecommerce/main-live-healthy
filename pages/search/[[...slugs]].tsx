@@ -3,7 +3,6 @@ import type { GetServerSidePropsContext } from 'next'
 import dynamic from 'next/dynamic'
 import { Configure } from 'react-instantsearch-dom'
 
-import { Breadcrumb } from '@/components/@instantsearch/widgets/breadcrumb/breadcrumb'
 import { NoResultsHandler } from '@/components/@instantsearch/widgets/no-results-handler/no-results-handler'
 import ProductHitCard from '@/components/Cards/ProductHitCard'
 import { viewModeAtom } from '@/components/ViewModes'
@@ -19,6 +18,16 @@ const RefinementsBar = dynamic(
   () =>
     import(
       /* webpackChunkName: 'RefinementsBar' */ '@/components/RefinementsBar/refinements-bar'
+    ),
+  {
+    ssr: false,
+  }
+)
+
+const Breadcrumb = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'Breadcrumb' */ '@/components/@instantsearch/widgets/breadcrumb/breadcrumb'
     ),
   {
     ssr: false,

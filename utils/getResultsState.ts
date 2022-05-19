@@ -5,18 +5,16 @@ import { findResultsState } from 'react-instantsearch-dom/server'
 import { getSearchClient } from '@/hooks/useSearchClient'
 
 export type GetResultsStateParams = {
-  component:
-    | React.ComponentType<
-        Pick<
-          InstantSearchProps,
-          | 'indexName'
-          | 'resultsState'
-          | 'searchClient'
-          | 'searchState'
-          | 'widgetsCollector'
-        >
-      >
-    | any
+  component: React.ComponentType<
+    Pick<
+      InstantSearchProps,
+      | 'indexName'
+      | 'resultsState'
+      | 'searchClient'
+      | 'searchState'
+      | 'widgetsCollector'
+    >
+  >
   searchState: SearchState
   appId: string
   searchApiKey: string
@@ -36,7 +34,7 @@ export async function getResultsState({
   const searchClient = getSearchClient(appId, searchApiKey)
 
   // We need two 'findResultsState' for 'DynamicWidgets' to work properly
-  const firstResultsState: any = await findResultsState(component, {
+  const firstResultsState = await findResultsState(component, {
     ...customProps,
     searchClient,
     indexName,

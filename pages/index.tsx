@@ -3,7 +3,8 @@ import { Configure } from 'react-instantsearch-dom'
 
 import Applayout from '@/layouts/app-layout'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
-import SearchPageLayout, {
+import {
+  SearchPageLayout,
   getStaticPropsPage,
 } from '@/layouts/search-page-layout'
 

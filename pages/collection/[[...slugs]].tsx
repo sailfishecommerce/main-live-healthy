@@ -2,7 +2,8 @@ import type { GetServerSidePropsContext } from 'next'
 
 import Collection from '@/components/Collection'
 import Applayout from '@/layouts/app-layout'
-import SearchPageLayout, {
+import {
+  SearchPageLayout,
   getServerSidePropsPage,
 } from '@/layouts/search-page-layout'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'

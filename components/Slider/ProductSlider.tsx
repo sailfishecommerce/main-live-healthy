@@ -1,11 +1,8 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { AnimatePresence } from 'framer-motion'
-import { useMemo } from 'react'
 import { Configure, Index, connectHits } from 'react-instantsearch-dom'
 
 import Product from '@/components/Cards/ProductCard'
-import ProductTags from '@/components/Tag/ProductTags'
-import getThreeVendors from '@/lib/getThreeVendors'
 import selectRandomColor from '@/lib/selectRandomColor'
 import { indexName } from '@/utils/env'
 import '@splidejs/splide/dist/css/splide.min.css'

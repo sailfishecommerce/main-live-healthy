@@ -64,9 +64,7 @@ export default function Index() {
             showRefinements={refinementsLayout === 'bar' && laptop}
           />
 
-          <NoResultsHandler>
-            <InfiniteHits viewMode={viewMode} showLess={true} showMore={true} />
-          </NoResultsHandler>
+          <InfiniteHits viewMode={viewMode} showLess={true} showMore={true} />
         </div>
       </div>
     </div>

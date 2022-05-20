@@ -59,3 +59,23 @@ export const authAtom = atom<{
   userDetail: any | null
   error: boolean | null
 } | null>(null)
+
+export type socailAuthDetailsType = {
+  user: string | null
+  token: string | null
+  error: string | null
+  email: string | null
+  errorMessage: string | null
+  credential: string | null
+  socialLoginMethod: 'facebook' | 'google' | null
+} | null
+
+export const socailAuthDetailsAtom = atom<socailAuthDetailsType>({
+  user: null,
+  token: null,
+  error: null,
+  email: null,
+  errorMessage: null,
+  credential: null,
+  socialLoginMethod: null,
+})

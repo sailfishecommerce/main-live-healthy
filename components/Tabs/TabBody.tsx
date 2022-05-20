@@ -2,7 +2,7 @@ import SigninForm from '@/components/Form/SigninForm'
 import SignupForm from '@/components/Form/SignupForm'
 import SocialAuthIcons from '@/components/Icons/SocialAuthIcons'
 import Tabpanel from '@/components/Tabs/Tabpanel'
-import FacebookScript, { FacebookButtonScript } from '@/scripts/facebook-script'
+// import FacebookScript, { FacebookButtonScript } from '@/scripts/facebook-script'
 
 interface Props {
   tab: number
@@ -11,8 +11,8 @@ interface Props {
 export default function TabBody({ tab }: Props) {
   return (
     <>
-      <FacebookScript />
-      <FacebookButtonScript />
+      {/* <FacebookScript />
+      <FacebookButtonScript /> */}
       <div className="tab-content" id="tabs-tabContentFill">
         <div className="auth-tab mx-auto">
           {tab === 0 && (

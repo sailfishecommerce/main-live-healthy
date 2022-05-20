@@ -8,7 +8,7 @@ import Tabs from '@/components/Tabs'
 import { useAccount } from '@/hooks'
 import breadcrumb from '@/json/breadcrumb.json'
 import Applayout from '@/layouts/app-layout'
-import FacebookScript, { FacebookButtonScript } from '@/scripts/facebook-script'
+// import FacebookScript, { FacebookButtonScript } from '@/scripts/facebook-script'
 
 export default function Account() {
   const { getUserAccount } = useAccount()
@@ -22,8 +22,8 @@ export default function Account() {
   )
   return (
     <>
-      <FacebookScript />
-      <FacebookButtonScript />
+      {/* <FacebookScript /> */}
+      {/* <FacebookButtonScript /> */}
       <Applayout title="Account Details">
         <main className="container mx-auto px-4 md:px-0">
           <Breadcrumb breadcrumbItems={breadcrumb.account} />

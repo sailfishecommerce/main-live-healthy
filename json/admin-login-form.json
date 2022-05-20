@@ -1,0 +1,16 @@
+[
+  {
+    "name": "email",
+    "inputText": "email",
+    "placeholder": "E-mail",
+    "id": "si-email",
+    "type": "input"
+  },
+  {
+    "name": "password",
+    "inputText": "password",
+    "placeholder": "Password",
+    "id": "si-password",
+    "type": "input"
+  }
+]

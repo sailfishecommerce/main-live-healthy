@@ -32,7 +32,6 @@ function ProductHitsSliderComponent({
   productClassName,
   randomColor,
 }: HitProps) {
-  console.log('hits', hits)
   return (
     <div className="w-full">
       <Splide

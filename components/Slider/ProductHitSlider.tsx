@@ -1,17 +1,15 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { AnimatePresence } from 'framer-motion'
-import { memo, useMemo } from 'react'
-import isEqual from 'react-fast-compare'
-import { connectInfiniteHits } from 'react-instantsearch-dom'
+import { useMemo } from 'react'
+import { connectHits } from 'react-instantsearch-dom'
 
 import Product from '@/components/Cards/ProductCard'
 import ProductTags from '@/components/Tag/ProductTags'
 import getThreeVendors from '@/lib/getThreeVendors'
 import selectRandomColor from '@/lib/selectRandomColor'
-
 import '@splidejs/splide/dist/css/splide.min.css'
 
-interface Props {
+interface HitProps {
   title: string
   tags?: string[]
   tabColor?: string
@@ -21,12 +19,12 @@ interface Props {
   hits?: any[]
 }
 
-function InfiniteHitsSliderComponent({
+function ProductHitsSliderComponent({
   hits,
   tabColor,
   productClassName,
   randomColor,
-}: Props) {
+}: HitProps) {
   const threeFirstVendors = useMemo(() => getThreeVendors(hits), [hits])
 
   return (
@@ -76,8 +74,6 @@ function InfiniteHitsSliderComponent({
   )
 }
 
-const InfiniteHitsSlider = connectInfiniteHits<any, any>(
-  memo(InfiniteHitsSliderComponent, isEqual)
-)
+const ProductHitsSlider = connectHits<any, any>(ProductHitsSliderComponent)
 
-export default InfiniteHitsSlider
+export default ProductHitsSlider

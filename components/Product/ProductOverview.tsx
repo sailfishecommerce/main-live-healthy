@@ -4,7 +4,6 @@ import Breadcrumb from '@/components/Breadcrumb'
 import ProductDetail from '@/components/Product/ProductDetail'
 import ProductMagnifier from '@/components/Product/ProductMagnifier'
 import breadcrumb from '@/json/breadcrumb.json'
-import MainProductShowcase from './MainProductShowcase'
 
 type breadcrumbType = Array<{
   name: string

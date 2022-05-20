@@ -4,6 +4,7 @@ import Breadcrumb from '@/components/Breadcrumb'
 import ProductDetail from '@/components/Product/ProductDetail'
 import ProductMagnifier from '@/components/Product/ProductMagnifier'
 import breadcrumb from '@/json/breadcrumb.json'
+import MainProductShowcase from './MainProductShowcase'
 
 type breadcrumbType = Array<{
   name: string
@@ -48,16 +49,22 @@ export default function ProductOverview({ hit }: any) {
       </div>
       <ProductReview />
       <div className="mt-6" />
-      <ProductSlider
-        randomColor
-        title="Customers also purchased"
-        productClassName="border border-gray-200 mr-6 rounded-lg"
-      />
+      {hit?.tags && (
+        <ProductSlider
+          randomColor
+          title="Customers also purchased"
+          productClassName="border border-gray-200 mr-6 rounded-lg"
+          query={`tags:${hit.tags[0]}`}
+          indexId="customer-also-bought"
+        />
+      )}
       <ProductSlider
         title="Popular with"
         productName={hit.name}
         productClassName="border border-gray-200 mr-6 rounded-lg"
         randomColor={true}
+        query={`vendor:${hit.vendor}`}
+        indexId="popular-with-product-slider"
       />
     </div>
   )

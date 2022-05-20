@@ -8,7 +8,7 @@ export default function MobileSearchbar() {
 
   return (
     <div className="relative flex mx-auto items-center container my-2">
-      <HomepageSearch />
+      {/* <HomepageSearch /> */}
       <button
         type="button"
         title="close"

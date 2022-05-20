@@ -298,7 +298,7 @@ div.product-list-view + div {
     overflow-y: auto;
   }
   header.bg-white {
-    height: unset;
+    height: unset !important;
   }
 }
 

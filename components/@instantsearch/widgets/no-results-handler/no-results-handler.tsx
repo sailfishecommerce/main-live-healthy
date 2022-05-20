@@ -17,6 +17,7 @@ export type NoResultsProps = {
 
 const NoResults = memo(
   function NoResults({ query }: NoResultsProps) {
+    console.log('query', query)
     return (
       <div className="lg:my-10 lg:ml-[10%]">
         <h4 className="mb-6">
@@ -50,8 +51,16 @@ function NoResultsHandlerComponent({
   searchResults,
   searching,
 }: NoResultsHandlerProps) {
-  if (searchState?.query && searchResults?.nbHits === 0) {
-    return <NoResults query={searchState.query} isSearching={searching} />
+  console.log('searchResults', searchResults?.query)
+  if (searchResults === undefined) {
+    return <h4 className="text-center">Loading ...</h4>
+  }
+  if (
+    searchState?.query &&
+    searchResults?.nbHits === 0 &&
+    searchResults === undefined
+  ) {
+    return <NoResults query={searchState?.query} isSearching={searching} />
   }
 
   return <>{children}</>

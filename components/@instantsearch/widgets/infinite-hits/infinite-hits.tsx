@@ -84,10 +84,10 @@ function InfiniteHitsComponent({
   useEffect(() => {
     if (!hitsPerPage) setHitsPerPage(hits?.length)
   }, [hitsPerPage, hits?.length])
-
+  console.log('hits', hits)
   return (
     <>
-      {hits?.length !== 0 && (
+      {hits?.length !== 0 && hits !== undefined && (
         <section className="w-full">
           {showLess && (
             <LoadLess

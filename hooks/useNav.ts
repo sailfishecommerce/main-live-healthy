@@ -24,8 +24,6 @@ export default function useNav() {
     }))
   }
 
-  console.log('mobileMenu', mobileMenu)
-
   useEffect(() => {
     if (mobileWidth) {
       if (mobileMenu) {

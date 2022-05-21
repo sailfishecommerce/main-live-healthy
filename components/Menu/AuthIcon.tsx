@@ -1,3 +1,4 @@
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import { useAtom } from 'jotai'
 import { BiLogOut } from 'react-icons/bi'
 import { GrLogin } from 'react-icons/gr'
@@ -8,7 +9,7 @@ import { modalAtom } from '@/lib/atomConfig'
 import type { modalType } from '@/lib/atomConfigType'
 
 export default function AuthIcons() {
-  const [, setModal]: any = useAtom<modalType>(modalAtom)
+  const [modal, setModal]: any = useAtom<modalType>(modalAtom)
   const { getUserAccount } = useAccount()
   const mobileWidth = useMediaQuery('(max-width:768px)')
   const { data, status } = useQuery('userDetails', getUserAccount)
@@ -17,6 +18,12 @@ export default function AuthIcons() {
 
   function updateModalView(modalState: modalType) {
     return setModal(modalState)
+  }
+
+  if (modal === null) {
+    enableBodyScroll(document.body)
+  } else {
+    disableBodyScroll(document.body)
   }
 
   return (

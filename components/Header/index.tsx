@@ -1,3 +1,4 @@
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import { useAtom } from 'jotai'
 import dynamic from 'next/dynamic'
 import { memo } from 'react'
@@ -23,6 +24,12 @@ function HeaderComponent() {
 
   function toggleCategoryDropdownHandler() {
     return setCategoryDropdown((prev) => !prev)
+  }
+
+  if (categoryDropdown) {
+    disableBodyScroll(document.body)
+  } else {
+    enableBodyScroll(document.body)
   }
 
   function toggleNoticebar() {

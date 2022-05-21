@@ -24,14 +24,17 @@ export default function useNav() {
     }))
   }
 
+  console.log('mobileMenu', mobileMenu)
+
   useEffect(() => {
     if (mobileWidth) {
-      if (mobileMenu || showMobileSearch) {
+      if (mobileMenu) {
         disableBodyScroll(document.body)
+      } else {
+        enableBodyScroll(document.body)
       }
-      enableBodyScroll(document.body)
     }
-  }, [mobileMenu, showMobileSearch])
+  }, [mobileMenu])
 
   return {
     toggleSearch,

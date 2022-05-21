@@ -6,7 +6,6 @@ import type { typeModal } from '@/types'
 
 export default function useModal() {
   const [appModal, setAppModal] = useAtom(appModalAtom)
-  // useLockedBody(mobileExpanded)
   const [, setLocked] = useBodyLock()
 
   function onShowModal(modalType: typeModal, data: string) {

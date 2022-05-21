@@ -8,8 +8,6 @@ type ReturnType = [boolean, (locked: boolean) => void]
 function useBodyLock(initialLocked = false): ReturnType {
   const [locked, setLocked] = useState(initialLocked)
 
-  console.log('locked-useBodyLock', locked)
-
   // Do the side effect before render
   useIsomorphicLayoutEffect(() => {
     if (!locked) {
@@ -24,7 +22,7 @@ function useBodyLock(initialLocked = false): ReturnType {
     document.body.style.overflow = 'hidden'
 
     // Get the scrollBar width
-    const root = document.getElementById('___gatsby') // or root
+    const root = document.getElementById('__next') // or root
     const scrollBarWidth = root ? root.offsetWidth - root.scrollWidth : 0
 
     // Avoid width reflow
@@ -48,6 +46,8 @@ function useBodyLock(initialLocked = false): ReturnType {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialLocked])
+
+  console.log('locked-useBodyLock', locked)
 
   return [locked, setLocked]
 }

@@ -25,14 +25,14 @@ export default function useNav() {
     }))
   }
 
-  // useEffect(() => {
-  //   if (mobileWidth) {
-  //     if (mobileMenu || showMobileSearch) {
-  //       setLocked(true)
-  //     }
-  //     setLocked(false)
-  //   }
-  // }, [mobileMenu, showMobileSearch])
+  useEffect(() => {
+    if (mobileWidth) {
+      if (mobileMenu || showMobileSearch) {
+        setLocked(true)
+      }
+      setLocked(false)
+    }
+  }, [mobileMenu, showMobileSearch])
 
   return {
     toggleSearch,

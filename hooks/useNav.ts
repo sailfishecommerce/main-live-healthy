@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import { useAtom } from 'jotai'
 import { useEffect } from 'react'
 
-import useBodyLock from '@/hooks/useBodyLock'
 import useMediaQuery from '@/hooks/useMediaQuery'
 import { mobileViewAtom } from '@/lib/atomConfig'
 
@@ -10,7 +10,6 @@ export default function useNav() {
   const [mobileView, setMobileView] = useAtom(mobileViewAtom)
   const { mobileMenu, showMobileSearch } = mobileView
   const mobileWidth = useMediaQuery('(max-width:768px)')
-  const [, setLocked] = useBodyLock()
 
   const toggleSearch = () =>
     setMobileView((prev) => ({
@@ -28,9 +27,9 @@ export default function useNav() {
   useEffect(() => {
     if (mobileWidth) {
       if (mobileMenu || showMobileSearch) {
-        setLocked(true)
+        disableBodyScroll(document.body)
       }
-      setLocked(false)
+      enableBodyScroll(document.body)
     }
   }, [mobileMenu, showMobileSearch])
 

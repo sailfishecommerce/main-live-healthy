@@ -34,7 +34,7 @@ function useBodyLock(initialLocked = false): ReturnType {
       document.body.style.overflow = originalOverflow
 
       if (scrollBarWidth) {
-        document.body.style.paddingRight = originalPaddingRight
+        return (document.body.style.paddingRight = originalPaddingRight)
       }
     }
   }, [locked])

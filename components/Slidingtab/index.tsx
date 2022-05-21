@@ -21,7 +21,7 @@ export default function SlidingTab({
   }
 
   return (
-    <aside className="fixed flex z-50 justify-between h-screen items-center w-full right-0 top-0">
+    <section className="fixed flex z-50 justify-between h-screen items-center w-full right-0 top-0">
       <div
         className="overlay lg:w-2/3 w-1/12 flex cursor-pointer h-full"
         onClick={() => updateSlidingTabHandler(null)}
@@ -57,6 +57,6 @@ export default function SlidingTab({
           }
         `}
       </style>
-    </aside>
+    </section>
   )
 }

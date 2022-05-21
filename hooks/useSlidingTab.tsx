@@ -1,7 +1,6 @@
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import { useAtom } from 'jotai'
-import { useEffect } from 'react'
 
-import useBodyLock from '@/hooks/useBodyLock'
 import { activeProductSlideAtom, slidingTabAtom } from '@/lib/atomConfig'
 
 export default function useSlidingTab() {
@@ -9,23 +8,17 @@ export default function useSlidingTab() {
     slidingTabAtom
   )
   const [activeProductSlide]: any = useAtom<any>(activeProductSlideAtom)
-  const [, setLocked] = useBodyLock()
 
   const updateSlideTab = (
     slideTabState: 'SLIDING-ACCOUNT' | 'SLIDING-CART' | 'SLIDING-INFO' | null
   ) => {
     setSlidingTab(slideTabState)
-  }
-
-  console.log('slidingTabslidingTab', slidingTab)
-
-  useEffect(() => {
-    if (slidingTab === null) {
-      setLocked(false)
-    } else if (slidingTab !== null) {
-      setLocked(true)
+    if (slideTabState === null) {
+      enableBodyScroll(document.body)
+    } else if (slideTabState !== null) {
+      disableBodyScroll(document.body)
     }
-  }, [slidingTab, setLocked])
+  }
 
   return {
     updateSlideTab,

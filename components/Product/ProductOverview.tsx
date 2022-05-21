@@ -48,15 +48,13 @@ export default function ProductOverview({ hit }: any) {
       </div>
       <ProductReview />
       <div className="mt-6" />
-      {hit?.tags && (
-        <ProductSlider
-          randomColor
-          title="Customers also purchased"
-          productClassName="border border-gray-200 mr-6 rounded-lg"
-          query={`tags:${hit.tags[0]}`}
-          indexId="customer-also-bought"
-        />
-      )}
+      <ProductSlider
+        randomColor
+        title="Customers also purchased"
+        productClassName="border border-gray-200 mr-6 rounded-lg"
+        query={`tags:${hit.tags[0]}`}
+        indexId="customer-also-bought"
+      />
       <ProductSlider
         title="Popular with"
         productName={hit.name}

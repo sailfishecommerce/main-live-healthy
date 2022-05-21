@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useAtom } from 'jotai'
 import { useEffect } from 'react'
 
@@ -18,12 +17,15 @@ export default function useSlidingTab() {
     setSlidingTab(slideTabState)
   }
 
+  console.log('slidingTabslidingTab', slidingTab)
+
   useEffect(() => {
-    if (slidingTab !== null) {
+    if (slidingTab === null) {
+      setLocked(false)
+    } else if (slidingTab !== null) {
       setLocked(true)
     }
-    setLocked(false)
-  }, [slidingTab])
+  }, [slidingTab, setLocked])
 
   return {
     updateSlideTab,

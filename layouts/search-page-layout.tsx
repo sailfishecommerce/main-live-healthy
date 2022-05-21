@@ -109,7 +109,7 @@ export const getServerSidePropsPage = (
   const userTokenCookie = context.req.cookies._ALGOLIA
   if (userTokenCookie) {
     customOptions.props = {
-      ...customOptions?.props,
+      ...customOptions.props,
       userToken: userTokenCookie,
     }
   }

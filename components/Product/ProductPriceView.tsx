@@ -7,15 +7,22 @@ import LockIcon from '@/components/Icons/LockIcon'
 import FormattedPrice from '@/components/Price/FormattedPrice'
 import useShoppingCart from '@/hooks/useShoppingCart'
 import useSlidingTab from '@/hooks/useSlidingTab'
+import currentDate from '@/lib/incrementDate'
 
 export default function ProductPriceView({ product }: any) {
   const { addItemToCart } = useShoppingCart()
   const { updateSlideTab } = useSlidingTab()
   const router = useRouter()
-
+  const listingDate: any = currentDate
   function buyNowHandler() {
-    addItemToCart.mutate({ product, quantity: 1 })
-    router.push('/checkout')
+    addItemToCart.mutate(
+      { product, quantity: 1 },
+      {
+        onSuccess: () => {
+          router.push('/checkout')
+        },
+      }
+    )
   }
 
   function addToCartHandler() {
@@ -76,7 +83,7 @@ export default function ProductPriceView({ product }: any) {
               <p className="ml-2 lg:text-lg text-xs">Imported from Australia</p>
             </div>
             <p className="text-gray-400 lg:text-lg text-sm my-2 md:my-0">
-              Buy now to receive by 31 April 2022
+              Buy now to receive by {listingDate.addDays(5)}
             </p>
           </div>
         </div>

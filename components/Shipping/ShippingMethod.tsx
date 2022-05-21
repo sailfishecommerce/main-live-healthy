@@ -13,7 +13,6 @@ export default function ShippingMethod() {
   const { getShippingRates } = useShipping()
 
   const { data, status } = useQuery('getShippingRate', getShippingRates)
-
   return (
     <div className="mt-6">
       <h4 className="text-lg font-semibold mb-3">Shipping method</h4>

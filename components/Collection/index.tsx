@@ -59,7 +59,7 @@ export default function Index() {
       <div className="flex flex-col lg:flex-row">
         {(refinementsLayout === 'panel' || !laptop) && <RefinementsPanel />}
 
-        <div className="grow flex flex-col gap-2 lg:gap-5 w-full">
+        <div className="grow relative flex flex-col gap-2 lg:gap-5 w-full">
           <RefinementsBar
             showRefinements={refinementsLayout === 'bar' && laptop}
           />

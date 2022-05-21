@@ -15,7 +15,7 @@ function ViewModesComponent() {
   const [viewMode, setViewMode] = useAtom(viewModeAtom)
 
   return (
-    <div className="flex items-center gap-1">
+    <div className="flex items-center gap-1 px-4 lg:px-0">
       <div className="lg:small-bold">Display</div>
 
       <Button

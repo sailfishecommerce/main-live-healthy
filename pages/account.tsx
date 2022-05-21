@@ -22,15 +22,13 @@ export default function Account() {
   )
   return (
     <>
-      {/* <FacebookScript /> */}
-      {/* <FacebookButtonScript /> */}
       <Applayout title="Account Details">
         <main className="container mx-auto px-4 md:px-0">
           <Breadcrumb breadcrumbItems={breadcrumb.account} />
 
           {status === 'success' && data === null ? (
             <div className="login bg-gray-100 mx-auto flex flex-col py-12 justify-center mb-4">
-              <h1 className="text-center font-bold text-xl mb-4">
+              <h1 className="text-center font-bold text-md lg:text-xl mb-4">
                 Login / Sign up to access your account details
               </h1>
               <div className="w-full lg:w-1/2 mx-auto flex">

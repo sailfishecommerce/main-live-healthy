@@ -8,6 +8,8 @@ type ReturnType = [boolean, (locked: boolean) => void]
 function useBodyLock(initialLocked = false): ReturnType {
   const [locked, setLocked] = useState(initialLocked)
 
+  console.log('locked-useBodyLock', locked)
+
   // Do the side effect before render
   useIsomorphicLayoutEffect(() => {
     if (!locked) {

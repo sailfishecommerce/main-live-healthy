@@ -12,7 +12,7 @@ import useScroll from '@/hooks/useScroll'
 import 'react-toastify/dist/ReactToastify.css'
 import useSlidingTab from '@/hooks/useSlidingTab'
 import useToast from '@/hooks/useToast'
-import { activeProductSlideAtom, modalAtom } from '@/lib/atomConfig'
+import { modalAtom } from '@/lib/atomConfig'
 
 const NextNProgress = dynamic(
   () =>
@@ -77,8 +77,7 @@ interface Props {
 
 export default function LayoutWrapper({ children }: PropsWithChildren<Props>) {
   const [modal, setModal] = useAtom(modalAtom)
-  const { slidingTab } = useSlidingTab()
-  const [activeProductSlide]: any = useAtom<any>(activeProductSlideAtom)
+  const { slidingTab, activeProductSlide } = useSlidingTab()
   const { appLoading } = useToast()
   const closeAuthModalHandler = () => setModal(null)
   const modalState = modal === 'MODAL_LOGIN' ? true : false

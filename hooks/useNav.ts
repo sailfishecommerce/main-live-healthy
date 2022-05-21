@@ -1,4 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useAtom } from 'jotai'
+import { useEffect } from 'react'
 
 import useBodyLock from '@/hooks/useBodyLock'
 import { mobileViewAtom } from '@/lib/atomConfig'
@@ -6,7 +8,7 @@ import { mobileViewAtom } from '@/lib/atomConfig'
 export default function useNav() {
   const [mobileView, setMobileView] = useAtom(mobileViewAtom)
   const { mobileMenu, showMobileSearch } = mobileView
-  const [locked, setLocked] = useBodyLock()
+  const [, setLocked] = useBodyLock()
 
   const toggleSearch = () =>
     setMobileView((prev) => ({
@@ -19,8 +21,14 @@ export default function useNav() {
       mobileMenu: !prev.mobileMenu,
       showMobileSearch: prev.showMobileSearch,
     }))
-    setLocked(!locked)
   }
+
+  useEffect(() => {
+    if (mobileMenu || showMobileSearch) {
+      setLocked(true)
+    }
+    setLocked(false)
+  }, [mobileMenu, showMobileSearch])
 
   return {
     toggleSearch,

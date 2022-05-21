@@ -9,7 +9,10 @@ export default function useToast() {
   const [appLoading, setAppLoading] = useAtom(appLoadingAtom)
 
   const loadingToast = (toastId: MutableRefObject<any>) =>
-    (toastId.current = toast('Processing ...', { autoClose: false }))
+    (toastId.current = toast('Processing ...', {
+      isLoading: true,
+      autoClose: false,
+    }))
 
   const updateToast = (
     toastId: MutableRefObject<any>,
@@ -20,7 +23,9 @@ export default function useToast() {
       type: toastType,
       autoClose: 500,
       render: message,
+      isLoading: false,
     })
+
   function isLoading(): ReactText {
     setAppLoading(true)
     const toastId = toast.loading('Processing...', {

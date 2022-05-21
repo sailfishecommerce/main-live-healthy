@@ -11,7 +11,7 @@ export default function MobileMenuView() {
   const { toggleMobileMenu } = useNav()
   return (
     <>
-      <div className="fixed z-50 bg-white pl-4 mobileslidemenu flex flex-col">
+      <div className="bg-white pl-4 mobileslidemenu flex flex-col">
         <button
           type="button"
           className="flex justify-end mr-4 mb-2"

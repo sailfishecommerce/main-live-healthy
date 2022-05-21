@@ -37,7 +37,6 @@ export default function ProductOverview({ hit }: any) {
     link: null,
     active: true,
   }
-
   return (
     <div className="flex container mx-auto flex-col items-start">
       <Breadcrumb breadcrumbItems={breadcrumbItems} />
@@ -52,7 +51,7 @@ export default function ProductOverview({ hit }: any) {
         randomColor
         title="Customers also purchased"
         productClassName="border border-gray-200 mr-6 rounded-lg"
-        query={`tags:${hit.tags[0]}`}
+        query={`product_type:${hit?.product_type}`}
         indexId="customer-also-bought"
       />
       <ProductSlider

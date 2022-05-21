@@ -26,6 +26,7 @@ export type ProductPageProps = SearchPageLayoutProps & {
 
 export default function Product({ objectID, ...props }: ProductPageProps) {
   const hit = props?.resultsState?.rawResults[0]?.hits[0]
+
   return (
     <Applayout title="Product page">
       <SearchPageLayout {...props}>

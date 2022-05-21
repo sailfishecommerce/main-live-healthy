@@ -81,16 +81,12 @@ export default function CategorySidebarList() {
   const categories = status === 'success' ? data?.results.slice(12, 20) : []
   return (
     <>
-      <div className="category-sidebar flex flex-col lg:w-1/5 w-full">
+      <div className="category-sidebar flex flex-col lg:w-1/5 w-full pr-4">
         <CategoryLinks
           className="lg:border-b"
           categories={categories}
           title="Categories"
         />
-        {/* <CategoryLinks
-          categories={allCategoryContent.sidebar}
-          title="Section"
-        /> */}
       </div>
       <style jsx>
         {`

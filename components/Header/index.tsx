@@ -6,16 +6,8 @@ import Noticebar from '@/components/Alerts/Noticebar'
 import Menu from '@/components/Menu'
 import DiscountSlider from '@/components/Slider/DiscountSlider'
 import { useMediaQuery } from '@/hooks'
-import useNav from '@/hooks/useNav'
 import useNavStyle from '@/hooks/useNavStyle'
 import { categoryDropdownAtom, noticebarAtom } from '@/lib/atomConfig'
-
-const DynamicMobileSlideMenu = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'MobileSlideMenu' */ '@/components/Menu/MobileSlideMenu'
-    )
-)
 
 const DynamicAllCategoriesDropdownView = dynamic(
   () =>
@@ -36,7 +28,7 @@ function HeaderComponent() {
   function toggleNoticebar() {
     return setNoticebar((prevState) => !prevState)
   }
-  const { mobileMenu } = useNav()
+  // const { mobileMenu } = useNav()
   const mobileWidth = useMediaQuery('(max-width:768px)')
   const displayShadow = mobileWidth ? 'header' : ''
 
@@ -48,7 +40,6 @@ function HeaderComponent() {
         <DiscountSlider />
         {noticebar && <Noticebar toggleBarVisibility={toggleNoticebar} />}
         <Menu />
-        {mobileWidth && mobileMenu && <DynamicMobileSlideMenu />}
       </header>
       {categoryDropdown && !mobileWidth && (
         <DynamicAllCategoriesDropdownView

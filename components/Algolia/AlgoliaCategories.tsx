@@ -28,14 +28,7 @@ function RefinementListMenu({ items, selectedCategory }: any) {
 
   return (
     <div className="menu">
-      {/* <Link passHref href={`/collection/${getCategorySlug(selectedCategory)}`}>
-        <a
-          className="hover:text-red-500"
-          onClick={toggleCategoryDropdownHandler}
-        >
-          <h1 className="text-lg mb-4 font-medium">{selectedCategory}</h1>
-        </a>
-      </Link> */}
+      <h1 className="text-lg mb-4 font-medium mb-6">{selectedCategory}</h1>
       <ul className="flex flex-col lg:grid lg:grid-cols-3 lg:gap-2">
         {menuArray.map((item) => {
           return (
@@ -77,7 +70,7 @@ function RefinementListMenu({ items, selectedCategory }: any) {
               height: 100vh;
             }
             .menu ul {
-              max-height: calc(60% - 50px);
+              max-height: calc(80% - 50px);
               overflow-y: scroll;
               margin-top: -15px;
             }

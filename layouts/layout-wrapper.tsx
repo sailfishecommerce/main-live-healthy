@@ -6,6 +6,8 @@ import type { PropsWithChildren } from 'react'
 import { ToastContainer } from 'react-toastify'
 
 import LayoutMetatag from '@/components/Metatag/LayoutMetatag'
+import { useMediaQuery } from '@/hooks'
+import useNav from '@/hooks/useNav'
 import useScroll from '@/hooks/useScroll'
 import 'react-toastify/dist/ReactToastify.css'
 import useSlidingTab from '@/hooks/useSlidingTab'
@@ -33,6 +35,13 @@ const DynamicSlidingInformationTab = dynamic(
   () =>
     import(
       /* webpackChunkName: 'SlidingInformationTab' */ '@/components/Slidingtab/SlidingInformationTab'
+    )
+)
+
+const DynamicMobileSlideMenu = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'MobileSlideMenu' */ '@/components/Menu/MobileSlideMenu'
     )
 )
 
@@ -74,13 +83,13 @@ export default function LayoutWrapper({ children }: PropsWithChildren<Props>) {
   const closeAuthModalHandler = () => setModal(null)
   const modalState = modal === 'MODAL_LOGIN' ? true : false
   const logoutModalState = modal === 'MODAL_LOGOUT' ? true : false
-
+  const { mobileMenu } = useNav()
+  const mobileWidth = useMediaQuery('(max-width:768px)')
   const { scroll } = useScroll()
-
   const showPointer = scroll > 450 ? true : false
 
   return (
-    <div>
+    <div className="relative">
       <Head>
         <link
           href="https://CZT5MA7JLJ-dsn.algolia.net"
@@ -108,6 +117,8 @@ export default function LayoutWrapper({ children }: PropsWithChildren<Props>) {
           onHide={closeAuthModalHandler}
         />
       )}
+      {mobileWidth && mobileMenu && <DynamicMobileSlideMenu />}
+
       <div className="content position-relative h-100">{children}</div>
 
       {showPointer && (

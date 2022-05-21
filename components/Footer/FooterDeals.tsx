@@ -3,6 +3,7 @@ import { toast } from 'react-toastify'
 
 export default function FooterDeals() {
   const [newsletterEmail, setNewsletterEmail] = useState(null)
+
   function subscribeToNewsletterHanndler(e: any) {
     setNewsletterEmail(e.target.value)
   }

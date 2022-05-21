@@ -1,14 +1,25 @@
+import { FaTimes } from 'react-icons/fa'
+
 import CategorySidebarList from '@/components/Dropdown/CategorySidebarList'
 import Whatsapp from '@/components/Icons/Whatsapp'
 import PageLink from '@/components/Menu/PageLink'
 import TrendingLinkSlider from '@/components/Slider/TrendingLinkSlider'
+import useNav from '@/hooks/useNav'
 import menu from '@/json/menu.json'
 
 export default function MobileMenuView() {
+  const { toggleMobileMenu } = useNav()
   return (
     <>
-      <div className="fixed z-30 bg-white p-4 mobileslidemenu flex flex-col">
-        <ul className="flex md:items-start md:justify-around md:w-full items-center mx-auto lg:my-4 my-2">
+      <div className="fixed z-50 bg-white pl-4 mobileslidemenu flex flex-col">
+        <button
+          type="button"
+          className="flex justify-end mr-4 mb-2"
+          onClick={toggleMobileMenu}
+        >
+          <FaTimes size={22} />
+        </button>
+        <ul className="flex md:items-start justify-around w-full items-center mx-auto lg:my-4 my-2">
           {menu.primaryMenu.map((item) => (
             <PageLink
               menuItem={item}

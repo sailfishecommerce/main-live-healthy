@@ -8,12 +8,19 @@ export default function MobileSlideMenu() {
   const [mobileSlideMenuView] = useAtom(mobileSlideMenuViewAtom)
 
   return (
-    <aside>
-      {mobileSlideMenuView === 'LINK' ? (
-        <MobileMenuView />
-      ) : (
-        mobileSlideMenuView === 'SUBMENU' && <MobileCategoryView />
-      )}
-    </aside>
+    <>
+      <aside className="MobileSlideMenu pt-4 absolute top-0 left-0 z-50 bg-white w-full">
+        {mobileSlideMenuView === 'LINK' ? (
+          <MobileMenuView />
+        ) : (
+          mobileSlideMenuView === 'SUBMENU' && <MobileCategoryView />
+        )}
+      </aside>
+      <style jsx>{`
+        aside.MobileSlideMenu {
+          height: 100vh;
+        }
+      `}</style>
+    </>
   )
 }

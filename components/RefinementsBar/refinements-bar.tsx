@@ -1,5 +1,6 @@
 import FilterIcon from '@material-design-icons/svg/outlined/filter_list.svg'
 import classNames from 'classnames'
+import { useAtom } from 'jotai'
 import { useAtomValue, useUpdateAtom } from 'jotai/utils'
 import dynamic from 'next/dynamic'
 
@@ -7,6 +8,7 @@ import { refinementsPanelMobileExpandedAtom } from '@/components/RefinementsPane
 import { ToggleFilters } from '@/components/ToggleFilters'
 import { ViewModes } from '@/components/ViewModes'
 import { configAtom } from '@/config/config'
+import { noticebarAtom } from '@/lib/atomConfig'
 import { withDebugLayer } from '@dev/debug-layer/debug-layer'
 import {
   CurrentRefinements,
@@ -37,16 +39,18 @@ function RefinementsBarComponent({
   className,
 }: RefinementsBarProps) {
   const { sorts } = useAtomValue(configAtom)
+  const [noticebar] = useAtom(noticebarAtom)
+
   const sortDefaultRefinement = sorts.find((s) => s.isDefault)?.value
 
   const setMobileExpanded = useUpdateAtom(refinementsPanelMobileExpandedAtom)
   const refinementCount = useAtomValue(refinementCountAtom)
   const searchResults = useAtomValue(searchResultsAtom)
-
+  const filterClassName = noticebar ? 'top-32' : 'top-28'
   return (
     <section
       className={classNames(
-        'w-full fixed lg:relative lg:top-0 top-32  bg-white z-40 lg:px-3',
+        `w-full fixed lg:relative lg:top-0 ${filterClassName} bg-white z-40 pr-3 lg:pr-0`,
         { hidden: searchResults?.nbHits === 0 },
         className
       )}

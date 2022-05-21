@@ -8,7 +8,7 @@ export default function MobileCategoryView() {
   const [, setUpdateMobileSlideMenu] = useAtom(mobileSlideMenuViewAtom)
   const displayMenu = () => setUpdateMobileSlideMenu('LINK')
   return (
-    <div className="submenus px-4">
+    <div className="submenus px-4 pt-4">
       <div className="back-to-menu border-b border-gray-300 pb-4">
         <button
           type="button"

@@ -4,10 +4,17 @@ import { toast } from 'react-toastify'
 
 import useSwellCart from '@/hooks/useSwellCart'
 import useToast from '@/hooks/useToast'
+import { addEmailToNewsletter } from '@/hooks/useVbout'
+
+type addEmailToNewsletterType = {
+  email: string
+  listid: number
+}
 
 export default function useMutationAction() {
   const { loadingToast, updateToast } = useToast()
   const queryClient = useQueryClient()
+
   const {
     emptyCart,
     deleteCart,
@@ -15,6 +22,34 @@ export default function useMutationAction() {
     addToCart,
     removeCartItem,
   } = useSwellCart()
+
+  function useAddEmailToNewsletter() {
+    const toastID = useRef(null)
+
+    return useMutation(
+      ({ email, listid }: addEmailToNewsletterType) =>
+        addEmailToNewsletter(email, listid),
+      {
+        onMutate: () => {
+          loadingToast(toastID)
+        },
+        onSettled: () => {
+          queryClient.invalidateQueries('cart')
+        },
+        onSuccess: (response) => {
+          console.log('response-onSuccess', response)
+          updateToast(toastID, toast.TYPE.SUCCESS, 'thanks for subscribing')
+        },
+        onError: () => {
+          updateToast(
+            toastID,
+            toast.TYPE.ERROR,
+            'error subscribing to newsletter'
+          )
+        },
+      }
+    )
+  }
 
   function useUpdateCartItem() {
     const toastID = useRef(null)
@@ -130,5 +165,6 @@ export default function useMutationAction() {
     useRemoveFromCart,
     useEmptyCart,
     useDeleteCart,
+    useAddEmailToNewsletter,
   }
 }

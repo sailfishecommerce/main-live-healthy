@@ -82,3 +82,7 @@ export function addCategoryView(content: addCategoryViewType) {
     data
   )
 }
+
+export function addEmailToNewsletter(email: string, listid: number) {
+  return axios.post('/api/add-email-to-newsletter', { email, listid })
+}

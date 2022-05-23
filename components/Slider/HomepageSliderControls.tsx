@@ -14,15 +14,16 @@ function HomepageSliderControlsComponent({ content, activeIndex }: Props) {
         const indexValue = Number(index) + 1
         const isActive = activeIndex === index ? 'active' : ''
         return (
-          <div
-            className={`slider-item splide__pagination__page flex flex-col border-t-2 pt-2 ${isActive}`}
+          <button
+            type="button"
+            className={`slider-item  splide__pagination__page flex flex-col border-t-2 pt-2 ${isActive}`}
             key={item.title}
             title={item.title}
           >
             <h4 className="flex items-center font-medium">0{indexValue}</h4>
             <h2 className="font-bold my-1">{item.title}</h2>
             <p>{item.category}</p>
-          </div>
+          </button>
         )
       })}
       <style jsx>

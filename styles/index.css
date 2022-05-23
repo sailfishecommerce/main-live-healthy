@@ -45,6 +45,10 @@
   display: none;
 }
 
+.splide__pagination.rounded-3xl {
+  display: unset !important;
+}
+
 .related-products .splide__track {
   margin-right: unset;
 }

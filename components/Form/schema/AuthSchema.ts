@@ -39,3 +39,11 @@ export const passwordRecoverySchema = yup.object({
     .email('Enter a valid email address')
     .required('E-mail address is required'),
 })
+
+export const adminSigninFormSchema = yup.object({
+  email: yup
+    .string()
+    .email('Enter a valid email address')
+    .required('E-mail address is required'),
+  password: yup.string().required('Password is required'),
+})

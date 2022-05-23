@@ -1,7 +1,7 @@
 import Image from 'next/image'
-import React from 'react'
 
 import AdminLogin from '@/components/Form/AdminLogin'
+import Logo from '@/components/Logo'
 
 export default function login() {
   return (
@@ -17,6 +17,8 @@ export default function login() {
           />
         </div>
         <div className="login-card w-full lg:w-1/5 py-8 px-4 bg-white">
+          <span></span>
+          <Logo className="mx-auto flex items-center justify-center my-12" />
           <h1 className="text-center font-bold text-lg">
             🎉 Welcome to Livehealthy store Admin, Please Login
           </h1>

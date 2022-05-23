@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { useRef } from 'react'
 import { useMutation, useQueryClient } from 'react-query'
 import { toast } from 'react-toastify'

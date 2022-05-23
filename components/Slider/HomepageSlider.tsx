@@ -43,47 +43,49 @@ function HomepageSliderComponent() {
       <Splide onActive={(item) => setActiveIndex(item.index)}>
         {homepageSliderContent.map((content, index) => (
           <SplideSlide key={content.title}>
-            <div className="content px-4 md:px-0 flex flex-col md:flex-row w-full h-100">
-              <div className="text order-2 md:order-1 rounded-b-xl my-0 md:rounded-l-3xl bg-gray-100 p-6 lg:p-8 w-full md:w-2/5 lg:w-1/4">
-                <div className="top flex items-center mb-6 justify-between">
-                  <h1 className="lg:text-2xl text-lg font-bold">
-                    {content.title}
-                  </h1>
-                  <span className="font-normal text-red-500 bg-white rounded-md py-1 text-xs px-2 hover:bg-red-500 hover:text-white">
-                    {content.category}
-                  </span>
+            <Link passHref href={content.link}>
+              <a className="content px-4 md:px-0 flex flex-col md:flex-row w-full h-100">
+                <div className="text order-2 md:order-1 rounded-b-xl my-0 md:rounded-l-3xl bg-gray-100 p-6 lg:p-8 w-full md:w-2/5 lg:w-1/4">
+                  <div className="top flex items-center mb-6 justify-between">
+                    <h1 className="lg:text-2xl text-lg font-bold">
+                      {content.title}
+                    </h1>
+                    <span className="font-normal text-red-500 bg-white rounded-md py-1 text-xs px-2 hover:bg-red-500 hover:text-white">
+                      {content.category}
+                    </span>
+                  </div>
+                  <p className="mb-2 text-sm lg:text-md xl:text-lg">
+                    {content.description}
+                  </p>
+                  <Link passHref href="/collection">
+                    <button
+                      type="button"
+                      aria-label="view collection"
+                      className="view-collection rounded-md py-1 px-2 text-white mt-6 md:mt-12 lg:mt-6 2xl:mt-20"
+                    >
+                      View collection
+                    </button>
+                  </Link>
+                  {mobileWidth && (
+                    <MobileSliderControls
+                      active={Number(index) + 1}
+                      end={homepageSliderContent.length}
+                    />
+                  )}
                 </div>
-                <p className="mb-2 text-sm lg:text-md xl:text-lg">
-                  {content.description}
-                </p>
-                <Link passHref href="/collection">
-                  <button
-                    type="button"
-                    aria-label="view collection"
-                    className="view-collection rounded-md py-1 px-2 text-white mt-6 md:mt-12 lg:mt-6 2xl:mt-20"
-                  >
-                    View collection
-                  </button>
-                </Link>
-                {mobileWidth && (
-                  <MobileSliderControls
-                    active={Number(index) + 1}
-                    end={homepageSliderContent.length}
+                <div className="my-0 image order-1 md:order-2 w-full md:w-4/6 lg:w-3/4">
+                  <Image
+                    priority={true}
+                    src={content.image}
+                    height={imageDimension.height}
+                    width={imageDimension.width}
+                    alt={content.title}
+                    className="rounded-t-xl md:rounded-l-none md:rounded-r-3xl"
+                    layout="responsive"
                   />
-                )}
-              </div>
-              <div className="my-0 image order-1 md:order-2 w-full md:w-4/6 lg:w-3/4">
-                <Image
-                  priority={true}
-                  src={content.image}
-                  height={imageDimension.height}
-                  width={imageDimension.width}
-                  alt={content.title}
-                  className="rounded-t-xl md:rounded-l-none md:rounded-r-3xl"
-                  layout="responsive"
-                />
-              </div>
-            </div>
+                </div>
+              </a>
+            </Link>
           </SplideSlide>
         ))}
       </Splide>

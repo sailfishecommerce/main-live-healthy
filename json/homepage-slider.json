@@ -3,36 +3,42 @@
     "title": "B.box",
     "category": "Baby Care",
     "description": "Baby and toddler drinking and feeding accessories. functional innovative and award-winning essentials to make like easier for parents and babies.",
-    "image": "/b-box.webp"
+    "image": "/b-box.webp",
+    "link": "/collection?refinementList%5Bvendor%5D%5B0%5D=b.box&p=1"
   },
   {
     "title": "Ostelin",
     "category": "Vitamines",
     "description": "Baby and toddler drinking and feeding accessories. functional innovative and award-winning essentials to make like easier for parents and babies.",
-    "image": "/ostelin-banner.webp"
+    "image": "/ostelin-banner.webp",
+    "link": "/collection?refinementList%5Bvendor%5D%5B0%5D=Ostelin&p=1"
   },
   {
     "title": "Baby Formula",
     "category": "Kids Care",
     "description": "Baby and toddler drinking and feeding accessories. functional innovative and award-winning essentials to make like easier for parents and babies.",
-    "image": "/baby-formula.webp"
+    "image": "/baby-formula.webp",
+    "link": "/collection?p=1&refinementList%5Bvendor%5D%5B0%5D=Aptamil"
   },
   {
     "title": "Nature's Way",
     "category": "Weight Loss",
     "description": "Baby and toddler drinking and feeding accessories. functional innovative and award-winning essentials to make like easier for parents and babies.",
-    "image": "/nature-way.webp"
+    "image": "/nature-way.webp",
+    "link": "/collection?p=1&refinementList%5Bvendor%5D%5B0%5D=Nature%27s%20Way"
   },
   {
     "title": "Swisse",
     "category": "Sports Nutrition",
     "description": "Baby and toddler drinking and feeding accessories. functional innovative and award-winning essentials to make like easier for parents and babies.",
-    "image": "/swisse-banner.webp"
+    "image": "/swisse-banner.webp",
+    "link": "/collection?p=1&refinementList%5Bvendor%5D%5B0%5D=Swisse"
   },
   {
     "title": "Nuetrogena",
     "category": "Cosmetics",
     "description": "Baby and toddler drinking and feeding accessories. functional innovative and award-winning essentials to make like easier for parents and babies.",
-    "image": "/neutrogena.webp"
+    "image": "/neutrogena.webp",
+    "link": "/collection?p=1&refinementList%5Bvendor%5D%5B0%5D=Neutrogena"
   }
 ]

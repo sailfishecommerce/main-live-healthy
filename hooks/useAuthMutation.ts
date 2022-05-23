@@ -60,8 +60,8 @@ export default function useAuthMutation() {
             toast.TYPE.SUCCESS,
             'Account signin successfully'
           )
-          router.push('/admin')
           setAdminAuth(response.user)
+          router.push('/admin')
         },
         onError: (error) => {
           console.log('error', error)

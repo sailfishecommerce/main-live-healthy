@@ -3,7 +3,7 @@ import Image from 'next/image'
 import AdminLogin from '@/components/Form/AdminLogin'
 import Logo from '@/components/Logo'
 
-export default function login() {
+export default function AdminLoginPage() {
   return (
     <>
       <div className="w-full h-full flex login-page">

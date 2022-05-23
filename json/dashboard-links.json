@@ -6,6 +6,11 @@
   },
   {
     "icons": "privacy-and-policy",
+    "text": "Invoice",
+    "link": "/admin/invoice"
+  },
+  {
+    "icons": "privacy-and-policy",
     "text": "Privacy Policy",
     "link": "/admin/privacy-and-policy"
   },

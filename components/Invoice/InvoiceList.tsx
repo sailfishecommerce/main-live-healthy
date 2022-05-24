@@ -41,23 +41,23 @@ function InvoiceHitComponent({
             {price === invoiceHit?.price && (
               <FormattedPrice
                 price={invoiceHit?.price}
-                className="text-sm font-bold strike-through"
+                className="text-md font-bold strike-through"
                 currency={currency}
               />
             )}
             <FormattedPrice
               currency={currency}
               price={productPrice}
-              className="text-sm font-bold"
+              className="text-md font-thin"
             />
           </div>
         </td>
         <td>
-          <p className="font-thin">{quantity}</p>
+          <p className="font-thin text-md quantity">{quantity}</p>
         </td>
         <td>
           <FormattedPrice
-            className="text-sm font-bold"
+            className="text-md font-thin"
             price={price_total}
             currency={currency}
           />
@@ -69,6 +69,9 @@ function InvoiceHitComponent({
             border-bottom: 1px solid #e5e5e6;
             margin: 10px 0px;
             height: 120px;
+          }
+          .view td p.quantity {
+            text-align: center;
           }
         `}
       </style>

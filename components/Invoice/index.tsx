@@ -1,5 +1,11 @@
+import { createRef } from 'react'
+import { BiDownload } from 'react-icons/bi'
+import Pdf from 'react-to-pdf'
+
+import InvoiceFooter from '@/components/Invoice/InvoiceFooter'
 import InvoiceList from '@/components/Invoice/InvoiceList'
 import Logo from '@/components/Logo'
+import FormattedPrice from '@/components/Price/FormattedPrice'
 import { formatOrderDate } from '@/lib/formatOrderDate'
 import getCountry from '@/lib/getCountry'
 
@@ -15,10 +21,21 @@ export default function Invoice({ invoice }: any) {
     ? `Stripe ${invoice?.billing?.intent?.stripe.id.toUpperCase()}`
     : ''
   const shippingMethod = getShippingMethod(invoice)
-
+  const ref: any = createRef()
   return (
     <>
-      <div className="invoice-receipt mt-12 bg-white p-6 rounded-xl">
+      <Pdf targetRef={ref} filename={`invoice-${invoice.number}`}>
+        {({ toPdf }: any) => (
+          <button
+            type="button"
+            className="flex  mt-4 items-center bg-mountain-green text-white py-1 p-2 rounded-md"
+            onClick={toPdf}
+          >
+            <BiDownload className="mr-2" size={24} /> Download
+          </button>
+        )}
+      </Pdf>
+      <div ref={ref} className="invoice-receipt mt-12 bg-white p-6 rounded-xl">
         <div className="row flex justify-between mb-16 items-center">
           <Logo className="w-1/2" />
           <div className="invoice-date flex flex-col">
@@ -83,14 +100,65 @@ export default function Invoice({ invoice }: any) {
                   currency={invoice.currency}
                 />
               ))}
+              <tr className="subtotal">
+                <td></td>
+                <td></td>
+                <td>
+                  <p className="font-thin text-md">Subtotal</p>
+                </td>
+                <td>
+                  <FormattedPrice
+                    currency={invoice.currency}
+                    price={invoice.sub_total}
+                    className="text-md font-thin"
+                  />
+                </td>
+              </tr>{' '}
+              <tr className="shipping">
+                <td></td>
+                <td></td>
+                <td>
+                  <p className="font-thin text-md">Shipping</p>
+                </td>
+                <td>
+                  <FormattedPrice
+                    currency={invoice.currency}
+                    price={invoice.shipment_total}
+                    className="text-md font-thin"
+                  />
+                </td>
+              </tr>
+              <tr className="total">
+                <td></td>
+                <td></td>
+                <td>
+                  <p className="font-bold text-lg">
+                    TOTAL ({invoice.currency})
+                  </p>
+                </td>
+                <td>
+                  <FormattedPrice
+                    currency={invoice.currency}
+                    price={invoice.grand_total}
+                    className="text-lg font-bold"
+                  />
+                </td>
+              </tr>
             </tbody>
           </table>
         </div>
+        <InvoiceFooter />
       </div>
       <style jsx>
         {`
           .row.items table {
             width: 100%;
+          }
+          .row.items tr {
+            height: 60px;
+          }
+          .row.items tr.last {
+            border-bottom: 1px solid #e5e5e6;
           }
         `}
       </style>

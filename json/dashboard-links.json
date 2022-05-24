@@ -10,6 +10,11 @@
     "link": "/admin/invoice"
   },
   {
+    "icons": "upload-products",
+    "text": "Upload Products",
+    "link": "/admin/upload-products"
+  },
+  {
     "icons": "privacy-and-policy",
     "text": "Privacy Policy",
     "link": "/admin/privacy-and-policy"

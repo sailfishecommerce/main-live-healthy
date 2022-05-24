@@ -64,6 +64,9 @@ export default function OrdersTable({ orders }: any) {
           .row td {
             text-align: center;
           }
+          .row.bg-white:hover {
+            background-color: lightgray;
+          }
         `}
       </style>
     </>

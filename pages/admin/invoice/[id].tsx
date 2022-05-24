@@ -2,10 +2,12 @@
 import { useRouter } from 'next/router'
 
 import DashboardMainView from '@/components/Dashboard/DashboardMainView'
+import Invoice from '@/components/Invoice'
 import useAdminOrder from '@/hooks/useAdminOrder'
 import DashboardLayout from '@/layouts/dashboard-layout'
+import { SearchPageLayout } from '@/layouts/search-page-layout'
 
-export default function InvoicePage() {
+export default function InvoicePage(props) {
   const router = useRouter()
   const { data, status } = useAdminOrder()
 
@@ -16,14 +18,18 @@ export default function InvoicePage() {
     )
   }
   return (
-    <DashboardLayout title="Invoice page">
-      <DashboardMainView>
-        {status === 'error'
-          ? 'unable to fetch page data'
-          : status === 'loading'
-          ? 'loading ...'
-          : invoice[0]?.billing?.name}
-      </DashboardMainView>
-    </DashboardLayout>
+    <SearchPageLayout {...props}>
+      <DashboardLayout title="Invoice page">
+        <DashboardMainView>
+          {status === 'error' ? (
+            'unable to fetch page data'
+          ) : status === 'loading' ? (
+            'loading ...'
+          ) : (
+            <Invoice invoice={invoice[0]} />
+          )}
+        </DashboardMainView>
+      </DashboardLayout>
+    </SearchPageLayout>
   )
 }

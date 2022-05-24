@@ -3,18 +3,19 @@ import swell from 'swell-node'
 
 import swellNodeInit from '../../lib/swellNode'
 
-export default async function InvoiceHandler(
+export default async function ProductHandler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   swellNodeInit()
   switch (req.method) {
-    case 'GET': {
+    case 'POST': {
       return await swell
-        .get('/orders', {
-          limit: 50,
+        .get('/products/{id}', {
+          id: req.body.id,
         })
         .then((response: any) => {
+          console.log('response', response)
           return res.status(200).send(response)
         })
     }

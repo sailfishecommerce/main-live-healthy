@@ -35,7 +35,7 @@ export default function OrderHistoryItem({ item }: OrderItemProps) {
     <>
       <tr className="hover:bg-gray-100 border-b">
         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-          {item.number}{' '}
+          {item.number}
           <button
             type="button"
             aria-label="navigate"

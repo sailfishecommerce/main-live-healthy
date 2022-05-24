@@ -13,11 +13,13 @@ const headContent = [
 export default function OrderTableHead() {
   return (
     <>
-      <tr className="bg-white">
-        {headContent.map((content) => (
-          <th key={content}>{content}</th>
-        ))}
-      </tr>
+      <thead>
+        <tr className="bg-white">
+          {headContent.map((content) => (
+            <th key={content}>{content}</th>
+          ))}
+        </tr>
+      </thead>
       <style jsx>
         {`
           tr.bg-white th {

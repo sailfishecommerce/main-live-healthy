@@ -12,7 +12,6 @@ function InvoiceHitComponent({
   currency,
 }: any) {
   const invoiceHit = hits[0]
-  console.log('invoiceHit', invoiceHit)
   const productImage =
     typeof invoiceHit?.images[0] === 'string'
       ? invoiceHit?.images[0]
@@ -84,17 +83,23 @@ function InvoiceListComponent({
   quantity,
   price_total,
   currency,
+  productId,
 }: any) {
-  console.log('productName', productName)
+  const slug = productName
+    ?.toLowerCase()
+    .replaceAll('. ', '-')
+    ?.replaceAll(' ', '-')
+    .replaceAll('.', '-')
   return (
     <>
       <Index indexName={indexName} indexId={`${productName}-hit`}>
-        <Configure filters={`id:${productName}`} hitsPerPage={1} />
+        <Configure filters={`slug:${slug}`} hitsPerPage={1} />
         <InvoiceHit
           quantity={quantity}
           price={price}
           currency={currency}
           price_total={price_total}
+          productId={productId}
         />
       </Index>
     </>

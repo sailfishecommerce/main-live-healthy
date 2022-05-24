@@ -55,6 +55,7 @@
     "react-lazy-load": "^3.1.13",
     "react-magnifier": "^3.0.4",
     "react-query": "^3.34.16",
+    "react-to-pdf": "^0.0.14",
     "react-toastify": "^8.2.0",
     "search-insights": "^2.1.0",
     "slate": "^0.78.0",

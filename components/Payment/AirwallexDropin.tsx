@@ -32,7 +32,7 @@ function AirwallexCardElement({
 
   useEffect(() => {
     loadAirwallex({
-      env: 'prod',
+      env: 'dev',
       origin: window.location.origin,
       fonts: [
         {

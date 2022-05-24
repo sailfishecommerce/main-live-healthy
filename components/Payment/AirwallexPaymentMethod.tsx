@@ -13,12 +13,13 @@ export default function AirwallexPaymentMethod() {
   const { data: cart } = useCartData()
   const { checkoutHandler } = useAirwallexPayment()
   const [airwallex] = useAtom(airwallexAtom)
+
   function onCheckout() {
     checkoutHandler(cart, paymentForm)
   }
 
   const { clientSecret, paymentIntentId } = airwallex
-
+  console.log('clientSecret', clientSecret, 'paymentIntentId', paymentIntentId)
   return (
     <Accordion
       stage={2}

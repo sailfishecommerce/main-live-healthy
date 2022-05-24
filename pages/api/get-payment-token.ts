@@ -15,7 +15,7 @@ export default function getPaymentTokenHandler(
           headers: {
             'Content-Type': 'application/json',
             'x-client-id': `${process.env.NEXT_PUBLIC_AIRWALLEX_DEMO_ID}`,
-            'x-api-key': `${process.env.NEXT_PUBLIC_AIRWALLEX_DEMO_ID}`,
+            'x-api-key': `${process.env.NEXT_PUBLIC_AIRWALLEX_DEMO_API_KEY}`,
           },
         })
         .then((response) => {

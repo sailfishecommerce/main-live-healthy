@@ -13,7 +13,8 @@ export default function DashboardCard() {
     <div className="dashboard-banner mb-12 flex justify-between w-full bg-yellow-100 rounded-xl p-10 my-12">
       <div className="left">
         <h2 className="text-yellow-900 font-bold text-2xl">
-          Welcome back <span className="mountain-mist">{adminAuth.email} </span>
+          Welcome back{' '}
+          <span className="mountain-mist">{adminAuth?.email} </span>
         </h2>
         <p className="text-lg">Welcome to Livehealthy stores. 🛒</p>
       </div>

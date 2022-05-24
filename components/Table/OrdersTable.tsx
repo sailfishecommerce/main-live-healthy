@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import type { Key } from 'react'
 
 import OrderTableHead from '@/components/Table/OrderTableHead'
@@ -31,15 +32,17 @@ export default function OrdersTable({ orders }: any) {
           const orderFulfillment = order.delivered ? 'Fulfilled' : 'Unfulfilled'
           const currency = order.currency === 'HKD' ? 'HK $' : order.currency
           return (
-            <tr className="bg-white row p-4" key={order.id}>
-              <td>{orderNumber}</td>
-              <td>{order.number}</td>
-              <td>{formatOrderDate(order.date_created)}</td>
-              <td>{customerName}</td>
-              <td>{paymentType}</td>
-              <td>{orderFulfillment}</td>
-              <td>{`${currency} ${formatPrice(order.payment_total)}`}</td>
-            </tr>
+            <Link passHref key={order.id} href={`/admin/invoice/${order.id}`}>
+              <tr className="bg-white row p-4">
+                <td>{orderNumber}</td>
+                <td>{order.number}</td>
+                <td>{formatOrderDate(order.date_created)}</td>
+                <td>{customerName}</td>
+                <td>{paymentType}</td>
+                <td>{orderFulfillment}</td>
+                <td>{`${currency} ${formatPrice(order.payment_total)}`}</td>
+              </tr>
+            </Link>
           )
         })}
       </table>

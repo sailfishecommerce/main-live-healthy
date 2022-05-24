@@ -67,7 +67,6 @@ export default function SearchPage({ searchQuery, ...props }: SearchPageProps) {
   const refinementsLayout = useAtomValue(refinementsLayoutAtom)
   const viewMode = useAtomValue(viewModeAtom)
 
-  console.log('result', result)
   return (
     <Applayout title="Search for products">
       <SearchPageLayout {...props}>

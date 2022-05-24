@@ -1,18 +1,11 @@
 /* eslint-disable no-nested-ternary */
-import axios from 'axios'
-import { useQuery } from 'react-query'
-
 import DashboardMainView from '@/components/Dashboard/DashboardMainView'
 import OrdersTable from '@/components/Table/OrdersTable'
+import useAdminOrder from '@/hooks/useAdminOrder'
 import DashboardLayout from '@/layouts/dashboard-layout'
 
-function getOrders() {
-  return axios.get('/api/get-orders')
-}
-
 export default function InvoicePage() {
-  const { data, status } = useQuery('getInvoice', getOrders)
-
+  const { data, status } = useAdminOrder()
   return (
     <DashboardLayout title="Admin page">
       <DashboardMainView>

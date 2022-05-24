@@ -16,7 +16,7 @@ function getShippingMethod(invoice: any) {
   return selectedShippingMethod
 }
 
-const style = { width: '100%', height: '100%' }
+const style = { width: '100%' }
 
 export default function Invoice({ invoice }: any) {
   const paymentMethod = invoice?.billing.intent?.stripe.id

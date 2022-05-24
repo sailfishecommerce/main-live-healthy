@@ -16,12 +16,15 @@ function getShippingMethod(invoice: any) {
   return selectedShippingMethod
 }
 
+const style = { width: '100%', height: '100%' }
+
 export default function Invoice({ invoice }: any) {
   const paymentMethod = invoice?.billing.intent?.stripe.id
     ? `Stripe ${invoice?.billing?.intent?.stripe.id.toUpperCase()}`
     : ''
   const shippingMethod = getShippingMethod(invoice)
   const ref: any = createRef()
+
   return (
     <>
       <Pdf targetRef={ref} filename={`invoice-${invoice.number}`}>
@@ -35,7 +38,11 @@ export default function Invoice({ invoice }: any) {
           </button>
         )}
       </Pdf>
-      <div ref={ref} className="invoice-receipt mt-12 bg-white p-6 rounded-xl">
+      <div
+        style={style}
+        ref={ref}
+        className="invoice-receipt mt-12 bg-white p-6 rounded-xl"
+      >
         <div className="row flex justify-between mb-16 items-center">
           <Logo className="w-1/2" />
           <div className="invoice-date flex flex-col">

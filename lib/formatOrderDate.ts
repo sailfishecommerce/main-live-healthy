@@ -6,3 +6,8 @@ export default function expectedOrderDate() {
   const expectedDate = new Date(result)
   return expectedDate.toDateString()
 }
+
+export function formatOrderDate(date: string) {
+  const givenDate = new Date(date)
+  return givenDate.toDateString()
+}

@@ -16,7 +16,7 @@ export default function InvoicePage() {
           ) : status === 'loading' ? (
             'loading ...'
           ) : (
-            <OrdersTable orders={data?.data.results} />
+            <OrdersTable orders={data?.data?.results} />
           )}
         </div>
       </DashboardMainView>

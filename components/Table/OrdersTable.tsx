@@ -59,6 +59,7 @@ export default function OrdersTable({ orders }: any) {
             border-bottom: 1px solid #e5e5e6;
             height: 50px;
             padding: 11px 16px;
+            cursor: pointer;
           }
           .row td {
             text-align: center;

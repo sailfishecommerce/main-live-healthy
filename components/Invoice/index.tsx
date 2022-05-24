@@ -22,9 +22,9 @@ export default function Invoice({ invoice }: any) {
         <div className="row flex justify-between mb-16 items-center">
           <Logo className="w-1/2" />
           <div className="invoice-date flex flex-col">
-            <h1 className="text-2xl font-bold">{invoice.number}</h1>
+            <h1 className="text-2xl font-bold">{invoice?.number}</h1>
             <h5 className="font-thin text-lg">
-              {formatOrderDate(invoice.date_created)}
+            {formatOrderDate(invoice?.date_created)}
             </h5>
           </div>
         </div>

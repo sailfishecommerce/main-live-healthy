@@ -12,7 +12,7 @@ function InvoiceHitComponent({
   currency,
 }: any) {
   const invoiceHit = hits[0]
-
+  console.log('invoiceHit', invoiceHit)
   const productImage =
     typeof invoiceHit?.images[0] === 'string'
       ? invoiceHit?.images[0]
@@ -39,7 +39,7 @@ function InvoiceHitComponent({
         </td>
         <td>
           <div className="price flex flex-col">
-            {invoiceHit?.price && price === invoiceHit?.price && (
+            {price === invoiceHit?.price && (
               <FormattedPrice
                 price={invoiceHit?.price}
                 className="text-sm font-bold strike-through"
@@ -85,10 +85,11 @@ function InvoiceListComponent({
   price_total,
   currency,
 }: any) {
+  console.log('productName', productName)
   return (
     <>
       <Index indexName={indexName} indexId={`${productName}-hit`}>
-        <Configure query={`${productName}`} hitsPerPage={1} />
+        <Configure filters={`id:${productName}`} hitsPerPage={1} />
         <InvoiceHit
           quantity={quantity}
           price={price}

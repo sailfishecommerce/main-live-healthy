@@ -7,7 +7,7 @@ import useAdminOrder from '@/hooks/useAdminOrder'
 import DashboardLayout from '@/layouts/dashboard-layout'
 import { SearchPageLayout } from '@/layouts/search-page-layout'
 
-export default function InvoicePage(props) {
+export default function InvoicePage(props: any) {
   const router = useRouter()
   const { data, status } = useAdminOrder()
 
@@ -21,13 +21,11 @@ export default function InvoicePage(props) {
     <SearchPageLayout {...props}>
       <DashboardLayout title="Invoice page">
         <DashboardMainView>
-          {status === 'error' ? (
-            'unable to fetch page data'
-          ) : status === 'loading' ? (
-            'loading ...'
-          ) : (
-            <Invoice invoice={invoice[0]} />
-          )}
+          {status === 'error'
+            ? 'unable to fetch page data'
+            : status === 'loading'
+            ? 'loading ...'
+            : invoice[0] && <Invoice invoice={invoice[0]} />}
         </DashboardMainView>
       </DashboardLayout>
     </SearchPageLayout>

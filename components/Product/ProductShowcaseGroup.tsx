@@ -24,7 +24,6 @@ export default function ProductShowcaseGroup({ group }: Props) {
           index={index}
           key={groupItem.category}
           category={groupItem.category}
-          className="lg:bg-gray-50"
           tabColor={groupItem.tabColor}
           updateVendor={updateVendor}
           selectedVendor={selectedVendor}

@@ -1,8 +1,8 @@
 /* eslint-disable no-nested-ternary */
-import classNames from 'classnames'
 import { useMemo } from 'react'
 import { useQuery } from 'react-query'
 
+import LoadProducts from '@/components/Loader/ProductsLoader'
 import CategoryProductSlider from '@/components/Slider/CategoryProductSlider'
 import ProductTags from '@/components/Tag/ProductTags'
 import useProduct from '@/hooks/useProduct'
@@ -20,7 +20,6 @@ export type ProductsShowcaseProps = {
 
 export default function ProductShowcase({
   index,
-  className,
   category,
   tabColor,
   updateVendor,
@@ -45,32 +44,32 @@ export default function ProductShowcase({
   const threeFirstVendors = useMemo(() => getThreeVendors(products), [products])
 
   return (
-    <section
-      className={classNames('lg:pt-6 my-3 pl-3 container mx-auto', className)}
-    >
+    <section className="py-4 my-6 rounded-xl container px-4 mx-auto lg:bg-gray-100">
       {category && (
-        <h4 className="xl:text-2xl md:text-xl text-lg  -mt-3 font-bold  mb-2 lg:mb-4 lg:ml-3">
+        <h4 className="xl:text-2xl md:text-xl text-lg  font-bold  mb-2 lg:mb-4 lg:ml-3">
           {category}
         </h4>
       )}
-      {status === 'error'
-        ? 'error fetchin products'
-        : status === 'loading'
-        ? 'Loading ...'
-        : data?.data.length > 0 && (
-            <CategoryProductSlider
+      {status === 'error' ? (
+        'error fetchin products'
+      ) : status === 'loading' ? (
+        <LoadProducts />
+      ) : (
+        data?.data?.length > 0 && (
+          <CategoryProductSlider
+            tabColor={tabColor}
+            selectedProducts={selectedProducts}
+          >
+            <ProductTags
+              index={index}
+              vendor={selectedVendor}
+              tags={threeFirstVendors}
               tabColor={tabColor}
-              selectedProducts={selectedProducts}
-            >
-              <ProductTags
-                index={index}
-                vendor={selectedVendor}
-                tags={threeFirstVendors}
-                tabColor={tabColor}
-                updateVendor={updateVendor}
-              />
-            </CategoryProductSlider>
-          )}
+              updateVendor={updateVendor}
+            />
+          </CategoryProductSlider>
+        )
+      )}
     </section>
   )
 }

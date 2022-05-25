@@ -12,7 +12,7 @@ interface TrendLinkProps {
   trendingItem: {
     slug: string
     name: string
-    images: Array<{ file: { url: string } }> | string[]
+    images?: Array<{ file: { url: string } }> | string[] | any
   }
 }
 
@@ -30,9 +30,9 @@ export function TrendLink({ trendingItem }: TrendLinkProps) {
   }
 
   const productImage =
-    typeof trendingItem.images[0] === 'string'
-      ? trendingItem.images[0]
-      : trendingItem.images[0].file.url
+    typeof trendingItem?.images[0] === 'string'
+      ? trendingItem?.images[0]
+      : trendingItem?.images[0]?.file?.url
 
   return (
     <span title={trendingItem.name} className="trending-item lg:mr-4 mr-2">

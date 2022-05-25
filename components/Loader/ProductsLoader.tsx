@@ -11,18 +11,17 @@ export function ProductLoader(props: any) {
     <ContentLoader
       animate
       speed={2}
-      viewBox="0 0 250 250"
+      viewBox="0 0 150 150"
       style={loaderStyle}
       backgroundColor="#e3d9d9"
       foregroundColor="#ada4a4"
       title="loading product..."
       {...props}
     >
-      <rect x="0%" y="5%" rx="3" ry="3" width="20%" height="7%" />
-      <rect x="88%" y="0%" rx="100" ry="100" width="12%" height="12%" />
-      <rect x="0" y="15%" rx="0" ry="0" width="100%" height="50%" />
-      <rect x="0" y="70%" rx="0" ry="0" width="100%" height="5%" />
-      <rect x="0" y="80%" rx="0" ry="0" width="100%" height="5%" />
+      <rect x="0" y="0%" rx="0" ry="0" width="100%" height="50%" />
+      <rect x="0%" y="55%" rx="3" ry="3" width="20%" height="5%" />
+      <rect x="0" y="63%" rx="0" ry="0" width="100%" height="5%" />
+      <rect x="0" y="72%" rx="0" ry="0" width="100%" height="15%" />
     </ContentLoader>
   )
 }
@@ -50,9 +49,11 @@ export function LineLoader(props: any) {
 export default function LoadProducts() {
   const mobileWidth = useMediaQuery('(max-width:768px)')
 
-  const mobileStyle = mobileWidth ? 'w-1/2 px-1' : 'w-1/4 px-2'
+  const mobileStyle = mobileWidth ? 'w-1/2 px-1' : 'w-1/5 px-2'
 
-  const productsArray = new Array(8).fill(0)
+  const numberOfLoaders = mobileWidth ? 2 : 5
+
+  const productsArray = new Array(numberOfLoaders).fill(0)
   return (
     <div className="container flex flex-wrap px-1">
       {productsArray.map((_, index: number) => (

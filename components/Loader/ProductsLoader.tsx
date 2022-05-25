@@ -46,6 +46,22 @@ export function LineLoader(props: any) {
   )
 }
 
+interface Props {
+  numberOfLine: number
+}
+
+export function LineLoaderArray({ numberOfLine }: Props) {
+  const lineArray = new Array(numberOfLine).fill(0)
+
+  return (
+    <>
+      {lineArray.map((_, index: number) => (
+        <LineLoader key={index} />
+      ))}
+    </>
+  )
+}
+
 export default function LoadProducts() {
   const mobileWidth = useMediaQuery('(max-width:768px)')
 

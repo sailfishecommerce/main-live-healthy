@@ -8,7 +8,7 @@ interface Props {
 
 export default function AllCategoriesDropdownView({ updateDropdown }: Props) {
   return (
-    <div className="sticky z-50 w-full bg-white h-full left-0 top-60 flex flex-col">
+    <div className="sticky z-50 w-full bg-white h-full left-0 top-72 flex flex-col">
       <div className="content bg-white z-40 left-0 top-20 mx-auto flex justify-start justify-between container">
         <CategorySidebarList />
         <CategoryMainList />

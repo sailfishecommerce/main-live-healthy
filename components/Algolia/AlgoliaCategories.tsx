@@ -7,6 +7,7 @@ import { memo } from 'react'
 import isEqual from 'react-fast-compare'
 import { InstantSearch, connectRefinementList } from 'react-instantsearch-dom'
 
+import { LineLoaderArray } from '@/components/Loader/ProductsLoader'
 import { useMediaQuery } from '@/hooks'
 import useNav from '@/hooks/useNav'
 import { selectedCategoryAtom, categoryDropdownAtom } from '@/lib/atomConfig'
@@ -30,7 +31,7 @@ function RefinementListMenu({ items, selectedCategory }: any) {
     <div className="menu">
       <h1 className="text-lg mb-4 font-medium mb-6">{selectedCategory}</h1>
       <ul className="flex flex-col lg:grid lg:grid-cols-3 lg:gap-2">
-        {menuArray.length === 0 && <p>Loading ...</p>}
+        {menuArray.length === 0 && <LineLoaderArray numberOfLine={5} />}
         {menuArray.map((item) => {
           return (
             <li className="hover:text-green-500 my-1" key={item}>

@@ -1,13 +1,10 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { AnimatePresence } from 'framer-motion'
-import { useAtom } from 'jotai'
-import { memo, useMemo } from 'react'
+import type { PropsWithChildren } from 'react'
+import { memo } from 'react'
 import isEqual from 'react-fast-compare'
 
 import Product from '@/components/Cards/ProductCard'
-import ProductTags from '@/components/Tag/ProductTags'
-import { selectedVendorAtom } from '@/lib/atomConfig'
-import getThreeVendors from '@/lib/getThreeVendors'
 import selectRandomColor from '@/lib/selectRandomColor'
 
 import '@splidejs/splide/dist/css/splide.min.css'
@@ -18,37 +15,19 @@ interface Props {
   productName?: string
   productClassName?: string
   randomColor?: boolean
-  products?: any[]
+  selectedProducts: any[]
 }
 
 function CategoryProductSliderComponent({
-  products,
   tabColor,
   productClassName,
   randomColor,
-}: Props) {
-  const [selectedVendor, setSelectedVendor] = useAtom(selectedVendorAtom)
-
-  const threeFirstVendors = useMemo(() => getThreeVendors(products), [])
-
-  function updateVendor(vendor: string) {
-    setSelectedVendor(vendor)
-  }
-
-  const selectedProducts = selectedVendor
-    ? products?.filter((product) => product.vendor === selectedVendor)
-    : products
-
+  selectedProducts,
+  children,
+}: PropsWithChildren<Props>) {
   return (
     <div className="w-full">
-      {threeFirstVendors.length > 0 && (
-        <ProductTags
-          vendor={selectedVendor}
-          tags={threeFirstVendors}
-          tabColor={tabColor}
-          updateVendor={updateVendor}
-        />
-      )}
+      {children}
 
       <Splide
         options={{

@@ -1,5 +1,6 @@
 import dynamic from 'next/dynamic'
 
+import productshowcaseGroup from '@/json/productshowcase.json'
 import Applayout from '@/layouts/app-layout'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
 import {
@@ -18,14 +19,12 @@ const Values = dynamic(
   () => import(/* webpackChunkName: 'Values' */ '@/components/Values')
 )
 
-const ProductShowcase = dynamic(
+const ProductShowcaseGroup = dynamic(
   () =>
     import(
-      /* webpackChunkName: 'ProductShowcase' */ '@/components/Product/ProductShowcase'
+      /* webpackChunkName: 'ProductShowcaseGroup' */ '@/components/Product/ProductShowcaseGroup'
     ),
-  {
-    ssr: false,
-  }
+  { ssr: false }
 )
 
 const BestSellerSlider = dynamic(
@@ -78,49 +77,12 @@ export default function Home(props: SearchPageLayoutProps) {
       <SearchPageLayout {...props}>
         <HomepageSlider />
         <Values />
-        <ProductShowcase
-          category="Health"
-          className="lg:bg-gray-50"
-          tabColor="#4017E0"
-        />
-        <ProductShowcase
-          category="Personal Care"
-          className="lg:bg-gray-50"
-          tabColor="#C42340"
-        />
-        <ProductShowcase
-          category="Confectionery"
-          className="lg:bg-gray-50"
-          tabColor="#50793E"
-        />
+        <ProductShowcaseGroup group={productshowcaseGroup[0]} />
         <ProductBanner />
-        <ProductShowcase
-          category="Beauty"
-          className="lg:bg-gray-50"
-          tabColor="#C47723"
-        />
-        <ProductShowcase
-          category="Medical Aids"
-          className="lg:bg-gray-50"
-          tabColor="#C42340"
-        />
+        <ProductShowcaseGroup group={productshowcaseGroup[1]} />
         <BestSellerSlider />
-        <ProductShowcase
-          category="Veterinary and Pet Care"
-          className="lg:bg-gray-50"
-          tabColor="#C47723"
-        />
         <ShippingBanner />
-        <ProductShowcase
-          category="Medicines"
-          className="lg:bg-gray-50"
-          tabColor="#E366B8"
-        />
-        <ProductShowcase
-          category="Hair Colours"
-          className="lg:bg-gray-50"
-          tabColor="#C42340"
-        />
+        <ProductShowcaseGroup group={productshowcaseGroup[2]} />
         <ProductTabSlider />
         <TrustmateReview />
         <div className="mb-6" />

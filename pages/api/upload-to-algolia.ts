@@ -4,7 +4,7 @@ import fs from 'fs'
 
 import type { NextApiRequest, NextApiResponse } from 'next'
 
-import swellProducts from '../../swellProducts.json'
+import swellProducts from '../../swellProduct.json'
 
 function splitProductCategories(productCategories: string) {
   if (productCategories?.includes(',')) {

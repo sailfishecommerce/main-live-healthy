@@ -9,11 +9,13 @@ export default function GreetUser() {
     staleTime: Infinity,
   })
 
+  const name = userDetails?.name
+
   return (
     <div className="cart mountain-green font-bold text-xs">
       {userDetails !== null ? (
         <p className="text-xs md:text-sm text-right">
-          {greetUser()}, {userDetails?.name}{' '}
+          {greetUser()} {name ? `, ${name}` : ''}
         </p>
       ) : (
         <p className="text-xs md:text-sm text-right">{greetUser()}, Guest</p>

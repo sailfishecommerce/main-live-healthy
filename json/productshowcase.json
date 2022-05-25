@@ -1,0 +1,16 @@
+[
+  [
+    { "category": "Health", "tabColor": "#4017E0" },
+    { "category": "Personal Care", "tabColor": "#C42340" },
+    { "category": "Confectionery", "tabColor": "#50793E" }
+  ],
+  [
+    { "category": "Beauty", "tabColor": "#C47723" },
+    { "category": "Medical Aids", "tabColor": "#C42340" }
+  ],
+  [
+    { "category": "Veterinary and Pet Care", "tabColor": "#C47723" },
+    { "category": "Medicines", "tabColor": "#E366B8" },
+    { "category": "Hair Colours", "tabColor": "#C42340" }
+  ]
+]

@@ -12,8 +12,6 @@ export default function OrderHistoryProductItem({ item }: any) {
     getAProduct(item.product_id)
   )
 
-  console.log('data-productDetailsproductDetails', data)
-
   const productImage =
     typeof data?.images[0] === 'string'
       ? data?.images[0]

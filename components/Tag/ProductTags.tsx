@@ -1,18 +1,21 @@
 interface ProductTagsProps {
+  index: number
   tags: string[] | null
   tabColor: string
-  vendor: string | null
-  updateVendor: (tag: string) => void
+  vendor: { vendor: string; index: number } | null
+  updateVendor: (tag: string, index: number) => void
 }
 
 export default function ProductTags({
+  index,
   tags,
   tabColor,
   vendor,
   updateVendor,
 }: ProductTagsProps) {
   const activeVendor = (tag: string) => {
-    const activeVendorClass = tag === vendor ? 'active' : ''
+    const activeVendorClass =
+      tag === vendor?.vendor && index === vendor.index ? 'active' : ''
     return activeVendorClass
   }
   return (
@@ -26,7 +29,7 @@ export default function ProductTags({
               key={tag}
               title={tag}
             >
-              <button type="button" onClick={() => updateVendor(tag)}>
+              <button type="button" onClick={() => updateVendor(tag, index)}>
                 {tag}
               </button>
             </li>

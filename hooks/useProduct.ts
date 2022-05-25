@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 import useSwell from '@/hooks/useSwell'
 
 export default function useProduct() {
@@ -8,5 +10,9 @@ export default function useProduct() {
     return await swell.products.get(productID)
   }
 
-  return { getAProduct }
+  function getProductsInACategory(category: string) {
+    return axios.post('/api/fetch-category-products', { category })
+  }
+
+  return { getAProduct, getProductsInACategory }
 }

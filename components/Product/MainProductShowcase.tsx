@@ -1,46 +1,41 @@
+/* eslint-disable no-nested-ternary */
 import classNames from 'classnames'
-import { Configure, Index } from 'react-instantsearch-dom'
+import { useQuery } from 'react-query'
 
-// import LazyLoader from '@/components/Loader/LazyLoader'
-import InfiniteHitsSlider from '@/components/Slider/InfiniteHitSlider'
-import { indexName as defaultIndexName } from '@/utils/env'
+import CategoryProductSlider from '@/components/Slider/CategoryProductSlider'
+import useProduct from '@/hooks/useProduct'
 
 export type ProductsShowcaseProps = {
-  title?: string
-  indexName?: string
-  indexId?: string
   className?: string
+  category: string
   tabColor?: string
-  [index: string]: any
 }
 
 export default function MainProductShowcase({
-  indexName = defaultIndexName,
-  indexId,
-  title,
   className,
+  category,
   tabColor,
-  ...searchParameters
 }: ProductsShowcaseProps) {
+  const { getProductsInACategory } = useProduct()
+  const { data, status } = useQuery(`get-products-in-${category}`, () =>
+    getProductsInACategory(category)
+  )
   return (
-    // <LazyLoader height={500} mobileHeight={420}>
-    <Index indexName={indexName} indexId={indexId}>
-      <Configure
-        enablePersonalization={true}
-        hitsPerPage={15}
-        {...searchParameters}
-      />
-      <section
-        className={classNames('lg:pt-6 my-3 pl-3 container mx-auto', className)}
-      >
-        {title && (
-          <h4 className="xl:text-2xl md:text-xl text-lg  -mt-3 font-bold  mb-2 lg:mb-4 lg:ml-3">
-            {title}
-          </h4>
-        )}
-        <InfiniteHitsSlider tabColor={tabColor} />
-      </section>
-    </Index>
-    // </LazyLoader>
+    <section
+      className={classNames('lg:pt-6 my-3 pl-3 container mx-auto', className)}
+    >
+      {category && (
+        <h4 className="xl:text-2xl md:text-xl text-lg  -mt-3 font-bold  mb-2 lg:mb-4 lg:ml-3">
+          {category}
+        </h4>
+      )}
+      {status === 'error'
+        ? 'error fetchin products'
+        : status === 'loading'
+        ? 'Loading ...'
+        : data?.data.length > 0 && (
+            <CategoryProductSlider products={data?.data} tabColor={tabColor} />
+          )}
+    </section>
   )
 }

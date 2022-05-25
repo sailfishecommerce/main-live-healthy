@@ -77,69 +77,50 @@ export default function Home(props: SearchPageLayoutProps) {
   return (
     <Applayout title="Welcome to Livehealthy stores">
       <SearchPageLayout {...props}>
-        <Configure
-          hitsPerPage={15}
-          // We cannot retrieve the user token at build time, so we disable perso
-          // feature to avoid an additional call to retrieve Algolia results at load time
-          enablePersonalization={false}
-          userToken={undefined}
-        />
         <HomepageSlider />
         <Values />
         <MainProductShowcase
-          title="Weight Loss"
-          indexId="weight_loss_product_type"
-          query="weight loss"
+          category="Health"
           className="lg:bg-gray-50"
           tabColor="#4017E0"
         />
         <MainProductShowcase
-          title="Sport Nutrition"
-          indexId="sport_nutrition_product_type"
-          query="Sport nutrition"
-          tabColor="#C42340"
+          category="Personal Care"
+          className="lg:bg-gray-50"
+          tabColor="#4017E0"
+        />
+        <MainProductShowcase
+          category="Confectionery"
+          className="lg:bg-gray-50"
+          tabColor="#4017E0"
         />
         <ProductBanner />
         <MainProductShowcase
-          title="Quit Smoking"
-          indexId="quit_smoking_product_type"
-          query="cigarette"
+          category="Beauty"
+          className="lg:bg-gray-50"
+          tabColor="#4017E0"
+        />
+        <MainProductShowcase
+          category="Medical Aids"
+          className="lg:bg-gray-50"
+          tabColor="#4017E0"
+        />
+        <BestSellerSlider />
+        <MainProductShowcase
+          category="Veterinary and Pet Care"
+          className="lg:bg-gray-50"
+          tabColor="#C47723"
+        />
+        <ShippingBanner />
+        <MainProductShowcase
+          category="Medicines"
           className="lg:bg-gray-50"
           tabColor="#C47723"
         />
         <MainProductShowcase
-          title="Health"
-          indexId="health_product_type"
-          query="health"
-          tabColor="#50793E"
-        />
-        <ShippingBanner />
-        <MainProductShowcase
-          title="Hair Colours"
-          indexId="hair_colours_product_type"
-          query="hair colours"
+          category="Hair Colours"
           className="lg:bg-gray-50"
-          tabColor="#E366B8"
-        />
-        <MainProductShowcase
-          title="Medical Aids"
-          indexId="medical_aid_product_type"
-          query="medical aids"
-          tabColor="#C42340"
-        />
-        <BestSellerSlider />
-        <MainProductShowcase
-          title="Confectionery"
-          indexId="confectionery_product_type"
-          query="confectionery"
-          className="lg:bg-gray-50"
-          tabColor="#50793E"
-        />
-        <MainProductShowcase
-          title="Veterinary and Pet Care"
-          indexId="veterinary_pet_care_product_type"
-          query="veterinary"
-          tabColor="#4017E0"
+          tabColor="#C47723"
         />
         <ProductTabSlider />
         <TrustmateReview />

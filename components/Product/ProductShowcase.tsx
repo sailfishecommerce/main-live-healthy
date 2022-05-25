@@ -44,7 +44,7 @@ export default function ProductShowcase({
   const threeFirstVendors = useMemo(() => getThreeVendors(products), [products])
 
   return (
-    <section className="py-4 my-6 rounded-xl container px-4 mx-auto lg:bg-gray-100">
+    <section className="lg:py-4 py-2 lg:my-6 rounded-xl container lg:px-4 px-2 mx-auto lg:bg-gray-100">
       {category && (
         <h4 className="xl:text-2xl md:text-xl text-lg  font-bold  mb-2 lg:mb-4 lg:ml-3">
           {category}

@@ -4,6 +4,7 @@ import { useQuery } from 'react-query'
 
 import CategoryProductSlider from '@/components/Slider/CategoryProductSlider'
 import useProduct from '@/hooks/useProduct'
+import toSlug from '@/lib/toSlug'
 
 export type ProductsShowcaseProps = {
   className?: string
@@ -17,7 +18,8 @@ export default function MainProductShowcase({
   tabColor,
 }: ProductsShowcaseProps) {
   const { getProductsInACategory } = useProduct()
-  const { data, status } = useQuery(`get-products-in-${category}`, () =>
+  const categorySlug = toSlug(category)
+  const { data, status } = useQuery(`get-products-in-${categorySlug}`, () =>
     getProductsInACategory(category)
   )
   return (

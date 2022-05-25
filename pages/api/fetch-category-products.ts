@@ -17,10 +17,12 @@ export default async function fetchProductsHandler(
           category,
         })
         .then((response: any) => {
-          console.log('responseresponse', response.results)
           return res.status(200).send(response.results)
         })
-        .catch((error: any) => console.log('error', error))
+        .catch((error: any) => {
+          console.log('error', error)
+          return res.status(400).send(error)
+        })
     }
     default:
       return null

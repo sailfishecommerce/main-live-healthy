@@ -5,7 +5,6 @@ import useCategoryData from '@/hooks/useCategoryData'
 
 export default function SecondaryMenu() {
   const [data, status] = useCategoryData()
-
   const categories = status === 'success' ? data?.results.slice(12, 20) : []
   return (
     <div className="md:flex lg:px-4 xl:px-0 items-center relative justify-between py-2">

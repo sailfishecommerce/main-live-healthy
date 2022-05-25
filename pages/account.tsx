@@ -1,14 +1,16 @@
+/* eslint-disable no-nested-ternary */
 import axios from 'axios'
 import { useQuery } from 'react-query'
 
 import Breadcrumb from '@/components/Breadcrumb'
+import Error404 from '@/components/Error'
+import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import OrderHistory from '@/components/Order/OrderHistory'
 import AccountDetail from '@/components/Shipping/AccountDetail'
 import Tabs from '@/components/Tabs'
 import { useAccount } from '@/hooks'
 import breadcrumb from '@/json/breadcrumb.json'
 import Applayout from '@/layouts/app-layout'
-// import FacebookScript, { FacebookButtonScript } from '@/scripts/facebook-script'
 
 export default function Account() {
   const { getUserAccount } = useAccount()
@@ -26,7 +28,11 @@ export default function Account() {
         <main className="container mx-auto px-4 md:px-0">
           <Breadcrumb breadcrumbItems={breadcrumb.account} />
 
-          {status === 'success' && data === null ? (
+          {status === 'error' ? (
+            <Error404 />
+          ) : status === 'loading' ? (
+            <SpinnerRipple centerRipple />
+          ) : data === null ? (
             <div className="login bg-gray-100 mx-auto flex flex-col py-12 justify-center mb-4">
               <h1 className="text-center font-bold text-md lg:text-xl mb-4">
                 Login / Sign up to access your account details

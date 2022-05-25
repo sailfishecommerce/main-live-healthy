@@ -1,91 +1,45 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable @next/next/no-img-element */
+import Image from 'next/image'
 import Link from 'next/link'
+
+const links = [
+  { link: '/', title: 'Home', text: 'Return to Home' },
+  { link: '/collection', title: 'Continue Shopping', text: 'Shopping now' },
+  {
+    link: '/customer-care',
+    title: 'Help & Support',
+    text: 'Visit our help center',
+  },
+]
 
 export default function Error404() {
   return (
-    <div className="container py-5 mb-lg-3">
-      <div className="justify-center pt-lg-4 text-center">
-        <div className="col-md-7 col-sm-9">
-          <img
-            className="d-block mx-auto mb-5"
-            src="/pages/404.png"
-            width="340"
-            alt="404 Error"
-          />
-          <h1 className="h3">404 error</h1>
-          <h3 className="h5 fw-normal mb-4">
-            We can&#39;t seem to find the page you are looking for.
-          </h3>
-          <p className="fs-md mb-4">
-            <u>Here are some helpful links instead:</u>
-          </p>
-        </div>
+    <div className="container justify-center items-center mx-auto py-2 mb-3">
+      <div className="mx-auto flex justify-center flex-col w-1/4 text-center mb-4">
+        <Image src="/pages/404.png" height={340} width={340} alt="404 Error" />
+        <h1 className="mb-4 font-bold lg:text-xl">404 error</h1>
+        <h3 className="mb-4  lg:text-xl text-md mb-4">
+          We can&#39;t seem to find the page you are looking for.
+        </h3>
+        <p className="text-lg mb-4">
+          <u>Here are some helpful links instead:</u>
+        </p>
       </div>
-      <div className="flex items-center justify-center">
-        <div className="col-xl-8 col-lg-10">
-          <div className="row">
-            <div className="col-sm-4 mb-3">
-              <Link passHref href="/">
-                <a
-                  aria-label="go to homepage"
-                  className="card h-100 border-0 shadow-sm"
-                >
-                  <div className="card-body">
-                    <div className="flex items-center">
-                      <i className="ci-home text-primary h4 mb-0"></i>
-                      <div className="ps-3">
-                        <h5 className="fs-sm mb-0">Homepage</h5>
-                        <span className="text-gray-500 fs-ms">
-                          Return to homepage
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </Link>
-            </div>
-            <div className="col-sm-4 mb-3">
-              <a
-                aria-label="search"
-                className="card h-100 border-0 shadow-sm"
-                href="#"
-              >
-                <div className="card-body">
-                  <div className="flex items-center">
-                    <i className="ci-search text-success h4 mb-0"></i>
-                    <div className="ps-3">
-                      <h5 className="fs-sm mb-0">Search</h5>
-                      <span className="text-gray-500 fs-ms">
-                        Find with advanced search
-                      </span>
-                    </div>
-                  </div>
-                </div>
-              </a>
-            </div>
-            <div className="col-sm-4 mb-3">
-              <Link passHref href="/help-topics">
-                <a
-                  aria-label="support center"
-                  className="card h-100 border-0 shadow-sm"
-                >
-                  <div className="card-body">
-                    <div className="flex items-center">
-                      <i className="ci-help text-info h4 mb-0"></i>
-                      <div className="ps-3">
-                        <h5 className="fs-sm mb-0">Help &amp; Support</h5>
-                        <span className="text-gray-500 fs-ms">
-                          Visit our help center
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-              </Link>
-            </div>
-          </div>
-        </div>
+      <div className="flex mx-auto mb-5 items-center justify-between w-2/3">
+        {links.map((link) => (
+          <Link passHref key={link.link} href={link.link}>
+            <a
+              aria-label="go to homepage"
+              className="card h-100 border-0 shadow-sm"
+            >
+              <div className="flex items-center flex-col">
+                <h5 className="lg:text-xl text-md font-semibold mb-0">
+                  {link.title}
+                </h5>
+                <p className="text-gray-500 text-lg fs-ms">{link.text}</p>
+              </div>
+            </a>
+          </Link>
+        ))}
       </div>
     </div>
   )

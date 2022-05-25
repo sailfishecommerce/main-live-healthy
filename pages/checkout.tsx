@@ -37,8 +37,10 @@ export default function Checkout() {
       {status === 'error' ? (
         <EmptyCart />
       ) : status === 'loading' ? (
-        <SpinnerRipple />
-      ) : cart === null || cart.items.length === 0 ? (
+        <SpinnerRipple centerRipple />
+      ) : cart === null ||
+        cart?.items?.length === 0 ||
+        cart?.items === undefined ? (
         <EmptyCart />
       ) : (
         <main className="mx-auto bg-light-gray">

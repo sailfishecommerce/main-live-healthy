@@ -1,11 +1,8 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { AnimatePresence } from 'framer-motion'
-import { useMemo } from 'react'
 import { connectHits } from 'react-instantsearch-dom'
 
 import Product from '@/components/Cards/ProductCard'
-import ProductTags from '@/components/Tag/ProductTags'
-import getThreeVendors from '@/lib/getThreeVendors'
 import selectRandomColor from '@/lib/selectRandomColor'
 import '@splidejs/splide/dist/css/splide.min.css'
 
@@ -25,14 +22,8 @@ function ProductHitsSliderComponent({
   productClassName,
   randomColor,
 }: HitProps) {
-  const threeFirstVendors = useMemo(() => getThreeVendors(hits), [hits])
-
   return (
     <div className="w-full">
-      {threeFirstVendors.length > 0 && (
-        <ProductTags tags={threeFirstVendors} tabColor={tabColor} />
-      )}
-
       <Splide
         options={{
           perPage: 6,

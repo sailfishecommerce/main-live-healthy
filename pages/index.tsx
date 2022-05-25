@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic'
-import { Configure } from 'react-instantsearch-dom'
 
 import Applayout from '@/layouts/app-layout'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
@@ -19,10 +18,10 @@ const Values = dynamic(
   () => import(/* webpackChunkName: 'Values' */ '@/components/Values')
 )
 
-const MainProductShowcase = dynamic(
+const ProductShowcase = dynamic(
   () =>
     import(
-      /* webpackChunkName: 'MainProductShowcase' */ '@/components/Product/MainProductShowcase'
+      /* webpackChunkName: 'ProductShowcase' */ '@/components/Product/ProductShowcase'
     ),
   {
     ssr: false,
@@ -79,48 +78,48 @@ export default function Home(props: SearchPageLayoutProps) {
       <SearchPageLayout {...props}>
         <HomepageSlider />
         <Values />
-        <MainProductShowcase
+        <ProductShowcase
           category="Health"
           className="lg:bg-gray-50"
           tabColor="#4017E0"
         />
-        <MainProductShowcase
+        <ProductShowcase
           category="Personal Care"
           className="lg:bg-gray-50"
-          tabColor="#4017E0"
+          tabColor="#C42340"
         />
-        <MainProductShowcase
+        <ProductShowcase
           category="Confectionery"
           className="lg:bg-gray-50"
-          tabColor="#4017E0"
+          tabColor="#50793E"
         />
         <ProductBanner />
-        <MainProductShowcase
+        <ProductShowcase
           category="Beauty"
           className="lg:bg-gray-50"
-          tabColor="#4017E0"
+          tabColor="#C47723"
         />
-        <MainProductShowcase
+        <ProductShowcase
           category="Medical Aids"
           className="lg:bg-gray-50"
-          tabColor="#4017E0"
+          tabColor="#C42340"
         />
         <BestSellerSlider />
-        <MainProductShowcase
+        <ProductShowcase
           category="Veterinary and Pet Care"
           className="lg:bg-gray-50"
           tabColor="#C47723"
         />
         <ShippingBanner />
-        <MainProductShowcase
+        <ProductShowcase
           category="Medicines"
           className="lg:bg-gray-50"
-          tabColor="#C47723"
+          tabColor="#E366B8"
         />
-        <MainProductShowcase
+        <ProductShowcase
           category="Hair Colours"
           className="lg:bg-gray-50"
-          tabColor="#C47723"
+          tabColor="#C42340"
         />
         <ProductTabSlider />
         <TrustmateReview />

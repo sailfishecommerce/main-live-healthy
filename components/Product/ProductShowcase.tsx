@@ -9,18 +9,20 @@ import toSlug from '@/lib/toSlug'
 export type ProductsShowcaseProps = {
   className?: string
   category: string
-  tabColor?: string
+  tabColor: string
 }
 
-export default function MainProductShowcase({
+export default function ProductShowcase({
   className,
   category,
   tabColor,
 }: ProductsShowcaseProps) {
   const { getProductsInACategory } = useProduct()
   const categorySlug = toSlug(category)
-  const { data, status } = useQuery(`get-products-in-${categorySlug}`, () =>
-    getProductsInACategory(category)
+  const { data, status } = useQuery(
+    `get-products-in-${categorySlug}`,
+    () => getProductsInACategory(category),
+    { staleTime: Infinity }
   )
   return (
     <section

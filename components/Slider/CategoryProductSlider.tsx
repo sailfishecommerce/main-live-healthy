@@ -1,10 +1,12 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { AnimatePresence } from 'framer-motion'
+import { useAtom } from 'jotai'
 import { memo, useMemo } from 'react'
 import isEqual from 'react-fast-compare'
 
 import Product from '@/components/Cards/ProductCard'
 import ProductTags from '@/components/Tag/ProductTags'
+import { selectedVendorAtom } from '@/lib/atomConfig'
 import getThreeVendors from '@/lib/getThreeVendors'
 import selectRandomColor from '@/lib/selectRandomColor'
 
@@ -12,7 +14,7 @@ import '@splidejs/splide/dist/css/splide.min.css'
 
 interface Props {
   tags?: string[]
-  tabColor?: string
+  tabColor: string
   productName?: string
   productClassName?: string
   randomColor?: boolean
@@ -25,12 +27,27 @@ function CategoryProductSliderComponent({
   productClassName,
   randomColor,
 }: Props) {
+  const [selectedVendor, setSelectedVendor] = useAtom(selectedVendorAtom)
+
   const threeFirstVendors = useMemo(() => getThreeVendors(products), [])
+
+  function updateVendor(vendor: string) {
+    setSelectedVendor(vendor)
+  }
+
+  const selectedProducts = selectedVendor
+    ? products?.filter((product) => product.vendor === selectedVendor)
+    : products
 
   return (
     <div className="w-full">
       {threeFirstVendors.length > 0 && (
-        <ProductTags tags={threeFirstVendors} tabColor={tabColor} />
+        <ProductTags
+          vendor={selectedVendor}
+          tags={threeFirstVendors}
+          tabColor={tabColor}
+          updateVendor={updateVendor}
+        />
       )}
 
       <Splide
@@ -59,7 +76,7 @@ function CategoryProductSliderComponent({
         className="productSlider itemSlider container mx-auto"
       >
         <AnimatePresence>
-          {products?.map((product) => (
+          {selectedProducts?.map((product) => (
             <SplideSlide key={product.id}>
               <Product
                 color={randomColor ? selectRandomColor() : tabColor}

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import type { NextApiRequest, NextApiResponse } from 'next'
 import swell from 'swell-node'
 
@@ -14,6 +15,7 @@ export default async function fetchProductsHandler(
       return await swell
         .get('/products', {
           where: { select_store: 'livehealthy' },
+          limit: 20,
           category,
         })
         .then((response: any) => {

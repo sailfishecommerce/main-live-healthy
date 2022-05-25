@@ -83,3 +83,6 @@ export const socailAuthDetailsAtom = atom<socailAuthDetailsType>({
 // admin
 // admin-auth
 export const adminAuthAtom = atomWithStorage<any>('adminAuth', null)
+
+// ProductShowcase
+export const selectedVendorAtom = atom<string | null>(null)

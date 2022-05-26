@@ -278,6 +278,16 @@ span.ais-SearchBox-loadingIndicator {
   margin-left: 5px;
 }
 
+/* invoice list table */
+.view {
+  border-bottom: 1px solid #e5e5e6;
+  margin: 10px 0px;
+  height: 120px;
+}
+.view td p.quantity {
+  text-align: center;
+}
+
 @media (min-width: 768px) {
   nav.nav {
     height: 165px;

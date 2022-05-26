@@ -21,6 +21,7 @@
     "@algolia/react-instantsearch-widget-size-refinement-list": "^1.0.2",
     "@artsy/fresnel": "^3.5.0",
     "@material-design-icons/svg": "^0.10.6",
+    "@react-pdf/renderer": "^2.1.1",
     "@splidejs/react-splide": "^0.6.20",
     "@splidejs/splide": "^3.6.12",
     "@stripe/stripe-js": "^1.24.0",

@@ -17,65 +17,54 @@ function InvoiceHitComponent({
       ? invoiceHit?.images[0]
       : invoiceHit?.images[0].file.url
   const productPrice = currency === 'HKD' ? invoiceHit?.sale_price : price
+
+  console.log('invoiceHit', invoiceHit)
+
   return (
-    <>
-      <tr className="view">
-        <td>
-          <div className="product-view flex items-center">
-            {invoiceHit && (
-              <Image
-                src={productImage}
-                alt={invoiceHit?.name}
-                height={80}
-                width={80}
-              />
-            )}
-            <div className="content flex flex-col ml-2">
-              <h1 className="font-thin text-lg">{invoiceHit?.name}</h1>
-              <p className="font-thin text-md">SKU {invoiceHit?.sku}</p>
-            </div>
-          </div>
-        </td>
-        <td>
-          <div className="price flex flex-col">
-            {price === invoiceHit?.price && (
-              <FormattedPrice
-                price={invoiceHit?.price}
-                className="text-md font-bold strike-through"
-                currency={currency}
-              />
-            )}
-            <FormattedPrice
-              currency={currency}
-              price={productPrice}
-              className="text-md font-thin"
+    <tr className="view">
+      <td>
+        <div className="product-view flex items-center">
+          {invoiceHit && (
+            <Image
+              src={productImage}
+              alt={invoiceHit?.name}
+              height={80}
+              width={80}
             />
+          )}
+          <div className="content flex flex-col ml-2">
+            <h1 className="font-thin text-lg">{invoiceHit?.name}</h1>
+            <p className="font-thin text-md">SKU {invoiceHit?.sku}</p>
           </div>
-        </td>
-        <td>
-          <p className="font-thin text-md quantity">{quantity}</p>
-        </td>
-        <td>
+        </div>
+      </td>
+      <td>
+        <div className="price flex flex-col">
+          {price === invoiceHit?.price && (
+            <FormattedPrice
+              price={invoiceHit?.price}
+              className="text-md font-bold strike-through"
+              currency={currency}
+            />
+          )}
           <FormattedPrice
-            className="text-md font-thin"
-            price={price_total}
             currency={currency}
+            price={productPrice}
+            className="text-md font-thin"
           />
-        </td>
-      </tr>
-      <style jsx>
-        {`
-          .view {
-            border-bottom: 1px solid #e5e5e6;
-            margin: 10px 0px;
-            height: 120px;
-          }
-          .view td p.quantity {
-            text-align: center;
-          }
-        `}
-      </style>
-    </>
+        </div>
+      </td>
+      <td>
+        <p className="font-thin text-md quantity">{quantity}</p>
+      </td>
+      <td>
+        <FormattedPrice
+          className="text-md font-thin"
+          price={price_total}
+          currency={currency}
+        />
+      </td>
+    </tr>
   )
 }
 const InvoiceHit = connectHits<any, any>(InvoiceHitComponent)

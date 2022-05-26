@@ -1,3 +1,7 @@
+/**
+ * Invoice page.
+ */
+
 import dynamic from 'next/dynamic'
 
 import productshowcaseGroup from '@/json/productshowcase.json'

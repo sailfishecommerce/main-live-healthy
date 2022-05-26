@@ -1,5 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import DashboardMainView from '@/components/Dashboard/DashboardMainView'
+import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import OrdersTable from '@/components/Table/OrdersTable'
 import useAdminOrder from '@/hooks/useAdminOrder'
 import DashboardLayout from '@/layouts/dashboard-layout'
@@ -14,7 +15,7 @@ export default function InvoicePage() {
           {status === 'error' ? (
             'unable to fetch orders'
           ) : status === 'loading' ? (
-            'loading ...'
+            <SpinnerRipple centerRipple />
           ) : (
             <OrdersTable orders={data?.data?.results} />
           )}

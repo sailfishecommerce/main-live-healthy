@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useAtom } from 'jotai'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { selectedInvoiceAtom } from '@/lib/atomConfig'
 
@@ -13,12 +14,34 @@ const headContent = [
   'TOTAL',
 ]
 
-export default function OrderTableHead() {
-  const [selectedInvoice, setSelectedInvoice] = useAtom(selectedInvoiceAtom)
+interface OrderTableHeadProps {
+  allIndex: number[]
+}
 
+export default function OrderTableHead({ allIndex }: OrderTableHeadProps) {
+  const [selectedInvoice, setSelectedInvoice] = useAtom(selectedInvoiceAtom)
+  const { selectAll } = selectedInvoice
   function onChangeHandler() {
-    setSelectedInvoice(!selectedInvoice)
+    setSelectedInvoice({
+      ...selectedInvoice,
+      selectAll: !selectAll,
+    })
   }
+
+  useEffect(() => {
+    if (selectedInvoice.selectAll) {
+      setSelectedInvoice({
+        ...selectedInvoice,
+        selected: allIndex,
+      })
+    } else {
+      setSelectedInvoice({
+        ...selectedInvoice,
+        selected: [],
+      })
+    }
+  }, [selectAll])
+
   return (
     <>
       <thead>
@@ -26,7 +49,7 @@ export default function OrderTableHead() {
           <th>
             <input
               type="checkbox"
-              checked={selectedInvoice}
+              checked={selectedInvoice.selectAll}
               onChange={onChangeHandler}
             />
           </th>

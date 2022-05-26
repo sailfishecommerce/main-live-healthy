@@ -86,7 +86,13 @@ export const adminAuthAtom = atomWithStorage<any>('adminAuth', null)
 
 // admin-invoice
 export const adminInvoiceAtom = atom(null)
-export const selectedInvoiceAtom = atom(false)
+export const selectedInvoiceAtom = atom<{
+  selected: number[]
+  selectAll: boolean
+}>({
+  selected: [],
+  selectAll: false,
+})
 
 // ProductShowcase
 export const selectedVendorAtom = atom<{

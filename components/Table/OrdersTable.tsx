@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import OrderTableHead from '@/components/Table/OrderTableHead'
 import OrderTableList from '@/components/Table/OrderTableList'
 
@@ -14,13 +16,23 @@ type orderType = {
 }
 
 export default function OrdersTable({ orders }: any) {
+  const [allIndex, setAllIndex] = useState<number[]>([])
+  const allIndexArray: number[] = []
   return (
     <table className="table w-full rounded-3xl my-4">
-      <OrderTableHead />
+      <OrderTableHead allIndex={allIndex} />
       <tbody>
-        {orders.map((order: orderType, index: number) => (
-          <OrderTableList order={order} key={order.id} index={index} />
-        ))}
+        {orders.map((order: orderType, index: number) => {
+          return (
+            <OrderTableList
+              setAllIndex={setAllIndex}
+              allIndex={allIndexArray}
+              order={order}
+              key={order.id}
+              index={index}
+            />
+          )
+        })}
       </tbody>
     </table>
   )

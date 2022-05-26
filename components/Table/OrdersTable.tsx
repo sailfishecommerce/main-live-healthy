@@ -1,7 +1,11 @@
-import Link from 'next/link'
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+import { useAtom } from 'jotai'
+import { useRouter } from 'next/router'
 import type { Key } from 'react'
+import React from 'react'
 
 import OrderTableHead from '@/components/Table/OrderTableHead'
+import { selectedInvoiceAtom } from '@/lib/atomConfig'
 import { formatOrderDate } from '@/lib/formatOrderDate'
 import { formatPrice } from '@/lib/formatPrice'
 
@@ -18,6 +22,13 @@ type orderType = {
 }
 
 export default function OrdersTable({ orders }: any) {
+  const [selectedInvoice] = useAtom(selectedInvoiceAtom)
+
+  const router = useRouter()
+
+  function viewInvoice(id: any | string) {
+    router.push(`/admin/invoice/${id}`)
+  }
   return (
     <>
       <table className="table w-full rounded-3xl my-4">
@@ -35,17 +46,24 @@ export default function OrdersTable({ orders }: any) {
               : 'Unfulfilled'
             const currency = order.currency === 'HKD' ? 'HK $' : order.currency
             return (
-              <Link passHref key={order.id} href={`/admin/invoice/${order.id}`}>
-                <tr className="bg-white row p-4">
-                  <td>{orderNumber}</td>
-                  <td>{order.number}</td>
-                  <td>{formatOrderDate(order.date_created)}</td>
-                  <td>{customerName}</td>
-                  <td>{paymentType}</td>
-                  <td>{orderFulfillment}</td>
-                  <td>{`${currency} ${formatPrice(order.payment_total)}`}</td>
-                </tr>
-              </Link>
+              <tr key={order.id} className="bg-white row p-4">
+                <td>
+                  <input checked={selectedInvoice} type="checkbox" />
+                </td>
+                <td onClick={() => viewInvoice(order.id)}>{orderNumber}</td>
+                <td onClick={() => viewInvoice(order.id)}>{order.number}</td>
+                <td onClick={() => viewInvoice(order.id)}>
+                  {formatOrderDate(order.date_created)}
+                </td>
+                <td onClick={() => viewInvoice(order.id)}>{customerName}</td>
+                <td onClick={() => viewInvoice(order.id)}>{paymentType}</td>
+                <td onClick={() => viewInvoice(order.id)}>
+                  {orderFulfillment}
+                </td>
+                <td
+                  onClick={() => viewInvoice(order.id)}
+                >{`${currency} ${formatPrice(order.payment_total)}`}</td>
+              </tr>
             )
           })}
         </tbody>
@@ -54,6 +72,16 @@ export default function OrdersTable({ orders }: any) {
         {`
           table {
           }
+          tr.bg-white.row {
+            position: relative;
+            z-index: 10;
+          }
+          .checkbox-form input {
+            position: absolute;
+            z-index: 20;
+            left: 10;
+          }
+
           .row {
             width: 100%;
             border-bottom: 1px solid #e5e5e6;

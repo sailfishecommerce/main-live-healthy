@@ -10,7 +10,7 @@ export default function InvoicePage() {
     <DashboardLayout title="Admin page">
       <DashboardMainView>
         <div className="policy mt-4">
-          <h1 className="text-3xl">Livehealthy Order Invoices</h1>
+          <h1 className="lg:text-3xl text-xl">Livehealthy Order Invoices</h1>
           {status === 'error' ? (
             'unable to fetch orders'
           ) : status === 'loading' ? (

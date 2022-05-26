@@ -14,11 +14,11 @@ export default function DashboardLinks() {
             : 'text-gray'
         return (
           <li
-            className={`p-2 my-2 text-lg hover:bg-gray-100 ${activeLink}`}
+            className={`p-2 my-2 text-lg flex hover:bg-gray-100 ${activeLink}`}
             key={linkItem.link}
           >
             <Link passHref href={linkItem.link}>
-              <a>{linkItem.text}</a>
+              <a className="w-full">{linkItem.text}</a>
             </Link>
           </li>
         )

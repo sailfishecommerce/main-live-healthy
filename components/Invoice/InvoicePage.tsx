@@ -8,16 +8,16 @@ import getShippingMethod from '@/lib/shippingMethod'
 
 const style = { width: '100%' }
 
-export default function InvoicePage({ pageRef, invoice }: any) {
+export default function InvoicePage({ invoice }: any) {
   const paymentMethod = invoice?.billing.intent?.stripe.id
     ? `Stripe ${invoice?.billing?.intent?.stripe.id.toUpperCase()}`
     : ''
   const shippingMethod = getShippingMethod(invoice)
   return (
-    <div ref={pageRef}>
+    <>
       <div
         style={style}
-        className="invoice-receipt mt-12 bg-white p-6 rounded-xl"
+        className="invoice-receipt my-12 bg-white p-6 rounded-xl"
       >
         <div className="row flex justify-between mb-16 items-center">
           <Logo className="w-1/2" />
@@ -145,6 +145,6 @@ export default function InvoicePage({ pageRef, invoice }: any) {
           }
         `}
       </style>
-    </div>
+    </>
   )
 }

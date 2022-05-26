@@ -1,16 +1,8 @@
 /* eslint-disable jsx-a11y/alt-text */
-import {
-  Document,
-  Page,
-  Text,
-  Image,
-  Font,
-  View,
-  Link,
-  StyleSheet,
-} from '@react-pdf/renderer'
+import { Document, Page, Text, Image, View, Link } from '@react-pdf/renderer'
 import dynamic from 'next/dynamic'
 
+import { styles } from '@/components/Invoice/invoice-style'
 import FormattedPrice from '@/components/Price/FormattedPrice'
 import { formatOrderDate } from '@/lib/formatOrderDate'
 import getCountry from '@/lib/getCountry'
@@ -25,121 +17,6 @@ const InvoiceList = dynamic(
     ssr: false,
   }
 )
-
-Font.register({
-  family: 'Open Sans',
-  src: `https://fonts.gstatic.com/s/opensans/v17/mem8YaGs126MiZpBA-UFVZ0e.ttf`,
-})
-
-Font.register({
-  family: 'Lato',
-  src: `https://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wWw.ttf`,
-})
-
-Font.register({
-  family: 'Lato Italic',
-  src: `https://fonts.gstatic.com/s/lato/v16/S6u8w4BMUTPHjxsAXC-v.ttf`,
-})
-
-Font.register({
-  family: 'Lato Bold',
-  src: `https://fonts.gstatic.com/s/lato/v16/S6u9w4BMUTPHh6UVSwiPHA.ttf`,
-})
-
-const styles = StyleSheet.create({
-  page: {
-    width: '100%',
-    padding: 20,
-  },
-  image: {
-    height: 50,
-    width: 150,
-  },
-  date: {
-    fontSize: 14,
-    fontWeight: 300,
-  },
-  toRight: {
-    alignItems: 'flex-end',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-end',
-  },
-  orderNumber: {
-    fontSize: 25,
-    fontWeight: 1000,
-  },
-  fbIcon: {
-    height: 20,
-    width: 20,
-    marginRight: 10,
-  },
-  text: {
-    fontSize: 12,
-    fontWeight: 300,
-    fontFamily: 'Lato',
-    fontColor: 'gray',
-  },
-  title: {
-    fontSize: 14,
-    fontWeight: 800,
-    fontFamily: 'Lato Bold',
-  },
-  header: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    width: '100%',
-    flexDirection: 'row',
-  },
-  row2: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 30,
-    height: 100,
-  },
-  row3: {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 15,
-    borderTop: '1px solid gray',
-    paddingTop: 5,
-  },
-  paymentMethod: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-  },
-  storeName: {
-    fontWeight: 1000,
-    fontFamily: 'Lato Bold',
-    fontSize: 14,
-    marginTop: 20,
-  },
-  row4: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
-  },
-  link: {
-    margin: '2px 0px',
-    fontSize: 12,
-    fontFamily: 'Lato',
-  },
-  row5: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  fbLink: {
-    display: 'flex',
-    alignItems: 'center',
-    flexDirection: 'row',
-    marginTop: 30,
-  },
-})
 
 export default function InvoicePdf({ invoice }: any) {
   const paymentMethod = invoice?.billing.intent?.stripe.id
@@ -200,10 +77,10 @@ export default function InvoicePdf({ invoice }: any) {
           </View>
         </View>
         <View style={styles.row3}>
-          <Text style={styles.title}>ITEMS</Text>
-          <Text style={styles.title}>PRICE</Text>
-          <Text style={styles.title}>QTY</Text>
-          <Text style={styles.title}>ITEM TOTAL</Text>
+          <Text style={styles.itemsTitle}>ITEMS</Text>
+          <Text style={styles.rowTitle}>PRICE</Text>
+          <Text style={styles.rowTitle}>QTY</Text>
+          <Text style={styles.rowTitle}>ITEM TOTAL</Text>
         </View>
         {/* <View>
           {invoice.items.map((item: any) => (
@@ -218,16 +95,18 @@ export default function InvoicePdf({ invoice }: any) {
           ))}
         </View> */}
         <View style={styles.row4}>
-          <Text style={styles.text}>
-            Subtotal
-            <FormattedPrice
-              currency={invoice.currency}
-              price={invoice.sub_total}
-              className="text-md font-thin"
-            />
-          </Text>
-          <View>
-            <Text style={styles.title}>Shipping</Text>
+          <View style={styles.innerRow}>
+            <Text style={styles.text}>Subtotal</Text>
+            <Text style={styles.text}>
+              <FormattedPrice
+                currency={invoice.currency}
+                price={invoice.sub_total}
+                className="text-md font-thin"
+              />
+            </Text>
+          </View>
+          <View style={styles.innerRow}>
+            <Text style={styles.text}>Shipping</Text>
             <Text style={styles.text}>
               <FormattedPrice
                 currency={invoice.currency}
@@ -236,9 +115,9 @@ export default function InvoicePdf({ invoice }: any) {
               />
             </Text>
           </View>
-          <View>
+          <View style={styles.innerRow}>
             <Text style={styles.title}>TOTAL ({invoice.currency})</Text>
-            <Text style={styles.text}>
+            <Text style={styles.title}>
               <FormattedPrice
                 currency={invoice.currency}
                 price={invoice.grand_total}
@@ -246,6 +125,7 @@ export default function InvoicePdf({ invoice }: any) {
               />
             </Text>
           </View>
+          <View style={styles.totalEnd} />
         </View>
         <View style={styles.row5}>
           <Text style={styles.text}>

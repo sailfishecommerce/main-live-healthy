@@ -1,4 +1,7 @@
+import { useAtom } from 'jotai'
 import React from 'react'
+
+import { selectedInvoiceAtom } from '@/lib/atomConfig'
 
 const headContent = [
   'S/N',
@@ -11,10 +14,22 @@ const headContent = [
 ]
 
 export default function OrderTableHead() {
+  const [selectedInvoice, setSelectedInvoice] = useAtom(selectedInvoiceAtom)
+
+  function onChangeHandler() {
+    setSelectedInvoice(!selectedInvoice)
+  }
   return (
     <>
       <thead>
         <tr className="bg-white">
+          <th>
+            <input
+              type="checkbox"
+              checked={selectedInvoice}
+              onChange={onChangeHandler}
+            />
+          </th>
           {headContent.map((content) => (
             <th key={content}>{content}</th>
           ))}

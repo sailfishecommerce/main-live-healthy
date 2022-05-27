@@ -1,4 +1,4 @@
-import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer'
+import { PDFDownloadLink } from '@react-pdf/renderer'
 import { BiDownload } from 'react-icons/bi'
 
 import InvoicePage from '@/components/Invoice/InvoicePage'
@@ -16,7 +16,6 @@ export function DownloadButton() {
   )
 }
 
-const styles = { height: '100vh', width: '100%' }
 export default function Invoice({ invoice }: any) {
   return (
     <>
@@ -28,9 +27,6 @@ export default function Invoice({ invoice }: any) {
       </PDFDownloadLink>
 
       <InvoicePage invoice={invoice} />
-      <PDFViewer style={styles}>
-        <InvoicePdf invoice={invoice} />
-      </PDFViewer>
     </>
   )
 }

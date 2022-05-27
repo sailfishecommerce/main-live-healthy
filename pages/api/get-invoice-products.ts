@@ -1,5 +1,7 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable no-console */
 import fs from 'fs'
+import path from 'path'
 
 import type { NextApiRequest, NextApiResponse } from 'next'
 import swell from 'swell-node'
@@ -11,34 +13,39 @@ export default function InvoiceHandler(
   res: NextApiResponse
 ) {
   swellNodeInit()
-  const filePath = './invoice-products.json'
+  const filePath = path.join(
+    __dirname,
+    '..',
+    '..',
+    '..',
+    '..',
+    'json',
+    'invoice-product.json'
+  )
   const invoiceProductArray: string[] = []
+  console.log('filePath', filePath)
 
-  async function getSwellProduct(productId: string) {
-    return await swell
-      .get('/products/{id}', {
-        id: productId,
-      })
-      .then((response: any) => {
-        console.log('response', response)
-        invoiceProductArray.push(response)
-      })
-  }
   switch (req.method) {
     case 'POST': {
-      const productIDs: string[] = req.body.productIds
-
-      productIDs.map((productId: string) => getSwellProduct(productId))
-      return fs.writeFile(
-        filePath,
-        JSON.stringify(invoiceProductArray),
-        (err: any) => {
-          if (err) {
-            return res.status(400).json({ status: err })
-          }
-          return res.status(200).json({ status: 'ok' })
-        }
-      )
+      const productIDs: string[] = req.body.ordersIds
+      return productIDs.map((productId: string) => {
+        swell
+          .get('/products/{id}', {
+            id: productId,
+          })
+          .then((response: any) => {
+            invoiceProductArray.push(response)
+            return invoiceProductArray
+          })
+          .then((response: any) => {
+            fs.writeFile(filePath, JSON.stringify(response), (err: any) => {
+              if (err) {
+                return res.status(400).json({ status: err })
+              }
+              return res.status(200).json({ status: 'ok' })
+            })
+          })
+      })
     }
     default:
       return null

@@ -83,7 +83,7 @@ export default function InvoicePdf({ invoice }: any) {
           <Text style={styles.rowTitle}>QTY</Text>
           <Text style={styles.rowTitle}>ITEM TOTAL</Text>
         </View>
-        <View>
+        <View style={{ height: 100 }}>
           {invoice.items.map((item: any) => (
             <InvoiceListPdf
               key={item.id}

@@ -35,7 +35,7 @@ export default function InvoicePage({ invoice }: any) {
               {invoice?.shipping.address1},{invoice?.shipping.address2}
             </p>
             <p className="font-thin">
-              {invoice?.shipping.zip} {invoice?.shipping.city}{' '}
+              {invoice?.shipping.zip} {invoice?.shipping.city}
               {invoice?.shipping.state}
             </p>
             <p className="font-thin">{getCountry(invoice?.shipping.country)}</p>

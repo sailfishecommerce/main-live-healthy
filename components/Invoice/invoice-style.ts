@@ -149,11 +149,23 @@ export const itemStyles = StyleSheet.create({
     height: 100,
     width: 100,
   },
+  itemRow: {
+    height: 200,
+  },
   imageWrapper: {
     height: 100,
     width: 100,
   },
-  viewHeight: {
-    height: 100,
+  row: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  imageRow: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  text: {
+    fontSize: 14,
   },
 })

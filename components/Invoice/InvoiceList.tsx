@@ -23,13 +23,15 @@ function InvoiceListItem({ productId, currency, quantity }: any) {
                 <Image
                   src={productImage}
                   alt={invoiceProduct?.name}
-                  height={80}
-                  width={80}
+                  height={150}
+                  width={200}
                 />
               )}
               <div className="content flex flex-col ml-2">
-                <h1 className="font-thin text-lg">{invoiceProduct?.name}</h1>
-                <p className="font-thin text-md">SKU {invoiceProduct?.sku}</p>
+                <h1 className="font-thin  text-md">{invoiceProduct?.name}</h1>
+                <p className="font-thin text-md mt-2">
+                  SKU {invoiceProduct?.sku}
+                </p>
               </div>
             </div>
           )}

@@ -4,6 +4,19 @@ import { BiDownload } from 'react-icons/bi'
 import InvoicePage from '@/components/Invoice/InvoicePage'
 import InvoicePdf from '@/components/Invoice/InvoicePdf'
 
+export function DownloadButton() {
+  return (
+    <button
+      type="button"
+      className="flex  mt-4 items-center bg-mountain-green text-white py-1 p-2 rounded-md"
+    >
+      <BiDownload className="mr-2" size={24} />
+      Download
+    </button>
+  )
+}
+
+const styles = { height: '100vh', width: '100%' }
 export default function Invoice({ invoice }: any) {
   return (
     <>
@@ -11,17 +24,11 @@ export default function Invoice({ invoice }: any) {
         document={<InvoicePdf invoice={invoice} />}
         fileName={`invoice-${invoice.number}`}
       >
-        <button
-          type="button"
-          className="flex  mt-4 items-center bg-mountain-green text-white py-1 p-2 rounded-md"
-        >
-          <BiDownload className="mr-2" size={24} />
-          Download
-        </button>
+        <DownloadButton />
       </PDFDownloadLink>
 
       <InvoicePage invoice={invoice} />
-      <PDFViewer width="100%" height="100%">
+      <PDFViewer style={styles}>
         <InvoicePdf invoice={invoice} />
       </PDFViewer>
     </>

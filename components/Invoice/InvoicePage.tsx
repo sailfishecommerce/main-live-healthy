@@ -65,7 +65,7 @@ export default function InvoicePage({ invoice }: any) {
         <div className="row items mt-6">
           <table>
             <thead>
-              <tr>
+              <tr className="border-b">
                 <th>ITEMS</th>
                 <th>PRICE</th>
                 <th>QTY</th>

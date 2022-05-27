@@ -1,30 +1,43 @@
 /* eslint-disable no-nested-ternary */
+import { useAtom } from 'jotai'
 import Image from 'next/image'
+import { useEffect } from 'react'
 import { useQuery } from 'react-query'
 
-import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import FormattedPrice from '@/components/Price/FormattedPrice'
 import useProduct from '@/hooks/useProduct'
+import { invoiceProductsAtom } from '@/lib/atomConfig'
 
 function InvoiceListItem({ productId, currency, quantity }: any) {
   const { getAProduct } = useProduct()
+  const [invoiceProduct, setInvoiceProduct] = useAtom(invoiceProductsAtom)
   const { data, status } = useQuery(`productDetails-${productId}`, () =>
     getAProduct(productId)
   )
+
+  useEffect(() => {
+    if (status === 'success') {
+      setInvoiceProduct([...invoiceProduct, data])
+    }
+  }, [status])
+
+  console.log('invoiceProduct', invoiceProduct)
+  
   const productImage =
     typeof data?.images[0] === 'string'
       ? data?.images[0]
       : data?.images[0].file.url
 
-  console.log('productImage', productImage)
-
-  const productPrice = currency === 'HKD' ? data?.price : data?.origPrice
   return (
     <>
       {status === 'error' ? (
         'unable to load item'
       ) : status === 'loading' ? (
-        <SpinnerRipple centerRipple />
+        <tr>
+          <td>
+            <p>Loading...</p>
+          </td>
+        </tr>
       ) : (
         <tr className="view">
           <td className="w-1/2">
@@ -57,7 +70,7 @@ function InvoiceListItem({ productId, currency, quantity }: any) {
                 )}
                 <FormattedPrice
                   currency={currency}
-                  price={productPrice}
+                  price={data?.price}
                   className="text-md font-thin"
                 />
               </div>

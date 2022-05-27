@@ -39,7 +39,6 @@ export default function OrderTableList({
   const [selectedInvoice, setSelectedInvoice] = useAtom(selectedInvoiceAtom)
   const router = useRouter()
   const indexNumber = index + 1
-
   if (!allIndex.includes(indexNumber)) {
     allIndex.push(indexNumber)
   }
@@ -82,6 +81,7 @@ export default function OrderTableList({
   const paymentType = order.paid ? 'Paid' : 'Unpaid'
   const orderFulfillment = order.delivered ? 'Fulfilled' : 'Unfulfilled'
   const currency = order.currency === 'HKD' ? 'HK $' : order.currency
+
   return (
     <>
       <tr key={order.id} className="bg-white row p-4">

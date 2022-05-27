@@ -143,3 +143,17 @@ export const styles = StyleSheet.create({
     width: 200,
   },
 })
+
+export const itemStyles = StyleSheet.create({
+  image: {
+    height: 100,
+    width: 100,
+  },
+  imageWrapper: {
+    height: 100,
+    width: 100,
+  },
+  viewHeight: {
+    height: 100,
+  },
+})

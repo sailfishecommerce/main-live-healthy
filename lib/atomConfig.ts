@@ -94,6 +94,8 @@ export const selectedInvoiceAtom = atom<{
   selectAll: false,
 })
 
+export const invoiceProductsAtom = atom<any>([])
+
 // ProductShowcase
 export const selectedVendorAtom = atom<{
   vendor: string

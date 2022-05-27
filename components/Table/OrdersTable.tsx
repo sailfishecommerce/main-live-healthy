@@ -18,6 +18,7 @@ type orderType = {
 export default function OrdersTable({ orders }: any) {
   const [allIndex, setAllIndex] = useState<number[]>([])
   const allIndexArray: number[] = []
+  console.log('orders', orders)
   return (
     <table className="table w-full rounded-3xl my-4">
       <OrderTableHead allIndex={allIndex} />

@@ -1,12 +1,23 @@
-import { Text, Image, View } from '@react-pdf/renderer'
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable jsx-a11y/alt-text */
+import { Text, View, Image } from '@react-pdf/renderer'
+import { useAtom } from 'jotai'
 import { useEffect, useState } from 'react'
 
+import { itemStyles } from '@/components/Invoice/invoice-style'
 import FormattedPrice from '@/components/Price/FormattedPrice'
 import useProduct from '@/hooks/useProduct'
+import { invoiceProductsAtom } from '@/lib/atomConfig'
 
 export default function InvoiceListPdf({ quantity, currency, productId }: any) {
   const [product, setProduct] = useState<any>(null)
   const { getAProduct } = useProduct()
+  const [invoiceProduct] = useAtom(invoiceProductsAtom)
+  const currentInvoiceProduct = invoiceProduct.filter(
+    (product: any) => product.id === productId
+  )
+  console.log('invoiceProductinvoiceProduct', invoiceProduct)
+  console.log('currentInvoiceProduct', currentInvoiceProduct)
 
   useEffect(() => {
     if (product === null)
@@ -20,23 +31,23 @@ export default function InvoiceListPdf({ quantity, currency, productId }: any) {
         })
   }, [])
 
-  console.log('product', product)
-
   const productImage =
     typeof product?.images[0] === 'string'
       ? product?.images[0]
       : product?.images[0].file.url
 
-  const productPrice = currency === 'HKD' ? product?.price : product?.origPrice
+  console.log('productImage', productImage)
 
   return (
-    <>
-      {product !== null && (
-        <View>
+    <View
+      render={(_, product: any) => (
+        <View style={itemStyles.viewHeight}>
           <View>
-            <View>
-              {/* <Image src={productImage} height="200px" width="200ppx" /> */}
-            </View>
+            {/* <View style={itemStyles.imageWrapper}>
+              {productImage !== undefined && (
+                <Image src={productImage} style={itemStyles.image} />
+              )}
+            </View> */}
             <View>
               <Text>{product?.name}</Text>
               <Text>SKU {product?.sku}</Text>
@@ -52,7 +63,7 @@ export default function InvoiceListPdf({ quantity, currency, productId }: any) {
             )}
             <FormattedPrice
               currency={currency}
-              price={productPrice}
+              price={product.price}
               className="text-md font-thin"
             />
           </View>
@@ -68,6 +79,6 @@ export default function InvoiceListPdf({ quantity, currency, productId }: any) {
           </View>
         </View>
       )}
-    </>
+    />
   )
 }

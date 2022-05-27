@@ -15,56 +15,62 @@ function InvoiceListItem({ productId, currency, quantity }: any) {
 
   return (
     <>
-      <tr className="view">
-        <td className="w-1/2">
-          {productImage !== undefined && (
-            <div className="product-view flex items-center">
-              {productImage !== undefined && (
-                <Image
-                  src={productImage}
-                  alt={invoiceProduct?.name}
-                  height={150}
-                  width={200}
-                />
-              )}
-              <div className="content flex flex-col ml-2">
-                <h1 className="font-thin  text-md">{invoiceProduct?.name}</h1>
-                <p className="font-thin text-md mt-2">
-                  SKU {invoiceProduct?.sku}
-                </p>
+      {invoiceProduct !== undefined ? (
+        <tr className="view">
+          <td className="w-1/2">
+            {productImage !== undefined && (
+              <div className="product-view flex items-center">
+                {productImage !== undefined && (
+                  <Image
+                    src={productImage}
+                    alt={invoiceProduct?.name}
+                    height={150}
+                    width={200}
+                  />
+                )}
+                <div className="content flex flex-col ml-2">
+                  <h1 className="font-thin  text-md">{invoiceProduct?.name}</h1>
+                  <p className="font-thin text-md mt-2">
+                    SKU {invoiceProduct?.sku}
+                  </p>
+                </div>
               </div>
-            </div>
-          )}
-        </td>
-        <td className="w-1/6 text-center">
-          {productImage !== undefined && (
-            <div className="price flex flex-col">
-              {invoiceProduct?.price && (
+            )}
+          </td>
+          <td className="w-1/6 text-center">
+            {productImage !== undefined && (
+              <div className="price flex flex-col">
+                {invoiceProduct?.price && (
+                  <FormattedPrice
+                    price={invoiceProduct?.price}
+                    className="text-md font-bold strike-through"
+                    currency={currency}
+                  />
+                )}
                 <FormattedPrice
-                  price={invoiceProduct?.price}
-                  className="text-md font-bold strike-through"
                   currency={currency}
+                  price={invoiceProduct.sale_price}
+                  className="text-md font-thin"
                 />
-              )}
-              <FormattedPrice
-                currency={currency}
-                price={invoiceProduct.sale_price}
-                className="text-md font-thin"
-              />
-            </div>
-          )}
-        </td>
-        <td className="w-1/6 text-cventer">
-          <p className="font-thin text-md quantity">{quantity}</p>
-        </td>
-        <td className="w-1/6 text-center">
-          <FormattedPrice
-            className="text-md font-thin"
-            price={invoiceProduct.sale_price}
-            currency={currency}
-          />
-        </td>
-      </tr>
+              </div>
+            )}
+          </td>
+          <td className="w-1/6 text-cventer">
+            <p className="font-thin text-md quantity">{quantity}</p>
+          </td>
+          <td className="w-1/6 text-center">
+            <FormattedPrice
+              className="text-md font-thin"
+              price={invoiceProduct?.sale_price}
+              currency={currency}
+            />
+          </td>
+        </tr>
+      ) : (
+        <tr>
+          <td>{null}</td>
+        </tr>
+      )}
     </>
   )
 }

@@ -29,6 +29,12 @@ export const styles = StyleSheet.create({
     height: 50,
     width: 150,
   },
+  shippingView: {
+    width: '30%',
+  },
+  customerView: {
+    width: '30%',
+  },
   date: {
     fontSize: 14,
     fontWeight: 300,
@@ -64,13 +70,28 @@ export const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: 800,
     fontFamily: 'Lato Bold',
-    width: 600,
+    width: '60%',
   },
   rowTitle: {
     fontSize: 14,
     fontWeight: 800,
     fontFamily: 'Lato Bold',
-    width: 200,
+    width: '15%',
+    textAlign: 'center',
+  },
+  quantity: {
+    fontSize: 14,
+    fontWeight: 800,
+    fontFamily: 'Lato Bold',
+    width: '10%',
+    textAlign: 'center',
+  },
+  priceTitle: {
+    fontSize: 14,
+    fontWeight: 800,
+    fontFamily: 'Lato Bold',
+    width: '15%',
+    textAlign: 'center',
   },
   header: {
     display: 'flex',
@@ -89,15 +110,17 @@ export const styles = StyleSheet.create({
   row3: {
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    alignItems: 'flex-end',
     marginTop: 15,
     borderTop: '1px solid gray',
-    paddingTop: 5,
+    borderBottom: '1px solid gray',
+    paddingVertical: 5,
   },
   paymentMethod: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
+    width: '40%',
   },
   storeName: {
     fontWeight: 1000,
@@ -148,9 +171,14 @@ export const itemStyles = StyleSheet.create({
   image: {
     height: 100,
     width: 100,
+    marginRight: 10,
   },
   itemRow: {
-    height: 200,
+    height: 120,
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   imageWrapper: {
     height: 100,
@@ -163,9 +191,51 @@ export const itemStyles = StyleSheet.create({
   imageRow: {
     display: 'flex',
     flexDirection: 'row',
+    width: '60%',
     alignItems: 'center',
   },
   text: {
+    fontSize: 12,
+    fontWeight: 'light',
+    fontFamily: 'Lato',
+  },
+  productName: {
+    fontSize: 12,
+    fontWeight: 'light',
+    fontFamily: 'Lato',
+    wordWrap: 'break-word',
+    overflowWrap: 'break-word',
+    hyphens: 'auto',
+    width: '60%',
+  },
+  price: {
     fontSize: 14,
+    fontWeight: 'light',
+    textAlign: 'center',
+    fontFamily: 'Lato',
+    width: 100,
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  strikeThrough: {
+    textDecoration: 'line-through',
+    fontWeight: 'light',
+    fontSize: 14,
+    fontFamily: 'Lato',
+    textAlign: 'center',
+  },
+  itemTotal: {
+    fontFamily: 'Lato',
+    fontWeight: 'light',
+    fontSize: 14,
+    width: '15%',
+    textAlign: 'center',
+  },
+  quantity: {
+    width: '10%',
+    fontSize: 14,
+    fontWeight: 'light',
+    textAlign: 'center',
+    fontFamily: 'Lato',
   },
 })

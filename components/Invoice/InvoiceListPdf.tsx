@@ -16,48 +16,41 @@ export default function InvoiceListPdf({ quantity, currency, productId }: any) {
       : invoiceProduct?.images[0].file.url
 
   return (
-    <View style={itemStyles.itemRow}>
-      <View style={itemStyles.row}>
-        <View style={itemStyles.imageRow}>
-          <Image src={productImage} style={itemStyles.image} />
-          <View>
-            <Text style={itemStyles.text} wrap={true}>
-              {invoiceProduct?.name}
-            </Text>
-            <Text style={itemStyles.text}>SKU {invoiceProduct?.sku}</Text>
+    <>
+      {invoiceProduct !== undefined ? (
+        <View style={itemStyles.itemRow}>
+          <View style={itemStyles.imageRow}>
+            <Image src={productImage} style={itemStyles.image} />
+            <View>
+              <Text style={itemStyles.productName}>{invoiceProduct?.name}</Text>
+              <Text style={itemStyles.text}>SKU {invoiceProduct?.sku}</Text>
+            </View>
           </View>
-        </View>
-        <View>
-          <Text>
-            {invoiceProduct.price ? (
+          <View style={itemStyles.itemTotal}>
+            <Text style={itemStyles.strikeThrough}>
+              {invoiceProduct.price ? (
+                <FormattedPrice
+                  price={invoiceProduct?.price}
+                  currency={currency}
+                />
+              ) : null}
+            </Text>
+            <Text style={itemStyles.price}>
               <FormattedPrice
-                price={invoiceProduct.price}
-                className="text-md font-bold strike-through"
                 currency={currency}
+                price={invoiceProduct?.sale_price}
               />
-            ) : null}
-          </Text>
-          <Text>
+            </Text>
+          </View>
+          <Text style={itemStyles.quantity}>{quantity}</Text>
+          <Text style={itemStyles.itemTotal}>
             <FormattedPrice
-              currency={currency}
-              price={invoiceProduct.sale_price}
-              className="text-md font-thin"
-            />
-          </Text>
-        </View>
-        <View>
-          <Text>{quantity}</Text>
-        </View>
-        <View>
-          <Text>
-            <FormattedPrice
-              className="text-md font-thin"
-              price={invoiceProduct.sale_price}
+              price={invoiceProduct?.sale_price}
               currency={currency}
             />
           </Text>
         </View>
-      </View>
-    </View>
+      ) : null}
+    </>
   )
 }

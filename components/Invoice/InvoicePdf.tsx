@@ -27,7 +27,7 @@ export default function InvoicePdf({ invoice }: any) {
 
   return (
     <Document>
-      <Page wrap size="A4" style={styles.page}>
+      <Page wrap={true} size="A4" style={styles.page}>
         <View style={styles.header}>
           <Image
             src="https://res.cloudinary.com/verrb-inc/image/upload/v1653526669/Logo_1_a7apg1.png"
@@ -41,7 +41,7 @@ export default function InvoicePdf({ invoice }: any) {
           </View>
         </View>
         <View style={styles.row2}>
-          <View>
+          <View style={styles.shippingView}>
             <Text style={styles.title}>SHIPPING ADDRESS</Text>
             <Text style={styles.text}>
               {invoice?.shipping.address1} {invoice?.shipping?.address2}
@@ -54,7 +54,7 @@ export default function InvoicePdf({ invoice }: any) {
               {getCountry(invoice?.shipping.country)}
             </Text>
           </View>
-          <View>
+          <View style={styles.customerView}>
             <Text style={styles.title}>CUSTOMER</Text>
             <Text style={styles.text}>{invoice.billing.name}</Text>
             <Text style={styles.text}>{invoice.billing.address1}</Text>
@@ -80,8 +80,8 @@ export default function InvoicePdf({ invoice }: any) {
         </View>
         <View style={styles.row3}>
           <Text style={styles.itemsTitle}>ITEMS</Text>
-          <Text style={styles.rowTitle}>PRICE</Text>
-          <Text style={styles.rowTitle}>QTY</Text>
+          <Text style={styles.priceTitle}>PRICE</Text>
+          <Text style={styles.quantity}>QTY</Text>
           <Text style={styles.rowTitle}>ITEM TOTAL</Text>
         </View>
         <View>

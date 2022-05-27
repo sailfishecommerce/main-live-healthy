@@ -23,7 +23,6 @@ export default function InvoicePdf({ invoice }: any) {
     ? `Stripe ${invoice?.billing?.intent?.stripe.id.toUpperCase()}`
     : ''
   const shippingMethod = getShippingMethod(invoice)
-  const productOne = invoice.items[0]
 
   return (
     <Document>
@@ -85,12 +84,14 @@ export default function InvoicePdf({ invoice }: any) {
           <Text style={styles.rowTitle}>ITEM TOTAL</Text>
         </View>
         <View>
-          <InvoiceListPdf
-            key={productOne.id}
-            productId={productOne.product_id}
-            quantity={productOne.quantity}
-            currency={productOne.currency}
-          />
+          {invoice.items.map((item: any) => (
+            <InvoiceListPdf
+              key={item.id}
+              productId={item.product_id}
+              quantity={item.quantity}
+              currency={invoice.currency}
+            />
+          ))}
         </View>
         <View style={styles.row4}>
           <View style={styles.innerRow}>

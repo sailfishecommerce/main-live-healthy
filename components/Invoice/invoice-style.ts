@@ -133,9 +133,7 @@ export const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
-    borderTop: '1px solid gray',
     paddingTop: 5,
-    marginTop: 20,
     justifyItems: 'end',
   },
   link: {
@@ -179,6 +177,7 @@ export const itemStyles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    borderBottom: '1px solid gray',
   },
   imageWrapper: {
     height: 100,
@@ -189,6 +188,8 @@ export const itemStyles = StyleSheet.create({
     flexDirection: 'row',
   },
   imageRow: {
+    fontSize: 12,
+    fontFamily: 'Lato',
     display: 'flex',
     flexDirection: 'row',
     width: '60%',
@@ -209,9 +210,9 @@ export const itemStyles = StyleSheet.create({
     width: '60%',
   },
   price: {
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: 'light',
-    textAlign: 'center',
+    textAlign: 'left',
     fontFamily: 'Lato',
     width: 100,
     display: 'flex',
@@ -220,20 +221,20 @@ export const itemStyles = StyleSheet.create({
   strikeThrough: {
     textDecoration: 'line-through',
     fontWeight: 'light',
-    fontSize: 14,
+    fontSize: 12,
     fontFamily: 'Lato',
     textAlign: 'center',
   },
   itemTotal: {
     fontFamily: 'Lato',
     fontWeight: 'light',
-    fontSize: 14,
+    fontSize: 12,
     width: '15%',
     textAlign: 'center',
   },
   quantity: {
     width: '10%',
-    fontSize: 14,
+    fontSize: 12,
     fontWeight: 'light',
     textAlign: 'center',
     fontFamily: 'Lato',

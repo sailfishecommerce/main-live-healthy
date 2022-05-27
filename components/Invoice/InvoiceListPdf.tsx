@@ -14,7 +14,6 @@ export default function InvoiceListPdf({ quantity, currency, productId }: any) {
     typeof invoiceProduct?.images[0] === 'string'
       ? invoiceProduct?.images[0]
       : invoiceProduct?.images[0].file.url
-
   return (
     <>
       {invoiceProduct !== undefined ? (

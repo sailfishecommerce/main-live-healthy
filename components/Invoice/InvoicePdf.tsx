@@ -8,10 +8,10 @@ import { formatOrderDate } from '@/lib/formatOrderDate'
 import getCountry from '@/lib/getCountry'
 import getShippingMethod from '@/lib/shippingMethod'
 
-const InvoiceList = dynamic(
+const InvoiceListPdf = dynamic(
   () =>
     import(
-      /* webpackChunkName: 'InvoiceList' */ '@/components/Invoice/InvoiceList'
+      /* webpackChunkName: 'InvoiceList' */ '@/components/Invoice/InvoiceListPdf'
     ),
   {
     ssr: false,
@@ -23,6 +23,7 @@ export default function InvoicePdf({ invoice }: any) {
     ? `Stripe ${invoice?.billing?.intent?.stripe.id.toUpperCase()}`
     : ''
   const shippingMethod = getShippingMethod(invoice)
+
   return (
     <Document>
       <Page wrap size="A4" style={styles.page}>
@@ -82,18 +83,16 @@ export default function InvoicePdf({ invoice }: any) {
           <Text style={styles.rowTitle}>QTY</Text>
           <Text style={styles.rowTitle}>ITEM TOTAL</Text>
         </View>
-        {/* <View>
+        <View>
           {invoice.items.map((item: any) => (
-            <InvoiceList
+            <InvoiceListPdf
               key={item.id}
-              productName={item.product_name}
-              price={item.price}
+              productId={item.product_id}
               quantity={item.quantity}
-              price_total={item.price_total}
               currency={invoice.currency}
             />
           ))}
-        </View> */}
+        </View>
         <View style={styles.row4}>
           <View style={styles.innerRow}>
             <Text style={styles.text}>Subtotal</Text>

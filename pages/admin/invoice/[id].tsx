@@ -11,12 +11,14 @@ export default function InvoicePage(props: any) {
   const router = useRouter()
   const { data, status } = useAdminOrder()
 
+  // console.log('data-data', productData)
   let invoice
   if (status === 'success') {
     invoice = data.data.results.filter(
       (invoiceData: { id: any }) => invoiceData.id === router.query.id
     )
   }
+
   return (
     <SearchPageLayout {...props}>
       <DashboardLayout title="Invoice page">
@@ -31,3 +33,5 @@ export default function InvoicePage(props: any) {
     </SearchPageLayout>
   )
 }
+
+// "62746f740c21f85e2ed2e093"

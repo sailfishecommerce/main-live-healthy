@@ -1,103 +1,91 @@
+/* eslint-disable no-nested-ternary */
 import Image from 'next/image'
-import { Configure, Index, connectHits } from 'react-instantsearch-dom'
+import { useQuery } from 'react-query'
 
+import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import FormattedPrice from '@/components/Price/FormattedPrice'
-import { indexName } from '@/utils/env'
+import useProduct from '@/hooks/useProduct'
 
-function InvoiceHitComponent({
-  hits,
-  quantity,
-  price,
-  price_total,
-  currency,
-}: any) {
-  const invoiceHit = hits[0]
+function InvoiceListItem({ productId, currency, quantity }: any) {
+  const { getAProduct } = useProduct()
+  const { data, status } = useQuery(`productDetails-${productId}`, () =>
+    getAProduct(productId)
+  )
+
   const productImage =
-    typeof invoiceHit?.images[0] === 'string'
-      ? invoiceHit?.images[0]
-      : invoiceHit?.images[0].file.url
-  const productPrice = currency === 'HKD' ? invoiceHit?.sale_price : price
+    typeof data?.images[0] === 'string'
+      ? data?.images[0]
+      : data?.images[0].file.url
 
-  console.log('invoiceHit', invoiceHit)
+  const productPrice = currency === 'HKD' ? data?.price : data?.origPrice
 
   return (
-    <tr className="view">
-      <td>
-        <div className="product-view flex items-center">
-          {invoiceHit && (
-            <Image
-              src={productImage}
-              alt={invoiceHit?.name}
-              height={80}
-              width={80}
-            />
-          )}
-          <div className="content flex flex-col ml-2">
-            <h1 className="font-thin text-lg">{invoiceHit?.name}</h1>
-            <p className="font-thin text-md">SKU {invoiceHit?.sku}</p>
-          </div>
-        </div>
-      </td>
-      <td>
-        <div className="price flex flex-col">
-          {price === invoiceHit?.price && (
+    <>
+      {status === 'error' ? (
+        'unable to load item'
+      ) : status === 'loading' ? (
+        <SpinnerRipple centerRipple />
+      ) : (
+        <tr className="view">
+          <td>
+            <div className="product-view flex items-center">
+              <Image
+                src={productImage}
+                alt={data?.name}
+                height={80}
+                width={80}
+              />
+
+              <div className="content flex flex-col ml-2">
+                <h1 className="font-thin text-lg">{data?.name}</h1>
+                <p className="font-thin text-md">SKU {data?.sku}</p>
+              </div>
+            </div>
+          </td>
+          <td>
+            <div className="price flex flex-col">
+              {data.price === data?.price && (
+                <FormattedPrice
+                  price={data?.origPrice}
+                  className="text-md font-bold strike-through"
+                  currency={currency}
+                />
+              )}
+              <FormattedPrice
+                currency={currency}
+                price={productPrice}
+                className="text-md font-thin"
+              />
+            </div>
+          </td>
+          <td>
+            <p className="font-thin text-md quantity">{quantity}</p>
+          </td>
+          <td>
             <FormattedPrice
-              price={invoiceHit?.price}
-              className="text-md font-bold strike-through"
+              className="text-md font-thin"
+              price={data.price}
               currency={currency}
             />
-          )}
-          <FormattedPrice
-            currency={currency}
-            price={productPrice}
-            className="text-md font-thin"
-          />
-        </div>
-      </td>
-      <td>
-        <p className="font-thin text-md quantity">{quantity}</p>
-      </td>
-      <td>
-        <FormattedPrice
-          className="text-md font-thin"
-          price={price_total}
-          currency={currency}
-        />
-      </td>
-    </tr>
+          </td>
+        </tr>
+      )}
+    </>
   )
 }
-const InvoiceHit = connectHits<any, any>(InvoiceHitComponent)
 
-function InvoiceListComponent({
-  productName,
-  price,
+export default function InvoiceList({
   quantity,
   price_total,
   currency,
   productId,
 }: any) {
-  const slug = productName
-    ?.toLowerCase()
-    .replaceAll('. ', '-')
-    ?.replaceAll(' ', '-')
-    .replaceAll('.', '-')
   return (
-    <>
-      <Index indexName={indexName} indexId={`${productName}-hit`}>
-        <Configure filters={`slug:${slug}`} hitsPerPage={1} />
-        <InvoiceHit
-          quantity={quantity}
-          price={price}
-          currency={currency}
-          price_total={price_total}
-          productId={productId}
-        />
-      </Index>
-    </>
+    <InvoiceListItem
+      quantity={quantity}
+      currency={currency}
+      price_total={price_total}
+      productId={productId}
+    />
   )
 }
-
-const InvoiceList = connectHits<any, any>(InvoiceListComponent)
-
-export default InvoiceList

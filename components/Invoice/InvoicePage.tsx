@@ -76,8 +76,7 @@ export default function InvoicePage({ invoice }: any) {
               {invoice.items.map((item: any) => (
                 <InvoiceList
                   key={item.id}
-                  productName={item.product_name}
-                  price={item.price}
+                  productId={item.product_id}
                   quantity={item.quantity}
                   price_total={item.price_total}
                   currency={invoice.currency}

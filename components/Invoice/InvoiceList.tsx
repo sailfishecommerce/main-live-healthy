@@ -11,14 +11,14 @@ function InvoiceListItem({ productId, currency, quantity }: any) {
   const { data, status } = useQuery(`productDetails-${productId}`, () =>
     getAProduct(productId)
   )
-
   const productImage =
     typeof data?.images[0] === 'string'
       ? data?.images[0]
       : data?.images[0].file.url
 
-  const productPrice = currency === 'HKD' ? data?.price : data?.origPrice
+  console.log('productImage', productImage)
 
+  const productPrice = currency === 'HKD' ? data?.price : data?.origPrice
   return (
     <>
       {status === 'error' ? (
@@ -27,44 +27,49 @@ function InvoiceListItem({ productId, currency, quantity }: any) {
         <SpinnerRipple centerRipple />
       ) : (
         <tr className="view">
-          <td>
-            <div className="product-view flex items-center">
-              <Image
-                src={productImage}
-                alt={data?.name}
-                height={80}
-                width={80}
-              />
-
-              <div className="content flex flex-col ml-2">
-                <h1 className="font-thin text-lg">{data?.name}</h1>
-                <p className="font-thin text-md">SKU {data?.sku}</p>
+          <td className="w-1/2">
+            {productImage !== undefined && (
+              <div className="product-view flex items-center">
+                {productImage !== undefined && (
+                  <Image
+                    src={productImage}
+                    alt={data?.name}
+                    height={80}
+                    width={80}
+                  />
+                )}
+                <div className="content flex flex-col ml-2">
+                  <h1 className="font-thin text-lg">{data?.name}</h1>
+                  <p className="font-thin text-md">SKU {data?.sku}</p>
+                </div>
               </div>
-            </div>
+            )}
           </td>
-          <td>
-            <div className="price flex flex-col">
-              {data.price === data?.price && (
+          <td className="w-1/6 text-center">
+            {productImage !== undefined && (
+              <div className="price flex flex-col">
+                {data?.price && (
+                  <FormattedPrice
+                    price={data?.origPrice}
+                    className="text-md font-bold strike-through"
+                    currency={currency}
+                  />
+                )}
                 <FormattedPrice
-                  price={data?.origPrice}
-                  className="text-md font-bold strike-through"
                   currency={currency}
+                  price={productPrice}
+                  className="text-md font-thin"
                 />
-              )}
-              <FormattedPrice
-                currency={currency}
-                price={productPrice}
-                className="text-md font-thin"
-              />
-            </div>
+              </div>
+            )}
           </td>
-          <td>
+          <td className="w-1/6 text-cventer">
             <p className="font-thin text-md quantity">{quantity}</p>
           </td>
-          <td>
+          <td className="w-1/6 text-center">
             <FormattedPrice
               className="text-md font-thin"
-              price={data.price}
+              price={data?.price}
               currency={currency}
             />
           </td>

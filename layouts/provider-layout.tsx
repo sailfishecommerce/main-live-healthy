@@ -25,10 +25,7 @@ const loadFramerMotionFeatures = () =>
 
 export const searchClientAtom = atom<SearchClient | undefined>(undefined)
 
-export default function ProviderLayout({
-  children,
-  pageProps,
-}: PropsWithChildren<Props>) {
+export default function ProviderLayout({ children }: PropsWithChildren<Props>) {
   const { setUserToken } = useAtomValue(configAtom)
 
   // Initialize search client
@@ -50,7 +47,7 @@ export default function ProviderLayout({
 
   return (
     <QueryClientProvider client={queryClient} contextSharing={true}>
-      <Hydrate state={pageProps.dehydratedState}>
+      <Hydrate>
         <JotaiProvider initialValues={get()}>
           <MediaContextProvider>
             <LazyMotion features={loadFramerMotionFeatures} strict={true}>

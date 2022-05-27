@@ -1,69 +1,72 @@
-/* eslint-disable jsx-a11y/alt-text */
-/* eslint-disable no-nested-ternary */
-import { Document, Page, Text, Image, View } from '@react-pdf/renderer'
-import { useQuery } from 'react-query'
+import { Text, Image, View } from '@react-pdf/renderer'
+import { useEffect, useState } from 'react'
 
-import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import FormattedPrice from '@/components/Price/FormattedPrice'
 import useProduct from '@/hooks/useProduct'
 
 export default function InvoiceListPdf({ quantity, currency, productId }: any) {
+  const [product, setProduct] = useState<any>(null)
   const { getAProduct } = useProduct()
-  const { data, status } = useQuery(`productDetails-${productId}`, () =>
-    getAProduct(productId)
-  )
+
+  useEffect(() => {
+    if (product === null)
+      getAProduct(productId)
+        .then((response) => {
+          setProduct(response)
+        })
+        .catch((err) => {
+          console.log('error-pdf', err)
+          setProduct(null)
+        })
+  }, [])
+
+  console.log('product', product)
 
   const productImage =
-    typeof data?.images[0] === 'string'
-      ? data?.images[0]
-      : data?.images[0].file.url
+    typeof product?.images[0] === 'string'
+      ? product?.images[0]
+      : product?.images[0].file.url
 
-  const productPrice = currency === 'HKD' ? data?.price : data?.origPrice
+  const productPrice = currency === 'HKD' ? product?.price : product?.origPrice
 
   return (
     <>
-      {status === 'error' ? (
-        'unable to load item'
-      ) : status === 'loading' ? (
-        <SpinnerRipple centerRipple />
-      ) : (
-        <Document>
-          <Page>
+      {product !== null && (
+        <View>
+          <View>
             <View>
-              <View>
-                <Image src={productImage} />
-              </View>
-              <View>
-                <Text>{data?.name}</Text>
-                <Text>SKU {data?.sku}</Text>
-              </View>
+              {/* <Image src={productImage} height="200px" width="200ppx" /> */}
             </View>
             <View>
-              {data.price === data?.price && (
-                <FormattedPrice
-                  price={data?.origPrice}
-                  className="text-md font-bold strike-through"
-                  currency={currency}
-                />
-              )}
+              <Text>{product?.name}</Text>
+              <Text>SKU {product?.sku}</Text>
+            </View>
+          </View>
+          <View>
+            {product.price === product?.price && (
               <FormattedPrice
-                currency={currency}
-                price={productPrice}
-                className="text-md font-thin"
-              />
-            </View>
-            <View>
-              <Text>{quantity}</Text>
-            </View>
-            <View>
-              <FormattedPrice
-                className="text-md font-thin"
-                price={data.price}
+                price={product?.origPrice}
+                className="text-md font-bold strike-through"
                 currency={currency}
               />
-            </View>
-          </Page>
-        </Document>
+            )}
+            <FormattedPrice
+              currency={currency}
+              price={productPrice}
+              className="text-md font-thin"
+            />
+          </View>
+          <View>
+            <Text>{quantity}</Text>
+          </View>
+          <View>
+            <FormattedPrice
+              className="text-md font-thin"
+              price={product.price}
+              currency={currency}
+            />
+          </View>
+        </View>
       )}
     </>
   )

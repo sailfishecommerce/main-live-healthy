@@ -41,7 +41,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
     [router?.pathname]
   )
   return (
-    <ProviderLayout pageProps={pageProps}>
+    <ProviderLayout>
       <LayoutWrapper>
         <>
           <Head>

@@ -76,7 +76,6 @@ const TrustmateReview = dynamic(
 )
 
 export default function Home(props: SearchPageLayoutProps) {
-  
   return (
     <Applayout title="Welcome to Livehealthy stores">
       <SearchPageLayout {...props}>

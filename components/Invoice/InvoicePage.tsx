@@ -85,10 +85,10 @@ export default function InvoicePage({ invoice }: any) {
               <tr className="subtotal">
                 <td></td>
                 <td></td>
-                <td>
+                <td className="text-center">
                   <p className="font-thin text-md">Subtotal</p>
                 </td>
-                <td>
+                <td className="text-center">
                   <FormattedPrice
                     currency={invoice.currency}
                     price={invoice.sub_total}
@@ -99,10 +99,10 @@ export default function InvoicePage({ invoice }: any) {
               <tr className="shipping">
                 <td></td>
                 <td></td>
-                <td>
+                <td className="text-center">
                   <p className="font-thin text-md">Shipping</p>
                 </td>
-                <td>
+                <td className="text-center">
                   <FormattedPrice
                     currency={invoice.currency}
                     price={invoice.shipment_total}
@@ -113,12 +113,12 @@ export default function InvoicePage({ invoice }: any) {
               <tr className="total">
                 <td></td>
                 <td></td>
-                <td>
+                <td className="text-center">
                   <p className="font-bold text-lg">
                     TOTAL ({invoice.currency})
                   </p>
                 </td>
-                <td>
+                <td className="text-center">
                   <FormattedPrice
                     currency={invoice.currency}
                     price={invoice.grand_total}

@@ -33,5 +33,3 @@ export default function InvoicePage(props: any) {
     </SearchPageLayout>
   )
 }
-
-// "62746f740c21f85e2ed2e093"

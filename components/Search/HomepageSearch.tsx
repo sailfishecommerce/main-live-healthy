@@ -1,4 +1,3 @@
-import algoliasearch from 'algoliasearch/lite'
 import Link from 'next/link'
 import { memo, useState } from 'react'
 import {
@@ -10,14 +9,31 @@ import {
 
 import SearchbarHit from '@/components/Search/SearchbarHit'
 import { useMediaQuery } from '@/hooks'
+import { algoliaClient } from '@/lib/algoliaConfig'
+
+const searchClient = {
+  ...algoliaClient,
+  search(requests: any) {
+    if (requests.every(({ params }: any) => !params.query)) {
+      // Here we have to do something else
+      return Promise.resolve({
+        results: requests.map(() => ({
+          hits: [],
+          nbHits: 0,
+          nbPages: 0,
+          page: 0,
+          processingTimeMS: 0,
+        })),
+      })
+    }
+    return algoliaClient.search(requests)
+  },
+}
 
 function HomepageComponent() {
   const [searching, setSearching] = useState(false)
   const [query, setQuery] = useState('')
-  const searchClient = algoliasearch(
-    `${process.env.NEXT_PUBLIC_INSTANTSEARCH_APP_ID}`,
-    `${process.env.NEXT_PUBLIC_INSTANTSEARCH_SEARCH_API_KEY}`
-  )
+
   const mobileWidth = useMediaQuery('(max-width:768px)')
 
   const searchbarWidth = mobileWidth ? 'w-full' : 'md:w-32'

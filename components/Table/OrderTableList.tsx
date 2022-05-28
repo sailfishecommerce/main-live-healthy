@@ -39,6 +39,7 @@ export default function OrderTableList({
   const [selectedInvoice, setSelectedInvoice] = useAtom(selectedInvoiceAtom)
   const router = useRouter()
   const indexNumber = index + 1
+
   if (!allIndex.includes(indexNumber)) {
     allIndex.push(indexNumber)
   }

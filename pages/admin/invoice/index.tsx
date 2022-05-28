@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import DashboardMainView from '@/components/Dashboard/DashboardMainView'
-import { DownloadButton } from '@/components/Invoice'
+// import { DownloadButton } from '@/components/Invoice'
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import OrdersTable from '@/components/Table/OrdersTable'
 import useAdminOrder from '@/hooks/useAdminOrder'
@@ -16,7 +16,7 @@ export default function InvoicePage() {
             <h1 className="lg:text-2xl my-0 py-0 text-xl">
               Livehealthy Order Invoices
             </h1>
-            <DownloadButton />
+            {/* <DownloadButton /> */}
           </div>
           {status === 'error' ? (
             'unable to fetch orders'

@@ -7,3 +7,11 @@ function getOrders() {
 export default function useAdminOrder() {
   return useQuery('getInvoice', getOrders)
 }
+
+function getAllOrders() {
+  return axios.get('/api/get-all-invoice')
+}
+
+export function useOrderInvoice() {
+  return useQuery('getAllInvoice', getAllOrders)
+}

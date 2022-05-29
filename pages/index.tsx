@@ -11,8 +11,6 @@ import {
   SearchPageLayout,
   getStaticPropsPage,
 } from '@/layouts/search-page-layout'
-import { useEffect } from 'react'
-import axios from 'axios'
 
 const HomepageSlider = dynamic(
   () =>
@@ -78,13 +76,6 @@ const TrustmateReview = dynamic(
 )
 
 export default function Home(props: SearchPageLayoutProps) {
-  useEffect(() => {
-    axios
-      .get('/api/get-all-invoice')
-      .then((response) => console.log('response', response))
-      .catch((err) => console.log('err', err))
-  }, [])
-
   return (
     <Applayout title="Welcome to Livehealthy stores">
       <SearchPageLayout {...props}>

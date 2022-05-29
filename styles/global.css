@@ -288,6 +288,12 @@ span.ais-SearchBox-loadingIndicator {
   text-align: center;
 }
 
+/* social icons */
+.social-icon-group a svg:hover {
+  transform: translateY(-4px);
+  transition: 0.3s;
+}
+
 @media (min-width: 768px) {
   nav.nav {
     height: 165px;

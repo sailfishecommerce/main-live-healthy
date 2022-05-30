@@ -11,7 +11,6 @@ export default function InvoicePage(props: any) {
   const router = useRouter()
   const { data, status } = useAdminOrder()
 
-  // console.log('data-data', productData)
   let invoice
   if (status === 'success') {
     invoice = data.data.results.filter(

@@ -1,9 +1,8 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable @typescript-eslint/no-shadow */
-/* eslint-disable no-console */
 /* eslint-disable array-callback-return */
-import fs from 'fs'
-import path from 'path'
+// import fs from 'fs'
+// import path from 'path'
 
 import type { NextApiRequest, NextApiResponse } from 'next'
 import swell from 'swell-node'
@@ -16,15 +15,15 @@ export default async function InvoiceHandler(
   res: NextApiResponse
 ) {
   swellNodeInit()
-  const filePath = path.join(
-    __dirname,
-    '..',
-    '..',
-    '..',
-    '..',
-    'json',
-    'orders.json'
-  )
+  // const filePath = path.join(
+  //   __dirname,
+  //   '..',
+  //   '..',
+  //   '..',
+  //   '..',
+  //   'json',
+  //   'orders.json'
+  // )
   let orderArray: any
   const productArray: any[] = []
   const invoiceArray: any[] = []
@@ -41,7 +40,6 @@ export default async function InvoiceHandler(
         })
         .then((response: any) => {
           const ordersIds = getInvoiceproductIds(response)
-          console.log('ordersIds', ordersIds)
           ordersIds.map((orderId) => {
             swell
               .get('/products/{id}', {
@@ -52,15 +50,11 @@ export default async function InvoiceHandler(
                 return productArray
               })
               .then((response: any) => {
-                console.log('responseresponse', response)
-                console.log('orderArray', orderArray)
                 orderArray.map((order: any) => {
                   order.items.map((orderItem: any) => {
-                    console.log('orderItem', orderItem)
                     const orderProduct = response.filter(
                       (product: any) => product?.id === orderItem.product_id
                     )
-                    console.log('orderProduct', orderProduct)
                     order.products = []
                     if (orderProduct.length > 0) {
                       order.products.push(orderProduct[0])
@@ -70,16 +64,17 @@ export default async function InvoiceHandler(
                   })
                   invoiceArray.push(order)
                 })
-                fs.writeFile(
-                  filePath,
-                  JSON.stringify(invoiceArray),
-                  (err: any) => {
-                    if (err) {
-                      return res.status(400).json({ status: err })
-                    }
-                    return res.status(200).json({ status: 'ok' })
-                  }
-                )
+                // fs.writeFile(
+                //   filePath,
+                //   JSON.stringify(invoiceArray),
+                //   (err: any) => {
+                //     if (err) {
+                //       return res.status(400).json({ status: err })
+                //     }
+                //     return res.status(200).json({ status: 'ok' })
+                //   }
+                // )
+                return res.status(200).json({ status: 'ok', invoiceArray })
               })
           })
         })

@@ -38,15 +38,15 @@ export default function OrderTableList({
   const router = useRouter()
   const indexNumber = index + 1
 
-  if (!allIndexArray.includes(indexNumber)) {
-    allIndexArray.push(indexNumber)
+  if (!allIndexArray.includes(order.number)) {
+    allIndexArray.push(order.number)
   }
 
   useEffect(() => {
     setAllIndex(allIndexArray)
   }, [])
 
-  const inputChecked = selectedInvoice.selected.includes(indexNumber)
+  const inputChecked = selectedInvoice.selected.includes(order.number)
 
   function viewInvoice(id: any | string) {
     router.push(`/admin/invoice/${id}`)
@@ -67,7 +67,7 @@ export default function OrderTableList({
           <input
             checked={inputChecked}
             type="checkbox"
-            onChange={() => updateSelectedIndex(indexNumber)}
+            onChange={() => updateSelectedIndex(order.number)}
           />
         </td>
         <td onClick={() => viewInvoice(order.id)}>{indexNumber}</td>

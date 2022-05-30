@@ -14,5 +14,9 @@ export default function useProduct() {
     return axios.post('/api/fetch-category-products', { category })
   }
 
-  return { getAProduct, getProductsInACategory }
+  function getVendorProduct(vendor: string) {
+    return axios.post('/api/get-vendor-products', { vendor })
+  }
+
+  return { getAProduct, getProductsInACategory, getVendorProduct }
 }

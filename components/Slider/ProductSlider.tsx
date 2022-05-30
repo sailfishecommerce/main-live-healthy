@@ -1,35 +1,32 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { AnimatePresence } from 'framer-motion'
-import { Configure, Index, connectHits } from 'react-instantsearch-dom'
 
 import Product from '@/components/Cards/ProductCard'
 import selectRandomColor from '@/lib/selectRandomColor'
-import { indexName } from '@/utils/env'
 import '@splidejs/splide/dist/css/splide.min.css'
 
 interface HitProps {
   title: string
   tags?: string[]
   tabColor?: string
+  products: any[]
   productName?: string
   productClassName?: string
   randomColor?: boolean
-  hits?: any[]
 }
 interface Props {
   title: string
   tabColor?: string
+  products: any[]
   productName?: string
   productClassName?: string
   randomColor?: boolean
-  query: string
-  indexId: string
 }
 
-function ProductHitsSliderComponent({
-  hits,
+function VendorProductSlider({
   tabColor,
   productClassName,
+  products,
   randomColor,
 }: HitProps) {
   return (
@@ -60,7 +57,7 @@ function ProductHitsSliderComponent({
         className="productSlider itemSlider container mx-auto"
       >
         <AnimatePresence>
-          {hits?.map((product) => (
+          {products.map((product: any) => (
             <SplideSlide key={product.id}>
               <Product
                 color={randomColor ? selectRandomColor() : tabColor}
@@ -75,32 +72,30 @@ function ProductHitsSliderComponent({
   )
 }
 
-const ProductHitsSlider = connectHits<any, any>(ProductHitsSliderComponent)
-
 export default function ProductSlider({
   title,
   tabColor,
   productName,
   randomColor,
-  query,
-  indexId,
+  products,
 }: Props) {
   return (
-    <Index indexName={indexName} indexId={indexId}>
-      <Configure filters={query} hitsPerPage={18} />
-      <section className="itemSlider relative container mx-auto flex flex-col my-0 mb-2 md:my-4 px-4 md:px-0">
-        <div className="top mb-4 flex items-center justify-between">
-          {productName ? (
-            <h1 className="font-bold text-md md:text-xl 2xl:text2xl">
-              {title} <span className="mountain-green">{productName}</span>{' '}
-              users
-            </h1>
-          ) : (
-            <h1 className="font-bold text-xl 2xl:text-2xl">{title}</h1>
-          )}
-        </div>
-        <ProductHitsSlider randomColor={randomColor} tabColor={tabColor} />
-      </section>
-    </Index>
+    <section className="itemSlider relative container mx-auto flex flex-col my-0 mb-2 md:my-4 px-4 md:px-0">
+      <div className="top mb-4 flex items-center justify-between">
+        {productName ? (
+          <h1 className="font-bold text-md md:text-xl 2xl:text2xl">
+            {title} <span className="mountain-green">{productName}</span> users
+          </h1>
+        ) : (
+          <h1 className="font-bold text-xl 2xl:text-2xl">{title}</h1>
+        )}
+      </div>
+      <VendorProductSlider
+        products={products}
+        randomColor={randomColor}
+        tabColor={tabColor}
+        title={title}
+      />
+    </section>
   )
 }

@@ -1,4 +1,4 @@
-import { pdf, PDFViewer } from '@react-pdf/renderer'
+import { pdf } from '@react-pdf/renderer'
 import { saveAs } from 'file-saver'
 import JSZip from 'jszip'
 import { BiDownload } from 'react-icons/bi'
@@ -36,9 +36,6 @@ export default function Invoice({ invoice }: any) {
     <>
       <DownloadButton invoice={invoice} />
       <InvoicePage invoice={invoice} />
-      <PDFViewer width="100%" height="100%">
-        <InvoicePdf invoice={invoice} />
-      </PDFViewer>
     </>
   )
 }

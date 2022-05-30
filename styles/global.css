@@ -288,6 +288,11 @@ span.ais-SearchBox-loadingIndicator {
   text-align: center;
 }
 
+button.bg-mountain-green:disabled {
+  background-color: lightgray;
+  cursor: not-allowed;
+}
+
 /* social icons */
 .social-icon-group a svg:hover {
   transform: translateY(-4px);

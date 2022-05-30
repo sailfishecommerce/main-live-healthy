@@ -1,14 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-import { useAtom } from 'jotai'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
-import {
-  allIndexAtom,
-  deletedIndexAtom,
-  selectedInvoiceAtom,
-} from '@/lib/atomConfig'
+import useInvoiceTable from '@/hooks/useInvoiceTable'
 import { formatOrderDate } from '@/lib/formatOrderDate'
 import { formatPrice } from '@/lib/formatPrice'
 
@@ -37,9 +32,8 @@ export default function OrderTableList({
   index,
   allIndexArray,
 }: OrderTableListProps) {
-  const [selectedInvoice, setSelectedInvoice] = useAtom(selectedInvoiceAtom)
-  const [, setAllIndex] = useAtom(allIndexAtom)
-  const [deletedIndex, setDeletedIndex] = useAtom(deletedIndexAtom)
+  const { selectedInvoice, updateSelectedIndex, setAllIndex } =
+    useInvoiceTable()
 
   const router = useRouter()
   const indexNumber = index + 1
@@ -52,36 +46,7 @@ export default function OrderTableList({
     setAllIndex(allIndexArray)
   }, [])
 
-  function deleteItemInArray(givenArray: number[], item: number) {
-    const itemIndex = givenArray.indexOf(item)
-    const deletedIndexArray = givenArray.splice(itemIndex, 1)
-    if (!deletedIndex.includes(deletedIndexArray[0])) {
-      setDeletedIndex([...deletedIndex, deletedIndexArray[0]])
-    }
-    return givenArray
-  }
-
   const inputChecked = selectedInvoice.selected.includes(indexNumber)
-
-  function updateSelectedAtom() {
-    if (selectedInvoice.selected.includes(indexNumber)) {
-      const selectedItemArray = deleteItemInArray(
-        selectedInvoice.selected,
-        indexNumber
-      )
-      setSelectedInvoice({
-        ...selectedInvoice,
-        selected: selectedItemArray,
-        type: 'body',
-      })
-    } else {
-      setSelectedInvoice({
-        ...selectedInvoice,
-        selected: [...selectedInvoice.selected, indexNumber],
-        type: 'body',
-      })
-    }
-  }
 
   function viewInvoice(id: any | string) {
     router.push(`/admin/invoice/${id}`)
@@ -102,7 +67,7 @@ export default function OrderTableList({
           <input
             checked={inputChecked}
             type="checkbox"
-            onChange={updateSelectedAtom}
+            onChange={() => updateSelectedIndex(indexNumber)}
           />
         </td>
         <td onClick={() => viewInvoice(order.id)}>{indexNumber}</td>

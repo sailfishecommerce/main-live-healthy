@@ -15,10 +15,7 @@ export default function ProductDetail({ product }: any) {
   const [seeMore, setSeeMoreState]: any = useAtom<seemoreType>(seemoreAtom)
   const { updateSlideTab } = useSlidingTab()
 
-  const [activeProductSlide, setActiveProductSlide]: any = useAtom<any>(
-    activeProductSlideAtom
-  )
-  console.log('activeProductSlide', activeProductSlide)
+  const [, setActiveProductSlide]: any = useAtom<any>(activeProductSlideAtom)
 
   useEffect(() => {
     setActiveProductSlide(product)

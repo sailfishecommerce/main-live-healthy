@@ -5,6 +5,7 @@ import Head from 'next/head'
 import type { PropsWithChildren } from 'react'
 import { ToastContainer } from 'react-toastify'
 
+import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import LayoutMetatag from '@/components/Metatag/LayoutMetatag'
 import { useMediaQuery } from '@/hooks'
 import useNav from '@/hooks/useNav'
@@ -35,7 +36,10 @@ const DynamicSlidingInformationTab = dynamic(
   () =>
     import(
       /* webpackChunkName: 'SlidingInformationTab' */ '@/components/Slidingtab/SlidingInformationTab'
-    )
+    ),
+  {
+    loading: () => <SpinnerRipple />,
+  }
 )
 
 const DynamicMobileSlideMenu = dynamic(

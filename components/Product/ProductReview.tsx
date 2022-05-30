@@ -2,14 +2,28 @@ import Script from 'next/script'
 
 import ReviewBars from '@/components/Reviews/ReviewBars'
 
-export default function ProductReview() {
+interface Props {
+  rating: number
+}
+
+export default function ProductReview({ rating }: Props) {
   const reviewsStat = [
-    { count: 5, barWidth: 68 },
-    { count: 4, barWidth: 15 },
-    { count: 3, barWidth: 5 },
-    { count: 2, barWidth: 2 },
-    { count: 1, barWidth: 0 },
+    { count: 5 },
+    { count: 4 },
+    { count: 3 },
+    { count: 2 },
+    { count: 1 },
   ]
+
+  function displayReviewBar(reviewCount: number) {
+    let ratingBarWidth: number
+    if (reviewCount === rating) {
+      ratingBarWidth = (rating / 5) * 100
+      return ratingBarWidth
+    }
+    return 0
+  }
+
   return (
     <div className="w-full my-2 px-4 md:px-0">
       <h3 className="font-bold text-xl my-2">Reviews</h3>
@@ -27,7 +41,7 @@ export default function ProductReview() {
             <ReviewBars
               key={review.count}
               count={review.count}
-              barWidth={review.barWidth}
+              barWidth={displayReviewBar(review.count)}
             />
           ))}
         </div>

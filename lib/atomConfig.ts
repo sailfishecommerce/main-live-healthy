@@ -97,7 +97,7 @@ export const selectedInvoiceAtom = atom<{
 })
 export const deletedIndexAtom = atom<number[]>([])
 export const allIndexAtom = atom<number[]>([])
-
+export const loadingInvoiceAtom = atom(false)
 export const invoiceProductsAtom = atom<any>([])
 
 // ProductShowcase

@@ -1,11 +1,5 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import axios from 'axios'
-import { useEffect } from 'react'
-
 import OrderTableHead from '@/components/Table/OrderTableHead'
 import OrderTableList from '@/components/Table/OrderTableList'
-import invoiceProducts from '@/json/invoice-product.json'
-import getInvoiceproductIds from '@/lib/get-invoice-product-ids'
 
 type orderType = {
   billing: { name: any }
@@ -21,13 +15,6 @@ type orderType = {
 
 export default function OrdersTable({ orders }: any) {
   const allIndexArray: number[] = []
-  const ordersIds = getInvoiceproductIds(orders)
-
-  useEffect(() => {
-    if (invoiceProducts.length === 0) {
-      axios.post('/api/get-invoice-products', { ordersIds })
-    }
-  }, [])
 
   return (
     <table className="table w-full rounded-3xl my-4">

@@ -3,17 +3,17 @@ import { useRouter } from 'next/router'
 
 import DashboardMainView from '@/components/Dashboard/DashboardMainView'
 import Invoice from '@/components/Invoice'
-import useAdminOrder from '@/hooks/useAdminOrder'
+import { useOrderInvoice } from '@/hooks/useAdminOrder'
 import DashboardLayout from '@/layouts/dashboard-layout'
 import { SearchPageLayout } from '@/layouts/search-page-layout'
 
 export default function InvoicePage(props: any) {
   const router = useRouter()
-  const { data, status } = useAdminOrder()
+  const { data, status } = useOrderInvoice()
 
   let invoice
   if (status === 'success') {
-    invoice = data.data.results.filter(
+    invoice = data.data.invoiceArray.filter(
       (invoiceData: { id: any }) => invoiceData.id === router.query.id
     )
   }

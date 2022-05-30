@@ -15,18 +15,11 @@ export default async function InvoiceHandler(
   res: NextApiResponse
 ) {
   swellNodeInit()
-  // const filePath = path.join(
-  //   __dirname,
-  //   '..',
-  //   '..',
-  //   '..',
-  //   '..',
-  //   'json',
-  //   'orders.json'
-  // )
+
   let orderArray: any
   const productArray: any[] = []
   const invoiceArray: any[] = []
+  let orderProductsArray: any[] = []
 
   switch (req.method) {
     case 'GET': {
@@ -39,6 +32,7 @@ export default async function InvoiceHandler(
           return orderArray
         })
         .then((response: any) => {
+          orderArray = response
           const ordersIds = getInvoiceproductIds(response)
           ordersIds.map((orderId) => {
             swell
@@ -47,34 +41,26 @@ export default async function InvoiceHandler(
               })
               .then((response: any) => {
                 productArray.push(response)
-                return productArray
+                return { productArray, orderArray }
               })
               .then((response: any) => {
-                orderArray.map((order: any) => {
+                response.orderArray.map((order: any) => {
                   order.items.map((orderItem: any) => {
-                    const orderProduct = response.filter(
+                    const orderProducts = response.productArray.filter(
                       (product: any) => product?.id === orderItem.product_id
                     )
-                    order.products = []
-                    if (orderProduct.length > 0) {
-                      order.products.push(orderProduct[0])
+                    if (orderProducts.length > 0) {
+                      orderProductsArray.push(orderProducts[0])
                     } else {
-                      order.products = null
+                      orderProductsArray = []
                     }
                   })
+                  order.products = orderProductsArray
+
                   invoiceArray.push(order)
                 })
-                // fs.writeFile(
-                //   filePath,
-                //   JSON.stringify(invoiceArray),
-                //   (err: any) => {
-                //     if (err) {
-                //       return res.status(400).json({ status: err })
-                //     }
-                //     return res.status(200).json({ status: 'ok' })
-                //   }
-                // )
-                return res.status(200).json({ status: 'ok', invoiceArray })
+
+                return res.json({ invoiceArray })
               })
           })
         })

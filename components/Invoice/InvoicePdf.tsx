@@ -72,7 +72,9 @@ export default function InvoicePdf({ invoice }: any) {
             </View>
             <View>
               <Text style={styles.title}>SHIPPING METHOD</Text>
-              <Text style={styles.text}>{shippingMethod[0]?.name}</Text>
+              <Text style={styles.text}>
+                {shippingMethod !== undefined ? shippingMethod[0]?.name : ''}
+              </Text>
               <Text style={styles.text}>COVID-19 might cause delays</Text>
             </View>
           </View>
@@ -84,14 +86,24 @@ export default function InvoicePdf({ invoice }: any) {
           <Text style={styles.rowTitle}>ITEM TOTAL</Text>
         </View>
         <View>
-          {invoice.items.map((item: any) => (
-            <InvoiceListPdf
-              key={item.id}
-              productId={item.product_id}
-              quantity={item.quantity}
-              currency={invoice.currency}
-            />
-          ))}
+          {invoice.items.map((item: any) => {
+            let product
+            if (invoice.products !== null) {
+              product = invoice?.products?.filter(
+                (productItem: any) => productItem.id === item.product_id
+              )[0]
+            } else {
+              product = null
+            }
+            return (
+              <InvoiceListPdf
+                key={item.id}
+                product={product}
+                item={item}
+                currency={invoice.currency}
+              />
+            )
+          })}
         </View>
         <View style={styles.row4}>
           <View style={styles.innerRow}>

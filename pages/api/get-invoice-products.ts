@@ -1,7 +1,6 @@
 /* eslint-disable array-callback-return */
-/* eslint-disable no-console */
-import fs from 'fs'
-import path from 'path'
+// import fs from 'fs'
+// import path from 'path'
 
 import type { NextApiRequest, NextApiResponse } from 'next'
 import swell from 'swell-node'
@@ -13,17 +12,16 @@ export default function InvoiceHandler(
   res: NextApiResponse
 ) {
   swellNodeInit()
-  const filePath = path.join(
-    __dirname,
-    '..',
-    '..',
-    '..',
-    '..',
-    'json',
-    'invoice-product.json'
-  )
+  // const filePath = path.join(
+  //   __dirname,
+  //   '..',
+  //   '..',
+  //   '..',
+  //   '..',
+  //   'json',
+  //   'invoice-product.json'
+  // )
   const invoiceProductArray: string[] = []
-  console.log('filePath', filePath)
 
   switch (req.method) {
     case 'POST': {
@@ -38,12 +36,13 @@ export default function InvoiceHandler(
             return invoiceProductArray
           })
           .then((response: any) => {
-            fs.writeFile(filePath, JSON.stringify(response), (err: any) => {
-              if (err) {
-                return res.status(400).json({ status: err })
-              }
-              return res.status(200).json({ status: 'ok' })
-            })
+            // fs.writeFile(filePath, JSON.stringify(response), (err: any) => {
+            //   if (err) {
+            //     return res.status(400).json({ status: err })
+            //   }
+            //   return res.status(200).json({ status: 'ok' })
+            // })
+            return res.status(200).json({ status: 'ok', response })
           })
       })
     }

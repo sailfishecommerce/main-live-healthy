@@ -27,7 +27,7 @@ function AirwallexCardElement({
   const [errorMessage, setErrorMessage] = useState('')
 
   const router = useRouter()
-
+  console.log('elementShow', elementShow)
   const { isLoading, isSuccessful, hasError } = useToast()
 
   useEffect(() => {

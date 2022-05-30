@@ -43,7 +43,7 @@ export default function Checkout() {
         cart?.items === undefined ? (
         <EmptyCart />
       ) : (
-        <main className="mx-auto bg-light-gray">
+        <main className="mx-auto bg-light-gray pb-12">
           {mobileWidth ? <MobileCheckoutView /> : <CheckoutCustomer />}
         </main>
       )}

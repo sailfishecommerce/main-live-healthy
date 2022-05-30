@@ -23,6 +23,7 @@ export default function ShippingMethodTag({
   const selectedMethodStyled =
     shippingMethod === content.id ? 'bg-gray-300 text-white' : ''
   const tagClassName = className ? className : ''
+
   return (
     <button
       type="button"
@@ -32,7 +33,7 @@ export default function ShippingMethodTag({
     >
       <div className="row flex items-center justify-between w-full">
         <span className="flex items-center">
-          {shippingMethod === content.value ? (
+          {shippingMethod === content.id ? (
             <CheckedInputIcon />
           ) : (
             <input type="radio" className="mx-2" />

@@ -9,7 +9,8 @@ const DynamicSecondaryMenu = dynamic(
   () =>
     import(
       /* webpackChunkName: 'DynamicSecondaryMenu' */ '@/components/Menu/SecondaryMenu'
-    )
+    ),
+  { ssr: false }
 )
 
 const DynamicMobileSearchbar = dynamic(

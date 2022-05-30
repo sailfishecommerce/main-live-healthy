@@ -5,7 +5,6 @@ import { memo } from 'react'
 
 import Noticebar from '@/components/Alerts/Noticebar'
 import Menu from '@/components/Menu'
-import DiscountSlider from '@/components/Slider/DiscountSlider'
 import { useMediaQuery } from '@/hooks'
 import useNavStyle from '@/hooks/useNavStyle'
 import { categoryDropdownAtom, noticebarAtom } from '@/lib/atomConfig'
@@ -17,6 +16,14 @@ const DynamicAllCategoriesDropdownView = dynamic(
     )
 )
 
+const DiscountSlider = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'DiscountSlider' */ '@/components/Slider/DiscountSlider'
+    ),
+  { ssr: false }
+)
+
 function HeaderComponent() {
   const { navStyle } = useNavStyle()
   const [noticebar, setNoticebar] = useAtom(noticebarAtom)
@@ -26,10 +33,12 @@ function HeaderComponent() {
     return setCategoryDropdown((prev) => !prev)
   }
 
-  if (categoryDropdown) {
-    disableBodyScroll(document.body)
-  } else {
-    enableBodyScroll(document.body)
+  if (typeof window !== 'undefined') {
+    if (categoryDropdown) {
+      disableBodyScroll(document.body)
+    } else {
+      enableBodyScroll(document.body)
+    }
   }
 
   function toggleNoticebar() {

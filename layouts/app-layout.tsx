@@ -2,12 +2,14 @@ import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import type { PropsWithChildren } from 'react'
 
-const Header = dynamic(
-  () => import(/* webpackChunkName: 'Header' */ '@/components/Header'),
-  {
-    ssr: false,
-  }
-)
+import Header from '@/components/Header'
+
+// const Header = dynamic(
+//   () => import(/* webpackChunkName: 'Header' */ '@/components/Header'),
+//   {
+//     ssr: false,
+//   }
+// )
 
 const Footer = dynamic(
   () => import(/* webpackChunkName: 'Footer' */ '@/components/Footer'),

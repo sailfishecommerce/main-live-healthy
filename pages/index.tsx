@@ -1,9 +1,10 @@
 /**
- * Invoice page.
+ * Home page.
  */
 
 import dynamic from 'next/dynamic'
 
+import HomepageSlider from '@/components/Slider/HomepageSlider'
 import productshowcaseGroup from '@/json/productshowcase.json'
 import Applayout from '@/layouts/app-layout'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
@@ -11,13 +12,6 @@ import {
   SearchPageLayout,
   getStaticPropsPage,
 } from '@/layouts/search-page-layout'
-
-const HomepageSlider = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'HomepageSlider' */ '@/components/Slider/HomepageSlider'
-    )
-)
 
 const Values = dynamic(
   () => import(/* webpackChunkName: 'Values' */ '@/components/Values')

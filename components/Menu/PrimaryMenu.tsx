@@ -15,7 +15,8 @@ const DynamicLaptopPrimaryMenu = dynamic(
   () =>
     import(
       /* webpackChunkName: 'DynamicLaptopPrimaryMenu' */ '@/components/Menu/LaptopPrimaryMenu'
-    )
+    ),
+  { ssr: false }
 )
 
 function PrimaryMenuComponent() {

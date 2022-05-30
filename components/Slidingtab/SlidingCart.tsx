@@ -7,6 +7,7 @@ import { useCart } from '@/hooks'
 export default function SlidingCart() {
   const { useCartData } = useCart()
   const { data: cart }: any = useCartData()
+
   return (
     <>
       <SlidingTab>

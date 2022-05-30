@@ -15,8 +15,6 @@ function SlidingInformationComponent({ description }: Props) {
   const selectInformationTypeHandler = (infoType: string) =>
     setSeemoreTab(infoType)
 
-  console.log('product-SlidingInformation', description)
-  
   return (
     <SlidingTab buttonColor="text-white">
       <div className="header lg:h-40 justify-between flex lg:items-end bg-mountain-green p-4 w-full lg:flex-row flex-col items-start py-8">

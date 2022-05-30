@@ -12,7 +12,7 @@ export default function PaymentMethodView() {
   return (
     <div className="flex flex-col">
       <h5 className="text-lg my-2 font-medium">Payment methods</h5>
-      <div className="payment-icons grid grid-cols-5 gap-4 items-center my-4 justify-between">
+      <div className="payment-icons w-2/3 grid grid-cols-5 gap-4  items-center my-4 justify-between">
         {paymentMethodIcons.map((item, index) => (
           <div key={index} className="">
             <img src={item} alt="payment-icon" />

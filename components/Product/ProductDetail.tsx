@@ -20,10 +20,8 @@ export default function ProductDetail({ product }: any) {
   )
 
   useEffect(() => {
-    if (activeProductSlide === null) {
-      setActiveProductSlide(product)
-    }
-  }, [])
+    setActiveProductSlide(product)
+  }, [activeProductSlide])
 
   function setSeeMoreHandler(infoType: seemoreType) {
     updateSlideTab('SLIDING-INFO')

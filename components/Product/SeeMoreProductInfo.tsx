@@ -10,7 +10,7 @@ export default function SeeMoreProductInfo({ title, onClick }: Props) {
       <button
         aria-label="see more"
         type="button"
-        className="mountain-mist ml-2 -mt-4 lg:text-lg text-xs hover:px-1 font-medium hover:border hover:rounded-full"
+        className="mountain-mist ml-2 -mt-4 lg:text-lg text-xs hover:items-center hover:px-2 hover:py-1 hover:flex hover:text-center  hover:h-8 font-medium hover:border hover:rounded-full"
         onClick={onClick}
       >
         See more

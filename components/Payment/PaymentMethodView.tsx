@@ -1,5 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable react/no-array-index-key */
-import Image from 'next/image'
 
 export default function PaymentMethodView() {
   const paymentMethodIcons = [
@@ -15,7 +15,7 @@ export default function PaymentMethodView() {
       <div className="payment-icons grid grid-cols-5 gap-4 items-center my-4 justify-between">
         {paymentMethodIcons.map((item, index) => (
           <div key={index} className="">
-            <Image src={item} alt="payment-icon" height={25} width={100} />
+            <img src={item} alt="payment-icon" />
           </div>
         ))}
       </div>

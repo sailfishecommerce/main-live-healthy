@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import type { NextApiRequest, NextApiResponse } from 'next'
 import swell from 'swell-node'
 
@@ -18,7 +17,6 @@ export default async function VendorProductHandler(
           limit: 30,
         })
         .then((response: any) => {
-          console.log('response', response)
           return res.status(200).send(response)
         })
     }

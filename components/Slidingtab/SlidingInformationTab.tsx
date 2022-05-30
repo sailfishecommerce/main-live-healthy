@@ -1,21 +1,22 @@
 import { useAtom } from 'jotai'
+import { memo } from 'react'
 
 import SlidingTab from '@/components/Slidingtab'
 import getProductInformationType from '@/components/Slidingtab/getProductInformationType'
 import slidingInfoTabs from '@/json/slidingInfoTab.json'
 import { seemoreAtom } from '@/lib/atomConfig'
-import type { productType } from '@/types'
 
 interface Props {
-  product: productType
+  description: string
 }
-
-export default function SlidingInformation({ product }: Props) {
+function SlidingInformationComponent({ description }: Props) {
   const [seemoreTab, setSeemoreTab]: any = useAtom<string | null>(seemoreAtom)
 
   const selectInformationTypeHandler = (infoType: string) =>
     setSeemoreTab(infoType)
 
+  console.log('product-SlidingInformation', description)
+  
   return (
     <SlidingTab buttonColor="text-white">
       <div className="header lg:h-40 justify-between flex lg:items-end bg-mountain-green p-4 w-full lg:flex-row flex-col items-start py-8">
@@ -43,7 +44,7 @@ export default function SlidingInformation({ product }: Props) {
       <div
         className="text-content sliding-tab bg-white px-6 pb-16"
         dangerouslySetInnerHTML={{
-          __html: getProductInformationType(seemoreTab, product.description),
+          __html: getProductInformationType(seemoreTab, description),
         }}
       />
       <style jsx>
@@ -57,3 +58,7 @@ export default function SlidingInformation({ product }: Props) {
     </SlidingTab>
   )
 }
+
+const SlidingInformation = memo(SlidingInformationComponent)
+
+export default SlidingInformation

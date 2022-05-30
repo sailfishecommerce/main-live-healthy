@@ -18,11 +18,11 @@ function infoType(
 }
 
 function productInformation(information: string) {
-  infoType(information, 'Directions', 0)
   const stageOne = infoType(information, 'STORAGE INSTRUCTIONS', 0)
   const productInfo =
     infoType(stageOne, 'Directions', 0) ||
-    infoType(information, 'Directions', 0)
+    infoType(information, 'Directions', 0) ||
+    information
   return productInfo
 }
 export default function getProductInformationType(

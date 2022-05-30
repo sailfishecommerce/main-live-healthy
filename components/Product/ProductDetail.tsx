@@ -12,16 +12,17 @@ import { activeProductSlideAtom, seemoreAtom } from '@/lib/atomConfig'
 import type { seemoreType } from '@/lib/atomConfigType'
 
 export default function ProductDetail({ product }: any) {
-  const [, setSeeMoreState]: any = useAtom<seemoreType>(seemoreAtom)
+  const [seeMore, setSeeMoreState]: any = useAtom<seemoreType>(seemoreAtom)
   const { updateSlideTab } = useSlidingTab()
 
   const [activeProductSlide, setActiveProductSlide]: any = useAtom<any>(
     activeProductSlideAtom
   )
+  console.log('activeProductSlide', activeProductSlide)
 
   useEffect(() => {
     setActiveProductSlide(product)
-  }, [activeProductSlide])
+  }, [seeMore])
 
   function setSeeMoreHandler(infoType: seemoreType) {
     updateSlideTab('SLIDING-INFO')

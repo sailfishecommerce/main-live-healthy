@@ -106,7 +106,9 @@ export default function LayoutWrapper({ children }: PropsWithChildren<Props>) {
         <DynamicAuthModal show={modalState} onHide={closeAuthModalHandler} />
       )}
       {slidingTab === 'SLIDING-INFO' && activeProductSlide && (
-        <DynamicSlidingInformationTab product={activeProductSlide} />
+        <DynamicSlidingInformationTab
+          description={activeProductSlide?.description}
+        />
       )}
       {slidingTab === 'SLIDING-CART' && <DynamicSlidingCartTab />}
       {slidingTab === 'SLIDING-ACCOUNT' && <DynamicAccountDetailsTab />}

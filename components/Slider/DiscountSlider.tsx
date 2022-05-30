@@ -1,14 +1,20 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide'
-import { memo } from 'react'
-import '@splidejs/splide/dist/css/splide.min.css'
+import axios from 'axios'
+import { memo, useEffect } from 'react'
 
-import useDiscount from '@/hooks/useDiscount'
+import '@splidejs/splide/dist/css/splide.min.css'
+import availableDiscount from '@/json/available-discount.json'
 
 function DiscountSliderComponent() {
-  const [discount, status] = useDiscount()
+  useEffect(() => {
+    if (availableDiscount.length === 0) {
+      axios.get('/api/get-available-discount')
+    }
+  }, [])
+
   return (
     <div>
-      {status === 'success' && (
+      {availableDiscount.length > 0 && (
         <Splide
           className="w-full"
           options={{
@@ -18,7 +24,7 @@ function DiscountSliderComponent() {
             autoplay: true,
           }}
         >
-          {discount.map((item: any, index: number) => {
+          {availableDiscount.map((item: any, index: number) => {
             const slideBg = `slider${index}`
             return (
               <SplideSlide key={item.id}>

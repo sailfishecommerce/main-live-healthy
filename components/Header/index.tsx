@@ -5,6 +5,7 @@ import { memo } from 'react'
 
 import Noticebar from '@/components/Alerts/Noticebar'
 import Menu from '@/components/Menu'
+import DiscountSlider from '@/components/Slider/DiscountSlider'
 import { useMediaQuery } from '@/hooks'
 import useNavStyle from '@/hooks/useNavStyle'
 import { categoryDropdownAtom, noticebarAtom } from '@/lib/atomConfig'
@@ -14,14 +15,6 @@ const DynamicAllCategoriesDropdownView = dynamic(
     import(
       /* webpackChunkName: 'AllCategoriesDropdownView' */ '@/components/Dropdown/AllCategoriesDropdownView'
     )
-)
-
-const DiscountSlider = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'DiscountSlider' */ '@/components/Slider/DiscountSlider'
-    ),
-  { ssr: false }
 )
 
 function HeaderComponent() {

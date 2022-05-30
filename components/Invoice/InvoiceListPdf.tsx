@@ -22,12 +22,12 @@ export default function InvoiceListPdf({ item, currency, product }: any) {
           </View>
           <View style={itemStyles.itemTotal}>
             <Text style={itemStyles.strikeThrough}>
-              {item?.orig_price > item?.price ? (
-                <FormattedPrice price={product?.price} currency={currency} />
+              {Number(item?.price) > Number(item?.orig_price) ? (
+                <FormattedPrice price={item?.price} currency={currency} />
               ) : null}
             </Text>
             <Text style={itemStyles.price}>
-              <FormattedPrice currency={currency} price={product?.price} />
+              <FormattedPrice currency={currency} price={item?.orig_price} />
             </Text>
           </View>
           <Text style={itemStyles.quantity}>{item.quantity}</Text>

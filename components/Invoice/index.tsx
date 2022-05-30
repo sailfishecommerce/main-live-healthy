@@ -13,6 +13,7 @@ export function DownloadButton({ invoice }: any) {
       `invoice-${invoice.number}.pdf`,
       pdf(<InvoicePdf invoice={invoice} />).toBlob()
     )
+
     return zip.generateAsync({ type: 'blob' }).then((blob) => {
       saveAs(blob, 'invoice.zip')
     })

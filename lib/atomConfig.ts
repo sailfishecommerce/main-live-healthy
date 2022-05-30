@@ -89,10 +89,14 @@ export const adminInvoiceAtom = atom(null)
 export const selectedInvoiceAtom = atom<{
   selected: number[]
   selectAll: boolean
+  type: 'body' | 'head' | null
 }>({
   selected: [],
   selectAll: false,
+  type: null,
 })
+export const deletedIndexAtom = atom<number[]>([])
+export const allIndexAtom = atom<number[]>([])
 
 export const invoiceProductsAtom = atom<any>([])
 

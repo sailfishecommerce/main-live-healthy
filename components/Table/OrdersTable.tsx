@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 
 import OrderTableHead from '@/components/Table/OrderTableHead'
 import OrderTableList from '@/components/Table/OrderTableList'
@@ -20,7 +20,6 @@ type orderType = {
 }
 
 export default function OrdersTable({ orders }: any) {
-  const [allIndex, setAllIndex] = useState<number[]>([])
   const allIndexArray: number[] = []
   const ordersIds = getInvoiceproductIds(orders)
 
@@ -32,13 +31,12 @@ export default function OrdersTable({ orders }: any) {
 
   return (
     <table className="table w-full rounded-3xl my-4">
-      <OrderTableHead allIndex={allIndex} />
+      <OrderTableHead />
       <tbody>
         {orders.map((order: orderType, index: number) => {
           return (
             <OrderTableList
-              setAllIndex={setAllIndex}
-              allIndex={allIndexArray}
+              allIndexArray={allIndexArray}
               order={order}
               key={order.id}
               index={index}

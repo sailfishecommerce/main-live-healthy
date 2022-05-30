@@ -2,10 +2,13 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useAtom } from 'jotai'
 import { useRouter } from 'next/router'
-import type { Dispatch, SetStateAction } from 'react'
 import { useEffect } from 'react'
 
-import { selectedInvoiceAtom } from '@/lib/atomConfig'
+import {
+  allIndexAtom,
+  deletedIndexAtom,
+  selectedInvoiceAtom,
+} from '@/lib/atomConfig'
 import { formatOrderDate } from '@/lib/formatOrderDate'
 import { formatPrice } from '@/lib/formatPrice'
 
@@ -26,31 +29,35 @@ interface OrderTableListProps {
     date_created: string
   }
   index: number
-  setAllIndex: Dispatch<SetStateAction<number[]>>
-  allIndex: number[]
+  allIndexArray: number[]
 }
 
 export default function OrderTableList({
   order,
   index,
-  setAllIndex,
-  allIndex,
+  allIndexArray,
 }: OrderTableListProps) {
   const [selectedInvoice, setSelectedInvoice] = useAtom(selectedInvoiceAtom)
+  const [, setAllIndex] = useAtom(allIndexAtom)
+  const [deletedIndex, setDeletedIndex] = useAtom(deletedIndexAtom)
+
   const router = useRouter()
   const indexNumber = index + 1
 
-  if (!allIndex.includes(indexNumber)) {
-    allIndex.push(indexNumber)
+  if (!allIndexArray.includes(indexNumber)) {
+    allIndexArray.push(indexNumber)
   }
 
   useEffect(() => {
-    setAllIndex(allIndex)
+    setAllIndex(allIndexArray)
   }, [])
 
   function deleteItemInArray(givenArray: number[], item: number) {
     const itemIndex = givenArray.indexOf(item)
-    givenArray.splice(itemIndex, 1)
+    const deletedIndexArray = givenArray.splice(itemIndex, 1)
+    if (!deletedIndex.includes(deletedIndexArray[0])) {
+      setDeletedIndex([...deletedIndex, deletedIndexArray[0]])
+    }
     return givenArray
   }
 
@@ -62,11 +69,16 @@ export default function OrderTableList({
         selectedInvoice.selected,
         indexNumber
       )
-      setSelectedInvoice({ selectAll: false, selected: selectedItemArray })
+      setSelectedInvoice({
+        ...selectedInvoice,
+        selected: selectedItemArray,
+        type: 'body',
+      })
     } else {
       setSelectedInvoice({
+        ...selectedInvoice,
         selected: [...selectedInvoice.selected, indexNumber],
-        selectAll: false,
+        type: 'body',
       })
     }
   }

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable no-alert */
 import type { ElementType } from 'airwallex-payment-elements'

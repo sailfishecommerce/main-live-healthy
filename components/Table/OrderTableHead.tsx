@@ -1,8 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useAtom } from 'jotai'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 
-import { selectedInvoiceAtom } from '@/lib/atomConfig'
+import {
+  allIndexAtom,
+  deletedIndexAtom,
+  selectedInvoiceAtom,
+} from '@/lib/atomConfig'
 
 const headContent = [
   'S/N',
@@ -14,19 +18,26 @@ const headContent = [
   'TOTAL',
 ]
 
-interface OrderTableHeadProps {
-  allIndex: number[]
-}
-
-export default function OrderTableHead({ allIndex }: OrderTableHeadProps) {
+export default function OrderTableHead() {
   const [selectedInvoice, setSelectedInvoice] = useAtom(selectedInvoiceAtom)
-  const { selectAll } = selectedInvoice
+  const [allIndex, setAllIndex] = useAtom(allIndexAtom)
+  const [deletedIndex] = useAtom(deletedIndexAtom)
+
+  const { selectAll, type } = selectedInvoice
+
   function onChangeHandler() {
     setSelectedInvoice({
-      ...selectedInvoice,
+      selected: allIndex,
       selectAll: !selectAll,
+      type: 'head',
     })
   }
+
+  useEffect(() => {
+    if (!deletedIndex.every((dI) => allIndex.includes(dI)) && type !== 'body') {
+      setAllIndex([...allIndex, ...deletedIndex])
+    }
+  }, [selectAll])
 
   useEffect(() => {
     if (selectedInvoice.selectAll) {

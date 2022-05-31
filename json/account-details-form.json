@@ -1,48 +1,76 @@
 {
   "AccountDetails": [
     {
+      "label": "First name",
       "placeholder": "First name",
       "inputType": "text",
       "name": "firstName",
       "type": "input"
     },
     {
+      "label": "Last name",
       "placeholder": "Last name",
       "inputType": "text",
       "name": "lastName",
       "type": "input"
     },
     {
+      "label": "Email",
       "placeholder": "Email",
       "inputType": "email",
       "name": "userEmail",
-      "type": "input"
-    },
-    {
-      "placeholder": "Phone",
-      "inputType": "text",
-      "name": "Phone",
       "type": "input"
     }
   ],
   "ShippingAddress": [
     {
-      "placeholder": "Select Order",
+      "label": "Address 1",
+      "placeholder": "Address 1",
       "inputType": "text",
-      "name": "selectOrder",
+      "name": "address1",
       "type": "input"
     },
     {
-      "placeholder": "Email",
-      "inputType": "email",
-      "name": "userEmail",
+      "label": "Address 2",
+      "placeholder": "Address 2",
+      "inputType": "text",
+      "name": "address2",
       "type": "input"
     },
     {
-      "placeholder": "Address",
+      "placeholder": "Phone",
+      "inputType": "number",
+      "name": "phone",
+      "type": "number"
+    },
+    {
+      "label": "Zip",
+      "placeholder": "Zip",
       "inputType": "text",
-      "name": "address",
+      "name": "Zip",
+      "type": "numberm"
+    },
+    {
+      "label": "City",
+      "placeholder": "city",
+      "inputType": "text",
+      "name": "city",
       "type": "input"
+    },
+    {
+      "label": "State",
+      "placeholder": "State",
+      "inputType": "text",
+      "name": "State",
+      "type": "input"
+    },
+    {
+      "label": "Country",
+      "placeholder": "Country",
+      "inputType": "text",
+      "name": "city",
+      "type": "select",
+      "options": []
     }
   ],
   "accountData": [

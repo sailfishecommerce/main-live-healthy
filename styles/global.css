@@ -48,6 +48,10 @@ ul.splide__pagination {
   color: var(--mountain-green);
 }
 
+.hover-mountain-green:hover {
+  background-color: var(--mountain-green);
+}
+
 .mountain-green:hover {
   color: var(--mountain-mist);
 }

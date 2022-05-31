@@ -10,7 +10,6 @@ export default function useUpdateAccountdetails() {
     firstName: '',
     lastName: '',
     userEmail: '',
-    phoneNumber: '',
   }
   if (status === 'success') {
     formInitialData.firstName = data.firstName

@@ -13,15 +13,15 @@
       "type": "input"
     },
     {
-      "placeholder": "Phone",
-      "inputType": "text",
-      "name": "Phone",
-      "type": "input"
-    },
-    {
       "placeholder": "Email",
       "inputType": "email",
       "name": "userEmail",
+      "type": "input"
+    },
+    {
+      "placeholder": "Phone",
+      "inputType": "text",
+      "name": "Phone",
       "type": "input"
     }
   ],

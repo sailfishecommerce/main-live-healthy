@@ -1,5 +1,4 @@
 import { Formik } from 'formik'
-import { v4 as uuidv4 } from 'uuid'
 
 import { displayFormElement } from '@/components/Form/FormElement'
 import { signupFormSchema } from '@/components/Form/schema/AuthSchema'
@@ -23,18 +22,12 @@ export default function SignupForm() {
       onSubmit={(values) => signUp.mutate(values)}
     >
       {(formik) => (
-        <form
-          noValidate
-          className="w-full"
-          autoComplete="off"
-          id="signup-tab"
-          onSubmit={formik.handleSubmit}
-        >
+        <form className="w-full" id="signup-tab" onSubmit={formik.handleSubmit}>
           {authContent.signUp.map((content: any) => {
             return content?.length ? (
               <div key={content.id} className="flex flex-wrap">
-                {content.map((inputContent: any) => (
-                  <div key={uuidv4()} className="w-full md:w-1/2">
+                {content.map((inputContent: any, index: number) => (
+                  <div key={index} className="w-full md:w-1/2">
                     {displayFormElement(inputContent, formik)}
                   </div>
                 ))}

@@ -55,6 +55,7 @@ export default function InvoicePage() {
           return selectedInvoiceDataArray
         })
         .then((response) => {
+          console.log('response$response', response)
           const zip = new JSZip()
           response.map((invoiceData) => {
             zip.file(

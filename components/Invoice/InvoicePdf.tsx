@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic'
 
 import { styles } from '@/components/Invoice/invoice-style'
 import FormattedPrice from '@/components/Price/FormattedPrice'
+import invoiceProduct from '@/json/invoice-product.json'
 import { formatOrderDate } from '@/lib/formatOrderDate'
 import getCountry from '@/lib/getCountry'
 import getShippingMethod from '@/lib/shippingMethod'
@@ -23,6 +24,16 @@ export default function InvoicePdf({ invoice }: any) {
     ? `Stripe ${invoice?.billing?.intent?.stripe.id.toUpperCase()}`
     : ''
   const shippingMethod = getShippingMethod(invoice)
+
+  const productArray: any = []
+  invoice.items.map((item: any) => {
+    const selectedInvoiceProduct = invoiceProduct.filter(
+      (invoiceProd: any) => invoiceProd?.id === item.product_id
+    )
+    productArray.push(selectedInvoiceProduct[0])
+  })
+
+  console.log('productArray', productArray)
 
   return (
     <Document>

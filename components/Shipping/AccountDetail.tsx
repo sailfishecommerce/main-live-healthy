@@ -42,7 +42,7 @@ export default function AccountDetail({ userDetail }: any) {
           type="button"
           text="Change Shipping / Billing Address"
           className="plain my-2 w-full md:w-1/4"
-          onClick={() => updateSlideTab('SLIDING-ACCOUNT')}
+          onClick={() => updateSlideTab('SLIDING-ACCOUNT-SHIPPING')}
         />
       </div>
     </div>

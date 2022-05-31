@@ -117,6 +117,10 @@ export default function LayoutWrapper({ children }: PropsWithChildren<Props>) {
       )}
       {slidingTab === 'SLIDING-CART' && <DynamicSlidingCartTab />}
       {slidingTab === 'SLIDING-ACCOUNT' && <DynamicAccountDetailsTab />}
+      {slidingTab === 'SLIDING-ACCOUNT-SHIPPING' && (
+        <DynamicAccountDetailsTab shipping />
+      )}
+
       {modal === 'MODAL_LOGOUT' && (
         <DynamicLogoutModal
           show={logoutModalState}

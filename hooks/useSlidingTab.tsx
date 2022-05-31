@@ -10,7 +10,12 @@ export default function useSlidingTab() {
   const [activeProductSlide]: any = useAtom<any>(activeProductSlideAtom)
 
   const updateSlideTab = (
-    slideTabState: 'SLIDING-ACCOUNT' | 'SLIDING-CART' | 'SLIDING-INFO' | null
+    slideTabState:
+      | 'SLIDING-ACCOUNT-SHIPPING'
+      | 'SLIDING-ACCOUNT'
+      | 'SLIDING-CART'
+      | 'SLIDING-INFO'
+      | null
   ) => {
     setSlidingTab(slideTabState)
     if (slideTabState === null) {

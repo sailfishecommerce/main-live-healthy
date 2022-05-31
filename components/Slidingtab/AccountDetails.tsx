@@ -2,7 +2,13 @@ import AccountDetailsForm from '@/components/Form/AccountDetailsForm'
 import SaveShippingAddress from '@/components/Shipping/SaveShippingAddress'
 import SlidingTab from '@/components/Slidingtab'
 
-export default function AccountDetails() {
+interface AccountDetailsProps {
+  shipping?: boolean
+}
+
+export default function AccountDetails({
+  shipping = false,
+}: AccountDetailsProps) {
   return (
     <SlidingTab buttonColor="text-white">
       <div className="header h-40 flex items-end bg-mountain-green p-4 w-full px-8">
@@ -11,8 +17,8 @@ export default function AccountDetails() {
         </h3>
       </div>
       <div className="content px-8 w-full mx-auto">
-        <AccountDetailsForm />
-        <SaveShippingAddress />
+        {!shipping && <AccountDetailsForm />}
+        {shipping && <SaveShippingAddress />}
       </div>
     </SlidingTab>
   )

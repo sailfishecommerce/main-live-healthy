@@ -18,10 +18,12 @@ export default function Account() {
   function listUserOrders() {
     return axios.post('/api/list-user-orders', { accountID: data?.id })
   }
+
   const { data: userOrders, status: orderStatus } = useQuery(
-    'listUserOrders',
+    `listUserOrders-${data?.id}`,
     listUserOrders
   )
+
   return (
     <>
       <Applayout title="Account Details">
@@ -43,9 +45,8 @@ export default function Account() {
             </div>
           ) : (
             <>
-              {' '}
               <h1 className="text-2xl font-bold lg:mt-8 mt-2">My Account</h1>
-              {orderStatus === 'success' && (
+              {orderStatus === 'success' && userOrders.data.length > 1 && (
                 <OrderHistory orders={userOrders.data} />
               )}
               {status === 'success' && <AccountDetail userDetail={data} />}

@@ -19,11 +19,16 @@ export default function AccountDetail({ userDetail }: any) {
         </li>
         <li className="flex flex-col lg:flex-row my-2">
           <p className="mb-0 mr-1">Address:</p>
-          <p className="font-medium">
-            {userDetail?.shipping?.address1}, {userDetail?.shipping?.city},
-            {userDetail?.shipping?.state},{' '}
-            {getCountry(userDetail?.shipping?.country)}
-          </p>
+          <span className="font-medium">
+            <p>{userDetail?.shipping?.address1}</p>
+            <p>{userDetail?.shipping?.city}</p>
+            <p>{userDetail?.shipping?.state} </p>
+            <p>{getCountry(userDetail?.shipping?.country)}</p>
+          </span>
+        </li>
+        <li className="flex flex-col lg:flex-row my-2">
+          <p className="mb-0 mr-1">Number of Orders:</p>
+          <p className="font-medium">{userDetail.orderCount}</p>
         </li>
       </ul>
       <div className="button-group flex flex-col md:flex-row  items-center mb-14">

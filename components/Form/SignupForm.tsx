@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import { Formik } from 'formik'
 
 import { displayFormElement } from '@/components/Form/FormElement'

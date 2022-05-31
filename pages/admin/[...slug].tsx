@@ -1,8 +1,18 @@
+import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 
-import DashboardEditor from '@/components/Dashboard/DashboardEditor'
 import DashboardMainView from '@/components/Dashboard/DashboardMainView'
 import DashboardLayout from '@/layouts/dashboard-layout'
+
+const DynamicDashboardEditor = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'DynamicDashboardEditor' */ '@/components/Dashboard/DashboardEditor'
+    ),
+  {
+    ssr: false,
+  }
+)
 
 export default function AdminPage() {
   const router = useRouter()
@@ -14,7 +24,7 @@ export default function AdminPage() {
           <h1 className="text-xl">
             {route.toUpperCase().replaceAll('-', ' ')}
           </h1>
-          <DashboardEditor />
+          <DynamicDashboardEditor />
         </div>
       </DashboardMainView>
     </DashboardLayout>

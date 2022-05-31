@@ -18,6 +18,10 @@ export default function AccountDetail({ userDetail }: any) {
           <p className="font-medium">{userDetail?.email}</p>
         </li>
         <li className="flex flex-col lg:flex-row my-2">
+          <p className="mb-0 mr-1">Phone:</p>
+          <p className="font-medium">{userDetail?.shipping?.phone}</p>
+        </li>
+        <li className="flex flex-col lg:flex-row my-2">
           <p className="mb-0 mr-1">Address:</p>
           <span className="font-medium">
             <p>{userDetail?.shipping?.address1}</p>

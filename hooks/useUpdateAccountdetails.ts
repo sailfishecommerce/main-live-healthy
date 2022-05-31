@@ -12,10 +12,30 @@ export default function useUpdateAccountdetails() {
     lastName: '',
     userEmail: '',
   }
+  const shippingInitialData = {
+    address1: '',
+    address2: '',
+    city: '',
+    phone: '',
+    zip: '',
+    state: '',
+    country: '',
+  }
   if (status === 'success') {
-    formInitialData.firstName = data.firstName
-    formInitialData.lastName = data.lastName
-    formInitialData.userEmail = data.email
+    formInitialData.firstName = data.firstName ? data.firstName : ''
+    formInitialData.lastName = data.lastName ? data.lastName : ''
+    formInitialData.userEmail = data.email ? data.email : ''
+
+    shippingInitialData.address1 = data.shipping.address1
+      ? data.shipping.address1
+      : ''
+    shippingInitialData.address2 = data.shipping.address2
+      ? data.shipping.address2
+      : ''
+    shippingInitialData.city = data.shipping.city ? data.shipping.city : ''
+    shippingInitialData.state = data.shipping.state ? data.shipping.state : ''
+    shippingInitialData.zip = data.shipping.zip ? data.shipping.zip : ''
+    shippingInitialData.phone = data.shipping.phone ? data.shipping.phone : ''
   }
 
   function updateUserAccountDetails(userDetails: any) {
@@ -28,6 +48,7 @@ export default function useUpdateAccountdetails() {
 
   return {
     formInitialData,
+    shippingInitialData,
     updateUserAccountDetails,
     updateUserShippingDetails,
   }

@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable react/no-array-index-key */
 import { Formik } from 'formik'
 import { useQuery } from 'react-query'
@@ -13,27 +12,19 @@ import AccountDetailsFormContent from '@/json/account-details-form.json'
 export default function SaveShippingAddress() {
   const { getUserAccount } = useAccount()
   const { data } = useQuery('userDetails', getUserAccount)
+  const { shippingInitialData } = useUpdateAccountdetails()
+
   const { useUserAccountDetails } = useMutationAction()
   const { updateUserShippingDetails } = useUpdateAccountdetails()
 
   const mutateUserAccount = useUserAccountDetails(updateUserShippingDetails)
-
-  console.log('data', data)
 
   return (
     <div className="shipping-address my-6">
       <h3 className="text-xl font-medium my-4">Shipping / Billing Address</h3>
       <Formik
         validationSchema={shippingDetailsSchema}
-        initialValues={{
-          address1: '',
-          address2: '',
-          city: '',
-          phone: '',
-          zip: '',
-          state: '',
-          country: '',
-        }}
+        initialValues={shippingInitialData}
         onSubmit={(values) => {
           const userDetails = {
             id: data?.id,

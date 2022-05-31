@@ -1,22 +1,12 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { Document, Page, Text, Image, View, Link } from '@react-pdf/renderer'
-import dynamic from 'next/dynamic'
 
+import InvoiceListPdf from '@/components/Invoice/InvoiceListPdf'
 import { styles } from '@/components/Invoice/invoice-style'
 import FormattedPrice from '@/components/Price/FormattedPrice'
 import { formatOrderDate } from '@/lib/formatOrderDate'
 import getCountry from '@/lib/getCountry'
 import getShippingMethod from '@/lib/shippingMethod'
-
-const InvoiceListPdf = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'InvoiceList' */ '@/components/Invoice/InvoiceListPdf'
-    ),
-  {
-    ssr: false,
-  }
-)
 
 export default function InvoicePdf({ invoice }: any) {
   const paymentMethod = invoice?.billing.intent?.stripe.id
@@ -46,7 +36,7 @@ export default function InvoicePdf({ invoice }: any) {
               {invoice?.shipping.address1} {invoice?.shipping?.address2}
             </Text>
             <Text style={styles.text}>
-              {invoice?.shipping.zip} {invoice?.shipping.city}{' '}
+              {invoice?.shipping.zip} {invoice?.shipping.city}
               {invoice?.shipping.state}
             </Text>
             <Text style={styles.text}>

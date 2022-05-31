@@ -13,12 +13,12 @@ type orderType = {
   payment_total: number
 }
 
-export default function OrdersTable({ orders }: any) {
+export default function OrdersTable({ orders, showInput = true }: any) {
   const allIndexArray: number[] = []
 
   return (
     <table className="table w-full rounded-3xl my-4">
-      <OrderTableHead />
+      <OrderTableHead showInput={showInput} />
       <tbody>
         {orders.map((order: orderType, index: number) => {
           return (
@@ -27,6 +27,7 @@ export default function OrdersTable({ orders }: any) {
               order={order}
               key={order.id}
               index={index}
+              showInput={showInput}
             />
           )
         })}

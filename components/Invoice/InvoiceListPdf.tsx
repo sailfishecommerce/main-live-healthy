@@ -14,7 +14,9 @@ export default function InvoiceListPdf({ item, currency, product }: any) {
       {product !== undefined || product !== null ? (
         <View style={itemStyles.itemRow}>
           <View style={itemStyles.imageRow}>
-            <Image src={productImage} style={itemStyles.image} />
+            {productImage !== undefined && (
+              <Image src={productImage} style={itemStyles.image} />
+            )}
             <View>
               <Text style={itemStyles.productName}>{product?.name}</Text>
               <Text style={itemStyles.text}>SKU {product?.sku}</Text>

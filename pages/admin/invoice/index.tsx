@@ -1,31 +1,22 @@
-/* eslint-disable array-callback-return */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-nested-ternary */
-import { pdf } from '@react-pdf/renderer'
-import axios from 'axios'
-import { saveAs } from 'file-saver'
-import { useAtom } from 'jotai'
-import JSZip from 'jszip'
 import { useEffect, useState } from 'react'
 import { BiDownload } from 'react-icons/bi'
 
 import DashboardMainView from '@/components/Dashboard/DashboardMainView'
-import InvoicePdf from '@/components/Invoice/InvoicePdf'
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import OrdersTable from '@/components/Table/OrdersTable'
 import useAdminOrder from '@/hooks/useAdminOrder'
 import useInvoiceTable from '@/hooks/useInvoiceTable'
+import useMulipleInvoiceDownload from '@/hooks/useMulipleInvoiceDownload'
 import DashboardLayout from '@/layouts/dashboard-layout'
-import { loadingInvoiceAtom } from '@/lib/atomConfig'
 
 export default function InvoicePage() {
   const { data, status } = useAdminOrder()
   const [downloadInvoices, setDownloadInvoice] = useState(false)
   const { selectedInvoice } = useInvoiceTable()
-  const [, setLoading] = useAtom(loadingInvoiceAtom)
-  const [, setInvoice] = useState([])
   const selectedInvoiceCount = selectedInvoice.selected.length
-  const { selected } = selectedInvoice
+  const { invoiceMultipleDownload } = useMulipleInvoiceDownload()
 
   const selectedInvoiceText =
     selectedInvoiceCount > 1
@@ -37,38 +28,8 @@ export default function InvoicePage() {
 
   useEffect(() => {
     if (downloadInvoices) {
-      setLoading(true)
-      axios
-        .get('/api/get-all-invoice')
-        .then((response) => {
-          setInvoice(response.data?.invoiceArray)
-          return response.data.invoiceArray
-        })
-        .then((response) => {
-          const selectedInvoiceDataArray: any[] = []
-          selected.map((sI) => {
-            const invoiceDataArray = response.filter(
-              (inv: any) => inv.number === sI
-            )
-            selectedInvoiceDataArray.push(invoiceDataArray[0])
-          })
-          return selectedInvoiceDataArray
-        })
-        .then((response) => {
-          console.log('response$response', response)
-          const zip = new JSZip()
-          response.map((invoiceData) => {
-            zip.file(
-              `invoice-${invoiceData.number}.pdf`,
-              pdf(<InvoicePdf invoice={invoiceData} />).toBlob()
-            )
-          })
-          setDownloadInvoice(false)
-          setLoading(false)
-          return zip.generateAsync({ type: 'blob' }).then((blob) => {
-            saveAs(blob, 'invoice.zip')
-          })
-        })
+      invoiceMultipleDownload()
+      setDownloadInvoice(false)
     }
   }, [downloadInvoices])
 

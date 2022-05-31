@@ -13,7 +13,11 @@ const headContent = [
   'TOTAL',
 ]
 
-export default function OrderTableHead() {
+interface Props {
+  showInput: boolean
+}
+
+export default function OrderTableHead({ showInput }: Props) {
   const {
     allIndex,
     setAllIndex,
@@ -48,13 +52,15 @@ export default function OrderTableHead() {
     <>
       <thead>
         <tr className="bg-white">
-          <th>
-            <input
-              type="checkbox"
-              checked={selectAll}
-              onChange={onChangeHandler}
-            />
-          </th>
+          {showInput && (
+            <th>
+              <input
+                type="checkbox"
+                checked={selectAll}
+                onChange={onChangeHandler}
+              />
+            </th>
+          )}
           {headContent.map((content) => (
             <th key={content}>{content}</th>
           ))}

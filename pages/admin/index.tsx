@@ -35,7 +35,7 @@ export default function Admin() {
           ) : status === 'loading' ? (
             'loading ...'
           ) : (
-            <OrdersTable orders={orders} />
+            <OrdersTable orders={orders} showInput={false} />
           )}
         </div>
       </DashboardMainView>

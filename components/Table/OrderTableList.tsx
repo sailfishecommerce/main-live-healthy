@@ -25,12 +25,14 @@ interface OrderTableListProps {
   }
   index: number
   allIndexArray: number[]
+  showInput: boolean
 }
 
 export default function OrderTableList({
   order,
   index,
   allIndexArray,
+  showInput,
 }: OrderTableListProps) {
   const { selectedInvoice, updateSelectedIndex, setAllIndex } =
     useInvoiceTable()
@@ -63,13 +65,15 @@ export default function OrderTableList({
   return (
     <>
       <tr key={order.id} className="bg-white row p-4">
-        <td>
-          <input
-            checked={inputChecked}
-            type="checkbox"
-            onChange={() => updateSelectedIndex(order.number)}
-          />
-        </td>
+        {showInput && (
+          <td>
+            <input
+              checked={inputChecked}
+              type="checkbox"
+              onChange={() => updateSelectedIndex(order.number)}
+            />
+          </td>
+        )}
         <td onClick={() => viewInvoice(order.id)}>{indexNumber}</td>
         <td onClick={() => viewInvoice(order.id)}>{order.number}</td>
         <td onClick={() => viewInvoice(order.id)}>

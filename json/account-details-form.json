@@ -70,7 +70,7 @@
       "placeholder": "Country",
       "inputType": "text",
       "name": "city",
-      "type": "select",
+      "type": "selectCountry",
       "options": []
     }
   ],

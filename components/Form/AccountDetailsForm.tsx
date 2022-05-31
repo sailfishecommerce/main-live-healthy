@@ -14,7 +14,10 @@ export default function AccountDetailsForm() {
   const { formInitialData } = useUpdateAccountdetails()
   const { data } = useQuery('userDetails', getUserAccount)
   const { useUserAccountDetails } = useMutationAction()
-  const mutateUserAccount = useUserAccountDetails()
+  const { updateUserAccountDetails } = useUpdateAccountdetails()
+
+  const mutateUserAccount = useUserAccountDetails(updateUserAccountDetails)
+
   return (
     <Formik
       initialValues={formInitialData}

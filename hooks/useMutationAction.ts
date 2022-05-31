@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { useRef } from 'react'
 import { useMutation, useQueryClient } from 'react-query'
 import { toast } from 'react-toastify'
@@ -6,8 +5,6 @@ import { toast } from 'react-toastify'
 import useSwellCart from '@/hooks/useSwellCart'
 import useToast from '@/hooks/useToast'
 import { addEmailToNewsletter } from '@/hooks/useVbout'
-
-import useUpdateAccountdetails from './useUpdateAccountdetails'
 
 type addEmailToNewsletterType = {
   email: string
@@ -17,8 +14,6 @@ type addEmailToNewsletterType = {
 export default function useMutationAction() {
   const { loadingToast, updateToast } = useToast()
   const queryClient = useQueryClient()
-
-  const { updateUserAccountDetails } = useUpdateAccountdetails()
 
   const {
     emptyCart,
@@ -41,8 +36,7 @@ export default function useMutationAction() {
         onSettled: () => {
           queryClient.invalidateQueries('cart')
         },
-        onSuccess: (response) => {
-          console.log('response-onSuccess', response)
+        onSuccess: () => {
           updateToast(toastID, toast.TYPE.SUCCESS, 'thanks for subscribing')
         },
         onError: () => {
@@ -164,7 +158,7 @@ export default function useMutationAction() {
     })
   }
 
-  function useUserAccountDetails() {
+  function useUserAccountDetails(updateUserAccountDetails: any) {
     const toastID = useRef(null)
 
     return useMutation(
@@ -178,8 +172,7 @@ export default function useMutationAction() {
             updateToast(toastID, toast.TYPE.SUCCESS, 'profile details updated!')
           }
         },
-        onError: (err) => {
-          console.log('err', err)
+        onError: () => {
           updateToast(
             toastID,
             toast.TYPE.ERROR,

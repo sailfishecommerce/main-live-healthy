@@ -22,5 +22,13 @@ export default function useUpdateAccountdetails() {
     return axios.put('/api/update-user-account', userDetails)
   }
 
-  return { formInitialData, updateUserAccountDetails }
+  function updateUserShippingDetails(userDetails: any) {
+    return axios.put('/api/update-user-shipping-details', userDetails)
+  }
+
+  return {
+    formInitialData,
+    updateUserAccountDetails,
+    updateUserShippingDetails,
+  }
 }

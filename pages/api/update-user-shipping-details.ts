@@ -11,13 +11,9 @@ export default async function UpdateUserAccountHandler(
 
   switch (req.method) {
     case 'PUT': {
-      const { email, firstName, lastName } = req.body.update
       return await swell
         .put('/accounts/{id}', {
           id: req.body.id,
-          email,
-          first_name: firstName,
-          last_name: lastName,
           shipping: req.body.shipping,
         })
         .then((response: any) => {

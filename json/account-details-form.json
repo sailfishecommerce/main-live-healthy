@@ -38,17 +38,18 @@
       "type": "input"
     },
     {
+      "label": "Phone",
       "placeholder": "Phone",
       "inputType": "number",
       "name": "phone",
-      "type": "number"
+      "type": "input"
     },
     {
       "label": "Zip",
       "placeholder": "Zip",
       "inputType": "text",
-      "name": "Zip",
-      "type": "numberm"
+      "name": "zip",
+      "type": "input"
     },
     {
       "label": "City",
@@ -61,7 +62,7 @@
       "label": "State",
       "placeholder": "State",
       "inputType": "text",
-      "name": "State",
+      "name": "state",
       "type": "input"
     },
     {

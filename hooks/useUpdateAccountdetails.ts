@@ -1,3 +1,4 @@
+import axios from 'axios'
 import { useQuery } from 'react-query'
 
 import useAccount from '@/hooks/useAccount'
@@ -17,5 +18,9 @@ export default function useUpdateAccountdetails() {
     formInitialData.userEmail = data.email
   }
 
-  return { formInitialData }
+  function updateUserAccountDetails(userDetails: any) {
+    return axios.put('/api/update-user-account', userDetails)
+  }
+
+  return { formInitialData, updateUserAccountDetails }
 }

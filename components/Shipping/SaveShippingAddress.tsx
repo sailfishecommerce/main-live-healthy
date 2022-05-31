@@ -3,6 +3,7 @@
 import { Formik } from 'formik'
 
 import { displayFormElement } from '@/components/Form/FormElement'
+import { shippingDetailsSchema } from '@/components/Form/schema/AccountDetailsSchema'
 import AccountDetailsFormContent from '@/json/account-details-form.json'
 
 export default function SaveShippingAddress() {
@@ -10,7 +11,16 @@ export default function SaveShippingAddress() {
     <div className="shipping-address my-6">
       <h3 className="text-xl font-medium my-4">Shipping / Billing Address</h3>
       <Formik
-        initialValues={{ address: '', city: '', country: '' }}
+        validationSchema={shippingDetailsSchema}
+        initialValues={{
+          address1: '',
+          address2: '',
+          city: '',
+          phone: '',
+          zip: '',
+          state: '',
+          country: '',
+        }}
         onSubmit={(values) => console.log('values', values)}
       >
         {(formik) => (

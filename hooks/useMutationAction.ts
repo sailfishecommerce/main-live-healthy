@@ -7,6 +7,8 @@ import useSwellCart from '@/hooks/useSwellCart'
 import useToast from '@/hooks/useToast'
 import { addEmailToNewsletter } from '@/hooks/useVbout'
 
+import useUpdateAccountdetails from './useUpdateAccountdetails'
+
 type addEmailToNewsletterType = {
   email: string
   listid: number
@@ -15,6 +17,8 @@ type addEmailToNewsletterType = {
 export default function useMutationAction() {
   const { loadingToast, updateToast } = useToast()
   const queryClient = useQueryClient()
+
+  const { updateUserAccountDetails } = useUpdateAccountdetails()
 
   const {
     emptyCart,
@@ -160,6 +164,32 @@ export default function useMutationAction() {
     })
   }
 
+  function useUserAccountDetails() {
+    const toastID = useRef(null)
+
+    return useMutation(
+      ({ userDetails }: any): any => updateUserAccountDetails(userDetails),
+      {
+        mutationKey: 'useUserAccountDetails',
+        onMutate: () => loadingToast(toastID),
+        onSettled: () => queryClient.invalidateQueries('userDetails'),
+        onSuccess: (response) => {
+          if (response) {
+            updateToast(toastID, toast.TYPE.SUCCESS, 'profile details updated!')
+          }
+        },
+        onError: (err) => {
+          console.log('err', err)
+          updateToast(
+            toastID,
+            toast.TYPE.ERROR,
+            'error updating profile details'
+          )
+        },
+      }
+    )
+  }
+
   return {
     useUpdateCartItem,
     useAddItemToCart,
@@ -167,5 +197,6 @@ export default function useMutationAction() {
     useEmptyCart,
     useDeleteCart,
     useAddEmailToNewsletter,
+    useUserAccountDetails,
   }
 }

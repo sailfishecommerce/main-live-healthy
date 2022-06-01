@@ -10,6 +10,7 @@ export default function useLiveHealthyProduct(): any {
     'fetchLiveHealthyProducts',
     fetchLiveHealthyProducts,
     {
+      staleTime: Infinity,
       placeholderData: () =>
         queryClient.getQueryData('fetchLiveHealthyProducts'),
     }
@@ -32,6 +33,7 @@ export function useProductInRange(queryData: queryDataType) {
     `getProductInRange-${id}`,
     getProductInRange,
     {
+      staleTime: Infinity,
       placeholderData: () =>
         queryClient.getQueryData(`getProductInRange-${id}`),
     }

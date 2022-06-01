@@ -21,8 +21,6 @@ export default function ProductTabSlider() {
   }
   const [data, status] = useProductInRange(query)
 
-  console.log('data', data?.length)
-
   return (
     <section className="itemSlider py-6 product-tab-slider items-start container mx-auto px-6">
       <ProductTabSliderDropdown />
@@ -30,7 +28,7 @@ export default function ProductTabSlider() {
         {status === 'error' ? (
           'unable to load products'
         ) : status === 'loading' ? (
-          'loading'
+          'loading...'
         ) : (
           <Splide
             options={{

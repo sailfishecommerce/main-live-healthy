@@ -5,6 +5,7 @@ import { Configure } from 'react-instantsearch-dom'
 
 import { NoResultsHandler } from '@/components/@instantsearch/widgets/no-results-handler/no-results-handler'
 import ProductHitCard from '@/components/Cards/ProductHitCard'
+import ErrorBoundary from '@/components/ErrorBoundary'
 import { viewModeAtom } from '@/components/ViewModes'
 import { configAtom } from '@/config/config'
 import Applayout from '@/layouts/app-layout'
@@ -70,32 +71,38 @@ export default function SearchPage({ searchQuery, ...props }: SearchPageProps) {
   return (
     <Applayout title="Search for products">
       <SearchPageLayout {...props}>
-        <Configure query={searchQuery} />
-        <div className="container flex items-center mx-auto justify-between">
-          <h1 className="font-bold text-xl">
-            Showing {totalHits} {result} for &#34;{hitsObj?.query}&#34;
-          </h1>
-        </div>
-        <div className="flex flex-col gap-2 container lg:mx-auto lg:mb-10 lg:mt-10 lg:gap-0">
-          <Breadcrumb attributes={breadcrumbAttributes} />
-          <div className="flex flex-col lg:flex-row">
-            {(refinementsLayout === 'panel' || true) && <RefinementsPanel />}
-            <div className="grow flex flex-col gap-2 lg:gap-4">
-              <RefinementsBar
-                showRefinements={refinementsLayout === 'bar' && true}
-              />
-
-              <NoResultsHandler>
-                <InfiniteHits
-                  hitComponent={ProductHitCard}
-                  viewMode={viewMode}
-                  showLess={true}
-                  showMore={true}
-                />
-              </NoResultsHandler>
+        <ErrorBoundary>
+          <>
+            <Configure query={searchQuery} />
+            <div className="container flex items-center mx-auto justify-between">
+              <h1 className="font-bold text-xl">
+                Showing {totalHits} {result} for &#34;{hitsObj?.query}&#34;
+              </h1>
             </div>
-          </div>
-        </div>
+            <div className="flex flex-col gap-2 container lg:mx-auto lg:mb-10 lg:mt-10 lg:gap-0">
+              <Breadcrumb attributes={breadcrumbAttributes} />
+              <div className="flex flex-col lg:flex-row">
+                {(refinementsLayout === 'panel' || true) && (
+                  <RefinementsPanel />
+                )}
+                <div className="grow flex flex-col gap-2 lg:gap-4">
+                  <RefinementsBar
+                    showRefinements={refinementsLayout === 'bar' && true}
+                  />
+
+                  <NoResultsHandler>
+                    <InfiniteHits
+                      hitComponent={ProductHitCard}
+                      viewMode={viewMode}
+                      showLess={true}
+                      showMore={true}
+                    />
+                  </NoResultsHandler>
+                </div>
+              </div>
+            </div>
+          </>
+        </ErrorBoundary>
       </SearchPageLayout>
     </Applayout>
   )

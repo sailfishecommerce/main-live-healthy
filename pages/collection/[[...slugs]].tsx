@@ -1,6 +1,7 @@
 import type { GetServerSidePropsContext } from 'next'
 
 import Collection from '@/components/Collection'
+import ErrorBoundary from '@/components/ErrorBoundary'
 import Applayout from '@/layouts/app-layout'
 import {
   SearchPageLayout,
@@ -12,7 +13,9 @@ function CollectionPage(props: SearchPageLayoutProps) {
   return (
     <Applayout title="Collection page">
       <SearchPageLayout {...props}>
-        <Collection />
+        <ErrorBoundary>
+          <Collection />
+        </ErrorBoundary>
       </SearchPageLayout>
     </Applayout>
   )

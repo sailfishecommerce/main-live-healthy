@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import type { NextApiRequest, NextApiResponse } from 'next'
 import swell from 'swell-node'
 
@@ -7,22 +6,22 @@ swell.init(
   `${process.env.NEXT_PUBLIC_SWELL_SECRET_KEY}`
 )
 
-export default async function fetchProductFromLiveHealthStore(
+export default async function GetProductsInRangeHandler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
+  const productRange = req.body.query
   switch (req.method) {
-    case 'GET': {
+    case 'POST': {
       return await swell
         .get('/products', {
-          where: { select_store: 'livehealthy' },
-          limit: 30,
+          where: { select_store: 'livehealthy', rating: productRange },
+          limit: 15,
         })
         .then((response: { results: any }) => {
           return res.status(200).json(response.results)
         })
         .catch((error: any) => {
-          console.error('error', 'Dave, an error occcured', error)
           return res.status(400).json(error)
         })
     }

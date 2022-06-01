@@ -3,6 +3,7 @@ import { useMediaQuery } from '@/hooks'
 import '@splidejs/splide/dist/css/splide.min.css'
 
 export default function ProductTabSliderDropdown() {
+  // const []
   const tabWidth = useMediaQuery('(max-width:768px)')
   const tabs = ['New Products', 'Special Products', 'Featured Products']
 
@@ -15,12 +16,13 @@ export default function ProductTabSliderDropdown() {
           {tabs.map((tab, index) => {
             const activeTab = index === 0 ? 'text-black' : 'text-gray-500'
             return (
-              <h4
+              <button
+                type="button"
                 key={tab}
                 className={`${activeTab} text-xs md:text-xl lg:text-2xl font-bold mr-8`}
               >
                 {tab}
-              </h4>
+              </button>
             )
           })}
         </div>

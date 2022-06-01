@@ -105,3 +105,6 @@ export const selectedVendorAtom = atom<{
   vendor: string
   index: number
 } | null>(null)
+
+// ProductTabSliderDropdown
+export const productRatingAtom = atom(3)

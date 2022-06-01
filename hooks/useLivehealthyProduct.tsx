@@ -17,3 +17,25 @@ export default function useLiveHealthyProduct(): any {
 
   return [data?.data, status, error]
 }
+
+type queryDataType = { query: any; id: string }
+
+export function useProductInRange(queryData: queryDataType) {
+  const { id, query } = queryData
+  const queryClient = useQueryClient()
+
+  function getProductInRange() {
+    return axios.post('/api/get-products-by-ratings', { query })
+  }
+
+  const { data, status, error } = useQuery(
+    `getProductInRange-${id}`,
+    getProductInRange,
+    {
+      placeholderData: () =>
+        queryClient.getQueryData(`getProductInRange-${id}`),
+    }
+  )
+
+  return [data?.data, status, error]
+}

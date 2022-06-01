@@ -29,8 +29,6 @@ export default function useGreetuser() {
     }
   }, [loggedIn, socialLoginMethod])
 
-  //   console.log('socailAuthDetails', socailAuthDetails)
-
   let name
   if (loggedIn && socialLoginMethod === 'google') {
     name = socailAuthDetails.user.displayName
@@ -40,5 +38,7 @@ export default function useGreetuser() {
 
   return {
     name,
+    userDetails,
+    loggedIn,
   }
 }

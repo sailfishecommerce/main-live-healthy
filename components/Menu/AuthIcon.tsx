@@ -2,17 +2,17 @@ import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import { useAtom } from 'jotai'
 import { BiLogOut } from 'react-icons/bi'
 import { GrLogin } from 'react-icons/gr'
-import { useQuery } from 'react-query'
 
-import { useAccount, useMediaQuery } from '@/hooks'
+import { useMediaQuery } from '@/hooks'
+import useGreetuser from '@/hooks/useGreetuser'
 import { modalAtom } from '@/lib/atomConfig'
 import type { modalType } from '@/lib/atomConfigType'
 
 export default function AuthIcons() {
   const [modal, setModal]: any = useAtom<modalType>(modalAtom)
-  const { getUserAccount } = useAccount()
+  const { name } = useGreetuser()
+
   const mobileWidth = useMediaQuery('(max-width:768px)')
-  const { data, status } = useQuery('userDetails', getUserAccount)
 
   const iconSize = mobileWidth ? 16 : 22
 
@@ -28,7 +28,7 @@ export default function AuthIcons() {
 
   return (
     <div className="flex items-center">
-      {status === 'success' && data === null ? (
+      {!name ? (
         <button
           type="button"
           title="Login"

@@ -63,12 +63,13 @@ export default function useFacebookFirebaseAuth() {
 
         setSocialAuthDetails({
           ...socailAuthDetails,
-          user: error.user,
+          user: error?.user,
           email: error?.customData?.email,
-          token: credential.accessToken,
+          token: credential?.accessToken,
           errorMessage: error?.message,
           loggedIn: false,
           credential,
+          socialLoginMethod: null,
         })
       })
 

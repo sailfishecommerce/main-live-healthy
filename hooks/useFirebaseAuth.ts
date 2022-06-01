@@ -21,7 +21,7 @@ export default function useFirebaseAuth() {
   const { facebookRedirect, FacebookSignin } = useFacebookFirebaseAuth()
   const { googleRedirect, GoogleSignin } = useGoogleFirebaseAuth()
 
-  const Signout = () =>
+  const signout = () =>
     signOut(auth)
       .then(() => {
         toast.success('logout successful')
@@ -46,6 +46,6 @@ export default function useFirebaseAuth() {
     FacebookSignin,
     googleRedirect,
     GoogleSignin,
-    Signout,
+    signout,
   }
 }

@@ -1,8 +1,9 @@
 import { BiLogOut } from 'react-icons/bi'
-import { useQuery } from 'react-query'
 
 import Modal from '@/components/Modal'
-import { useAccount, useAuth, useMediaQuery } from '@/hooks'
+import { useAuth, useMediaQuery } from '@/hooks'
+import useFirebaseAuth from '@/hooks/useFirebaseAuth'
+import useGreetuser from '@/hooks/useGreetuser'
 
 interface Props {
   show: boolean
@@ -11,11 +12,19 @@ interface Props {
 
 export default function LogoutModal({ show, onHide }: Props) {
   const mobileWidth = useMediaQuery('(max-width:768px)')
-  const { getUserAccount } = useAccount()
-  const { data } = useQuery('userDetails', getUserAccount)
+  const { name, loggedIn, userDetails } = useGreetuser()
+  const { signout } = useFirebaseAuth()
   const iconSize = mobileWidth ? 16 : 22
   const { useLogout } = useAuth()
   const logout = useLogout()
+
+  function logoutHandler() {
+    if (loggedIn) {
+      signout()
+    } else if (userDetails !== null) {
+      logout.mutate()
+    }
+  }
 
   return (
     <Modal
@@ -29,15 +38,14 @@ export default function LogoutModal({ show, onHide }: Props) {
           <span className="mountain-green mx-2">Live Healthy Stores</span>
         </h1>
         <h3 className="my-2">
-          Hello{' '}
-          <span className="mountain-green font-semibold">{data?.name}</span>,
+          Hello <span className="mountain-green font-semibold">{name}</span>,
           are you sure you want to logout?
         </h3>
         <button
           type="button"
           aria-label="logout"
           className="mt-6 flex items-center text-white  px-4 py-1 rounded-xl mx-auto bg-mountain-green"
-          onClick={() => logout.mutate()}
+          onClick={logoutHandler}
         >
           <BiLogOut
             className="lg:mr-2 mr-0 hover:text-green-500"

@@ -6,8 +6,8 @@ import FormattedPrice from '@/components/Price/FormattedPrice'
 import useProduct from '@/hooks/useProduct'
 
 export default function OrderHistoryProductItem({ item }: any) {
-  const { getAProduct } = useProduct()
-
+  const { useGetAProduct } = useProduct()
+  const { getAProduct } = useGetAProduct()
   const { data, status } = useQuery('productDetails', () =>
     getAProduct(item.product_id)
   )

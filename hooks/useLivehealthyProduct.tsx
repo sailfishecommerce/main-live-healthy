@@ -41,3 +41,20 @@ export function useProductInRange(queryData: queryDataType) {
 
   return [data?.data, status, error]
 }
+
+type useGetProductType = { query: { [key: string]: string }; limit: number }
+
+export function useGetProduct(queryData: useGetProductType) {
+  const queryClient = useQueryClient()
+
+  function getProductInRange() {
+    return axios.post('/api/get-products', queryData)
+  }
+
+  const { data, status, error } = useQuery('getProducts', getProductInRange, {
+    staleTime: Infinity,
+    placeholderData: () => queryClient.getQueryData('getProducts'),
+  })
+
+  return [data?.data, status, error]
+}

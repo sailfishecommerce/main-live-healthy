@@ -3,11 +3,13 @@ import Image from 'next/image'
 
 import ProductBannerCard from '@/components/Cards/ProductBannerCard'
 import { useMediaQuery } from '@/hooks'
-import useLiveHealthyProduct from '@/hooks/useLivehealthyProduct'
+import { useGetProduct } from '@/hooks/useLivehealthyProduct'
 
 export default function ProductBanner() {
-  const [data, status] = useLiveHealthyProduct()
-  const getThreeProducts = data?.slice(5, 8)
+  const [data, status] = useGetProduct({
+    limit: 3,
+    query: { product_type: 'Skin Care' },
+  })
   const mobileWidth = useMediaQuery('(max-width:768px)')
 
   const bannerImage = mobileWidth
@@ -47,8 +49,7 @@ export default function ProductBanner() {
           ? 'unable to load products'
           : status === 'loading'
           ? 'loading'
-          : data &&
-            getThreeProducts.map((product: any) => (
+          : data.map((product: any) => (
               <ProductBannerCard
                 key={product.id}
                 color="#24BFCE"

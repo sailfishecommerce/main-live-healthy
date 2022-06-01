@@ -22,8 +22,6 @@ export default function useGreetuser() {
   const { googleRedirect, facebookRedirect } = useFirebaseAuth()
   const [logData] = useAtom(logsAtom)
 
-  console.log('logData', logData)
-
   useEffect(() => {
     if (!loggedIn && socialLoginMethod === 'google') {
       googleRedirect()

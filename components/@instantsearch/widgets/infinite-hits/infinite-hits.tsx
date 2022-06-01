@@ -5,7 +5,7 @@ import isEqual from 'react-fast-compare'
 import type { InfiniteHitsProvided } from 'react-instantsearch-core'
 import { connectInfiniteHits } from 'react-instantsearch-dom'
 
-import ProductGridView from '@/components/View/ProductGridView'
+// import ProductGridView from '@/components/View/ProductGridView'
 import type { ViewMode } from '@/components/ViewModes'
 import selectRandomColor from '@/lib/selectRandomColor'
 
@@ -13,6 +13,14 @@ const ProductListView = dynamic(
   () =>
     import(
       /* webpackChunkName: 'ProductListView' */ '@/components/View/ProductListView'
+    ),
+  { ssr: false }
+)
+
+const ProductGridView = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'ProductListView' */ '@/components/View/ProductGridView'
     ),
   { ssr: false }
 )

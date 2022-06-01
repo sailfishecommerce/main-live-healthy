@@ -1,4 +1,5 @@
-import { ExperimentalDynamicWidgets } from 'react-instantsearch-dom'
+/* eslint-disable unused-imports/no-unused-vars */
+// import { ExperimentalDynamicWidgets } from 'react-instantsearch-dom'
 
 export type DynamicWidgetsProps = {
   children: React.ReactNode
@@ -13,13 +14,13 @@ export function DynamicWidgets({
 }: DynamicWidgetsProps) {
   return (
     <>
-      {enabled ? (
+      {/* {enabled ? (
         <ExperimentalDynamicWidgets {...props}>
           {children}
         </ExperimentalDynamicWidgets>
-      ) : (
-        <div {...props}>{children}</div>
-      )}
+      ) : ( */}
+      <div {...props}>{children}</div>
+      {/* )} */}
     </>
   )
 }

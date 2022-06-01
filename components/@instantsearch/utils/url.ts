@@ -82,7 +82,7 @@ export const urlToSearchState = (url: string | null = ''): SearchState => {
     },
   })
 
-  const parsedSearchState: Record<string, any> = {}
+  const parsedSearchState: Record<string, any> | any = {}
   for (const [key, val] of Object.entries(searchState)) {
     const param = aliasToParam[key]
     parsedSearchState[typeof param !== 'undefined' ? param : key] = val

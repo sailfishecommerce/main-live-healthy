@@ -79,10 +79,10 @@ export function RefinementsPanelBody({
   useEffect(() => {
     setPanels((prevPanels) => ({
       ...prevPanels,
-      ...refinements.reduce(
+      ...refinements?.reduce(
         (acc, current) => ({
           ...acc,
-          [getPanelId(current)]: !laptop ? false : Boolean(current.isExpanded),
+          [getPanelId(current)]: !laptop ? false : Boolean(current?.isExpanded),
         }),
         {}
       ),
@@ -109,7 +109,7 @@ export function RefinementsPanelBody({
   const widgets = useGetRefinementWidgets(refinements)
   const widgetsPanels = useMemo(
     () =>
-      widgets.map((widget, i) => {
+      widgets?.map((widget, i) => {
         const refinement = refinements[i]
         const panelId = getPanelId(refinement)
         const panelAttributes = getPanelAttributes(refinement)
@@ -131,7 +131,7 @@ export function RefinementsPanelBody({
   )
 
   const { sorts } = useAtomValue(configAtom)
-  const sortDefaultRefinement = sorts.find((s) => s.isDefault)?.value
+  const sortDefaultRefinement = sorts?.find((s) => s.isDefault)?.value
 
   const sortWidget = useMemo(
     () => (
@@ -145,7 +145,7 @@ export function RefinementsPanelBody({
         onToggle={() => onToggle('sort')}
       />
     ),
-    [onToggle, panels.sort, sortDefaultRefinement, sorts]
+    [onToggle, panels?.sort, sortDefaultRefinement, sorts]
   )
 
   return (

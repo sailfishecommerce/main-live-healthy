@@ -79,6 +79,7 @@ export const getPropsPage = async (
   const { props, ...customOptions } = (options as { props: any }) || {}
 
   const searchState = urlToSearchState(url)
+
   const resultsState = await getResultsState({
     component,
     searchState,
@@ -106,7 +107,7 @@ export const getServerSidePropsPage = (
 ) => {
   const customOptions = (options as { props: any }) || {}
 
-  const userTokenCookie = context.req.cookies._ALGOLIA
+  const userTokenCookie = context?.req?.cookies?._ALGOLIA
   if (userTokenCookie) {
     customOptions.props = {
       ...customOptions.props,

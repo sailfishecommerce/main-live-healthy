@@ -11,17 +11,17 @@ import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
 
 function CollectionPage(props: SearchPageLayoutProps) {
   return (
-    <Applayout title="Collection page">
-      <SearchPageLayout {...props}>
-        <ErrorBoundary>
+    <ErrorBoundary>
+      <Applayout title="Collection page">
+        <SearchPageLayout {...props}>
           <Collection />
-        </ErrorBoundary>
-      </SearchPageLayout>
-    </Applayout>
+        </SearchPageLayout>
+      </Applayout>
+    </ErrorBoundary>
   )
 }
 
-export const getServerSideProps = (context: GetServerSidePropsContext) =>
-  getServerSidePropsPage(CollectionPage, context)
-
+export const getServerSideProps = (context: GetServerSidePropsContext) => {
+  return getServerSidePropsPage(CollectionPage, context)
+}
 export default CollectionPage

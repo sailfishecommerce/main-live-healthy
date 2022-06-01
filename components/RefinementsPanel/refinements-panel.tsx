@@ -13,7 +13,7 @@ export type RefinementsPanelProps = {
 
 const mobileExpandedAtom = atom(false)
 export const refinementsPanelMobileExpandedAtom = atom(
-  (get) => get(mobileExpandedAtom) && get(overlayAtom).visible,
+  (get) => get(mobileExpandedAtom) && get(overlayAtom)?.visible,
   (get, set, expanded: boolean) => {
     set(mobileExpandedAtom, expanded)
     set(overlayAtom, { visible: expanded, zIndex: 'z-overlay-full' })

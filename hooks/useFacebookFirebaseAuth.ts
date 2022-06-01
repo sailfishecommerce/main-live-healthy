@@ -27,7 +27,8 @@ export default function useFacebookFirebaseAuth() {
     signInWithRedirect(auth, facebookProvider)
   }
 
-  const facebookRedirect = () =>
+  const facebookRedirect = () => {
+    console.log('facebookRedirect running ...')
     getRedirectResult(auth)
       .then((result: any) => {
         console.log('facebook-response', result)
@@ -60,7 +61,7 @@ export default function useFacebookFirebaseAuth() {
           socialLoginMethod: null,
         })
       })
-
+  }
   return {
     FacebookSignin,
     facebookRedirect,

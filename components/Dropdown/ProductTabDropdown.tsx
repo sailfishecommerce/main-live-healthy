@@ -1,19 +1,23 @@
 import Dropdown from '@/components/Dropdown'
 import DropdownItem from '@/components/Dropdown/DropdownItem'
 
-export default function ProductTabDropdown() {
-  const tabs = ['Special Products', 'Featured Products']
-  function selectedTabHandler(e: any) {
-    e.preventDefault()
-  }
+interface ProductTabDropdownProp {
+  dropdown: Array<{ name: string; value: number }>
+  onClick: (tabValue: number) => void
+}
+
+export default function ProductTabDropdown({
+  dropdown,
+  onClick,
+}: ProductTabDropdownProp) {
   return (
     <Dropdown
       className="bg-transparent text-lg text-black border-none shadow-none"
       dropdownText="New Products"
     >
-      {tabs.map((tab) => (
-        <DropdownItem key={tab} onClick={selectedTabHandler}>
-          {tab}
+      {dropdown.map((tab) => (
+        <DropdownItem key={tab.value} onClick={onClick}>
+          {tab.name}
         </DropdownItem>
       ))}
     </Dropdown>

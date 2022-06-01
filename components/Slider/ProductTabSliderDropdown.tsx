@@ -22,7 +22,10 @@ export default function ProductTabSliderDropdown() {
   return (
     <>
       {tabWidth ? (
-        <ProductTabDropdown />
+        <ProductTabDropdown
+          dropdown={tabs}
+          onClick={updateProductRatingHandler}
+        />
       ) : (
         <div className="tabs flex items-center mb-6">
           {tabs.map((tab) => {

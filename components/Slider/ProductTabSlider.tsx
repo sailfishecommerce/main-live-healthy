@@ -3,6 +3,7 @@ import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { useAtom } from 'jotai'
 
 import ProductTabCard from '@/components/Cards/ProductTabCard'
+import ProductTabLoader from '@/components/Loader/ProductTabLoader'
 import ProductTabSliderDropdown from '@/components/Slider/ProductTabSliderDropdown'
 import { useProductInRange } from '@/hooks/useLivehealthyProduct'
 import { productRatingAtom } from '@/lib/atomConfig'
@@ -22,13 +23,13 @@ export default function ProductTabSlider() {
   const [data, status] = useProductInRange(query)
 
   return (
-    <section className="itemSlider py-6 product-tab-slider items-start container mx-auto px-6">
+    <section className="itemSlider py-6 product-tab-slider items-start container mx-auto">
       <ProductTabSliderDropdown />
       <div className="tab-products mt-2 md:mt-0 flex items-center">
         {status === 'error' ? (
           'unable to load products'
         ) : status === 'loading' ? (
-          'loading...'
+          <ProductTabLoader />
         ) : (
           <Splide
             options={{
@@ -43,7 +44,7 @@ export default function ProductTabSlider() {
                 },
               },
             }}
-            className="mx-auto container"
+            className="mx-auto container p-6"
           >
             {data.map((product: any) => (
               <SplideSlide key={product.id}>

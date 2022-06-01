@@ -62,15 +62,15 @@ const ProductBanner = dynamic(
   }
 )
 
-const TrustmateReview = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'TrustmateReview' */ '@/components/Reviews/TrustmateReview'
-    ),
-  {
-    ssr: false,
-  }
-)
+// const TrustmateReview = dynamic(
+//   () =>
+//     import(
+//       /* webpackChunkName: 'TrustmateReview' */ '@/components/Reviews/TrustmateReview'
+//     ),
+//   {
+//     ssr: false,
+//   }
+// )
 
 export default function Home(props: SearchPageLayoutProps) {
   return (
@@ -85,7 +85,7 @@ export default function Home(props: SearchPageLayoutProps) {
         <ShippingBanner />
         <ProductShowcaseGroup group={productshowcaseGroup[2]} />
         <ProductTabSlider />
-        <TrustmateReview />
+        {/* <TrustmateReview /> */}
         <div className="mb-6" />
       </SearchPageLayout>
     </Applayout>

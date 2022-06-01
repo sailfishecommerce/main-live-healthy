@@ -24,13 +24,13 @@ const ProviderLayout = dynamic(
     import(/* webpackChunkName: 'ProviderLayout' */ '@/layouts/provider-layout')
 )
 
-const TrustmateWidget = dynamic(
-  (): any =>
-    import(
-      /* webpackChunkName: 'TrustmateWidget' */ '@/components/Widget/TrustmateWidget'
-    ),
-  { ssr: false }
-)
+// const TrustmateWidget = dynamic(
+//   (): any =>
+//     import(
+//       /* webpackChunkName: 'TrustmateWidget' */ '@/components/Widget/TrustmateWidget'
+//     ),
+//   { ssr: false }
+// )
 
 const Loader: any = dynamic(
   (): any =>
@@ -53,14 +53,11 @@ export default function App({ Component, pageProps, router }: AppProps) {
             />
           </Head>
           <Loader layout={isCatalogPage ? 'bar' : 'overlay'} />
-          <TrustmateWidget>
-            <AnimatePresence
-              exitBeforeEnter={true}
-              onExitComplete={scrollToTop}
-            >
-              <Component {...pageProps} key={router.route} />
-            </AnimatePresence>
-          </TrustmateWidget>
+          {/* <TrustmateWidget> */}
+          <AnimatePresence exitBeforeEnter={true} onExitComplete={scrollToTop}>
+            <Component {...pageProps} key={router.route} />
+          </AnimatePresence>
+          {/* </TrustmateWidget> */}
         </LayoutWrapper>
       </ProviderLayout>
     </ErrorBoundary>

@@ -20,7 +20,7 @@ const ProductListView = dynamic(
 const ProductGridView = dynamic(
   () =>
     import(
-      /* webpackChunkName: 'ProductListView' */ '@/components/View/ProductGridView'
+      /* webpackChunkName: 'ProductGridView' */ '@/components/View/ProductGridView'
     ),
   { ssr: false }
 )

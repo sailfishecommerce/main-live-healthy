@@ -1,4 +1,5 @@
 import { Component } from 'react'
+import ReloadPage from '@/components/ReloadPage'
 export default class ErrorBoundary extends Component {
   constructor(props) {
     super(props)
@@ -18,7 +19,7 @@ export default class ErrorBoundary extends Component {
   render() {
     if (this.state.hasError) {
       // You can render any custom fallback UI
-      return <h1>Something went wrong.</h1>
+      return <ReloadPage />
     }
 
     return this.props.children

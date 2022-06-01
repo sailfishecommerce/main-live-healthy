@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-import { initializeApp } from 'firebase/app'
 import {
   getAuth,
   signInWithRedirect,
@@ -13,11 +12,9 @@ import { toast } from 'react-toastify'
 
 import type { socailAuthDetailsType } from '@/lib/atomConfig'
 import { socailAuthDetailsAtom } from '@/lib/atomConfig'
-import firebaseConfig from '@/lib/firebaseConfig'
 
 export default function useFacebookFirebaseAuth() {
-  const app = initializeApp(firebaseConfig)
-  const auth = getAuth(app)
+  const auth = getAuth()
   const [socailAuthDetails, setSocialAuthDetails]: any = useAtom<
     SetStateAction<socailAuthDetailsType | null>
   >(socailAuthDetailsAtom)
@@ -35,7 +32,13 @@ export default function useFacebookFirebaseAuth() {
       })
 
   const facebookProvider = new FacebookAuthProvider()
-  const FacebookSignin = () => signInWithRedirect(auth, facebookProvider)
+  const FacebookSignin = () => {
+    setSocialAuthDetails({
+      ...socailAuthDetails,
+      socialLoginMethod: 'facebook',
+    })
+    signInWithRedirect(auth, facebookProvider)
+  }
 
   const facebookRedirect = () =>
     getRedirectResult(auth)
@@ -49,6 +52,9 @@ export default function useFacebookFirebaseAuth() {
           user: result.user,
           token,
           credential,
+          errorMessage: null,
+          socialLoginMethod: 'facebook',
+          loggedIn: true,
         })
       })
       .catch((error: any) => {
@@ -61,6 +67,7 @@ export default function useFacebookFirebaseAuth() {
           email: error?.customData?.email,
           token: credential.accessToken,
           errorMessage: error?.message,
+          loggedIn: false,
           credential,
         })
       })

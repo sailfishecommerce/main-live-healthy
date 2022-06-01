@@ -17,7 +17,6 @@ export type NoResultsProps = {
 
 const NoResults = memo(
   function NoResults({ query }: NoResultsProps) {
-    console.log('query', query)
     return (
       <div className="lg:my-10 lg:ml-[10%]">
         <h4 className="mb-6">
@@ -42,7 +41,7 @@ const NoResults = memo(
   // where you click on a Query Suggestion, the "no results" title updates
   // with the clicked query showing that there's no result whereas it's only
   // loading waiting for new results.
-  (_, nextProps) => nextProps.isSearching === true
+  (_, nextProps) => nextProps?.isSearching === true
 )
 
 function NoResultsHandlerComponent({
@@ -51,8 +50,7 @@ function NoResultsHandlerComponent({
   searchResults,
   searching,
 }: NoResultsHandlerProps) {
-  console.log('searchResults', searchResults?.query)
-  if (searchResults === undefined) {
+  if (searchResults === undefined || searchResults === null) {
     return <h4 className="text-center">Loading ...</h4>
   }
   if (

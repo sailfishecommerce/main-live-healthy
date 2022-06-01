@@ -12,8 +12,8 @@ import { socailAuthDetailsAtom } from '@/lib/atomConfig'
 import firebaseConfig from '@/lib/firebaseConfig'
 
 export default function useFirebaseAuth() {
-  const app = initializeApp(firebaseConfig)
-  const auth = getAuth(app)
+  initializeApp(firebaseConfig)
+  const auth = getAuth()
   const [, setSocialAuthDetails]: any = useAtom<
     SetStateAction<socailAuthDetailsType | null>
   >(socailAuthDetailsAtom)
@@ -25,10 +25,18 @@ export default function useFirebaseAuth() {
     signOut(auth)
       .then(() => {
         toast.success('logout successful')
-        setSocialAuthDetails(null)
+        setSocialAuthDetails({
+          user: null,
+          token: null,
+          error: null,
+          email: null,
+          errorMessage: null,
+          credential: null,
+          socialLoginMethod: null,
+          loggedIn: false,
+        })
       })
       .catch((error) => {
-        setSocialAuthDetails(null)
         console.log('error', error)
         toast.error('logout error occured')
       })

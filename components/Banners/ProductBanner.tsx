@@ -8,6 +8,7 @@ import { useGetProduct } from '@/hooks/useLivehealthyProduct'
 export default function ProductBanner() {
   const [data, status] = useGetProduct({
     limit: 3,
+    key: 'skinCare',
     query: { product_type: 'Skin Care' },
   })
   const mobileWidth = useMediaQuery('(max-width:768px)')

@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-import { initializeApp } from 'firebase/app'
 import {
   getAuth,
   signInWithRedirect,
@@ -11,43 +10,51 @@ import { useAtom } from 'jotai'
 
 import type { socailAuthDetailsType } from '@/lib/atomConfig'
 import { socailAuthDetailsAtom } from '@/lib/atomConfig'
-import firebaseConfig from '@/lib/firebaseConfig'
 
 export default function useGoogleFirebaseAuth() {
-  const app = initializeApp(firebaseConfig)
   const [socailAuthDetails, setSocialAuthDetails]: any = useAtom<
     SetStateAction<socailAuthDetailsType | null>
   >(socailAuthDetailsAtom)
-  const auth = getAuth(app)
+  const auth = getAuth()
   const googleProvider = new GoogleAuthProvider()
-
-  const GoogleSignin = () => signInWithRedirect(auth, googleProvider)
 
   const googleRedirect = () =>
     getRedirectResult(auth)
       .then((result: any) => {
         console.log('google-response', result)
         const credential: any = GoogleAuthProvider.credentialFromResult(result)
-        const token = credential.accessToken
+        const token = credential?.accessToken
 
         setSocialAuthDetails({
           ...socailAuthDetails,
-          user: result.user,
+          user: result?.user,
           token,
           credential,
+          errorMessage: null,
+          socialLoginMethod: 'google',
+          loggedIn: true,
         })
       })
       .catch((error) => {
         const credential: any = GoogleAuthProvider.credentialFromError(error)
         setSocialAuthDetails({
           ...socailAuthDetails,
-          user: error.user,
+          user: error?.user,
           email: error?.customData?.email,
-          token: credential.accessToken,
+          token: credential?.accessToken,
           errorMessage: error?.message,
           credential,
+          loggedIn: false,
         })
       })
+
+  const GoogleSignin = () => {
+    setSocialAuthDetails({
+      ...socailAuthDetails,
+      socialLoginMethod: 'google',
+    })
+    signInWithRedirect(auth, googleProvider)
+  }
 
   return {
     GoogleSignin,

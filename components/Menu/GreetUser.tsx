@@ -1,19 +1,11 @@
-import { useQuery } from 'react-query'
-
-import { useAccount } from '@/hooks'
+import useGreetuser from '@/hooks/useGreetuser'
 import greetUser from '@/lib/greetUser'
 
 export default function GreetUser() {
-  const { getUserAccount } = useAccount()
-  const { data: userDetails } = useQuery('userDetails', getUserAccount, {
-    staleTime: Infinity,
-  })
-
-  const name = userDetails?.name
-
+  const { name } = useGreetuser()
   return (
     <div className="cart mountain-green font-bold text-xs">
-      {userDetails !== null ? (
+      {name ? (
         <p className="text-xs md:text-sm text-right">
           {greetUser()} {name ? `, ${name}` : ''}
         </p>

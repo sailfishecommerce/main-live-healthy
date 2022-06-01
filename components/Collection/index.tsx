@@ -12,32 +12,29 @@ const Breadcrumb = dynamic(
   () =>
     import(
       /* webpackChunkName: 'Breadcrumb' */ '@/components/@instantsearch/widgets/breadcrumb/breadcrumb'
-    )
+    ),
+  { ssr: false }
 )
 
 const RefinementsBar = dynamic(
   () =>
     import(
       /* webpackChunkName: 'RefinementsBar' */ '@/components/RefinementsBar/refinements-bar'
-    )
+    ),
+  {
+    ssr: false,
+  }
 )
 
 const RefinementsPanel = dynamic(
   () =>
     import(
       /* webpackChunkName: 'RefinementsPanel' */ '@/components/RefinementsPanel/refinements-panel'
-    )
+    ),
+  {
+    ssr: false,
+  }
 )
-
-// const InfiniteHits = dynamic(
-//   () =>
-//     import(
-//       /* webpackChunkName: 'InfiniteHits' */ '@/components/@instantsearch/widgets/infinite-hits/infinite-hits'
-//     ),
-//   {
-//     ssr: false,
-//   }
-// )
 
 export default function Index() {
   const isMounted = useIsMounted()

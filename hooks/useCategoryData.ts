@@ -9,5 +9,6 @@ export default function useCategoryData() {
     staleTime: Infinity,
     placeholderData: { results: categoryData },
   })
+
   return [data, status]
 }

@@ -11,14 +11,14 @@ import {
 
 function CollectionPage({ slugs, ...props }: any) {
   return (
-    <Applayout title="Collection page">
-      <SearchPageLayout {...props}>
-        <ErrorBoundary>
+    <ErrorBoundary>
+      <Applayout title="Collection page">
+        <SearchPageLayout {...props}>
           <Configure filters={`vendor:${slugs}`} />
           <Collection />
-        </ErrorBoundary>
-      </SearchPageLayout>
-    </Applayout>
+        </SearchPageLayout>
+      </Applayout>
+    </ErrorBoundary>
   )
 }
 

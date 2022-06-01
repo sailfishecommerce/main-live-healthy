@@ -69,9 +69,9 @@ export default function SearchPage({ searchQuery, ...props }: SearchPageProps) {
   const viewMode = useAtomValue(viewModeAtom)
 
   return (
-    <Applayout title="Search for products">
-      <SearchPageLayout {...props}>
-        <ErrorBoundary>
+    <ErrorBoundary>
+      <Applayout title="Search for products">
+        <SearchPageLayout {...props}>
           <>
             <Configure query={searchQuery} />
             <div className="container flex items-center mx-auto justify-between">
@@ -102,9 +102,9 @@ export default function SearchPage({ searchQuery, ...props }: SearchPageProps) {
               </div>
             </div>
           </>
-        </ErrorBoundary>
-      </SearchPageLayout>
-    </Applayout>
+        </SearchPageLayout>
+      </Applayout>
+    </ErrorBoundary>
   )
 }
 

@@ -23,6 +23,14 @@ body {
   --light-red: #fd121240;
   --light-green: #16a26740;
 }
+
+/* discount slider */
+.slider.discount-slider {
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+}
+
 /* splide slider */
 .homepage-slider ul.splide__pagination {
   display: none;

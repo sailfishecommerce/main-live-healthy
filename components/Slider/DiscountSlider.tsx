@@ -29,7 +29,7 @@ function DiscountSliderComponent() {
             return (
               <SplideSlide key={item.id}>
                 <div
-                  className={`${slideBg} w-full item h-full slider flex items-center m-auto justify-center text-white`}
+                  className={`${slideBg} w-full item h-full slider discount-slider flex items-center m-auto justify-center text-white`}
                 >
                   <div className="description hidden lg:block text-xs lg:text-sm font-thin mr-4">
                     Benefit from our awesome discount using this coupon code

@@ -5,7 +5,7 @@ import isEqual from 'react-fast-compare'
 import type { InfiniteHitsProvided } from 'react-instantsearch-core'
 import { connectInfiniteHits } from 'react-instantsearch-dom'
 
-// import ProductGridView from '@/components/View/ProductGridView'
+import ProductGridView from '@/components/View/ProductGridView'
 import type { ViewMode } from '@/components/ViewModes'
 import selectRandomColor from '@/lib/selectRandomColor'
 
@@ -17,28 +17,16 @@ const ProductListView = dynamic(
   { ssr: false }
 )
 
-const ProductGridView = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'ProductGridView' */ '@/components/View/ProductGridView'
-    ),
-  { ssr: false }
+const LoadLess = dynamic<any>(() =>
+  import(
+    /* webpackChunkName: 'LoadLess' */ '@instantsearch/widgets/load-less/load-less'
+  ).then((mod) => mod.LoadLess)
 )
 
-const LoadLess = dynamic<any>(
-  () =>
-    import(
-      /* webpackChunkName: 'LoadLess' */ '@instantsearch/widgets/load-less/load-less'
-    ).then((mod) => mod.LoadLess),
-  { ssr: false }
-)
-
-const LoadMore = dynamic<any>(
-  () =>
-    import(
-      /* webpackChunkName: 'LoadMore' */ '@instantsearch/widgets/load-more/load-more'
-    ).then((mod) => mod.LoadMore),
-  { ssr: false }
+const LoadMore = dynamic<any>(() =>
+  import(
+    /* webpackChunkName: 'LoadMore' */ '@instantsearch/widgets/load-more/load-more'
+  ).then((mod) => mod.LoadMore)
 )
 
 export type InfiniteHitsProps = InfiniteHitsProvided & {

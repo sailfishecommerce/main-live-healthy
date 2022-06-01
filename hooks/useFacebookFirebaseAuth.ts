@@ -3,33 +3,20 @@ import {
   getAuth,
   signInWithRedirect,
   getRedirectResult,
-  signOut,
   FacebookAuthProvider,
 } from 'firebase/auth'
 import type { SetStateAction } from 'jotai'
 import { useAtom } from 'jotai'
-import { toast } from 'react-toastify'
 
 import type { socailAuthDetailsType } from '@/lib/atomConfig'
-import { socailAuthDetailsAtom } from '@/lib/atomConfig'
+import { logsAtom, socailAuthDetailsAtom } from '@/lib/atomConfig'
 
 export default function useFacebookFirebaseAuth() {
   const auth = getAuth()
   const [socailAuthDetails, setSocialAuthDetails]: any = useAtom<
     SetStateAction<socailAuthDetailsType | null>
   >(socailAuthDetailsAtom)
-
-  const Signout = () =>
-    signOut(auth)
-      .then(() => {
-        setSocialAuthDetails(null)
-        toast.success('logout successful')
-      })
-      .catch((error) => {
-        // An error happened.
-        console.log('error', error)
-        toast.error('logout error occured')
-      })
+  const [, setLogData] = useAtom(logsAtom)
 
   const facebookProvider = new FacebookAuthProvider()
   const FacebookSignin = () => {
@@ -44,6 +31,7 @@ export default function useFacebookFirebaseAuth() {
     getRedirectResult(auth)
       .then((result: any) => {
         console.log('facebook-response', result)
+        setLogData(result)
         const credential: any =
           FacebookAuthProvider.credentialFromResult(result)
         const token = credential.accessToken
@@ -75,7 +63,6 @@ export default function useFacebookFirebaseAuth() {
 
   return {
     FacebookSignin,
-    Signout,
     facebookRedirect,
   }
 }

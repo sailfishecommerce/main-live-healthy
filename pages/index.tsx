@@ -66,7 +66,10 @@ const TrustmateReview = dynamic(
   () =>
     import(
       /* webpackChunkName: 'TrustmateReview' */ '@/components/Reviews/TrustmateReview'
-    )
+    ),
+  {
+    ssr: false,
+  }
 )
 
 export default function Home(props: SearchPageLayoutProps) {

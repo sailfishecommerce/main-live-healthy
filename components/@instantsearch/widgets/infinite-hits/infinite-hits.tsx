@@ -9,16 +9,6 @@ import ProductGridView from '@/components/View/ProductGridView'
 import type { ViewMode } from '@/components/ViewModes'
 import selectRandomColor from '@/lib/selectRandomColor'
 
-// import { wit hDebugLayer } from '@dev/debug-layer/debug-layer'
-
-// const ProductGridView = dynamic(
-//   () =>
-//     import(
-//       /* webpackChunkName: 'ProductGridView' */ '@/components/View/ProductGridView'
-//     ),
-//   { ssr: false }
-// )
-
 const ProductListView = dynamic(
   () =>
     import(

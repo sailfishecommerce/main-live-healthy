@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import { useMemo } from 'react'
 
+import ErrorBoundary from '@/components/ErrorBoundary'
 import { scrollToTop } from '@/utils/scrollToTop'
 
 import '@/styles/_index.css'
@@ -27,7 +28,8 @@ const TrustmateWidget = dynamic(
   (): any =>
     import(
       /* webpackChunkName: 'TrustmateWidget' */ '@/components/Widget/TrustmateWidget'
-    )
+    ),
+  { ssr: false }
 )
 
 const Loader: any = dynamic(
@@ -41,9 +43,9 @@ export default function App({ Component, pageProps, router }: AppProps) {
     [router?.pathname]
   )
   return (
-    <ProviderLayout>
-      <LayoutWrapper>
-        <>
+    <ErrorBoundary>
+      <ProviderLayout>
+        <LayoutWrapper>
           <Head>
             <meta
               name="viewport"
@@ -59,8 +61,8 @@ export default function App({ Component, pageProps, router }: AppProps) {
               <Component {...pageProps} key={router.route} />
             </AnimatePresence>
           </TrustmateWidget>
-        </>
-      </LayoutWrapper>
-    </ProviderLayout>
+        </LayoutWrapper>
+      </ProviderLayout>
+    </ErrorBoundary>
   )
 }

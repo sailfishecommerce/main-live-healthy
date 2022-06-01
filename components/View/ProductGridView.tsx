@@ -1,6 +1,17 @@
 import { AnimatePresence, m } from 'framer-motion'
+import dynamic from 'next/dynamic'
 
-import ProductHitCard from '@/components/Cards/ProductHitCard'
+// import ProductHitCard from '@/components/Cards/ProductHitCard'
+
+const DynamicProductHitCard = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'DynamicProductHitCard' */ '@/components/Cards/ProductHitCard'
+    ),
+  {
+    ssr: false,
+  }
+)
 
 export default function ProductGridView({
   hits,
@@ -31,7 +42,7 @@ export default function ProductGridView({
                 variants={listItemVariants}
                 custom={i % hitsPerPage}
               >
-                <ProductHitCard hit={hit} color={color} />
+                <DynamicProductHitCard hit={hit} color={color} />
               </m.li>
             ))}
           </AnimatePresence>

@@ -23,9 +23,9 @@ export default function ProductTabSlider() {
   const [data, status] = useProductInRange(query)
 
   return (
-    <section className="itemSlider py-6 product-tab-slider items-start container mx-auto">
+    <section className="itemSlider py-2 lg:py-6 product-tab-slider items-start container">
       <ProductTabSliderDropdown />
-      <div className="tab-products mt-2 md:mt-0 flex items-center">
+      <div className="tab-products mt-0 flex items-center">
         {status === 'error' ? (
           'unable to load products'
         ) : status === 'loading' ? (
@@ -44,7 +44,7 @@ export default function ProductTabSlider() {
                 },
               },
             }}
-            className="mx-auto container p-6"
+            className="mx-auto container py-3 px-6 lg:p-6"
           >
             {data.map((product: any) => (
               <SplideSlide key={product.id}>

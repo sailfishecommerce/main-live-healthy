@@ -1,26 +1,23 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { memo, useState, useCallback } from 'react'
+import { memo } from 'react'
 import type { PropsWithChildren } from 'react'
 import { AiFillCaretDown } from 'react-icons/ai'
 
 interface Props {
   dropdownText: JSX.Element | string
   className?: string
+  onToggle: () => void
+  show: boolean
 }
 
 function DropdownComponent({
   dropdownText,
   children,
   className,
+  onToggle,
+  show,
 }: PropsWithChildren<Props>) {
-  const [active, setActive] = useState(false)
-
-  const onClickHandler = useCallback(() => {
-    setActive(!active)
-  }, [])
-
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-start">
       <div className="dropdown relative">
         <button
           className={`${className} px-2 ml-2 lg:px-4
@@ -49,12 +46,12 @@ function DropdownComponent({
           id="dropdownMenuButton1"
           aria-expanded="false"
           aria-label={`${dropdownText}`}
-          onClick={onClickHandler}
+          onClick={onToggle}
         >
           {dropdownText}
           <AiFillCaretDown className="ml-2" />
         </button>
-        {active && (
+        {show && (
           <ul
             className="
           min-w-max

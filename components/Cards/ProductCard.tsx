@@ -25,7 +25,6 @@ export default function ProductCard({
 }: ProductTypes) {
   const isRow = row ? 'flex' : 'flex flex-col'
   const isRowText = row ? 'ml-4' : ''
-  // const buttonClass = row ? 'mt-1' : 'mt-4'
   const imageWidth = row ? 'w-1/2' : ''
   const productClassName = className ? className : ''
   const mobileWidth = useMediaQuery('(max-width:768px)')
@@ -54,7 +53,7 @@ export default function ProductCard({
 
   return (
     <div
-      className={`hover:bg-white relative hover:shadow-lg product hover:rounded-lg product ${productClassName}  ${isRow} p-2 md:p-4 lg:p-6 hover:border`}
+      className={`hover:bg-white mr-4 relative hover:shadow-lg product hover:rounded-lg product ${productClassName}  ${isRow} p-2 md:p-4 lg:p-6 hover:border`}
     >
       <DiscountTag price={product.price} salePrice={product.sale_price} />
       <Link

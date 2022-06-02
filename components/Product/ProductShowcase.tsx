@@ -1,4 +1,5 @@
 /* eslint-disable no-nested-ternary */
+import Link from 'next/link'
 import { useMemo } from 'react'
 import { useQuery } from 'react-query'
 
@@ -46,9 +47,11 @@ export default function ProductShowcase({
   return (
     <section className="lg:py-4 py-2 lg:my-6 rounded-xl container lg:px-4 px-2 mx-auto lg:bg-gray-100">
       {category && (
-        <h4 className="xl:text-2xl md:text-xl text-lg  font-bold  mb-2 lg:mb-4 lg:ml-3">
-          {category}
-        </h4>
+        <Link href={`/collection/${toSlug(category)}`}>
+          <a className="xl:text-2xl hover:text-red-500 md:text-xl text-lg  font-bold  mb-2 lg:mb-4 lg:ml-3">
+            {category}
+          </a>
+        </Link>
       )}
       {status === 'error' ? (
         'error fetchin products'

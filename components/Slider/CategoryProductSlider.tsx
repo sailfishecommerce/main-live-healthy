@@ -28,7 +28,6 @@ function CategoryProductSliderComponent({
   return (
     <div className="w-full">
       {children}
-
       <Splide
         options={{
           perPage: 6,

@@ -4,13 +4,15 @@ import { useMediaQuery } from '@/hooks'
 
 export default function HeaderBanner() {
   const mobile = useMediaQuery('(max-width:768px)')
-  const imageHeight = mobile ? 30 : 45
-  const imageWidth = mobile ? 400 : 1440
+  const imageHeight = mobile ? 60 : 45
+  const imageWidth = mobile ? 600 : 1440
+
+  const imageSrc = mobile ? '/mobile-promo-banner.gif' : '/promo-banner.gif'
 
   return (
     <div className="w-full">
       <Image
-        src="/promo-banner.gif"
+        src={imageSrc}
         height={imageHeight}
         width={imageWidth}
         alt="store-banner"

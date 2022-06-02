@@ -19,7 +19,7 @@ const loadScript = (url: string, callback: () => void) => {
   // when script state is ready and loaded or complete we will call callback
   if (script.readyState) {
     script.onreadystatechange = function () {
-      if (script.readyState === 'loadied' || script.readyState === 'complete') {
+      if (script.readyState === 'loaded' || script.readyState === 'complete') {
         script.onreadystatechange = null
         callback()
       }

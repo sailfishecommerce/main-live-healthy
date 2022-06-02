@@ -4,8 +4,8 @@ import dynamic from 'next/dynamic'
 import { memo } from 'react'
 
 import Noticebar from '@/components/Alerts/Noticebar'
+import HeaderBanner from '@/components/Header/HeaderBanner'
 import Menu from '@/components/Menu'
-import DiscountSlider from '@/components/Slider/DiscountSlider'
 import { useMediaQuery } from '@/hooks'
 import useNavStyle from '@/hooks/useNavStyle'
 import { categoryDropdownAtom, noticebarAtom } from '@/lib/atomConfig'
@@ -46,7 +46,7 @@ function HeaderComponent() {
       <header
         className={`${navStyle} ${displayShadow} bg-white w-full pb-0  md:pb-2`}
       >
-        <DiscountSlider />
+        <HeaderBanner />
         {noticebar && <Noticebar toggleBarVisibility={toggleNoticebar} />}
         <Menu />
       </header>

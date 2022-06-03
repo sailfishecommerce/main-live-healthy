@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import type { NextApiRequest, NextApiResponse } from 'next'
 import swell from 'swell-node'
 
@@ -16,8 +15,10 @@ export default async function ProductHandler(
           id: req.body.id,
         })
         .then((response: any) => {
-          console.log('response', response)
           return res.status(200).send(response)
+        })
+        .catch((err: any) => {
+          return res.status(400).send(err)
         })
     }
     default:

@@ -52,12 +52,27 @@ export default function useSwellProducts() {
     })
   }
 
+  async function getProduct(id: string) {
+    return await axios.post('/api/get-product', { id })
+  }
+
+  async function searchProducts(searchQuery: string) {
+    const { swell } = await swellInit()
+    return await swell.attributes.list({
+      search: searchQuery,
+      limit: 25,
+      page: 1,
+    })
+  }
+
   return {
     listProducts,
     allProducts,
     filterProducts,
     getAllAttributes,
     getProductsInCategory,
+    searchProducts,
+    getProduct,
   }
 }
 

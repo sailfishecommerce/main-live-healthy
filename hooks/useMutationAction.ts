@@ -78,6 +78,7 @@ export default function useMutationAction() {
 
   function useAddItemToCart() {
     const toastID = useRef(null)
+
     return useMutation(
       ({ product, quantity }: any) => addToCart(product, quantity),
       {
@@ -100,24 +101,28 @@ export default function useMutationAction() {
   function useRemoveFromCart() {
     const toastID = useRef(null)
 
-    return useMutation((item: any) => removeCartItem(item), {
-      onMutate: () => {
-        loadingToast(toastID)
-      },
-      onSettled: () => {
-        queryClient.invalidateQueries('cart')
-      },
-      onSuccess: () => {
-        updateToast(toastID, toast.TYPE.SUCCESS, 'product removed!')
-      },
-      onError: () => {
-        updateToast(
-          toastID,
-          toast.TYPE.ERROR,
-          'error removing product from cart'
-        )
-      },
-    })
+    return useMutation(
+      (item: any) => removeCartItem(item),
+
+      {
+        onMutate: () => {
+          loadingToast(toastID)
+        },
+        onSettled: () => {
+          queryClient.invalidateQueries('cart')
+        },
+        onSuccess: () => {
+          updateToast(toastID, toast.TYPE.SUCCESS, 'product removed!')
+        },
+        onError: () => {
+          updateToast(
+            toastID,
+            toast.TYPE.ERROR,
+            'error removing product from cart'
+          )
+        },
+      }
+    )
   }
 
   function useEmptyCart() {

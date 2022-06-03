@@ -2,16 +2,15 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 
 import RecommendedProductCard from '@/components/Cards/RecommendedProductCard'
-import useLiveHealthyProduct from '@/hooks/useLivehealthyProduct'
 import '@splidejs/splide/dist/css/splide.min.css'
+import useRecommendedProduct from '@/hooks/useRecommendedProduct'
 
 interface Props {
   cartItems: any[]
 }
 
 export default function RecommendationSlider({ cartItems }: Props) {
-  console.log('cartItems', cartItems)
-  const [data, status] = useLiveHealthyProduct()
+  const [data, status] = useRecommendedProduct(cartItems)
 
   return (
     <section className="itemSlider recommendation-slider">

@@ -47,9 +47,9 @@ export default function useSwellCart() {
     })
   }
 
-  async function removeCartItem(product: { id: string }) {
+  async function removeCartItem(cartItem: { id: string }) {
     const { swell } = await swellInit()
-    return await swell.cart.removeItem(product.id)
+    return await swell.cart.removeItem(cartItem.id)
   }
 
   async function emptyCart() {

@@ -2,26 +2,8 @@ import { useState } from 'react'
 
 import DashboardMainView from '@/components/Dashboard/DashboardMainView'
 import AdmimAuthForm from '@/components/Form/AdminAuthForm'
+import settingsList from '@/json/settings.json'
 import DashboardLayout from '@/layouts/dashboard-layout'
-
-const settingsList = [
-  {
-    text: 'Create a new admin profile',
-    viewId: 'create-admin-profile',
-  },
-  {
-    text: 'List of Admins',
-    viewId: 'list-of-admin',
-  },
-  {
-    text: 'Change Site Color Code',
-    viewId: 'change-site-color-code',
-  },
-  {
-    text: 'Change Site Logo',
-    viewId: 'change-site-logo',
-  },
-]
 
 export default function SettingsPage() {
   const [settingsView, setSettingsView] = useState('create-admin-profile')

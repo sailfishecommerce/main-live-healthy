@@ -1,0 +1,18 @@
+[
+  {
+    "text": "Create a new admin profile",
+    "viewId": "create-admin-profile"
+  },
+  {
+    "text": "List of Admins",
+    "viewId": "list-of-admin"
+  },
+  {
+    "text": "Change Site Color Code",
+    "viewId": "change-site-color-code"
+  },
+  {
+    "text": "Change Site Logo",
+    "viewId": "change-site-logo"
+  }
+]

@@ -9,7 +9,7 @@ interface Props {
   type: 'signin' | 'signup'
 }
 
-export default function AdmimAuthForm({ type }: Props) {
+export default function AdminAuthForm({ type }: Props) {
   const { useAdminSignin, useAdminSignUp } = useAuthMutation()
   const adminSignin = useAdminSignin()
   const adminSignup = useAdminSignUp()

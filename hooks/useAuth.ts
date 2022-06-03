@@ -112,6 +112,3 @@ export default function useAuth() {
     useSignUp,
   }
 }
-
-// kwilliams@gmail.com
-// kwills2022

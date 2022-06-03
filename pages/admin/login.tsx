@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import AdmimAuthForm from '@/components/Form/AdmimAuthForm'
+import AdmimAuthForm from '@/components/Form/AdminAuthForm'
 import Logo from '@/components/Logo'
 
 export default function AdminLoginPage() {

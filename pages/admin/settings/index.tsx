@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import DashboardMainView from '@/components/Dashboard/DashboardMainView'
-import AdmimAuthForm from '@/components/Form/AdmimAuthForm'
+import AdmimAuthForm from '@/components/Form/AdminAuthForm'
 import DashboardLayout from '@/layouts/dashboard-layout'
 
 const settingsList = [
@@ -49,7 +49,7 @@ export default function SettingsPage() {
   return (
     <DashboardLayout title="Settings">
       <DashboardMainView>
-        <div className="content mt-4 flex flex-column h-full">
+        <div className="content mt-4 flex h-full">
           <div className="settings w-1/3">
             <h1 className="text-xl font-semibold">Settings</h1>
             <ul>

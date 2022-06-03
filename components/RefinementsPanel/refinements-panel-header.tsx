@@ -41,7 +41,7 @@ export function RefinementsPanelHeader() {
           <div className="lg:hidden flex items-center justify-between">
             <IconLabel
               icon={FilterIcon}
-              label="Filter &amp; Sort"
+              label="Filter"
               labelPosition="right"
               classNameLabel="heading-4"
               classNameIcon="w-8 h-8"

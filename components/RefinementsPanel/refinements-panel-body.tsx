@@ -11,7 +11,7 @@ import {
 } from '@instantsearch/utils/refinements'
 import { DynamicWidgets } from '@instantsearch/widgets/dynamic-widgets/dynamic-widgets'
 import { ExpandablePanel } from '@instantsearch/widgets/expandable-panel/expandable-panel'
-import { SortBy } from '@instantsearch/widgets/sort-by/sort-by'
+// import { SortBy } from '@instantsearch/widgets/sort-by/sort-by'
 
 import type { RefinementsPanelProps } from './refinements-panel'
 
@@ -130,27 +130,27 @@ export function RefinementsPanelBody({
     [widgets, refinements, onToggle, panels]
   )
 
-  const { sorts } = useAtomValue(configAtom)
-  const sortDefaultRefinement = sorts?.find((s) => s.isDefault)?.value
+  // const { sorts } = useAtomValue(configAtom)
+  // const sortDefaultRefinement = sorts?.find((s) => s.isDefault)?.value
 
-  const sortWidget = useMemo(
-    () => (
-      <SortBy
-        key="sort"
-        view="dropdown"
-        defaultRefinement={sortDefaultRefinement}
-        items={sorts}
-        isOpened={panels.sort}
-        className="pt-0"
-        onToggle={() => onToggle('sort')}
-      />
-    ),
-    [onToggle, panels?.sort, sortDefaultRefinement, sorts]
-  )
+  // const sortWidget = useMemo(
+  //   () => (
+  //     <SortBy
+  //       key="sort"
+  //       view="dropdown"
+  //       defaultRefinement={sortDefaultRefinement}
+  //       items={sorts}
+  //       isOpened={panels.sort}
+  //       className="pt-0"
+  //       onToggle={() => onToggle('sort')}
+  //     />
+  //   ),
+  //   [onToggle, panels?.sort, sortDefaultRefinement, sorts]
+  // )
 
   return (
     <div>
-      <div className="lg:hidden">{sortWidget}</div>
+      {/* <div className="lg:hidden">{sortWidget}</div> */}
       <DynamicWidgets enabled={dynamicWidgets}>{widgetsPanels}</DynamicWidgets>
     </div>
   )

@@ -5,13 +5,18 @@ import RecommendedProductCard from '@/components/Cards/RecommendedProductCard'
 import useLiveHealthyProduct from '@/hooks/useLivehealthyProduct'
 import '@splidejs/splide/dist/css/splide.min.css'
 
-export default function RecommendationSlider() {
+interface Props {
+  cartItems: any[]
+}
+
+export default function RecommendationSlider({ cartItems }: Props) {
+  console.log('cartItems', cartItems)
   const [data, status] = useLiveHealthyProduct()
 
   return (
     <section className="itemSlider recommendation-slider">
       <div className="mb-2">
-        <h3 className="lg:text-xl text-xs font-bold">Recommended for you</h3>
+        <h3 className="lg:text-xl text-md font-bold">Recommended for you</h3>
       </div>
       <div className="content">
         {status === 'error' ? (

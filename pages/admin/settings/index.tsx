@@ -53,16 +53,21 @@ export default function SettingsPage() {
           <div className="settings w-1/3">
             <h1 className="text-xl font-semibold">Settings</h1>
             <ul>
-              {settingsList.map((item) => (
-                <li className="text-lg my-2" key={item.viewId}>
-                  <button
-                    type="button"
-                    onClick={() => onSettingsViewChange(item.viewId)}
-                  >
-                    {item.text}
-                  </button>
-                </li>
-              ))}
+              {settingsList.map((item) => {
+                const activeItem =
+                  item.viewId === settingsView ? 'mountain-green' : ''
+                return (
+                  <li className="text-lg my-2" key={item.viewId}>
+                    <button
+                      type="button"
+                      className={activeItem}
+                      onClick={() => onSettingsViewChange(item.viewId)}
+                    >
+                      {item.text}
+                    </button>
+                  </li>
+                )
+              })}
             </ul>
           </div>
           <div className="settings-view w-2/3 border-l-2">{switchView()}</div>

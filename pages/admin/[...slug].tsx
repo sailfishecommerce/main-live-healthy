@@ -22,7 +22,7 @@ export default function AdminPage() {
       <DashboardMainView>
         <div className="policy mt-4">
           <h1 className="text-xl">
-            {route.toUpperCase().replaceAll('-', ' ')}
+            {route?.toUpperCase().replaceAll('-', ' ')}
           </h1>
           <DynamicDashboardEditor />
         </div>

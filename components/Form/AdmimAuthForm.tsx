@@ -5,9 +5,17 @@ import { adminSigninFormSchema } from '@/components/Form/schema/AuthSchema'
 import useAuthMutation from '@/hooks/useAuthMutation'
 import formContent from '@/json/admin-login-form.json'
 
-export default function AdminLogin() {
-  const { useAdminSignin } = useAuthMutation()
+interface Props {
+  type: 'signin' | 'signup'
+}
+
+export default function AdmimAuthForm({ type }: Props) {
+  const { useAdminSignin, useAdminSignUp } = useAuthMutation()
   const adminSignin = useAdminSignin()
+  const adminSignup = useAdminSignUp()
+
+  const authFunc = type === 'signin' ? adminSignin : adminSignup
+  const buttonText = type === 'signin' ? 'Sign In' : 'Sign Up'
   return (
     <Formik
       initialValues={{
@@ -15,9 +23,7 @@ export default function AdminLogin() {
         password: '',
       }}
       validationSchema={adminSigninFormSchema}
-      onSubmit={({ email, password }) =>
-        adminSignin.mutate({ email, password })
-      }
+      onSubmit={({ email, password }) => authFunc.mutate({ email, password })}
     >
       {(formik) => (
         <form
@@ -38,7 +44,7 @@ export default function AdminLogin() {
             type="submit"
             title="Sign up"
           >
-            Sign up
+            {buttonText}
           </button>
         </form>
       )}

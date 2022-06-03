@@ -52,8 +52,19 @@ export default function SlidingTab({
             overflow-y: auto;
             height: 80vh;
           }
+          button.closeButton {
+            height: 30px;
+            width: 30px;
+            border: 1px solid black;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+          }
           button.closeButton:hover {
-            background-color: var(--mountain-mist);
+            background-color: red;
+            border: none;
           }
         `}
       </style>

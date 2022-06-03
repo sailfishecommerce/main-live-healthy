@@ -43,5 +43,10 @@
     "icons": "blog",
     "text": "Blog",
     "link": "/admin/blog"
+  },
+  {
+    "icons": "settings",
+    "text": "Settings",
+    "link": "/admin/settings"
   }
 ]

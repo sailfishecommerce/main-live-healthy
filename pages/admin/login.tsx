@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import AdminLogin from '@/components/Form/AdminLogin'
+import AdmimAuthForm from '@/components/Form/AdmimAuthForm'
 import Logo from '@/components/Logo'
 
 export default function AdminLoginPage() {
@@ -22,7 +22,7 @@ export default function AdminLoginPage() {
           <h1 className="text-center font-bold text-lg">
             🎉 Welcome to Livehealthy store Admin, Please Login
           </h1>
-          <AdminLogin />
+          <AdmimAuthForm type="signin" />
         </div>
       </div>
       <style jsx>

@@ -25,6 +25,7 @@ export default function DashboardLayout({
       router.push('/admin/login')
     }
   }, [])
+
   return (
     <>
       <div className="admin w-full grid grid-cols-6 bg-white">

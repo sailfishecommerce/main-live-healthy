@@ -1,15 +1,17 @@
 /* eslint-disable no-nested-ternary */
 import { Splide, SplideSlide } from '@splidejs/react-splide'
+import { memo } from 'react'
 
 import RecommendedProductCard from '@/components/Cards/RecommendedProductCard'
 import '@splidejs/splide/dist/css/splide.min.css'
+import ProductTabLoader from '@/components/Loader/ProductTabLoader'
 import useRecommendedProduct from '@/hooks/useRecommendedProduct'
 
 interface Props {
   cartItems: any[]
 }
 
-export default function RecommendationSlider({ cartItems }: Props) {
+function RecommendationSliderComponent({ cartItems }: Props) {
   const [data, status] = useRecommendedProduct(cartItems)
 
   return (
@@ -21,7 +23,7 @@ export default function RecommendationSlider({ cartItems }: Props) {
         {status === 'error' ? (
           'unable to load products'
         ) : status === 'loading' ? (
-          'loading'
+          <ProductTabLoader />
         ) : (
           <Splide
             options={{
@@ -45,3 +47,6 @@ export default function RecommendationSlider({ cartItems }: Props) {
     </section>
   )
 }
+const RecommendationSlider = memo(RecommendationSliderComponent)
+
+export default RecommendationSlider

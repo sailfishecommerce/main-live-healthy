@@ -1,5 +1,3 @@
-import React from 'react'
-
 export default function DashboardProfile() {
   return (
     <div className="pl-12 pt-8">

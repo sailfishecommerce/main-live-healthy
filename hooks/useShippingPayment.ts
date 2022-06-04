@@ -5,12 +5,23 @@ import { useQuery } from 'react-query'
 import { useAccount } from '@/hooks'
 import { paymentFormAtom } from '@/lib/atomConfig'
 
+type fieldType =
+  | 'address'
+  | 'country'
+  | 'district'
+  | 'email'
+  | 'firstName'
+  | 'lastName'
+  | 'phone'
+  | 'region'
+  | 'zip'
+
 export default function useShippingPayment() {
   const { getUserAccount } = useAccount()
   const { data: userDetail, status } = useQuery('userDetails', getUserAccount)
   const [paymentForm] = useAtom(paymentFormAtom)
 
-  function formatFormValues(field: string) {
+  function formatFormValues(field: fieldType) {
     const formValue =
       status === 'error'
         ? ''
@@ -25,7 +36,7 @@ export default function useShippingPayment() {
     return formValue
   }
 
-  function formatFieldValue(field: string) {
+  function formatFieldValue(field: fieldType) {
     const formValue = paymentForm ? paymentForm.form[field] : ''
     return formValue
   }

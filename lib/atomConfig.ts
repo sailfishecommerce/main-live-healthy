@@ -1,36 +1,62 @@
 import { atom } from 'jotai'
 import { atomWithStorage } from 'jotai/utils'
 
-import type { typeModal } from '@/types'
+import type {
+  appModalAtomType,
+  authAtomType,
+  mobileViewAtomType,
+  paymentFormAtomType,
+  selectedVendorAtomType,
+  socailAuthDetailsType,
+  submitOrderAtomType,
+} from '@/typings/atomtype'
 
-// ui
-export const appModalAtom = atom<{
-  active?: boolean
-  type: typeModal | null
-  data?: string | null
-}>({
+// ui-state
+export const appModalAtom = atom<appModalAtomType>({
   active: false,
   type: null,
   data: null,
 })
+
 export const modalAtom = atom(null)
+
 export const slidingTabAtom = atom(null)
+
 export const noticebarAtom = atomWithStorage('noticebar', true)
+
 export const seemoreAtom = atom(null)
+
 export const activeProductSlideAtom = atom(null)
+
 export const appLoadingAtom = atom(false)
+
 export const categoryDropdownAtom = atom(false)
+
 export const selectedCategoryAtom = atom('Beauty')
+
 export const mobileSlideMenuViewAtom = atom('LINK')
-export const mobileViewAtom = atom({
+
+export const mobileViewAtom = atom<mobileViewAtomType>({
   mobileMenu: false,
   showMobileSearch: false,
 })
+// end of ui-state
+
 // form
-export const paymentFormAtom = atom<{
-  form: any
-  completed: boolean
-} | null>(null)
+export const paymentFormAtom = atom<paymentFormAtomType>({
+  form: {
+    firstName: '',
+    lastName: '',
+    email: '',
+    country: '',
+    address: '',
+    region: '',
+    district: '',
+    zip: '',
+    phone: '',
+  },
+  completed: false,
+})
 export const completeOrderAtom = atom(false)
 export const countryAtom = atom<{ country: string } | null>(null)
 export const userAddressAtom = atom(null)
@@ -46,30 +72,10 @@ export const airwallexAtom = atom<{
 
 // order
 export const sendProductReviewAtom = atom<boolean | null>(null)
-export const submitOrderAtom = atom<{
-  account: null
-  orderNumber: null
-  products: null
-} | null>(null)
+export const submitOrderAtom = atom<submitOrderAtomType>(null)
 
 // auth
-export const authAtom = atom<{
-  loading: boolean | null
-  authorized: any | null
-  userDetail: any | null
-  error: boolean | null
-} | null>(null)
-
-export type socailAuthDetailsType = {
-  user: string | null
-  token: string | null
-  error: string | null
-  email: string | null
-  errorMessage: string | null
-  credential: string | null
-  loggedIn: boolean
-  socialLoginMethod: 'facebook' | 'google' | null
-}
+export const authAtom = atom<authAtomType>(null)
 
 export const socailAuthDetailsAtom = atomWithStorage<socailAuthDetailsType>(
   'socialAuth',
@@ -85,7 +91,7 @@ export const socailAuthDetailsAtom = atomWithStorage<socailAuthDetailsType>(
   }
 )
 export const logsAtom = atomWithStorage('logs', null)
-// admin
+
 // admin-auth
 export const adminAuthAtom = atomWithStorage<any>('adminAuth', null)
 
@@ -106,10 +112,7 @@ export const loadingInvoiceAtom = atom(false)
 export const invoiceProductsAtom = atom<any>([])
 
 // ProductShowcase
-export const selectedVendorAtom = atom<{
-  vendor: string
-  index: number
-} | null>(null)
+export const selectedVendorAtom = atom<selectedVendorAtomType>(null)
 
 // ProductTabSliderDropdown
 export const productRatingAtom = atom(3)

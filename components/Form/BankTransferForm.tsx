@@ -19,7 +19,8 @@ export default function BankTransferForm() {
 
   useEffect(() => {
     if (submit) {
-      sendBankTransfer(paymentForm?.form.email, bank)
+      const { email, firstName, lastName } = paymentForm.form
+      sendBankTransfer(email, bank, firstName, lastName)
         .then(() => {
           setSubmit(false)
           toast.success(`An email has been sent to ${paymentForm?.form.email}`)

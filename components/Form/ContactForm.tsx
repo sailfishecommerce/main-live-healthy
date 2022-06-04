@@ -21,7 +21,6 @@ export default function ContactForm() {
         }}
         validationSchema={contactFormSchema}
         onSubmit={(values, { resetForm }) => {
-          console.log('values', values)
           const { email, name, phone, subject, message } = values
           contactusForm.mutate({ name, email, phone, subject, message })
           resetForm()

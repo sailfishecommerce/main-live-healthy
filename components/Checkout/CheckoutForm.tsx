@@ -13,7 +13,6 @@ export default function CheckoutForm() {
   const [, setCompleteOrder] = useAtom(completeOrderAtom)
   return (
     <Formik
-      enableReinitialize
       initialValues={formValues}
       validationSchema={checkoutFormSchema}
       onSubmit={(values, { setSubmitting }) => {

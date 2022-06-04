@@ -21,6 +21,8 @@ export default function useShippingPayment() {
   const { data: userDetail, status } = useQuery('userDetails', getUserAccount)
   const [paymentForm] = useAtom(paymentFormAtom)
 
+  console.log('paymentForm', paymentForm)
+
   function formatFormValues(field: fieldType) {
     const formValue =
       status === 'error'

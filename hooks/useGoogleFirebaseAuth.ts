@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import {
   getAuth,
   signInWithRedirect,
@@ -21,7 +20,6 @@ export default function useGoogleFirebaseAuth() {
   const googleRedirect = () =>
     getRedirectResult(auth)
       .then((result: any) => {
-        console.log('google-response', result)
         const credential: any = GoogleAuthProvider.credentialFromResult(result)
         const token = credential?.accessToken
 

@@ -6,8 +6,8 @@ import { useQuery } from 'react-query'
 
 import { useAccount } from '@/hooks'
 import useFirebaseAuth from '@/hooks/useFirebaseAuth'
-import type { socailAuthDetailsType } from '@/lib/atomConfig'
 import { logsAtom, socailAuthDetailsAtom } from '@/lib/atomConfig'
+import type { socailAuthDetailsType } from '@/typings/atomtype'
 
 export default function useGreetuser() {
   const { getUserAccount } = useAccount()

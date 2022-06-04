@@ -8,8 +8,8 @@ import {
 import type { SetStateAction } from 'jotai'
 import { useAtom } from 'jotai'
 
-import type { socailAuthDetailsType } from '@/lib/atomConfig'
 import { socailAuthDetailsAtom } from '@/lib/atomConfig'
+import type { socailAuthDetailsType } from '@/typings/atomtype'
 
 export default function useGoogleFirebaseAuth() {
   const [socailAuthDetails, setSocialAuthDetails]: any = useAtom<

@@ -7,9 +7,9 @@ import { toast } from 'react-toastify'
 
 import useFacebookFirebaseAuth from '@/hooks/useFacebookFirebaseAuth'
 import useGoogleFirebaseAuth from '@/hooks/useGoogleFirebaseAuth'
-import type { socailAuthDetailsType } from '@/lib/atomConfig'
 import { socailAuthDetailsAtom } from '@/lib/atomConfig'
 import firebaseConfig from '@/lib/firebaseConfig'
+import type { socailAuthDetailsType } from '@/typings/atomtype'
 
 export default function useFirebaseAuth() {
   initializeApp(firebaseConfig)

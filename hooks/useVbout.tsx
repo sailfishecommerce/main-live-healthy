@@ -26,18 +26,20 @@ export function addNewUserToList(email: string) {
 export function contactusFormList(
   name: string,
   email: string,
-  phone: number,
+  phone: string,
   subject: string,
   message: string
 ) {
   const data: any = {
-    name,
     email,
-    phone,
-    subject,
-    message,
     status: 'active',
-    listid: 55592,
+    listid: 71630,
+    fields: {
+      373012: name,
+      373015: phone,
+      554979: subject,
+      554935: message,
+    },
   }
 
   return axios.post(
@@ -69,15 +71,22 @@ export function createVboutOrder(item: createVboutOrderType) {
     `https://api.vbout.com/1/ecommerce/createorder?api_key=${process.env.NEXT_PUBLIC_VBOUT_API_KEY}`,
     data
   )
-  // .then((response) =>
-  // .catch((error) => console.error('error createVboutOrder', error))
 }
 
-export function sendBankTransfer(email: string, listid: string) {
+export function sendBankTransfer(
+  email: string,
+  listid: string,
+  firstName: string,
+  lastName: string
+) {
   const data = {
     email,
     status: 'active',
     listid,
+    fields: {
+      373012: firstName,
+      373013: lastName,
+    },
   }
   return axios.post(
     `https://api.vbout.com/1/emailmarketing/addcontact.json?key=${process.env.NEXT_PUBLIC_VBOUT_API_KEY}`,
@@ -108,4 +117,10 @@ export function addCategoryView(content: addCategoryViewType) {
 
 export function addEmailToNewsletter(email: string, listid: number) {
   return axios.post('/api/add-email-to-newsletter', { email, listid })
+}
+
+export function getAllVboutList() {
+  return axios.get(
+    `https://api.vbout.com/1/emailmarketing/getlists.json?key=${process.env.NEXT_PUBLIC_VBOUT_API_KEY}`
+  )
 }

@@ -44,7 +44,7 @@ export default function useVboutMutation() {
   type contactusFormListType = {
     name: string
     email: string
-    phone: number
+    phone: string
     subject: string
     message: string
   }

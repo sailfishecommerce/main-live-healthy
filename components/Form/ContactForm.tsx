@@ -2,9 +2,12 @@ import { Formik } from 'formik'
 
 import { displayFormElement } from '@/components/Form/FormElement'
 import { contactFormSchema } from '@/components/Form/schema/ContactFormSchema'
+import useVboutMutation from '@/hooks/useVboutMutation'
 import contactFormData from '@/json/contact-us-form.json'
 
 export default function ContactForm() {
+  const { useContactForm } = useVboutMutation()
+  const contactusForm = useContactForm()
   return (
     <div className="w-full md:w-1/2 justify-center mx-auto px-4 xl:px-5 py-5 border mb-8">
       <h2 className="text-xl mb-4">Drop us a line</h2>
@@ -17,7 +20,12 @@ export default function ContactForm() {
           message: '',
         }}
         validationSchema={contactFormSchema}
-        onSubmit={(values) => console.log('values', values)}
+        onSubmit={(values, { resetForm }) => {
+          console.log('values', values)
+          const { email, name, phone, subject, message } = values
+          contactusForm.mutate({ name, email, phone, subject, message })
+          resetForm()
+        }}
       >
         {(formik: any) => (
           <form

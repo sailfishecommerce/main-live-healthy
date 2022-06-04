@@ -23,6 +23,29 @@ export function addNewUserToList(email: string) {
   )
 }
 
+export function contactusFormList(
+  name: string,
+  email: string,
+  phone: number,
+  subject: string,
+  message: string
+) {
+  const data: any = {
+    name,
+    email,
+    phone,
+    subject,
+    message,
+    status: 'active',
+    listid: 55592,
+  }
+
+  return axios.post(
+    `https://api.vbout.com/1/emailmarketing/addcontact.json?key=${process.env.NEXT_PUBLIC_VBOUT_API_KEY}`,
+    data
+  )
+}
+
 type removeVboutCartType = {
   cartId: string
   productId: string

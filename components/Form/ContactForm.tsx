@@ -1,8 +1,8 @@
 import { Formik } from 'formik'
 
+import { displayFormElement } from '@/components/Form/FormElement'
 import { contactFormSchema } from '@/components/Form/schema/ContactFormSchema'
 import contactFormData from '@/json/contact-us-form.json'
-import { displayFormElement } from './FormElement'
 
 export default function ContactForm() {
   return (

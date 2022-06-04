@@ -17,6 +17,7 @@ export default function HeaderBanner() {
         width={imageWidth}
         alt="store-banner"
         layout="responsive"
+        priority={true}
       />
     </div>
   )

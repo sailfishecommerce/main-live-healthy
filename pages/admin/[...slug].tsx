@@ -24,7 +24,7 @@ export default function AdminPage() {
           <h1 className="text-xl">
             {route?.toUpperCase().replaceAll('-', ' ')}
           </h1>
-          <DynamicDashboardEditor />
+          <DynamicDashboardEditor editorKey={route} />
         </div>
       </DashboardMainView>
     </DashboardLayout>

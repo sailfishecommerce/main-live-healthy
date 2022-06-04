@@ -31,6 +31,7 @@ export default function Checkout() {
   const mobileWidth = useMediaQuery('(max-width:768px)')
   const { useCartData } = useCart()
   const { data: cart, status } = useCartData()
+
   return (
     <Applayout title="Checkout - Thanks for shopping with us">
       <VboutScript />

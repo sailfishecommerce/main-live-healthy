@@ -31,6 +31,7 @@ function CategoryProductSliderComponent({
       <Splide
         options={{
           perPage: 6,
+          gap: '2px',
           breakpoints: {
             280: {
               perPage: 1,

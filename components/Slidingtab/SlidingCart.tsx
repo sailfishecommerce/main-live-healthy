@@ -26,7 +26,9 @@ export default function SlidingCart() {
                 <ProductRow key={cartItem.id} cart={cartItem} />
               ))}
             </div>
-            <RecommendationSlider cartItems={cart?.items} />
+            {cart?.items.length > 0 && (
+              <RecommendationSlider cartItems={cart?.items} />
+            )}
           </div>
           <div className="cart-total">
             <SlideCardTotal />

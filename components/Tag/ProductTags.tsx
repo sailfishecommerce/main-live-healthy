@@ -20,7 +20,7 @@ export default function ProductTags({
   }
   return (
     <>
-      <ul className="flex items-center">
+      <ul className="flex mt-3 items-center">
         {tags?.map((tag: any) => {
           const activeVendorClass = activeVendor(tag)
           return (

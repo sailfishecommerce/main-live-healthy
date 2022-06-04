@@ -45,7 +45,7 @@ function BreadcrumbComponent({ items, refine, createURL }: BreadcrumbProps) {
 
   return (
     <ClientOnly>
-      <div className="flex flex-col gap-1 mt-8 ml-4 lg:ml-0 lg:mt-0 capitalize">
+      <div className="flex flex-col gap-1 mt-12 ml-4 lg:ml-0 lg:mt-0 capitalize">
         <ul className="flex items-center gap-1 text-neutral-dark">
           {navItems.map((item) => (
             <li

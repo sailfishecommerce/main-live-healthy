@@ -5,7 +5,7 @@ import { useQuery } from 'react-query'
 import { useGetProduct } from '@/hooks/useLivehealthyProduct'
 import useSwellProducts from '@/hooks/useSwellProducts'
 
-export default function useRecommendedProduct(cartItems: any[]) {
+export default function useRecommendedProduct(cartItems: any) {
   const { getProduct } = useSwellProducts()
   const cartIndex = cartItems.length - 1
 

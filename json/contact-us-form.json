@@ -2,26 +2,41 @@
   {
     "type": "input",
     "label": "Your name",
+    "id": "name",
+    "name": "name",
+    "inputType": "text",
     "placeholder": "John Doe"
   },
   {
     "type": "input",
     "label": "Email address",
+    "id": "email-address",
+    "inputType": "email",
+    "name": "email",
     "placeholder": "johndoe@gmail.com"
   },
   {
     "type": "input",
+    "id": "phone",
     "label": "Your phone",
+    "inputType": "number",
+    "name": "phone",
     "placeholder": "+1(212) 00 000 000"
   },
   {
     "type": "input",
     "label": "Subject",
+    "id": "subject",
+    "inputType": "text",
+    "name": "subject",
     "placeholder": "Provide short title of your request"
   },
   {
     "type": "textarea",
     "label": "Message",
+    "id": "message",
+    "inputType": "text",
+    "name": "message",
     "placeholder": "Please describe in detail your request"
   }
 ]

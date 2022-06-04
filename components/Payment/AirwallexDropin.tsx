@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-/* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable no-alert */
 import type { ElementType } from 'airwallex-payment-elements'
 import {
@@ -31,9 +30,9 @@ function AirwallexCardElement({
   console.log('elementShow', elementShow)
   const { isLoading, isSuccessful, hasError } = useToast()
 
-  useEffect(() => {
+  function loadAirwallexUi() {
     loadAirwallex({
-      env: 'dev',
+      env: 'demo',
       origin: window.location.origin,
       fonts: [
         {
@@ -42,11 +41,17 @@ function AirwallexCardElement({
           weight: 400,
         },
       ],
-    }).then(() => {
-      createElement('card' as ElementType)?.mount('airwallexCard')
+    }).then((response) => {
+      console.log('response', response)
+      return createElement('card' as ElementType)?.mount('airwallexCard')
     })
+  }
+
+  useEffect(() => {
+    loadAirwallexUi()
 
     const onReady = (event: CustomEvent): void => {
+      console.log('event', event)
       setElementShow(true)
       getElement('card')?.focus()
     }

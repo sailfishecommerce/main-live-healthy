@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useAtom } from 'jotai'
-import { useEffect, useRef, memo } from 'react'
+import { useEffect, useRef, memo, useCallback } from 'react'
 
 import { userAddressAtom } from '@/lib/atomConfig'
 
@@ -107,13 +107,12 @@ function SearchLocationInputComponent({ formik }: any) {
     )
   }, [countryCode])
 
-  function updateInput(e: any) {
-    e.preventDefault()
-    formik.setValues({
+  const updateInput = useCallback(function (e: any) {
+    return formik.setValues({
       ...formik.values,
       address: e.target.value,
     })
-  }
+  }, [])
 
   return (
     <div className="mb-1 flex flex-col px-2">

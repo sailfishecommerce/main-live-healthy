@@ -11,6 +11,7 @@ export default function CheckoutForm() {
   const { formValues } = useShippingPayment()
   const [, setPaymentForm] = useAtom(paymentFormAtom)
   const [, setCompleteOrder] = useAtom(completeOrderAtom)
+
   return (
     <Formik
       initialValues={formValues}

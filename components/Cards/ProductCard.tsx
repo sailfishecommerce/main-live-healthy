@@ -53,7 +53,7 @@ export default function ProductCard({
 
   return (
     <div
-      className={`hover:bg-white mr-4 px-2 lg:px-0 relative hover:shadow-lg product hover:rounded-lg product ${productClassName}  ${isRow} p-2 md:p-4 lg:p-6 hover:border`}
+      className={`hover:bg-white mr-4 px-2 relative hover:shadow-lg product hover:rounded-lg product ${productClassName}  ${isRow} p-2 md:p-4 lg:p-6 hover:border`}
     >
       <DiscountTag price={product.price} salePrice={product.sale_price} />
       <Link

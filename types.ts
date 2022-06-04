@@ -392,3 +392,11 @@ export type addProductSearchType = {
   email: string
   query: string
 }
+
+export type contactInfoType = {
+  icon: string
+  title: string
+  type?: string
+  anchor?: string
+  group: Array<{ text: string; value?: string; phone?: string }>
+}

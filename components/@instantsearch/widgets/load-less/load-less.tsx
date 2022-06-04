@@ -27,7 +27,7 @@ export function LoadLess({ hasPrevious, refinePrevious }: LoadLessProps) {
   if (!hasPrevious) return null
 
   return (
-    <div className="flex flex-col justify-center gap-2 mb-2 lg:gap-4 lg:flex-row lg:mb-7 mt-4 lg:mt-0 px-3">
+    <div className="flex flex-col justify-center gap-2 mb-2 lg:gap-4 lg:flex-row lg:mb-7 mt-14 lg:mt-0 px-3">
       <Button
         type="secondary"
         disabled={isSearchStalled}

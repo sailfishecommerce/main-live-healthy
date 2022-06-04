@@ -1,4 +1,5 @@
 import SlideCardTotal from '@/components/Cards/SlideCardTotal'
+import EmptyCart from '@/components/Checkout/EmptyCart'
 import ProductRow from '@/components/Product/ProductRow'
 import RecommendationSlider from '@/components/Slider/RecommendationSlider'
 import SlidingTab from '@/components/Slidingtab'
@@ -26,8 +27,10 @@ export default function SlidingCart() {
                 <ProductRow key={cartItem.id} cart={cartItem} />
               ))}
             </div>
-            {cart?.items.length > 0 && (
+            {cart?.items.length > 0 ? (
               <RecommendationSlider cartItems={cart?.items} />
+            ) : (
+              <EmptyCart />
             )}
           </div>
           <div className="cart-total">

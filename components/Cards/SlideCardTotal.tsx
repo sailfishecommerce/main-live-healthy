@@ -54,7 +54,7 @@ export default function SlideCardTotal() {
           </h1>
         )}
         <div className="discount flex  md:flex-row  items-center justify-between my-2">
-          <div className="input-wrapper md:w-1/2 w-full my-2 md:my-0 relative">
+          <div className="input-wrapper md:w-1/2 w-1/2 my-2 md:my-0 relative">
             <input
               placeholder="Enter promocode"
               type="text"
@@ -65,7 +65,7 @@ export default function SlideCardTotal() {
           <button
             aria-label="add discount code"
             type="button"
-            className="rounded-xl w-3/5 lg:w-2/5 bg-mountain-green text-white md:px-4 p-2 text-xs  lg:text-sm font-medium"
+            className="rounded-xl  lg:w-2/5 bg-mountain-green text-white md:px-4 py-3 p-2 text-xs  lg:text-sm font-medium"
             onClick={onSubmitCoupon}
           >
             Add discount code

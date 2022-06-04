@@ -27,7 +27,6 @@ function AirwallexCardElement({
   const [errorMessage, setErrorMessage] = useState('')
 
   const router = useRouter()
-  console.log('elementShow', elementShow)
   const { isLoading, isSuccessful, hasError } = useToast()
 
   function loadAirwallexUi() {
@@ -50,8 +49,7 @@ function AirwallexCardElement({
   useEffect(() => {
     loadAirwallexUi()
 
-    const onReady = (event: CustomEvent): void => {
-      console.log('event', event)
+    const onReady = (): void => {
       setElementShow(true)
       getElement('card')?.focus()
     }

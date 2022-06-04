@@ -35,7 +35,7 @@ export default function Account() {
           ) : status === 'loading' ? (
             <SpinnerRipple centerRipple />
           ) : data === null ? (
-            <div className="login bg-gray-100 mx-auto flex flex-col py-12 justify-center mb-4">
+            <div className="login bg-gray-100 mx-auto flex flex-col py-12 justify-center mb-4 px-4">
               <h1 className="text-center font-bold text-md lg:text-xl mb-4">
                 Login / Sign up to access your account details
               </h1>

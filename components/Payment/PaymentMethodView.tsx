@@ -7,16 +7,14 @@ export default function PaymentMethodView() {
     '/mastercard.png',
     '/paypal.png',
     '/american-express.png',
-    '/bank-transfer.png',
+    '/bank-transfer.webp',
   ]
   return (
     <div className="flex flex-col">
       <h5 className="text-lg my-2 font-medium">Payment methods</h5>
-      <div className="payment-icons w-2/3 grid grid-cols-5 gap-4  items-center my-4 justify-between">
+      <div className="payment-icons w-full lg:w-2/3 grid grid-cols-5 gap-4  items-center my-4 justify-between">
         {paymentMethodIcons.map((item, index) => (
-          <div key={index} className="">
-            <img src={item} alt="payment-icon" />
-          </div>
+          <img key={index} src={item} alt="payment-icon" />
         ))}
       </div>
       <p className="gray-lavender md:my-4 my-2 text-sm md:text-md">

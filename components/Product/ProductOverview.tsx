@@ -62,7 +62,7 @@ export default function ProductOverview({ hit }: any) {
         <ProductOffers className="md:hidden" />
       </div>
       <ProductReview rating={hit.rating} />
-      <div className="mt-6" />
+      <div className="mt-6 px-0 mx-0" />
       {status === 'error' ? (
         'unable to load related products'
       ) : status === 'loading' ? (

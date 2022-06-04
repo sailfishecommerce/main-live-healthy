@@ -5,7 +5,7 @@ interface Props {
 
 export default function SeeMoreProductInfo({ title, onClick }: Props) {
   return (
-    <div className="flex justify-start my-4">
+    <div className="flex justify-start my-2 lg:my-4">
       <h3 className="text-xl lg:text-2xl font-bold">{title}</h3>
       <button
         aria-label="see more"

@@ -14,12 +14,12 @@ export default function MobileMenuView() {
       <div className="bg-white pl-4 mobileslidemenu flex flex-col">
         <button
           type="button"
-          className="flex justify-end mr-4 mb-2"
+          className="closeButton flex justify-end mr-4 mb-2"
           onClick={toggleMobileMenu}
         >
           <FaTimes size={22} />
         </button>
-        <ul className="flex md:items-start justify-around w-full items-center mx-auto lg:my-4 my-2">
+        <ul className="flex md:items-start justify-between w-80  items-center ml-0 pl-0 lg:my-4 my-2">
           {menu.primaryMenu.map((item) => (
             <PageLink
               menuItem={item}
@@ -28,7 +28,7 @@ export default function MobileMenuView() {
             />
           ))}
         </ul>
-        <div className="contacts md:mx-0 mx-auto px-2 flex border-b lg:mb-6 mb-4 md:pr-4 pr-0">
+        <div className="contacts md:mx-0 mx-aut px-2 flex border-b lg:mb-6 my-2 md:pr-4 pr-0">
           <div className="reach-us border rounded-md p-4 mb-4">
             <div className="flex items-center">
               <Whatsapp />
@@ -49,6 +49,21 @@ export default function MobileMenuView() {
             max-height: 44vh;
             overflow-y: scroll;
           }
+          button.closeButton {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            right: 2px;
+            top: 5px;
+            border: 1px solid black;
+            display: flex;
+            align-items: center;
+            margin: auto;
+            justify-content: center;
+            border-radius: 50%;
+            z-index: 100;
+          }
+
           .mobileslidemenu {
             height: 100%;
             width: 100%;

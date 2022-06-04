@@ -9,7 +9,7 @@ export default function MobileSlideMenu() {
 
   return (
     <>
-      <aside className="MobileSlideMenu pt-4 fixed top-0 left-0 z-50 bg-white w-full">
+      <aside className="MobileSlideMenu fixed top-0 left-0 z-50 bg-white w-full">
         {mobileSlideMenuView === 'LINK' ? (
           <MobileMenuView />
         ) : (

@@ -99,6 +99,8 @@ function SearchLocationInputComponent({ formik }: any) {
   const countryCode = formik.values.country
   const [, setUserAddress] = useAtom(userAddressAtom)
 
+  console.log('I was rendered')
+
   useEffect(() => {
     loadScript(
       `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_PLACE_API_KEY}&libraries=places`,

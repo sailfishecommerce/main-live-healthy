@@ -9,8 +9,30 @@ const ifdefOpts = {
   TEST: process.env.NODE_ENV === 'test',
 }
 
+const securityHeaders = [
+  {
+    key: 'Content-Security-Policy',
+    value: `
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.googleapis.com https://*.gstatic.com *.google.com https://*.ggpht.com *.googleusercontent.com;
+    img-src 'self' https://*.googleapis.com https://*.gstatic.com *.google.com  *.googleusercontent.com data:;
+    frame-src *.google.com;
+    connect-src 'self' https://*.googleapis.com *.google.com https://*.gstatic.com  data: blob:;
+    font-src https://fonts.gstatic.com;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com
+    `,
+  },
+]
+
 /** @type {import('next').NextConfig} */
 module.exports = withNextPlugins([withBundleAnalyzer], {
+  async header() {
+    return [
+      {
+        source: '/:path*',
+        headers: securityHeaders,
+      },
+    ]
+  },
   generateBuildId: () => 'build',
   reactStrictMode: true,
   eslint: {

@@ -2,37 +2,34 @@ import { EditorState, convertToRaw, convertFromRaw } from 'draft-js'
 import { Component } from 'react'
 import { Editor } from 'react-draft-wysiwyg'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
-
+import debounce from 'lodash.debounce'
+import firebaseDatabase from '@/lib/firebaseDatabase'
 class DashboardEditor extends Component {
   constructor(props) {
     super(props)
     this.state = {
       editorState: EditorState.createEmpty(),
     }
-
-    const content = window.localStorage.getItem(
-      `${this.props?.editorKey}-content`
-    )
-
-    if (content) {
-      this.state.editorState = EditorState.createWithContent(
-        convertFromRaw(JSON.parse(content))
-      )
-    } else {
-      this.state.editorState = EditorState.createEmpty()
-    }
   }
 
-  saveContent = (content) => {
-    window.localStorage.setItem(
-      `${this.props.editorKey}-content`,
-      JSON.stringify(convertToRaw(content))
-    )
+  componentDidMount() {
+    const { readData } = firebaseDatabase()
+    const databaseRefId = 'articles/' + this.props.editorKey
+    const datafromDB = readData(databaseRefId)
+    console.log('datafromDB', datafromDB)
   }
+  // firebaseDatabase
+  saveContent = debounce((content) => {
+    const { writeData } = firebaseDatabase()
+    const databaseRefId = 'articles/' + this.props.editorKey
+    console.log('datbaseRefId')
+    writeData(databaseRefId, {
+      content: JSON.stringify(convertToRaw(content)),
+    })
+  }, 1000)
 
   onEditorStateChange = (editorState) => {
     const contentState = editorState.getCurrentContent()
-    console.log('content state', convertToRaw(contentState))
     this.saveContent(contentState)
     this.setState({
       editorState,

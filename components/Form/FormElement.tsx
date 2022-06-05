@@ -1,12 +1,13 @@
 import dynamic from 'next/dynamic'
 import { useState } from 'react'
 
-import PasswordInput from './form-elements/PasswordInput'
+import PasswordInput from '@/components/Form/form-elements/PasswordInput'
 
 const SelectCountries = dynamic(
   () =>
     import(/* webpackChunkName: 'common' */ '@/components/Form/SelectCountries')
 )
+
 const SearchLocationInput = dynamic(
   () =>
     import(
@@ -105,6 +106,7 @@ export function displayFormElement(
   className?: string,
   withIcon?: string
 ) {
+  console.log('content', content)
   switch (content.type) {
     case 'input': {
       return (

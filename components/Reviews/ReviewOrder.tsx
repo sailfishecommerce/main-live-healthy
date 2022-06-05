@@ -39,7 +39,7 @@ export default function ReviewOrder() {
           </li>
         ))}
       </ul>
-      <ShippingMethod />
+      <ShippingMethod shippingMethod={cart?.shipping?.service} />
     </CheckoutCard>
   )
 }

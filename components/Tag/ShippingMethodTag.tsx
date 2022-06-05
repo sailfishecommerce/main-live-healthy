@@ -24,6 +24,9 @@ export default function ShippingMethodTag({
     shippingMethod === content.id ? 'bg-gray-300 text-white' : ''
   const tagClassName = className ? className : ''
 
+  console.log('shippingMethod', shippingMethod)
+  console.log('content.id', content.id)
+
   return (
     <button
       type="button"

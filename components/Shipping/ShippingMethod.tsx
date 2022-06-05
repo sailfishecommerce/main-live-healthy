@@ -1,16 +1,17 @@
-import { useState } from 'react'
 import { useQuery } from 'react-query'
 
 import ShippingMethodTag from '@/components/Tag/ShippingMethodTag'
 import useShipping, { useShippingMutation } from '@/hooks/useShipping'
 
-export default function ShippingMethod() {
-  const [shippingMethod, setShippingMethod] = useState<string | null>(null)
+interface Props {
+  shippingMethod: string
+}
+
+export default function ShippingMethod({ shippingMethod }: Props) {
   const { useUpdateShippingRate } = useShippingMutation()
   const updateShippingRate = useUpdateShippingRate()
 
   function updateShippingMethod(value: string) {
-    setShippingMethod(value)
     updateShippingRate.mutate(value)
   }
   const { getShippingRates } = useShipping()

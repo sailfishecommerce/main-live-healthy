@@ -1,9 +1,6 @@
-/* eslint-disable react/no-array-index-key */
-
 import BillingAddress from '@/components/Checkout/BillingAddress'
 import ContactInformationForm from '@/components/Checkout/ContactInformationForm'
-import { displayFormElement } from '@/components/Form/FormElement'
-import checkoutFormContent from '@/json/checkout-form.json'
+import ShippingAddressForm from '@/components/Form/ShippingAddressForm'
 
 export default function DeliveryAddressTemp() {
   return (
@@ -16,30 +13,8 @@ export default function DeliveryAddressTemp() {
           placeholder="Enter your email address"
         />
       </ContactInformationForm>
-      <div className="delivery-form">
-        <h3 className="font-bold my-5 text-lg">Shipping address</h3>
-
-        <div>
-          {checkoutFormContent.personalDetails.content.map((formRow, index) => (
-            <div key={index} className="flex flex-wrap">
-              {formRow.map((formInput, indexN: number) => {
-                const inputStyle =
-                  formRow.length === 1 ? 'w-full' : `w-1/${formRow.length}`
-                return (
-                  <div key={indexN} className={inputStyle}>
-                    {displayFormElement(formInput, formik)}
-                  </div>
-                )
-              })}
-            </div>
-          ))}
-        </div>
-        <div className="save-info border-b pb-4 mt-2 flex items-center">
-          <input type="checkbox" />{' '}
-          <p className="ml-4">Save this information for next time</p>
-        </div>
-        <BillingAddress />
-      </div>
+      <ShippingAddressForm />
+      <BillingAddress />
     </div>
   )
 }

@@ -3,18 +3,24 @@ import type { PropsWithChildren } from 'react'
 
 import SelectFormElement from '@/components/Form/SelectFormElement'
 import checkoutFormContent from '@/json/checkout-form.json'
+import type { inputType } from '@/typings/input-type'
 
 interface ShippingAddressFormProps {
   form: {
     register: any
     errors: any
+    isDirty: boolean
+    isValid: boolean
   }
+  setValue: (name: inputType, value: unknown, config?: unknown) => void
 }
 
 export default function ShippingAddressFormWrapper({
   children,
   form,
+  setValue,
 }: PropsWithChildren<ShippingAddressFormProps>) {
+  const { isDirty, isValid } = form
   return (
     <>
       {children}
@@ -29,6 +35,7 @@ export default function ShippingAddressFormWrapper({
                 key={input.id}
                 className={inputStyle}
                 form={form}
+                setValue={setValue}
               />
             ))}
           </div>
@@ -41,6 +48,7 @@ export default function ShippingAddressFormWrapper({
       <input
         type="submit"
         className={`w-1/2 mx-auto flex items-center justify-center p-1 text-md my-4 mt-1 my-3 bg-mountain-green text-white shadow-lg rounded-xl`}
+        disabled={!isDirty || !isValid}
       />
     </>
   )

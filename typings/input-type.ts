@@ -41,3 +41,13 @@ export interface FormInputsProps {
   name: string
   phone: string
 }
+
+export type inputType =
+  | 'address'
+  | 'country'
+  | 'district'
+  | 'firstName'
+  | 'lastName'
+  | 'name'
+  | 'phone'
+  | 'region'

@@ -1,8 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useAtom } from 'jotai'
-import { useEffect, useRef, memo, useCallback } from 'react'
+import { useEffect, useRef, useCallback } from 'react'
 
 import { userAddressAtom } from '@/lib/atomConfig'
+import type { inputType } from '@/typings/input-type'
 
 let autoComplete: any
 
@@ -94,51 +95,62 @@ function handlePlaceSelect(
   )
 }
 
-export default function AddressAutoComplete({ formik }: any) {
-  const autoCompleteRef = useRef(null)
-  const countryCode = formik.values.country
-  const [, setUserAddress] = useAtom(userAddressAtom)
+interface Props {
+  setValue: (name: inputType, value: unknown, config?: unknown) => void
+  form: {
+    register: any
+    errors: {
+      address: {
+        message: string
+      }
+    }
+  }
+}
 
-  console.log('I was rendered')
+export default function AddressAutoComplete({ form, setValue }: Props) {
+  const { errors, register } = form
+  const autoCompleteRef = useRef(null)
+  const countryCode = 'values.country'
+  const [, setUserAddress] = useAtom(userAddressAtom)
 
   useEffect(() => {
     loadScript(
       `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_PLACE_API_KEY}&libraries=places`,
       () =>
-        handleScriptLoad(formik, autoCompleteRef, countryCode, setUserAddress)
+        handleScriptLoad(setValue, autoCompleteRef, countryCode, setUserAddress)
     )
   }, [countryCode])
 
   const updateInput = useCallback(function (e: any) {
-    return formik.setValues({
-      ...formik.values,
-      address: e.target.value,
-    })
+    return setValue('address', e.target.value)
   }, [])
 
   return (
-    <div className="mb-1 flex flex-col px-2">
+    <div className="mb-1 flex flex-col px-2 w-full">
       <input
         ref={autoCompleteRef}
         placeholder="Address"
-        value={formik.values.address}
         name="address"
-        className="mb-2 border border-gray-200 rounded-md h-10 px-2 focus:text-gray-700 focus:bg-white focus:border-red-500 focus:outline-none"
+        className="form-control
+      block
+      w-full
+      px-3
+      py-1.5
+      text-base
+      font-normal
+      text-gray-700
+      bg-white bg-clip-padding
+      border border-solid border-gray-300
+      rounded
+      transition
+      ease-in-out
+      m-0
+      focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
         autoComplete="true"
         onChange={updateInput}
+        {...register('address')}
       />
-      <p className="text-danger errorText">
-        {formik.errors.address &&
-          formik.touched.address &&
-          formik.errors.address}
-      </p>
-      <style jsx>
-        {`
-          .errorText {
-            font-size: 12px;
-          }
-        `}
-      </style>
+      <p className="text-red-500">{errors.address?.message}</p>
     </div>
   )
 }

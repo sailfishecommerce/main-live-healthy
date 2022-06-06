@@ -11,7 +11,8 @@ export default function ShippingAddressForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isDirty, isValid },
+    setValue,
   } = useForm<FormInputsProps>({
     resolver: yupResolver(shippingSchema),
   })
@@ -22,7 +23,10 @@ export default function ShippingAddressForm() {
     <>
       <h3 className="font-bold my-5 text-lg">Shipping address</h3>
       <form className="mt-4" onSubmit={handleSubmit(onSubmit)}>
-        <ShippingAddressFormWrapper form={{ register, errors }}>
+        <ShippingAddressFormWrapper
+          form={{ register, errors, isDirty, isValid }}
+          setValue={setValue}
+        >
           <ContactInformationForm form={{ register, errors }} />
         </ShippingAddressFormWrapper>
       </form>

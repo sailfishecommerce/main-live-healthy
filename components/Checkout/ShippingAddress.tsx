@@ -1,29 +1,12 @@
-/* eslint-disable no-console */
-import { yupResolver } from '@hookform/resolvers/yup'
-import { useForm } from 'react-hook-form'
-
-import ContactInformationForm from '@/components/Checkout/ContactInformationForm'
-import ShippingAddressForm from '@/components/Form/ShippingAddressForm'
-import { shippingSchema } from '@/components/Form/schema/ShippingSchema'
-import type { FormInputsProps } from '@/typings/input-type'
+import BillingAddress from '@/components/Checkout/BillingAddress'
+import ShippingAddressForm from '@/components/Checkout/ShippingAddressForm'
 
 export default function ShippingAddress() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormInputsProps>({ resolver: yupResolver(shippingSchema) })
-
-  const onSubmit = (data: FormInputsProps) => console.log('form-data', data)
-
   return (
-    <>
-      <h3 className="font-bold my-5 text-lg">Shipping address</h3>
-      <form className="mt-4" onSubmit={handleSubmit(onSubmit)}>
-        <ShippingAddressForm form={{ register, errors }}>
-          <ContactInformationForm form={{ register, errors }} />
-        </ShippingAddressForm>
-      </form>
-    </>
+    <div className="w-full height-fit-content bg-white p-4 my-4 md:my-0 mx-0 rounded-md">
+      <h3 className="font-semibold mb-2 text-xl mr-2">2. Specify details</h3>
+      <ShippingAddressForm />
+      <BillingAddress />
+    </div>
   )
 }

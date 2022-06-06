@@ -5,7 +5,7 @@ import type {
   InputType,
 } from '@/typings/input-type'
 
-export function SelectCountry({ input, className, form }: InputType) {
+export function SelectCountry({ input, className, form, ...rest }: InputType) {
   const validCountry: countriesType[] = countries.data?.filter(
     (country) => country.Iso2
   )
@@ -35,10 +35,9 @@ export function SelectCountry({ input, className, form }: InputType) {
         aria-label="select countries"
         name={input.name}
         {...(register(input.name), { required: true })}
+        {...rest}
       >
-        <option selected value="">
-          Select Country
-        </option>
+        <option>Select Country</option>
         {validCountry.map((country) => (
           <option key={country.Iso2} value={country.Iso2}>
             {country.name}

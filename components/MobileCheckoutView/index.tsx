@@ -35,9 +35,7 @@ export default function MobileCheckoutView() {
             setCompleteOrder(true)
           }}
         >
-          {(formik) => {
-            return <form>{displayCheckoutView(checkoutSteps, formik)}</form>
-          }}
+          <form>{displayCheckoutView(checkoutSteps)}</form>
         </Formik>
       </div>
       <CheckoutStepButtonGroup

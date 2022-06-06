@@ -31,7 +31,7 @@ export default function useAutocomplete() {
     document.getElementsByTagName('head')[0].appendChild(script) // append to head
   }
 
-  function handleScriptLoad(setValue, autoCompleteRef, country) {
+  function handleScriptLoad(setValue, autoCompleteRef, country, setAddress) {
     let autoComplete
     // assign autoComplete with Google maps place one time
     autoComplete = new window.google.maps.places.Autocomplete(
@@ -40,10 +40,12 @@ export default function useAutocomplete() {
     )
     autoComplete.setFields(['address_components', 'formatted_address']) // specify what properties we will get from API
     // add a listener to handle when the place is selected
-    autoComplete.addListener('place_changed', () => handlePlaceSelect(setValue))
+    autoComplete.addListener('place_changed', () =>
+      handlePlaceSelect(setValue, setAddress)
+    )
   }
 
-  async function handlePlaceSelect(setValue) {
+  async function handlePlaceSelect(setValue, setAddress) {
     const addressObject = autoComplete.getPlace() // get place from google api
     const query = addressObject.formatted_address
 
@@ -59,7 +61,7 @@ export default function useAutocomplete() {
       ''
     )
 
-    setValue('address', address)
+    setAddress(address)
     setValue('district', district)
     setValue('zip', zip)
     setValue('region', region)

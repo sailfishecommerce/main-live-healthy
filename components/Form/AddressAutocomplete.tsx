@@ -33,7 +33,7 @@ export default function AddressAutoComplete() {
       `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_PLACE_API_KEY}&libraries=places`,
       () => handleScriptLoad(setValue, autoCompleteRef, country, setAddress)
     )
-  }, [country])
+  }, [])
 
   function onChangeHandler(e: any) {
     return setAddress(e.target.value)
@@ -58,7 +58,6 @@ export default function AddressAutoComplete() {
       ease-in-out
       m-0
       focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        autoComplete="true"
         ref={autoCompleteRef}
         name="address"
         value={address}

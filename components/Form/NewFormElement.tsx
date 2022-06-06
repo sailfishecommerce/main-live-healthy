@@ -39,7 +39,7 @@ export function SelectCountry({ input, className }: InputType) {
       >
         <option value="">Select Country</option>
         {validCountry.map((country) => (
-          <option key={country.Iso2} value={country.Iso2}>
+          <option key={country.Iso2} value={country.Iso2.toLowerCase()}>
             {country.name}
           </option>
         ))}

@@ -8,16 +8,6 @@ const SelectCountries = dynamic(
     import(/* webpackChunkName: 'common' */ '@/components/Form/SelectCountries')
 )
 
-const SearchLocationInput = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'common' */ '@/components/Form/SearchLocationInput'
-    ),
-  {
-    ssr: false,
-  }
-)
-
 const Select = dynamic(
   () => import(/* webpackChunkName: 'common' */ '@/components/Form/Select')
 )
@@ -122,9 +112,6 @@ export function displayFormElement(
     }
     case 'selectCountry': {
       return <SelectCountries content={content} formik={_formik} />
-    }
-    case 'searchLocationInput': {
-      return <SearchLocationInput formik={_formik} />
     }
     case 'textarea': {
       return <TextArea content={content} formik={_formik} />

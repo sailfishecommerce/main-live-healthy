@@ -11,31 +11,16 @@ interface InputType {
     inputType?: string
   }
   className: string
-  form: { register: any; errors: any }
-  setValue?: any
-  control?: any
 }
 
-export default function SelectFormElement({
-  input,
-  className,
-  form,
-  setValue,
-  control,
-}: InputType) {
+export default function SelectFormElement({ input, className }: InputType) {
   switch (input.type) {
     case 'input':
-      return <Input input={input} className={className} form={form} />
+      return <Input input={input} className={className} />
     case 'selectCountry':
-      return <SelectCountry input={input} className={className} form={form} />
+      return <SelectCountry input={input} className={className} />
     case 'AddressAutocomplete': {
-      return setValue ? (
-        <AddressAutoComplete
-          setValue={setValue}
-          form={form}
-          control={control}
-        />
-      ) : null
+      return <AddressAutoComplete />
     }
 
     default:

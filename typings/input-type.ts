@@ -28,7 +28,6 @@ export interface InputType {
     className?: string
   }
   className?: string
-  form: { register: any; errors: any }
 }
 
 export interface FormInputsProps {

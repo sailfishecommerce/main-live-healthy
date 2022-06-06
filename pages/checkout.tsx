@@ -4,7 +4,6 @@ import dynamic from 'next/dynamic'
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import { useCart, useMediaQuery } from '@/hooks'
 import Applayout from '@/layouts/app-layout'
-import VboutScript from '@/lib/vbout-script'
 
 const CheckoutCustomer = dynamic(
   () =>
@@ -34,7 +33,6 @@ export default function Checkout() {
 
   return (
     <Applayout title="Checkout - Thanks for shopping with us">
-      <VboutScript />
       {status === 'error' ? (
         <EmptyCart />
       ) : status === 'loading' ? (

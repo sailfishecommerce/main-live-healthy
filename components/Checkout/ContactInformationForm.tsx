@@ -1,12 +1,17 @@
 import { useAtom } from 'jotai'
-import type { PropsWithChildren } from 'react'
 
+import { Input } from '@/components/Form/NewFormElement'
 import { useCart } from '@/hooks'
 import { modalAtom } from '@/lib/atomConfig'
 
-export default function ContactInformationForm({
-  children,
-}: PropsWithChildren<Record<string, unknown>>) {
+const input = {
+  type: 'email',
+  name: 'email',
+  id: 'email-checkout',
+  placeholder: 'Enter your email address',
+}
+
+export default function ContactInformationForm() {
   const [, setModal]: any = useAtom<'SLIDING-CART' | null>(modalAtom)
   const { useCartData } = useCart()
   const { data: cart }: any = useCartData()
@@ -33,8 +38,7 @@ export default function ContactInformationForm({
           </p>
         )}
       </div>
-      {children}
-
+      <Input input={input} />
       <span className="flex items-center">
         <input type="checkbox" className="mr-4 -mt-4" />
         <div className="text flex flex-col mb-4">

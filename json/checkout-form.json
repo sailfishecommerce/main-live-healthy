@@ -7,7 +7,7 @@
           "type": "selectCountry",
           "placeholder": "Select Country",
           "id": "checkout-country",
-          "label": "Country"
+          "label": "Select Country"
         }
       ],
       [

@@ -16,7 +16,7 @@ interface InputType {
     inputType?: string
     className?: string
   }
-  className: string
+  className?: string
 }
 
 export function SelectCountry({ input, className }: InputType) {

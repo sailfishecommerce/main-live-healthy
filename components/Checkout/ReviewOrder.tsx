@@ -20,7 +20,7 @@ export default function ReviewOrder() {
         <h4 className="font-bold">SUBTOTAL</h4>
         <FormattedPrice className="font-bold" price={cart?.subTotal} />
       </div>
-      <ShippingMethod />
+      <ShippingMethod shippingMethod={cart?.shipping?.service} />
     </div>
   )
 }

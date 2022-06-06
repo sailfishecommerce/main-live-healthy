@@ -59,6 +59,7 @@ export default function useToast() {
   }
 
   return {
+    toast,
     appLoading,
     isLoading,
     isSuccessful,

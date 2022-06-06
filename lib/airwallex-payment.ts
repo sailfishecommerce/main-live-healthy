@@ -1,14 +1,8 @@
-// import axios from 'axios'
+/* eslint-disable no-console */
+import { createElement, loadAirwallex } from 'airwallex-payment-elements'
+import type { ElementType } from 'airwallex-payment-elements'
 import jwtDecode from 'jwt-decode'
 
-// type payloadType = {
-//   tokenExpiryDate: string | null
-//   accessToken: string | null
-// }
-
-// type dispatchType = { payload: payloadType; type: string }
-
-// returns TRUE if token is valid  and FALSE if token has expired
 export function isTokenValid(tokenExpiryDate: string | null) {
   if (tokenExpiryDate) {
     const formatTokenExpiryDate = new Date(tokenExpiryDate)
@@ -18,26 +12,6 @@ export function isTokenValid(tokenExpiryDate: string | null) {
   }
   return false
 }
-
-// export function fetchAirwallexAccessToken(
-//   dispatch: (arg0: dispatchType) => void
-// ) {
-//   return axios
-//     .get('/api/get-payment-token')
-//     .then(({ data }) => {
-//
-//       const paymentPayload = {
-//         accessToken: data.token,
-//         tokenExpiryDate: data.expires_at,
-//       }
-//       dispatch(updateTokenStatus(paymentPayload))
-//       dispatch(paymentError(null))
-//     })
-//     .catch((error) => {
-//
-//       dispatch(paymentError(error?.message))
-//     })
-// }
 
 type decodeType = {
   iat: number
@@ -52,23 +26,19 @@ export function decodeAirwallexClientSecretToken(
   return decodeClientSecret
 }
 
-// export function isClientSecretStillValid(expTime: number) {
-//   const reduceExpTimeBy10Mins = 10 * 60
-//   const remainingTime = Number(expTime) - reduceExpTimeBy10Mins
-//   const formatRemainingTime = remainingTime * 1000
-//   const currentTime = new Date()
-//   const tokenTime = new Date(formatRemainingTime)
-//   const clientSecretIsValid = tokenTime > currentTime
-//   return clientSecretIsValid
-// }
-
-// export function clientSecretValidity(clientSecret: any | string) {
-//   if (clientSecret) {
-//     const decodedClientSecret = decodeAirwallexClientSecretToken(clientSecret)
-//     const isClientSecretValid = isClientSecretStillValid(
-//       decodedClientSecret.exp
-//     )
-//     return isClientSecretValid
-//   }
-//   return false
-// }
+export function loadAirwallexUi() {
+  loadAirwallex({
+    env: 'demo',
+    origin: window.location.origin,
+    fonts: [
+      {
+        src: 'https://checkout.airwallex.com/fonts/CircularXXWeb/CircularXXWeb-Regular.woff2',
+        family: 'AxLLCircular',
+        weight: 400,
+      },
+    ],
+  }).then((response) => {
+    console.log('response', response)
+    return createElement('card' as ElementType)?.mount('airwallexCard')
+  })
+}

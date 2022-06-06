@@ -13,7 +13,7 @@ export default function ReviewOrder() {
 
   return (
     <CheckoutCard title="1. Review Your Order">
-      <ul className="cart-items border-b pb-6">
+      <ul className="cart-items border-2 pb-6">
         {cart?.items?.map((item: any) => (
           <li key={item.name}>
             <Image

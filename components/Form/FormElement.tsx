@@ -106,7 +106,6 @@ export function displayFormElement(
   className?: string,
   withIcon?: string
 ) {
-  console.log('content', content)
   switch (content.type) {
     case 'input': {
       return (

@@ -1,17 +1,11 @@
-/* eslint-disable no-console */
 /* eslint-disable no-alert */
-import type { ElementType } from 'airwallex-payment-elements'
-import {
-  createElement,
-  loadAirwallex,
-  getElement,
-  confirmPaymentIntent,
-} from 'airwallex-payment-elements'
+import { getElement, confirmPaymentIntent } from 'airwallex-payment-elements'
 import { useRouter } from 'next/router'
 import { useEffect, useState, memo } from 'react'
 
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import { useToast } from '@/hooks'
+import { loadAirwallexUi } from '@/lib/airwallex-payment'
 
 interface AirwallexDropinProps {
   intent_id: any | string
@@ -28,23 +22,6 @@ function AirwallexCardElement({
 
   const router = useRouter()
   const { isLoading, isSuccessful, hasError } = useToast()
-
-  function loadAirwallexUi() {
-    loadAirwallex({
-      env: 'demo',
-      origin: window.location.origin,
-      fonts: [
-        {
-          src: 'https://checkout.airwallex.com/fonts/CircularXXWeb/CircularXXWeb-Regular.woff2',
-          family: 'AxLLCircular',
-          weight: 400,
-        },
-      ],
-    }).then((response) => {
-      console.log('response', response)
-      return createElement('card' as ElementType)?.mount('airwallexCard')
-    })
-  }
 
   useEffect(() => {
     loadAirwallexUi()

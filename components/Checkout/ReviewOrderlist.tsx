@@ -20,7 +20,7 @@ function ReviewOrderlistComponent({ content }: any) {
       : content.product.images[0].file.url
 
   return (
-    <div className="relative my-2 flex items-center hover:bg-gray-100 border border-b border-gray-100 justify-between p-4">
+    <div className="relative my-2 flex items-center hover:bg-gray-100 border rounded-lg border-gray-300 justify-between p-4">
       <div className="image-wrapper w-1/4">
         <Image
           src={productImage}
@@ -72,7 +72,7 @@ function ReviewOrderlistComponent({ content }: any) {
         <GiCancel
           size={32}
           aria-label="close"
-          className="text-red-400 absolute top-0 right-0 font-bold h-6 w-6 lg:text-2xl text-xl  block outline-none focus:outline-none"
+          className="text-red-400 absolute top-1 right-1 font-bold h-6 w-6 lg:text-2xl text-xl  block outline-none focus:outline-none"
         />
       </button>
     </div>

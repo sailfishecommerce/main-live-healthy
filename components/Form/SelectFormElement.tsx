@@ -1,5 +1,16 @@
-import AddressAutoComplete from '@/components/Form/AddressAutocomplete'
+import dynamic from 'next/dynamic'
+
 import { Input, SelectCountry } from '@/components/Form/NewFormElement'
+
+const DynamicAddressAutoComplete = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'AddressAutoComplete' */ '@/components/Form/AddressAutocomplete'
+    ),
+  {
+    ssr: false,
+  }
+)
 
 interface InputType {
   input: {
@@ -20,7 +31,7 @@ export default function SelectFormElement({ input, className }: InputType) {
     case 'selectCountry':
       return <SelectCountry input={input} className={className} />
     case 'AddressAutocomplete': {
-      return <AddressAutoComplete />
+      return <DynamicAddressAutoComplete />
     }
 
     default:

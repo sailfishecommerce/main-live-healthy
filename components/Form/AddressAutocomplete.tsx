@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useAtom } from 'jotai'
 import { useEffect, useRef, useCallback } from 'react'
+import { useWatch } from 'react-hook-form'
 
 import { userAddressAtom } from '@/lib/atomConfig'
 import type { inputType } from '@/typings/input-type'
@@ -35,7 +36,7 @@ const loadScript = (url: string, callback: () => void) => {
 
 // handle when the script is loaded we will assign autoCompleteRef with google maps place autocomplete
 function handleScriptLoad(
-  updateQuery: any,
+  setValue: any,
   autoCompleteRef: any,
   selectedCountry: any,
   setUserAddress: (query: any) => void
@@ -50,12 +51,12 @@ function handleScriptLoad(
 
   // add a listener to handle when the place is selected
   autoComplete.addListener('place_changed', () =>
-    handlePlaceSelect(updateQuery, setUserAddress)
+    handlePlaceSelect(setValue, setUserAddress)
   )
 }
 
 function handlePlaceSelect(
-  updateQuery: any,
+  setValue: any,
   setUserAddress: (query: any) => void
 ) {
   const addressObject = autoComplete.getPlace() // get place from google api
@@ -73,26 +74,22 @@ function handlePlaceSelect(
     return rightPlace
   }
 
-  const address = {
-    address: `${filterLocation('street_number')}  ${filterLocation(
-      'route'
-    )}  ${filterLocation('neighborhood')} ${filterLocation(
-      'locality'
-    )}`?.replaceAll('undefined', ''),
-    district: filterLocation('locality')?.replace('undefined', ''),
-    region: filterLocation('administrative_area_level_1')?.replace(
-      'undefined',
-      ''
-    ),
-    zip: filterLocation('postal_code')?.replace('undefined', ''),
-  }
-  updateQuery.setValues(
-    {
-      ...updateQuery.values,
-      ...address,
-    },
-    false
+  const address = `${filterLocation('street_number')}  ${filterLocation(
+    'route'
+  )}  ${filterLocation('neighborhood')} ${filterLocation(
+    'locality'
+  )}`?.replaceAll('undefined', '')
+  const district = filterLocation('locality')?.replace('undefined', '')
+  const zip = filterLocation('postal_code')?.replace('undefined', '')
+  const region = filterLocation('administrative_area_level_1')?.replace(
+    'undefined',
+    ''
   )
+
+  setValue('ad÷dress', address)
+  setValue('district', district)
+  setValue('zip', zip)
+  setValue('region', region)
 }
 
 interface Props {
@@ -105,12 +102,21 @@ interface Props {
       }
     }
   }
+  control: any
 }
 
-export default function AddressAutoComplete({ form, setValue }: Props) {
+export default function AddressAutoComplete({
+  form,
+  setValue,
+  control,
+}: Props) {
   const { errors, register } = form
   const autoCompleteRef = useRef(null)
-  const countryCode = 'values.country'
+  const countryCode = useWatch({
+    control,
+    name: 'country',
+  })
+  console.log('countryCode', countryCode)
   const [, setUserAddress] = useAtom(userAddressAtom)
 
   useEffect(() => {

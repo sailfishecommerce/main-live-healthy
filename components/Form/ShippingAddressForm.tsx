@@ -1,31 +1,25 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/no-array-index-key */
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useAtom } from 'jotai'
+import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import * as yup from 'yup'
 
 import SelectFormElement from '@/components/Form/SelectFormElement'
 import checkoutFormContent from '@/json/checkout-form.json'
-
-interface FormInputsProps {
-  country: string
-  firstName: string
-  lastName: string
-  address: string
-  district: string
-  region: string
-  name: string
-  phone: string
-}
+import { submitCheckoutFormAtom } from '@/lib/atomConfig'
+import type { FormInputsProps } from '@/typings/input-type'
 
 const schema = yup
   .object({
     country: yup.string().required(),
-    firstName: yup.string().required(),
-    lastName: yup.string().required(),
+    firstName: yup.string().required('first name is required'),
+    lastName: yup.string().required('last name is required'),
     address: yup.string().required(),
     district: yup.string().required(),
     region: yup.string().required(),
-    name: yup.string().required(),
+    zip: yup.string().required(),
     phone: yup.string().required(),
   })
   .required()
@@ -36,8 +30,16 @@ export default function ShippingAddressForm() {
     handleSubmit,
     formState: { errors },
   } = useForm<FormInputsProps>({ resolver: yupResolver(schema) })
+  const [submitCheckoutForm] = useAtom(submitCheckoutFormAtom)
 
   const onSubmit = (data: FormInputsProps) => console.log('form-data', data)
+
+  useEffect(() => {
+    if (submitCheckoutForm) {
+      console.log('rendered')
+      handleSubmit(onSubmit)
+    }
+  }, [submitCheckoutForm])
 
   return (
     <>
@@ -65,6 +67,10 @@ export default function ShippingAddressForm() {
           <input type="checkbox" />{' '}
           <p className="ml-4">Save this information for next time</p>
         </div>
+        <input
+          type="submit"
+          className={`w-1/2 mx-auto flex items-center justify-center p-1 text-md my-4 mt-1 my-3 bg-mountain-green text-white shadow-lg rounded-xl`}
+        />
       </form>
     </>
   )

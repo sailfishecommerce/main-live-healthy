@@ -30,3 +30,14 @@ export interface InputType {
   className?: string
   form: { register: any; errors: any }
 }
+
+export interface FormInputsProps {
+  country: string
+  firstName: string
+  lastName: string
+  address: string
+  district: string
+  region: string
+  name: string
+  phone: string
+}

@@ -1,5 +1,5 @@
 import { useAtom } from 'jotai'
-import { useState } from 'react'
+import { useState, memo } from 'react'
 
 import { FormInput } from '@/components/Form/NewFormElement'
 import { useCart } from '@/hooks'
@@ -12,7 +12,7 @@ const input = {
   placeholder: 'Enter your email address',
 }
 
-export default function ContactInformationForm() {
+function ContactInformationFormComponent() {
   const [email, setEmail] = useState('')
   const [, setModal]: any = useAtom<'SLIDING-CART' | null>(modalAtom)
   const { useCartData } = useCart()
@@ -55,3 +55,5 @@ export default function ContactInformationForm() {
     </div>
   )
 }
+const ContactInformationForm = memo(ContactInformationFormComponent)
+export default ContactInformationForm

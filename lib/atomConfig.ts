@@ -119,3 +119,6 @@ export const selectedVendorAtom = atom<selectedVendorAtomType>(null)
 
 // ProductTabSliderDropdown
 export const productRatingAtom = atom(3)
+
+// checkout form
+export const submitCheckoutFormAtom = atom(false)

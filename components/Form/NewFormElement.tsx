@@ -36,13 +36,16 @@ export function SelectCountry({ input, className, form }: InputType) {
         name={input.name}
         {...register(input.name)}
       >
+        <option selected value="">
+          Select Country
+        </option>
         {validCountry.map((country) => (
           <option key={country.Iso2} value={country.Iso2}>
             {country.name}
           </option>
         ))}
       </select>
-      <p>{errors[input.name]?.message}</p>
+      <p className="text-red-500">{errors[input.name]?.message}</p>
     </div>
   )
 }
@@ -73,7 +76,7 @@ export function Input({ input, className, form }: InputType) {
         placeholder={input.placeholder}
         {...register(input.name)}
       />
-      <p>{errors[input.name]?.message}</p>
+      <p className="text-red-500">{errors[input.name]?.message}</p>
     </div>
   )
 }

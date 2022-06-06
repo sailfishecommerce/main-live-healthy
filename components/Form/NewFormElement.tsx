@@ -34,7 +34,7 @@ export function SelectCountry({ input, className, form }: InputType) {
         id="checkout-country"
         aria-label="select countries"
         name={input.name}
-        {...register(input.name)}
+        {...(register(input.name), { required: true })}
       >
         <option selected value="">
           Select Country

@@ -1,7 +1,7 @@
 import { useAtom } from 'jotai'
-import { useState, memo } from 'react'
+import { memo } from 'react'
 
-import { FormInput } from '@/components/Form/NewFormElement'
+import { Input } from '@/components/Form/NewFormElement'
 import { useCart } from '@/hooks'
 import { modalAtom } from '@/lib/atomConfig'
 
@@ -12,8 +12,14 @@ const input = {
   placeholder: 'Enter your email address',
 }
 
-function ContactInformationFormComponent() {
-  const [email, setEmail] = useState('')
+interface Props {
+  form: {
+    register: any
+    errors: any
+  }
+}
+
+function ContactInformationFormComponent({ form }: Props) {
   const [, setModal]: any = useAtom<'SLIDING-CART' | null>(modalAtom)
   const { useCartData } = useCart()
   const { data: cart }: any = useCartData()
@@ -22,10 +28,6 @@ function ContactInformationFormComponent() {
     return setModal('MODAL_LOGIN')
   }
 
-  function inputChangeHandler(e: any) {
-    setEmail(e.target.value)
-  }
-  console.log('email', email)
   return (
     <div className="contact-information border-b pb-2 mb-6">
       <div className="flex flex-col mb-4">
@@ -44,7 +46,7 @@ function ContactInformationFormComponent() {
           </p>
         )}
       </div>
-      <FormInput input={input} onChangeHandler={inputChangeHandler} />
+      <Input input={input} form={form} />
       <span className="flex items-center">
         <input type="checkbox" className="mr-4 -mt-4" />
         <div className="text flex flex-col mb-4">

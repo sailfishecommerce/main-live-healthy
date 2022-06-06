@@ -33,7 +33,7 @@ export default function AddressAutoComplete() {
       `https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_PLACE_API_KEY}&libraries=places`,
       () => handleScriptLoad(setValue, autoCompleteRef, country)
     )
-  }, [])
+  }, [country])
 
   return (
     <div className="mb-1 flex flex-col px-2 w-full">

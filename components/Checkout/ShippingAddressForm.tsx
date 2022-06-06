@@ -3,7 +3,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 
 import ContactInformationForm from '@/components/Checkout/ContactInformationForm'
-import ShippingAddressFormWrapper from '@/components/Form/ShippingAddressForm'
+import ShippingAddressFormWrapper from '@/components/Form/ShippingAddressFormWrapper'
 import { shippingSchema } from '@/components/Form/schema/ShippingSchema'
 import type { FormInputsProps } from '@/typings/input-type'
 
@@ -12,7 +12,9 @@ export default function ShippingAddressForm() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormInputsProps>({ resolver: yupResolver(shippingSchema) })
+  } = useForm<FormInputsProps>({
+    resolver: yupResolver(shippingSchema),
+  })
 
   const onSubmit = (data: FormInputsProps) => console.log('form-data', data)
 

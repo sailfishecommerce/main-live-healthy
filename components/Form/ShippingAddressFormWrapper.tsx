@@ -11,7 +11,7 @@ interface ShippingAddressFormProps {
   }
 }
 
-export default function ShippingAddressForm({
+export default function ShippingAddressFormWrapper({
   children,
   form,
 }: PropsWithChildren<ShippingAddressFormProps>) {

@@ -12,12 +12,7 @@ export const shippingSchema = yup
     email: yup.string().email('enter a valid email address').required(),
     district: yup.string().required(),
     region: yup.string().required(),
-    zip: yup
-      .number()
-      .typeError('zip must be a number')
-      .min(4)
-      .max(6)
-      .required('enter zip'),
+    zip: yup.number().typeError('zip must be a number').required('enter zip'),
     phone: yup.string().matches(phoneRegExp, 'Phone number is not valid'),
   })
   .required()

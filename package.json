@@ -75,6 +75,7 @@
     "slate-react": "^0.79.0",
     "swell-js": "^3.13.0",
     "swell-node": "^4.0.9",
+    "use-debounce": "^8.0.1",
     "uuid": "^8.3.2",
     "yup": "^0.32.11"
   },

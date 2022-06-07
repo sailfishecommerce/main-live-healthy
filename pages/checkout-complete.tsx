@@ -13,39 +13,13 @@ export default function CheckoutComplete() {
 
   return (
     <Applayout title="Checkout Completed">
-      {/* <Script
-        crossOrigin="use-credentials"
-        id="trustMateInvitationScript"
-        strategy="afterInteractive"
-      >
-        {` 
-          TRUST_MATE_USER_NAME = '${paymentData?.submittedOrder?.account.name}';
-          TRUST_MATE_USER_EMAIL = '${
-            paymentData?.submittedOrder?.account.email
-          }';
-          TRUST_MATE_ORDER_NUMBER = '${
-            paymentData?.submittedOrder?.orderNumber
-          }';
-          TRUST_MATE_COMPANY_UUID = '9bc41917-fb1a-457f-93e1-92359601ec36';
-          TRUSTMATE_PRODUCTS = [${paymentData?.submittedOrder?.products.map(
-            (item: any) => `{
-              local_id:'${item.productId}',
-              priority:'${item.id}',
-              name:'${item.product.name}',
-              brand:'${item.product.name}',
-              product_url:'${`https://livehealthy.hk/products/${item?.product.slug}`}',
-              image_url:'${item.product.images[0]}'
-            }`
-          )}];
-        `}
-      </Script> */}
       <Script
         strategy="afterInteractive"
         type="text/javascript"
         src="https://trustmate.io/api/invitation/script"
       />
-      <div className="flex lg:flex-row flex-col mx-auto mb-sm-4 h-96 mt-5">
-        <div className="flex items-center bg-gray-50 w-full lg:w-1/2 justify-center mx-auto">
+      <div className="flex lg:flex-row flex-col mx-auto mb-sm-4 lg:h-96 mt-5">
+        <div className="order-2 lg:order-1 flex items-center bg-gray-50 w-full lg:w-1/2 justify-center mx-auto">
           <div className="card py-3">
             <div className="card-body text-center">
               <h2 className="text-xl font-bold pb-3">
@@ -75,7 +49,7 @@ export default function CheckoutComplete() {
                 You will be receiving an email shortly with confirmation of your
                 order.
               </p>
-              <div className="link-row flex items-center mx-auto justify-between my-4 w-2/3">
+              <div className="link-row flex items-center mx-auto justify-between my-4 w-5/6 lg:w-2/3">
                 <Link passHref href="/collection">
                   <a
                     aria-label="go back shopping"
@@ -96,7 +70,7 @@ export default function CheckoutComplete() {
             </div>
           </div>
         </div>
-        <div className="order-complete bg-gray-200 w-full lg:w-1/2 flex h-full">
+        <div className="order-1 lg:order-2 order-complete bg-gray-200 w-full lg:w-1/2 flex h-full">
           <img
             className="flex items-center m-auto justify-center"
             src="/thank-you-for-order.gif"

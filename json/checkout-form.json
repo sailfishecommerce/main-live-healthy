@@ -28,7 +28,7 @@
       [
         {
           "name": "address",
-          "type": "AddressAutocomplete",
+          "type": "input",
           "id": "checkout-address1",
           "inputType": "text",
           "placeholder": "Address"

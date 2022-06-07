@@ -12,6 +12,16 @@ const DynamicAddressAutoComplete = dynamic(
   }
 )
 
+const DynamicGoogleAutoComplete = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'GoogleAutoComplete' */ '@/components/Form/GoogleAutoComplete'
+    ),
+  {
+    ssr: false,
+  }
+)
+
 interface InputType {
   input: {
     name: string
@@ -32,6 +42,9 @@ export default function SelectFormElement({ input, className }: InputType) {
       return <SelectCountry input={input} className={className} />
     case 'AddressAutocomplete': {
       return <DynamicAddressAutoComplete />
+    }
+    case 'GoogleAutoComplete': {
+      return <DynamicGoogleAutoComplete />
     }
 
     default:

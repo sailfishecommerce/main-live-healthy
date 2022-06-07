@@ -8,6 +8,7 @@ export const shippingSchema = yup
     country: yup.string().required(),
     firstName: yup.string().required('first name is required'),
     lastName: yup.string().required('last name is required'),
+    address: yup.string().required(),
     email: yup.string().email('enter a valid email address').required(),
     district: yup.string().required(),
     region: yup.string().required(),

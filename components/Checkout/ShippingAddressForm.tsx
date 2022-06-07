@@ -1,20 +1,26 @@
 /* eslint-disable react/no-array-index-key */
-/* eslint-disable no-console */
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useAtom } from 'jotai'
 import { useForm, FormProvider } from 'react-hook-form'
 
 import ContactInformationForm from '@/components/Checkout/ContactInformationForm'
 import SelectFormElement from '@/components/Form/SelectFormElement'
 import { shippingSchema } from '@/components/Form/schema/ShippingSchema'
 import checkoutFormContent from '@/json/checkout-form.json'
+import { paymentFormAtom } from '@/lib/atomConfig'
 import type { FormInputsProps } from '@/typings/input-type'
 
 export default function ShippingAddressForm() {
   const methods = useForm<FormInputsProps>({
     resolver: yupResolver(shippingSchema),
   })
+  const [, setShippingForm] = useAtom(paymentFormAtom)
 
-  const onSubmit = (data: FormInputsProps) => console.log('form-data', data)
+  const onSubmit = (data: any) =>
+    setShippingForm({
+      form: data,
+      completed: true,
+    })
 
   return (
     <>

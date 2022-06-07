@@ -10,6 +10,7 @@ import type {
   socailAuthDetailsType,
   submitOrderAtomType,
 } from '@/typings/atomtype'
+import type { FormInputsProps } from '@/typings/input-type'
 
 // ui-state
 export const appModalAtom = atom<appModalAtomType>({
@@ -122,3 +123,5 @@ export const productRatingAtom = atom(3)
 
 // checkout form
 export const submitCheckoutFormAtom = atom(false)
+
+export const shippingformAtom = atom<FormInputsProps | null>(null)

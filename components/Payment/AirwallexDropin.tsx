@@ -1,11 +1,17 @@
+/* eslint-disable no-console */
+/* eslint-disable no-useless-concat */
 /* eslint-disable no-alert */
 import { getElement, confirmPaymentIntent } from 'airwallex-payment-elements'
 import { useRouter } from 'next/router'
 import { useEffect, useState, memo } from 'react'
 
+import { getDatabase, ref } from 'firebase/database'
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import { useToast } from '@/hooks'
 import { loadAirwallexUi } from '@/lib/airwallex-payment'
+import firebaseDatabase from '@/lib/firebaseDatabase'
+import { paymentFormAtom } from '@/lib/atomConfig'
+import { useAtom } from 'jotai'
 
 interface AirwallexDropinProps {
   intent_id: any | string
@@ -19,6 +25,7 @@ function AirwallexCardElement({
   const [elementShow, setElementShow] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
+  const [, setPaymentForm] = useAtom(paymentFormAtom)
 
   const router = useRouter()
   const { isLoading, isSuccessful, hasError } = useToast()
@@ -68,7 +75,29 @@ function AirwallexCardElement({
               response
             )}`
           )
-          router.push('/checkout-complete')
+          setPaymentForm({
+            form: {
+              firstName: '',
+              lastName: '',
+              email: '',
+              country: '',
+              address: '',
+              region: '',
+              district: '',
+              zip: '',
+              phone: '',
+            },
+            completed: false,
+          })
+          console.log('airwallex paymentResponse', response)
+          // const { writeData } = firebaseDatabase()
+          // const paymentDatabaseRefId =
+          //   'payment/' + 'airwallex' + `${response?.id}`
+          // writeData(paymentDatabaseRefId, {
+          //   data: JSON.stringify(response),
+          // }).then(() => {
+          //   return router.push('/checkout-complete')
+          // })
         })
         .catch((error) => {
           setIsSubmitting(false)

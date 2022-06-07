@@ -43,6 +43,7 @@ export default function useProcessPayment() {
                 .then((response) => {
                   submitUserOrder()
                     .then((response) => {
+                      console.log('stripe-response', response)
                       if (response.paid) {
                         setLoadingState(false)
                         setSendProductReview(true)
@@ -53,7 +54,7 @@ export default function useProcessPayment() {
                           orderNumber: response?.number,
                           products: response?.items,
                         })
-                        router.push('/checkout-complete')
+                        // router.push('/checkout-complete')
                       }
                       return response
                     })

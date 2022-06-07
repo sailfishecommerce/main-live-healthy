@@ -1,8 +1,6 @@
 /* eslint-disable no-param-reassign */
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable array-callback-return */
-// import fs from 'fs'
-// import path from 'path'
 
 import type { NextApiRequest, NextApiResponse } from 'next'
 import swell from 'swell-node'

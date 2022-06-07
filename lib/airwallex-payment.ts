@@ -39,6 +39,8 @@ export function loadAirwallexUi() {
     ],
   }).then((response) => {
     console.log('response', response)
-    return createElement('card' as ElementType)?.mount('airwallexCard')
+    return createElement('card' as ElementType, {
+      authFormContainer: 'authFormContainer',
+    })?.mount('airwallexCard')
   })
 }

@@ -90,6 +90,7 @@ function AirwallexCardElement({
         </p>
       )}
       <div className={`field-container ${fieldContainerStyle}`}>
+        <div className="authFormContainer"></div>
         <div
           id="airwallexCard"
           className="border border-gray-200 p-2 rounded-md h-10 items-center focus:text-gray-700 focus:bg-white focus:border-red-500 focus:outline-none"

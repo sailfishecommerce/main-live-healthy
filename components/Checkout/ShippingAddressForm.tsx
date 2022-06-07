@@ -14,15 +14,13 @@ export default function ShippingAddressForm() {
   const methods = useForm<FormInputsProps>({
     resolver: yupResolver(shippingSchema),
   })
-  const [shippingAddress, setShippingForm] = useAtom(paymentFormAtom)
+  const [, setShippingForm] = useAtom(paymentFormAtom)
 
   const onSubmit = (data: any) =>
     setShippingForm({
       form: data,
       completed: true,
     })
-
-  console.log('shippingAddress', shippingAddress)
 
   return (
     <>

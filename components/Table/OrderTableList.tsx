@@ -48,6 +48,10 @@ export default function OrderTableList({
     setAllIndex(allIndexArray)
   }, [])
 
+  useEffect(() => {
+    
+  }, [])
+
   const inputChecked = selectedInvoice.selected.includes(order.number)
 
   function viewInvoice(id: any | string) {

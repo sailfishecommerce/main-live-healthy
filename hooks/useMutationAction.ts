@@ -92,6 +92,14 @@ export default function useMutationAction() {
     )
   }
 
+  function useEmptyCartForAirwallex() {
+    return useMutation(emptyCart, {
+      onSettled: () => {
+        queryClient.invalidateQueries('cart')
+      },
+    })
+  }
+
   function useEmptyCart() {
     const toastID = useRef(null)
 
@@ -161,6 +169,7 @@ export default function useMutationAction() {
     useRemoveFromCart,
     useEmptyCart,
     useDeleteCart,
+    useEmptyCartForAirwallex,
     useUserAccountDetails,
   }
 }

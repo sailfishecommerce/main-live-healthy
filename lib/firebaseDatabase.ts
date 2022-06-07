@@ -9,7 +9,7 @@ export default function firebaseDatabase() {
 
   function writeData(dbRefId: string, content: any) {
     const db = getDatabase()
-    set(ref(db, dbRefId), content)
+    return set(ref(db, dbRefId), content)
   }
 
   function readData(dbRefId: string, dbData: any) {
@@ -17,7 +17,6 @@ export default function firebaseDatabase() {
     const dbRef = ref(db, dbRefId)
     onValue(dbRef, (snapshot) => {
       const data = snapshot.val()
-      console.log('datadata-data', data)
       dbData = data
       return dbData
     })

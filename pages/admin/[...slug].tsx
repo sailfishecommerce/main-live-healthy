@@ -20,12 +20,7 @@ export default function AdminPage() {
   return (
     <DashboardLayout title="Admin page">
       <DashboardMainView>
-        <div className="policy mt-4">
-          <h1 className="text-xl">
-            {route?.toUpperCase().replaceAll('-', ' ')}
-          </h1>
-          <DynamicDashboardEditor editorKey={route} />
-        </div>
+        <DynamicDashboardEditor editorKey={route} />
       </DashboardMainView>
     </DashboardLayout>
   )

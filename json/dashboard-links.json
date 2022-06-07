@@ -30,11 +30,6 @@
     "link": "/admin/shipping-info"
   },
   {
-    "icons": "faq",
-    "text": "FAQs",
-    "link": "/admin/faq"
-  },
-  {
     "icons": "return-and-refunds",
     "text": "Return & Refunds",
     "link": "/admin/return-and-refunds"

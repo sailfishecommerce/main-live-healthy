@@ -5,6 +5,7 @@ import dashboardLinks from '@/json/dashboard-links.json'
 
 export default function DashboardLinks() {
   const router = useRouter()
+
   return (
     <ul className="border-t mt-4">
       {dashboardLinks.map((linkItem) => {
@@ -17,7 +18,7 @@ export default function DashboardLinks() {
             className={`p-2 my-2 text-lg flex hover:bg-gray-100 ${activeLink}`}
             key={linkItem.link}
           >
-            <Link passHref href={linkItem.link}>
+            <Link passHref href={linkItem.link} as={linkItem.link}>
               <a className="w-full">{linkItem.text}</a>
             </Link>
           </li>

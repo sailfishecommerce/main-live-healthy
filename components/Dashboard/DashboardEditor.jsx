@@ -30,7 +30,9 @@ class DashboardEditor extends Component {
           ),
         })
       } else {
-        this.setState({ editorState: EditorState.createEmpty() })
+        this.setState({
+          editorState: EditorState.createEmpty(),
+        })
       }
     })
   }

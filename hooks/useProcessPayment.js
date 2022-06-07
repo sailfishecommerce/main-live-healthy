@@ -17,7 +17,7 @@ export default function useProcessPayment() {
   const { tokenizePayment, submitUserOrder } = usePayment()
   const { getACart } = useSwellCart()
   const { useCartData } = useCart()
-  const { onShowModal } = useModal()
+  const { updateModalView } = useModal()
   const { data: cart } = useCartData()
   const {
     updateUserBillingInfo,
@@ -94,10 +94,7 @@ export default function useProcessPayment() {
                   loading,
                   'you have an existing account with us, please login'
                 )
-                onShowModal(
-                  'CHECKOUT_NOTIFICATION_MODAL',
-                  response.email.fields.email
-                )
+                updateModalView('MODAL_LOGIN')
               } else {
                 processPayment(data, loading)
               }

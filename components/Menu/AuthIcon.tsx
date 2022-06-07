@@ -1,30 +1,17 @@
-import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
-import { useAtom } from 'jotai'
 import { BiLogOut } from 'react-icons/bi'
 import { GrLogin } from 'react-icons/gr'
 
 import { useMediaQuery } from '@/hooks'
 import useGreetuser from '@/hooks/useGreetuser'
-import { modalAtom } from '@/lib/atomConfig'
-import type { modalType } from '@/lib/atomConfigType'
+import useModal from '@/hooks/useModal'
 
 export default function AuthIcons() {
-  const [modal, setModal]: any = useAtom<modalType>(modalAtom)
+  const { updateModalView } = useModal()
   const { name } = useGreetuser()
 
   const mobileWidth = useMediaQuery('(max-width:768px)')
 
   const iconSize = mobileWidth ? 16 : 22
-
-  function updateModalView(modalState: modalType) {
-    return setModal(modalState)
-  }
-
-  if (modal === null) {
-    enableBodyScroll(document.body)
-  } else {
-    disableBodyScroll(document.body)
-  }
 
   return (
     <div className="flex items-center">

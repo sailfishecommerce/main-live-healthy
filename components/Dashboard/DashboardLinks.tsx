@@ -18,7 +18,12 @@ export default function DashboardLinks() {
             className={`p-2 my-2 text-lg flex hover:bg-gray-100 ${activeLink}`}
             key={linkItem.link}
           >
-            <Link passHref href={linkItem.link} as={linkItem.link}>
+            <Link
+              passHref
+              href={linkItem.link}
+              as={linkItem.link}
+              shallow={false}
+            >
               <a className="w-full">{linkItem.text}</a>
             </Link>
           </li>

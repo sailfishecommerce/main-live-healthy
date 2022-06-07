@@ -4,6 +4,7 @@ import { getDatabase, ref, onValue } from 'firebase/database'
 import { Component } from 'react'
 import debounce from 'lodash/debounce'
 import { BiSave } from 'react-icons/bi'
+import { withRouter } from 'next/router'
 
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import firebaseDatabase from '@/lib/firebaseDatabase'
@@ -20,6 +21,7 @@ class DashboardEditor extends Component {
     const db = getDatabase()
     const databaseRefId = 'articles/' + this.props.editorKey + '/content'
     const dbRef = ref(db, databaseRefId)
+
     onValue(dbRef, (snapshot) => {
       const dbArticle = snapshot.val()
 
@@ -36,6 +38,30 @@ class DashboardEditor extends Component {
       }
     })
   }
+
+  componentDidUpdate(prevProps) {
+    const { query } = this.props.router
+    console.log('query', query)
+    if (
+      prevProps.editorKey &&
+      query.slug &&
+      prevProps?.editorKey !== query.slug[0]
+    ) {
+      const db = getDatabase()
+      const databaseRefId = 'articles/' + this.props.editorKey + '/content'
+      const dbRef = ref(db, databaseRefId)
+      // this.props.router.reload()
+      onValue(dbRef, (snapshot) => {
+        const dbArticle = snapshot.val()
+        this.setState({
+          editorState: EditorState.createWithContent(
+            convertFromRaw(JSON.parse(dbArticle))
+          ),
+        })
+      })
+    }
+  }
+
   // firebaseDatabase
   saveContent = debounce((content) => {
     const { writeData } = firebaseDatabase()
@@ -95,4 +121,4 @@ class DashboardEditor extends Component {
   }
 }
 
-export default DashboardEditor
+export default withRouter(DashboardEditor)

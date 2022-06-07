@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 interface Props {
   pageContent: {
     title: string
@@ -15,10 +16,10 @@ export default function CustomercareView({ pageContent }: Props) {
       {pageContent['reviewed-date'] && (
         <p>Last reviewed: {pageContent['reviewed-date']}</p>
       )}
-      {pageContent.texts.map((item) => {
+      {pageContent.texts.map((item, index: number) => {
         return (
           <div
-            key={item.question}
+            key={`${item.question}-${index}`}
             className="article-text my-4 border-b-4 border-white pb-4"
           >
             <h5 className="font-medium text-lg my-2 lg:my-8">

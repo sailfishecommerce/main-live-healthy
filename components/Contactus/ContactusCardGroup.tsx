@@ -13,9 +13,9 @@ export default function ContactusCardGroup() {
     <section className="flex w-full mb-4 md:flex-row flex-col  justify-center mx-auto items-center">
       {contactInfo.map((content) => {
         return content.anchor ? (
-          <ContactCardWithAnchor content={content} />
+          <ContactCardWithAnchor key={content.title} content={content} />
         ) : (
-          <ContactCard content={content} />
+          <ContactCard content={content} key={content.title} />
         )
       })}
     </section>

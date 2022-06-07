@@ -11,6 +11,7 @@ import useSwellCart from '@/hooks/useSwellCart'
 import { createVboutOrder } from '@/hooks/useVbout'
 import { vboutOrderData } from '@/lib/vbout'
 import { sendProductReviewAtom, submitOrderAtom } from '@/lib/atomConfig'
+import useAfterPayment from '@/hooks/useAfterpayment'
 
 export default function useProcessPayment() {
   const router = useRouter()
@@ -28,6 +29,7 @@ export default function useProcessPayment() {
   const { isLoading, isSuccessful, hasError } = useToast()
   const [, setSubmitOrder] = useAtom(submitOrderAtom)
   const [, setSendProductReview] = useAtom(sendProductReviewAtom)
+  const { cleanUpAfterPayment } = useAfterPayment()
 
   function processPayment(data, loading) {
     function vboutOrder(order) {
@@ -54,7 +56,7 @@ export default function useProcessPayment() {
                           orderNumber: response?.number,
                           products: response?.items,
                         })
-                        // router.push('/checkout-complete')
+                        cleanUpAfterPayment(response, 'stripe')
                       }
                       return response
                     })

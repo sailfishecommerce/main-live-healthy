@@ -1,4 +1,4 @@
-/* eslint-disable no-useless-concat */
+/* eslint-disable prefer-template */
 import { useAtom } from 'jotai'
 import { useRouter } from 'next/router'
 
@@ -9,7 +9,10 @@ export default function useAfterPayment() {
   const [, setPaymentForm] = useAtom(paymentFormAtom)
   const router = useRouter()
 
-  function cleanUpAfterPayment(response: any) {
+  function cleanUpAfterPayment(
+    response: any,
+    paymentType: 'airwallex' | 'stripe'
+  ) {
     //  set payment form to default
     setPaymentForm({
       form: {
@@ -27,10 +30,8 @@ export default function useAfterPayment() {
     })
     // save payment response to database
     const { writeData } = firebaseDatabase()
-    const paymentDatabaseRefId = 'payment/' + 'airwallex' + `/${response?.id}`
-    writeData(paymentDatabaseRefId, {
-      data: JSON.stringify(response),
-    }).then(() => {
+    const paymentDatabaseRefId = 'payment/' + paymentType + `/${response?.id}`
+    writeData(paymentDatabaseRefId, JSON.stringify(response)).then(() => {
       return router.push('/checkout-complete')
     })
   }

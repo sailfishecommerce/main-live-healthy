@@ -41,7 +41,6 @@ class DashboardEditor extends Component {
 
   componentDidUpdate(prevProps) {
     const { query } = this.props.router
-    console.log('query', query)
     if (
       prevProps.editorKey &&
       query.slug &&
@@ -49,6 +48,7 @@ class DashboardEditor extends Component {
     ) {
       const db = getDatabase()
       const databaseRefId = 'articles/' + this.props.editorKey + '/content'
+      console.log('databaseRefId', databaseRefId)
       const dbRef = ref(db, databaseRefId)
       // this.props.router.reload()
       onValue(dbRef, (snapshot) => {
@@ -90,8 +90,6 @@ class DashboardEditor extends Component {
 
   render() {
     const { editorState } = this.state
-    console.log('this.props', this.props)
-    console.log('this.state', this.state)
 
     const buttonState = this.state.loading ? 'saving ...' : 'Save'
 

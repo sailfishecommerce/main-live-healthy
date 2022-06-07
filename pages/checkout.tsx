@@ -9,14 +9,16 @@ const CheckoutCustomer = dynamic(
   () =>
     import(
       /* webpackChunkName: 'CheckoutCustomer' */ '@/components/Checkout/CheckoutCustomer'
-    )
+    ),
+  { ssr: false }
 )
 
 const MobileCheckoutView = dynamic(
   () =>
     import(
       /* webpackChunkName: 'CheckoutCustomer' */ '@/components/MobileCheckoutView'
-    )
+    ),
+  { ssr: false }
 )
 
 const EmptyCart = dynamic(

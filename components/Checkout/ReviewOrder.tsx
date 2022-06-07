@@ -13,14 +13,24 @@ export default function ReviewOrder() {
           1. Review Your Order
         </span>
       </h6>
-      {cart?.items.map((item: any) => (
-        <ReviewOrderlist key={item.productId} content={item} />
-      ))}
+      <div className="cart-group">
+        {cart?.items.map((item: any) => (
+          <ReviewOrderlist key={item.productId} content={item} />
+        ))}
+      </div>
       <div className="subtotal flex items-center justify-between border-b pb-5">
         <h4 className="font-bold">SUBTOTAL</h4>
         <FormattedPrice className="font-bold" price={cart?.subTotal} />
       </div>
       <ShippingMethod shippingMethod={cart?.shipping?.service} />
+      <style jsx>
+        {`
+          .cart-group {
+            max-height: 600px;
+            overflow-y: scroll;
+          }
+        `}
+      </style>
     </div>
   )
 }

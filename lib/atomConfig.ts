@@ -125,3 +125,9 @@ export const productRatingAtom = atom(3)
 export const submitCheckoutFormAtom = atom(false)
 
 export const shippingformAtom = atom<FormInputsProps | null>(null)
+
+// airwallex paymentArray
+export const airwallexAdminPaymentAtom = atomWithStorage<any>(
+  'airwallexAdminPaymentAtom',
+  []
+)

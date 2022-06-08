@@ -10,7 +10,7 @@ const style = { width: '100%' }
 export default function AirwallexInvoicePage({ invoice }: any) {
   const paymentMethod = `Airwallex ${invoice?.latest_payment_attempt?.id.toUpperCase()}`
 
-  const customerName = `${invoice.order.shipping.first_name} ${invoice.order.shipping.last_name}`
+  const customerName = `${invoice?.order?.shipping?.first_name} ${invoice.order.shipping.last_name}`
   return (
     <>
       <div

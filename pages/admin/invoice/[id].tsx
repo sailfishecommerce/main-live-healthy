@@ -25,15 +25,12 @@ export default function InvoicePage(props: any) {
     const stripePaymentData = data.data.invoiceArray.filter(
       (invoiceData: { id: any }) => invoiceData.id === router.query.id
     )
-    if (airwallexPaymentData) {
+    if (airwallexPaymentData.length > 0) {
       airwallexInvoice = airwallexPaymentData
     } else {
       invoice = stripePaymentData
     }
   }
-
-  console.log('invoice[0]', invoice)
-  console.log('airwallexInvoice[0]', airwallexInvoice)
 
   return (
     <SearchPageLayout {...props}>

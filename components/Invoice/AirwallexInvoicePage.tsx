@@ -9,7 +9,6 @@ const style = { width: '100%' }
 
 export default function AirwallexInvoicePage({ invoice }: any) {
   const paymentMethod = `Airwallex ${invoice?.latest_payment_attempt?.id.toUpperCase()}`
-
   const customerName = `${invoice?.order?.shipping?.first_name} ${invoice.order.shipping.last_name}`
   return (
     <>
@@ -20,7 +19,7 @@ export default function AirwallexInvoicePage({ invoice }: any) {
         <div className="row flex justify-between mb-16 items-center">
           <Logo className="w-1/2" />
           <div className="invoice-date flex flex-col">
-            <h1 className="text-2xl font-bold">{invoice?.id}</h1>
+            <h1 className="text-2xl font-bold">{invoice?.id.toUpperCase()}</h1>
             <h5 className="font-thin text-lg">
               {formatOrderDate(invoice?.created_at)}
             </h5>

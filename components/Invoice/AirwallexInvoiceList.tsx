@@ -35,7 +35,7 @@ export default function AirwallexInvoiceList({ currency, product }: any) {
         <td className="w-1/6 text-center">
           <FormattedPrice
             className="text-md font-thin"
-            price={product.unit_price}
+            price={product.salePrice}
             currency={currency}
           />
         </td>

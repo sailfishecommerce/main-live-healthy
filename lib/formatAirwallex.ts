@@ -13,9 +13,7 @@ export function formatIntentData(cart: any, paymentForm: any) {
     merchant_order_id: cart.checkoutId,
     request_id: uuidv4(),
     shipmentPrice: cart?.shipmentTotal,
-    shipmentMethod: cart.shipmentRating.services.filter(
-      (service: any) => service.price === cart.shipmentTotal
-    )[0],
+
     order: {
       products,
       shipping: {
@@ -28,6 +26,10 @@ export function formatIntentData(cart: any, paymentForm: any) {
         },
         first_name: form.firstName,
         last_name: form.lastName,
+        phone_number: form.phone,
+        shipment_method: cart.shipmentRating.services.filter(
+          (service: any) => service.price === cart.shipmentTotal
+        )[0],
       },
     },
     payment_method_options: {
@@ -51,8 +53,7 @@ function formatCartProduct(cart: cartType) {
       desc: item.product?.metaTitle,
       name: item.product.name,
       quantity: item.quantity,
-      price: item.product.price,
-      salePrice: item.product.salePrice,
+      unit_price: item.product.price,
       url:
         typeof item.product?.images[0] === 'string'
           ? item.product?.images[0]

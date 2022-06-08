@@ -5,10 +5,12 @@ import DashboardCard from '@/components/Dashboard/DashboardCard'
 import DashboardMainView from '@/components/Dashboard/DashboardMainView'
 import OrdersTable from '@/components/Table/OrdersTable'
 import { useOrderInvoice } from '@/hooks/useAdminOrder'
+import useAirwallexAdmin from '@/hooks/useAirwallexAdmin'
 import DashboardLayout from '@/layouts/dashboard-layout'
 
 export default function Admin() {
   const { data, status } = useOrderInvoice()
+  const { airwallexPayments } = useAirwallexAdmin()
 
   let orders
   if (status === 'success') {
@@ -35,7 +37,11 @@ export default function Admin() {
           ) : status === 'loading' ? (
             'loading ...'
           ) : (
-            <OrdersTable orders={orders} showInput={false} />
+            <OrdersTable
+              orders={orders}
+              showInput={false}
+              airwallexDataArray={airwallexPayments}
+            />
           )}
         </div>
       </DashboardMainView>

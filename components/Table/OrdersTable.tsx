@@ -21,19 +21,19 @@ export default function OrdersTable({
 }: any) {
   const allIndexArray: number[] = []
   const airwallexArrayLength = airwallexDataArray.length
-
   return (
     <table className="table w-full rounded-3xl my-4">
       <OrderTableHead showInput={showInput} />
       <tbody>
-        {airwallexDataArray.map((airwallexData: any, index: number) => (
-          <AirwallexOrderTableList
-            airwallexData={airwallexData}
-            key={airwallexData.id}
-            showInput={showInput}
-            index={index}
-          />
-        ))}
+        {airwallexDataArray.length > 0 &&
+          airwallexDataArray.map((airwallexData: any, index: number) => (
+            <AirwallexOrderTableList
+              airwallexData={airwallexData}
+              key={airwallexData.id}
+              showInput={showInput}
+              index={index}
+            />
+          ))}
         {orders.map((order: orderType, index: number) => {
           return (
             <OrderTableList

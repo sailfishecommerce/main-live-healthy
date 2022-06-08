@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { createElement, loadAirwallex } from 'airwallex-payment-elements'
 import type { ElementType } from 'airwallex-payment-elements'
 import jwtDecode from 'jwt-decode'
@@ -37,8 +36,7 @@ export function loadAirwallexUi() {
         weight: 400,
       },
     ],
-  }).then((response) => {
-    console.log('response', response)
+  }).then(() => {
     return createElement('card' as ElementType, {
       authFormContainer: 'authFormContainer',
     })?.mount('airwallexCard')

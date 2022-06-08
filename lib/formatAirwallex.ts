@@ -12,6 +12,10 @@ export function formatIntentData(cart: any, paymentForm: any) {
     currency: cart.currency,
     merchant_order_id: cart.checkoutId,
     request_id: uuidv4(),
+    shipmentPrice: cart?.shipmentTotal,
+    shipmentMethod: cart.shipmentRating.services.filter(
+      (service: any) => service.price === cart.shipmentTotal
+    )[0],
     order: {
       products,
       shipping: {
@@ -30,9 +34,10 @@ export function formatIntentData(cart: any, paymentForm: any) {
       card: {
         risk_control: {
           skip_risk_processing: false,
-          three_domain_secure_action: null,
-          three_ds_action: null,
+          three_domain_secure_action: 'FORCE_3DS',
+          three_ds_action: 'FORCE_3DS',
         },
+        three_ds_action: 'FORCE_3DS',
       },
     },
   }
@@ -46,8 +51,12 @@ function formatCartProduct(cart: cartType) {
       desc: item.product?.metaTitle,
       name: item.product.name,
       quantity: item.quantity,
-      unit_price: item.price,
-      url: `https://www.livehealthy.hk/products/${item.product.slug}`,
+      price: item.product.price,
+      salePrice: item.product.salePrice,
+      url:
+        typeof item.product?.images[0] === 'string'
+          ? item.product?.images[0]
+          : item.product?.images[0].file.url,
       sku: item?.product.sku,
     }
   })

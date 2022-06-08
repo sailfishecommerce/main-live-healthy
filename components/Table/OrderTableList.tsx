@@ -26,6 +26,7 @@ interface OrderTableListProps {
   index: number
   allIndexArray: number[]
   showInput: boolean
+  airwallexCount: number
 }
 
 export default function OrderTableList({
@@ -33,12 +34,13 @@ export default function OrderTableList({
   index,
   allIndexArray,
   showInput,
+  airwallexCount,
 }: OrderTableListProps) {
   const { selectedInvoice, updateSelectedIndex, setAllIndex } =
     useInvoiceTable()
 
   const router = useRouter()
-  const indexNumber = index + 1
+  const indexNumber = index + airwallexCount + 1
 
   if (!allIndexArray.includes(order.number)) {
     allIndexArray.push(order.number)
@@ -46,10 +48,6 @@ export default function OrderTableList({
 
   useEffect(() => {
     setAllIndex(allIndexArray)
-  }, [])
-
-  useEffect(() => {
-    
   }, [])
 
   const inputChecked = selectedInvoice.selected.includes(order.number)

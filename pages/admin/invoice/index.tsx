@@ -1,5 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-nested-ternary */
+import { initializeApp } from 'firebase/app'
+import { getDatabase, ref, onValue } from 'firebase/database'
 import { useEffect, useState } from 'react'
 import { BiDownload } from 'react-icons/bi'
 
@@ -10,6 +12,7 @@ import useAdminOrder from '@/hooks/useAdminOrder'
 import useInvoiceTable from '@/hooks/useInvoiceTable'
 import useMulipleInvoiceDownload from '@/hooks/useMulipleInvoiceDownload'
 import DashboardLayout from '@/layouts/dashboard-layout'
+import firebaseConfig from '@/lib/firebaseConfig'
 
 export default function InvoicePage() {
   const { data, status } = useAdminOrder()
@@ -17,6 +20,7 @@ export default function InvoicePage() {
   const { selectedInvoice } = useInvoiceTable()
   const selectedInvoiceCount = selectedInvoice.selected.length
   const { invoiceMultipleDownload } = useMulipleInvoiceDownload()
+  const [airwallexPayments, setAirwallexPayments] = useState<any[]>([])
 
   const selectedInvoiceText =
     selectedInvoiceCount > 1
@@ -32,6 +36,22 @@ export default function InvoicePage() {
       setDownloadInvoice(false)
     }
   }, [downloadInvoices])
+
+  useEffect(() => {
+    const app = initializeApp(firebaseConfig)
+    const db = getDatabase(app)
+    const dbRefId = 'payment/airwallex'
+    const dbRef = ref(db, dbRefId)
+    onValue(dbRef, (snapshot) => {
+      const snapshopData = snapshot.val()
+      const snapshotDataArray = Object.values(snapshopData)
+      const snapshotArray: any = []
+      snapshotDataArray.map((snapshotData: any) =>
+        snapshotArray.push(JSON.parse(snapshotData))
+      )
+      setAirwallexPayments(snapshotArray)
+    })
+  }, [])
 
   function downloadHandler() {
     setDownloadInvoice(true)
@@ -60,7 +80,10 @@ export default function InvoicePage() {
           ) : status === 'loading' ? (
             <SpinnerRipple centerRipple />
           ) : (
-            <OrdersTable orders={data?.data?.results} />
+            <OrdersTable
+              orders={data?.data?.results}
+              airwallexDataArray={airwallexPayments}
+            />
           )}
         </div>
       </DashboardMainView>

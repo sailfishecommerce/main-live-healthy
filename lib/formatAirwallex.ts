@@ -48,6 +48,7 @@ export function formatIntentData(cart: any, paymentForm: any) {
 
 function formatCartProduct(cart: cartType) {
   const productArray: any[] = []
+  console.log('cart', cart)
   cart?.items.map((item: any, index: number) => {
     productArray[index] = {
       desc: item.product?.metaTitle,

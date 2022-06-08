@@ -22,10 +22,12 @@ export function DownloadButton({ invoice }: any) {
 }
 
 export default function Invoice({ invoice }: any) {
+  console.log('invoice-Invoice', invoice)
+
   return (
     <>
-      <DownloadButton invoice={invoice} />
-      <InvoicePage invoice={invoice} />
+      {invoice && <DownloadButton invoice={invoice} />}
+      {invoice && <InvoicePage invoice={invoice} />}
     </>
   )
 }

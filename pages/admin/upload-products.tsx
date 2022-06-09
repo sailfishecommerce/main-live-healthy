@@ -3,7 +3,7 @@ import DashboardMainView from '@/components/Dashboard/DashboardMainView'
 import DashboardLayout from '@/layouts/dashboard-layout'
 
 const uploadContentArray = [
-  { text: 'Upload products to Swell', viewId: 'uploadToSWell' },
+  { text: 'Upload products to Swell', viewId: 'uploadToSwell' },
   { text: 'Upload products to Algolia', viewId: 'uploadToAlgolia' },
 ]
 
@@ -12,7 +12,7 @@ export default function UploadProducts() {
     <DashboardLayout title="Admin page">
       <DashboardMainView>
         <SplittedView
-          defaultView="create-admin-profile"
+          defaultView="uploadToSwell"
           viewList={uploadContentArray}
           title="Upload"
         />

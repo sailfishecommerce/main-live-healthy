@@ -14,8 +14,8 @@ export default function UploadToSwellFromAirtable() {
     })
   const files = acceptedFiles.map((file: any) => (
     <li key={file.path}>
-      <span className="font-bold">{file.name}</span>-
-      <span className="text-red-500">({byteSize(file.size)})</span>
+      <span className="font-bold">{file.name}</span>
+      <span className="text-red-500 ml-2">({byteSize(file.size)})</span>
     </li>
   ))
 

@@ -55,9 +55,11 @@ export default function UploadToSwellFromAirtable() {
             padding: 10px;
             margin-top: 10px;
           }
-          .upload-area input {
+          .upload-area input,
+          .upload-area div {
             height: 100%;
             width: 100%;
+            cursor: pointer;
           }
         `}
       </style>

@@ -1,74 +1,45 @@
-/* eslint-disable no-nested-ternary */
-/* eslint-disable no-alert */
-/* eslint-disable no-param-reassign */
 /* eslint-disable no-console */
-import { useCallback, useMemo } from 'react'
+import axios from 'axios'
+import Papa from 'papaparse'
+import { useCallback, useMemo, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 
+import { styles } from '@/components/Admin/styles'
 import byteSize from '@/utils/byteSize'
 
-function csvToArray(str, delimiter = ',') {
-  console.log('str', str)
-
-  const headers = str?.slice(0, str.indexOf('\n')).split(delimiter)
-  const rows = str?.slice(str.indexOf('\n') + 1).split('\n')
-  console.log('headers', headers)
-  console.log('rows', rows)
-
-  const arr = rows.map(function (row: any) {
-    const values = row.split(delimiter)
-    const el = headers.reduce(function (
-      objectItem: any,
-      header: string,
-      index: number
-    ) {
-      objectItem[header] = values[index]
-      return objectItem
-    },
-    {})
-    return el
-  })
-  return arr
-}
-
-const baseStyle = {
-  flex: 1,
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  padding: '20px',
-  borderWidth: 2,
-  borderRadius: 2,
-  borderColor: 'white',
-  borderStyle: 'dashed',
-  color: '#9e9aa6',
-  outline: 'none',
-  transition: 'border .24s ease-in-out',
-}
-const focusedStyle = {
-  borderColor: '#2196f3',
-}
-
-const acceptStyle = {
-  borderColor: '#00e676',
-}
-
-const rejectStyle = {
-  borderColor: '#ff1744',
-}
-
 export default function UploadToSwellFromAirtable() {
+  const [progress, setProgress] = useState(0)
+
   const onDrop = useCallback((acceptedFiles) => {
     // Do something with the files
     const csvFile = acceptedFiles[0]
-    console.log('csvFile', csvFile)
-    // const reader = new FileReader()
-    // reader.onload = function (event: any) {
-    //   const text = event.target.value
-    //   const data = csvToArray(text)
-    //   window.alert(JSON.stringify(data))
-    // }
-    // reader.readAsText(csvFile)
+    Papa.parse(csvFile, {
+      header: true,
+      skipEmptyLines: true,
+      complete: async (results: any) => {
+        console.log('results.data', results.data)
+        results.data.map((dataItem: any) =>
+          axios.post('/api/upload-csv-to-swell', dataItem, {
+            onUploadProgress: (progressEvent) => {
+              console.log('progressEvent', progressEvent)
+              const progressVal =
+                (progressEvent.loaded / progressEvent.total) * 50
+              setProgress(progressVal)
+            },
+            onDownloadProgress: (progressEvent) => {
+              const progressVal =
+                50 + (progressEvent.loaded / progressEvent.total) * 50
+              console.log('progressVal', progressVal)
+              setProgress(progressVal)
+            },
+          })
+        )
+        await new Promise((resolve) => {
+          setTimeout(() => resolve('success'), 500)
+        })
+        setProgress(0)
+      },
+    })
   }, [])
 
   const {
@@ -90,10 +61,10 @@ export default function UploadToSwellFromAirtable() {
 
   const style: any = useMemo(
     () => ({
-      ...baseStyle,
-      ...(isFocused ? focusedStyle : {}),
-      ...(isDragAccept ? acceptStyle : {}),
-      ...(isDragReject ? rejectStyle : {}),
+      ...styles.baseStyle,
+      ...(isFocused ? styles.focusedStyle : {}),
+      ...(isDragAccept ? styles.acceptStyle : {}),
+      ...(isDragReject ? styles.rejectStyle : {}),
     }),
     [isFocused, isDragAccept, isDragReject]
   )
@@ -104,12 +75,6 @@ export default function UploadToSwellFromAirtable() {
     </li>
   ))
 
-  console.log(
-    'isFocused, isDragAccept, isDragReject ',
-    isFocused,
-    isDragAccept,
-    isDragReject
-  )
   return (
     <div>
       <h1 className="text-center text-2xl">
@@ -136,6 +101,15 @@ export default function UploadToSwellFromAirtable() {
             {acceptedFiles.length > 0 && <ul>{files}</ul>}
           </div>
         </div>
+        {progress > 0 && (
+          <div className="w-full mt-6 bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+            <div
+              className="bg-blue-600 h-2.5 rounded-full"
+              style={{ width: `${progress}%` }}
+            />
+            {progress} %
+          </div>
+        )}
       </div>
       <style jsx>
         {`

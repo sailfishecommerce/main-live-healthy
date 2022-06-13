@@ -3,7 +3,7 @@ import swell from 'swell-node'
 
 import swellNodeInit from '@/lib/swellNode'
 import toShopifyProductModel from '@/lib/toShopifyProductModel'
-import formattedUrlArray from '@/lib/useFormatProductImage'
+import { formatCsvUrlArray } from '@/lib/useFormatProductImage'
 
 let count = 0
 let total = 0
@@ -12,13 +12,10 @@ export default async function UploadProductToSwellHandler(
   res: NextApiResponse
 ) {
   swellNodeInit()
-  const productData = req.body.product
-  const formatUrl = productData.fields['Image Src']?.split(';')
-  const formatUrlArray = await formattedUrlArray(formatUrl, productData)
-  const swellProducts = toShopifyProductModel(
-    productData.fields,
-    formatUrlArray
-  )
+  const productData = req.body
+  const formatUrl = productData['Image Src']?.split(';')
+  const formatUrlArray = await formatCsvUrlArray(formatUrl, productData)
+  const swellProducts = toShopifyProductModel(productData, formatUrlArray)
   switch (req.method) {
     case 'POST': {
       return await swell

@@ -12,8 +12,12 @@ export function formatIntentData(cart: any, paymentForm: any) {
     currency: cart.currency,
     merchant_order_id: cart.checkoutId,
     request_id: uuidv4(),
-    shipmentPrice: cart?.shipmentTotal,
-
+    metadata: {
+      shipment_price: cart?.shipmentTotal,
+      shipment_method: cart.shipmentRating.services.filter(
+        (service: any) => service.price === cart.shipmentTotal
+      )[0],
+    },
     order: {
       products,
       shipping: {

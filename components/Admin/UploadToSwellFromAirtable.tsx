@@ -11,7 +11,6 @@ export default function UploadToSwellFromAirtable() {
   const [progress, setProgress] = useState(0)
 
   const onDrop = useCallback((acceptedFiles) => {
-    // Do something with the files
     const csvFile = acceptedFiles[0]
     Papa.parse(csvFile, {
       header: true,
@@ -83,7 +82,7 @@ export default function UploadToSwellFromAirtable() {
       <p className="text-lg mt-4">
         For effective upload, Upload a maximum of 100 products at a time
       </p>
-      <div className="upload">
+      <div className="upload mt-8">
         <div className="upload-area">
           <div {...getRootProps({ style })}>
             <input
@@ -107,7 +106,7 @@ export default function UploadToSwellFromAirtable() {
               className="bg-blue-600 h-2.5 rounded-full"
               style={{ width: `${progress}%` }}
             />
-            {progress} %
+            {progress} % <p>Product upload complete</p>
           </div>
         )}
       </div>
@@ -115,7 +114,7 @@ export default function UploadToSwellFromAirtable() {
         {`
           .upload-area {
             height: 100px;
-            width: 60%;
+            width: 100%;
             background-color: ${isDragActive
               ? 'var(--tan-hide)'
               : 'var(--tan-light-hide)'};

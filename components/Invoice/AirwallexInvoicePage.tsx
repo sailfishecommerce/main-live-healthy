@@ -88,7 +88,7 @@ export default function AirwallexInvoicePage({ invoice }: any) {
                 <td className="text-center">
                   <FormattedPrice
                     currency={invoice.currency}
-                    price={invoice.sub_total}
+                    price={invoice.amount}
                     className="text-md font-thin"
                   />
                 </td>

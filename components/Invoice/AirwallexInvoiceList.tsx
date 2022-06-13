@@ -3,6 +3,7 @@ import Image from 'next/image'
 import FormattedPrice from '@/components/Price/FormattedPrice'
 
 export default function AirwallexInvoiceList({ currency, product }: any) {
+  const itemTotal = product.quantity * product.unit_price
   return (
     <>
       <tr className="view">
@@ -35,7 +36,7 @@ export default function AirwallexInvoiceList({ currency, product }: any) {
         <td className="w-1/6 text-center">
           <FormattedPrice
             className="text-md font-thin"
-            price={product.salePrice}
+            price={itemTotal}
             currency={currency}
           />
         </td>

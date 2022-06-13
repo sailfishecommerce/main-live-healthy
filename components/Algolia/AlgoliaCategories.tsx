@@ -72,7 +72,7 @@ function RefinementListMenu({ items, selectedCategory }: any) {
               height: 100vh;
             }
             .menu ul {
-              max-height: calc(80% - 50px);
+              max-height: calc(75% - 50px);
               overflow-y: scroll;
               margin-top: -15px;
             }

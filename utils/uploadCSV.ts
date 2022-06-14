@@ -19,15 +19,15 @@ export default function uploadCSV(
         numberOfProducts: results.data.length,
       })
       .then((response) => {
-        setProgress({
-          ...progress,
-          uploaded: response.data.uploaded
-            ? progress.uploaded + 1
-            : progress.uploaded,
+        setProgress((prevState: progressStateType) => ({
+          ...prevState,
+          uploaded: response?.data?.uploaded
+            ? prevState.uploaded + 1
+            : prevState.uploaded,
           total: response.data.total,
           error: null,
           loading: loadingStatus,
-        })
+        }))
       })
       .catch((error) => {
         console.log('error-uploadAirtableCSV', error)

@@ -3,7 +3,7 @@ import axios from 'axios'
 
 import type { progressStateType } from '@/types'
 
-export function uploadAirtableCSV(
+export default function uploadCSV(
   results: { data: any[] },
   setProgress: any,
   progress: progressStateType

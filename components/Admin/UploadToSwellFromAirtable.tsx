@@ -1,9 +1,12 @@
 import Dropzonebar from '@/components/Dropzonebar'
 import useCSVDropzone from '@/hooks/useCsvDropzone'
-import { uploadAirtableCSV } from '@/utils/uploadCSV'
+import uploadCSV from '@/utils/uploadCSV'
 
 export default function UploadToSwellFromAirtable() {
-  const { progress, dropzone, style } = useCSVDropzone(uploadAirtableCSV)
+  const { progress, dropzone, style } = useCSVDropzone(
+    '/api/upload-csv-to-swell',
+    uploadCSV
+  )
 
   return (
     <div>

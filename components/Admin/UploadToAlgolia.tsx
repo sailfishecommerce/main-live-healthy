@@ -1,9 +1,12 @@
 import Dropzonebar from '@/components/Dropzonebar'
 import useCSVDropzone from '@/hooks/useCsvDropzone'
-import { uploadAlgoliaCSV } from '@/utils/uploadCSV'
+import uploadCSV from '@/utils/uploadCSV'
 
 export default function UploadToAlgolia() {
-  const { dropzone, progress, style } = useCSVDropzone(uploadAlgoliaCSV)
+  const { dropzone, progress, style } = useCSVDropzone(
+    '/api/upload-csv-to-algolia',
+    uploadCSV
+  )
 
   return (
     <div>

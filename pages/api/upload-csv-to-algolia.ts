@@ -3,27 +3,33 @@ import fs from 'fs'
 
 import type { NextApiRequest, NextApiResponse } from 'next'
 
+import toShopifyProductModel from '@/lib/toShopifyProductModel'
+import { formatCsvUrlArray } from '@/lib/useFormatProductImage'
 import { hierarchicalCategory } from '@/utils/formatToAlgolia'
 
-export default function UploadToAlgoliaHandler(
+export default async function UploadToAlgoliaHandler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   const productArray: any = []
   let productObj = {}
 
-  const swellProductArray: any = req.body
-  console.log('req.body', req.body)
+  const csvProducts: any = req.body
+
+  const formatProductUrl = csvProducts['Image Src']?.split(';')
+  const formatUrlArray = await formatCsvUrlArray(formatProductUrl, csvProducts)
+  const formattedProduct = toShopifyProductModel(csvProducts, formatUrlArray)
+  const hierarchicalCategoryObj = hierarchicalCategory(
+    formattedProduct.product_categories
+  )
+  productObj = { ...hierarchicalCategoryObj, ...csvProducts }
+  productArray.push(productObj)
+
   switch (req.method) {
     case 'POST': {
-      swellProductArray.forEach(function (product: any) {
-        const hierarchicalCategoryObj = hierarchicalCategory(
-          product.product_categories
-        )
-        productObj = { ...hierarchicalCategoryObj, ...product }
-        productArray.push(productObj)
-      })
       console.log('productArray.length', productArray?.length)
+
+      console.log('productArray', productArray)
       return fs.writeFile(
         './new-products.json',
         JSON.stringify(productArray),

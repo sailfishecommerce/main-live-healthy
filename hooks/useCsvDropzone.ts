@@ -4,9 +4,14 @@ import { useDropzone } from 'react-dropzone'
 
 import { styles } from '@/components/Admin/styles'
 
-type uploadCSVType = (results: { data: any[] }, setProgress: any) => void
+type urlType = '/api/upload-csv-to-algolia' | '/api/upload-csv-to-swell'
+type uploadCSVType = (
+  url: urlType,
+  results: { data: any[] },
+  setProgress: any
+) => void
 
-export default function useCSVDropzone(uploadCSV: uploadCSVType) {
+export default function useCSVDropzone(url: urlType, uploadCSV: uploadCSVType) {
   const [progress, setProgress] = useState(0)
 
   const onDrop = useCallback((acceptedFiles) => {
@@ -15,7 +20,7 @@ export default function useCSVDropzone(uploadCSV: uploadCSVType) {
       header: true,
       skipEmptyLines: true,
       complete: async (results: any) => {
-        uploadCSV(results, setProgress)
+        uploadCSV(url, results, setProgress)
         await new Promise((resolve) => {
           setTimeout(() => resolve('success'), 500)
         })

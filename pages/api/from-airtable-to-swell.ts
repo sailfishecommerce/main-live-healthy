@@ -39,6 +39,7 @@ export default function createSwellProductHandler(
                     if (formattedUrl) {
                       formattedUrlArray(formattedUrl.fields, record).then(
                         async (response) => {
+                          console.log('imageResponse', response)
                           const productData = toShopifyProductModel(
                             record.fields,
                             response

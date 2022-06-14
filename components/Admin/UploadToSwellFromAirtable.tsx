@@ -4,10 +4,10 @@ import { useEffect, useRef } from 'react'
 import Dropzonebar from '@/components/Dropzonebar'
 import useCSVDropzone from '@/hooks/useCsvDropzone'
 import useToast from '@/hooks/useToast'
-import { uploadAirtableCSV } from '@/utils/uploadCSV'
+import uploadCSV from '@/utils/uploadCSV'
 
 export default function UploadToSwellFromAirtable() {
-  const { progress, dropzone, style } = useCSVDropzone(uploadAirtableCSV)
+  const { progress, dropzone, style } = useCSVDropzone(uploadCSV)
   const { loadingToast, toastUpdate } = useToast()
   const toastID = useRef(null)
 

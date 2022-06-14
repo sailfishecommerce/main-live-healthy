@@ -1,16 +1,19 @@
+/* eslint-disable no-unneeded-ternary */
 /* eslint-disable no-console */
 import axios from 'axios'
 
 import type { progressStateType } from '@/types'
 
-export function uploadAirtableCSV(
+export default function uploadCSV(
   results: { data: any[] },
   setProgress: any,
   progress: progressStateType
 ) {
   setProgress({ ...progress, loading: true })
-  const uploadProduct = results.data.map((dataItem: any) =>
-    axios
+  results.data.map((dataItem: any, index) => {
+    const lastIndex = results.data.length - 1
+    const loadingState = lastIndex === index ? false : true
+    return axios
       .post('/api/upload-csv-to-swell', {
         dataItem,
         numberOfProducts: results.data.length,
@@ -21,7 +24,7 @@ export function uploadAirtableCSV(
           uploaded: response.data.uploaded,
           total: response.data.total,
           error: null,
-          loading: true,
+          loading: loadingState,
         })
       })
       .catch((error) => {
@@ -32,12 +35,5 @@ export function uploadAirtableCSV(
           loading: false,
         })
       })
-  )
-  Promise.all(uploadProduct).then((response) => {
-    console.log('responseresponse', response)
-    setProgress({
-      ...progress,
-      loading: false,
-    })
   })
 }

@@ -3,6 +3,7 @@ import axios from 'axios'
 
 import type { progressStateType } from '@/types'
 
+const count = 0
 export default function uploadCSV(
   results: { data: any[] },
   setProgress: any,
@@ -16,7 +17,6 @@ export default function uploadCSV(
         numberOfProducts: results.data.length,
       })
       .then((response) => {
-        const count = 0
         const uploadedCount = response.data.uploaded ? count + 1 : count
         setProgress({
           ...progress,

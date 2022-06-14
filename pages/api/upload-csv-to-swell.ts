@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-console */
 import algoliasearch from 'algoliasearch'
 import type { NextApiRequest, NextApiResponse } from 'next'
@@ -41,19 +42,19 @@ export default async function UploadProductToSwellHandler(
             uploaded = uploaded + 1
             console.log('totaltotal', total, 'uploadeduploaded', uploaded)
 
-            index
+            return index
               .saveObject(formattedProduct, {
                 autoGenerateObjectIDIfNotExist: true,
               })
               .then((responseItem: any) => {
                 console.log('response-algolia', responseItem)
+                return res.status(200).json({ status: 'ok', uploaded, total })
               })
               .catch((error) => {
                 console.log('error', error)
                 return res.status(400).json(error)
               })
           }
-          return res.status(200).json({ status: 'ok', uploaded, total })
         })
         .catch((error: any) => {
           console.error('error createSwellProductHandler', error)

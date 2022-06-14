@@ -15,7 +15,7 @@ export function uploadAirtableCSV(
         dataItem,
         numberOfProducts: results.data.length,
       })
-      .then((response) => {
+      .then((response) =>
         setProgress({
           ...progress,
           uploaded: response.data.uploaded,
@@ -23,7 +23,7 @@ export function uploadAirtableCSV(
           error: null,
           loading: true,
         })
-      })
+      )
       .catch((error) => {
         console.log('error-uploadAirtableCSV', error)
         setProgress({

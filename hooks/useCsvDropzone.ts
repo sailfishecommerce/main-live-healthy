@@ -1,17 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import Papa from 'papaparse'
 import { useCallback, useMemo, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 
 import { styles } from '@/components/Admin/styles'
 
-type urlType = '/api/upload-csv-to-algolia' | '/api/upload-csv-to-swell'
-type uploadCSVType = (
-  url: urlType,
-  results: { data: any[] },
-  setProgress: any
-) => void
+type uploadCSVType = (results: { data: any[] }, setProgress: any) => void
 
-export default function useCSVDropzone(url: urlType, uploadCSV: uploadCSVType) {
+export default function useCSVDropzone(uploadCSV: uploadCSVType) {
   const [progress, setProgress] = useState(0)
 
   const onDrop = useCallback((acceptedFiles) => {
@@ -19,12 +15,11 @@ export default function useCSVDropzone(url: urlType, uploadCSV: uploadCSVType) {
     Papa.parse(csvFile, {
       header: true,
       skipEmptyLines: true,
-      complete: async (results: any) => {
-        uploadCSV(url, results, setProgress)
-        await new Promise((resolve) => {
-          setTimeout(() => resolve('success'), 500)
-        })
-        setProgress(0)
+      complete: (results: any) => {
+        uploadCSV(results, setProgress)
+        setTimeout(() => {
+          setProgress(0)
+        }, 1000)
       },
     })
   }, [])

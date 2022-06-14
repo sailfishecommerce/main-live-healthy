@@ -5,8 +5,6 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 
 import { hierarchicalCategory } from '@/utils/formatToAlgolia'
 
-import swellProducts from '../../swellProduct.json'
-
 export default function UploadToAlgoliaHandler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -14,9 +12,10 @@ export default function UploadToAlgoliaHandler(
   const productArray: any = []
   let productObj = {}
 
-  const swellProductArray: any = swellProducts
+  const swellProductArray: any = req.body
+  console.log('req.body', req.body)
   switch (req.method) {
-    case 'GET': {
+    case 'POST': {
       swellProductArray.forEach(function (product: any) {
         const hierarchicalCategoryObj = hierarchicalCategory(
           product.product_categories
@@ -40,6 +39,7 @@ export default function UploadToAlgoliaHandler(
         }
       )
     }
+
     default:
       return null
   }

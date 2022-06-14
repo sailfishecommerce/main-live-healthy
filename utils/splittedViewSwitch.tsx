@@ -24,7 +24,6 @@ const DynamicUploadToAlgolia = dynamic(
   { ssr: false }
 )
 
-
 export default function splittedViewSwitch(view: string) {
   switch (view) {
     case 'create-admin-profile': {

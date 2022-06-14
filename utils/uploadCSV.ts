@@ -4,7 +4,6 @@ import axios from 'axios'
 
 import type { progressStateType } from '@/types'
 
-const count = 0
 export default function uploadCSV(
   results: { data: any[] },
   setProgress: any,
@@ -20,15 +19,15 @@ export default function uploadCSV(
         numberOfProducts: results.data.length,
       })
       .then((response) => {
-        const uploadedCount = response.data.uploaded ? count + 1 : count
         setProgress({
           ...progress,
-          uploaded: uploadedCount,
+          uploaded: response.data.uploaded
+            ? progress.uploaded + 1
+            : progress.uploaded,
           total: response.data.total,
           error: null,
           loading: loadingStatus,
         })
-        return count
       })
       .catch((error) => {
         console.log('error-uploadAirtableCSV', error)

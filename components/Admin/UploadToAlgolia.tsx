@@ -5,7 +5,7 @@ import { styles } from '@/components/Admin/styles'
 import useAirtableDropzone from '@/hooks/useAirtableDropzone'
 import byteSize from '@/utils/byteSize'
 
-export default function UploadToSwellFromAirtable() {
+export default function UploadToAlgolia() {
   const { onDrop, progress } = useAirtableDropzone()
 
   const {
@@ -44,11 +44,8 @@ export default function UploadToSwellFromAirtable() {
   return (
     <div>
       <h1 className="text-center text-2xl">
-        Upload your CSV files from Airtable to Swell
+        Upload your CSV files to Algolia Livehealthy record
       </h1>
-      <p className="text-lg mt-4">
-        For effective upload, Upload a maximum of 100 products at a time
-      </p>
       <div className="upload mt-8">
         <div className="upload-area">
           <div {...getRootProps({ style })}>

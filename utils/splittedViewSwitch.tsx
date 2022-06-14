@@ -1,9 +1,9 @@
 import dynamic from 'next/dynamic'
 
-const DynamicAdmimAuthForm = dynamic(
+const DynamicAdminAuthForm = dynamic(
   () =>
     import(
-      /* webpackChunkName: 'AdmimAuthForm' */ '@/components/Form/AdminAuthForm'
+      /* webpackChunkName: 'AdminAuthForm' */ '@/components/Form/AdminAuthForm'
     ),
   { ssr: false }
 )
@@ -16,6 +16,15 @@ const DynamicUploadToSwellFromAirtable = dynamic(
   { ssr: false }
 )
 
+const DynamicUploadToAlgolia = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'DynamicUploadToAlgolia' */ '@/components/Admin/UploadToAlgolia'
+    ),
+  { ssr: false }
+)
+
+
 export default function splittedViewSwitch(view: string) {
   switch (view) {
     case 'create-admin-profile': {
@@ -24,12 +33,15 @@ export default function splittedViewSwitch(view: string) {
           <h2 className="text-center -mb-4 mt-4 font-bold text-lg">
             Sign up to create new Admin profile
           </h2>
-          <DynamicAdmimAuthForm type="signup" />
+          <DynamicAdminAuthForm type="signup" />
         </div>
       )
     }
     case 'uploadToSwell': {
       return <DynamicUploadToSwellFromAirtable />
+    }
+    case 'uploadToAlgolia': {
+      return <DynamicUploadToAlgolia />
     }
     default:
       return null

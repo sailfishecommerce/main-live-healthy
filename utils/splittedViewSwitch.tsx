@@ -16,14 +16,6 @@ const DynamicUploadToSwellFromAirtable = dynamic(
   { ssr: false }
 )
 
-const DynamicUploadToAlgolia = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'DynamicUploadToAlgolia' */ '@/components/Admin/UploadToAlgolia'
-    ),
-  { ssr: false }
-)
-
 export default function splittedViewSwitch(view: string) {
   switch (view) {
     case 'create-admin-profile': {
@@ -39,9 +31,7 @@ export default function splittedViewSwitch(view: string) {
     case 'uploadToSwell': {
       return <DynamicUploadToSwellFromAirtable />
     }
-    case 'uploadToAlgolia': {
-      return <DynamicUploadToAlgolia />
-    }
+
     default:
       return null
   }

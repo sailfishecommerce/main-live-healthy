@@ -400,3 +400,9 @@ export type contactInfoType = {
   anchor?: string
   group: Array<{ text: string; value?: string; phone?: string }>
 }
+
+export type progressStateType = {
+  uploaded: number
+  total: number
+  loading: boolean
+}

@@ -4,6 +4,7 @@
 /* eslint-disable no-fallthrough */
 /* eslint-disable @typescript-eslint/no-shadow */
 /* eslint-disable no-console */
+
 import Airtable from 'airtable'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import swell from 'swell-node'
@@ -36,7 +37,7 @@ export default function createSwellProductHandler(
                   if (record.fields) {
                     const formattedUrl = record.fields['Image Src']?.split(';')
                     if (formattedUrl) {
-                      formattedUrlArray(formattedUrl, record).then(
+                      formattedUrlArray(formattedUrl.fields, record).then(
                         async (response) => {
                           const productData = toShopifyProductModel(
                             record.fields,

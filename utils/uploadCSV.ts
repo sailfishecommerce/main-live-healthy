@@ -1,25 +1,43 @@
+/* eslint-disable no-console */
 import axios from 'axios'
 
-function axiosProgress(setProgress: any) {
-  return {
-    onUploadProgress: (progressEvent: any) => {
-      const { loaded, total } = progressEvent
-      const progressVal = Math.floor((loaded * 100) / total)
-      setProgress(progressVal)
-    },
-  }
-}
+import type { progressStateType } from '@/types'
 
-export function uploadAirtableCSV(results: { data: any[] }, setProgress: any) {
-  return results.data.map((dataItem: any) =>
-    axios.post('/api/upload-csv-to-swell', dataItem, axiosProgress(setProgress))
+export function uploadAirtableCSV(
+  results: { data: any[] },
+  setProgress: any,
+  progress: progressStateType
+) {
+  setProgress({ ...progress, loading: true })
+  const uploadProduct = results.data.map((dataItem: any) =>
+    axios
+      .post('/api/upload-csv-to-swell', {
+        dataItem,
+        numberOfProducts: results.data.length,
+      })
+      .then((response) => {
+        setProgress({
+          ...progress,
+          uploaded: response.data.uploaded,
+          total: response.data.total,
+          error: null,
+          loading: true,
+        })
+      })
+      .catch((error) => {
+        console.log('error-uploadAirtableCSV', error)
+        setProgress({
+          ...progress,
+          error,
+          loading: false,
+        })
+      })
   )
-}
-
-export function uploadAlgoliaCSV(results: { data: any[] }, setProgress: any) {
-  return axios.post(
-    '/api/upload-csv-to-algolia',
-    results.data,
-    axiosProgress(setProgress)
-  )
+  Promise.all(uploadProduct).then((response) => {
+    console.log('responseresponse', response)
+    setProgress({
+      ...progress,
+      loading: false,
+    })
+  })
 }

@@ -8,6 +8,7 @@ import { useEffect } from 'react'
 import DashboardProfile from '@/components/Dashboard/DashboardProfile'
 import DashboardSidebar from '@/components/Dashboard/DashboardSidebar'
 import { adminAuthAtom } from '@/lib/atomConfig'
+import 'react-toastify/dist/ReactToastify.css'
 
 interface Props {
   title: string

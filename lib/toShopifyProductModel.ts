@@ -46,48 +46,6 @@ export default function toShopifyProductModel(
       product['Image 10 Alt Text'],
     ],
     product_type_2: product['Type'],
-    product_images: [
-      {
-        link: product['Image 1'],
-        alt: product['Image 1 Alt Text'],
-      },
-      {
-        link: product['Image 2'],
-        alt: product['Image 2 Alt Text'],
-      },
-      {
-        link: product['Image 3'],
-        alt: product['Image 3 Alt Text'],
-      },
-      {
-        link: product['Image 4'],
-        alt: product['Image 4 Alt Text'],
-      },
-      {
-        link: product['Image 5'],
-        alt: product['Image 5 Alt Text'],
-      },
-      {
-        link: product['Image 7'],
-        alt: product['Image 7 Alt Text'],
-      },
-      {
-        link: product['Image 7'],
-        alt: product['Image 7 Alt Text'],
-      },
-      {
-        link: product['Image 8'],
-        alt: product['Image 8 Alt Text'],
-      },
-      {
-        link: product['Image 9'],
-        alt: product['Image 9 Alt Text'],
-      },
-      {
-        link: product['Image 10'],
-        alt: product['Image 10 Alt Text'],
-      },
-    ],
     weight_unit: product['Variant Weight Unit'],
     general_information: product['Body HTML'],
     product_seo_title: product['Product SEO Title'],

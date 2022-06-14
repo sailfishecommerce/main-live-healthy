@@ -29,9 +29,18 @@ export default function useToast() {
   function isLoading(): ReactText {
     setAppLoading(true)
     const toastId = toast.loading('Processing...', {
-      position: 'top-left',
+      position: 'top-right',
     })
     return toastId
+  }
+
+  function toastUpdate(toastId: any) {
+    toast.update(toastId.current, {
+      isLoading: false,
+      position: 'top-right',
+      closeButton: true,
+      autoClose: 5000,
+    })
   }
 
   function isSuccessful(toastId: any, message: string) {
@@ -64,6 +73,7 @@ export default function useToast() {
     isLoading,
     isSuccessful,
     hasError,
+    toastUpdate,
     loadingToast,
     updateToast,
   }

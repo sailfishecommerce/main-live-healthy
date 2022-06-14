@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import type { NextApiRequest, NextApiResponse } from 'next'
 import swell from 'swell-node'
 
@@ -14,18 +15,19 @@ export default async function UploadProductToSwellHandler(
   swellNodeInit()
   const productData = req.body.product
   const formatUrl = productData.fields['Image Src']?.split(';')
-  const formatUrlArray = await formattedUrlArray(formatUrl, productData)
+  const formatUrlArray = await formattedUrlArray(formatUrl.fields, productData)
   const swellProducts = toShopifyProductModel(
     productData.fields,
     formatUrlArray
   )
+
   switch (req.method) {
     case 'POST': {
       return await swell
         .post('/products', swellProducts)
         .then((response: any) => {
           total = total + 1
-
+          console.log('productResponse', response)
           if (!response?.errors) {
             count = count + 1
 

@@ -4,23 +4,29 @@ import { useCallback, useMemo, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 
 import { styles } from '@/components/Admin/styles'
+import type { progressStateType } from '@/types'
 
-type uploadCSVType = (results: { data: any[] }, setProgress: any) => void
+type uploadCSVType = (
+  results: { data: any[] },
+  setProgress: any,
+  progress: progressStateType
+) => void
 
 export default function useCSVDropzone(uploadCSV: uploadCSVType) {
-  const [progress, setProgress] = useState(0)
+  const [progress, setProgress] = useState({
+    uploaded: 0,
+    total: 0,
+    loading: false,
+    error: null,
+  })
 
   const onDrop = useCallback((acceptedFiles) => {
     const csvFile = acceptedFiles[0]
     Papa.parse(csvFile, {
       header: true,
       skipEmptyLines: true,
-      complete: async (results: any) => {
-        uploadCSV(results, setProgress)
-        await new Promise((resolve) => {
-          setTimeout(() => resolve('success'), 1000)
-        })
-        setProgress(0)
+      complete: (results: any) => {
+        uploadCSV(results, setProgress, progress)
       },
     })
   }, [])
@@ -29,7 +35,7 @@ export default function useCSVDropzone(uploadCSV: uploadCSVType) {
     onDrop,
     accept: {
       '.csv': [
-        '.csv, text/csv, application/vnd.ms-excel, application/csv, text/x-csv, application/x-csv, text/comma-separated-values, text/x-comma-separated-values',
+        'text/csv, application/vnd.ms-excel, application/csv, text/x-csv, application/x-csv, text/comma-separated-values, text/x-comma-separated-values',
       ],
     },
   })

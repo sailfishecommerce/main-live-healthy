@@ -53,22 +53,6 @@ const formattedUrlArray = (formattedUrl: string[], record: any) => {
         )
       : imageUrl
 
-    return formatProductImage(formatUrl, record.fields['Title'], index)
-  })
-  return Promise.all(urlArray)
-}
-
-export const formatCsvUrlArray = (formattedUrl: string[], record: any) => {
-  const urlArray = formattedUrl.map((imageUrl: string, index: number) => {
-    const formatUrl = imageUrl.includes(
-      'http://host-62-113-119-20.hosted-by-vdsina.ru/Pictures'
-    )
-      ? imageUrl.replace(
-          'http://host-62-113-119-20.hosted-by-vdsina.ru/Pictures',
-          'http://cwh-pictures-shopify.s3.us-east-2.amazonaws.com'
-        )
-      : imageUrl
-
     return formatProductImage(formatUrl, record['Title'], index)
   })
   return Promise.all(urlArray)

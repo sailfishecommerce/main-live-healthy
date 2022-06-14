@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable prefer-const */
 /* eslint-disable dot-notation */
 /* eslint-disable @typescript-eslint/no-shadow */
@@ -38,9 +37,6 @@ async function formatProductImage(url: string, name: string, index: number) {
             width: 800,
             height: 800,
           }
-          console.log('response', response)
-          console.log('imageData', imageData)
-
           return imageData
         })
     )

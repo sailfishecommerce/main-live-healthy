@@ -14,7 +14,6 @@ export default async function UploadProductToSwellHandler(
   res: NextApiResponse
 ) {
   swellNodeInit()
-  let uploaded = req.body.uploaded
   const productData = req.body.dataItem
   const total = req.body.numberOfProducts
   const formatUrl = productData['Image Src']?.split(';')
@@ -39,16 +38,16 @@ export default async function UploadProductToSwellHandler(
               response.product_categories
             )
             const formattedProduct = { ...formattedCategories, ...response }
-            console.log('totaltotal', total, 'uploadeduploaded', uploaded)
 
             return index
               .saveObject(formattedProduct, {
                 autoGenerateObjectIDIfNotExist: true,
               })
               .then((responseItem: any) => {
-                uploaded = uploaded + 1
                 console.log('response-algolia', responseItem)
-                return res.status(200).json({ status: 'ok', uploaded, total })
+                return res
+                  .status(200)
+                  .json({ status: 'ok', uploaded: true, total })
               })
               .catch((error) => {
                 console.log('error', error)

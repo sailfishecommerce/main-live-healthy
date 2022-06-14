@@ -13,13 +13,14 @@ export default function uploadCSV(
     axios
       .post('/api/upload-csv-to-swell', {
         dataItem,
-        uploaded: 0,
         numberOfProducts: results.data.length,
       })
       .then((response) => {
+        const count = 0
+        const uploadedCount = response.data.uploaded ? count + 1 : count
         setProgress({
           ...progress,
-          uploaded: response.data.uploaded,
+          uploaded: uploadedCount,
           total: response.data.total,
           error: null,
           loading: true,

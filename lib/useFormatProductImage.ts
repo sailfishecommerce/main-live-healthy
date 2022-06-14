@@ -40,6 +40,7 @@ async function formatProductImage(url: string, name: string, index: number) {
           }
           console.log('response', response)
           console.log('imageData', imageData)
+
           return imageData
         })
     )

@@ -9,12 +9,12 @@ import toShopifyProductModel from '@/lib/toShopifyProductModel'
 import formattedUrlArray from '@/lib/useFormatProductImage'
 import { hierarchicalCategory } from '@/utils/formatToAlgolia'
 
-let uploaded = 0
 export default async function UploadProductToSwellHandler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   swellNodeInit()
+  let uploaded = req.body.uploaded
   const productData = req.body.dataItem
   const total = req.body.numberOfProducts
   const formatUrl = productData['Image Src']?.split(';')
@@ -39,7 +39,6 @@ export default async function UploadProductToSwellHandler(
               response.product_categories
             )
             const formattedProduct = { ...formattedCategories, ...response }
-            uploaded = uploaded + 1
             console.log('totaltotal', total, 'uploadeduploaded', uploaded)
 
             return index
@@ -47,6 +46,7 @@ export default async function UploadProductToSwellHandler(
                 autoGenerateObjectIDIfNotExist: true,
               })
               .then((responseItem: any) => {
+                uploaded = uploaded + 1
                 console.log('response-algolia', responseItem)
                 return res.status(200).json({ status: 'ok', uploaded, total })
               })

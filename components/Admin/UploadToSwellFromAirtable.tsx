@@ -17,11 +17,13 @@ export default function UploadToSwellFromAirtable() {
       loadingToast(toastID)
     } else {
       toastUpdate(toastID)
+      toast.success(`${progress.uploaded} products uploaded`)
     }
   }, [progress.loading])
 
   useEffect(() => {
     toast.error(progress.error)
+    toast.success(`${progress.uploaded} products uploaded`)
   }, [progress.error])
 
   return (

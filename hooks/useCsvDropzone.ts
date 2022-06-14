@@ -15,11 +15,12 @@ export default function useCSVDropzone(uploadCSV: uploadCSVType) {
     Papa.parse(csvFile, {
       header: true,
       skipEmptyLines: true,
-      complete: (results: any) => {
+      complete: async (results: any) => {
         uploadCSV(results, setProgress)
-        setTimeout(() => {
-          setProgress(0)
-        }, 1000)
+        await new Promise((resolve) => {
+          setTimeout(() => resolve('success'), 1000)
+        })
+        setProgress(0)
       },
     })
   }, [])

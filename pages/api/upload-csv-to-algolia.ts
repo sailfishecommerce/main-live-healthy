@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
-import fs from 'fs'
-
+import algoliasearch from 'algoliasearch'
 import type { NextApiRequest, NextApiResponse } from 'next'
 
 import toShopifyProductModel from '@/lib/toShopifyProductModel'
@@ -12,46 +11,46 @@ export default function UploadToAlgoliaHandler(
   res: NextApiResponse
 ) {
   const csvProducts: any = req.body
+  const client = algoliasearch(
+    `${process.env.NEXT_PUBLIC_INSTANTSEARCH_APP_ID}`,
+    `${process.env.NEXT_PUBLIC_ALGOLIA_ADMIN_API_KEY}`
+  )
+  const index = client.initIndex(
+    `${process.env.NEXT_PUBLIC_INSTANTSEARCH_INDEX_NAME}`
+  )
 
   switch (req.method) {
     case 'POST': {
-      const productArray: any = []
-      let productObj = {}
-      return csvProducts.map(async (csvProduct: any) => {
-        const formatProductUrl = csvProduct['Image Src']?.split(';')
-        return await formatCsvUrlArray(formatProductUrl, csvProduct)
-          .then((response) => {
-            const formattedProduct = toShopifyProductModel(csvProduct, response)
-            const hierarchicalCategoryObj = hierarchicalCategory(
-              formattedProduct.product_categories
-            )
-            productObj = { ...hierarchicalCategoryObj, ...csvProduct }
-            productArray.push(productObj)
-            return productArray
-          })
-          .then((productArrayResponse) => {
-            console.log(
-              'productArrayResponse.length',
-              productArrayResponse.length
-            )
-            return fs.writeFile(
-              './new-products.json',
-              JSON.stringify(productArrayResponse),
-              (err: any) => {
-                if (err) {
-                  res.status(400).json({ status: err })
-                  throw err
-                } else {
-                  console.log('File written successfully\n')
-                  console.log('The written has the following contents:')
-                  console.log(fs.readFileSync('./new-products.json', 'utf8'))
-                }
-              }
-            )
-          })
-      })
-    }
+      // const productArray: any = []
 
+      const promises = csvProducts.map(async (csvProduct: any) => {
+        const formatProductUrl = csvProduct['Image Src']?.split(';')
+        const formattedCSV = await formatCsvUrlArray(
+          formatProductUrl,
+          csvProduct
+        )
+        const formattedProduct = toShopifyProductModel(csvProduct, formattedCSV)
+        const hierarchicalCategoryObj = hierarchicalCategory(
+          formattedProduct.product_categories
+        )
+        const productObj = { ...hierarchicalCategoryObj, ...csvProduct }
+        return productObj
+      })
+      return Promise.all(promises).then((result) =>
+        index
+          .saveObjects(result, {
+            autoGenerateObjectIDIfNotExist: true,
+          })
+          .then((response) => {
+            console.log('response-algolia', response)
+            res.status(200).json(response)
+          })
+          .catch((error) => {
+            console.log('error', error)
+            res.status(400).json(error)
+          })
+      )
+    }
     default:
       return null
   }

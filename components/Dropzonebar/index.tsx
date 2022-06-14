@@ -17,6 +17,7 @@ export default function Dropzonebar({
   style,
   dropzone,
 }: DropzonebarType) {
+  console.log('progress', progress)
   const { getRootProps, acceptedFiles, getInputProps, isDragActive } = dropzone
   let percentage: any
   if (progress.uploaded && progress.total > 0) {

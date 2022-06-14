@@ -8,6 +8,12 @@ function axiosProgress(setProgress: any) {
       )
       setProgress(progressVal)
     },
+    onDownloadProgress: (progressEvent: any) => {
+      const progressVal = Math.floor(
+        50 + (progressEvent.loaded / progressEvent.total) * 50
+      )
+      setProgress(progressVal)
+    },
   }
 }
 

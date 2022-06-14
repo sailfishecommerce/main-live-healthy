@@ -21,8 +21,6 @@ export default function UploadToAlgoliaHandler(
 
   switch (req.method) {
     case 'POST': {
-      // const productArray: any = []
-
       const promises = csvProducts.map(async (csvProduct: any) => {
         const formatProductUrl = csvProduct['Image Src']?.split(';')
         const formattedCSV = await formatCsvUrlArray(

@@ -1,5 +1,5 @@
 import Dropzonebar from '@/components/Dropzonebar'
-import useCSVDropzone from '@/hooks/useCSVDropzone'
+import useCSVDropzone from '@/hooks/useCsvDropzone'
 import { uploadAirtableCSV } from '@/utils/uploadCSV'
 
 export default function UploadToSwellFromAirtable() {

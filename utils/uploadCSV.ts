@@ -3,15 +3,8 @@ import axios from 'axios'
 function axiosProgress(setProgress: any) {
   return {
     onUploadProgress: (progressEvent: any) => {
-      const progressVal = Math.floor(
-        (progressEvent.loaded * 100) / progressEvent.total
-      )
-      setProgress(progressVal)
-    },
-    onDownloadProgress: (progressEvent: any) => {
-      const progressVal = Math.floor(
-        50 + (progressEvent.loaded / progressEvent.total) * 50
-      )
+      const { loaded, total } = progressEvent
+      const progressVal = Math.floor((loaded * 100) / total)
       setProgress(progressVal)
     },
   }

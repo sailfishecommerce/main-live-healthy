@@ -1,5 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useRef } from 'react'
+import { toast } from 'react-toastify'
 
 import Dropzonebar from '@/components/Dropzonebar'
 import useCSVDropzone from '@/hooks/useCsvDropzone'
@@ -18,6 +19,10 @@ export default function UploadToSwellFromAirtable() {
       toastUpdate(toastID)
     }
   }, [progress.loading])
+
+  useEffect(() => {
+    toast.error(progress.error)
+  }, [progress.error])
 
   return (
     <div className="w-4/5 mx-auto mt-10">

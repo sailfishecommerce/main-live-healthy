@@ -30,7 +30,7 @@ export default function uploadCSV(
         console.log('error-uploadAirtableCSV', error)
         setProgress({
           ...progress,
-          error,
+          error: error?.message,
           loading: false,
         })
       })

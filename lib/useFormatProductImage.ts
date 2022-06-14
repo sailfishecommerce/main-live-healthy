@@ -37,7 +37,7 @@ async function formatProductImage(url: string, name: string, index: number) {
             width: 800,
             height: 800,
           }
-          return imageData?.file?.url
+          return imageData
         })
     )
 }

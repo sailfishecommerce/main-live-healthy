@@ -1,4 +1,3 @@
-/* eslint-disable no-unneeded-ternary */
 /* eslint-disable no-console */
 import axios from 'axios'
 
@@ -10,9 +9,7 @@ export default function uploadCSV(
   progress: progressStateType
 ) {
   setProgress({ ...progress, loading: true })
-  results.data.map((dataItem: any, index) => {
-    const lastIndex = results.data.length - 1
-    const loadingStatus = lastIndex === index ? false : true
+  const promises = results.data.map((dataItem: any) => {
     return axios
       .post('/api/upload-csv-to-swell', {
         dataItem,
@@ -26,7 +23,7 @@ export default function uploadCSV(
             : prevState.uploaded,
           total: response.data.total,
           error: null,
-          loading: loadingStatus,
+          loading: true,
         }))
       })
       .catch((error) => {
@@ -37,5 +34,11 @@ export default function uploadCSV(
           loading: false,
         })
       })
+  })
+  Promise.all(promises).then(() => {
+    setProgress((prevState: progressStateType) => ({
+      ...prevState,
+      loading: false,
+    }))
   })
 }

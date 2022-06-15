@@ -20,6 +20,11 @@
     "link": "/admin/order-tracking"
   },
   {
+    "icons": "cookie-policy",
+    "text": "Cookie Policy",
+    "link": "/admin/cookie-policy"
+  },
+  {
     "icons": "privacy-and-policy",
     "text": "Privacy Policy",
     "link": "/admin/privacy-and-policy"

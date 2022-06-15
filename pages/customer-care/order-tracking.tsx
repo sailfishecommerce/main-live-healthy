@@ -1,12 +1,20 @@
-import CustomercareView from '@/components/View/CustomercareView'
-import JsonContent from '@/json/customer-care.json'
+import SpinnerRipple from '@/components/Loader/SpinnerLoader'
+import TempCustomercareView from '@/components/View/TempCustomerCareView'
+import useArticleData from '@/hooks/useArticleData'
 import CustomercareLayout from '@/layouts/customer-care-layout'
 
 export default function OrderTrackingPage() {
-  const pageContent = JsonContent.content[5]
+  const { databaseData } = useArticleData('order-tracking')
+
   return (
     <CustomercareLayout>
-      <CustomercareView pageContent={pageContent} />
+      {databaseData === null ? (
+        <SpinnerRipple />
+      ) : (
+        databaseData && (
+          <TempCustomercareView pageContent={databaseData?.blocks} />
+        )
+      )}
     </CustomercareLayout>
   )
 }

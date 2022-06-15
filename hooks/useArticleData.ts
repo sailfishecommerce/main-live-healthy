@@ -7,8 +7,9 @@ import { useEffect, useState } from 'react'
 import firebaseConfig from '@/lib/firebaseConfig'
 
 export default function useArticleData(databaseNode: string) {
-  const [databaseData, setDatabaseData] = useState(null)
-  const [loading, setLoading] = useState(false)
+  const [databaseData, setDatabaseData] = useState<{ blocks: any[] } | null>(
+    null
+  )
 
   function readDatabase() {
     initializeApp(firebaseConfig)
@@ -24,10 +25,8 @@ export default function useArticleData(databaseNode: string) {
   }
 
   useEffect(() => {
-    setLoading(true)
     readDatabase()
-    setLoading(false)
-  }, [])
+  }, [databaseNode])
 
-  return { databaseData, loading }
+  return { databaseData }
 }

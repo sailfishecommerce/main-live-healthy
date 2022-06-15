@@ -81,8 +81,8 @@ class DashboardEditor extends Component {
   }
 
   onEditorStateChange = (editorState) => {
-    const contentState = editorState.getCurrentContent()
-    this.saveContent(contentState)
+    // const contentState = editorState.getCurrentContent()
+    // this.saveContent(contentState)
     this.setState({
       editorState,
     })

@@ -5,7 +5,7 @@ import menuLinks from '@/json/menu.json'
 export default function MenuLinks() {
   return (
     <div className="menuLinks w-3/4 flex items-center justify-between">
-      <div className="md:flex items-center w-1/3 2xl:text-lg lg:text-md">
+      <div className="md:flex items-center w-1/2 2xl:text-lg lg:text-md">
         <Whatsapp />
         <span className="font-bold text-green-500 mx-1">Whatsapp:</span>
         +853 7073 5292

@@ -1,32 +1,32 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-console */
+import { convertFromRaw, convertToRaw } from 'draft-js'
 import { initializeApp } from 'firebase/app'
 import { getDatabase, ref, onValue } from 'firebase/database'
-import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
 import firebaseConfig from '@/lib/firebaseConfig'
 
-export default function useArticleData() {
-  const router = useRouter()
+export default function useArticleData(databaseNode: string) {
   const [databaseData, setDatabaseData] = useState(null)
   const [loading, setLoading] = useState(false)
 
-  const dbRoute = router.route.split('/')[2]
-
-  useEffect(() => {
-    setLoading(true)
+  function readDatabase() {
     initializeApp(firebaseConfig)
     const db = getDatabase()
-    const databaseRefId = `articles/${dbRoute}/content`
-    console.log('databaseRefId', databaseRefId)
+    const databaseRefId = `articles/${databaseNode}/content`
     const dbRef = ref(db, databaseRefId)
     onValue(dbRef, (snapshot) => {
       const dbArticle = snapshot.val()
-      console.log('dbArticle', dbArticle)
-      setDatabaseData(JSON.parse(dbArticle))
-      setLoading(false)
+      const contentState = convertFromRaw(JSON.parse(dbArticle))
+      const contentStateRaw = convertToRaw(contentState)
+      setDatabaseData(contentStateRaw)
     })
+  }
+
+  useEffect(() => {
+    setLoading(true)
+    readDatabase()
+    setLoading(false)
   }, [])
 
   return { databaseData, loading }

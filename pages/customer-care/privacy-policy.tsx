@@ -5,7 +5,7 @@ import CustomercareLayout from '@/layouts/customer-care-layout'
 
 export default function PrivacyPolicyPage() {
   const pageContent = JsonContent.content[1]
-  const { loading, databaseData } = useArticleData()
+  const { loading, databaseData } = useArticleData('privacy-and-policy')
 
   console.log('databaseData', databaseData)
   console.log('loading', loading)

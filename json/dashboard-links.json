@@ -15,6 +15,11 @@
     "link": "/admin/upload-products"
   },
   {
+    "icons": "order-tracking",
+    "text": "Order Tracking",
+    "link": "/admin/order-tracking"
+  },
+  {
     "icons": "privacy-and-policy",
     "text": "Privacy Policy",
     "link": "/admin/privacy-and-policy"

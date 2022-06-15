@@ -7,7 +7,7 @@ import DashboardLayout from '@/layouts/dashboard-layout'
 const DynamicDashboardEditor = dynamic(
   () =>
     import(
-      /* webpackChunkName: 'DynamicDashboardEditor' */ '@/components/Dashboard/DashboardEditor'
+      /* webpackChunkName: 'DashboardEditor' */ '@/components/Dashboard/DashboardEditor'
     ),
   {
     ssr: false,

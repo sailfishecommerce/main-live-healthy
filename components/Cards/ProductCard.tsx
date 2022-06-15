@@ -42,7 +42,7 @@ export default function ProductCard({
   const { addItemToCart } = useShoppingCart()
 
   const addToCartHandler = () => addItemToCart.mutate({ product, quantity: 1 })
-  const productVendorLink = product.vendor.includes(' ')
+  const productVendorLink = product.vendor?.includes(' ')
     ? `/search/${product.vendor}`
     : `/vendor/${product.vendor}`
 

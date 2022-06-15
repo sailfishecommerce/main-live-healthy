@@ -15,15 +15,16 @@ export default function UploadToSwellFromAirtable() {
   useEffect(() => {
     if (progress.loading) {
       loadingToast(toastID)
-    } else {
+    } else if (progress.uploaded > 0) {
       toastUpdate(toastID)
-      toast.success(`${progress.uploaded} products uploaded`)
     }
   }, [progress.loading])
 
   useEffect(() => {
     toast.error(progress.error)
-    toast.success(`${progress.uploaded} products uploaded`)
+    if (progress.uploaded > 0) {
+      toast.success(`${progress.uploaded} products uploaded`)
+    }
   }, [progress.error])
 
   return (
@@ -31,7 +32,7 @@ export default function UploadToSwellFromAirtable() {
       <h1 className="text-center text-2xl">
         Upload your CSV files from
         <span className="font-semibold ml-1">
-          Airtable to Swell and Algolia
+          Airtable to Swell and Algolia at once
         </span>
       </h1>
       <p className="text-lg mt-4 text-center">

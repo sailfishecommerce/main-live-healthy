@@ -28,7 +28,7 @@ export default function CustomercareLayout({
         </div>
         <main className="flex items-start mx-auto">
           <CustomerCareSidebar />
-          <div className="w-full lg:w-3/4 p-4 lg:p-8 bg-gray-100">
+          <div className="w-full lg:w-3/4 p-4 lg:p-8 bg-gray-100 h-full policy">
             {children}
           </div>
         </main>
@@ -38,6 +38,9 @@ export default function CustomercareLayout({
           .content {
             font-family: 'Commissioner', sans-serif;
             font-display: swap;
+          }
+          .policy {
+            height: fit-content;
           }
         `}
       </style>

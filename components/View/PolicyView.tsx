@@ -12,7 +12,7 @@ export default function PolicyView({ dbNode }: Props) {
   return (
     <>
       {databaseData === null ? (
-        <SpinnerRipple />
+        <SpinnerRipple centerRipple />
       ) : (
         databaseData && <CustomercareView pageContent={databaseData?.blocks} />
       )}

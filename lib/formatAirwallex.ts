@@ -14,6 +14,7 @@ export function formatIntentData(cart: any, paymentForm: any) {
     request_id: uuidv4(),
     metadata: {
       shipment_price: cart?.shipmentTotal,
+      email: form.email,
       shipment_method: cart.shipmentRating.services.filter(
         (service: any) => service.price === cart.shipmentTotal
       )[0],

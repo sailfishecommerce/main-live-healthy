@@ -32,8 +32,7 @@ export default function AirwallexInvoicePage({ invoice }: any) {
               {`${invoice.order.shipping.address.postcode} , ${invoice.order.shipping.address.street}`}
             </p>
             <p className="font-thin">
-              {invoice.order.shipping.address.city}
-              {invoice.order.shipping.address.state}
+              {`${invoice.order.shipping.address.city} ${invoice.order.shipping.address.state}`}
             </p>
             <p className="font-thin">
               {getCountry(invoice.order.shipping.address.country_code)}
@@ -42,11 +41,13 @@ export default function AirwallexInvoicePage({ invoice }: any) {
           <div className="customer">
             <h1 className="font-semibold text-lg my-2">CUSTOMER</h1>
             <p className="font-thin">{customerName}</p>
+            <p className="font-thin">{invoice.order.shipping.phone_number}</p>
             <p className="font-thin">{invoice.order.shipping.address.street}</p>
             <p className="font-thin">{`${invoice.order.shipping.address.postcode} ${invoice.order.shipping.address.city}`}</p>
             <p className="font-thin">
-              {invoice.order.shipping.address.state}
-              {getCountry(invoice.order.shipping.address.country_code)}
+              {` ${invoice.order.shipping.address.state} ${getCountry(
+                invoice.order.shipping.address.country_code
+              )}`}
             </p>
           </div>
           <div className="group">

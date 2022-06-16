@@ -13,16 +13,18 @@ export default function DashboardMainView({
     <>
       <div className="bg-gray-100 col-span-4 px-8 main">
         <DashboardSearch />
-        {router.pathname === '/admin/invoice/[id]' && (
-          <Button
-            className="absolute bg-red-500 hover:bg-red-400 text-white px-2 py-1 text-md rounded-md mt-4 flex items-center"
-            type="button"
-            text="Go back"
-            icon={<BsArrowLeft />}
-            onClick={() => router.back()}
-          />
-        )}
-        {children}
+        <div className="dashboard-content relative mt-3">
+          {router.pathname === '/admin/invoice/[id]' && (
+            <Button
+              className="absolute z-0 top-0 bg-red-500 hover:bg-red-400 text-white px-2 py-1 text-md rounded-md flex items-center"
+              type="button"
+              text="Go back"
+              icon={<BsArrowLeft />}
+              onClick={() => router.back()}
+            />
+          )}
+          <div className="children-wrapper z-2 pt-6">{children}</div>
+        </div>
       </div>
       <style jsx>
         {`

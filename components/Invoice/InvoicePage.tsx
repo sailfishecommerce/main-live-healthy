@@ -17,7 +17,7 @@ export default function InvoicePage({ invoice }: any) {
     <>
       <div
         style={style}
-        className="invoice-receipt my-12 bg-white p-6 mt-20 rounded-xl"
+        className="invoice-receipt my-12 bg-white p-6 rounded-xl"
       >
         <div className="row flex justify-between  mb-16 items-center">
           <Logo className="w-1/2" />

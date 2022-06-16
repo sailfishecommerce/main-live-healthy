@@ -13,7 +13,7 @@ export function DownloadButton({ invoice }: any) {
       >
         <button
           type="button"
-          className="downloadbutton flex  mt-4 items-center bg-mountain-green text-white py-1 p-2 rounded-md"
+          className="downloadbutton flex  absolute right-0 top-0 items-center bg-mountain-green text-white py-1 p-2 rounded-md"
         >
           <BiDownload className="mr-2" size={24} />
           Download

@@ -15,7 +15,7 @@ export default function DashboardMainView({
         <DashboardSearch />
         {router.pathname === '/admin/invoice/[id]' && (
           <Button
-            className="bg-mountain-green text-white px-2 py-1 text-md rounded-md mt-4 flex items-center"
+            className="absolute bg-red-500 hover:bg-red-400 text-white px-2 py-1 text-md rounded-md mt-4 flex items-center"
             type="button"
             text="Go back"
             icon={<BsArrowLeft />}

@@ -3,6 +3,7 @@ import Link from 'next/link'
 
 import DashboardCard from '@/components/Dashboard/DashboardCard'
 import DashboardMainView from '@/components/Dashboard/DashboardMainView'
+import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import OrdersTable from '@/components/Table/OrdersTable'
 import { useOrderInvoice } from '@/hooks/useAdminOrder'
 import useAirwallexAdmin from '@/hooks/useAirwallexAdmin'
@@ -35,7 +36,7 @@ export default function Admin() {
           {status === 'error' ? (
             'unable to fetch orders'
           ) : status === 'loading' ? (
-            'loading ...'
+            <SpinnerRipple centerRipple />
           ) : (
             <OrdersTable
               orders={orders}

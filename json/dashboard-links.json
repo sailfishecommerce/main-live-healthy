@@ -1,56 +1,62 @@
 [
   {
-    "icons": "dashboard",
+    "icon": "dashboard",
     "text": "Dashboard",
     "link": "/admin"
   },
   {
-    "icons": "privacy-and-policy",
+    "icon": "privacy-and-policy",
     "text": "Invoice",
     "link": "/admin/invoice"
   },
   {
-    "icons": "upload-products",
+    "icon": "upload-products",
     "text": "Upload Products",
     "link": "/admin/upload-products"
   },
   {
-    "icons": "order-tracking",
-    "text": "Order Tracking",
-    "link": "/admin/order-tracking"
+    "icon": "policies",
+    "text": "Policies",
+    "group": [
+      {
+        "icon": "order-tracking",
+        "text": "Order Tracking",
+        "link": "/admin/order-tracking"
+      },
+      {
+        "icon": "cookie-policy",
+        "text": "Cookie Policy",
+        "link": "/admin/cookie-policy"
+      },
+      {
+        "icon": "privacy-and-policy",
+        "text": "Privacy Policy",
+        "link": "/admin/privacy-and-policy"
+      },
+      {
+        "icon": "terms-and-condition",
+        "text": "Terms & condition",
+        "link": "/admin/terms-and-condition"
+      },
+      {
+        "icon": "shipping-info",
+        "text": "Shipping Info",
+        "link": "/admin/shipping-info"
+      },
+      {
+        "icon": "return-and-refunds",
+        "text": "Return & Refunds",
+        "link": "/admin/return-and-refunds"
+      }
+    ]
   },
   {
-    "icons": "cookie-policy",
-    "text": "Cookie Policy",
-    "link": "/admin/cookie-policy"
-  },
-  {
-    "icons": "privacy-and-policy",
-    "text": "Privacy Policy",
-    "link": "/admin/privacy-and-policy"
-  },
-  {
-    "icons": "terms-and-condition",
-    "text": "Terms & condition",
-    "link": "/admin/terms-and-condition"
-  },
-  {
-    "icons": "shipping-info",
-    "text": "Shipping Info",
-    "link": "/admin/shipping-info"
-  },
-  {
-    "icons": "return-and-refunds",
-    "text": "Return & Refunds",
-    "link": "/admin/return-and-refunds"
-  },
-  {
-    "icons": "blog",
+    "icon": "blog",
     "text": "Blog",
     "link": "/admin/blog"
   },
   {
-    "icons": "settings",
+    "icon": "settings",
     "text": "Settings",
     "link": "/admin/settings"
   }

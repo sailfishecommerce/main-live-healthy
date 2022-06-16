@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import DashboardMainView from '@/components/Dashboard/DashboardMainView'
 import Invoice from '@/components/Invoice'
 import AirwallexInvoice from '@/components/Invoice/AirwallexInvoice'
+import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import { useOrderInvoice } from '@/hooks/useAdminOrder'
 import DashboardLayout from '@/layouts/dashboard-layout'
 import { SearchPageLayout } from '@/layouts/search-page-layout'
@@ -39,7 +40,7 @@ export default function InvoicePage(props: any) {
           {status === 'error' ? (
             'unable to fetch page data'
           ) : status === 'loading' ? (
-            'loading ...'
+            <SpinnerRipple centerRipple />
           ) : invoice !== undefined ? (
             <Invoice invoice={invoice[0]} />
           ) : (

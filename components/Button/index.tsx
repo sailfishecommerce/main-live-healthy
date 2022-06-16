@@ -4,9 +4,16 @@ interface Props {
   text: string
   onClick?: () => void
   type: any | 'button' | 'reset' | 'submit'
+  icon?: any
 }
 
-export default function Button({ className, text, onClick, type }: Props) {
+export default function Button({
+  className,
+  icon,
+  text,
+  onClick,
+  type,
+}: Props) {
   return (
     <>
       <button
@@ -15,7 +22,7 @@ export default function Button({ className, text, onClick, type }: Props) {
         className={className}
         onClick={onClick}
       >
-        {text}
+        {icon} <span className="ml-2">{text}</span>
       </button>
       <style jsx>
         {`

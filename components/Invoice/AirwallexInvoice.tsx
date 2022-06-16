@@ -5,10 +5,13 @@ import DownloadInvoice from '@/components/Invoice/DownloadInvoice'
 export default function AirwallexInvoice({ invoice }: any) {
   return (
     <>
-      <DownloadInvoice
-        invoice={invoice}
-        invoicePdf={<AirwallexInvoicePdf invoice={invoice} />}
-      />
+      {invoice && (
+        <DownloadInvoice
+          invoice={invoice}
+          type="airwallex"
+          invoicePdf={<AirwallexInvoicePdf invoice={invoice} />}
+        />
+      )}
       {invoice && <AirwallexInvoicePage invoice={invoice} />}
     </>
   )

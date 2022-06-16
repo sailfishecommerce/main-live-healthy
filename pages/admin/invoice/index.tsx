@@ -42,7 +42,7 @@ export default function InvoicePage() {
   return (
     <DashboardLayout title="Admin page">
       <DashboardMainView>
-        <div className="policy mt-4">
+        <div className="policy -mt-10">
           <div className="flex items-center justify-between my-4">
             <h1 className="lg:text-2xl my-0 py-0 text-xl">
               Livehealthy Order Invoices

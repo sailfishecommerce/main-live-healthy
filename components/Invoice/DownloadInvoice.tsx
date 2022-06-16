@@ -1,12 +1,13 @@
 import { PDFDownloadLink } from '@react-pdf/renderer'
 import { BiDownload } from 'react-icons/bi'
 
-export default function DownloadInvoice({ invoice, invoicePdf }: any) {
+export default function DownloadInvoice({ invoice, invoicePdf, type }: any) {
+  const pdfFileName = type === 'stripe' ? invoice?.number : invoice?.id
   return (
     <>
       <PDFDownloadLink
         document={invoicePdf}
-        fileName={`invoice-${invoice.number}.pdf`}
+        fileName={`invoice-${pdfFileName}.pdf`}
       >
         <button
           type="button"

@@ -5,10 +5,13 @@ import InvoicePdf from '@/components/Invoice/InvoicePdf'
 export default function Invoice({ invoice }: any) {
   return (
     <>
-      <DownloadInvoice
-        invoice={invoice}
-        invoicePdf={<InvoicePdf invoice={invoice} />}
-      />
+      {invoice && (
+        <DownloadInvoice
+          invoice={invoice}
+          type="stripe"
+          invoicePdf={<InvoicePdf invoice={invoice} />}
+        />
+      )}
       {invoice && <InvoicePage invoice={invoice} />}
     </>
   )

@@ -13,18 +13,26 @@ export default function Admin() {
   const { data, status } = useOrderInvoice()
   const { airwallexPayments } = useAirwallexAdmin()
 
+  const maxAirwallexArrayLength =
+    airwallexPayments.length > 10 ? 5 : airwallexPayments.length
+  const reversedAirwallexArray = [...airwallexPayments].reverse()
+  const maxAirwallexDataArray = reversedAirwallexArray.slice(
+    0,
+    maxAirwallexArrayLength
+  )
   let orders
   if (status === 'success') {
     const orderInvoiceArray = data?.data.invoiceArray
-
-    orders = orderInvoiceArray.slice(0, 10)
+    const ordersLength =
+      airwallexPayments.length > 10 ? 5 : 10 - airwallexPayments.length
+    orders = orderInvoiceArray.slice(0, ordersLength)
   }
 
   return (
     <DashboardLayout title="Admin page">
       <DashboardMainView>
         <DashboardCard />
-        <div className="orders bg-white rounded-xl px-8 py-6">
+        <div className="orders bg-white rounded-xl px-8 py-6 mb-16">
           <div className="row flex items-center justify-between">
             <h1 className="text-xl font-bold mt-">Orders</h1>
             <Link passHref href="/admin/invoice">
@@ -41,7 +49,7 @@ export default function Admin() {
             <OrdersTable
               orders={orders}
               showInput={false}
-              airwallexDataArray={airwallexPayments}
+              airwallexDataArray={maxAirwallexDataArray}
             />
           )}
         </div>

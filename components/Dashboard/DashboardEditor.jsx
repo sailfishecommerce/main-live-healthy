@@ -95,7 +95,7 @@ class DashboardEditor extends Component {
 
     return (
       <>
-        <div className="policy mt-4 flex justify-between">
+        <div className="policy -mt-4 flex justify-between">
           <h1 className="text-xl">
             {this.props.editorKey?.toUpperCase().replaceAll('-', ' ')}
           </h1>

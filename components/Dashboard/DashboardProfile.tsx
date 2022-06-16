@@ -15,7 +15,7 @@ export default function DashboardProfile() {
       <div className="profile-icon bg-mountain-green text-white h-20 w-20 mt-4 rounded-full flex items-center justify-center text-2xl">
         {displayName?.toLocaleUpperCase()}
       </div>
-      <p className="text-sm">
+      <p className="text-sm mt-3">
         Hello, <span className="mountain-green">{adminAuth?.email}</span>
       </p>
       <button

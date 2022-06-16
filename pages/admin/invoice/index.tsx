@@ -1,16 +1,26 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-nested-ternary */
+import dynamic from 'next/dynamic'
 import { useEffect, useState } from 'react'
 import { BiDownload } from 'react-icons/bi'
 
 import DashboardMainView from '@/components/Dashboard/DashboardMainView'
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
+import InvoiceTable from '@/components/Table/InvoiceTable'
 import OrdersTable from '@/components/Table/OrdersTable'
 import useAdminOrder from '@/hooks/useAdminOrder'
 import useAirwallexAdmin from '@/hooks/useAirwallexAdmin'
 import useInvoiceTable from '@/hooks/useInvoiceTable'
 import useMulipleInvoiceDownload from '@/hooks/useMulipleInvoiceDownload'
 import DashboardLayout from '@/layouts/dashboard-layout'
+
+const DynamicInvoiceTable = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'InvoiceTable' */ '@/components/Table/InvoiceTable'
+    ),
+  { ssr: false }
+)
 
 export default function InvoicePage() {
   const { data, status } = useAdminOrder()
@@ -68,6 +78,7 @@ export default function InvoicePage() {
             />
           )}
         </div>
+        {/* {status === 'success' && <DynamicInvoiceTable />} */}
       </DashboardMainView>
     </DashboardLayout>
   )

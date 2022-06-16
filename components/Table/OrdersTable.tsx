@@ -22,7 +22,7 @@ export default function OrdersTable({
   const allIndexArray: number[] = []
   const airwallexArrayLength = airwallexDataArray.length
   return (
-    <table className="table w-full rounded-3xl my-4">
+    <table className="table w-full rounded-3xl my-4 mb-12">
       <OrderTableHead showInput={showInput} />
       <tbody>
         {airwallexDataArray.length > 0 &&

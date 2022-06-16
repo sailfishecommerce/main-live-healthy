@@ -1,7 +1,9 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import { BsFillCaretDownFill, BsFillCaretUpFill } from 'react-icons/bs'
 
+import AdminIcons from '@/components/Icons/AdminIcons'
 import dashboardLinks from '@/json/dashboard-links.json'
 
 interface DashboardLinkProps {
@@ -25,14 +27,17 @@ interface DashboardGroupProps {
 function DashboardLink({ linkItem, activeLink }: DashboardLinkProps) {
   const activeRouteLink =
     activeLink === linkItem?.link
-      ? 'active hover:text-green-500 font-bold border-r-4 border-green-500 text-black bg-gray-100'
+      ? 'font-bold border-r-4 border-green-500 mountain-green bg-gray-100'
       : 'text-gray'
   return (
     <li
-      className={`p-2 my-2 text-lg flex hover:bg-gray-100 ${activeRouteLink}`}
+      className={`p-2 my-2 text-lg flex hover:bg-gray-100 hover:text-red-500 ${activeRouteLink}`}
     >
       <Link passHref href={linkItem.link}>
-        <a className="w-full">{linkItem.text}</a>
+        <a className="w-full flex items-center">
+          <AdminIcons icon={linkItem.icon} />
+          <span className="ml-4">{linkItem.text}</span>
+        </a>
       </Link>
     </li>
   )
@@ -41,16 +46,23 @@ function DashboardLink({ linkItem, activeLink }: DashboardLinkProps) {
 function DashboardGroup({ activeLink, linkItemGroup }: DashboardGroupProps) {
   const [showLink, setShowLink] = useState(false)
   const activeStyle = showLink
-    ? 'bg-gray-100 active hover:text-green-500  border-r-4 border-green-500 font-bold '
+    ? 'bg-gray-100 border-r-4 border-green-500 font-bold '
     : ''
+  const caretDisplay = showLink ? (
+    <BsFillCaretUpFill />
+  ) : (
+    <BsFillCaretDownFill />
+  )
   return (
     <>
       <button
         type="button"
-        className={`my-2 text-lg flex hover:bg-gray-100 w-full p-2 ${activeStyle}`}
+        className={`my-2 text-lg flex hover:bg-gray-100 flex hover:text-red-500 items-center w-full p-2 ${activeStyle}`}
         onClick={() => setShowLink(!showLink)}
       >
-        {linkItemGroup.text}
+        <AdminIcons icon={linkItemGroup.icon} />
+        <span className="ml-4">{linkItemGroup.text}</span>
+        <span className="ml-4">{caretDisplay}</span>
       </button>
       {showLink &&
         linkItemGroup.group &&

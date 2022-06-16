@@ -5,7 +5,7 @@
     "link": "/admin"
   },
   {
-    "icon": "privacy-and-policy",
+    "icon": "invoice",
     "text": "Invoice",
     "link": "/admin/invoice"
   },

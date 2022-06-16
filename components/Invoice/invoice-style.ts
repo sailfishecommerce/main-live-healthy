@@ -33,7 +33,13 @@ export const styles = StyleSheet.create({
     width: '30%',
   },
   customerView: {
-    width: '30%',
+    width: '22%',
+  },
+  paymentMethod: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    width: '48%',
   },
   date: {
     fontSize: 14,
@@ -45,8 +51,13 @@ export const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-end',
   },
+
   orderNumber: {
     fontSize: 25,
+    fontWeight: 1000,
+  },
+  idNumber: {
+    fontSize: 15,
     fontWeight: 1000,
   },
   fbIcon: {
@@ -116,12 +127,7 @@ export const styles = StyleSheet.create({
     borderBottom: '1px solid gray',
     paddingVertical: 5,
   },
-  paymentMethod: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    width: '40%',
-  },
+
   storeName: {
     fontWeight: 1000,
     fontFamily: 'Lato Bold',
@@ -177,6 +183,7 @@ export const itemStyles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     alignItems: 'center',
+    backgroundColor: 'white',
     borderBottom: '1px solid gray',
   },
   imageWrapper: {

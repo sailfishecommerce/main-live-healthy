@@ -91,7 +91,7 @@ export default function DashboardLinks() {
           />
         ) : (
           <DashboardGroup
-            key={linkItem.link}
+            key={linkItem.icon}
             linkItemGroup={linkItem}
             activeLink={routePath}
           />

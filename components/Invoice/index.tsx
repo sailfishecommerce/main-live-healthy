@@ -1,39 +1,14 @@
-import { PDFDownloadLink } from '@react-pdf/renderer'
-import { BiDownload } from 'react-icons/bi'
-
+import DownloadInvoice from '@/components/Invoice/DownloadInvoice'
 import InvoicePage from '@/components/Invoice/InvoicePage'
 import InvoicePdf from '@/components/Invoice/InvoicePdf'
-
-export function DownloadButton({ invoice }: any) {
-  return (
-    <>
-      <PDFDownloadLink
-        document={<InvoicePdf invoice={invoice} />}
-        fileName={`invoice-${invoice.number}.pdf`}
-      >
-        <button
-          type="button"
-          className="downloadbutton flex  absolute right-0 top-0 items-center bg-mountain-green text-white py-1 p-2 rounded-md"
-        >
-          <BiDownload className="mr-2" size={24} />
-          Download
-        </button>
-      </PDFDownloadLink>
-      <style jsx>{`
-        .downloadbutton {
-          float: right;
-          clear: both;
-        }
-      `}</style>
-    </>
-  )
-}
 
 export default function Invoice({ invoice }: any) {
   return (
     <>
-      {invoice && <DownloadButton invoice={invoice} />}
-
+      <DownloadInvoice
+        invoice={invoice}
+        invoicePdf={<InvoicePdf invoice={invoice} />}
+      />
       {invoice && <InvoicePage invoice={invoice} />}
     </>
   )

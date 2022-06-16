@@ -14,7 +14,7 @@ export default function AirwallexInvoicePage({ invoice }: any) {
     <>
       <div
         style={style}
-        className="invoice-receipt my-12 mt-20 bg-white p-6 rounded-xl"
+        className="invoice-receipt my-12 bg-white p-6 rounded-xl"
       >
         <div className="row flex justify-between mb-16 items-center">
           <Logo className="w-1/2" />
@@ -32,7 +32,7 @@ export default function AirwallexInvoicePage({ invoice }: any) {
               {`${invoice.order.shipping.address.postcode} , ${invoice.order.shipping.address.street}`}
             </p>
             <p className="font-thin">
-              {invoice.order.shipping.address.city}{' '}
+              {invoice.order.shipping.address.city}
               {invoice.order.shipping.address.state}
             </p>
             <p className="font-thin">

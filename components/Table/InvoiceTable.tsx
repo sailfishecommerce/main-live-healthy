@@ -11,13 +11,15 @@ import { paymentInvoiceAtom } from '@/lib/atomConfig'
 interface InvoiceTableProps {
   stripeData: []
   showPagination?: boolean
+  selectRow?: boolean
 }
 
 export default function InvoiceTable({
   stripeData,
   showPagination = true,
+  selectRow = true,
 }: InvoiceTableProps) {
-  const { tableInstance } = useAdminInvoice(stripeData)
+  const { tableInstance } = useAdminInvoice(stripeData, selectRow)
   const [, setPaymentInvoice] = useAtom(paymentInvoiceAtom)
 
   const {

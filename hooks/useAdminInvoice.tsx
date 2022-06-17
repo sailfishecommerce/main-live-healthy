@@ -6,7 +6,7 @@ import InvoiceTableCheckbox from '@/components/Table/InvoiceTableCheckbox'
 import useAirwallexAdmin from '@/hooks/useAirwallexAdmin'
 import formatTable from '@/utils/formatTable'
 
-export default function useAdminInvoice(stripeData: []) {
+export default function useAdminInvoice(stripeData: [], selectRow: boolean) {
   const { airwallexPayments } = useAirwallexAdmin()
 
   const stripeInvoiceData = useMemo(() => {
@@ -47,22 +47,25 @@ export default function useAdminInvoice(stripeData: []) {
     usePagination,
     useRowSelect,
     (hooks: any) => {
-      hooks.visibleColumns.push((columnItem: any) => [
-        {
-          id: 'selection',
-          Header: ({ getToggleAllRowsSelectedProps }: any) => (
-            <div>
-              <InvoiceTableCheckbox {...getToggleAllRowsSelectedProps()} />
-            </div>
-          ),
-          Cell: ({ row }: any) => (
-            <div>
-              <InvoiceTableCheckbox {...row.getToggleRowSelectedProps()} />
-            </div>
-          ),
-        },
-        ...columnItem,
-      ])
+      return (
+        selectRow &&
+        hooks.visibleColumns.push((columnItem: any) => [
+          {
+            id: 'selection',
+            Header: ({ getToggleAllRowsSelectedProps }: any) => (
+              <div>
+                <InvoiceTableCheckbox {...getToggleAllRowsSelectedProps()} />
+              </div>
+            ),
+            Cell: ({ row }: any) => (
+              <div>
+                <InvoiceTableCheckbox {...row.getToggleRowSelectedProps()} />
+              </div>
+            ),
+          },
+          ...columnItem,
+        ])
+      )
     }
   )
 

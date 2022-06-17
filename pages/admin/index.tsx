@@ -32,6 +32,7 @@ export default function Admin() {
             <InvoiceTable
               stripeData={data?.data?.results}
               showPagination={false}
+              selectRow={false}
             />
           )}
         </div>

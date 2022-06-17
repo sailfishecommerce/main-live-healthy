@@ -7,7 +7,8 @@ export default function InvoiceTableBody({ tableInstance }: any) {
   const { getTableBodyProps, page, prepareRow } = tableInstance
 
   function viewInvoice(id: string) {
-    router.push(`/admin/invoice/${id}`)
+    const routeId = id?.includes('#') ? id.split('#')[1] : id
+    router.push(`/admin/invoice/${routeId}`)
   }
 
   return (

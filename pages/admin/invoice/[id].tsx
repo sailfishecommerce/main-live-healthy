@@ -20,12 +20,15 @@ export default function InvoicePage(props: any) {
   let airwallexInvoice
   if (status === 'success') {
     const airwallexPaymentData = airwallexAdminPayment.filter(
-      (airwallexData: any) => airwallexData.id === router.query.id
+      (airwallexData: { id: string }) => airwallexData.id === router.query.id
     )
 
     const stripePaymentData = data.data.invoiceArray.filter(
-      (invoiceData: { id: any }) => invoiceData.id === router.query.id
+      (invoiceData: { number: string }) => {
+        return invoiceData.number === `#${router.query.id}`
+      }
     )
+
     if (airwallexPaymentData.length > 0) {
       airwallexInvoice = airwallexPaymentData
     } else {

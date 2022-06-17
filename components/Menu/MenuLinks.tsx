@@ -8,7 +8,9 @@ export default function MenuLinks() {
       <div className="md:flex items-center w-1/2 2xl:text-lg lg:text-md">
         <Whatsapp />
         <span className="font-bold text-green-500 mx-1">Whatsapp:</span>
-        +853 7073 5292
+        <a className="hover:text-red-500" href="tel:+85370735393">
+          +853 7073 5292
+        </a>
       </div>
       <ul className="lg:flex items-center justify-between w-3/5">
         {menuLinks.primaryMenu.map((menuItem) => (

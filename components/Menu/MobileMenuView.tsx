@@ -32,7 +32,12 @@ export default function MobileMenuView() {
           <div className="reach-us border rounded-md p-4 mb-4">
             <div className="flex items-center">
               <Whatsapp />
-              <span className="font-medium ml-4">Call us: +853 7073 5292</span>
+              <span className="font-medium ml-4">
+                Call us:{' '}
+                <a className="hover:text-red-500" href="tel:+85370735393">
+                  +853 7073 5292
+                </a>
+              </span>
             </div>
             <hr className="w-full border-b border-gray-100 my-4" />
             <p className="text-sm">

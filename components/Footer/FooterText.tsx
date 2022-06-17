@@ -6,7 +6,12 @@ export default function FooterText() {
       <div className="call-us bg-white rounded-lg p-3 w-full lg:w-5/6 my-4 md:my-3">
         <span className="flex items-center">
           <FaWhatsapp fill="green" />
-          <p className="font-bold mx-2">Call Us: +853 7073 5292</p>
+          <p className="font-bold mx-2">
+            Call Us:
+            <a className="hover:text-red-500" href="tel:+85370735393">
+              +853 7073 5292
+            </a>
+          </p>
         </span>
         <hr />
         <div className="opening-hrs">

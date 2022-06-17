@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable react/no-array-index-key */
 import { useRouter } from 'next/router'
 
@@ -18,14 +19,14 @@ export default function InvoiceTableBody({ tableInstance }: any) {
           prepareRow(row)
           const rowOrderId = row.original.orderNumber
           return (
-            <tr
-              key={index}
-              {...row.getRowProps()}
-              onClick={() => viewInvoice(rowOrderId)}
-            >
+            <tr key={index} {...row.getRowProps()}>
               {row.cells.map((cell: any, i: number) => {
+                const validCell =
+                  cell.value !== undefined
+                    ? () => viewInvoice(rowOrderId)
+                    : null
                 return (
-                  <td key={i} {...cell.getCellProps()}>
+                  <td key={i} {...cell.getCellProps()} onClick={validCell}>
                     {cell.render('Cell')}
                   </td>
                 )

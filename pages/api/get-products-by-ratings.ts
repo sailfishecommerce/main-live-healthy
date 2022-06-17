@@ -11,12 +11,13 @@ export default async function GetProductsInRangeHandler(
   res: NextApiResponse
 ) {
   const productRange = req.body.query
+
   switch (req.method) {
     case 'POST': {
       return await swell
         .get('/products', {
           where: { select_store: 'livehealthy', rating: productRange },
-          limit: 15,
+          limit: 30,
         })
         .then((response: { results: any }) => {
           return res.status(200).json(response.results)

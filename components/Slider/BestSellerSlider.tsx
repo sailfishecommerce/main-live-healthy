@@ -2,12 +2,15 @@
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 
 import Product from '@/components/Cards/ProductCard'
-import useLiveHealthyProduct from '@/hooks/useLivehealthyProduct'
+import { useProductInRange } from '@/hooks/useLivehealthyProduct'
 import '@splidejs/splide/dist/css/splide.min.css'
 import selectRandomColor from '@/lib/selectRandomColor'
 
 export default function BestSellerSlider() {
-  const [data, status] = useLiveHealthyProduct()
+  const [data, status] = useProductInRange({
+    query: { $gt: 4 },
+    id: 'bestSeller',
+  })
 
   return (
     <section className="itemSlider best-seller-slider py-4 px-4 xl:py-8 relative w-full bg-gray-platinum mx-auto flex relative z-10 flex-col my-4">

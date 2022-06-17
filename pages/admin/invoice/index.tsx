@@ -78,7 +78,7 @@ export default function InvoicePage() {
             />
           )}
         </div>
-        {/* {status === 'success' && <DynamicInvoiceTable />} */}
+        {status === 'success' && <DynamicInvoiceTable />}
       </DashboardMainView>
     </DashboardLayout>
   )

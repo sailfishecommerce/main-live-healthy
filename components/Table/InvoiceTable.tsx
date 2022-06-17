@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/no-onchange */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-nested-ternary */
@@ -6,6 +5,7 @@ import { useMemo } from 'react'
 import { useTable, usePagination } from 'react-table'
 
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
+import InvoicePagination from '@/components/Table/InvoicePagination'
 import useAdminOrder from '@/hooks/useAdminOrder'
 import useAirwallexAdmin from '@/hooks/useAirwallexAdmin'
 import formatTable from '@/utils/formatTable'
@@ -53,23 +53,8 @@ export default function InvoiceTable() {
     },
     usePagination
   )
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    page,
-    prepareRow,
-
-    canPreviousPage,
-    canNextPage,
-    pageOptions,
-    pageCount,
-    gotoPage,
-    nextPage,
-    previousPage,
-    setPageSize,
-    state: { pageIndex, pageSize },
-  } = tableInstance
+  const { getTableProps, getTableBodyProps, headerGroups, page, prepareRow } =
+    tableInstance
 
   return (
     <>
@@ -108,74 +93,10 @@ export default function InvoiceTable() {
               })}
             </tbody>
           </table>
-          <div className="pagination">
-            <button
-              type="button"
-              disabled={!canPreviousPage}
-              onClick={() => gotoPage(0)}
-            >
-              {'<<'}
-            </button>{' '}
-            <button
-              type="button"
-              disabled={!canPreviousPage}
-              onClick={() => previousPage()}
-            >
-              {'<'}
-            </button>{' '}
-            <button
-              type="button"
-              disabled={!canNextPage}
-              onClick={() => nextPage()}
-            >
-              {'>'}
-            </button>{' '}
-            <button
-              type="button"
-              disabled={!canNextPage}
-              onClick={() => gotoPage(pageCount - 1)}
-            >
-              {'>>'}
-            </button>{' '}
-            <span className="ml-4">
-              Page{' '}
-              <strong>
-                {pageIndex + 1} of {pageOptions.length}
-              </strong>{' '}
-            </span>
-            <span>
-              | Go to page:{' '}
-              <input
-                style={{ width: '100px' }}
-                type="number"
-                defaultValue={pageIndex + 1}
-                onChange={(e) => {
-                  const pageVal = e.target.value
-                    ? Number(e.target.value) - 1
-                    : 0
-                  gotoPage(pageVal)
-                }}
-              />
-            </span>{' '}
-            <select
-              value={pageSize}
-              onChange={(e) => setPageSize(Number(e.target.value))}
-            >
-              {[10, 20, 30, 40, 50].map((pageSizeVal) => (
-                <option key={pageSizeVal} value={pageSizeVal}>
-                  Show {pageSizeVal}
-                </option>
-              ))}
-            </select>
-          </div>
+          <InvoicePagination tableInstance={tableInstance} />
         </>
       )}
       <style jsx>{`
-        .pagination button {
-          border: 1px solid black;
-          padding: 2px 5px;
-          margin: 0px 5px;
-        }
         .table,
         td,
         th {
@@ -187,9 +108,6 @@ export default function InvoiceTable() {
           width: 100%;
           padding: 0px 10px;
           background-color: white;
-        }
-        .pagination {
-          margin: 30px 0px;
         }
       `}</style>
     </>

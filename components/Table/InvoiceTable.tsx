@@ -2,14 +2,16 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-nested-ternary */
 import { useMemo } from 'react'
-import { useTable, usePagination, useRowSelect } from 'react-table'
+import { BiSortAlt2 } from 'react-icons/bi'
+import { FaSortAmountDownAlt, FaSortAmountUp } from 'react-icons/fa'
+import { useTable, usePagination, useRowSelect, useSortBy } from 'react-table'
 
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import InvoicePagination from '@/components/Table/InvoicePagination'
+import InvoiceTableCheckbox from '@/components/Table/InvoiceTableCheckbox'
 import useAdminOrder from '@/hooks/useAdminOrder'
 import useAirwallexAdmin from '@/hooks/useAirwallexAdmin'
 import formatTable from '@/utils/formatTable'
-import InvoiceTableCheckbox from './InvoiceTableCheckbox'
 
 export default function InvoiceTable() {
   const { airwallexPayments } = useAirwallexAdmin()
@@ -25,7 +27,7 @@ export default function InvoiceTable() {
   }, [status])
 
   const airwallexInvoiceData = useMemo(() => {
-    const airwallexDataArray = formatTable(airwallexPayments)
+    const airwallexDataArray = [...formatTable(airwallexPayments).reverse()]
     return airwallexDataArray
   }, [])
 
@@ -52,6 +54,7 @@ export default function InvoiceTable() {
       data,
       initialState: { pageIndex: 0 },
     },
+    useSortBy,
     usePagination,
     useRowSelect,
     (hooks: any) => {
@@ -79,10 +82,10 @@ export default function InvoiceTable() {
     headerGroups,
     page,
     prepareRow,
+    // selectedFlatRows,
     state: { selectedRowIds },
   } = tableInstance
 
-  console.log('selectedRowIds', selectedRowIds)
   return (
     <>
       {status === 'error' ? (
@@ -91,13 +94,28 @@ export default function InvoiceTable() {
         <SpinnerRipple centerRipple />
       ) : (
         <>
+          <p>Selected Rows: {Object.keys(selectedRowIds).length}</p>
           <table className="table" {...getTableProps()}>
             <thead>
               {headerGroups.map((headerGroup: any, index: number) => (
                 <tr key={index} {...headerGroup.getHeaderGroupProps()}>
                   {headerGroup.headers.map((column: any, indexN: number) => (
-                    <th key={indexN} {...column.getHeaderProps()}>
+                    <th
+                      key={indexN}
+                      {...column.getHeaderProps(column.getSortByToggleProps())}
+                    >
                       {column.render('Header')}
+                      <span className="ml-2">
+                        {column.isSorted ? (
+                          column.isSortedDesc ? (
+                            <FaSortAmountDownAlt />
+                          ) : (
+                            <FaSortAmountUp />
+                          )
+                        ) : (
+                          <BiSortAlt2 />
+                        )}
+                      </span>
                     </th>
                   ))}
                 </tr>
@@ -135,6 +153,19 @@ export default function InvoiceTable() {
           width: 100%;
           padding: 0px 10px;
           background-color: white;
+        }
+        .table tr th:first-child span {
+          display: none;
+        }
+        .table tr th {
+          display: table-cell;
+          position: relative;
+        }
+        .table tr th span {
+          margin: 0;
+          position: absolute;
+          top: 14px;
+          margin-left: 10px;
         }
       `}</style>
     </>

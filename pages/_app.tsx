@@ -9,6 +9,7 @@ import { scrollToTop } from '@/utils/scrollToTop'
 import '@/styles/_index.css'
 import '@/styles/index.css'
 import '@/styles/global.css'
+import 'react-toastify/dist/ReactToastify.css'
 
 const LayoutWrapper = dynamic(
   (): any =>

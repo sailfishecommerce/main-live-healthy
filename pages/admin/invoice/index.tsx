@@ -39,6 +39,8 @@ export default function InvoicePage() {
     setDownloadInvoice(true)
   }
 
+  const dataResult = data?.data?.results
+
   return (
     <DashboardLayout title="Admin page">
       <DashboardMainView>
@@ -62,7 +64,7 @@ export default function InvoicePage() {
           ) : status === 'loading' ? (
             <SpinnerRipple centerRipple />
           ) : (
-            <InvoiceTable stripeData={data?.data?.results} />
+            dataResult && <InvoiceTable stripeData={dataResult} />
           )}
         </div>
       </DashboardMainView>

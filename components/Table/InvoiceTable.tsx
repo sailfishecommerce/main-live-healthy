@@ -1,8 +1,12 @@
-import InvoicePagination from '@/components/Table/InvoicePagination'
-import useAdminInvoice from '@/hooks/useAdminInvoice'
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useAtom } from 'jotai'
+import { useEffect } from 'react'
 
-import InvoiceTableBody from './InvoiceTableBody'
-import InvoiceTableHead from './InvoiceTableHead'
+import InvoicePagination from '@/components/Table/InvoicePagination'
+import InvoiceTableBody from '@/components/Table/InvoiceTableBody'
+import InvoiceTableHead from '@/components/Table/InvoiceTableHead'
+import useAdminInvoice from '@/hooks/useAdminInvoice'
+import { paymentInvoiceAtom } from '@/lib/atomConfig'
 
 interface InvoiceTableProps {
   stripeData: []
@@ -10,6 +14,7 @@ interface InvoiceTableProps {
 
 export default function InvoiceTable({ stripeData }: InvoiceTableProps) {
   const { tableInstance } = useAdminInvoice(stripeData)
+  const [, setPaymentInvoice] = useAtom(paymentInvoiceAtom)
 
   const {
     getTableProps,
@@ -18,11 +23,17 @@ export default function InvoiceTable({ stripeData }: InvoiceTableProps) {
     state: { selectedRowIds },
   } = tableInstance
 
-  console.log('selectedFlatRows', selectedFlatRows)
+  const selectedIds: any = []
+
+  useEffect(() => {
+    selectedFlatRows.map((selectedFlatRow: any) =>
+      selectedIds.push(selectedFlatRow.values.orderNumber)
+    )
+    setPaymentInvoice(selectedIds)
+  }, [selectedRowIds])
 
   return (
     <>
-      <p>Selected Rows: {Object.keys(selectedRowIds).length}</p>
       <table className="table" {...getTableProps()}>
         <InvoiceTableHead headerGroups={headerGroups} />
         <InvoiceTableBody tableInstance={tableInstance} />

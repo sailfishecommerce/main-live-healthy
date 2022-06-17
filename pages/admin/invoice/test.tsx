@@ -1,24 +1,24 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-nested-ternary */
-import { useAtom } from 'jotai'
 import { useEffect, useState } from 'react'
 import { BiDownload } from 'react-icons/bi'
 
 import DashboardMainView from '@/components/Dashboard/DashboardMainView'
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
-import InvoiceTable from '@/components/Table/InvoiceTable'
+import OrdersTable from '@/components/Table/OrdersTable'
 import useAdminOrder from '@/hooks/useAdminOrder'
+import useAirwallexAdmin from '@/hooks/useAirwallexAdmin'
+import useInvoiceTable from '@/hooks/useInvoiceTable'
 import useMulipleInvoiceDownload from '@/hooks/useMultipleInvoiceDownload'
 import DashboardLayout from '@/layouts/dashboard-layout'
-import { paymentInvoiceAtom } from '@/lib/atomConfig'
 
 export default function InvoicePage() {
-  const [downloadInvoices, setDownloadInvoice] = useState(false)
-  const [paymentInvoice] = useAtom(paymentInvoiceAtom)
   const { data, status } = useAdminOrder()
+  const [downloadInvoices, setDownloadInvoice] = useState(false)
+  const { selectedInvoice } = useInvoiceTable()
+  const selectedInvoiceCount = selectedInvoice.selected.length
   const { invoiceMultipleDownload } = useMulipleInvoiceDownload()
-
-  const selectedInvoiceCount = paymentInvoice.length
+  const { airwallexPayments } = useAirwallexAdmin()
 
   const selectedInvoiceText =
     selectedInvoiceCount > 1
@@ -62,7 +62,10 @@ export default function InvoicePage() {
           ) : status === 'loading' ? (
             <SpinnerRipple centerRipple />
           ) : (
-            <InvoiceTable stripeData={data?.data?.results} />
+            <OrdersTable
+              orders={data?.data?.results}
+              airwallexDataArray={airwallexPayments}
+            />
           )}
         </div>
       </DashboardMainView>

@@ -131,3 +131,9 @@ export const airwallexAdminPaymentAtom = atomWithStorage<any>(
   'airwallexAdminPaymentAtom',
   []
 )
+
+// new-admin invoice
+export const paymentInvoiceAtom = atom({
+  selected: 0,
+  selectedInvoice: [],
+})

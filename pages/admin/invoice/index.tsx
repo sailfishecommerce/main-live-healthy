@@ -13,6 +13,7 @@ import DashboardLayout from '@/layouts/dashboard-layout'
 
 export default function InvoicePage() {
   const { data, status } = useAdminOrder()
+  const [selected, setSelected] = useState()
   const [downloadInvoices, setDownloadInvoice] = useState(false)
   const { selectedInvoice } = useInvoiceTable()
   const selectedInvoiceCount = selectedInvoice.selected.length

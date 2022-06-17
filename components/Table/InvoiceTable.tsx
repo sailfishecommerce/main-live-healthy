@@ -2,13 +2,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-nested-ternary */
 import { useMemo } from 'react'
-import { useTable, usePagination } from 'react-table'
+import { useTable, usePagination, useRowSelect } from 'react-table'
 
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import InvoicePagination from '@/components/Table/InvoicePagination'
 import useAdminOrder from '@/hooks/useAdminOrder'
 import useAirwallexAdmin from '@/hooks/useAirwallexAdmin'
 import formatTable from '@/utils/formatTable'
+import InvoiceTableCheckbox from './InvoiceTableCheckbox'
 
 export default function InvoiceTable() {
   const { airwallexPayments } = useAirwallexAdmin()
@@ -51,11 +52,37 @@ export default function InvoiceTable() {
       data,
       initialState: { pageIndex: 0 },
     },
-    usePagination
+    usePagination,
+    useRowSelect,
+    (hooks: any) => {
+      hooks.visibleColumns.push((columnItem: any) => [
+        {
+          id: 'selection',
+          Header: ({ getToggleAllRowsSelectedProps }: any) => (
+            <div>
+              <InvoiceTableCheckbox {...getToggleAllRowsSelectedProps()} />
+            </div>
+          ),
+          Cell: ({ row }: any) => (
+            <div>
+              <InvoiceTableCheckbox {...row.getToggleRowSelectedProps()} />
+            </div>
+          ),
+        },
+        ...columnItem,
+      ])
+    }
   )
-  const { getTableProps, getTableBodyProps, headerGroups, page, prepareRow } =
-    tableInstance
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    page,
+    prepareRow,
+    state: { selectedRowIds },
+  } = tableInstance
 
+  console.log('selectedRowIds', selectedRowIds)
   return (
     <>
       {status === 'error' ? (

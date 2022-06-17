@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { useQuery } from 'react-query'
 
 import useSwell from '@/hooks/useSwell'
 
@@ -73,22 +72,5 @@ export default function useSwellProducts() {
     getProductsInCategory,
     searchProducts,
     getProduct,
-  }
-}
-
-export function useLiveHealthyProduct(): any {
-  function fetchLiveHealthyProducts() {
-    return axios.get('/api/get-livehealthy-product')
-  }
-  const {
-    data: liveHealthyProduct,
-    status: liveHealthyProductStatus,
-    error: liveHealthyProductError,
-  } = useQuery('fetchLiveHealthyProducts', fetchLiveHealthyProducts)
-
-  return {
-    liveHealthyProduct,
-    liveHealthyProductStatus,
-    liveHealthyProductError,
   }
 }

@@ -5,7 +5,7 @@ import { useAtom } from 'jotai'
 import ProductTabCard from '@/components/Cards/ProductTabCard'
 import ProductTabLoader from '@/components/Loader/ProductTabLoader'
 import ProductTabSliderDropdown from '@/components/Slider/ProductTabSliderDropdown'
-import { useProductInRange } from '@/hooks/useLivehealthyProduct'
+import useProductInRange from '@/hooks/useLivehealthyProduct'
 import { productRatingAtom } from '@/lib/atomConfig'
 import '@splidejs/splide/dist/css/splide.min.css'
 

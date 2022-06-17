@@ -4,9 +4,9 @@ import byteSize from '@/utils/byteSize'
 interface DropzonebarType {
   progress: progressStateType
   dropzone: {
-    getRootProps: ({ style }: any) => void
+    getRootProps: any
     acceptedFiles: File[]
-    getInputProps: () => void
+    getInputProps: any
     isDragActive: boolean
   }
   style: unknown

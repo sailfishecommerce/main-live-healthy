@@ -44,7 +44,7 @@ export default function InvoicePagination({ tableInstance }: any): JSX.Element {
   } = tableInstance
   return (
     <>
-      <div className="pagination flex items-center">
+      <div className="pagination flex items-center mx-auto justify-center">
         {paginationArray.map((paginationItem, index) => (
           <button
             key={index}
@@ -90,9 +90,10 @@ export default function InvoicePagination({ tableInstance }: any): JSX.Element {
       <style jsx>
         {`
           .pagination button {
-            border: 1px solid black;
+            border: 1px solid var(--gray-lavender);
             padding: 2px 5px;
             margin: 0px 5px;
+            background-color: white;
           }
           .pagination {
             margin: 30px 0px;

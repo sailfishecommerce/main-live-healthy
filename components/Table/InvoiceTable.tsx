@@ -10,9 +10,13 @@ import { paymentInvoiceAtom } from '@/lib/atomConfig'
 
 interface InvoiceTableProps {
   stripeData: []
+  showPagination?: boolean
 }
 
-export default function InvoiceTable({ stripeData }: InvoiceTableProps) {
+export default function InvoiceTable({
+  stripeData,
+  showPagination = true,
+}: InvoiceTableProps) {
   const { tableInstance } = useAdminInvoice(stripeData)
   const [, setPaymentInvoice] = useAtom(paymentInvoiceAtom)
 
@@ -38,7 +42,7 @@ export default function InvoiceTable({ stripeData }: InvoiceTableProps) {
         <InvoiceTableHead headerGroups={headerGroups} />
         <InvoiceTableBody tableInstance={tableInstance} />
       </table>
-      <InvoicePagination tableInstance={tableInstance} />
+      {showPagination && <InvoicePagination tableInstance={tableInstance} />}
       <style jsx>{`
         .table {
           width: 100%;

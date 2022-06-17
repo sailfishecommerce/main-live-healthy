@@ -100,20 +100,8 @@ export const logsAtom = atomWithStorage('logs', null)
 export const adminAuthAtom = atomWithStorage<any>('adminAuth', null)
 
 // admin-invoice
-export const adminInvoiceAtom = atom(null)
-export const selectedInvoiceAtom = atom<{
-  selected: number[]
-  selectAll: boolean
-  type: 'body' | 'head' | null
-}>({
-  selected: [],
-  selectAll: false,
-  type: null,
-})
-export const deletedIndexAtom = atom<number[]>([])
-export const allIndexAtom = atom<number[]>([])
 export const loadingInvoiceAtom = atom(false)
-export const invoiceProductsAtom = atom<any>([])
+export const paymentInvoiceAtom = atom([])
 
 // ProductShowcase
 export const selectedVendorAtom = atom<selectedVendorAtomType>(null)
@@ -131,6 +119,3 @@ export const airwallexAdminPaymentAtom = atomWithStorage<any>(
   'airwallexAdminPaymentAtom',
   []
 )
-
-// new-admin invoice
-export const paymentInvoiceAtom = atom([])

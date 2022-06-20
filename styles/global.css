@@ -22,6 +22,9 @@ body {
   --light-gray: #f7f8fa;
   --light-red: #fd121240;
   --light-green: #16a26740;
+  --white: white;
+  --black: black;
+  --pale-red: #ed4444;
 }
 
 /* discount slider */

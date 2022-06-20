@@ -3,6 +3,11 @@ import { HexColorPicker } from 'react-colorful'
 import ColorBox from '@/components/Settings/ColorBox'
 import useColorPicker from '@/hooks/useColorPicker'
 
+const buttonGroup = [
+  { text: 'Reset to default', id: 1, className: 'reset' },
+  { text: 'Save Changes', id: 2, className: 'saveChanges' },
+]
+
 export default function ChangeSiteColorCode() {
   const { pickColorHandler, changeColorHandler, boxColor, colorPicker } =
     useColorPicker()
@@ -12,13 +17,16 @@ export default function ChangeSiteColorCode() {
       <h3 className="text-center font-semibold text-xl mb-6">
         Click on the Box to edit the Color
       </h3>
-      <div className="button-group">
-        <button type="button" className="reset">
-          Reset to default
-        </button>
-        <button type="button" className="saveChanges">
-          Save Changes
-        </button>
+      <div className="button-group mb-6">
+        {buttonGroup.map((buttonItem) => (
+          <button
+            key={buttonItem.id}
+            type="button"
+            className={buttonItem.className}
+          >
+            {buttonItem.text}
+          </button>
+        ))}
       </div>
       <div className="site-color-view">
         <ul className="color-view">
@@ -59,6 +67,35 @@ export default function ChangeSiteColorCode() {
           flex-direction: column;
           align-items: center;
           justify-content: end;
+        }
+        .button-group {
+          display: flex;
+          align-items: center;
+          justify-content: end;
+        }
+        .button-group button {
+          padding: 5px;
+          margin: 0px 20px;
+          color: var(--white);
+          border-radius: 5px;
+        }
+        .reset {
+          background-color: var(--pale-red);
+          border: 1px solid var(--pale-red);
+        }
+        button.reset:hover {
+          border: 1px solid var(--pale-red);
+          background-color: transparent;
+          color: var(--pale-red);
+        }
+        .saveChanges {
+          background-color: var(--mountain-green);
+          border: 1px solid var(--mountain-green);
+        }
+        button.saveChanges:hover {
+          border: 1px solid var(--mountain-green);
+          background-color: transparent;
+          color: var(--mountain-green);
         }
       `}</style>
     </div>

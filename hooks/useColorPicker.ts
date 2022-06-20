@@ -28,10 +28,11 @@ export default function useColorPicker() {
   useEffect(() => {
     if (siteColors.length === 0) {
       saveDefaultCodeToDBOnce()
+      siteColorsFromDB()
     } else {
       siteColorsFromDB()
     }
-  }, [])
+  }, [siteColors])
 
   function saveDefaultCodeToDBOnce() {
     const { writeData } = firebaseDatabase()

@@ -27,22 +27,20 @@ export default function useColorPicker() {
   const { loadingToast, updateToast } = useToast()
   const toastRef = useRef(null)
 
+  // save default colors to db
   useEffect(() => {
     if (!saveDefaultColorsToDb) {
       saveDefaultCodeToDBOnce().then(() => {
         setSaveDefaultColorsToDb(true)
       })
     }
-  }, [])
-
-  // read colors from db
-  useEffect(() => {
+    // read colors from db
     siteColorsFromDB()
   }, [])
 
   function saveDefaultCodeToDBOnce() {
     const { writeData } = firebaseDatabase()
-    return writeData('color-codes', JSON.stringify(siteColors))
+    return writeData('color-codes', JSON.stringify(colorCodes))
   }
 
   function saveColorChangesToDB(

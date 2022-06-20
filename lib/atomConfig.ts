@@ -119,3 +119,12 @@ export const airwallexAdminPaymentAtom = atomWithStorage<any>(
   'airwallexAdminPaymentAtom',
   []
 )
+
+export type colorType = Array<{
+  colorCode: string
+  colorKey: string
+  colorText: string
+}>
+
+// edit color
+export const boxColorAtom = atom<colorType>([])

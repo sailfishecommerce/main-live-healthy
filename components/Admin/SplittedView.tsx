@@ -33,7 +33,7 @@ export default function SplittedView({ viewList, defaultView, title }: Props) {
           })}
         </ul>
       </div>
-      <div className="settings-view w-2/3 border-l-2 px-4">
+      <div className="settings-view w-3/4 border-l-2 px-4">
         {splittedViewSwitch(defaultViewState)}
       </div>
     </div>

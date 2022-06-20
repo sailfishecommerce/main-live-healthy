@@ -27,7 +27,7 @@ export default function useColorPicker() {
   // save default colors to db
   useEffect(() => {
     if (siteColors.length === 0) {
-      saveDefaultCodeToDBOnce().then(() => {})
+      saveDefaultCodeToDBOnce()
     } else {
       siteColorsFromDB()
     }

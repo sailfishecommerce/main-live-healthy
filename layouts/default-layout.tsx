@@ -10,8 +10,8 @@ export default function DefaultLayout({
   const siteColorcode: { [key: string]: string } = {}
 
   siteColors.map((bColor) => {
-    const colorKey: string = bColor.colorKey
-    siteColorcode[colorKey] = bColor.colorCode
+    const colorKey: string = bColor?.colorKey
+    siteColorcode[colorKey] = bColor?.colorCode
     return siteColorcode
   })
 

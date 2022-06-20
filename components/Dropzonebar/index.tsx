@@ -75,8 +75,8 @@ export default function Dropzonebar({
             height: 100px;
             width: 100%;
             background-color: ${isDragActive
-              ? 'var(--tan-hide)'
-              : 'var(--tan-light-hide)'};
+              ? 'var(--color-3)'
+              : 'var(--color-4)'};
             padding: 10px;
             margin-top: 10px;
           }

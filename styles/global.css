@@ -56,23 +56,23 @@ ul.splide__pagination {
   text-decoration: line-through;
 }
 .mountain-green {
-  color: var(--mountain-green);
+  color: var(--color-1);
 }
 
 .hover-mountain-green:hover {
-  background-color: var(--mountain-green);
+  background-color: var(--color-1);
 }
 
 .mountain-green:hover {
-  color: var(--mountain-mist);
+  color: var(--color-2);
 }
 
 .mountain-mist {
-  color: var(--mountain-mist);
+  color: var(--color-2);
 }
 
 .tan-hide {
-  color: var(--tan-hide);
+  color: var(--color-3);
 }
 
 .gray-manatee {
@@ -92,23 +92,23 @@ ul.splide__pagination {
 }
 
 .bg-mountain-green {
-  background-color: var(--mountain-green);
+  background-color: var(--color-1);
 }
 
 .bg-mountain-green:hover {
-  background-color: var(--mountain-mist);
+  background-color: var(--color-2);
 }
 
 .bg-mountain-mist {
-  background-color: var(--mountain-mist);
+  background-color: var(--color-2);
 }
 
 .bg-mountain-mist:hover {
-  background-color: var(--mountain-green);
+  background-color: var(--color-1);
 }
 
 .bg-tan-hide {
-  background-color: var(--tan-hide);
+  background-color: var(--color-3);
 }
 .bg-tan-hide:hover {
   background-color: var(--tan-deep-hide);

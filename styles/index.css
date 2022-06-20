@@ -99,7 +99,7 @@ ul.ais-RefinementList-list {
 
 ul.ais-Menu-list .ais-Menu-count,
 ul.ais-RefinementList-list .ais-RefinementList-count {
-  background-color: var(--mountain-green);
+  background-color: var(--color-1);
   padding: 2px;
   color: white;
   border-radius: 5px;
@@ -141,13 +141,13 @@ li.ais-Menu-item.ais-Menu-item--selected {
 
 button.ais-RefinementList-showMore:hover {
   background-color: white;
-  border: 1px solid var(--mountain-green);
-  color: var(--mountain-green);
+  border: 1px solidvar(--color-1);
+  color: var(--color-1);
 }
 
 button.ais-RefinementList-showMore {
-  border: 1px solid var(--mountain-green);
-  background-color: var(--mountain-green);
+  border: 1px solidvar(--color-1);
+  background-color: var(--color-1);
   color: white;
   border-radius: 5px;
   margin: 15px 30px 15px 0px;

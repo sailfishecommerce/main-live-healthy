@@ -27,13 +27,13 @@ export default function Button({
       <style jsx>
         {`
           .light-green {
-            background-color: var(--mountain-green);
+            background-color: var(--color-1);
             color: white;
             padding: 10px;
             border-radius: 10px;
           }
           .light-green:hover {
-            background-color: var(--mountain-mist);
+            background-color: var(--color-2);
           }
           .plain {
             border: 1px solid black;
@@ -41,7 +41,7 @@ export default function Button({
             border-radius: 10px;
           }
           .plain:hover {
-            background-color: var(--mountain-green);
+            background-color: var(--color-1);
             color: white;
             border: none;
           }

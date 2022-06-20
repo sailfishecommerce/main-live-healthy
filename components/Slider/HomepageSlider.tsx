@@ -97,10 +97,10 @@ function HomepageSliderComponent() {
       <style jsx>
         {`
           .view-collection {
-            background-color: var(--mountain-green);
+            background-color: var(--color-1);
           }
           .view-collection:hover {
-            background-color: var(--mountain-mist);
+            background-color: var(--color-2);
           }
         `}
       </style>

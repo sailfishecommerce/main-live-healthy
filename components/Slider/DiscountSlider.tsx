@@ -53,7 +53,7 @@ function DiscountSliderComponent() {
                       background-color: #49366b;
                     }
                     .slider2 {
-                      background-color: var(--mountain-green);
+                      background-color: var(--color-1);
                     }
                   `}
                 </style>

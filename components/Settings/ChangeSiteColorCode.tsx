@@ -89,13 +89,13 @@ export default function ChangeSiteColorCode() {
           color: var(--pale-red);
         }
         .saveChanges {
-          background-color: var(--mountain-green);
-          border: 1px solid var(--mountain-green);
+          background-color: var(--color-1);
+          border: 1px solidvar(--color-1);
         }
         button.saveChanges:hover {
-          border: 1px solid var(--mountain-green);
+          border: 1px solidvar(--color-1);
           background-color: transparent;
-          color: var(--mountain-green);
+          color: var(--color-1);
         }
       `}</style>
     </div>

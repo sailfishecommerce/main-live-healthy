@@ -127,4 +127,4 @@ export type colorType = Array<{
 }>
 
 // edit color
-export const boxColorAtom = atom<colorType>([])
+export const boxColorAtom = atomWithStorage<colorType>('boxColorAtom', [])

@@ -42,10 +42,10 @@ function HomepageSliderControlsComponent({ content, activeIndex }: Props) {
             transition: unset;
           }
           .slider-item.active {
-            border-top: 3px solid var(--mountain-green);
+            border-top: 3px solidvar(--color-1);
           }
           .slider-item.active h4 {
-            color: var(--mountain-green);
+            color: var(--color-1);
           }
         `}
       </style>

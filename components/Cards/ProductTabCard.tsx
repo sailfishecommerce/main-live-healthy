@@ -65,14 +65,14 @@ export default function ProductTabCard({ product }: any) {
             font-display: swap;
           }
           .producttab-card:hover {
-            background-color: var(--tan-light-hide);
+            background-color: var(--color-4);
           }
           .add-to-cart {
             display: none;
           }
 
           .add-to-cart:hover {
-            background-color: var(--mountain-mist);
+            background-color: var(--color-2);
           }
 
           .producttab-card:hover .add-to-cart {

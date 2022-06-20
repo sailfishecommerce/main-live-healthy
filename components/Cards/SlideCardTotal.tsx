@@ -104,7 +104,7 @@ export default function SlideCardTotal() {
             background-color: var(--tan-deep-hide);
           }
           button.bg-mountain-green:hover {
-            background-color: var(--mountain-mist);
+            background-color: var(--color-2);
           }
         `}
       </style>

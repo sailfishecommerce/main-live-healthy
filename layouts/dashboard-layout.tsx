@@ -8,7 +8,9 @@ import { useEffect } from 'react'
 import DashboardProfile from '@/components/Dashboard/DashboardProfile'
 import DashboardSidebar from '@/components/Dashboard/DashboardSidebar'
 import { adminAuthAtom } from '@/lib/atomConfig'
+
 import 'react-toastify/dist/ReactToastify.css'
+import DefaultLayout from './default-layout'
 
 interface Props {
   title: string
@@ -28,7 +30,7 @@ export default function DashboardLayout({
   }, [])
 
   return (
-    <>
+    <DefaultLayout>
       <div className="admin w-full grid grid-cols-6 bg-white">
         <Head>
           <title>Live healthy stores | {title}</title>
@@ -42,6 +44,6 @@ export default function DashboardLayout({
           height: 100vh;
         }
       `}</style>
-    </>
+    </DefaultLayout>
   )
 }

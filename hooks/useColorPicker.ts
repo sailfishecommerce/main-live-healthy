@@ -1,9 +1,8 @@
 /* eslint-disable no-param-reassign */
 import { useAtom } from 'jotai'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import type { colorItemType } from '@/components/Settings/ColorBox'
-import colorCodes from '@/json/color-codes.json'
 import { boxColorAtom } from '@/lib/atomConfig'
 
 type stateType = colorItemType & {
@@ -37,8 +36,6 @@ export default function useColorPicker() {
       return bColor
     })
   }
-
-  useEffect(() => setBoxColor(colorCodes), [])
 
   function changeColorHandler(colorCode: string) {
     const updatedColor = changeColor(colorCode)

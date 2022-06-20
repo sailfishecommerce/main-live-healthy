@@ -3,6 +3,7 @@ import Head from 'next/head'
 import type { PropsWithChildren } from 'react'
 
 import Header from '@/components/Header'
+import DefaultLayout from '@/layouts/default-layout'
 
 // const Header = dynamic(
 //   () => import(/* webpackChunkName: 'Header' */ '@/components/Header'),
@@ -27,7 +28,7 @@ export default function Applayout({
   title,
 }: PropsWithChildren<Props>) {
   return (
-    <>
+    <DefaultLayout>
       <Head>
         <title>{title} | Sailfish e-commerce online store </title>
         <meta
@@ -38,6 +39,6 @@ export default function Applayout({
       <Header />
       {children}
       <Footer />
-    </>
+    </DefaultLayout>
   )
 }

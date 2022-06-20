@@ -24,14 +24,6 @@ const ProviderLayout = dynamic(
     import(/* webpackChunkName: 'ProviderLayout' */ '@/layouts/provider-layout')
 )
 
-// const TrustmateWidget = dynamic(
-//   (): any =>
-//     import(
-//       /* webpackChunkName: 'TrustmateWidget' */ '@/components/Widget/TrustmateWidget'
-//     ),
-//   { ssr: false }
-// )
-
 const Loader: any = dynamic(
   (): any =>
     import(/* webpackChunkName: 'Loader' */ '@/components/Loader/Loader')
@@ -43,21 +35,24 @@ export default function App({ Component, pageProps, router }: AppProps) {
     [router?.pathname]
   )
   return (
-    <ProviderLayout>
-      <LayoutWrapper>
-        <Head>
-          <meta
-            name="viewport"
-            content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"
-          />
-        </Head>
-        <Loader layout={isCatalogPage ? 'bar' : 'overlay'} />
-        {/* <TrustmateWidget> */}
-        <AnimatePresence exitBeforeEnter={true} onExitComplete={scrollToTop}>
-          <Component {...pageProps} key={router.route} />
-        </AnimatePresence>
-        {/* </TrustmateWidget> */}
-      </LayoutWrapper>
-    </ProviderLayout>
+    <>
+      <ProviderLayout>
+        <LayoutWrapper>
+          <Head>
+            <meta
+              name="viewport"
+              content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"
+            />
+          </Head>
+          <Loader layout={isCatalogPage ? 'bar' : 'overlay'} />
+          <AnimatePresence exitBeforeEnter={true} onExitComplete={scrollToTop}>
+            <Component {...pageProps} key={router.route} />
+          </AnimatePresence>
+        </LayoutWrapper>
+      </ProviderLayout>
+      <style jsx global>
+        {``}
+      </style>
+    </>
   )
 }

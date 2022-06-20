@@ -32,7 +32,7 @@ export default function useColorPicker() {
     } else {
       siteColorsFromDB()
     }
-  }, [siteColors])
+  }, [])
 
   function saveDefaultCodeToDBOnce() {
     const { writeData } = firebaseDatabase()

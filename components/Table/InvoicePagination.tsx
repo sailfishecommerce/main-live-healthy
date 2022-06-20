@@ -90,7 +90,7 @@ export default function InvoicePagination({ tableInstance }: any): JSX.Element {
       <style jsx>
         {`
           .pagination button {
-            border: 1px solid var(--gray-lavender);
+            border: 1px solid var(--color-7);
             padding: 2px 5px;
             margin: 0px 5px;
             background-color: white;

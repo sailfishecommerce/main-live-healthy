@@ -101,7 +101,7 @@ export default function SlideCardTotal() {
             box-shadow: 0px -4px 32px 0px #0000001a;
           }
           button.bg-tan-hide:hover {
-            background-color: var(--tan-deep-hide);
+            background-color: var(--color-5);
           }
           button.bg-mountain-green:hover {
             background-color: var(--color-2);

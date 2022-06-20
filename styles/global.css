@@ -10,23 +10,6 @@ body {
   font-display: swap;
 }
 
-:root {
-  --mountain-green: #95bf11;
-  --mountain-mist: #678800;
-  --tan-hide: #faa916;
-  --tan-deep-hide: #ed9b09;
-  --gray-manatee: #9e9aa6;
-  --gray-lavender: #c3c0c8;
-  --gray-platinum: #e7e6e9;
-  --tan-light-hide: #ffe690;
-  --light-gray: #f7f8fa;
-  --light-red: #fd121240;
-  --light-green: #16a26740;
-  --white: white;
-  --black: black;
-  --pale-red: #ed4444;
-}
-
 /* discount slider */
 .slider.discount-slider {
   height: 60px;
@@ -76,19 +59,19 @@ ul.splide__pagination {
 }
 
 .gray-manatee {
-  color: var(--gray-manatee);
+  color: var(--color-6);
 }
 
 .gray-lavender {
-  color: var(--gray-lavender);
+  color: var(--color-7);
 }
 
 .gray-platinum {
-  color: var(--gray-platinum);
+  color: var(--color-8);
 }
 
 .bg-light-gray {
-  background-color: var(--light-gray);
+  background-color: var(--color-9);
 }
 
 .bg-mountain-green {
@@ -111,18 +94,18 @@ ul.splide__pagination {
   background-color: var(--color-3);
 }
 .bg-tan-hide:hover {
-  background-color: var(--tan-deep-hide);
+  background-color: var(--color-5);
 }
 .bg-gray-manatee {
-  background-color: var(--gray-manatee);
+  background-color: var(--color-6);
 }
 
 .bg-gray-lavender {
-  background-color: var(--gray-lavender);
+  background-color: var(--color-7);
 }
 
 .bg-gray-platinum {
-  background-color: var(--gray-platinum);
+  background-color: var(--color-8);
 }
 
 .height-fit-content {
@@ -236,7 +219,7 @@ button.splide__arrow:disabled {
 
 .paid,
 .delivered {
-  border: 1px solid var(--light-green);
+  border: 1px solid var(--color-12);
   max-width: 60px;
 }
 
@@ -246,13 +229,13 @@ button.splide__arrow:disabled {
 
 .paid:hover,
 .delivered:hover {
-  background-color: var(--light-green);
+  background-color: var(--color-12);
   color: white;
 }
 
 .not-paid,
 .not-delivered {
-  border: 1px solid var(--light-red);
+  border: 1px solid var(--color-10);
   max-width: 90px;
 }
 .not-delivered {
@@ -261,18 +244,18 @@ button.splide__arrow:disabled {
 
 .not-paid:hover,
 .not-delivered:hover {
-  background-color: var(--light-red);
+  background-color: var(--color-10);
   color: white;
 }
 
 .paid .indicator,
 .delivered .indicator {
-  background-color: var(--light-green);
+  background-color: var(--color-12);
 }
 
 .not-paid .indicator,
 .not-delivered .indicator {
-  background-color: var(--light-red);
+  background-color: var(--color-10);
 }
 
 /* sliding information tab */

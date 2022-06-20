@@ -8,7 +8,7 @@ const colorCodes = [
   { colorText: 'gray-lavender', colorCode: '#c3c0c8' },
   { colorText: 'gray-platinum', colorCode: '#e7e6e9' },
   { colorText: 'light-gray', colorCode: '#f7f8fa' },
-  { colorText: 'light-red', colorCode: '#f7f8fa' },
+  { colorText: 'light-red', colorCode: '#fd121240' },
   { colorText: 'light-green', colorCode: '#16a26740' },
 ]
 
@@ -22,14 +22,22 @@ interface ColorBoxProps {
 function ColorBox({ colorItem }: ColorBoxProps) {
   return (
     <>
-      <li>
+      <li className="my-4 flex items-center justify-between color-list">
+        <h6 className="font-light text-lg">
+          {colorItem.colorText.toUpperCase()}
+        </h6>
         <span className="colorBox" />
-        {colorItem.colorText}
       </li>
       <style jsx>
         {`
           .colorBox {
             background-color: ${colorItem.colorCode};
+            height: 50px;
+            width: 50px;
+            display: flex;
+          }
+          .color-list {
+            width: 60%;
           }
         `}
       </style>

@@ -16,6 +16,14 @@ const DynamicUploadToSwellFromAirtable = dynamic(
   { ssr: false }
 )
 
+const DynamicChangeSiteColorCode = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'DynamicChangeSiteColorCode' */ '@/components/Settings/ChangeSiteColorCode'
+    ),
+  { ssr: false }
+)
+
 export default function splittedViewSwitch(view: string) {
   switch (view) {
     case 'create-admin-profile': {
@@ -30,6 +38,9 @@ export default function splittedViewSwitch(view: string) {
     }
     case 'uploadToSwell': {
       return <DynamicUploadToSwellFromAirtable />
+    }
+    case 'change-site-color-code': {
+      return <DynamicChangeSiteColorCode />
     }
 
     default:

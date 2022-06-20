@@ -1,22 +1,40 @@
 /* eslint-disable no-param-reassign */
 import { useAtom } from 'jotai'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import type { colorItemType } from '@/components/Settings/ColorBox'
-import { boxColorAtom } from '@/lib/atomConfig'
+import colorCodes from '@/json/color-codes.json'
+import { boxColorAtom, saveDefaultColorsToDbAtom } from '@/lib/atomConfig'
+import firebaseDatabase from '@/lib/firebaseDatabase'
 
 type stateType = colorItemType & {
-  index: number | null
+  index: number
 }
 
 export default function useColorPicker() {
   const [boxColor, setBoxColor] = useAtom(boxColorAtom)
+  const [saveDefaultColorsToDb, setSaveDefaultColorsToDb] = useAtom(
+    saveDefaultColorsToDbAtom
+  )
   const [colorPicker, setColorPicker] = useState<stateType>({
     colorKey: '',
     colorCode: '',
-    index: null,
+    index: 0,
     colorName: '',
   })
+
+  useEffect(() => {
+    if (!saveDefaultColorsToDb) {
+      saveDefaultCodeToDBOnce().then(() => {
+        setSaveDefaultColorsToDb(true)
+      })
+    }
+  }, [])
+
+  function saveDefaultCodeToDBOnce() {
+    const { writeData } = firebaseDatabase()
+    return writeData('color-codes', JSON.stringify(boxColor))
+  }
 
   function pickColorHandler(colorItem: colorItemType, index: number) {
     setColorPicker({
@@ -42,10 +60,15 @@ export default function useColorPicker() {
     setBoxColor(updatedColor)
   }
 
+  function resetColor() {
+    return setBoxColor(colorCodes)
+  }
+
   return {
     pickColorHandler,
     boxColor,
     changeColorHandler,
     colorPicker,
+    resetColor,
   }
 }

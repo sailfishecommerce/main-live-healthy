@@ -42,14 +42,14 @@
     "colorKey": "color-10"
   },
   {
-    "colorName": "pale-red",
-    "colorCode": "#ed4444",
-    "colorKey": "color-12"
-  },
-  {
     "colorName": "light-green",
     "colorCode": "#16a26740",
     "colorKey": "color-11"
+  },
+  {
+    "colorName": "pale-red",
+    "colorCode": "#ed4444",
+    "colorKey": "color-12"
   },
   {
     "colorName": "White",

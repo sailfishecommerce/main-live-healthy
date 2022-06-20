@@ -1,16 +1,32 @@
+/* eslint-disable react/jsx-handler-names */
 import { HexColorPicker } from 'react-colorful'
 
 import ColorBox from '@/components/Settings/ColorBox'
 import useColorPicker from '@/hooks/useColorPicker'
 
-const buttonGroup = [
-  { text: 'Reset to default', id: 1, className: 'reset' },
-  { text: 'Save Changes', id: 2, className: 'saveChanges' },
-]
-
 export default function ChangeSiteColorCode() {
-  const { pickColorHandler, changeColorHandler, boxColor, colorPicker } =
-    useColorPicker()
+  const {
+    pickColorHandler,
+    resetColor,
+    changeColorHandler,
+    boxColor,
+    colorPicker,
+  } = useColorPicker()
+
+  const buttonGroup = [
+    {
+      text: 'Reset to default',
+      id: 1,
+      className: 'reset',
+      methodHandler: resetColor,
+    },
+    {
+      text: 'Save Changes',
+      id: 2,
+      className: 'saveChanges',
+      methodHandler: null,
+    },
+  ]
 
   return (
     <div className="site-color-code">
@@ -23,6 +39,7 @@ export default function ChangeSiteColorCode() {
             key={buttonItem.id}
             type="button"
             className={buttonItem.className}
+            onClick={buttonItem.methodHandler}
           >
             {buttonItem.text}
           </button>
@@ -48,7 +65,7 @@ export default function ChangeSiteColorCode() {
             />
           )}
           <span className="font-light text-lg mt-2">
-            {colorPicker.index && boxColor[colorPicker.index].colorCode}
+            {colorPicker.colorCode && boxColor[colorPicker.index].colorCode}
           </span>
         </div>
       </div>
@@ -76,24 +93,24 @@ export default function ChangeSiteColorCode() {
         .button-group button {
           padding: 5px;
           margin: 0px 20px;
-          color: var(--white);
+          color: var(--color-13);
           border-radius: 5px;
         }
         .reset {
-          background-color: var(--pale-red);
-          border: 1px solid var(--pale-red);
+          background-color: var(--color-12);
+          border: 1px solid var(--color-12);
         }
         button.reset:hover {
-          border: 1px solid var(--pale-red);
+          border: 1px solid var(--color-12);
           background-color: transparent;
-          color: var(--pale-red);
+          color: var(--color-12);
         }
         .saveChanges {
           background-color: var(--color-1);
-          border: 1px solidvar(--color-1);
+          border: 1px solid var(--color-1);
         }
         button.saveChanges:hover {
-          border: 1px solidvar(--color-1);
+          border: 1px solid var(--color-1);
           background-color: transparent;
           color: var(--color-1);
         }

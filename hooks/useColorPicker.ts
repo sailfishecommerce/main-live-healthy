@@ -27,17 +27,17 @@ export default function useColorPicker() {
   const { loadingToast, updateToast } = useToast()
   const toastRef = useRef(null)
 
-  // read colors from db
-  useEffect(() => {
-    siteColorsFromDB()
-  }, [])
-
   useEffect(() => {
     if (!saveDefaultColorsToDb) {
       saveDefaultCodeToDBOnce().then(() => {
         setSaveDefaultColorsToDb(true)
       })
     }
+  }, [])
+
+  // read colors from db
+  useEffect(() => {
+    siteColorsFromDB()
   }, [])
 
   function saveDefaultCodeToDBOnce() {

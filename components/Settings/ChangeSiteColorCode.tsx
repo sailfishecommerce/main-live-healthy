@@ -1,4 +1,3 @@
-/* eslint-disable array-callback-return */
 /* eslint-disable no-param-reassign */
 import { useAtom } from 'jotai'
 import { useEffect, useState } from 'react'
@@ -9,34 +8,36 @@ import ColorBox from '@/components/Settings/ColorBox'
 import colorCodes from '@/json/color-codes.json'
 import { boxColorAtom } from '@/lib/atomConfig'
 
+type stateType = colorItemType & {
+  index: number | null
+}
+
 export default function ChangeSiteColorCode() {
   const [boxColor, setBoxColor] = useAtom(boxColorAtom)
-  const [colorPicker, setColorPicker] = useState<colorItemType>({
+  const [colorPicker, setColorPicker] = useState<stateType>({
     colorKey: '',
     colorCode: '',
+    index: null,
     colorName: '',
   })
 
-  console.log('colorPicker', colorPicker)
-  console.log('boxColor', boxColor)
-
-  function pickColorHandler(colorItem: colorItemType) {
+  function pickColorHandler(colorItem: colorItemType, index: number) {
     setColorPicker({
-      ...colorPicker,
       colorKey: colorItem.colorKey,
       colorName: colorItem.colorName,
       colorCode: colorItem.colorCode,
+      index,
     })
   }
 
   function changeColor(color: string): any {
-    const colorArray = boxColor.map((bColor) => {
+    return boxColor.map((bColor) => {
       if (bColor.colorKey === colorPicker.colorKey) {
         bColor.colorCode = color
+        bColor.colorName = color
       }
+      return bColor
     })
-    console.log('colorArray', colorArray)
-    return colorArray
   }
 
   useEffect(() => setBoxColor(colorCodes), [])
@@ -53,10 +54,11 @@ export default function ChangeSiteColorCode() {
       <div className="site-color-view">
         <ul className="color-view">
           {boxColor.length > 0 &&
-            boxColor.map((colorItem) => (
+            boxColor.map((colorItem, index: number) => (
               <ColorBox
                 colorItem={colorItem}
                 key={colorItem.colorKey}
+                index={index}
                 onClickHandler={pickColorHandler}
               />
             ))}
@@ -69,7 +71,7 @@ export default function ChangeSiteColorCode() {
             />
           )}
           <span className="font-light text-lg mt-2">
-            {colorPicker.colorName.toUpperCase()}
+            {colorPicker.index && boxColor[colorPicker.index].colorCode}
           </span>
         </div>
       </div>

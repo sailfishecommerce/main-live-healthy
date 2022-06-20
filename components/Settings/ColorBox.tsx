@@ -6,10 +6,15 @@ export type colorItemType = {
 
 interface ColorBoxProps {
   colorItem: colorItemType
-  onClickHandler: (colorItem: colorItemType) => void
+  onClickHandler: (colorItem: colorItemType, index: number) => void
+  index: number
 }
 
-export default function ColorBox({ colorItem, onClickHandler }: ColorBoxProps) {
+export default function ColorBox({
+  colorItem,
+  onClickHandler,
+  index,
+}: ColorBoxProps) {
   const { colorCode, colorName } = colorItem
 
   return (
@@ -20,7 +25,7 @@ export default function ColorBox({ colorItem, onClickHandler }: ColorBoxProps) {
           <button
             type="button"
             className="colorBox"
-            onClick={() => onClickHandler(colorItem)}
+            onClick={() => onClickHandler(colorItem, index)}
           />
         </div>
       </li>

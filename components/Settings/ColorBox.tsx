@@ -1,35 +1,26 @@
-interface ColorBoxProps {
-  colorItem: {
-    colorText: string
-    colorCode: string
-    colorKey: string
-  }
-  onClickHandler: (
-    colorItem: {
-      colorText: string
-      colorKey: string
-    },
-    index: number
-  ) => void
-  index: number
+export type colorItemType = {
+  colorName: string
+  colorCode: string
+  colorKey: string
 }
 
-export default function ColorBox({
-  colorItem,
-  onClickHandler,
-  index,
-}: ColorBoxProps) {
-  const { colorCode, colorText } = colorItem
+interface ColorBoxProps {
+  colorItem: colorItemType
+  onClickHandler: (colorItem: colorItemType) => void
+}
+
+export default function ColorBox({ colorItem, onClickHandler }: ColorBoxProps) {
+  const { colorCode, colorName } = colorItem
 
   return (
     <>
       <li className="my-4 flex items-center justify-between color-list relative">
         <div className="color-group">
-          <h6 className="font-light text-lg">{colorText.toUpperCase()}</h6>
+          <h6 className="font-light text-lg">{colorName.toUpperCase()}</h6>
           <button
             type="button"
             className="colorBox"
-            onClick={() => onClickHandler(colorItem, index)}
+            onClick={() => onClickHandler(colorItem)}
           />
         </div>
       </li>

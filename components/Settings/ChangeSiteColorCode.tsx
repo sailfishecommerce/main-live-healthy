@@ -4,40 +4,28 @@ import { useAtom } from 'jotai'
 import { useEffect, useState } from 'react'
 import { HexColorPicker } from 'react-colorful'
 
+import type { colorItemType } from '@/components/Settings/ColorBox'
 import ColorBox from '@/components/Settings/ColorBox'
 import colorCodes from '@/json/color-codes.json'
 import { boxColorAtom } from '@/lib/atomConfig'
 
-type colorPickerType = {
-  colorKey: string
-  colorIndex: number | null
-  visibility: boolean
-  colorName: string
-}
-
 export default function ChangeSiteColorCode() {
   const [boxColor, setBoxColor] = useAtom(boxColorAtom)
-  const [colorPicker, setColorPicker] = useState<colorPickerType>({
+  const [colorPicker, setColorPicker] = useState<colorItemType>({
     colorKey: '',
-    colorIndex: null,
-    visibility: false,
+    colorCode: '',
     colorName: '',
   })
 
+  console.log('colorPicker', colorPicker)
   console.log('boxColor', boxColor)
 
-  function togglePickerVisibility(
-    colorItem: {
-      colorText: string
-      colorKey: string
-    },
-    index: number
-  ) {
+  function pickColorHandler(colorItem: colorItemType) {
     setColorPicker({
       ...colorPicker,
       colorKey: colorItem.colorKey,
-      colorName: colorItem.colorText,
-      colorIndex: index,
+      colorName: colorItem.colorName,
+      colorCode: colorItem.colorCode,
     })
   }
 
@@ -53,7 +41,7 @@ export default function ChangeSiteColorCode() {
 
   useEffect(() => setBoxColor(colorCodes), [])
 
-  function pickColor(colorCode: string) {
+  function changeColorHandler(colorCode: string) {
     const updatedColor = changeColor(colorCode)
     setBoxColor(updatedColor)
   }
@@ -65,20 +53,19 @@ export default function ChangeSiteColorCode() {
       <div className="site-color-view">
         <ul className="color-view">
           {boxColor.length > 0 &&
-            boxColor.map((colorItem, index: number) => (
+            boxColor.map((colorItem) => (
               <ColorBox
                 colorItem={colorItem}
                 key={colorItem.colorKey}
-                index={index}
-                onClickHandler={togglePickerVisibility}
+                onClickHandler={pickColorHandler}
               />
             ))}
         </ul>
         <div className="color-picker">
-          {colorPicker.colorIndex && (
+          {boxColor.length > 0 && colorPicker.colorCode && (
             <HexColorPicker
-              color={boxColor[colorPicker.colorIndex].colorCode}
-              onChange={pickColor}
+              color={colorPicker.colorCode}
+              onChange={changeColorHandler}
             />
           )}
           <span className="font-light text-lg mt-2">

@@ -1,6 +1,7 @@
 import { initializeApp } from 'firebase/app'
 import { getDatabase, ref, set, onValue } from 'firebase/database'
 
+import colorCodes from '@/json/color-codes.json'
 import firebaseConfig from '@/lib/firebaseConfig'
 
 export default function firebaseDatabase() {
@@ -16,7 +17,11 @@ export default function firebaseDatabase() {
     const dbRef = ref(db, dbRefId)
     onValue(dbRef, (snapshot) => {
       const data = snapshot.val()
-      dbData(JSON.parse(data))
+      if (data) {
+        dbData(JSON.parse(data))
+      } else {
+        dbData(colorCodes)
+      }
     })
   }
   return { writeData, readData }

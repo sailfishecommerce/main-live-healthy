@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from 'react'
 import type { colorItemType } from '@/components/Settings/ColorBox'
 import useToast from '@/hooks/useToast'
 import colorCodes from '@/json/color-codes.json'
-import { siteColorsAtom, saveDefaultColorsToDbAtom } from '@/lib/atomConfig'
+import { siteColorsAtom } from '@/lib/atomConfig'
 import firebaseDatabase from '@/lib/firebaseDatabase'
 
 type stateType = colorItemType & {
@@ -15,9 +15,6 @@ type stateType = colorItemType & {
 
 export default function useColorPicker() {
   const [siteColors, setSiteColors] = useAtom(siteColorsAtom)
-  const [saveDefaultColorsToDb, setSaveDefaultColorsToDb] = useAtom(
-    saveDefaultColorsToDbAtom
-  )
   const [colorPicker, setColorPicker] = useState<stateType>({
     colorKey: '',
     colorCode: '',
@@ -29,13 +26,11 @@ export default function useColorPicker() {
 
   // save default colors to db
   useEffect(() => {
-    if (!saveDefaultColorsToDb) {
-      saveDefaultCodeToDBOnce().then(() => {
-        setSaveDefaultColorsToDb(true)
-      })
+    if (siteColors.length === 0) {
+      saveDefaultCodeToDBOnce().then(() => {})
+    } else {
+      siteColorsFromDB()
     }
-    // read colors from db
-    siteColorsFromDB()
   }, [])
 
   function saveDefaultCodeToDBOnce() {

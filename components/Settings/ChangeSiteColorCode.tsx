@@ -1,56 +1,25 @@
-/* eslint-disable no-param-reassign */
-import { useAtom } from 'jotai'
-import { useEffect, useState } from 'react'
 import { HexColorPicker } from 'react-colorful'
 
-import type { colorItemType } from '@/components/Settings/ColorBox'
 import ColorBox from '@/components/Settings/ColorBox'
-import colorCodes from '@/json/color-codes.json'
-import { boxColorAtom } from '@/lib/atomConfig'
-
-type stateType = colorItemType & {
-  index: number | null
-}
+import useColorPicker from '@/hooks/useColorPicker'
 
 export default function ChangeSiteColorCode() {
-  const [boxColor, setBoxColor] = useAtom(boxColorAtom)
-  const [colorPicker, setColorPicker] = useState<stateType>({
-    colorKey: '',
-    colorCode: '',
-    index: null,
-    colorName: '',
-  })
+  const { pickColorHandler, changeColorHandler, boxColor, colorPicker } =
+    useColorPicker()
 
-  function pickColorHandler(colorItem: colorItemType, index: number) {
-    setColorPicker({
-      colorKey: colorItem.colorKey,
-      colorName: colorItem.colorName,
-      colorCode: colorItem.colorCode,
-      index,
-    })
-  }
-
-  function changeColor(color: string): any {
-    return boxColor.map((bColor) => {
-      if (bColor.colorKey === colorPicker.colorKey) {
-        bColor.colorCode = color
-        bColor.colorName = color
-      }
-      return bColor
-    })
-  }
-
-  useEffect(() => setBoxColor(colorCodes), [])
-
-  function changeColorHandler(colorCode: string) {
-    const updatedColor = changeColor(colorCode)
-    setBoxColor(updatedColor)
-  }
   return (
-    <div>
+    <div className="site-color-code">
       <h3 className="text-center font-semibold text-xl mb-6">
         Click on the Box to edit the Color
       </h3>
+      <div className="button-group">
+        <button type="button" className="reset">
+          Reset to default
+        </button>
+        <button type="button" className="saveChanges">
+          Save Changes
+        </button>
+      </div>
       <div className="site-color-view">
         <ul className="color-view">
           {boxColor.length > 0 &&

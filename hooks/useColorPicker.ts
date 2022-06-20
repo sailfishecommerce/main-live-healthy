@@ -1,10 +1,12 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-param-reassign */
 import { useAtom } from 'jotai'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import type { colorItemType } from '@/components/Settings/ColorBox'
+import useToast from '@/hooks/useToast'
 import colorCodes from '@/json/color-codes.json'
-import { boxColorAtom, saveDefaultColorsToDbAtom } from '@/lib/atomConfig'
+import { siteColorsAtom, saveDefaultColorsToDbAtom } from '@/lib/atomConfig'
 import firebaseDatabase from '@/lib/firebaseDatabase'
 
 type stateType = colorItemType & {
@@ -12,7 +14,7 @@ type stateType = colorItemType & {
 }
 
 export default function useColorPicker() {
-  const [boxColor, setBoxColor] = useAtom(boxColorAtom)
+  const [siteColors, setSiteColors] = useAtom(siteColorsAtom)
   const [saveDefaultColorsToDb, setSaveDefaultColorsToDb] = useAtom(
     saveDefaultColorsToDbAtom
   )
@@ -22,6 +24,13 @@ export default function useColorPicker() {
     index: 0,
     colorName: '',
   })
+  const { loadingToast, updateToast } = useToast()
+  const toastRef = useRef(null)
+
+  // read colors from db
+  useEffect(() => {
+    siteColorsFromDB()
+  }, [])
 
   useEffect(() => {
     if (!saveDefaultColorsToDb) {
@@ -33,7 +42,31 @@ export default function useColorPicker() {
 
   function saveDefaultCodeToDBOnce() {
     const { writeData } = firebaseDatabase()
-    return writeData('color-codes', JSON.stringify(boxColor))
+    return writeData('color-codes', JSON.stringify(siteColors))
+  }
+
+  function saveColorChangesToDB(
+    boxColorData: colorItemType[],
+    message: string
+  ) {
+    const { writeData } = firebaseDatabase()
+    loadingToast(toastRef)
+    return writeData('color-codes', JSON.stringify(boxColorData))
+      .then(() => {
+        return updateToast(toastRef, 'success', message)
+      })
+      .catch(() =>
+        updateToast(
+          toastRef,
+          'error',
+          'an error occured, unable to save color changes'
+        )
+      )
+  }
+
+  function siteColorsFromDB() {
+    const { readData } = firebaseDatabase()
+    return readData('color-codes', setSiteColors)
   }
 
   function pickColorHandler(colorItem: colorItemType, index: number) {
@@ -46,7 +79,7 @@ export default function useColorPicker() {
   }
 
   function changeColor(color: string): any {
-    return boxColor.map((bColor) => {
+    return siteColors.map((bColor) => {
       if (bColor.colorKey === colorPicker.colorKey) {
         bColor.colorCode = color
         bColor.colorName = color
@@ -57,18 +90,21 @@ export default function useColorPicker() {
 
   function changeColorHandler(colorCode: string) {
     const updatedColor = changeColor(colorCode)
-    setBoxColor(updatedColor)
+    setSiteColors(updatedColor)
   }
 
   function resetColor() {
-    return setBoxColor(colorCodes)
+    setSiteColors(colorCodes)
+    saveColorChangesToDB(colorCodes, 'reset colors successful')
   }
 
   return {
     pickColorHandler,
-    boxColor,
+    siteColors,
     changeColorHandler,
     colorPicker,
+    saveColorChangesToDB,
     resetColor,
+    siteColorsFromDB,
   }
 }

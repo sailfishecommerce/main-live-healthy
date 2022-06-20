@@ -9,8 +9,9 @@ export default function ChangeSiteColorCode() {
     pickColorHandler,
     resetColor,
     changeColorHandler,
-    boxColor,
+    siteColors,
     colorPicker,
+    saveColorChangesToDB,
   } = useColorPicker()
 
   const buttonGroup = [
@@ -24,7 +25,8 @@ export default function ChangeSiteColorCode() {
       text: 'Save Changes',
       id: 2,
       className: 'saveChanges',
-      methodHandler: null,
+      methodHandler: () =>
+        saveColorChangesToDB(siteColors, 'color changes successful'),
     },
   ]
 
@@ -47,8 +49,8 @@ export default function ChangeSiteColorCode() {
       </div>
       <div className="site-color-view">
         <ul className="color-view">
-          {boxColor.length > 0 &&
-            boxColor.map((colorItem, index: number) => (
+          {siteColors.length > 0 &&
+            siteColors.map((colorItem, index: number) => (
               <ColorBox
                 colorItem={colorItem}
                 key={colorItem.colorKey}
@@ -58,14 +60,14 @@ export default function ChangeSiteColorCode() {
             ))}
         </ul>
         <div className="color-picker">
-          {boxColor.length > 0 && colorPicker.colorCode && (
+          {siteColors.length > 0 && colorPicker.colorCode && (
             <HexColorPicker
               color={colorPicker.colorCode}
               onChange={changeColorHandler}
             />
           )}
           <span className="font-light text-lg mt-2">
-            {colorPicker.colorCode && boxColor[colorPicker.index].colorCode}
+            {colorPicker.colorCode && siteColors[colorPicker.index].colorCode}
           </span>
         </div>
       </div>

@@ -1,29 +1,19 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useAtom } from 'jotai'
 import type { PropsWithChildren } from 'react'
-import { useEffect } from 'react'
 
-import colorCodes from '@/json/color-codes.json'
-import { boxColorAtom } from '@/lib/atomConfig'
+import useColorPicker from '@/hooks/useColorPicker'
 
 export default function DefaultLayout({
   children,
 }: PropsWithChildren<unknown>) {
-  const [boxColor, setBoxColor] = useAtom(boxColorAtom)
+  const { siteColors } = useColorPicker()
 
   const siteColorcode: { [key: string]: string } = {}
 
-  boxColor.map((bColor) => {
+  siteColors.map((bColor) => {
     const colorKey: string = bColor.colorKey
     siteColorcode[colorKey] = bColor.colorCode
     return siteColorcode
   })
-
-  useEffect(() => {
-    if (boxColor.length === 0) {
-      setBoxColor(colorCodes)
-    }
-  }, [])
 
   return (
     <>

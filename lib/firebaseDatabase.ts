@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 import { initializeApp } from 'firebase/app'
 import { getDatabase, ref, set, onValue } from 'firebase/database'
 
@@ -17,8 +16,7 @@ export default function firebaseDatabase() {
     const dbRef = ref(db, dbRefId)
     onValue(dbRef, (snapshot) => {
       const data = snapshot.val()
-      dbData = data
-      return dbData
+      dbData(JSON.parse(data))
     })
   }
   return { writeData, readData }

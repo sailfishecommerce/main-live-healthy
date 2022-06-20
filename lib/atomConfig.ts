@@ -127,7 +127,7 @@ export type colorType = Array<{
 }>
 
 // edit color
-export const boxColorAtom = atom<colorType>([])
+export const siteColorsAtom = atom<colorType>([])
 
 export const saveDefaultColorsToDbAtom = atomWithStorage(
   'saveDefaultColorsToDbAtom',

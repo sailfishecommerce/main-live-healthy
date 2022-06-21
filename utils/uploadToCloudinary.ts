@@ -1,4 +1,5 @@
 /* eslint-disable no-console */
+import firebaseDatabase from '@/lib/firebaseDatabase'
 import axios from 'axios'
 import type { MutableRefObject } from 'react'
 
@@ -28,11 +29,13 @@ export default function uploadLogotoCloudinary(
     )
     .then((response) => {
       console.log('upload-response', response)
-      return toastNotification.updateToast(
+      toastNotification.updateToast(
         toastID,
         'success',
         'Logo upload successful'
       )
+      const { writeData } = firebaseDatabase()
+      writeData('logo', JSON.stringify(response.data.url))
     })
     .catch((err) => {
       console.log('image-upload-err', err)

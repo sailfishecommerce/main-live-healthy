@@ -1,19 +1,17 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useMemo, useRef } from 'react'
 import { useDropzone } from 'react-dropzone'
 
 import { styles } from '@/components/Admin/styles'
+import useToast from '@/hooks/useToast'
+import uploadLogotoCloudinary from '@/utils/uploadToCloudinary'
 
 export default function useLogoUpload() {
-  const [progress, setProgress] = useState({
-    uploaded: 0,
-    total: 0,
-    loading: false,
-    error: null,
-  })
+  const toastID = useRef(null)
+  const toastNotification = useToast()
 
   const onDrop = useCallback((acceptedFiles) => {
     const uploadedImage = acceptedFiles[0]
-    console.log('uploadedImage', uploadedImage)
+    uploadLogotoCloudinary(uploadedImage, toastID, toastNotification)
   }, [])
 
   const dropzone = useDropzone({
@@ -35,5 +33,5 @@ export default function useLogoUpload() {
     [dropzone.isFocused, dropzone.isDragAccept, dropzone.isDragReject]
   )
 
-  return { progress, dropzone, style }
+  return { dropzone, style }
 }

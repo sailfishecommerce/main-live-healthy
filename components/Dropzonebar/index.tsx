@@ -2,7 +2,7 @@ import type { progressStateType } from '@/types'
 import byteSize from '@/utils/byteSize'
 
 interface DropzonebarType {
-  progress: progressStateType
+  progress?: progressStateType
   dropzone: {
     getRootProps: any
     acceptedFiles: File[]
@@ -21,7 +21,7 @@ export default function Dropzonebar({
 }: DropzonebarType) {
   const { getRootProps, acceptedFiles, getInputProps, isDragActive } = dropzone
   let percentage: any
-  if (progress.uploaded && progress.total > 0) {
+  if (progress?.uploaded && progress?.total > 0) {
     percentage = Math.floor((progress.uploaded / progress.total) * 100)
   }
   const fileTypeText =
@@ -56,7 +56,7 @@ export default function Dropzonebar({
             )}
           </div>
         </div>
-        {progress.total > 0 && (
+        {progress && progress?.total > 0 && (
           <div className="w-full mt-6 bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
             <div
               className="bg-blue-600 h-2.5 rounded-full"
@@ -65,7 +65,7 @@ export default function Dropzonebar({
             {percentage} %
             <p>
               <span className="font-bold mr-2">
-                {`${progress.uploaded} / ${progress.total}`}
+                {`${progress?.uploaded} / ${progress.total}`}
               </span>
               Product uploaded
             </p>

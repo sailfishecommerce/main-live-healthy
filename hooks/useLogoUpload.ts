@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useCallback, useMemo, useRef } from 'react'
 import { useDropzone } from 'react-dropzone'
 
@@ -11,7 +12,6 @@ export default function useLogoUpload() {
 
   const onDrop = useCallback((acceptedFiles) => {
     const uploadedImage = acceptedFiles[0]
-    console.log('uploadedImage', uploadedImage)
     uploadLogotoCloudinary(uploadedImage, toastID, toastNotification)
   }, [])
 

@@ -22,7 +22,7 @@ const DynamicLaptopPrimaryMenu = dynamic(
 function PrimaryMenuComponent() {
   const mobileWidth = useMediaQuery('(max-width:768px)')
   return (
-    <div className="flex justify-between items-center lg:px-4 xl:px-0 md:my-2  xl:py-4">
+    <div className="flex justify-between items-center lg:px-4 xl:px-0 md:my-2  xl:pt-4">
       <Logo className="w-1/3 lg:w-1/6" />
       {mobileWidth ? (
         <DynamicMobilePrimaryMenu />

@@ -1,0 +1,96 @@
+{
+  "post": [
+    {
+      "title": "Global Travel and Vacations on a Tight Budget",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim...",
+      "tags": ["Travel", "Personal finance"],
+      "author": "Emma Gallaher",
+      "authorImage": "/sliders/author/author-1.webp",
+      "date": "Aug 15",
+      "comment": 8
+    },
+    {
+      "title": "Top New Trends in Suburban High Fashion",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt...",
+      "tags": ["Shopping", "Fashion"],
+      "author": "Cynthia Gomez",
+      "authorImage": "/sliders/author/author-2.webp",
+      "date": "Jul 23",
+      "comment": 19,
+      "image": "/blog/blogImg-1.webp"
+    },
+    {
+      "title": "Google Pay is Now Available in All Outlets",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magnaaliqua enim ad minim...",
+      "tags": ["Bandicoot news"],
+      "author": "Olivia Reyes",
+      "authorImage": "/sliders/author/author-2.webp",
+      "date": "Jul 6",
+      "comment": 7
+    },
+    {
+      "title": "We Launched Regular Drone Delivery in California. Watch Demo Video",
+      "text": " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt...",
+      "tags": ["Bandicoot news"],
+      "author": "Rafael Marquez",
+      "authorImage": "/sliders/author/author-5.webp",
+      "date": "Jun 12",
+      "comment": 31,
+      "image": "/blog/blogImg-3.webp"
+    },
+    {
+      "title": "Shopping Tips. Places Where to Buy Cheap",
+      "text": " Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt...",
+      "tags": ["Shopping", "Personal finance"],
+      "author": "Paul Woodred",
+      "authorImage": "/sliders/author/author-3.webp",
+      "date": "May 29",
+      "comment": 15,
+      "image": "/blog/blogImg-2.webp"
+    },
+    {
+      "title": "Payments Made Easy. How New Technology will Affect E-Commerce Industry Wo rldwide?",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua enim ad minim...",
+      "tags": ["Shopping", "Technology"],
+      "author": "Emma Gallaher",
+      "authorImage": "/sliders/author/author-1.webp",
+      "date": "May 13",
+      "comment": 28,
+      "image": "/blog/blogImg-4.webp"
+    },
+    {
+      "title": " Different Ways E-commerce Companies Can Capitalize on Apps",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt...",
+      "tags": ["E-commerce"],
+      "author": "Paul Woodred",
+      "authorImage": "/sliders/author/author-3.webp",
+      "date": "Apr 15",
+      "comment": 22
+    },
+    {
+      "title": "Must Have Clothing On Your Next Trip",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt...",
+      "tags": ["Travel", "Fashion"],
+      "author": " Olivia Reyes",
+      "authorImage": "/sliders/author/author-4.webp",
+      "date": "Apr 10",
+      "comment": 17
+    },
+    {
+      "title": "Must Have Clothing",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt...",
+      "tags": ["Travel", "Fashion"],
+      "author": " Olivia Reyes",
+      "authorImage": "/sliders/author/author-4.webp",
+      "date": "Apr 10",
+      "comment": 7
+    }
+  ],
+  "pagination": [
+    { "count": 1, "active": true },
+    { "count": 2, "active": false },
+    { "count": 3, "active": false },
+    { "count": 4, "active": false },
+    { "count": 5, "active": false }
+  ]
+}

@@ -14,11 +14,11 @@ const DynamicDashboardEditor = dynamic(
   }
 )
 
-export default function AdminPage() {
+export default function AboutusPage() {
   const router = useRouter()
   const route = router.asPath.split('/admin/')[1]
   return (
-    <DashboardLayout title="Admin page">
+    <DashboardLayout title="About us page">
       <DashboardMainView>
         <DynamicDashboardEditor editorKey={route} />
       </DashboardMainView>

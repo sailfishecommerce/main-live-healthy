@@ -4,8 +4,10 @@ import { GiConvergenceTarget } from 'react-icons/gi'
 import {
   MdOutlineCloudUpload,
   MdOutlineDashboard,
+  MdPermMedia,
   MdPolicy,
 } from 'react-icons/md'
+import { RiTeamFill } from 'react-icons/ri'
 
 interface AdminIconsProps {
   icon: string
@@ -25,31 +27,19 @@ export default function AdminIcons({ icon }: AdminIconsProps) {
     case 'policies': {
       return <MdPolicy />
     }
-    case 'order-tracking': {
-      return <GiConvergenceTarget />
-    }
-    case 'cookie-policy': {
-      return <GiConvergenceTarget />
-    }
-    case 'privacy-and-policy': {
-      return <GiConvergenceTarget />
-    }
-    case 'terms-and-condition': {
-      return <GiConvergenceTarget />
-    }
-    case 'shipping-info': {
-      return <GiConvergenceTarget />
-    }
-    case 'return-and-refunds': {
-      return <GiConvergenceTarget />
-    }
     case 'blog': {
       return <FaBlog />
     }
     case 'settings': {
       return <FiSettings />
     }
+    case 'media': {
+      return <MdPermMedia />
+    }
+    case 'team': {
+      return <RiTeamFill />
+    }
     default:
-      return null
+      return <GiConvergenceTarget />
   }
 }

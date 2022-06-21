@@ -22,16 +22,12 @@ body {
   display: none;
 }
 
-.splide__arrows {
+.homepage-slider .splide__arrows {
   display: none;
 }
 
 ul.splide__pagination {
-  display: flex;
-  flex-direction: column !important;
-  margin-right: 40px;
-  margin-top: -10px;
-  height: 70px;
+  display: none;
 }
 
 /* utilities */

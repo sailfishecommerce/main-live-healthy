@@ -38,7 +38,7 @@ export default function UploadToSwellFromAirtable() {
       <p className="text-lg mt-4 text-center">
         For effective upload, Upload a maximum of 100 products at a time
       </p>
-      <Dropzonebar progress={progress} style={style} dropzone={dropzone} />
+      <Dropzonebar progress={progress} style={style} dropzone={dropzone} fileType="csv" />
     </div>
   )
 }

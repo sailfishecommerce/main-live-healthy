@@ -11,6 +11,7 @@ import DashboardLayout from '@/layouts/dashboard-layout'
 export default function Admin() {
   const { data, status } = useAdminOrder()
 
+  const dataResult = data?.data?.results
   return (
     <DashboardLayout title="Admin page">
       <DashboardMainView>
@@ -29,11 +30,13 @@ export default function Admin() {
           ) : status === 'loading' ? (
             <SpinnerRipple centerRipple />
           ) : (
-            <InvoiceTable
-              stripeData={data?.data?.results}
-              showPagination={false}
-              selectRow={false}
-            />
+            dataResult && (
+              <InvoiceTable
+                stripeData={dataResult}
+                showPagination={false}
+                selectRow={false}
+              />
+            )
           )}
         </div>
       </DashboardMainView>

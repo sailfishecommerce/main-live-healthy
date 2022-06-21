@@ -23,6 +23,13 @@ const DynamicChangeSiteColorCode = dynamic(
     ),
   { ssr: false }
 )
+const DynamicUploadSiteLogo = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'UploadSiteLogo' */ '@/components/Settings/UploadSiteLogo'
+    ),
+  { ssr: false }
+)
 
 export default function splittedViewSwitch(view: string) {
   switch (view) {
@@ -41,6 +48,9 @@ export default function splittedViewSwitch(view: string) {
     }
     case 'change-site-color-code': {
       return <DynamicChangeSiteColorCode />
+    }
+    case 'change-site-logo': {
+      return <DynamicUploadSiteLogo />
     }
 
     default:

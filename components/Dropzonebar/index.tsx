@@ -9,6 +9,7 @@ interface DropzonebarType {
     getInputProps: any
     isDragActive: boolean
   }
+  fileType: 'csv' | 'image'
   style: unknown
 }
 
@@ -16,12 +17,17 @@ export default function Dropzonebar({
   progress,
   style,
   dropzone,
+  fileType,
 }: DropzonebarType) {
   const { getRootProps, acceptedFiles, getInputProps, isDragActive } = dropzone
   let percentage: any
   if (progress.uploaded && progress.total > 0) {
     percentage = Math.floor((progress.uploaded / progress.total) * 100)
   }
+  const fileTypeText =
+    fileType === 'csv'
+      ? 'csv file, or click to select csv file'
+      : 'image here or click to select the image'
   return (
     <>
       <div className="upload mt-8">
@@ -34,10 +40,7 @@ export default function Dropzonebar({
             {isDragActive ? (
               <p>Drop the files here ...</p>
             ) : (
-              <p>
-                Drag &apos;n&apos; drop the csv file here, or click to select
-                files
-              </p>
+              <p>Drag &apos;n&apos; drop the {fileTypeText}</p>
             )}
             {acceptedFiles.length > 0 && (
               <ul>

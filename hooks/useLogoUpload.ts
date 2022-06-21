@@ -11,6 +11,7 @@ export default function useLogoUpload() {
 
   const onDrop = useCallback((acceptedFiles) => {
     const uploadedImage = acceptedFiles[0]
+    console.log('uploadedImage', uploadedImage)
     uploadLogotoCloudinary(uploadedImage, toastID, toastNotification)
   }, [])
 

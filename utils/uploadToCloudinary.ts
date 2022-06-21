@@ -15,14 +15,16 @@ export default function uploadLogotoCloudinary(
   }
 ) {
   toastNotification.loadingToast(toastID)
-  const postData = {
-    file: logo,
-    upload_preset: 'live_healthy_store',
-  }
+
+  const formData = new FormData()
+  formData.append('file', logo)
+  formData.append('upload_preset', 'live_healthy_store')
+  formData.append('api_key', `${process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY}`)
+
   return axios
     .post(
       `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
-      postData
+      formData
     )
     .then((response) => {
       console.log('upload-response', response)

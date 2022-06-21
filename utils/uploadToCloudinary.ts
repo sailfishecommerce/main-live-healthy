@@ -1,7 +1,8 @@
 /* eslint-disable no-console */
-import firebaseDatabase from '@/lib/firebaseDatabase'
 import axios from 'axios'
 import type { MutableRefObject } from 'react'
+
+import firebaseDatabase from '@/lib/firebaseDatabase'
 
 export default function uploadLogotoCloudinary(
   logo: any,

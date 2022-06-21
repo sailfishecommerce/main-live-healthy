@@ -24,5 +24,16 @@ export default function firebaseDatabase() {
       }
     })
   }
-  return { writeData, readData }
+
+  function readFromDB(dbRefId: string, dbData: any) {
+    const db = getDatabase()
+    const dbRef = ref(db, dbRefId)
+    onValue(dbRef, (snapshot) => {
+      const data = snapshot.val()
+      if (data) {
+        dbData(JSON.parse(data))
+      }
+    })
+  }
+  return { writeData, readData, readFromDB }
 }

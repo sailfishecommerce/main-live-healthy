@@ -18,9 +18,9 @@ export default function MediaImage({ parsedMediaItem }: Props) {
         className="image-wrapper"
         key={parsedMediaItem}
         onMouseOver={() => setHover(true)}
-        onMouseOut={() => setHover(false)}
+        onMouseLeave={() => setHover(false)}
       >
-        {5 && (
+        {hover && (
           <div className="hover-view">
             <div className="content">
               <button type="button" className="wrapper">

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable no-console */
 import axios from 'axios'
 import type { MutableRefObject } from 'react'
@@ -22,8 +23,8 @@ export default function uploadMediaToCloudinary(
   media.map((mediaItem: Blob | any) => {
     const formData = new FormData()
     formData.append('file', mediaItem)
-    formData.append('upload_preset', 'live_healthy_store')
     formData.append('api_key', `${process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY}`)
+    formData.append('upload_preset', 'live_healthy_store')
     const mediaId = uuidv4()
 
     return axios
@@ -34,7 +35,16 @@ export default function uploadMediaToCloudinary(
       .then((response) => {
         console.log('upload-response', response)
         const { writeData } = firebaseDatabase()
-        writeData(`media/${mediaId}`, JSON.stringify(response.data.url))
+        const { secure_url, public_id, signature, version } = response.data
+        writeData(
+          `media/${mediaId}`,
+          JSON.stringify({
+            url: secure_url,
+            public_id,
+            signature,
+            version,
+          })
+        )
         toastNotification.updateToast(
           toastID,
           'success',

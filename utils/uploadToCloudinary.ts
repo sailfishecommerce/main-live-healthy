@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import axios from 'axios'
 import type { MutableRefObject } from 'react'
 
@@ -30,7 +29,6 @@ export default function uploadLogotoCloudinary(
       formData
     )
     .then((response) => {
-      console.log('upload-response', response)
       toastNotification.updateToast(
         toastID,
         'success',
@@ -40,9 +38,19 @@ export default function uploadLogotoCloudinary(
       writeData('logo', JSON.stringify(response.data.url))
       setIsUploadSuccessful(true)
     })
-    .catch((err) => {
-      console.log('image-upload-err', err)
+    .catch(() => {
       setIsUploadSuccessful(false)
       return toastNotification.updateToast(toastID, 'error', 'upload error')
     })
+}
+
+export function deleteFromCloudinary(public_id: string) {
+  const postData = {
+    public_id,
+    api_key: process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY,
+  }
+  return axios.post(
+    `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/destroy`,
+    postData
+  )
 }

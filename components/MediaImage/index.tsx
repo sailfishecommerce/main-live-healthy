@@ -9,16 +9,23 @@ import { toast } from 'react-toastify'
 import firebaseDatabase from '@/lib/firebaseDatabase'
 
 interface Props {
-  parsedMediaItem: string
+  parsedMediaItem: {
+    url: string
+    public_id: string
+    signature: string
+    version: number
+  }
   imageKey: string
 }
 
 export default function MediaImage({ parsedMediaItem, imageKey }: Props) {
   const [hover, setHover] = useState(false)
 
+  const { url } = parsedMediaItem
+
   function copyImageLinkHandler() {
     navigator.clipboard
-      .writeText(parsedMediaItem)
+      .writeText(parsedMediaItem.url)
       .then(() => toast.success('image link copied'))
   }
 
@@ -33,7 +40,7 @@ export default function MediaImage({ parsedMediaItem, imageKey }: Props) {
     <>
       <div
         className="image-wrapper"
-        key={parsedMediaItem}
+        key={parsedMediaItem.public_id}
         onMouseOver={() => setHover(true)}
         onMouseLeave={() => setHover(false)}
       >
@@ -57,7 +64,7 @@ export default function MediaImage({ parsedMediaItem, imageKey }: Props) {
             </div>
           </div>
         )}
-        <img src={parsedMediaItem} alt="media-image" />
+        <img src={url} alt="media-image" />
       </div>
       <style jsx>
         {`

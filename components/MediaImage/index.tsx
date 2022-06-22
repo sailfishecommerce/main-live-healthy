@@ -4,13 +4,21 @@
 import { useState } from 'react'
 import { AiFillDelete } from 'react-icons/ai'
 import { IoCopySharp } from 'react-icons/io5'
+import { toast } from 'react-toastify'
 
 interface Props {
   parsedMediaItem: string
+  imageKey: string
 }
 
-export default function MediaImage({ parsedMediaItem }: Props) {
+export default function MediaImage({ parsedMediaItem, imageKey }: Props) {
   const [hover, setHover] = useState(false)
+
+  function copyImageLinkHandler() {
+    navigator.clipboard
+      .writeText(parsedMediaItem)
+      .then(() => toast.success('image link copied'))
+  }
 
   return (
     <>
@@ -23,7 +31,11 @@ export default function MediaImage({ parsedMediaItem }: Props) {
         {hover && (
           <div className="hover-view">
             <div className="content">
-              <button type="button" className="wrapper">
+              <button
+                type="button"
+                className="wrapper"
+                onClick={copyImageLinkHandler}
+              >
                 <IoCopySharp title="Copy image link" color="white" size={26} />
               </button>
               <button type="button" className="wrapper">

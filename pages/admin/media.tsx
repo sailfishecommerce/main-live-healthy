@@ -13,7 +13,7 @@ export default function Media() {
   const [media, setMedia] = useState<any>(null)
   const { readFromDB } = firebaseDatabase()
 
-  const mediaArray = media === null ? [] : Object.values(media)
+  const mediaArray = media === null ? [] : Object.entries(media)
 
   useEffect(() => {
     readFromDB('media/', setMedia)
@@ -41,11 +41,12 @@ export default function Media() {
               </h6>
             ) : (
               <div className="media gap-5 border p-4 grid grid-cols-2">
-                {mediaArray.map((mediaItem: any) => {
-                  const parsedMediaItem = JSON.parse(mediaItem)
+                {mediaArray.map(([imageKey, image]: any) => {
+                  const parsedMediaItem = JSON.parse(image)
                   return (
                     <MediaImage
-                      key={parsedMediaItem}
+                      key={imageKey}
+                      imageKey={imageKey}
                       parsedMediaItem={parsedMediaItem}
                     />
                   )

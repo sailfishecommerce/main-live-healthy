@@ -20,7 +20,7 @@ interface Props {
 type formatStylesType = Array<{
   style: string
 }>
-function TextView({ content }: TextViewInterface) {
+export function TextView({ content }: TextViewInterface) {
   return (
     <>
       {content.inlineStyleRanges.length === 0 && (

@@ -2,43 +2,20 @@
   {
     "icon": "location",
     "title": "Main store address",
-    "anchor": "#map",
-    "group": [
-      { "text": "Live Healthy HK" },
-      { "text": "10/F, Cheung Hing Industrial Building" },
-      { "text": "12P Smithfield, Kennedy Town" },
-      { "text": "Hong Kong Island, Hong Kong." }
-    ]
+    "anchor": "#map"
   },
   {
     "icon": "time",
-    "title": "Working hours",
-    "group": [
-      { "text": "Mon - Fri: 10AM - 7PM" },
-      { "text": "Saturday: 11AM - 5PM" }
-    ]
+    "title": "Working hours"
   },
   {
     "icon": "phone",
     "title": "Phone numbers",
-    "type": "phone",
-    "group": [
-      {
-        "text": "For customers",
-        "value": "+853 7073 5292",
-        "phone": "85370735292"
-      }
-    ]
+    "type": "phone"
   },
   {
     "icon": "mail",
     "title": "Email addresses",
-    "type": "email",
-    "group": [
-      {
-        "text": "For customers",
-        "value": "care@livehealthy.com.hk"
-      }
-    ]
+    "type": "email"
   }
 ]

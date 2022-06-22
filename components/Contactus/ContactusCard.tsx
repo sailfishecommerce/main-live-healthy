@@ -1,14 +1,12 @@
 import { BsFillArrowRightCircleFill } from 'react-icons/bs'
 
 import Icons from '@/components/Icons'
-import type { contactInfoType } from '@/types'
 
 interface ContactCardWithAnchorProps {
-  content: contactInfoType
+  content: { text: string; icon: string; title: string; anchor: string }
 }
-
 interface ContactCardProps {
-  content: contactInfoType
+  content: { text: string; icon: string; title: string }
 }
 
 export function ContactCardWithAnchor({ content }: ContactCardWithAnchorProps) {
@@ -29,11 +27,7 @@ export function ContactCardWithAnchor({ content }: ContactCardWithAnchorProps) {
             size={24}
           />
           <h3 className="text-xl mb-2">{content.title}</h3>
-          {content.group.map((item) => (
-            <p key={item.text} className="text-sm text-gray-500">
-              {item.text}
-            </p>
-          ))}
+          <div dangerouslySetInnerHTML={{ __html: content.text }} />
           <div className="text-md  mt-2 hover:text-red-500 flex items-center justify-center">
             Click to see map
             <BsFillArrowRightCircleFill className="mx-2" />
@@ -58,37 +52,7 @@ export function ContactCard({ content }: ContactCardProps) {
             size={24}
           />
           <h3 className="text-xl mb-3">{content.title}</h3>
-          <ul className="text-md text-gray-500 mb-0">
-            {content.type !== 'email' &&
-              content.group.map((item) => (
-                <li key={item.text}>
-                  <span className="text-gray-600">{item.text} </span>
-                  {item.value && content.type === 'phone' && (
-                    <a
-                      aria-label="phone number"
-                      className="mx-1"
-                      href={`"tel:${item.phone}`}
-                    >
-                      {item.value}
-                    </a>
-                  )}
-                </li>
-              ))}
-
-            {content.type === 'email' &&
-              content.group.map((item) => (
-                <li key={item.text}>
-                  <span className="text-gray-600">{item.text}:</span>
-                  <a
-                    aria-label="email"
-                    className="mx-1"
-                    href={`mailto:${item.value}`}
-                  >
-                    {item.value}
-                  </a>
-                </li>
-              ))}
-          </ul>
+          <div dangerouslySetInnerHTML={{ __html: content.text }} />
         </div>
       </div>
     </div>

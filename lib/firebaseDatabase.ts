@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app'
-import { getDatabase, ref, set, onValue } from 'firebase/database'
+import { getDatabase, ref, set, remove, onValue } from 'firebase/database'
 
 import colorCodes from '@/json/color-codes.json'
 import firebaseConfig from '@/lib/firebaseConfig'
@@ -36,5 +36,10 @@ export default function firebaseDatabase() {
       }
     })
   }
-  return { writeData, readData, readFromDB }
+
+  function deleteItemFromDB(dbRefId: string) {
+    const db = getDatabase()
+    return remove(ref(db, dbRefId))
+  }
+  return { writeData, readData, readFromDB, deleteItemFromDB }
 }

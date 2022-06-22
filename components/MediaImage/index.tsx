@@ -6,6 +6,8 @@ import { AiFillDelete } from 'react-icons/ai'
 import { IoCopySharp } from 'react-icons/io5'
 import { toast } from 'react-toastify'
 
+import firebaseDatabase from '@/lib/firebaseDatabase'
+
 interface Props {
   parsedMediaItem: string
   imageKey: string
@@ -18,6 +20,13 @@ export default function MediaImage({ parsedMediaItem, imageKey }: Props) {
     navigator.clipboard
       .writeText(parsedMediaItem)
       .then(() => toast.success('image link copied'))
+  }
+
+  function deleteImageHandler() {
+    const { deleteItemFromDB } = firebaseDatabase()
+    deleteItemFromDB(`media/${imageKey}`).then(() =>
+      toast.success('image deleted')
+    )
   }
 
   return (
@@ -38,7 +47,11 @@ export default function MediaImage({ parsedMediaItem, imageKey }: Props) {
               >
                 <IoCopySharp title="Copy image link" color="white" size={26} />
               </button>
-              <button type="button" className="wrapper">
+              <button
+                type="button"
+                className="wrapper"
+                onClick={deleteImageHandler}
+              >
                 <AiFillDelete title="Delete Image" color="white" size={26} />
               </button>
             </div>

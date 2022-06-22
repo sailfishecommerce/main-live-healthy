@@ -31,7 +31,8 @@ export default function firebaseDatabase() {
     onValue(dbRef, (snapshot) => {
       const data = snapshot.val()
       if (data) {
-        dbData(JSON.parse(data))
+        const formatData = typeof data === 'string' ? JSON.parse(data) : data
+        dbData(formatData)
       }
     })
   }

@@ -8,7 +8,8 @@ import useToast from '@/hooks/useToast'
 import uploadCSV from '@/utils/uploadCSV'
 
 export default function UploadToSwellFromAirtable() {
-  const { progress, dropzone, style } = useCSVDropzone(uploadCSV)
+  const { progress, dropzone, style, isUploadSuccessful } =
+    useCSVDropzone(uploadCSV)
   const { loadingToast, toastUpdate } = useToast()
   const toastID = useRef(null)
 
@@ -43,6 +44,7 @@ export default function UploadToSwellFromAirtable() {
         style={style}
         dropzone={dropzone}
         fileType="csv"
+        uploadStatus={isUploadSuccessful}
       />
     </div>
   )

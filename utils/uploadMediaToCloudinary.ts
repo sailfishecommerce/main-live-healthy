@@ -15,7 +15,8 @@ export default function uploadMediaToCloudinary(
       info: string,
       message: string
     ) => void
-  }
+  },
+  setIsUploadSuccessful: any
 ) {
   toastNotification.loadingToast(toastID)
   media.map((mediaItem: Blob | any) => {
@@ -39,9 +40,11 @@ export default function uploadMediaToCloudinary(
           'success',
           'Logo upload successful'
         )
+        setIsUploadSuccessful(true)
       })
       .catch((err) => {
         console.log('image-upload-err', err)
+        setIsUploadSuccessful(false)
         return toastNotification.updateToast(toastID, 'error', 'upload error')
       })
   })

@@ -6,7 +6,8 @@ import type { progressStateType } from '@/types'
 export default function uploadCSV(
   results: { data: any[] },
   setProgress: any,
-  progress: progressStateType
+  progress: progressStateType,
+  setIsUploadSuccessful: any
 ) {
   setProgress({ ...progress, loading: true })
   const promises = results.data.map((dataItem: any) => {
@@ -35,10 +36,13 @@ export default function uploadCSV(
         })
       })
   })
-  Promise.all(promises).then(() => {
-    setProgress((prevState: progressStateType) => ({
-      ...prevState,
-      loading: false,
-    }))
-  })
+  Promise.all(promises)
+    .then(() => {
+      setProgress((prevState: progressStateType) => ({
+        ...prevState,
+        loading: false,
+      }))
+      setIsUploadSuccessful(true)
+    })
+    .catch(() => setIsUploadSuccessful(false))
 }

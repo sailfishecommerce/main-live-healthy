@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useCallback, useMemo, useRef } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 
 import { styles } from '@/components/Admin/styles'
@@ -9,9 +9,15 @@ import uploadMediaToCloudinary from '@/utils/uploadMediaToCloudinary'
 export default function useMediaUpload() {
   const toastID = useRef(null)
   const toastNotification = useToast()
+  const [isUploadSuccessful, setIsUploadSuccessful] = useState(null)
 
   const onDrop = useCallback((acceptedFiles) => {
-    uploadMediaToCloudinary(acceptedFiles, toastID, toastNotification)
+    uploadMediaToCloudinary(
+      acceptedFiles,
+      toastID,
+      toastNotification,
+      setIsUploadSuccessful
+    )
   }, [])
 
   const dropzone = useDropzone({
@@ -34,5 +40,5 @@ export default function useMediaUpload() {
     [dropzone.isFocused, dropzone.isDragAccept, dropzone.isDragReject]
   )
 
-  return { dropzone, style }
+  return { dropzone, style, isUploadSuccessful }
 }

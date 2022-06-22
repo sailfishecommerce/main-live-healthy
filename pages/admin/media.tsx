@@ -4,7 +4,7 @@ import useMediaUpload from '@/hooks/useMediaUpload'
 import DashboardLayout from '@/layouts/dashboard-layout'
 
 export default function Media() {
-  const { dropzone, style } = useMediaUpload()
+  const { dropzone, style, isUploadSuccessful } = useMediaUpload()
 
   return (
     <DashboardLayout title="Upload Media page">
@@ -14,7 +14,12 @@ export default function Media() {
         </h4>
         <div className="content mt-6 flex">
           <div className="w-2/6 ">
-            <Dropzonebar style={style} dropzone={dropzone} fileType="images" />
+            <Dropzonebar
+              style={style}
+              dropzone={dropzone}
+              fileType="images"
+              uploadStatus={isUploadSuccessful}
+            />
           </div>
           <div className="w-4/6 ml-8  border-l-2 pl-8 h-screen">
             <h6 className="text-center font-medium text-lg">

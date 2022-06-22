@@ -9,10 +9,13 @@ import type { progressStateType } from '@/types'
 type uploadCSVType = (
   results: { data: any[] },
   setProgress: any,
-  progress: progressStateType
+  progress: progressStateType,
+  setIsUploadSuccessful: any
 ) => void
 
 export default function useCSVDropzone(uploadCSV: uploadCSVType) {
+  const [isUploadSuccessful, setIsUploadSuccessful] = useState(null)
+
   const [progress, setProgress] = useState({
     uploaded: 0,
     total: 0,
@@ -26,7 +29,7 @@ export default function useCSVDropzone(uploadCSV: uploadCSVType) {
       header: true,
       skipEmptyLines: true,
       complete: (results: any) => {
-        uploadCSV(results, setProgress, progress)
+        uploadCSV(results, setProgress, progress, setIsUploadSuccessful)
       },
     })
   }, [])
@@ -50,5 +53,5 @@ export default function useCSVDropzone(uploadCSV: uploadCSVType) {
     [dropzone.isFocused, dropzone.isDragAccept, dropzone.isDragReject]
   )
 
-  return { progress, dropzone, style }
+  return { progress, dropzone, style, isUploadSuccessful }
 }

@@ -14,7 +14,8 @@ export default function uploadLogotoCloudinary(
       info: string,
       message: string
     ) => void
-  }
+  },
+  setIsUploadSuccessful: any
 ) {
   toastNotification.loadingToast(toastID)
 
@@ -37,9 +38,11 @@ export default function uploadLogotoCloudinary(
       )
       const { writeData } = firebaseDatabase()
       writeData('logo', JSON.stringify(response.data.url))
+      setIsUploadSuccessful(true)
     })
     .catch((err) => {
       console.log('image-upload-err', err)
+      setIsUploadSuccessful(false)
       return toastNotification.updateToast(toastID, 'error', 'upload error')
     })
 }

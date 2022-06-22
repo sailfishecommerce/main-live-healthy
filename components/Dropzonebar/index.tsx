@@ -1,5 +1,6 @@
+/* eslint-disable no-nested-ternary */
+import Dropzonebarlist from '@/components/Dropzonebar/Dropzonebarlist'
 import type { progressStateType } from '@/types'
-import byteSize from '@/utils/byteSize'
 
 interface DropzonebarType {
   progress?: progressStateType
@@ -9,7 +10,7 @@ interface DropzonebarType {
     getInputProps: any
     isDragActive: boolean
   }
-  fileType: 'csv' | 'image'
+  fileType: 'csv' | 'image' | 'images'
   style: unknown
 }
 
@@ -27,6 +28,8 @@ export default function Dropzonebar({
   const fileTypeText =
     fileType === 'csv'
       ? 'csv file, or click to select csv file'
+      : fileType === 'images'
+      ? 'image here, you can upload multiple images or click to select image(s)'
       : 'image here or click to select the image'
   return (
     <>
@@ -34,7 +37,7 @@ export default function Dropzonebar({
         <div className="upload-area">
           <div {...getRootProps({ style })}>
             <input
-              className="border border-2 h-20 bg-red-500"
+              className="input-view border border-2 bg-red-500"
               {...getInputProps()}
             />
             {isDragActive ? (
@@ -42,18 +45,7 @@ export default function Dropzonebar({
             ) : (
               <p>Drag &apos;n&apos; drop the {fileTypeText}</p>
             )}
-            {acceptedFiles.length > 0 && (
-              <ul>
-                {acceptedFiles.map((file: any) => (
-                  <li key={file.path} className="uploaded-item text-blue-500">
-                    <span className="font-bold">{file.name}</span>
-                    <span className="text-red-500 ml-2">
-                      ({byteSize(file.size)})
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            )}
+            <Dropzonebarlist acceptedFiles={acceptedFiles} />
           </div>
         </div>
         {progress && progress?.total > 0 && (
@@ -75,13 +67,16 @@ export default function Dropzonebar({
       <style jsx>
         {`
           .upload-area {
-            height: 100px;
+            height: 100%;
             width: 100%;
             background-color: ${isDragActive
               ? 'var(--color-3)'
               : 'var(--color-4)'};
             padding: 10px;
             margin-top: 10px;
+          }
+          .input-view {
+            height: 100%;
           }
           .upload-area div {
             height: 100%;

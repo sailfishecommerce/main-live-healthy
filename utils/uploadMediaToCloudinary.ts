@@ -17,7 +17,7 @@ export default function uploadMediaToCloudinary(
   }
 ) {
   toastNotification.loadingToast(toastID)
-  media.map((mediaItem: any) => {
+  media.map((mediaItem: Blob | any) => {
     const formData = new FormData()
     formData.append('file', mediaItem)
     formData.append('upload_preset', 'live_healthy_store')
@@ -36,7 +36,7 @@ export default function uploadMediaToCloudinary(
           'Logo upload successful'
         )
         const { writeData } = firebaseDatabase()
-        writeData('media/', JSON.stringify(response.data.url))
+        writeData(`media/${mediaItem.path}`, JSON.stringify(response.data.url))
       })
       .catch((err) => {
         console.log('image-upload-err', err)

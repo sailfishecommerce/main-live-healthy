@@ -11,10 +11,14 @@ export default function MediaView() {
   const [media, setMedia] = useState<any>(null)
   const [paginatedArray, setPaginatedArray] = useState<any>([])
   const [activePagination, setActivePagination] = useState<any>(1)
+
   const [loading, setLoading] = useState(false)
   const { readFromDB } = firebaseDatabase()
 
   const mediaArray = media === null ? [] : Object.entries(media)
+  const arrayCount = Math.ceil(mediaArray.length / 4)
+
+  const arrayGroup = new Array(arrayCount).fill(0)
 
   useEffect(() => {
     setLoading(false)
@@ -55,10 +59,17 @@ export default function MediaView() {
             })}
           </div>
           <ul className="paginate flex items-center p-0 justify-center mt-6">
-            {[1, 2, 3].map((item) => {
+            {arrayGroup.map((_, index) => {
+              const item = index + 1
+              const activeStyle =
+                activePagination === item ? 'bg-mountain-green text-white' : ''
               return (
                 <li key={item} className="mx-4">
-                  <button type="button" onClick={() => paginateArray(item)}>
+                  <button
+                    type="button"
+                    className={`${activeStyle} px-2 `}
+                    onClick={() => paginateArray(item)}
+                  >
                     {item}
                   </button>
                 </li>

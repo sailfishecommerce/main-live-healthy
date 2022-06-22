@@ -20,6 +20,7 @@ export default function useMediaUpload() {
       '.png': ['image/png'],
       '.jpg': ['image/jpeg'],
       '.webp': ['image/webp'],
+      '.gif': ['image/gif'],
     },
   })
 

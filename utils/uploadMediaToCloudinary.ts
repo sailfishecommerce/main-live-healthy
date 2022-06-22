@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 import axios from 'axios'
 import type { MutableRefObject } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import firebaseDatabase from '@/lib/firebaseDatabase'
 
@@ -22,6 +23,7 @@ export default function uploadMediaToCloudinary(
     formData.append('file', mediaItem)
     formData.append('upload_preset', 'live_healthy_store')
     formData.append('api_key', `${process.env.NEXT_PUBLIC_CLOUDINARY_API_KEY}`)
+    const mediaId = uuidv4()
 
     return axios
       .post(
@@ -30,13 +32,13 @@ export default function uploadMediaToCloudinary(
       )
       .then((response) => {
         console.log('upload-response', response)
+        const { writeData } = firebaseDatabase()
+        writeData(`media/${mediaId}`, JSON.stringify(response.data.url))
         toastNotification.updateToast(
           toastID,
           'success',
           'Logo upload successful'
         )
-        const { writeData } = firebaseDatabase()
-        writeData(`media/${mediaItem.path}`, JSON.stringify(response.data.url))
       })
       .catch((err) => {
         console.log('image-upload-err', err)

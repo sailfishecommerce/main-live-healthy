@@ -10,7 +10,7 @@ export default function About() {
   return (
     <Applayout title="About us">
       <main className="w-full px-0">
-        <section className="flex flex-col md:flex-row items-center justify-center">
+        <section className="flex flex-col md:flex-row items-start justify-center">
           <img src={aboutusImg?.src} alt="about us banner " />
           <div className={`w-full md:w-1/2 py-5 px-4 lg:px-10`}>
             {pageContent?.map((content: any) => (

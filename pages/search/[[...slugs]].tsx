@@ -107,6 +107,6 @@ export const getServerSideProps = (
   context: GetServerSidePropsContext | any
 ) => {
   return getServerSidePropsPage(SearchPage, context, {
-    props: { searchQuery: context.params?.slugs[0] },
+    props: { searchQuery: context?.params?.slugs[0] },
   })
 }

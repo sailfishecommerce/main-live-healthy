@@ -1,12 +1,12 @@
-/* eslint-disable @next/next/no-img-element */
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react'
 
 import DashboardMainView from '@/components/Dashboard/DashboardMainView'
 import Dropzonebar from '@/components/Dropzonebar'
+import MediaImage from '@/components/MediaImage'
 import useMediaUpload from '@/hooks/useMediaUpload'
 import DashboardLayout from '@/layouts/dashboard-layout'
 import firebaseDatabase from '@/lib/firebaseDatabase'
-import Image from 'next/image'
 
 export default function Media() {
   const { dropzone, style, isUploadSuccessful } = useMediaUpload()
@@ -14,8 +14,6 @@ export default function Media() {
   const { readFromDB } = firebaseDatabase()
 
   const mediaArray = media === null ? [] : Object.values(media)
-
-  console.log('mediaArray', mediaArray)
 
   useEffect(() => {
     readFromDB('media/', setMedia)
@@ -46,9 +44,10 @@ export default function Media() {
                 {mediaArray.map((mediaItem: any) => {
                   const parsedMediaItem = JSON.parse(mediaItem)
                   return (
-                    <div className="image-wrapper" key={parsedMediaItem}>
-                      <img src={parsedMediaItem} alt="media-image" />
-                    </div>
+                    <MediaImage
+                      key={parsedMediaItem}
+                      parsedMediaItem={parsedMediaItem}
+                    />
                   )
                 })}
               </div>

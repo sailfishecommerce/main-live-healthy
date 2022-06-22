@@ -11,10 +11,11 @@ interface LogoProps {
 function LogoComponent({ className }: LogoProps) {
   const logoClassName = className ? className : ' w-full h-full'
   const [logoUrl, setLogoUrl] = useState(null)
+  const [, setLoading] = useState(false)
 
   useEffect(() => {
     const { readFromDB } = firebaseDatabase()
-    readFromDB('logo', setLogoUrl)
+    readFromDB('logo', setLogoUrl, setLoading)
   }, [])
 
   return (

@@ -25,14 +25,16 @@ export default function firebaseDatabase() {
     })
   }
 
-  function readFromDB(dbRefId: string, dbData: any) {
+  function readFromDB(dbRefId: string, dbData: any, setLoading: any) {
+    setLoading(true)
     const db = getDatabase()
     const dbRef = ref(db, dbRefId)
-    onValue(dbRef, (snapshot) => {
+    return onValue(dbRef, (snapshot) => {
       const data = snapshot.val()
       if (data) {
         const formatData = typeof data === 'string' ? JSON.parse(data) : data
         dbData(formatData)
+        setLoading(false)
       }
     })
   }

@@ -2,7 +2,7 @@ import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { AnimatePresence } from 'framer-motion'
 import { connectHits } from 'react-instantsearch-dom'
 
-import Product from '@/components/Cards/ProductCard'
+import Product from '@/components/Cards/Product'
 import selectRandomColor from '@/lib/selectRandomColor'
 import '@splidejs/splide/dist/css/splide.min.css'
 

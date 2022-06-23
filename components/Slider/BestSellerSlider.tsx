@@ -1,7 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 
-import Product from '@/components/Cards/ProductCard'
+import Product from '@/components/Cards/Product'
 import useProductInRange from '@/hooks/useLivehealthyProduct'
 import '@splidejs/splide/dist/css/splide.min.css'
 import selectRandomColor from '@/lib/selectRandomColor'

@@ -16,7 +16,7 @@ interface ProductTypes extends ProductProps {
   imageClassName?: string
 }
 
-export default function ProductCard({
+export default function Product({
   product,
   className,
   row,
@@ -31,8 +31,8 @@ export default function ProductCard({
   const productImageClassName = imageClassName ? imageClassName : ''
   const imageSize = mobileWidth
     ? {
-        height: 150,
-        width: 150,
+        height: 120,
+        width: 120,
       }
     : {
         height: 200,
@@ -62,7 +62,7 @@ export default function ProductCard({
       >
         <a title={product.name}>
           <div
-            className={`${productImageClassName} ${imageWidth}   image-wrapper`}
+            className={`${productImageClassName} ${imageWidth} image-wrapper`}
           >
             {product.images[0] && (
               <Image

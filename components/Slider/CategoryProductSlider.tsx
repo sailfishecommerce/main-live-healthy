@@ -4,7 +4,7 @@ import type { PropsWithChildren } from 'react'
 import { memo } from 'react'
 import isEqual from 'react-fast-compare'
 
-import Product from '@/components/Cards/ProductCard'
+import Product from '@/components/Cards/Product'
 import selectRandomColor from '@/lib/selectRandomColor'
 
 import '@splidejs/splide/dist/css/splide.min.css'

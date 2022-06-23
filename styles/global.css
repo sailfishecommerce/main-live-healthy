@@ -181,13 +181,21 @@ button.splide__arrow:disabled {
   width: 90%;
 }
 
-.product-name,
+h3.product-name,
 .text-brand-black.product-name span span {
   display: -webkit-box;
   max-width: 200px;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+}
+a .image-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
 }
 
 /* product-gallery-thumblist */

@@ -13,7 +13,7 @@ export default function DiscountTag({ price, salePrice }: Props) {
   return (
     <>
       {price !== 0 && (
-        <div className="absolute text-xs flex rounded-bl-none items-center discount-tag bg-mountain-green rounded-b-xl rounded-r-xl text-white p-1 z-10 left-0 top-0">
+        <div className="absolute text-xs flex rounded-bl-none items-center discount-tag bg-mountain-green rounded-b-xl rounded-r-xl text-white p-1 z-10 left-0 top-0 text-clip">
           <span> {discountPercentage} </span> % Off
         </div>
       )}

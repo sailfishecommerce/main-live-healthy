@@ -6,10 +6,12 @@ import {
   SearchBox,
   Configure,
 } from 'react-instantsearch-dom'
+import { useDebounce } from 'use-debounce'
 
 import SearchbarHit from '@/components/Search/SearchbarHit'
 import { useMediaQuery } from '@/hooks'
 import { algoliaClient } from '@/lib/algoliaConfig'
+// import CustomSearchBox from './CustomSearchBox'
 
 const searchClient = {
   ...algoliaClient,
@@ -33,6 +35,8 @@ const searchClient = {
 function HomepageComponent() {
   const [searching, setSearching] = useState(false)
   const [query, setQuery] = useState('')
+  const [debouncedSearchClient] = useDebounce(searchClient, 1000)
+  // const [debouncedQuery] = useDebounce(query, 1000)
 
   const mobileWidth = useMediaQuery('(max-width:768px)')
 
@@ -49,15 +53,17 @@ function HomepageComponent() {
     <>
       <InstantSearch
         indexName="LIVEHEALTHY_PRODUCTION_INDEX"
-        searchClient={searchClient}
+        searchClient={debouncedSearchClient}
       >
         <div
           className={`search relative flex bg-gray-100 xl:w-1/5 ${searchbarWidth} rounded-md py-2 px-1 xl:px-4 items-center`}
         >
           <Configure hitsPerPage={3} />
+          {/* <CustomSearchBox /> */}
+          {/* </div> */}
           <SearchBox
             showLoadingIndicator
-            autoFocus={true}
+            autoFocus={false}
             className="w-full bg-gray-100"
             searchAsYouType={true}
             onChange={showSearchResult}

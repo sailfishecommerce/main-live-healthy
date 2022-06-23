@@ -36,12 +36,12 @@ const ProductReview = dynamic(
 export default function ProductOverview({ hit }: any) {
   const breadcrumbItems: breadcrumbType = breadcrumb.product
   breadcrumbItems[2] = {
-    name: hit.name,
+    name: hit?.name,
     link: null,
     active: true,
   }
   const { getVendorProduct } = useProduct()
-  const { data, status } = useQuery(`get-vendor-${hit.slug}`, () =>
+  const { data, status } = useQuery(`get-vendor-${hit?.slug}`, () =>
     getVendorProduct(hit.vendor)
   )
 
@@ -49,8 +49,8 @@ export default function ProductOverview({ hit }: any) {
   let alsoBoughtProducts = []
 
   if (status === 'success') {
-    relatedProducts = data.data.results.slice(0, 15)
-    alsoBoughtProducts = data.data.results.slice(15, 30)
+    relatedProducts = data?.data?.results.slice(0, 15)
+    alsoBoughtProducts = data?.data?.results.slice(15, 30)
   }
 
   return (
@@ -61,7 +61,7 @@ export default function ProductOverview({ hit }: any) {
         <ProductDetail product={hit} />
         <ProductOffers className="md:hidden" />
       </div>
-      <ProductReview rating={hit.rating} />
+      <ProductReview rating={hit?.rating} />
       <div className="mt-6 px-0 mx-0" />
       {status === 'error' ? (
         'unable to load related products'
@@ -78,7 +78,7 @@ export default function ProductOverview({ hit }: any) {
           {data?.data.results.length > 15 && (
             <ProductSlider
               title="Popular with"
-              productName={hit.name}
+              productName={hit?.name}
               products={alsoBoughtProducts}
               productClassName="border border-gray-200 mr-6 rounded-lg"
               randomColor={true}

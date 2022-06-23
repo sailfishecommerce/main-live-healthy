@@ -3,7 +3,7 @@ import { FaWhatsapp } from 'react-icons/fa'
 export default function FooterText() {
   return (
     <>
-      <div className="call-us bg-white rounded-lg p-3 w-full lg:w-5/6 my-4 md:my-3">
+      <div className="call-us bg-white rounded-lg p-3 w-full  my-4 md:my-3">
         <span className="flex items-center">
           <FaWhatsapp fill="green" />
           <p className="font-bold mx-2">

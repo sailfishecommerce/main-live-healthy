@@ -5,12 +5,19 @@ import { Highlight } from 'react-instantsearch-dom'
 import FormattedPrice from '@/components/Price/FormattedPrice'
 
 export default function SearchbarHit({ hit }: any) {
+  const hitImage =
+    typeof hit?.images[0] === 'string'
+      ? hit?.images[0]
+      : hit?.images[0]?.file?.url
+
   return (
     <>
       {hit && (
         <Link passHref href={`/product/${hit.slug}`}>
           <div className="w-full flex items-center border-b px-2 py-1 hover:bg-gray-300">
-            <Image src={hit.images[0]} alt={hit.name} height={80} width={80} />
+            {hitImage && (
+              <Image src={hitImage} alt={hit.name} height={80} width={80} />
+            )}
             <div className="text-content ml-3">
               <div className="hit-name w-full">
                 <Highlight attribute="name" hit={hit} />

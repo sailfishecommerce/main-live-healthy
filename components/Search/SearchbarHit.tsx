@@ -40,6 +40,7 @@ function SearchbarHitComponent({ hit, insights }: any) {
                 height={80}
                 width={80}
                 blurDataURL={hitImage}
+                placeholder="blur"
               />
             )}
             <div className="text-content ml-3">

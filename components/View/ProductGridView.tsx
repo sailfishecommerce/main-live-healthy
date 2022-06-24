@@ -1,12 +1,10 @@
 import { AnimatePresence, m } from 'framer-motion'
 import dynamic from 'next/dynamic'
 
-// import ProductHitCard from '@/components/Cards/ProductHitCard'
-
 const DynamicProductHitCard = dynamic(
   () =>
     import(
-      /* webpackChunkName: 'DynamicProductHitCard' */ '@/components/Cards/ProductHitCard'
+      /* webpackChunkName: 'ProductHitCard' */ '@/components/Cards/ProductHitCard'
     ),
   {
     ssr: false,

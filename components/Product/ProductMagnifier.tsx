@@ -66,7 +66,7 @@ export default function ProductMagnifier({ product }: ProductProps) {
             height={magnifierDimens.height}
             className="img-fluid"
             src={images[activeImage]}
-            zoomFactor={0.11}
+            zoomFactor={0.5}
           />
           <div className="image-zoom-pane"></div>
         </div>

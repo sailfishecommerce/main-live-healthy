@@ -1,9 +1,12 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import Link from 'next/link'
 
 import CartIcon from '@/components/Icons/CartIcon'
 import Image from '@/components/Image'
 import FormattedPrice from '@/components/Price/FormattedPrice'
 import { useMediaQuery } from '@/hooks'
+import useAlgoliaEvent from '@/hooks/useAlgoliaEvent'
 import useShoppingCart from '@/hooks/useShoppingCart'
 
 interface ProductHitTypes {
@@ -22,12 +25,15 @@ export default function ProductHitCard({
   color,
   imageClassName,
 }: ProductHitTypes) {
+  const { algoliaEvent } = useAlgoliaEvent()
+  const mobileWidth = useMediaQuery('(max-width:768px)')
+
   const isRow = row ? 'flex' : 'flex flex-col'
   const isRowText = row ? 'ml-4' : ''
   const imageWidth = row ? 'w-1/2' : ''
   const productClassName = className ? className : ''
-  const mobileWidth = useMediaQuery('(max-width:768px)')
   const productImageClassName = imageClassName ? imageClassName : ''
+
   const imageSize = mobileWidth
     ? {
         height: 150,
@@ -42,18 +48,40 @@ export default function ProductHitCard({
   const productImage =
     typeof hit.images[0] === 'string' ? hit.images[0] : hit.images[0].file.url
 
-  const addToCartHandler = () =>
+  const addToCartHandler = () => {
+    algoliaEvent(
+      'convertedObjectIDsAfterSearch',
+      'Product Added to cart after search',
+      hit.objectID,
+      hit.__queryID,
+      hit.__position
+    )
     addItemToCart.mutate({ product: hit, quantity: 1 })
+  }
+
   const productVendorLink = hit.vendor.includes(' ')
     ? `/search/${hit.vendor}`
     : `/vendor/${hit.vendor}`
+
+  function algoliaEventHandler() {
+    algoliaEvent(
+      'clickedObjectIDsAfterSearch',
+      'Product Added to cart after search',
+      hit.objectID,
+      hit.__queryID,
+      hit.__position
+    )
+  }
 
   return (
     <div
       className={`hover:bg-white hover:shadow-lg product hover:rounded-lg product ${productClassName}  ${isRow} p-2 md:p-6 hover:border`}
     >
-      <Link passHref href={`/product/${hit.slug}?queryID=${hit.__queryID}`}>
-        <a title={hit.name}>
+      <Link
+        passHref
+        href={`/product/${hit.slug}?queryID=${hit.__queryID}?position=${hit.__position}`}
+      >
+        <a title={hit.name} onClick={algoliaEventHandler}>
           <div
             className={`${productImageClassName} ${imageWidth} flex justify-center mx-auto mb-4 image-wrapper`}
           >

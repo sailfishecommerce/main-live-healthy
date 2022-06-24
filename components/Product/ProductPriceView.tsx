@@ -9,8 +9,17 @@ import useAlgoliaEvent from '@/hooks/useAlgoliaEvent'
 import useShoppingCart from '@/hooks/useShoppingCart'
 import useSlidingTab from '@/hooks/useSlidingTab'
 import currentDate from '@/lib/incrementDate'
+import type { productType } from '@/typings'
 
-export default function ProductPriceView({ product }: any) {
+interface Props {
+  product: productType
+  queryObject: {
+    queryID: string
+    position: number
+  } | null
+}
+
+export default function ProductPriceView({ product, queryObject }: Props) {
   const { addItemToCart } = useShoppingCart()
   const { updateSlideTab } = useSlidingTab()
   const router = useRouter()

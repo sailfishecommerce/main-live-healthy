@@ -1,10 +1,14 @@
 /* eslint-disable no-nested-ternary */
 import dynamic from 'next/dynamic'
+import Link from 'next/link'
+import { useRouter } from 'next/router'
 import { useQuery } from 'react-query'
 
 import Breadcrumb from '@/components/Breadcrumb'
 import ProductDetail from '@/components/Product/ProductDetail'
 import ProductMagnifier from '@/components/Product/ProductMagnifier'
+import ProductPriceView from '@/components/Product/ProductPriceView'
+import CustomerReview from '@/components/Reviews/CustomerReview'
 import useProduct from '@/hooks/useProduct'
 import breadcrumb from '@/json/breadcrumb.json'
 
@@ -34,16 +38,32 @@ const ProductReview = dynamic(
     )
 )
 export default function ProductOverview({ hit }: any) {
+  const { getVendorProduct } = useProduct()
+  const { data, status } = useQuery(`get-vendor-${hit?.slug}`, () =>
+    getVendorProduct(hit.vendor)
+  )
+  const router = useRouter()
+  const productQueries = router?.query?.queryID
+
+  function getQueryObj(queries: any) {
+    const splittedQueryArray = queries.split('?position=')
+    const queryID = splittedQueryArray[0]
+    const position = splittedQueryArray[1]
+    const productQueryObj = {
+      queryID,
+      position,
+    }
+    return productQueryObj
+  }
+
+  const queryObject = productQueries ? getQueryObj(productQueries) : null
+
   const breadcrumbItems: breadcrumbType = breadcrumb.product
   breadcrumbItems[2] = {
     name: hit?.name,
     link: null,
     active: true,
   }
-  const { getVendorProduct } = useProduct()
-  const { data, status } = useQuery(`get-vendor-${hit?.slug}`, () =>
-    getVendorProduct(hit.vendor)
-  )
 
   let relatedProducts = []
   let alsoBoughtProducts = []
@@ -53,12 +73,31 @@ export default function ProductOverview({ hit }: any) {
     alsoBoughtProducts = data?.data?.results.slice(15, 30)
   }
 
+  const productVendorLink = hit?.vendor?.includes(' ')
+    ? `/search/${hit.vendor}`
+    : `/collection/${hit.vendor}`
+
   return (
     <div className="flex container mx-auto flex-col items-start">
       <Breadcrumb breadcrumbItems={breadcrumbItems} />
       <div className="flex flex-col px-4 md:px-0 lg:flex-row md:justify-start">
         <ProductMagnifier product={hit} />
-        <ProductDetail product={hit} />
+        <ProductDetail product={hit}>
+          <h3 className="lg:text-2xl text-lg font-bold">{hit.name}</h3>
+          <p>
+            By{' '}
+            <Link passHref href={productVendorLink}>
+              <a className="text-green-500">{hit.vendor}</a>
+            </Link>
+          </p>
+          {hit?.review_rating && (
+            <CustomerReview
+              reviews={hit?.review_rating}
+              ratings={hit?.rating}
+            />
+          )}
+          <ProductPriceView product={hit} queryObject={queryObject} />
+        </ProductDetail>
         <ProductOffers className="md:hidden" />
       </div>
       <ProductReview rating={hit?.rating} />

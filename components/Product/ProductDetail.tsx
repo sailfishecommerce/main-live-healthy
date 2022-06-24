@@ -1,17 +1,23 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useAtom } from 'jotai'
-import Link from 'next/link'
+import type { PropsWithChildren } from 'react'
 import { useEffect } from 'react'
 
 import PaymentMethodView from '@/components/Payment/PaymentMethodView'
-import ProductPriceView from '@/components/Product/ProductPriceView'
 import SeeMoreProductInfo from '@/components/Product/SeeMoreProductInfo'
-import CustomerReview from '@/components/Reviews/CustomerReview'
 import useSlidingTab from '@/hooks/useSlidingTab'
 import { activeProductSlideAtom, seemoreAtom } from '@/lib/atomConfig'
 import type { seemoreType } from '@/lib/atomConfigType'
+import type { productType } from '@/typings'
 
-export default function ProductDetail({ product }: any) {
+interface Props {
+  product: productType
+}
+
+export default function ProductDetail({
+  product,
+  children,
+}: PropsWithChildren<Props>) {
   const [seeMore, setSeeMoreState]: any = useAtom<seemoreType>(seemoreAtom)
   const { updateSlideTab } = useSlidingTab()
 
@@ -26,23 +32,10 @@ export default function ProductDetail({ product }: any) {
     setSeeMoreState(infoType)
   }
 
-  const productVendorLink = product?.vendor?.includes(' ')
-    ? `/search/${product.vendor}`
-    : `/collection/${product.vendor}`
   return (
     <div className="lg:w-1/2 w-full flex flex-col justify-start">
-      <h3 className="lg:text-2xl text-lg font-bold">{product.name}</h3>
-      <p>
-        By{' '}
-        <Link passHref href={productVendorLink}>
-          <a className="text-green-500">{product.vendor}</a>
-        </Link>
-      </p>
-      <CustomerReview
-        reviews={product?.review_rating}
-        ratings={product?.rating}
-      />
-      <ProductPriceView product={product} />
+      {children}
+
       <SeeMoreProductInfo
         title="Product Information"
         onClick={() => setSeeMoreHandler('Product Information')}

@@ -30,7 +30,6 @@ function SearchbarHitViewComponent({ hits, query }: Props) {
           {hits.map((hit) => (
             <SearchbarHit hit={hit} key={hit.id} />
           ))}
-          {/* <Hits hitComponent={SearchbarHit} /> */}
           <Link passHref href={`/search/${query}`}>
             <button
               aria-label="view more"

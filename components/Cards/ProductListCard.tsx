@@ -4,6 +4,7 @@ import Link from 'next/link'
 import CartIcon from '@/components/Icons/CartIcon'
 import FormattedPrice from '@/components/Price/FormattedPrice'
 import { useMediaQuery } from '@/hooks'
+import useAlgoliaEvent from '@/hooks/useAlgoliaEvent'
 import useShoppingCart from '@/hooks/useShoppingCart'
 
 interface ProductHitTypes {
@@ -20,6 +21,9 @@ export default function ProductListCard({
   color,
   smallerImage,
 }: ProductHitTypes) {
+  const { algoliaEvent } = useAlgoliaEvent()
+  const { addItemToCart } = useShoppingCart()
+
   const productClassName = className ? className : ''
   const imageSize = smallerImage
     ? {
@@ -31,12 +35,20 @@ export default function ProductListCard({
         width: 300,
       }
 
-  const { addItemToCart } = useShoppingCart()
   const productImage =
     typeof hit.images[0] === 'string' ? hit.images[0] : hit.images[0].file.url
 
-  const addToCartHandler = () =>
+  const addToCartHandler = () => {
+    algoliaEvent(
+      'convertedObjectIDsAfterSearch',
+      'Product Added to cart after search',
+      hit.objectID,
+      hit.__queryID,
+      hit.__position
+    )
     addItemToCart.mutate({ product: hit, quantity: 1 })
+  }
+
   const productVendorLink = hit?.vendor?.includes(' ')
     ? `/search/${hit.vendor}`
     : `/collection/${hit.vendor}`

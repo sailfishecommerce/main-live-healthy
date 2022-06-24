@@ -1,22 +1,37 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import Image from 'next/image'
 import Link from 'next/link'
-import { Highlight } from 'react-instantsearch-dom'
+import { Highlight, connectHitInsights } from 'react-instantsearch-dom'
+import aa from 'search-insights'
 
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import FormattedPrice from '@/components/Price/FormattedPrice'
+import { indexName } from '@/utils/env'
 
-export default function SearchbarHit({ hit }: any) {
-  console.log('hit', hit)
+function SearchbarHitComponent({ hit, insights }: any) {
   const hitImage =
     typeof hit?.images[0] === 'string'
       ? hit?.images[0]
       : hit?.images[0]?.file?.url
 
+  function algoliaInsightEvent() {
+    insights('clickedObjectIDsAfterSearch', {
+      index: indexName,
+      eventName: 'Product Clicked',
+      position: hit.__position,
+      objectID: hit.objectID,
+    })
+  }
+
   return (
     <>
       {hit ? (
         <Link passHref href={`/product/${hit.slug}`}>
-          <div className="w-full flex items-center border-b px-2 py-1 hover:bg-gray-300">
+          <a
+            className="w-full flex items-center border-b px-2 py-1 hover:bg-gray-300"
+            onClick={algoliaInsightEvent}
+          >
             {hitImage && (
               <Image
                 src={hitImage}
@@ -37,7 +52,7 @@ export default function SearchbarHit({ hit }: any) {
                 />
               </div>
             </div>
-          </div>
+          </a>
         </Link>
       ) : (
         <SpinnerRipple centerRipple />
@@ -45,3 +60,6 @@ export default function SearchbarHit({ hit }: any) {
     </>
   )
 }
+
+const SearchbarHit: any = connectHitInsights(aa)(SearchbarHitComponent)
+export default SearchbarHit

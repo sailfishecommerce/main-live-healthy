@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Hits } from 'react-instantsearch-dom'
+import { Hits, Configure } from 'react-instantsearch-dom'
 
 import SearchbarHit from '@/components/Search/SearchbarHit'
 
@@ -10,6 +10,7 @@ interface Props {
 export default function SearchbarHitView({ query }: Props) {
   return (
     <div className="hits absolute top-16  lg:w-1/3 w-full right-0 p-4 bg-white z-50 rounded-md shadow-lg border">
+      <Configure clickAnalytics hitsPerPage={3} analytics={true} />
       <Hits hitComponent={SearchbarHit} />
       <Link passHref href={`/search/${query}`}>
         <button

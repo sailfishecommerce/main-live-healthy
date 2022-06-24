@@ -10,6 +10,11 @@ body {
   font-display: swap;
 }
 
+/* algolia */
+.ais-Highlight-highlighted {
+  color: var(--color-12);
+}
+
 /* discount slider */
 .slider.discount-slider {
   height: 60px;
@@ -180,7 +185,7 @@ button.splide__arrow:disabled {
   text-overflow: ellipsis;
   width: 90%;
 }
-  
+
 h3.product-name,
 .text-brand-black.product-name span span {
   display: -webkit-box;

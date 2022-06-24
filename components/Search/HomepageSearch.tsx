@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { InstantSearch, Configure } from 'react-instantsearch-dom'
+import { InstantSearch } from 'react-instantsearch-dom'
 import { useDebounce } from 'use-debounce'
 
 import CustomSearchBox from '@/components/Search/CustomSearchBox'
@@ -33,7 +33,6 @@ function HomepageComponent() {
         indexName="LIVEHEALTHY_PRODUCTION_INDEX"
         searchClient={debouncedSearchClient}
       >
-        <Configure hitsPerPage={3} />
         <CustomSearchBox />
       </InstantSearch>
     </>

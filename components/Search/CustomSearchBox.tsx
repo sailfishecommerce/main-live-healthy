@@ -47,7 +47,7 @@ function SearchBox({ currentRefinement, refine }: any) {
               type="text"
               defaultValue={query}
               placeholder="search products..."
-              className="bg-gray-100"
+              className="bg-gray-100 px-2"
               onChange={onChangeDebounced}
             />
             <button type="button" onClick={resetHandler}>

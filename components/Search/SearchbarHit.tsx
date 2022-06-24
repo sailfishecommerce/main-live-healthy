@@ -48,7 +48,7 @@ function SearchbarHitComponent({ hit, insights }: any) {
               <div className="hit-price">
                 <FormattedPrice
                   className="text-sm font-semibold"
-                  price={hit.price}
+                  price={hit.sale_price}
                 />
               </div>
             </div>

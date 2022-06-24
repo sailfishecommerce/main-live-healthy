@@ -28,7 +28,13 @@ export default function ProductPriceView({ product, queryObject }: Props) {
   const listingDate: any = currentDate
 
   function algoliaEventHandler() {
-    algoliaEvent('clickedObjectIDs', 'Buy now Clicked', product.objectID)
+    algoliaEvent(
+      'clickedObjectIDs',
+      'Buy now Clicked',
+      product.objectID,
+      queryObject?.queryID,
+      queryObject?.position
+    )
   }
 
   function buyNowHandler() {
@@ -44,6 +50,13 @@ export default function ProductPriceView({ product, queryObject }: Props) {
   }
 
   function addToCartHandler() {
+    algoliaEvent(
+      'convertedObjectIDsAfterSearch',
+      'Product added to cart after search',
+      product.objectID,
+      queryObject?.queryID,
+      queryObject?.position
+    )
     updateSlideTab('SLIDING-CART')
     addItemToCart.mutate({ product, quantity: 1 })
   }

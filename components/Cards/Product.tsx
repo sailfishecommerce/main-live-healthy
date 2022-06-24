@@ -45,7 +45,14 @@ export default function Product({
         width: 200,
       }
 
-  const addToCartHandler = () => addItemToCart.mutate({ product, quantity: 1 })
+  const addToCartHandler = () => {
+    algoliaEvent(
+      'convertedObjectIDs',
+      'Product added to Cart',
+      product.objectID
+    )
+    addItemToCart.mutate({ product, quantity: 1 })
+  }
 
   function algoliaEventHandler() {
     algoliaEvent('clickedObjectIDs', 'Product Clicked', product.objectID)

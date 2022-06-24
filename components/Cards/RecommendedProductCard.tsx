@@ -1,8 +1,11 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import Image from 'next/image'
 import Link from 'next/link'
 
 import CartIcon from '@/components/Icons/CartIcon'
 import FormattedPrice from '@/components/Price/FormattedPrice'
+import useAlgoliaEvent from '@/hooks/useAlgoliaEvent'
 import useShoppingCart from '@/hooks/useShoppingCart'
 import type { ProductProps } from '@/types'
 
@@ -19,10 +22,18 @@ export default function RecommendedProductCard({
   imageClassName,
 }: ProductTypes) {
   const { addItemToCart } = useShoppingCart()
+  const { algoliaEvent } = useAlgoliaEvent()
 
   // loadingState(addItemToCart, `${product.name} added to cart`)
 
-  const addToCartHandler = () => addItemToCart.mutate({ product, quantity: 1 })
+  const addToCartHandler = () => {
+    algoliaEvent(
+      'convertedObjectIDs',
+      'Product added to Cart',
+      product.objectID
+    )
+    addItemToCart.mutate({ product, quantity: 1 })
+  }
 
   const productClassName = className ? className : ''
   const productImageClassName = imageClassName ? imageClassName : ''
@@ -41,6 +52,11 @@ export default function RecommendedProductCard({
       ? product.images[0]
       : product.images[0].file.url
 
+  function algoliaEventHandler() {
+    algoliaEvent('clickedObjectIDs', 'Product Clicked', product.objectID)
+    algoliaEvent('viewedObjectIDs', 'Product Viewed', product.objectID)
+  }
+
   return (
     <div
       className={`hov hover:shadow-lg mr-4 flex bg-gray-100 rounded-md flex-col hover:rounded-lg product ${productClassName}  p-4 hover:border`}
@@ -48,7 +64,7 @@ export default function RecommendedProductCard({
     >
       <div className={`${productImageClassName} mx-auto image-wrapper`}>
         <Link passHref href={`/product/${product.slug}`}>
-          <a>
+          <a onClick={algoliaEventHandler}>
             <Image
               src={productImage}
               alt={product.name}

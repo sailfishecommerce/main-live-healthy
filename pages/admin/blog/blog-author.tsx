@@ -7,7 +7,7 @@ export default function BlogAuthor() {
   return (
     <DashboardLayout title="Blog Author">
       <DashboardMainView>
-        <div className="blog-author-view flex items-center">
+        <div className="blog-author-view flex items-start">
           <BlogAuthorsList />
           <BlogAuthorForm />
         </div>

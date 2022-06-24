@@ -24,7 +24,6 @@ export default function Dropzonebarlist({ acceptedFiles }: Props) {
               </li>
             ))}
           </ul>
-          {/* )} */}
         </>
       )}
     </div>

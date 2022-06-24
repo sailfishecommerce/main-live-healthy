@@ -17,7 +17,8 @@ export default function uploadMediaToCloudinary(
       message: string
     ) => void
   },
-  setIsUploadSuccessful: any
+  setIsUploadSuccessful: any,
+  dbNode?: string
 ) {
   toastNotification.loadingToast(toastID)
   media.map((mediaItem: Blob | any) => {
@@ -27,6 +28,27 @@ export default function uploadMediaToCloudinary(
     formData.append('upload_preset', 'live_healthy_store')
     const mediaId = uuidv4()
 
+    function saveToDB(response: any) {
+      const { writeData } = firebaseDatabase()
+      const { secure_url, public_id, signature, version } = response.data
+      return dbNode
+        ? writeData(
+            dbNode,
+            JSON.stringify({
+              url: secure_url,
+            })
+          )
+        : writeData(
+            `media/${mediaId}`,
+            JSON.stringify({
+              url: secure_url,
+              public_id,
+              signature,
+              version,
+            })
+          )
+    }
+
     return axios
       .post(
         `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`,
@@ -34,17 +56,7 @@ export default function uploadMediaToCloudinary(
       )
       .then((response) => {
         console.log('upload-response', response)
-        const { writeData } = firebaseDatabase()
-        const { secure_url, public_id, signature, version } = response.data
-        writeData(
-          `media/${mediaId}`,
-          JSON.stringify({
-            url: secure_url,
-            public_id,
-            signature,
-            version,
-          })
-        )
+        saveToDB(response)
         toastNotification.updateToast(
           toastID,
           'success',

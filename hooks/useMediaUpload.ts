@@ -6,7 +6,7 @@ import { styles } from '@/components/Admin/styles'
 import useToast from '@/hooks/useToast'
 import uploadMediaToCloudinary from '@/utils/uploadMediaToCloudinary'
 
-export default function useMediaUpload() {
+export default function useMediaUpload(dbNode?: string) {
   const toastID = useRef(null)
   const toastNotification = useToast()
   const [isUploadSuccessful, setIsUploadSuccessful] = useState(null)
@@ -16,7 +16,8 @@ export default function useMediaUpload() {
       acceptedFiles,
       toastID,
       toastNotification,
-      setIsUploadSuccessful
+      setIsUploadSuccessful,
+      dbNode
     )
   }, [])
 

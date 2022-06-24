@@ -21,6 +21,7 @@ function SearchbarHitComponent({ hit, insights }: any) {
       eventName: 'Product Clicked',
       position: hit.__position,
       objectID: hit.objectID,
+      queryID: hit.__queryID,
     })
   }
 

@@ -16,13 +16,17 @@ function HomepageSliderControlsComponent({ content, activeIndex }: Props) {
         return (
           <button
             type="button"
-            className={`slider-item  splide__pagination__page flex flex-col border-t-2 pt-2 ${isActive}`}
+            className={`slider-item relative items-center justify-center splide__pagination__page flex order-t-2 pt-2 ${isActive}`}
             key={item.title}
             title={item.title}
           >
-            <h4 className="flex items-center font-medium">0{indexValue}</h4>
-            <h2 className="font-bold my-1">{item.title}</h2>
-            <p>{item.category}</p>
+            <h4 className="flex left-0 items-center absolute font-medium">
+              0{indexValue}
+            </h4>
+            <div className="text-content">
+              <h2 className="font-bold my-1">{item.title}</h2>
+              <p>{item.category}</p>
+            </div>
           </button>
         )
       })}
@@ -32,7 +36,7 @@ function HomepageSliderControlsComponent({ content, activeIndex }: Props) {
             width: 100%;
             background: unset;
             height: unset;
-            display: unset;
+            display: flex;
             margin: unset;
             border-top: 1px solid #e7e6e9;
             border-radius: unset;
@@ -40,9 +44,10 @@ function HomepageSliderControlsComponent({ content, activeIndex }: Props) {
             padding: 10px 0px;
             position: unset;
             transition: unset;
+            position: relative;
           }
           .slider-item.active {
-            border-top: 3px solidvar(--color-1);
+            border-top: 3px solid var(--color-1);
           }
           .slider-item.active h4 {
             color: var(--color-1);

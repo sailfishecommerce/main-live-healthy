@@ -15,12 +15,15 @@ export default function useAlgoliaEvent() {
   function algoliaEvent(
     insightName: insightNameType,
     eventName: string,
-    hitObjectD: string
+    hitObjectD: string,
+    queryIDVal?: string
   ) {
+    const eventQueryID = queryIDVal ? { queryID: queryIDVal } : ''
     return searchInsights(insightName, {
       index: indexName,
       eventName,
       objectIDs: [hitObjectD],
+      ...eventQueryID,
     })
   }
 

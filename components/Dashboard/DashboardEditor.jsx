@@ -8,6 +8,7 @@ import { withRouter } from 'next/router'
 
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import firebaseDatabase from '@/lib/firebaseDatabase'
+import toSlug from '@/lib/toSlug'
 
 class DashboardEditor extends Component {
   constructor(props) {
@@ -48,6 +49,7 @@ class DashboardEditor extends Component {
     ) {
       const db = getDatabase()
       const databaseRefId = 'articles/' + this.props.editorKey + '/content'
+      // const databaseRefIDValue = this.props.type ? `${databaseRefId}` : databaseRefId
       console.log('databaseRefId', databaseRefId)
       const dbRef = ref(db, databaseRefId)
       onValue(dbRef, (snapshot) => {
@@ -65,12 +67,16 @@ class DashboardEditor extends Component {
   saveContent = debounce((content) => {
     const { writeData } = firebaseDatabase()
     const createdTime = new Date()
-    const articleType = this.props.type ? `/${this.props?.blogPostTitle}` : ''
+    const articleType = this.props.type
+      ? `/${toSlug(this.props?.blogPostTitle)}`
+      : ''
     const databaseRefId = 'articles/' + this.props.editorKey + articleType
     console.log('datbaseRefId', databaseRefId)
     const articleData = this.props.type
       ? {
           content: JSON.stringify(convertToRaw(content)),
+          title: JSON.stringify(this.props.blogPostTitle),
+          author: '',
           createdAt: JSON.stringify(createdTime.toISOString()),
         }
       : {

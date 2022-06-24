@@ -31,6 +31,9 @@ export default function BlogPost() {
           name="blogPostInput"
           onChange={(e) => setTitle(e.target.value)}
         />
+        <select className="mt-4 p-2">
+          <option className="text-bold">Select Author</option>
+        </select>
         <div className="mb-8" />
         <DynamicDashboardEditor
           editorKey={route}

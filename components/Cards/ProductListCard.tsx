@@ -36,7 +36,9 @@ export default function ProductListCard({
       }
 
   const productImage =
-    typeof hit.images[0] === 'string' ? hit.images[0] : hit.images[0].file.url
+    typeof hit?.images[0] === 'string'
+      ? hit?.images[0]
+      : hit?.images[0]?.file?.url
 
   const addToCartHandler = () => {
     algoliaEvent(

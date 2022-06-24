@@ -42,6 +42,7 @@ export default function ProductOverview({ hit }: any) {
   const { data, status } = useQuery(`get-vendor-${hit?.slug}`, () =>
     getVendorProduct(hit.vendor)
   )
+
   const router = useRouter()
   const productQueries = router?.query?.queryID
 
@@ -57,6 +58,7 @@ export default function ProductOverview({ hit }: any) {
   }
 
   const queryObject = productQueries ? getQueryObj(productQueries) : null
+  const productData = data?.data?.results
 
   const breadcrumbItems: breadcrumbType = breadcrumb.product
   breadcrumbItems[2] = {
@@ -69,13 +71,13 @@ export default function ProductOverview({ hit }: any) {
   let alsoBoughtProducts = []
 
   if (status === 'success') {
-    relatedProducts = data?.data?.results.slice(0, 15)
-    alsoBoughtProducts = data?.data?.results.slice(15, 30)
+    relatedProducts = productData.slice(0, 15)
+    alsoBoughtProducts = productData.slice(15, 30)
   }
 
   const productVendorLink = hit?.vendor?.includes(' ')
-    ? `/search/${hit.vendor}`
-    : `/collection/${hit.vendor}`
+    ? `/search/${hit?.vendor}`
+    : `/collection/${hit?.vendor}`
 
   return (
     <div className="flex container mx-auto flex-col items-start">
@@ -83,11 +85,11 @@ export default function ProductOverview({ hit }: any) {
       <div className="flex flex-col px-4 md:px-0 lg:flex-row md:justify-start">
         <ProductMagnifier product={hit} />
         <ProductDetail product={hit}>
-          <h3 className="lg:text-2xl text-lg font-bold">{hit.name}</h3>
+          <h3 className="lg:text-2xl text-lg font-bold">{hit?.name}</h3>
           <p>
             By{' '}
             <Link passHref href={productVendorLink}>
-              <a className="text-green-500">{hit.vendor}</a>
+              <a className="text-green-500">{hit?.vendor}</a>
             </Link>
           </p>
           {hit?.review_rating && (
@@ -114,7 +116,7 @@ export default function ProductOverview({ hit }: any) {
             title="Customers also purchased"
             productClassName="border border-gray-200 mr-6 rounded-lg"
           />
-          {data?.data.results.length > 15 && (
+          {productData.length > 15 && (
             <ProductSlider
               title="Popular with"
               productName={hit?.name}

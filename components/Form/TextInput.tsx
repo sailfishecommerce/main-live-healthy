@@ -16,7 +16,11 @@ export default function TextInput({
 }: InputProps) {
   return (
     <>
-      {label && <label htmlFor={name}>{label}</label>}
+      {label && (
+        <label className="text-lg mb-3" htmlFor={name}>
+          {label}
+        </label>
+      )}
       <input
         id={name}
         className={`border-gray-200 border-2 rounded-lg px-4 py-1 text-sm ${className}`}

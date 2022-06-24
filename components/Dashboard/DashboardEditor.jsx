@@ -50,7 +50,6 @@ class DashboardEditor extends Component {
       const databaseRefId = 'articles/' + this.props.editorKey + '/content'
       console.log('databaseRefId', databaseRefId)
       const dbRef = ref(db, databaseRefId)
-      // this.props.router.reload()
       onValue(dbRef, (snapshot) => {
         const dbArticle = snapshot.val()
         this.setState({
@@ -65,12 +64,20 @@ class DashboardEditor extends Component {
   // firebaseDatabase
   saveContent = debounce((content) => {
     const { writeData } = firebaseDatabase()
-    const databaseRefId = 'articles/' + this.props.editorKey
+    const createdTime = new Date()
+    const articleType = this.props.type ? `/${this.props?.blogPostTitle}` : ''
+    const databaseRefId = 'articles/' + this.props.editorKey + articleType
     console.log('datbaseRefId', databaseRefId)
+    const articleData = this.props.type
+      ? {
+          content: JSON.stringify(convertToRaw(content)),
+          createdAt: JSON.stringify(createdTime.toISOString()),
+        }
+      : {
+          content: JSON.stringify(convertToRaw(content)),
+        }
     this.setState({ loading: true })
-    writeData(databaseRefId, {
-      content: JSON.stringify(convertToRaw(content)),
-    }).then(() => {
+    writeData(databaseRefId, articleData).then(() => {
       this.setState({ loading: false })
     })
   }, 1000)
@@ -81,8 +88,6 @@ class DashboardEditor extends Component {
   }
 
   onEditorStateChange = (editorState) => {
-    // const contentState = editorState.getCurrentContent()
-    // this.saveContent(contentState)
     this.setState({
       editorState,
     })

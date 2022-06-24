@@ -27,11 +27,11 @@ export default function BlogPost() {
           value={title}
           placeholder="Post title"
           className="w-full"
-          label="Enter Blog Post"
+          label="Enter Blog Post Title"
           name="blogPostInput"
           onChange={(e) => setTitle(e.target.value)}
         />
-        <p className="my-3 text-lg m">Post:</p>
+        <div className="mb-8" />
         <DynamicDashboardEditor
           editorKey={route}
           blogPostTitle={title}

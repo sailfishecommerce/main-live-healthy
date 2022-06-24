@@ -1,69 +1,66 @@
-/* eslint-disable no-console */
 /* eslint-disable react-hooks/exhaustive-deps */
-import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { Hits, connectSearchBox } from 'react-instantsearch-dom'
-import { useDebounce } from 'use-debounce'
+import { FaTimes } from 'react-icons/fa'
+import { connectSearchBox } from 'react-instantsearch-dom'
+import { useDebouncedCallback } from 'use-debounce'
 
-import SearchbarHit from '@/components/Search/SearchbarHit'
+import SearchbarHitView from '@/components/Search/SearchbarHitView'
+import { useMediaQuery } from '@/hooks'
 
-function SearchBox({ currentRefinement, isSearchStalled, refine }: any) {
+function SearchBox({ currentRefinement, refine }: any) {
   const [searching, setSearching] = useState(false)
-  const [query, setQuery] = useState('')
-  const [debouncedQuery] = useDebounce(query, 1000)
+  const [query, setQuery] = useState(currentRefinement)
+  const mobileWidth = useMediaQuery('(max-width:768px)')
 
-  console.log('searching', searching)
-  console.log('query', query)
-  console.log('debouncedQuery', debouncedQuery)
-  console.log('currentRefinement', currentRefinement)
+  const searchbarWidth = mobileWidth ? 'w-full' : ''
 
-  function showSearchResult(e: any) {
-    if (e.target.value?.length >= 1) {
-      setSearching(true)
-      setQuery(e.target.value)
-    }
-  }
+  const debounced = useDebouncedCallback((queryValue) => {
+    refine(queryValue)
+    setQuery(queryValue)
+  }, 1100)
 
-  function resetHandler() {
-    refine('')
-    setSearching(false)
+  function onChangeDebounced(e: any) {
+    debounced(e.target.value)
+    setSearching(true)
   }
 
   useEffect(() => {
-    refine(debouncedQuery)
-  }, [])
+    if (query.length === 0 && searching) {
+      setSearching(false)
+    }
+  }, [query])
+
+  function resetHandler() {
+    refine('')
+    setQuery('')
+    setSearching(false)
+  }
 
   return (
     <>
-      <input
-        type="text"
-        value={''}
-        placeholder="search products"
-        className="px-4"
-        onChange={showSearchResult}
-      />
-      <button type="button" onClick={resetHandler}>
-        Reset query
-      </button>
-      {isSearchStalled ? 'My search is stalled' : ''}
-      {false && (
-        <div className="hits absolute top-16 lg:w-1/2 w-full right-0 p-4 bg-white z-50 rounded-md shadow-lg border">
-          <Hits hitComponent={SearchbarHit} />
-          <Link passHref href={`/search/${query}`}>
-            <button
-              aria-label="view more"
-              className="bg-mountain-green text-white mt-4 p-2 px-3 rounded-md"
-              type="button"
-            >
-              View more
+      <div
+        className={`ml-4 search relative flex bg-gray-100 ${searchbarWidth} rounded-md py-2 px-1 xl:px-4 items-center`}
+      >
+        <div className="ais-SearchBox">
+          <form role="search" className="ais-SearchBox-form">
+            <input
+              type="text"
+              defaultValue={query}
+              placeholder="search products..."
+              className="bg-gray-100"
+              onChange={onChangeDebounced}
+            />
+            <button type="button" onClick={resetHandler}>
+              <FaTimes />
             </button>
-          </Link>
+          </form>
         </div>
-      )}
+      </div>
+      {searching && <SearchbarHitView query={query} />}
     </>
   )
 }
 
-const CustomSearchBox = connectSearchBox(SearchBox)
+const CustomSearchBox: any = connectSearchBox(SearchBox)
 
 export default CustomSearchBox

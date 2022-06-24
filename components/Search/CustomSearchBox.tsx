@@ -1,4 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { useAtom } from 'jotai'
 import { useEffect, useState } from 'react'
 import { FaTimes } from 'react-icons/fa'
 import { connectSearchBox } from 'react-instantsearch-dom'
@@ -6,9 +7,10 @@ import { useDebouncedCallback } from 'use-debounce'
 
 import SearchbarHitView from '@/components/Search/SearchbarHitView'
 import { useMediaQuery } from '@/hooks'
+import { algoliaQuerySearchStatus } from '@/lib/atomConfig'
 
 function SearchBox({ currentRefinement, refine }: any) {
-  const [searching, setSearching] = useState(false)
+  const [searching, setSearching] = useAtom(algoliaQuerySearchStatus)
   const [query, setQuery] = useState(currentRefinement)
   const mobileWidth = useMediaQuery('(max-width:768px)')
 
@@ -50,13 +52,15 @@ function SearchBox({ currentRefinement, refine }: any) {
               className="bg-gray-100 px-2"
               onChange={onChangeDebounced}
             />
-            <button type="button" onClick={resetHandler}>
-              <FaTimes />
-            </button>
+            {query.length > 0 && (
+              <button type="button" onClick={resetHandler}>
+                <FaTimes />
+              </button>
+            )}
           </form>
         </div>
       </div>
-      {searching && <SearchbarHitView query={query} />}
+      {query.length > 0 && <SearchbarHitView query={query} />}
     </>
   )
 }

@@ -128,3 +128,6 @@ export type colorType = Array<{
 
 // edit color
 export const siteColorsAtom = atom<colorType>([])
+
+// algolia query search
+export const algoliaQuerySearchStatus = atom(false)

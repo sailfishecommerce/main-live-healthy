@@ -1,13 +1,14 @@
 import { useRef } from 'react'
 import { useMutation, useQueryClient } from 'react-query'
-import { toast } from 'react-toastify'
 
+import useAlgoliaEvent from '@/hooks/useAlgoliaEvent'
 import useSwellCart from '@/hooks/useSwellCart'
 import useToast from '@/hooks/useToast'
 
 export default function useMutationAction() {
   const { loadingToast, updateToast } = useToast()
   const queryClient = useQueryClient()
+  const { algoliaEvent } = useAlgoliaEvent()
 
   const {
     emptyCart,
@@ -30,14 +31,10 @@ export default function useMutationAction() {
           queryClient.invalidateQueries('cart')
         },
         onSuccess: () => {
-          updateToast(toastID, toast.TYPE.SUCCESS, 'product quantity updated')
+          updateToast(toastID, 'success', 'product quantity updated')
         },
         onError: () => {
-          updateToast(
-            toastID,
-            toast.TYPE.ERROR,
-            'error updating product quantity'
-          )
+          updateToast(toastID, 'error', 'error updating product quantity')
         },
       }
     )
@@ -47,7 +44,14 @@ export default function useMutationAction() {
     const toastID = useRef(null)
 
     return useMutation(
-      ({ product, quantity }: any) => addToCart(product, quantity),
+      ({ product, quantity }: any) => {
+        algoliaEvent(
+          'convertedObjectIDs',
+          'Product Added to Cart',
+          product.objectID
+        )
+        return addToCart(product, quantity)
+      },
       {
         onMutate: () => {
           loadingToast(toastID)
@@ -56,10 +60,10 @@ export default function useMutationAction() {
           queryClient.invalidateQueries('cart')
         },
         onSuccess: () => {
-          updateToast(toastID, toast.TYPE.SUCCESS, 'Product added to cart')
+          updateToast(toastID, 'success', 'Product added to cart')
         },
         onError: () => {
-          updateToast(toastID, toast.TYPE.ERROR, 'error adding product to cart')
+          updateToast(toastID, 'error', 'error adding product to cart')
         },
       }
     )
@@ -79,14 +83,10 @@ export default function useMutationAction() {
           queryClient.invalidateQueries('cart')
         },
         onSuccess: () => {
-          updateToast(toastID, toast.TYPE.SUCCESS, 'product removed!')
+          updateToast(toastID, 'success', 'product removed!')
         },
         onError: () => {
-          updateToast(
-            toastID,
-            toast.TYPE.ERROR,
-            'error removing product from cart'
-          )
+          updateToast(toastID, 'error', 'error removing product from cart')
         },
       }
     )
@@ -108,10 +108,10 @@ export default function useMutationAction() {
         loadingToast(toastID)
       },
       onSuccess: () => {
-        updateToast(toastID, toast.TYPE.SUCCESS, 'cart cleared')
+        updateToast(toastID, 'success', 'cart cleared')
       },
       onError: () => {
-        updateToast(toastID, toast.TYPE.SUCCESS, 'error clearing the cart')
+        updateToast(toastID, 'success', 'error clearing the cart')
       },
       onSettled: () => {
         queryClient.invalidateQueries('cart')
@@ -130,10 +130,10 @@ export default function useMutationAction() {
         queryClient.invalidateQueries('cart')
       },
       onSuccess: () => {
-        updateToast(toastID, toast.TYPE.SUCCESS, 'cart deleted')
+        updateToast(toastID, 'success', 'cart deleted')
       },
       onError: () => {
-        updateToast(toastID, toast.TYPE.SUCCESS, 'error deleting the cart')
+        updateToast(toastID, 'success', 'error deleting the cart')
       },
     })
   }
@@ -149,15 +149,11 @@ export default function useMutationAction() {
         onSettled: () => queryClient.invalidateQueries('userDetails'),
         onSuccess: (response) => {
           if (response) {
-            updateToast(toastID, toast.TYPE.SUCCESS, 'profile details updated!')
+            updateToast(toastID, 'success', 'profile details updated!')
           }
         },
         onError: () => {
-          updateToast(
-            toastID,
-            toast.TYPE.ERROR,
-            'error updating profile details'
-          )
+          updateToast(toastID, 'error', 'error updating profile details')
         },
       }
     )

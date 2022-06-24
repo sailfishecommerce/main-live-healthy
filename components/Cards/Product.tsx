@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import Link from 'next/link'
 
 import CartIcon from '@/components/Icons/CartIcon'
@@ -5,6 +7,7 @@ import Image from '@/components/Image'
 import FormattedPrice from '@/components/Price/FormattedPrice'
 import DiscountTag from '@/components/Tag/DiscountTag'
 import { useMediaQuery } from '@/hooks'
+import useAlgoliaEvent from '@/hooks/useAlgoliaEvent'
 import useShoppingCart from '@/hooks/useShoppingCart'
 import type { ProductProps } from '@/types'
 
@@ -23,11 +26,14 @@ export default function Product({
   color,
   imageClassName,
 }: ProductTypes) {
+  const { algoliaEvent } = useAlgoliaEvent()
+  const mobileWidth = useMediaQuery('(max-width:768px)')
+  const { addItemToCart } = useShoppingCart()
+
   const isRow = row ? 'flex' : 'flex flex-col'
   const isRowText = row ? 'ml-4' : ''
   const imageWidth = row ? 'w-1/2' : ''
   const productClassName = className ? className : ''
-  const mobileWidth = useMediaQuery('(max-width:768px)')
   const productImageClassName = imageClassName ? imageClassName : ''
   const imageSize = mobileWidth
     ? {
@@ -39,9 +45,12 @@ export default function Product({
         width: 200,
       }
 
-  const { addItemToCart } = useShoppingCart()
-
   const addToCartHandler = () => addItemToCart.mutate({ product, quantity: 1 })
+
+  function algoliaEventHandler() {
+    algoliaEvent('clickedObjectIDs', 'Product Clicked', product.objectID)
+  }
+
   const productVendorLink = product?.vendor?.includes(' ')
     ? `/search/${product?.vendor}`
     : `/vendor/${product?.vendor}`
@@ -56,11 +65,8 @@ export default function Product({
       className={`hover:bg-white mr-4 px-2 relative hover:shadow-lg product hover:rounded-lg product ${productClassName}  ${isRow} p-2 md:p-4 lg:p-6 hover:border`}
     >
       <DiscountTag price={product.price} salePrice={product.sale_price} />
-      <Link
-        passHref
-        href={`/product/${product.slug}?queryID=${product.__queryID}`}
-      >
-        <a title={product.name}>
+      <Link passHref href={`/product/${product.slug}`}>
+        <a title={product.name} onClick={algoliaEventHandler}>
           <div
             className={`${productImageClassName} ${imageWidth} image-wrapper`}
           >

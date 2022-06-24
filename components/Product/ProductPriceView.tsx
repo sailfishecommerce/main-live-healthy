@@ -5,6 +5,7 @@ import CheckIcon from '@/components/Icons/CheckIcon'
 import DeliveryboxIcon from '@/components/Icons/DeliveryboxIcon'
 import LockIcon from '@/components/Icons/LockIcon'
 import FormattedPrice from '@/components/Price/FormattedPrice'
+import useAlgoliaEvent from '@/hooks/useAlgoliaEvent'
 import useShoppingCart from '@/hooks/useShoppingCart'
 import useSlidingTab from '@/hooks/useSlidingTab'
 import currentDate from '@/lib/incrementDate'
@@ -13,8 +14,16 @@ export default function ProductPriceView({ product }: any) {
   const { addItemToCart } = useShoppingCart()
   const { updateSlideTab } = useSlidingTab()
   const router = useRouter()
+  const { algoliaEvent } = useAlgoliaEvent()
+
   const listingDate: any = currentDate
+
+  function algoliaEventHandler() {
+    algoliaEvent('clickedObjectIDs', 'Buy now Clicked', product.objectID)
+  }
+
   function buyNowHandler() {
+    algoliaEventHandler()
     addItemToCart.mutate(
       { product, quantity: 1 },
       {

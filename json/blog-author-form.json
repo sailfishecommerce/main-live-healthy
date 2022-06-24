@@ -1,0 +1,17 @@
+[
+  {
+    "name": "authorName",
+    "placeholder": "Author's name",
+    "type": "input",
+    "inputText": "text",
+    "id": "authorName"
+  },
+  {
+    "name": "aboutAuthor",
+    "placeholder": "About Author",
+    "type": "textarea",
+    "inputText": "text",
+    "id": "aboutAuthor",
+    "className": "ml-2 px-2 pt-2"
+  }
+]

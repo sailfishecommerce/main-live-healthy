@@ -13,6 +13,7 @@ interface DropzonebarType {
   fileType: 'csv' | 'image' | 'images'
   style: unknown
   uploadStatus: boolean | null
+  message?: string
 }
 
 export default function Dropzonebar({
@@ -21,6 +22,7 @@ export default function Dropzonebar({
   dropzone,
   fileType,
   uploadStatus,
+  message,
 }: DropzonebarType) {
   const { getRootProps, acceptedFiles, getInputProps, isDragActive } = dropzone
   let percentage: any
@@ -45,7 +47,9 @@ export default function Dropzonebar({
             {isDragActive ? (
               <p>Drop the files here ...</p>
             ) : (
-              <p>Drag &apos;n&apos; drop the {fileTypeText}</p>
+              <p>
+                Drag &apos;n&apos; drop the {message ? message : fileTypeText}
+              </p>
             )}
             {uploadStatus === null ? (
               <Dropzonebarlist acceptedFiles={acceptedFiles} />

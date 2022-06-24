@@ -20,6 +20,7 @@ type inputContentType = {
   id: string
   inputText: 'email' | 'password' | 'text'
   withIcon?: boolean
+  className?: string
 }
 
 interface Props {
@@ -71,10 +72,11 @@ export function Input({ content, formik, className }: Props) {
 }
 
 export function TextArea({ content, formik }: Props) {
+  const elementClassName = content.className ? content.className : ''
   return (
     <div className="textarea flex flex-col">
       <textarea
-        className="border-2 border-gray-200 rounded-md"
+        className={`border-2 border-gray-200 rounded-md ${elementClassName}`}
         rows={5}
         name={content.name}
         value={formik.values[content.name]}

@@ -55,9 +55,9 @@
     "text": "Blog",
     "group": [
       {
-        "icon": "order-tracking",
-        "text": "Blog",
-        "link": "/admin/blog"
+        "icon": "blog-post",
+        "text": "Post",
+        "link": "/admin/blog/posts"
       },
       {
         "icon": "order-tracking",

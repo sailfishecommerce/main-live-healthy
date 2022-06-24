@@ -6,6 +6,10 @@ import { v4 as uuidv4 } from 'uuid'
 
 import firebaseDatabase from '@/lib/firebaseDatabase'
 
+function formatAuthorName(name: string) {
+  return name.toLowerCase().replace(/\s/g, '-')
+}
+
 export default function uploadMediaToCloudinary(
   media: any,
   toastID: MutableRefObject<null>,
@@ -18,7 +22,13 @@ export default function uploadMediaToCloudinary(
     ) => void
   },
   setIsUploadSuccessful: any,
-  dbNode?: string
+  blogFormData?: {
+    dbNode: string
+    data: {
+      authorName: string
+      aboutAuthor: string
+    }
+  }
 ) {
   toastNotification.loadingToast(toastID)
   media.map((mediaItem: Blob | any) => {
@@ -31,11 +41,14 @@ export default function uploadMediaToCloudinary(
     function saveToDB(response: any) {
       const { writeData } = firebaseDatabase()
       const { secure_url, public_id, signature, version } = response.data
-      return dbNode
+      return blogFormData?.dbNode
         ? writeData(
-            dbNode,
+            `${blogFormData.dbNode}/${formatAuthorName(
+              blogFormData.data.authorName
+            )}`,
             JSON.stringify({
               url: secure_url,
+              ...blogFormData?.data,
             })
           )
         : writeData(

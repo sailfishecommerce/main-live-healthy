@@ -93,19 +93,27 @@ class DashboardEditor extends Component {
 
     const buttonState = this.state.loading ? 'saving ...' : 'Save'
 
+    const showButton = this.props?.type
+      ? this.props.blogPostTitle.length > 5
+      : true
+
+    console.log('this.props?.type', this.props?.type)
+
     return (
       <>
         <div className="policy -mt-4 flex justify-between">
           <h1 className="text-xl">
             {this.props.editorKey?.toUpperCase().replaceAll('-', ' ')}
           </h1>
-          <button
-            type="button"
-            className="text-base flex items-center bg-mountain-green py-1 rounded-md px-3 text-white"
-            onClick={this.saveArticleHandler}
-          >
-            <BiSave className="mr-2" size={20} /> {buttonState}
-          </button>
+          {showButton && (
+            <button
+              type="button"
+              className="text-base flex items-center bg-mountain-green py-1 rounded-md px-3 text-white"
+              onClick={this.saveArticleHandler}
+            >
+              <BiSave className="mr-2" size={20} /> {buttonState}
+            </button>
+          )}
         </div>
         <Editor
           editorState={editorState}

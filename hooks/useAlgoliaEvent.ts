@@ -3,10 +3,13 @@ import searchInsights from 'search-insights'
 import { indexName } from '@/utils/env'
 
 type insightNameType =
+  | 'clickedFilters'
   | 'clickedObjectIDs'
   | 'clickedObjectIDsAfterSearch'
   | 'convertedObjectIDs'
   | 'convertedObjectIDsAfterSearch'
+  | 'viewedFilters'
+  | 'viewedObjectIDs'
 
 export default function useAlgoliaEvent() {
   function algoliaEvent(

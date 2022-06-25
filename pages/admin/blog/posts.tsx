@@ -1,9 +1,9 @@
 import Link from 'next/link'
+import { useEffect, useState } from 'react'
 
 import DashboardMainView from '@/components/Dashboard/DashboardMainView'
 import DashboardLayout from '@/layouts/dashboard-layout'
 import firebaseDatabase from '@/lib/firebaseDatabase'
-import { useEffect, useState } from 'react'
 
 export default function BlogPosts() {
   const [loading, setLoading] = useState(false)

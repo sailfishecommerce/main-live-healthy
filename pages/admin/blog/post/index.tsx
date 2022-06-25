@@ -1,10 +1,11 @@
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import DashboardMainView from '@/components/Dashboard/DashboardMainView'
 import TextInput from '@/components/Form/TextInput'
 import DashboardLayout from '@/layouts/dashboard-layout'
+import firebaseDatabase from '@/lib/firebaseDatabase'
 
 const DynamicDashboardEditor = dynamic(
   () =>
@@ -18,8 +19,24 @@ const DynamicDashboardEditor = dynamic(
 
 export default function BlogPost() {
   const [title, setTitle] = useState('')
+  const [blogAuthors, setBlogAuthors] = useState(null)
+  const [loading, setLoading] = useState(null)
   const router = useRouter()
   const route = router.asPath.split('/admin/')[1]
+
+  function readDataFromDB() {
+    const { readFromDB } = firebaseDatabase()
+    readFromDB('articles/blog/blog-author', setBlogAuthors, setLoading)
+  }
+
+  console.log('blogAuthors', blogAuthors)
+
+  useEffect(() => {
+    if (blogAuthors === null) {
+      readDataFromDB()
+    }
+  }, [])
+
   return (
     <DashboardLayout title="Admin page">
       <DashboardMainView>

@@ -50,7 +50,6 @@ class DashboardEditor extends Component {
       const db = getDatabase()
       const databaseRefId = 'articles/' + this.props.editorKey + '/content'
       // const databaseRefIDValue = this.props.type ? `${databaseRefId}` : databaseRefId
-      console.log('databaseRefId', databaseRefId)
       const dbRef = ref(db, databaseRefId)
       onValue(dbRef, (snapshot) => {
         const dbArticle = snapshot.val()
@@ -71,7 +70,6 @@ class DashboardEditor extends Component {
       ? `/${toSlug(this.props?.blogPostTitle)}`
       : ''
     const databaseRefId = 'articles/' + this.props.editorKey + articleType
-    console.log('datbaseRefId', databaseRefId)
     const articleData = this.props.type
       ? {
           content: JSON.stringify(convertToRaw(content)),
@@ -107,8 +105,6 @@ class DashboardEditor extends Component {
     const showButton = this.props?.type
       ? this.props.blogPostTitle.length > 5
       : true
-
-    console.log('this.props?.type', this.props?.type)
 
     return (
       <>

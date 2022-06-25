@@ -23,8 +23,6 @@ export default function BlogAuthorForm() {
   })
   const { dropzone, style, isUploadSuccessful } = useMediaUpload(blogFormData)
 
-  console.log('isUploadSuccessful', isUploadSuccessful)
-  console.log('blogFormData', blogFormData)
 
   useEffect(() => {
     if (isUploadSuccessful) {
@@ -42,13 +40,13 @@ export default function BlogAuthorForm() {
           aboutAuthor: '',
         }}
         validationSchema={blogAuthorSchema}
-        onSubmit={(values, { resetForm }) => {
+        onSubmit={(values) => {
+          console.log('values', values)
           setBlogFormData({
             ...blogFormData,
             data: values,
           })
           setSubmitForm(true)
-          resetForm()
         }}
       >
         {(formik) => (

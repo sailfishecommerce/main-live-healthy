@@ -30,6 +30,8 @@ export default function uploadMediaToCloudinary(
     }
   }
 ) {
+  console.log('blogFormData', blogFormData)
+
   toastNotification.loadingToast(toastID)
   media.map((mediaItem: Blob | any) => {
     const formData = new FormData()
@@ -38,13 +40,16 @@ export default function uploadMediaToCloudinary(
     formData.append('upload_preset', 'live_healthy_store')
     const mediaId = uuidv4()
 
+    console.log('blogFormData', blogFormData)
+
     function saveToDB(response: any) {
       const { writeData } = firebaseDatabase()
       const { secure_url, public_id, signature, version } = response.data
-      return blogFormData?.dbNode
+
+      return blogFormData
         ? writeData(
             `${blogFormData.dbNode}/${formatAuthorName(
-              blogFormData.data.authorName
+              blogFormData?.data?.authorName
             )}`,
             JSON.stringify({
               url: secure_url,

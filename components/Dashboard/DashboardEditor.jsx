@@ -103,7 +103,7 @@ class DashboardEditor extends Component {
     const buttonState = this.state.loading ? 'saving ...' : 'Save'
 
     const showButton = this.props?.type
-      ? this.props.blogPostTitle.length > 5
+      ? this.props.blogPostTitle.length > 5 && this.props.author
       : true
 
     return (

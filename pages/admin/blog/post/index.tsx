@@ -62,21 +62,25 @@ export default function BlogPost() {
           name="blogPostInput"
           onChange={(e) => setTitle(e.target.value)}
         />
+
         <div className="mt-4 flex items-center">
           <span className="font-bold mr-2">Author:</span>
-          <div className="flex items-center">
-            <img
-              src={selectedAuthor.url}
-              height="60px"
-              width="60px"
-              alt={selectedAuthor.authorName}
-              className="rounded-full"
-            />
-            <h4 className="ml-4 font-semibold text-lg">
-              {selectedAuthor.authorName}
-            </h4>
-          </div>
+          {selectedAuthor !== null && (
+            <div className="flex items-center">
+              <img
+                src={selectedAuthor.url}
+                height="60px"
+                width="60px"
+                alt={selectedAuthor.authorName}
+                className="rounded-full"
+              />
+              <h4 className="ml-4 font-semibold text-lg">
+                {selectedAuthor.authorName}
+              </h4>
+            </div>
+          )}
         </div>
+
         {!loading && loading !== null && (
           <select
             value={selectedAuthor?.authorName}

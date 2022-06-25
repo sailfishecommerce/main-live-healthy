@@ -1,6 +1,7 @@
 import { atom } from 'jotai'
 import { atomWithStorage } from 'jotai/utils'
 
+import type { blogFormDataType } from '@/types'
 import type {
   appModalAtomType,
   authAtomType,
@@ -131,3 +132,12 @@ export const siteColorsAtom = atom<colorType>([])
 
 // algolia query search
 export const algoliaQuerySearchStatus = atom(false)
+
+// blog author
+export const blogAuthorFormAtom = atom<blogFormDataType>({
+  dbNode: 'articles/blog/blog-author',
+  data: {
+    authorName: '',
+    aboutAuthor: '',
+  },
+})

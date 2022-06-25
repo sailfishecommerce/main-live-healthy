@@ -406,3 +406,11 @@ export type progressStateType = {
   total: number
   loading: boolean
 }
+
+export type blogFormDataType = {
+  dbNode: string
+  data: {
+    authorName: string
+    aboutAuthor: string
+  }
+}

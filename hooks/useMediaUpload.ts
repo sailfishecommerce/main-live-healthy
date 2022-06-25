@@ -1,25 +1,31 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useCallback, useMemo, useRef, useState } from 'react'
+import { useCallback, useMemo } from 'react'
 import { useDropzone } from 'react-dropzone'
 
 import { styles } from '@/components/Admin/styles'
-import useToast from '@/hooks/useToast'
-import uploadMediaToCloudinary from '@/utils/uploadMediaToCloudinary'
+import type { blogFormDataType } from '@/types'
+import useUploadMediaToCloudinary from '@/utils/useUploadMediaToCloudinary'
 
-export default function useMediaUpload(blogFormData?: any) {
-  const toastID = useRef(null)
-  const toastNotification = useToast()
-  const [isUploadSuccessful, setIsUploadSuccessful] = useState(null)
+export default function useMediaUpload(
+  blogFormData?: blogFormDataType,
+  shouldUpload?: boolean
+) {
+  const { uploadMedia, isUploadSuccessful } = useUploadMediaToCloudinary()
 
-  const onDrop = useCallback((acceptedFiles) => {
-    uploadMediaToCloudinary(
-      acceptedFiles,
-      toastID,
-      toastNotification,
-      setIsUploadSuccessful,
-      blogFormData
-    )
+  const normalMediaUpload = useCallback((acceptedFiles) => {
+    uploadMedia(acceptedFiles)
   }, [])
+
+  const blogAuthorMediaUpload = useCallback(
+    (acceptedFiles) => {
+      if (shouldUpload && acceptedFiles) {
+        uploadMedia(acceptedFiles, blogFormData)
+      }
+    },
+    [shouldUpload]
+  )
+
+  const onDrop = blogFormData ? blogAuthorMediaUpload : normalMediaUpload
 
   const dropzone = useDropzone({
     onDrop,

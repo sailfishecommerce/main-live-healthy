@@ -2,8 +2,24 @@ import Link from 'next/link'
 
 import DashboardMainView from '@/components/Dashboard/DashboardMainView'
 import DashboardLayout from '@/layouts/dashboard-layout'
+import firebaseDatabase from '@/lib/firebaseDatabase'
+import { useEffect, useState } from 'react'
 
 export default function BlogPosts() {
+  const [loading, setLoading] = useState(false)
+  const [blogPosts, setBlogPosts] = useState(null)
+
+  function getPosts() {
+    const { readFromDB } = firebaseDatabase()
+    readFromDB('articles/blog/post', setBlogPosts, setLoading)
+  }
+
+  useEffect(() => {
+    getPosts()
+  }, [])
+
+  console.log('blogPosts', blogPosts)
+
   return (
     <DashboardLayout title="Blog page">
       <DashboardMainView>

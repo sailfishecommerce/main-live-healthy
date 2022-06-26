@@ -74,7 +74,7 @@ class DashboardEditor extends Component {
       ? {
           content: JSON.stringify(convertToRaw(content)),
           title: JSON.stringify(this.props.blogPostTitle),
-          author: '',
+          author: JSON.stringify(this.props.author),
           createdAt: JSON.stringify(createdTime.toISOString()),
         }
       : {

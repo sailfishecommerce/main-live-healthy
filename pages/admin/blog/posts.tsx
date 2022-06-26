@@ -1,30 +1,19 @@
+/* eslint-disable no-nested-ternary */
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
 
+import BlogTable from '@/components/Blog/BlogTable'
 import DashboardMainView from '@/components/Dashboard/DashboardMainView'
+import SpinnerRipple from '@/components/Loader/SpinnerLoader'
+import useBlogTable from '@/hooks/useBlogTable'
 import DashboardLayout from '@/layouts/dashboard-layout'
-import firebaseDatabase from '@/lib/firebaseDatabase'
 
 export default function BlogPosts() {
-  const [loading, setLoading] = useState(false)
-  const [blogPosts, setBlogPosts] = useState(null)
-
-  function getPosts() {
-    const { readFromDB } = firebaseDatabase()
-    readFromDB('articles/blog/post', setBlogPosts, setLoading)
-  }
-
-  useEffect(() => {
-    getPosts()
-  }, [])
-
-  console.log('blogPosts', blogPosts)
+  const { loading, columns, data } = useBlogTable()
 
   return (
     <DashboardLayout title="Blog page">
       <DashboardMainView>
         <div className="flex blog-post justify-center relative">
-          <h3 className="text-center text-xl">No Blog post yet</h3>
           <Link passHref href="/admin/blog/post">
             <button
               className="bg-mountain-green absolute right-20 p-2 text-white rounded-lg"
@@ -34,6 +23,15 @@ export default function BlogPosts() {
             </button>
           </Link>
         </div>
+        {loading ? (
+          <SpinnerRipple centerRipple />
+        ) : data !== undefined && data?.length > 0 ? (
+          <BlogTable data={data} columns={columns} />
+        ) : (
+          data?.length === 0 && (
+            <h3 className="text-center text-xl">No Blog post yet</h3>
+          )
+        )}
       </DashboardMainView>
     </DashboardLayout>
   )

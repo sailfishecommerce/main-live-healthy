@@ -21,7 +21,7 @@ export default function BlogPostPage() {
   return (
     <DashboardLayout title="Admin page">
       <DashboardMainView>
-        <DynamicDashboardEditor editorKey={route} />
+        <DynamicDashboardEditor editorKey={route} title="Post" />
       </DashboardMainView>
     </DashboardLayout>
   )

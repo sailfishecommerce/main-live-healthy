@@ -21,6 +21,7 @@ class DashboardEditor extends Component {
   componentDidMount() {
     const db = getDatabase()
     const databaseRefId = 'articles/' + this.props.editorKey + '/content'
+    console.log('databaseRefId', databaseRefId)
     const dbRef = ref(db, databaseRefId)
 
     onValue(dbRef, (snapshot) => {
@@ -101,6 +102,9 @@ class DashboardEditor extends Component {
     const { editorState } = this.state
 
     const buttonState = this.state.loading ? 'saving ...' : 'Save'
+    const postTitle = this.props.title
+      ? this.props.title
+      : this.props.editorKey?.toUpperCase().replaceAll('-', ' ')
 
     const showButton = this.props?.type
       ? this.props.blogPostTitle.length > 5 && this.props.author
@@ -109,9 +113,7 @@ class DashboardEditor extends Component {
     return (
       <>
         <div className="policy -mt-4 flex justify-between">
-          <h1 className="text-xl">
-            {this.props.editorKey?.toUpperCase().replaceAll('-', ' ')}
-          </h1>
+          <h1 className="text-xl">{postTitle}</h1>
           {showButton && (
             <button
               type="button"

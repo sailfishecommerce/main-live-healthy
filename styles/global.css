@@ -297,6 +297,14 @@ span.ais-SearchBox-loadingIndicator {
   margin-left: 5px;
 }
 
+/* product tag */
+li.productTag button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 12px;
+}
+
 /* invoice list table */
 .view {
   border-bottom: 1px solid #e5e5e6;
@@ -341,7 +349,7 @@ button.bg-mountain-green:disabled {
 
 @media (min-width: 768px) {
   nav.nav {
-    height: 165px;
+    height: auto;
   }
 }
 
@@ -425,5 +433,33 @@ button.bg-mountain-green:disabled {
 
   header {
     height: 160px;
+  }
+}
+
+@media (max-width: 330px) {
+  .bg-mountain-green p {
+    font-size: 11px;
+  }
+  button.bg-mountain-green {
+    padding: 0px;
+  }
+  .bg-mountain-green svg {
+    width: 20px;
+  }
+  .discount-tag,
+  .discount-tag span {
+    font-size: 11px;
+  }
+  .product-name-view h3,
+  .price-group span,
+  li.productTag button {
+    font-size: 11px;
+    padding: 0px;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  nav.nav ul li {
+    font-size: 13px;
   }
 }

@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { useMediaQuery } from '@/hooks'
 
 export default function HeaderBanner() {
-  const mobile = useMediaQuery('(max-width:768px)')
+  const mobile = useMediaQuery('(max-width:700px)')
   const imageHeight = mobile ? 60 : 45
   const imageWidth = mobile ? 450 : 1440
 

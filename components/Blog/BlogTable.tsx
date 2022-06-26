@@ -1,7 +1,8 @@
-import toSlug from '@/lib/toSlug'
-import Link from 'next/link'
 /* eslint-disable react/no-array-index-key */
+import Link from 'next/link'
 import { useTable } from 'react-table'
+
+import toSlug from '@/lib/toSlug'
 
 export default function BlogTable({ columns, data }: any) {
   const { getTableProps, headerGroups, rows, prepareRow, getTableBodyProps } =
@@ -34,7 +35,7 @@ export default function BlogTable({ columns, data }: any) {
           return (
             <tr key={i} {...row.getRowProps()}>
               {row.cells.map((cell: any, index: number) => {
-                const titleSlug = toSlug(cell.row.original.title)
+                const titleSlug = toSlug(cell.row?.original?.title)
                 return (
                   <td
                     key={index}

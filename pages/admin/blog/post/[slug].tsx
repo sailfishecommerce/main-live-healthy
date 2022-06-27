@@ -1,27 +1,17 @@
-import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 
+import BlogPostView from '@/components/Blog/BlogPostView'
 import DashboardMainView from '@/components/Dashboard/DashboardMainView'
 import DashboardLayout from '@/layouts/dashboard-layout'
 
-const DynamicDashboardEditor = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'DashboardEditor' */ '@/components/Dashboard/DashboardEditor'
-    ),
-  {
-    ssr: false,
-  }
-)
-
-export default function BlogPostPage() {
+export default function BlogPost() {
   const router = useRouter()
-  const route = router.asPath.split('/admin/')[1]
+  const postSlug = router.asPath.split('/admin/blog/post/')[1]
 
   return (
     <DashboardLayout title="Admin page">
       <DashboardMainView>
-        <DynamicDashboardEditor editorKey={route} title="Post" />
+        {postSlug && <BlogPostView postSlug={postSlug} />}
       </DashboardMainView>
     </DashboardLayout>
   )

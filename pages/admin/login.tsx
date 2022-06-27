@@ -2,10 +2,11 @@ import Image from 'next/image'
 
 import AdminAuthForm from '@/components/Form/AdminAuthForm'
 import Logo from '@/components/Logo'
+import DefaultLayout from '@/layouts/default-layout'
 
 export default function AdminLoginPage() {
   return (
-    <>
+    <DefaultLayout>
       <div className="w-full h-full flex login-page">
         <div className="image-container w-full lg:w-4/5 h-full">
           <Image
@@ -40,6 +41,6 @@ export default function AdminLoginPage() {
           }
         `}
       </style>
-    </>
+    </DefaultLayout>
   )
 }

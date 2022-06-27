@@ -55,8 +55,6 @@ class DashboardEditor extends Component {
       ? prevProps?.editorKey.split('/')[2]
       : prevProps?.editorKey
 
-    console.log('formatEditorKey', formatEditorKey)
-
     if (formatEditorKey && query.slug && formatEditorKey !== queryValue) {
       const db = getDatabase()
       const databaseRefId = 'articles/' + this.props.editorKey + '/content'

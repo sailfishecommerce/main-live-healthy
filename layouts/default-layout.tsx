@@ -14,7 +14,6 @@ export default function DefaultLayout({
     siteColorcode[colorKey] = bColor?.colorCode
     return siteColorcode
   })
-
   return (
     <>
       {children}

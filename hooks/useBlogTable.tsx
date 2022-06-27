@@ -5,7 +5,6 @@ import formatBlogData from '@/utils/formatBlogPost'
 
 export default function useBlogTable() {
   const { dbdata: blogPosts, loading } = useDatabaseData('articles/blog/post')
-
   const data = blogPosts !== null ? formatBlogData(blogPosts) : undefined
 
   const columns = useMemo(

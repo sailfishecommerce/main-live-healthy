@@ -7,15 +7,24 @@ import {
   BsPinterest,
 } from 'react-icons/bs'
 
-export default function ShareBlogLink() {
+interface Props {
+  postDate: string
+  author: {
+    url: string
+    authorName: string
+  }
+}
+
+export default function ShareBlogLink({ author, postDate }: Props) {
+  const blogPostDate = new Date(postDate).toDateString()
   return (
     <div className="row flex items-center justify-between w-full mb-8">
       <div className="author flex items-center">
-        <Image src="/arabella-small.webp" alt="author" height={50} width={50} />
+        <Image src={author.url} alt="author" height={50} width={50} />
         <div className="content ml-3">
-          <h6 className="font-bold mb text-sm">Arabella Noakes</h6>
-          <p className="font-medium text-xs flex items-center">
-            April 10,2022{' '}
+          <h6 className="font-bold mb text-base">{author.authorName}</h6>
+          <p className="font-medium text-sm flex items-center">
+            {blogPostDate}
             <li className="text-gray-400 ml-2">10 minutes read</li>
           </p>
         </div>

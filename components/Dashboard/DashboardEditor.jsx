@@ -9,6 +9,7 @@ import { withRouter } from 'next/router'
 import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css'
 import firebaseDatabase from '@/lib/firebaseDatabase'
 import toSlug from '@/lib/toSlug'
+import { IoIosArrowBack } from 'react-icons/io'
 
 class DashboardEditor extends Component {
   constructor(props) {
@@ -21,13 +22,12 @@ class DashboardEditor extends Component {
   componentDidMount() {
     const db = getDatabase()
     const databaseRefId = 'articles/' + this.props.editorKey + '/content'
-    console.log('databaseRefId', databaseRefId)
     const dbRef = ref(db, databaseRefId)
 
     onValue(dbRef, (snapshot) => {
       const dbArticle = snapshot.val()
 
-      if (dbArticle) {
+      if (dbArticle && this.state?.editorState === undefined) {
         this.setState({
           editorState: EditorState.createWithContent(
             convertFromRaw(JSON.parse(dbArticle))
@@ -43,14 +43,23 @@ class DashboardEditor extends Component {
 
   componentDidUpdate(prevProps) {
     const { query } = this.props.router
-    if (
-      prevProps.editorKey &&
-      query.slug &&
-      prevProps?.editorKey !== query.slug[0]
-    ) {
+
+    const queryValue =
+      typeof query?.slug === 'string'
+        ? query?.slug
+        : query?.slug === undefined
+        ? null
+        : query?.slug[0]
+
+    const formatEditorKey = prevProps?.editorKey.includes('blog/post')
+      ? prevProps?.editorKey.split('/')[2]
+      : prevProps?.editorKey
+
+    console.log('formatEditorKey', formatEditorKey)
+
+    if (formatEditorKey && query.slug && formatEditorKey !== queryValue) {
       const db = getDatabase()
       const databaseRefId = 'articles/' + this.props.editorKey + '/content'
-      // const databaseRefIDValue = this.props.type ? `${databaseRefId}` : databaseRefId
       const dbRef = ref(db, databaseRefId)
       onValue(dbRef, (snapshot) => {
         const dbArticle = snapshot.val()
@@ -98,13 +107,17 @@ class DashboardEditor extends Component {
     })
   }
 
+  goBack = () => {
+    this.props.router.back()
+  }
+
   render() {
     const { editorState } = this.state
 
     const buttonState = this.state.loading ? 'saving ...' : 'Save'
     const postTitle = this.props.title
       ? this.props.title
-      : this.props.editorKey?.toUpperCase().replaceAll('-', ' ')
+      : this.props.editorKey?.toUpperCase()?.replaceAll('-', ' ')
 
     const showButton = this.props?.type
       ? this.props.blogPostTitle.length > 5 && this.props.author
@@ -113,7 +126,15 @@ class DashboardEditor extends Component {
     return (
       <>
         <div className="policy -mt-4 flex justify-between">
-          <h1 className="text-xl">{postTitle}</h1>
+          <div className="post-title flex items-center">
+            <button
+              className="mr-4 hover:bg-red-300 bg-red-500 text-white"
+              onClick={this.goBack}
+            >
+              <IoIosArrowBack size={25} />
+            </button>
+            <h1 className="text-xl">{postTitle}</h1>
+          </div>
           {showButton && (
             <button
               type="button"

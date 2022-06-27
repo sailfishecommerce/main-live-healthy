@@ -17,7 +17,7 @@ export default function AirwallexInvoicePage({ invoice }: any) {
         className="invoice-receipt my-12 bg-white p-6 rounded-xl"
       >
         <div className="row flex justify-between mb-16 items-center">
-          <Logo className="w-1/2" />
+          <Logo className="w-1/6" />
           <div className="invoice-date flex flex-col">
             <h1 className="text-2xl font-bold">{invoice?.id.toUpperCase()}</h1>
             <h5 className="font-thin text-lg">

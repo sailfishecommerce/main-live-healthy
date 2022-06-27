@@ -6,7 +6,7 @@ export default function GreetUser() {
   return (
     <div className="cart mountain-green font-bold text-xs">
       {name ? (
-        <p className="text-xs md:text-sm text-right">
+        <p className="text-xs lg:text-sm text-right">
           {greetUser()} {name ? `, ${name}` : ''}
         </p>
       ) : (

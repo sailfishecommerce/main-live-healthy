@@ -61,6 +61,13 @@ function SearchBox({ currentRefinement, refine }: any) {
         </div>
       </div>
       {query.length > 0 && <SearchbarHitView query={query} />}
+      <style jsx>
+        {`
+          .search form.ais-SearchBox-form input {
+            width: 140px;
+          }
+        `}
+      </style>
     </>
   )
 }

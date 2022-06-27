@@ -26,7 +26,7 @@ export default function PageLink({ menuItem, className, link }: Props) {
     : ''
   const pageLink = link ? `/${link}/${menuItem.slug}` : menuItem.slug
   return (
-    <li className="md:mx-1 mx-0" key={menuItem.slug}>
+    <li className="md:mx-1 mx-0 md:text-sm lg:text-md" key={menuItem.slug}>
       <Link passHref href={pageLink}>
         <a
           title={menuItem.name}

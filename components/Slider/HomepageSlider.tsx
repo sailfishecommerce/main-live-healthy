@@ -43,8 +43,8 @@ function HomepageSliderComponent() {
         {homepageSliderContent.map((content, index) => (
           <SplideSlide key={content.title}>
             <Link passHref href={content.link}>
-              <a className="content px-4 md:px-0 flex flex-col md:flex-row w-full h-100">
-                <div className="text order-2 md:order-1 rounded-b-xl my-0 md:rounded-l-3xl bg-gray-100 p-6 lg:p-8 w-full md:w-2/5 lg:w-1/4">
+              <a className="home-slider content px-4 md:px-0 flex flex-col md:flex-row w-full h-100">
+                <div className="text order-2 md:order-1 rounded-b-xl lg:rounded-r-none my-0 md:rounded-l-3xl bg-gray-100 p-6 lg:p-8 w-full md:w-2/5 lg:w-1/4">
                   <div className="top flex items-center mb-6 justify-between">
                     <h1 className="lg:text-2xl text-lg font-bold">
                       {content.title}
@@ -72,7 +72,7 @@ function HomepageSliderComponent() {
                     />
                   )}
                 </div>
-                <div className="my-0 image order-1 md:order-2 w-full md:w-4/6 lg:w-3/4">
+                <div className="my-0 image order-1 md:order-2 w-full h-full md:w-4/6 lg:w-3/4">
                   <Image
                     priority={true}
                     src={content.image}
@@ -101,6 +101,9 @@ function HomepageSliderComponent() {
           }
           .view-collection:hover {
             background-color: var(--color-2);
+          }
+          .content .order-2 {
+            border-bottom-right-radius: 0px;
           }
         `}
       </style>

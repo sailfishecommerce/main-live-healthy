@@ -17,6 +17,9 @@ export default function ValuesSlider() {
           780: {
             perPage: 2,
           },
+          1000: {
+            perPage: 3,
+          },
         },
       }}
       className="values-slider container mx-auto"

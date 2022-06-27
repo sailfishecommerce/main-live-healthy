@@ -4,7 +4,7 @@ import { useMediaQuery } from '@/hooks'
 import values from '@/json/values.json'
 
 export default function Values() {
-  const tabWidth = useMediaQuery('(max-width:768px)')
+  const tabWidth = useMediaQuery('(max-width:1000px)')
 
   return (
     <section className="container values mx-auto mb-8 px-4 xl:px-0">

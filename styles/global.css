@@ -458,8 +458,26 @@ button.bg-mountain-green:disabled {
   }
 }
 
+@media (max-width: 1024px) and (min-width: 765px) {
+  a.home-slider.content .image.order-1 span {
+    height: 38vh !important;
+  }
+}
+
 @media (max-width: 1024px) and (min-width: 768px) {
   nav.nav ul li {
     font-size: 13px;
+  }
+}
+
+@media (max-width: 1360px) and (min-width: 768px) {
+  button.bg-mountain-green {
+    padding: 0px;
+  }
+  .bg-mountain-green p {
+    font-size: 11px;
+  }
+  .price-group span {
+    font-size: 11px;
   }
 }

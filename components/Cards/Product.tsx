@@ -74,7 +74,11 @@ export default function Product({
     >
       <DiscountTag price={product.price} salePrice={product.sale_price} />
       <Link passHref href={`/product/${product.slug}`}>
-        <a title={product.name} onClick={algoliaEventHandler}>
+        <a
+          title={product.name}
+          className="product-view"
+          onClick={algoliaEventHandler}
+        >
           <div
             className={`${productImageClassName} ${imageWidth} image-wrapper`}
           >
@@ -100,7 +104,7 @@ export default function Product({
                 {product.vendor}
               </button>
             </Link>
-            <div className="product-name-view md:mb-8 mb-2">
+            <div className="product-name-view md:mb-4 mb-2">
               <h3 className="text-xs md:text-md product-name">
                 {product.name}
               </h3>

@@ -35,6 +35,8 @@ export default function firebaseDatabase() {
         const formatData = typeof data === 'string' ? JSON.parse(data) : data
         dbData(formatData)
         setLoading(false)
+      } else {
+        setLoading(false)
       }
     })
   }

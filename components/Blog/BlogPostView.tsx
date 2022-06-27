@@ -130,7 +130,9 @@ export default function BlogPostView({ postSlug }: Props) {
             editorKey={route}
             blogPostTitle={postTitle}
             author={postAuthor}
+            type="blog"
             title={postTitle.toUpperCase()}
+            editPost={true}
           />
         </>
       )}

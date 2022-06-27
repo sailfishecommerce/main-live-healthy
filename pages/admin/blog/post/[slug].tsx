@@ -11,7 +11,9 @@ export default function BlogPost() {
   return (
     <DashboardLayout title="Admin page">
       <DashboardMainView>
-        {postSlug && <BlogPostView postSlug={postSlug} />}
+        {postSlug && postSlug.length > 0 && (
+          <BlogPostView postSlug={postSlug} />
+        )}
       </DashboardMainView>
     </DashboardLayout>
   )

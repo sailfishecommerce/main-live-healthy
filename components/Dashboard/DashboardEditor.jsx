@@ -77,7 +77,13 @@ class DashboardEditor extends Component {
     const articleType = this.props.type
       ? `/${toSlug(this.props?.blogPostTitle)}`
       : ''
-    const databaseRefId = 'articles/' + this.props.editorKey + articleType
+
+    const dbRef = this.props.type
+      ? `articles/blog/post/${articleType}`
+      : 'articles/' + this.props.editorKey + articleType
+
+    console.log('articleType', articleType)
+
     const articleData = this.props.type
       ? {
           content: JSON.stringify(convertToRaw(content)),
@@ -89,7 +95,7 @@ class DashboardEditor extends Component {
           content: JSON.stringify(convertToRaw(content)),
         }
     this.setState({ loading: true })
-    writeData(databaseRefId, articleData).then(() => {
+    writeData(dbRef, articleData).then(() => {
       this.setState({ loading: false })
     })
   }, 1000)

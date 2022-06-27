@@ -1,34 +1,24 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-nested-ternary */
-import { useState, useRef, useEffect } from 'react'
+import { useRef } from 'react'
 import ContentEditable from 'react-contenteditable'
 import { AiFillSave } from 'react-icons/ai'
 
 import DashboardMainView from '@/components/Dashboard/DashboardMainView'
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import { useToast } from '@/hooks'
+import useDatabaseData from '@/hooks/useDatabaseData'
 import DashboardLayout from '@/layouts/dashboard-layout'
 import firebaseDatabase from '@/lib/firebaseDatabase'
 
 export default function ContactusPage() {
-  const [contactusState, setContactusState] = useState<any>(null)
-  const [loading, setLoading] = useState(false)
-
   const { loadingToast, updateToast } = useToast()
-
+  const {
+    dbdata: contactusState,
+    loading,
+    setDBData: setContactusState,
+  } = useDatabaseData('articles/team/contact-us/content')
   const dbRef = 'articles/team/contact-us/content'
   const toastID = useRef(null)
-
-  useEffect(() => {
-    if (contactusState === null) {
-      readData()
-    }
-  }, [])
-
-  function readData() {
-    const { readFromDB } = firebaseDatabase()
-    readFromDB(dbRef, setContactusState, setLoading)
-  }
 
   function saveChange() {
     loadingToast(toastID)

@@ -1,22 +1,10 @@
-import { useMemo, useState } from 'react'
+import { useMemo } from 'react'
 
-import firebaseDatabase from '@/lib/firebaseDatabase'
+import useDatabaseData from '@/hooks/useDatabaseData'
 import formatBlogData from '@/utils/formatBlogPost'
 
 export default function useBlogTable() {
-  const [loading, setLoading] = useState(false)
-  const [blogPosts, setBlogPosts] = useState(null)
-
-  function getPosts() {
-    const { readFromDB } = firebaseDatabase()
-    readFromDB('articles/blog/post', setBlogPosts, setLoading)
-  }
-
-  useMemo(() => {
-    if (blogPosts === null) {
-      getPosts()
-    }
-  }, [blogPosts])
+  const { dbdata: blogPosts, loading } = useDatabaseData('articles/blog/post')
 
   const data = blogPosts !== null ? formatBlogData(blogPosts) : undefined
 

@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { memo, useEffect, useState } from 'react'
+import { memo } from 'react'
 
-import firebaseDatabase from '@/lib/firebaseDatabase'
+import useDatabaseData from '@/hooks/useDatabaseData'
 
 interface LogoProps {
   className: string
@@ -10,13 +10,7 @@ interface LogoProps {
 
 function LogoComponent({ className }: LogoProps) {
   const logoClassName = className ? className : ' w-full h-full'
-  const [logoUrl, setLogoUrl] = useState(null)
-  const [, setLoading] = useState(false)
-
-  useEffect(() => {
-    const { readFromDB } = firebaseDatabase()
-    readFromDB('logo', setLogoUrl, setLoading)
-  }, [])
+  const { dbdata: logoUrl } = useDatabaseData('logo')
 
   return (
     <Link passHref href="/">

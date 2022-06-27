@@ -1,14 +1,13 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/no-onchange */
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import DashboardMainView from '@/components/Dashboard/DashboardMainView'
 import TextInput from '@/components/Form/TextInput'
+import useDatabaseData from '@/hooks/useDatabaseData'
 import DashboardLayout from '@/layouts/dashboard-layout'
-import firebaseDatabase from '@/lib/firebaseDatabase'
 
 const DynamicDashboardEditor = dynamic(
   () =>
@@ -22,23 +21,13 @@ const DynamicDashboardEditor = dynamic(
 
 export default function BlogPost() {
   const [title, setTitle] = useState('')
-  const [blogAuthors, setBlogAuthors] = useState(null)
   const [selectedAuthor, setSelectedAuthor] = useState<any>(null)
-  const [loading, setLoading] = useState(null)
+  const { dbdata: blogAuthors, loading } = useDatabaseData(
+    'articles/blog/blog-author'
+  )
 
   const router = useRouter()
   const route = router.asPath.split('/admin/')[1]
-
-  function readDataFromDB() {
-    const { readFromDB } = firebaseDatabase()
-    readFromDB('articles/blog/blog-author', setBlogAuthors, setLoading)
-  }
-
-  useEffect(() => {
-    if (blogAuthors === null) {
-      readDataFromDB()
-    }
-  }, [])
 
   const blogAuthorsArray =
     blogAuthors !== null ? Object.entries(blogAuthors) : []

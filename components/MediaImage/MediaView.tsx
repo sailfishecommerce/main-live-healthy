@@ -4,26 +4,18 @@ import { useEffect, useState } from 'react'
 
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import MediaImage from '@/components/MediaImage'
-import firebaseDatabase from '@/lib/firebaseDatabase'
+import useDatabaseData from '@/hooks/useDatabaseData'
 import paginateData from '@/utils/paginateData'
 
 export default function MediaView() {
-  const [media, setMedia] = useState<any>(null)
   const [paginatedArray, setPaginatedArray] = useState<any>([])
   const [activePagination, setActivePagination] = useState<any>(1)
-
-  const [loading, setLoading] = useState(false)
-  const { readFromDB } = firebaseDatabase()
+  const { dbdata: media, loading } = useDatabaseData('media/')
 
   const mediaArray = media === null ? [] : Object.entries(media)
   const arrayCount = Math.ceil(mediaArray.length / 4)
 
   const arrayGroup = new Array(arrayCount).fill(0)
-
-  useEffect(() => {
-    setLoading(false)
-    readFromDB('media/', setMedia, setLoading)
-  }, [])
 
   useEffect(() => {
     if (media !== null) {

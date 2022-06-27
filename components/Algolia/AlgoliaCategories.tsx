@@ -15,6 +15,7 @@ import { getCategoryMenus, getCategorySlug } from '@/lib/formatCategories'
 
 function RefinementListMenu({ items, selectedCategory }: any) {
   const menuArray = getCategoryMenus(selectedCategory, items)
+
   const [, setCategoryDropdown] = useAtom(categoryDropdownAtom)
   const { toggleMobileMenu } = useNav()
   const mobileWidth = useMediaQuery('(max-width:768px)')
@@ -30,35 +31,45 @@ function RefinementListMenu({ items, selectedCategory }: any) {
   return (
     <div className="menu">
       <h1 className="text-lg mb-4 font-medium mb-6">{selectedCategory}</h1>
-      <ul className="flex flex-col lg:grid lg:grid-cols-3 lg:gap-2">
-        {menuArray.length === 0 && <LineLoaderArray numberOfLine={5} />}
-        {menuArray.map((item) => {
-          return (
-            <li className="hover:text-green-500 my-1" key={item}>
-              <Link
-                passHref
-                href={`/collection/${getCategorySlug(
-                  selectedCategory
-                )}/${getCategorySlug(item)}`}
-              >
-                <a title={item} onClick={toggleCategoryDropdownHandler}>
-                  {item}
-                </a>
-              </Link>
-            </li>
-          )
-        })}
-      </ul>
-      <Link passHref href={`/collection/${getCategorySlug(selectedCategory)}`}>
-        <button
-          type="button"
-          aria-label="show all categories"
-          className="bg-mountain-green mt-8 rounded-lg p-2 text-white"
-          onClick={toggleCategoryDropdownHandler}
+      {
+        <ul className="flex flex-col lg:grid lg:grid-cols-3 lg:gap-2">
+          {menuArray.length === 0 && <LineLoaderArray numberOfLine={5} />}
+          {menuArray.length > 0 &&
+            menuArray.map((item) => {
+              return (
+                <li className="hover:text-green-500 my-1" key={item}>
+                  {item !== undefined && (
+                    <Link
+                      passHref
+                      href={`/collection/${getCategorySlug(
+                        selectedCategory
+                      )}/${getCategorySlug(item)}`}
+                    >
+                      <a title={item} onClick={toggleCategoryDropdownHandler}>
+                        {item}
+                      </a>
+                    </Link>
+                  )}
+                </li>
+              )
+            })}
+        </ul>
+      }
+      {selectedCategory && (
+        <Link
+          passHref
+          href={`/collection/${getCategorySlug(selectedCategory)}`}
         >
-          Show all {selectedCategory}
-        </button>
-      </Link>
+          <button
+            type="button"
+            aria-label="show all categories"
+            className="bg-mountain-green mt-8 rounded-lg p-2 text-white"
+            onClick={toggleCategoryDropdownHandler}
+          >
+            Show all {selectedCategory}
+          </button>
+        </Link>
+      )}
       <style jsx>
         {`
           @media (min-width: 768px) {

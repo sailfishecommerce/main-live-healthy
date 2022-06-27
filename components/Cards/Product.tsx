@@ -127,7 +127,7 @@ export default function Product({
       <button
         type="button"
         aria-label="add to cart"
-        className="bg-mountain-green mt-4 w-full md:w-4/5 justify-center h-8 text-white px-4 py-1 flex items-center mx-auto rounded-md"
+        className="bg-mountain-green add-to-cart mt-4 w-full md:w-4/5 justify-center h-8 text-white px-4 py-1 flex items-center mx-auto rounded-md"
         onClick={addToCartHandler}
       >
         <CartIcon />

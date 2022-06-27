@@ -16,10 +16,12 @@ function RecommendationSliderComponent({ cartItems }: Props) {
 
   return (
     <section className="itemSlider recommendation-slider">
-      <div className="mb-2">
-        <h3 className="lg:text-xl text-md font-bold">Recommended for you</h3>
+      <div className="mb-4">
+        <h3 className="lg:text-xl md:text-lg text-md font-bold">
+          Recommended for you
+        </h3>
       </div>
-      <div className="content">
+      <div className="content mt-6">
         {status === 'error' ? (
           'unable to load products'
         ) : status === 'loading' ? (

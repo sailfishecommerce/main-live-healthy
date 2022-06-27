@@ -15,7 +15,7 @@ export default function ProductRow({ cart }: any) {
       : cart.product.images[0].file.url
 
   return (
-    <div className="flex items-center  border-b p-4 hover:bg-gray-100">
+    <div className="flex items-center product-row  border-b p-4 hover:bg-gray-100">
       <div className="w-1/4 mr-4 rounded-lg bg-gray-200">
         <Image
           src={productImage}

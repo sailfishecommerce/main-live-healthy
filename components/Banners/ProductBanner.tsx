@@ -26,16 +26,10 @@ export default function ProductBanner() {
       height: 200,
       width: 382,
     },
-    {
-      height: 700,
-    },
-    {
-      height: 450,
-    },
   ]
   const bannerDimension = mobileWidth ? imageSize[1] : imageSize[0]
   return (
-    <div className="lg:pt-6 py-4 container mx-auto justify-between px-4 xl:px-0 flex flex-col lg:flex-row items-start">
+    <div className="lg:pt-6 py-4 container mx-auto justify-between px-4 xl:px-0 flex flex-col md:flex-row items-start">
       <div className="banner w-full lg:w-4/6">
         <Image
           src={bannerImage}

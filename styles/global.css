@@ -174,7 +174,9 @@ button.splide__arrow:disabled {
 .values-slider .splide__track.splide__track--slide {
   padding-left: 0px !important;
 }
-
+.productSlider.itemSlider .splide__track {
+  padding-left: 0px !important;
+}
 .deletebtn:hover {
   fill: red;
 }

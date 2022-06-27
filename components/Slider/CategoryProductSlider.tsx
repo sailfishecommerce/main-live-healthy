@@ -40,7 +40,7 @@ function CategoryProductSliderComponent({
               perPage: 2,
               padding: '2rem',
             },
-            800: {
+            1000: {
               perPage: 3,
               padding: '2rem',
             },

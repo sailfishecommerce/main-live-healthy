@@ -73,7 +73,7 @@ export default function ProductPriceView({ product, queryObject }: Props) {
               <div className="button-group my-2 lg:mb-6 flex lg:w-3/5 justify-between w-full items-center my-2">
                 <button
                   type="button"
-                  className="bg-mountain-mist lg:text-lg rounded-lg mr-4 lg:w-1/2 flex items-center justify-center text-white py-1 lg:py-2 px-4"
+                  className="bg-mountain-mist xl:text-lg lg:text-base rounded-lg mr-4 xl:w-1/2 flex items-center justify-center text-white py-1 lg:py-2 lg:px-1  xl:px-4"
                   onClick={addToCartHandler}
                 >
                   <CartIcon />
@@ -82,7 +82,7 @@ export default function ProductPriceView({ product, queryObject }: Props) {
                 <button
                   type="button"
                   aria-label="buy now"
-                  className="bg-tan-hide lg:text-lg  rounded-lg bg-tan-hide text-white py-2 lg:py-2 px-4"
+                  className="bg-tan-hide xl:text-lg lg:text-base rounded-lg bg-tan-hide text-white py-2 lg:py-2 px-4"
                   onClick={buyNowHandler}
                 >
                   Buy now

@@ -197,6 +197,7 @@ h3.product-name,
   overflow: hidden;
   white-space: normal;
   text-overflow: ellipsis;
+  letter-spacing: 0px;
 }
 a .image-wrapper {
   display: flex;

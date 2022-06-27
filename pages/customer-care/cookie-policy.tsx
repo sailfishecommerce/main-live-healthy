@@ -4,7 +4,7 @@ import CustomercareLayout from '@/layouts/customer-care-layout'
 export default function CookiePolicy() {
   return (
     <CustomercareLayout>
-      <PolicyView dbNode="cookie-policy" />
+      <PolicyView dbNode="articles/cookie-policy/content" />
     </CustomercareLayout>
   )
 }

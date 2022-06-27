@@ -4,7 +4,7 @@ import useArticleData from '@/hooks/useArticleData'
 import Applayout from '@/layouts/app-layout'
 
 export default function About() {
-  const { databaseData }: any = useArticleData('team/about-us')
+  const { databaseData }: any = useArticleData('articles/team/about-us/content')
   const aboutusImg = databaseData?.entityMap['0']?.data
   const pageContent = databaseData?.blocks
   return (

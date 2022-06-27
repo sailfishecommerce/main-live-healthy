@@ -14,8 +14,7 @@ export default function useArticleData(databaseNode: string) {
   function readDatabase() {
     initializeApp(firebaseConfig)
     const db = getDatabase()
-    const databaseRefId = `articles/${databaseNode}/content`
-    const dbRef = ref(db, databaseRefId)
+    const dbRef = ref(db, databaseNode)
     onValue(dbRef, (snapshot) => {
       const dbArticle = snapshot.val()
       const contentState = convertFromRaw(JSON.parse(dbArticle))

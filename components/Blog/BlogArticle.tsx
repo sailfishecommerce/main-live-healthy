@@ -17,7 +17,7 @@ export default function BlogArticle({ postContent, blogPost }: any) {
         <ShareBlogLink author={author} postDate={postDate} />
         <div className="blog-content">
           <BlogContent post={postContent} />
-          <BlogAuthor />
+          <BlogAuthor author={author} />
         </div>
       </div>
     </article>

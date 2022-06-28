@@ -1,6 +1,8 @@
 import Image from 'next/image'
 import Link from 'next/link'
 
+import toSlug from '@/lib/toSlug'
+
 interface BlogExcerpt {
   content: {
     title: string
@@ -20,7 +22,7 @@ export default function BlogArticleExcerpt({ content }: BlogExcerpt) {
         key={content.title}
         className="px-4 py-2 w-full md:w-1/2 lg:w-1/3 md:px-2"
       >
-        <Link passHref href="/blog">
+        <Link passHref href={`/blog/post/${toSlug(content.title)}`}>
           <a aria-label={content.title} className="blog-entry-thumb">
             <Image
               className="rounded-t-lg"
@@ -41,10 +43,9 @@ export default function BlogArticleExcerpt({ content }: BlogExcerpt) {
             </h2>
           </div>
           <div className="border-t-2 border-gray-100 mt-6 pt-2 flex items-center justify-between">
-            <a
+            <div
               aria-label={`${content.author.authorName} image`}
               className="flex items-center"
-              href="#tag"
             >
               <div className="blog-entry-author w-full">
                 <Image
@@ -59,7 +60,7 @@ export default function BlogArticleExcerpt({ content }: BlogExcerpt) {
               <span className="author-name ml-2">
                 {content.author.authorName}
               </span>
-            </a>
+            </div>
             <div className="flex items-center justify-between w-28">
               <a aria-label="date" className="text-sm" href="#date">
                 {content.date}

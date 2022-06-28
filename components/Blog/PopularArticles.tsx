@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 import blogContent from '@/json/blog.json'
 
-export default function PopularArticles() {
+export default function PopularArticles({ blogPost }: any) {
   const content = blogContent[0].popularArticles
   return (
     <div className="flex flex-col">

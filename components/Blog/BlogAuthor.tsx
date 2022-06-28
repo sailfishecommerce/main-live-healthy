@@ -14,8 +14,8 @@ export default function BlogAuthor({ author }: Props) {
       <Image
         src={author.url}
         alt={author.authorName}
-        height={150}
-        width={150}
+        height={80}
+        width={80}
         className="mr-6"
       />
       <div className="content ml-3">

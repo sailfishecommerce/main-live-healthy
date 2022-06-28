@@ -1,14 +1,14 @@
 /* eslint-disable react/no-array-index-key */
 import blogContent from '@/json/blog.json'
 
-export default function TableofContent() {
+export default function TableofContent({ blogPost }: any) {
   const content = blogContent[0].tableOfContent
   return (
     <div className="border rounded-lg p-6 flex flex-col">
       <h3 className="font-bold">Table Of Content</h3>
       <hr className="my-4" />
       <div className="content">
-        <h5 className="font-bold text-md">{content.title}</h5>
+        <h5 className="font-bold text-md">{blogPost.title}</h5>
         <ul>
           {content.subtitle.map((item) => {
             return typeof item === 'string' ? (

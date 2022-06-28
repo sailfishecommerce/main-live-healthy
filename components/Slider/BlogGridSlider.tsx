@@ -1,4 +1,3 @@
-/* eslint-disable array-callback-return */
 /* eslint-disable @next/next/no-img-element */
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import Link from 'next/link'
@@ -6,38 +5,12 @@ import { memo } from 'react'
 import { GiAlarmClock } from 'react-icons/gi'
 
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
-import useDatabaseData from '@/hooks/useDatabaseData'
+import useBlogData from '@/hooks/useBlogData'
 import '@splidejs/splide/dist/css/splide.min.css'
 import toSlug from '@/lib/toSlug'
 
 function BlogGridSliderComponent() {
-  const { dbdata, loading } = useDatabaseData('articles/blog/post/')
-
-  function getPostImages(dbData: any) {
-    const dbDataArray = Object.entries(dbData)
-    const imagesArray: any = []
-    dbDataArray.map((dbArr1) => {
-      const postData: any = {}
-      const postObj: any = dbArr1[1]
-      const postDataObj = JSON.parse(postObj.content)
-      const postImage = postDataObj.entityMap['0'].data.src
-      postData.postImg = postImage
-      const authorObj = JSON.parse(postObj.author)
-      postData.author = {
-        authorName: authorObj.authorName,
-        authorImg: authorObj.url,
-      }
-      const formatPostTitle = JSON.parse(postObj.title)
-      postData.title = formatPostTitle
-      const formatTime = JSON.parse(postObj.createdAt)
-      const formattedDate = new Date(formatTime).toDateString()
-      postData.date = formattedDate
-      imagesArray.push(postData)
-    })
-    return imagesArray
-  }
-
-  const blogCarouselArray = dbdata !== null ? getPostImages(dbdata) : []
+  const { blogData, loading } = useBlogData()
 
   return (
     <div className="pt-5 relative blogGrid">
@@ -67,11 +40,11 @@ function BlogGridSliderComponent() {
             },
           }}
         >
-          {blogCarouselArray.length > 0 &&
-            blogCarouselArray.map((content: any) => (
+          {blogData.length > 0 &&
+            blogData.map((content: any) => (
               <SplideSlide key={content.title}>
                 <article className="w-full relative flex flex-col">
-                  <Link passHref href={toSlug(content.title)}>
+                  <Link passHref href={`/blog/post/${toSlug(content.title)}`}>
                     <a
                       aria-label="date"
                       className="blog-entry-thumb mb-3 relative flex"
@@ -79,7 +52,7 @@ function BlogGridSliderComponent() {
                       <button
                         aria-label="date"
                         type="button"
-                        className="w-32 flex justify-center items-center rounded-md bg-gray-200 p-1 hover:bg-gray-600 hover:text-white absolute right-8 top-8"
+                        className="w-36 flex justify-center items-center rounded-md bg-gray-200 p-1 hover:bg-gray-600 hover:text-white absolute right-8 top-8"
                       >
                         <GiAlarmClock className="mr-1" />
                         {content.date}
@@ -96,8 +69,14 @@ function BlogGridSliderComponent() {
                     <div className="flex justify-between mb-2 pt-1">
                       <h2 className="text-xl">
                         {content.title && (
-                          <Link passHref href={toSlug(content.title)}>
-                            <a aria-label="title" className="font-semibold">
+                          <Link
+                            passHref
+                            href={`/blog/post/${toSlug(content.title)}`}
+                          >
+                            <a
+                              aria-label="title"
+                              className="font-semibold hover:text-red-500"
+                            >
                               {content.title}
                             </a>
                           </Link>

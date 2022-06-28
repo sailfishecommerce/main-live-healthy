@@ -1,8 +1,23 @@
+/* eslint-disable array-callback-return */
 /* eslint-disable react/no-array-index-key */
-import blogContent from '@/json/blog.json'
 
 export default function TableofContent({ blogPost }: any) {
-  const content = blogContent[0].tableOfContent
+  function getSubtopics() {
+    const subtopicArray: any = []
+    blogPost.content.blocks?.map((postBlock: any) => {
+      if (postBlock.type !== 'unstyled' && postBlock.type !== 'atomic') {
+        if (postBlock.text.length > 0) {
+          const formattedText = postBlock.text.includes('\n')
+            ? postBlock.text.split('\n')[0]
+            : postBlock.text
+          subtopicArray.push(formattedText)
+        }
+      }
+    })
+    return subtopicArray
+  }
+
+  const subTopics = getSubtopics()
   return (
     <div className="border rounded-lg p-6 flex flex-col">
       <h3 className="font-bold">Table Of Content</h3>
@@ -10,24 +25,11 @@ export default function TableofContent({ blogPost }: any) {
       <div className="content">
         <h5 className="font-bold text-md">{blogPost.title}</h5>
         <ul>
-          {content.subtitle.map((item) => {
-            return typeof item === 'string' ? (
-              <li className="text-sm font-medium my-2" key={item}>
-                {item}
-              </li>
-            ) : (
-              item.map((v, i) => (
-                <ul className="my-2" key={i}>
-                  <h6 className="font-medium text-sm">{v.title}</h6>
-                  {v.subtitle.map((s, sIndex) => (
-                    <li className="text-sm ml-3" key={sIndex}>
-                      {s}
-                    </li>
-                  ))}
-                </ul>
-              ))
-            )
-          })}
+          {subTopics.map((subTopic: string, index: number) => (
+            <li className="text-xs font-medium ml-3" key={index}>
+              {subTopic}
+            </li>
+          ))}
         </ul>
       </div>
     </div>

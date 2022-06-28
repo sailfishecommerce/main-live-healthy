@@ -38,3 +38,20 @@ function formatBlogPostItem(formatBlogPostArray: any) {
   })
   return data
 }
+
+export function formatBlogPost(blogPost: any) {
+  const blogPostArray = Object.entries(blogPost)
+  const selectRecent2Posts =
+    blogPostArray.length > 2
+      ? blogPostArray.slice(blogPostArray.length - 2, blogPost.length)
+      : blogPostArray
+
+  const recentPosts: any[] = []
+  selectRecent2Posts.map((selectRecent2Post: any) => {
+    const postContent = JSON.parse(selectRecent2Post[1].content)
+    const postTitle = JSON.parse(selectRecent2Post[1].title)
+    const postImage = postContent.entityMap['0'].data.src
+    recentPosts.push({ title: postTitle, postImage })
+  })
+  return recentPosts
+}

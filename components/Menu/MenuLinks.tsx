@@ -5,15 +5,12 @@ import menuLinks from '@/json/menu.json'
 export default function MenuLinks() {
   return (
     <div className="menuLinks w-3/4 flex items-center justify-between">
-      <div className="md:hidden lg:flex  items-center w-1/2 2xl:text-lg lg:text-md">
+      <div className="md:hidden lg:flex  items-center w-1/2 2xl:text-lg lg:text-md mr-1">
         <Whatsapp />
-        <span className="font-bold text-green-500 xl:text-base lg:text-sm md:text-xs mx-1">
+        <span className="font-bold text-green-500 md:text-sm mx-1">
           Whatsapp:
         </span>
-        <a
-          className="hover:text-red-500 xl:text-base lg:text-sm md:text-xs"
-          href="tel:+85370735393"
-        >
+        <a className="hover:text-red-500 md:text-sm" href="tel:+85370735393">
           +853 7073 5292
         </a>
       </div>

@@ -11,8 +11,8 @@ export default function CookieNotification() {
   }
   return (
     <>
-      <div className="flex items-center justify-between xl:px-20 lg:px-16 px-10  py-2 bg-mountain-mist">
-        <div className="text-content white">
+      <div className="flex items-center justify-between xl:px-20 lg:px-16 px-6  py-2 bg-mountain-mist">
+        <div className="text-content white lg:text-sm text-xs w-4/5 lg:w-auto">
           This website uses cookies. Cookies improve your experience, by
           browsing our site you agree to our
           <Link passHref href="/customer-care/cookie-policy">
@@ -21,7 +21,7 @@ export default function CookieNotification() {
         </div>
         <button
           type="button"
-          className="border-tan-hide px-2"
+          className="border-tan-hide lg:text-sm px-2 text-xs w-1/5 lg:w-auto"
           onClick={cookieNotificationHandler}
         >
           GOT IT

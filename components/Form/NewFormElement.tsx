@@ -55,13 +55,15 @@ export function Input({ input, className, setValue, values }: InputType) {
     formState: { errors },
   } = useFormContext()
   const inputName = values ? values[`${input.name}`] : ''
-  const inputValue =
-    inputName?.length > 0 ? setValue(`${input.name}`, inputName) : ''
+
+  const textInputValue =
+    inputName?.length > 0 ? { value: setValue(`${input.name}`, inputName) } : ''
 
   return (
     <div className={`input-element my-3 flex flex-col ${className}`}>
       {input.label && <label htmlFor={input.id}>{input.label}</label>}
       <input
+        {...textInputValue}
         type={input.inputType}
         className="form-control
       block
@@ -78,7 +80,6 @@ export function Input({ input, className, setValue, values }: InputType) {
       ease-in-out
       m-0
       focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-        value={inputValue}
         id={input.id}
         aria-invalid={errors[input.name] ? 'true' : 'false'}
         placeholder={input.placeholder}

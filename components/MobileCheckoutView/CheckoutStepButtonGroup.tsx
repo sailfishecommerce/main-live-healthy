@@ -1,7 +1,10 @@
+/* eslint-disable no-nested-ternary */
+import { useAtom } from 'jotai'
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs'
 
 import CheckoutButton from '@/components/MobileCheckoutView/CheckoutButton'
 import useMakePayment from '@/hooks/useMakePayment'
+import { paymentFormAtom } from '@/lib/atomConfig'
 
 interface Props {
   onClick: (step: 'next' | 'prev') => void
@@ -13,6 +16,7 @@ export default function CheckoutStepButtonGroup({
   checkoutSteps,
 }: Props) {
   const { makePaymentHandler } = useMakePayment()
+  const [shippingForm] = useAtom(paymentFormAtom)
 
   return (
     <div className="controls px-4">
@@ -25,7 +29,8 @@ export default function CheckoutStepButtonGroup({
           Previous step
         </CheckoutButton>
       )}
-      {checkoutSteps <= 1 ? (
+      {checkoutSteps === 1 && !shippingForm.completed ? null : checkoutSteps <=
+        1 ? (
         <CheckoutButton
           className="bg-tan-hide text-white"
           onClick={() => onClick('next')}
@@ -33,7 +38,10 @@ export default function CheckoutStepButtonGroup({
           Next step <BsArrowRight className="ml-3 font-bold mt-2" />
         </CheckoutButton>
       ) : (
-        <CheckoutButton className="bg-tan-hide text-white" onClick={() => null}>
+        <CheckoutButton
+          className="bg-tan-hide text-white"
+          onClick={makePaymentHandler}
+        >
           Complete Order
         </CheckoutButton>
       )}

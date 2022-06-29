@@ -28,6 +28,8 @@ export interface InputType {
     className?: string
   }
   className?: string
+  setValue?: any
+  values?: any
 }
 
 export interface FormInputsProps {

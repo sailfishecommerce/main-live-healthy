@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-shadow */
-import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { useAtom } from 'jotai'
 
@@ -15,7 +14,6 @@ import useAfterPayment from '@/hooks/useAfterpayment'
 import { logsAtom } from '@/lib/atomConfig'
 
 export default function useProcessPayment() {
-  const router = useRouter()
   const { tokenizePayment, submitUserOrder } = usePayment()
   const { getACart } = useSwellCart()
   const { useCartData } = useCart()

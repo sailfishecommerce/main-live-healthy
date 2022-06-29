@@ -2,10 +2,12 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useAtom } from 'jotai'
 import { useForm, FormProvider } from 'react-hook-form'
+import { useQuery } from 'react-query'
 
 import ContactInformationForm from '@/components/Checkout/ContactInformationForm'
 import SelectFormElement from '@/components/Form/SelectFormElement'
 import { shippingSchema } from '@/components/Form/schema/ShippingSchema'
+import { useAccount } from '@/hooks'
 import useVboutAction from '@/hooks/useVboutAction'
 import checkoutFormContent from '@/json/checkout-form.json'
 import { paymentFormAtom } from '@/lib/atomConfig'
@@ -13,6 +15,8 @@ import type { FormInputsProps } from '@/typings/input-type'
 
 export default function ShippingAddressForm() {
   const { createVboutCartAction, addCartItemAction } = useVboutAction()
+  const { getUserAccount } = useAccount()
+  const { data: userDetails } = useQuery('userDetails', getUserAccount)
 
   const methods = useForm<FormInputsProps>({
     resolver: yupResolver(shippingSchema),
@@ -33,7 +37,10 @@ export default function ShippingAddressForm() {
       <h3 className="font-bold my-5 text-lg">Shipping address</h3>
       <FormProvider {...methods}>
         <form className="mt-4" onSubmit={methods.handleSubmit(onSubmit)}>
-          <ContactInformationForm />
+          <ContactInformationForm
+            values={userDetails}
+            setValue={methods.setValue}
+          />
           {checkoutFormContent.personalDetails.content.map(
             (inputRow, index) => {
               const inputStyle =
@@ -47,6 +54,8 @@ export default function ShippingAddressForm() {
                       input={input}
                       key={input.id}
                       className={inputStyle}
+                      setValue={methods.setValue}
+                      values={userDetails}
                     />
                   ))}
                 </div>

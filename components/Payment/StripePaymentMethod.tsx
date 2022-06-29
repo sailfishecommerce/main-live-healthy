@@ -1,12 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useAtom } from 'jotai'
 import type { MutableRefObject } from 'react'
 import { useState, useRef, useEffect, memo } from 'react'
 
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
-import { useProcessPayment } from '@/hooks'
+import useMakePayment from '@/hooks/useMakePayment'
 import useStripeElement from '@/hooks/useStripeElement'
-import { paymentFormAtom } from '@/lib/atomConfig'
 
 interface PaymentInputType {
   inputRef: MutableRefObject<null>
@@ -23,17 +21,12 @@ function PaymentInput({ inputRef }: PaymentInputType): JSX.Element {
 function StripePaymentMethodComponent() {
   const { createStripeElement } = useStripeElement()
   const [showSpinner, setShowSpinner] = useState(true)
-  const [paymentForm] = useAtom(paymentFormAtom)
   const inputRef = useRef(null)
-  const { makePayment } = useProcessPayment()
+  const { makePaymentHandler } = useMakePayment()
 
   useEffect(() => {
     createStripeElement().then(() => setShowSpinner(false))
   }, [])
-
-  function makePaymentHandler() {
-    makePayment(paymentForm)
-  }
 
   return (
     <div className="px-0 flex flex-col">

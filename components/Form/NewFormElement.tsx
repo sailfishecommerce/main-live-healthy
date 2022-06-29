@@ -49,11 +49,15 @@ export function SelectCountry({ input, className }: InputType) {
   )
 }
 
-export function Input({ input, className }: InputType) {
+export function Input({ input, className, setValue, values }: InputType) {
   const {
     register,
     formState: { errors },
   } = useFormContext()
+  const inputName = values ? values[`${input.name}`] : ''
+  const inputValue =
+    inputName?.length > 0 ? setValue(`${input.name}`, inputName) : ''
+
   return (
     <div className={`input-element my-3 flex flex-col ${className}`}>
       {input.label && <label htmlFor={input.id}>{input.label}</label>}
@@ -74,7 +78,9 @@ export function Input({ input, className }: InputType) {
       ease-in-out
       m-0
       focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+        value={inputValue}
         id={input.id}
+        aria-invalid={errors[input.name] ? 'true' : 'false'}
         placeholder={input.placeholder}
         {...register(input.name)}
       />

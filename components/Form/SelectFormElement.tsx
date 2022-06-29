@@ -32,12 +32,26 @@ interface InputType {
     inputType?: string
   }
   className: string
+  setValue?: any
+  values?: any
 }
 
-export default function SelectFormElement({ input, className }: InputType) {
+export default function SelectFormElement({
+  input,
+  className,
+  setValue,
+  values,
+}: InputType) {
   switch (input.type) {
     case 'input':
-      return <Input input={input} className={className} />
+      return (
+        <Input
+          input={input}
+          className={className}
+          setValue={setValue}
+          values={values}
+        />
+      )
     case 'selectCountry':
       return <SelectCountry input={input} className={className} />
     case 'AddressAutocomplete': {

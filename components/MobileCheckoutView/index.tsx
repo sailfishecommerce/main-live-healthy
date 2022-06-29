@@ -21,6 +21,13 @@ export default function MobileCheckoutView() {
         checkoutSteps={checkoutSteps}
         onClick={stepHandler}
       />
+      <style jsx>
+        {`
+          .content {
+            min-height: 500px;
+          }
+        `}
+      </style>
     </div>
   )
 }

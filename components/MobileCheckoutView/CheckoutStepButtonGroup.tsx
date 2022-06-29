@@ -1,6 +1,7 @@
 import { BsArrowLeft, BsArrowRight } from 'react-icons/bs'
 
 import CheckoutButton from '@/components/MobileCheckoutView/CheckoutButton'
+import useMakePayment from '@/hooks/useMakePayment'
 
 interface Props {
   onClick: (step: 'next' | 'prev') => void
@@ -11,6 +12,8 @@ export default function CheckoutStepButtonGroup({
   onClick,
   checkoutSteps,
 }: Props) {
+  const { makePaymentHandler } = useMakePayment()
+
   return (
     <div className="controls px-4">
       {checkoutSteps !== 0 && (

@@ -140,6 +140,22 @@ export default function useAccount() {
     })
   }
 
+  async function updateUserShipping(data: createUserAccountAtCheckoutData) {
+    const { swell } = await swellInit()
+
+    return await swell.cart.update({
+      shipping: {
+        name: `${data.firstName} ${data.lastName}`,
+        address1: data.address,
+        city: data.district,
+        state: data.region,
+        zip: data.zip,
+        country: data.country,
+        phone: data.phone,
+      },
+    })
+  }
+
   return {
     createUserAccount,
     signedUserDetails,
@@ -149,6 +165,7 @@ export default function useAccount() {
     getUserAccount,
     createUserAccountAtCheckout,
     recoverPassword,
+    updateUserShipping,
     createUserAddresstAtCheckout,
     updateUserBillingInfo,
   }

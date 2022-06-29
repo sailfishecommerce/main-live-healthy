@@ -25,6 +25,7 @@ export default function useProcessPayment() {
     updateUserBillingInfo,
     createUserAddresstAtCheckout,
     getUserAccount,
+    updateUserShipping,
   } = useAccount()
   const [loadingState, setLoadingState] = useState(false)
   const { isLoading, isSuccessful, hasError } = useToast()
@@ -35,7 +36,6 @@ export default function useProcessPayment() {
   function processPayment(data, loading) {
     function vboutOrder(order) {
       const formatVboutOrderData = vboutOrderData(cart, order)
-      console.log('formatVboutOrderData', formatVboutOrderData)
       return createVboutOrder(formatVboutOrderData, setLog)
     }
     setLoadingState(true)
@@ -109,6 +109,7 @@ export default function useProcessPayment() {
               hasError(loading, err?.message)
             })
         } else {
+          updateUserShipping(data.form)
           processPayment(data, loading)
         }
       })

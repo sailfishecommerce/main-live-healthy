@@ -6,21 +6,27 @@ import { useForm, FormProvider } from 'react-hook-form'
 import ContactInformationForm from '@/components/Checkout/ContactInformationForm'
 import SelectFormElement from '@/components/Form/SelectFormElement'
 import { shippingSchema } from '@/components/Form/schema/ShippingSchema'
+import useVboutAction from '@/hooks/useVboutAction'
 import checkoutFormContent from '@/json/checkout-form.json'
 import { paymentFormAtom } from '@/lib/atomConfig'
 import type { FormInputsProps } from '@/typings/input-type'
 
 export default function ShippingAddressForm() {
+  const { createVboutCartAction, addCartItemAction } = useVboutAction()
+
   const methods = useForm<FormInputsProps>({
     resolver: yupResolver(shippingSchema),
   })
   const [, setShippingForm] = useAtom(paymentFormAtom)
 
-  const onSubmit = (data: any) =>
+  const onSubmit = (data: any) => {
+    createVboutCartAction(data)
+    addCartItemAction(data)
     setShippingForm({
       form: data,
       completed: true,
     })
+  }
 
   return (
     <>

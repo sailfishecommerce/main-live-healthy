@@ -1,5 +1,5 @@
 export type createCartType = {
-  customer?: string
+  customer: string
   uniqueid?: string
   cartid: number
   cartcurrency: string
@@ -31,7 +31,7 @@ export type emptyCartItemType = {
   cartid: string
 }
 
-export type creatOrderType = {
+export type createOrderType = {
   customer?: string
   cartid: string
   orderid: string

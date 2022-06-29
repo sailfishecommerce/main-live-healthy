@@ -24,13 +24,12 @@ function StripePaymentMethodComponent() {
   const { createStripeElement } = useStripeElement()
   const [showSpinner, setShowSpinner] = useState(true)
   const [paymentForm] = useAtom(paymentFormAtom)
+  const inputRef = useRef(null)
+  const { makePayment } = useProcessPayment()
 
   useEffect(() => {
     createStripeElement().then(() => setShowSpinner(false))
   }, [])
-
-  const inputRef = useRef(null)
-  const { makePayment } = useProcessPayment()
 
   function makePaymentHandler() {
     makePayment(paymentForm)

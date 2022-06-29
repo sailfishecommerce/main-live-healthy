@@ -2,7 +2,7 @@ import type { addCategoryViewType, createVboutOrderType } from '@/types'
 
 export function formatCreateVboutOrder(item: createVboutOrderType) {
   const data = {
-    domain: 'VBT-88360-6048',
+    domain: 'VBT-43304-6887',
     cartid: item.cartId,
     uniqueid: item.uniqueId,
     orderid: item.orderId,
@@ -10,7 +10,7 @@ export function formatCreateVboutOrder(item: createVboutOrderType) {
     paymentmethod: item.paymentMethod,
     grandTotal: item.grandTotal,
     subtotal: item.subtotal,
-    currency: 'USD',
+    currency: 'HKD',
     status: item.status,
     storename: 'livehealthy',
     customerinfo: item.customerInfo,
@@ -22,7 +22,7 @@ export function formatCreateVboutOrder(item: createVboutOrderType) {
 
 export function formatVboutCategoryView(content: addCategoryViewType) {
   const data = {
-    domain: 'VBT-88360-6048',
+    domain: 'VBT-43304-6887',
     uniqueid: content.id,
     categoryid: content.categoryId,
     name: content.categoryName,

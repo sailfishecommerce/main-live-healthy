@@ -55,7 +55,7 @@ type removeVboutCartType = {
 
 export function removeVboutCartItem(item: removeVboutCartType) {
   const data = {
-    domain: 'VBT-88360-6048',
+    domain: 'VBT-43304-6887',
     cartid: item.cartId,
     productid: item.productId,
   }
@@ -67,10 +67,13 @@ export function removeVboutCartItem(item: removeVboutCartType) {
 
 export function createVboutOrder(item: createVboutOrderType) {
   const data = formatCreateVboutOrder(item)
-  return axios.post(
-    `https://api.vbout.com/1/ecommerce/createorder?api_key=${process.env.NEXT_PUBLIC_VBOUT_API_KEY}`,
-    data
-  )
+  return axios
+    .post(
+      `https://api.vbout.com/1/ecommerce/createorder?api_key=${process.env.NEXT_PUBLIC_VBOUT_API_KEY}`,
+      data
+    )
+    .then((response) => console.log('createVboutOrder', response))
+    .catch((err) => console.log('error', err))
 }
 
 export function sendBankTransfer(
@@ -96,7 +99,7 @@ export function sendBankTransfer(
 
 export function addProductSearch(content: addProductSearchType) {
   const data = {
-    domain: 'VBT-88360-6048',
+    domain: 'VBT-43304-6887',
     uniqueid: content.id,
     customer: content.email,
     query: content.query,

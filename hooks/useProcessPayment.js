@@ -33,7 +33,9 @@ export default function useProcessPayment() {
 
   function processPayment(data, loading) {
     function vboutOrder(order) {
-      return createVboutOrder(vboutOrderData(cart, order))
+      const formatVboutOrderData = vboutOrderData(cart, order)
+      console.log('formatVboutOrderData', formatVboutOrderData)
+      return createVboutOrder(formatVboutOrderData)
     }
     setLoadingState(true)
     tokenizePayment()

@@ -1,7 +1,7 @@
 export function vboutOrderData(cart: any, order: any) {
   const data = {
     cartId: cart.id,
-    uniqueId: `${cart.id}-${order.id}`,
+    uniqueId: cart.checkoutId,
     orderId: order.id,
     orderNumber: order.number,
     paymentMethod: order.billing?.card.brand,

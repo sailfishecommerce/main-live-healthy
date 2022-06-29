@@ -19,12 +19,14 @@ export default function useAirwallexAdmin() {
     const dbRef = ref(db, dbRefId)
     onValue(dbRef, (snapshot) => {
       const snapshopData = snapshot.val()
-      const snapshotDataArray = Object.values(snapshopData)
-      const snapshotArray: any = []
-      snapshotDataArray.map((snapshotData: any) =>
-        snapshotArray.push(JSON.parse(snapshotData))
-      )
-      setAirwallexPayments(snapshotArray)
+      if (snapshopData) {
+        const snapshotDataArray = Object.values(snapshopData)
+        const snapshotArray: any = []
+        snapshotDataArray.map((snapshotData: any) =>
+          snapshotArray.push(JSON.parse(snapshotData))
+        )
+        setAirwallexPayments(snapshotArray)
+      }
     })
   }, [])
 

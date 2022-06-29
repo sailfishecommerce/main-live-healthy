@@ -65,15 +65,21 @@ export function removeVboutCartItem(item: removeVboutCartType) {
   )
 }
 
-export function createVboutOrder(item: createVboutOrderType) {
+export function createVboutOrder(item: createVboutOrderType, setLog: any) {
   const data = formatCreateVboutOrder(item)
   return axios
     .post(
       `https://api.vbout.com/1/ecommerce/createorder?api_key=${process.env.NEXT_PUBLIC_VBOUT_API_KEY}`,
       data
     )
-    .then((response) => console.log('createVboutOrder', response))
-    .catch((err) => console.log('error', err))
+    .then((response) => {
+      console.log('createVboutOrder', response)
+      setLog(response.data)
+    })
+    .catch((err) => {
+      console.log('error', err)
+      setLog(err)
+    })
 }
 
 export function sendBankTransfer(

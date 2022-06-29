@@ -8,8 +8,11 @@ import HeaderBanner from '@/components/Header/HeaderBanner'
 import Menu from '@/components/Menu'
 import { useMediaQuery } from '@/hooks'
 import useNavStyle from '@/hooks/useNavStyle'
-import { categoryDropdownAtom, noticebarAtom } from '@/lib/atomConfig'
-import CookieNotification from '../Notification/CookieNotification'
+import {
+  categoryDropdownAtom,
+  cookieConsentAtom,
+  noticebarAtom,
+} from '@/lib/atomConfig'
 
 const DynamicAllCategoriesDropdownView = dynamic(
   () =>
@@ -18,9 +21,17 @@ const DynamicAllCategoriesDropdownView = dynamic(
     )
 )
 
+const DynamicCookieNotification = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'CookieNotification' */ '@/components/Notification/CookieNotification'
+    )
+)
+
 function HeaderComponent() {
   const { navStyle } = useNavStyle()
   const [noticebar, setNoticebar] = useAtom(noticebarAtom)
+  const [showCookie] = useAtom(cookieConsentAtom)
   const [categoryDropdown, setCategoryDropdown] = useAtom(categoryDropdownAtom)
 
   function toggleCategoryDropdownHandler() {
@@ -47,7 +58,7 @@ function HeaderComponent() {
       <header
         className={`${navStyle} ${displayShadow} bg-white w-full pb-0  md:pb-2`}
       >
-        <CookieNotification />
+        {showCookie && <DynamicCookieNotification />}
         <HeaderBanner />
         {noticebar && <Noticebar toggleBarVisibility={toggleNoticebar} />}
         <Menu />

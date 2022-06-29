@@ -9,6 +9,7 @@ import Menu from '@/components/Menu'
 import { useMediaQuery } from '@/hooks'
 import useNavStyle from '@/hooks/useNavStyle'
 import { categoryDropdownAtom, noticebarAtom } from '@/lib/atomConfig'
+import CookieNotification from '../Notification/CookieNotification'
 
 const DynamicAllCategoriesDropdownView = dynamic(
   () =>
@@ -46,6 +47,7 @@ function HeaderComponent() {
       <header
         className={`${navStyle} ${displayShadow} bg-white w-full pb-0  md:pb-2`}
       >
+        <CookieNotification />
         <HeaderBanner />
         {noticebar && <Noticebar toggleBarVisibility={toggleNoticebar} />}
         <Menu />

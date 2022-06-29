@@ -5,13 +5,6 @@ import type { PropsWithChildren } from 'react'
 import Header from '@/components/Header'
 import DefaultLayout from '@/layouts/default-layout'
 
-// const Header = dynamic(
-//   () => import(/* webpackChunkName: 'Header' */ '@/components/Header'),
-//   {
-//     ssr: false,
-//   }
-// )
-
 const Footer = dynamic(
   () => import(/* webpackChunkName: 'Footer' */ '@/components/Footer'),
   {

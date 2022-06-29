@@ -121,6 +121,24 @@ ul.splide__pagination {
   background-color: var(--color-8);
 }
 
+/* border */
+.border-mountain-green {
+  border: 1px solid var(--color-1);
+  color: white;
+}
+.border-mountain-green:hover {
+  background-color: 1px solid var(--color-1);
+  color: white;
+}
+
+.border-tan-hide {
+  border: 1px solid var(--color-3);
+  color: white;
+}
+.border-tan-hide:hover {
+  background-color: var(--color-3);
+  color: white;
+}
 .height-fit-content {
   height: fit-content;
 }

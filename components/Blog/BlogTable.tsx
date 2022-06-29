@@ -35,7 +35,9 @@ export default function BlogTable({ columns, data }: any) {
               </th>
             ))}
             <th className="border-b py-4 text-center hover:bg-gray-100">
-              <button type="button">Delete</button>
+              <button className="font-bold" type="button">
+                DELETE
+              </button>
             </th>
           </tr>
         ))}
@@ -43,6 +45,7 @@ export default function BlogTable({ columns, data }: any) {
       <tbody {...getTableBodyProps()}>
         {rows.map((row: any, i: number) => {
           prepareRow(row)
+          const rowTitle = toSlug(row.original.title)
           return (
             <tr key={i} {...row.getRowProps()}>
               <td className="border-b py-4 text-center hover:bg-gray-100">
@@ -63,7 +66,10 @@ export default function BlogTable({ columns, data }: any) {
                 )
               })}
               <td className="border-b py-4 text-center hover:bg-gray-100">
-                <button type="button">
+                <button
+                  type="button"
+                  onClick={() => deletePost(`articles/blog/post/${rowTitle}`)}
+                >
                   <RiDeleteBinLine className="hover:text-red-500" size={20} />
                 </button>
               </td>

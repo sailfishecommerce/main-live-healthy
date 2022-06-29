@@ -16,7 +16,7 @@ export default function AllCategoriesDropdownView({ updateDropdown }: Props) {
       <div
         className="overlay-wrapper cursor-pointer flex z-50 w-full  flex left-0"
         onClick={updateDropdown}
-      ></div>
+      />
       <style jsx>
         {`
           .overlay-wrapper {

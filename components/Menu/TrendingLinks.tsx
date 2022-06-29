@@ -41,12 +41,12 @@ export function TrendLink({ trendingItem }: TrendLinkProps) {
           className="trending flex flex-col items-start md:items-center mr-4"
           onClick={toggleCategoryDropdownHandler}
         >
-          <div className="image-wrapper lg:w-full w-11/12">
+          <div className="trending-images block lg:w-full w-11/12">
             <Image
               src={productImage}
               height={120}
               width={180}
-              className="hover:scale-105 rounded-xl"
+              className="hover:scale-105 rounded-xl block"
               alt={trendingItem.name}
               layout="responsive"
             />

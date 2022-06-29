@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import algoliasearch from 'algoliasearch'
@@ -31,30 +32,33 @@ function RefinementListMenu({ items, selectedCategory }: any) {
   return (
     <div className="menu">
       <h1 className="text-lg mb-4 font-medium mb-6">{selectedCategory}</h1>
-      {
-        <ul className="flex flex-col lg:grid lg:grid-cols-3 lg:gap-2">
-          {menuArray.length === 0 && <LineLoaderArray numberOfLine={5} />}
-          {menuArray.length > 0 &&
-            menuArray.map((item) => {
-              return (
-                <li className="hover:text-green-500 my-1" key={item}>
-                  {item !== undefined && (
-                    <Link
-                      passHref
-                      href={`/collection/${getCategorySlug(
-                        selectedCategory
-                      )}/${getCategorySlug(item)}`}
-                    >
-                      <a title={item} onClick={toggleCategoryDropdownHandler}>
-                        {item}
-                      </a>
-                    </Link>
-                  )}
-                </li>
-              )
-            })}
-        </ul>
-      }
+
+      <ul className="flex flex-col pl-0 lg:grid lg:grid-cols-3 lg:gap-2">
+        {menuArray.length === 0 && <LineLoaderArray numberOfLine={5} />}
+        {menuArray.length > 0 &&
+          menuArray.map((item, index: number) => {
+            return (
+              <li
+                className="hover:text-green-500 my-1"
+                key={`${item}-${index}`}
+              >
+                {item !== undefined && (
+                  <Link
+                    passHref
+                    href={`/collection/${getCategorySlug(
+                      selectedCategory
+                    )}/${getCategorySlug(item)}`}
+                  >
+                    <a title={item} onClick={toggleCategoryDropdownHandler}>
+                      {item}
+                    </a>
+                  </Link>
+                )}
+              </li>
+            )
+          })}
+      </ul>
+
       {selectedCategory && (
         <Link
           passHref

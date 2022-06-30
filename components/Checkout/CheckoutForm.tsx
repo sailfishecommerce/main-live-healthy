@@ -1,49 +1,30 @@
-/* eslint-disable unused-imports/no-unused-vars */
-/* eslint-disable no-console */
 /* eslint-disable react/no-array-index-key */
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useAtom } from 'jotai'
 import { useForm, FormProvider } from 'react-hook-form'
-import { useQuery } from 'react-query'
 
 import ContactInformationForm from '@/components/Checkout/ContactInformationForm'
 import SelectFormElement from '@/components/Form/SelectFormElement'
 import { shippingSchema } from '@/components/Form/schema/ShippingSchema'
-import { useAccount } from '@/hooks'
-import useVboutAction from '@/hooks/useVboutAction'
+import useSubmitCheckoutForm from '@/hooks/useSubmitCheckoutForm'
 import checkoutFormContent from '@/json/checkout-form.json'
-import { paymentFormAtom } from '@/lib/atomConfig'
 import type { FormInputsProps } from '@/typings/input-type'
 import type { AddressFormProps } from '@/typings/types'
 
 export default function CheckoutForm({ addressType }: AddressFormProps) {
-  const { createVboutCartAction, addCartItemAction } = useVboutAction()
-  const { getUserAccount, updateCheckoutAddress } = useAccount()
-  const { data: userDetails } = useQuery('userDetails', getUserAccount)
+  const { onSubmitHandler, userDetails } = useSubmitCheckoutForm()
 
   const methods = useForm<FormInputsProps>({
     resolver: yupResolver(shippingSchema),
   })
-  const [, setShippingForm] = useAtom(paymentFormAtom)
-
-  const onSubmit = (data: any) => {
-    console.log('form-data', data)
-    createVboutCartAction(data)
-    addCartItemAction(data)
-    updateCheckoutAddress(addressType, data)
-      .then((response) =>
-        console.log('response-updateCheckoutAddress', response)
-      )
-      .catch((err) => console.log('err-updateCheckoutAddress', err))
-    // setShippingForm({
-    //   form: data,
-    //   completed: true,
-    // })
-  }
 
   return (
     <FormProvider {...methods}>
-      <form className="mt-4" onSubmit={methods.handleSubmit(onSubmit)}>
+      <form
+        className="mt-4"
+        onSubmit={methods.handleSubmit((data) =>
+          onSubmitHandler(addressType, data)
+        )}
+      >
         {addressType === 'shipping' && (
           <ContactInformationForm
             values={userDetails}

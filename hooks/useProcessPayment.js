@@ -23,7 +23,7 @@ export default function useProcessPayment() {
 
   const {
     updateUserBillingInfo,
-    createUserAddresstAtCheckout,
+    createUserAccountAtCheckout,
     getUserAccount,
     updateUserShipping,
   } = useAccount()
@@ -93,7 +93,7 @@ export default function useProcessPayment() {
     getUserAccount()
       .then((response) => {
         if (response === null) {
-          createUserAddresstAtCheckout(data.form)
+          createUserAccountAtCheckout(data.form)
             .then((response) => {
               if (response !== null && response?.email?.code === 'UNIQUE') {
                 hasError(

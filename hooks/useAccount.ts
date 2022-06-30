@@ -64,9 +64,7 @@ export default function useAccount() {
     })
   }
 
-  async function createUserAccountAtCheckout(
-    data: createUserAccountAtCheckoutData
-  ) {
+  async function createUserAddress(data: createUserAccountAtCheckoutData) {
     const { swell } = await swellInit()
 
     return await swell.account.createAddress({
@@ -76,10 +74,11 @@ export default function useAccount() {
       state: data.region,
       zip: data.zip,
       country: data.country,
+      phone: data.phone,
     })
   }
 
-  async function createUserAddresstAtCheckout(data: checkoutData) {
+  async function createUserAccountAtCheckout(data: checkoutData) {
     const { swell } = await swellInit()
 
     return await swell.account.create({
@@ -198,7 +197,7 @@ export default function useAccount() {
     createUserAccountAtCheckout,
     recoverPassword,
     updateUserShipping,
-    createUserAddresstAtCheckout,
+    createUserAddress,
     updateUserBillingInfo,
     listUserSavedCreditCards,
   }

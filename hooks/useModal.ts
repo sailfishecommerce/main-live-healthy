@@ -2,7 +2,7 @@ import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import { useAtom } from 'jotai'
 
 import { modalAtom } from '@/lib/atomConfig'
-import type { modalType } from '@/lib/atomConfigType'
+import type { modalType } from '@/typings/atomtype'
 
 export default function useModal() {
   const [modal, setModal]: any = useAtom<modalType>(modalAtom)

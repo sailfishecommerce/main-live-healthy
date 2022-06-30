@@ -3,7 +3,7 @@ import type { PropsWithChildren } from 'react'
 import { FaTimes } from 'react-icons/fa'
 
 import useSlidingTab from '@/hooks/useSlidingTab'
-import type { slidingTabType } from '@/lib/atomConfigType'
+import type { slidingTabType } from '@/typings/atomtype'
 
 interface Props {
   buttonColor?: string

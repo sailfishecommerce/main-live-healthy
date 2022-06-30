@@ -6,7 +6,7 @@ import AuthIcons from '@/components/Menu/AuthIcon'
 import GreetUser from '@/components/Menu/GreetUser'
 import { useCart } from '@/hooks'
 import useSlidingTab from '@/hooks/useSlidingTab'
-import type { slidingTabType } from '@/lib/atomConfigType'
+import type { slidingTabType } from '@/typings/atomtype'
 
 export default function MenuIcons() {
   const { updateSlideTab } = useSlidingTab()

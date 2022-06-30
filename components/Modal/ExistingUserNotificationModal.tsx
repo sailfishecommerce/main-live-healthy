@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import Image from '@/components/Image'
 import Modal from '@/components/Modal'
 import { modalAtom } from '@/lib/atomConfig'
-import type { modalType } from '@/lib/atomConfigType'
+import type { modalType } from '@/typings/atomtype'
 
 export default function ExistingUserNotificationModal({
   show,

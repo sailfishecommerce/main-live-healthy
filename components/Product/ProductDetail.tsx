@@ -7,8 +7,8 @@ import PaymentMethodView from '@/components/Payment/PaymentMethodView'
 import SeeMoreProductInfo from '@/components/Product/SeeMoreProductInfo'
 import useSlidingTab from '@/hooks/useSlidingTab'
 import { activeProductSlideAtom, seemoreAtom } from '@/lib/atomConfig'
-import type { seemoreType } from '@/lib/atomConfigType'
 import type { productType } from '@/typings'
+import type { seemoreType } from '@/typings/atomtype'
 
 interface Props {
   product: productType

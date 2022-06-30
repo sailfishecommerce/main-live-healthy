@@ -15,7 +15,7 @@ export default function DisplaySavedAddress({ addressType }: any) {
     setCheckoutForm({
       ...checkoutForm,
       [addressType]: {
-        form: 'shipping',
+        form: addressType,
       },
     })
   }
@@ -30,30 +30,32 @@ export default function DisplaySavedAddress({ addressType }: any) {
         <div className="saved-address">
           <ul className="pl-0 my-2">
             <li>
-              <span className="font-bold mr-1">Name:</span> {cart.shipping.name}
+              <span className="font-bold mr-1">Name:</span>{' '}
+              {cart[addressType].name}
             </li>
             <li>
               <span className="font-bold mr-1">Zip code:</span>
-              {cart.shipping.zip}
+              {cart[addressType].zip}
             </li>
             <li>
               <span className="font-bold mr-1">Address:</span>
-              {cart.shipping.address1}
+              {cart[addressType].address1}
             </li>
             <li>
-              <span className="font-bold mr-1">City:</span> {cart.shipping.city}
+              <span className="font-bold mr-1">City:</span>{' '}
+              {cart[addressType].city}
             </li>
             <li>
               <span className="font-bold mr-1">State:</span>{' '}
-              {cart.shipping.state}
+              {cart[addressType].state}
             </li>
             <li>
               <span className="font-bold mr-1">Country:</span>
-              {getCountry(cart.shipping.country)}
+              {getCountry(cart[addressType].country)}
             </li>
             <li>
               <span className="font-bold mr-1">Phone:</span>{' '}
-              {cart.shipping.phone}
+              {cart[addressType].phone}
             </li>
           </ul>
           <button

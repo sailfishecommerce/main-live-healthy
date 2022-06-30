@@ -5,7 +5,7 @@ import {
   modalAtom,
   noticebarAtom,
 } from '@/lib/atomConfig'
-import type { modalType } from '@/lib/atomConfigType'
+import type { modalType } from '@/typings/atomtype'
 
 export default function useUI() {
   const [noticebar, setNoticebar] = useAtom(noticebarAtom)

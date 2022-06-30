@@ -36,17 +36,17 @@
       ],
       [
         {
-          "name": "district",
+          "name": "city",
           "type": "input",
           "id": "checkout-district",
-          "placeholder": "District"
+          "placeholder": "District/City"
         },
         {
-          "name": "region",
+          "name": "state",
           "type": "input",
           "id": "checkout-Region",
           "inputType": "text",
-          "placeholder": "Region"
+          "placeholder": "Region/State"
         }
       ],
       [

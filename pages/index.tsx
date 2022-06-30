@@ -18,8 +18,7 @@ const Values = dynamic(
 )
 
 const Applayout = dynamic(
-  () => import(/* webpackChunkName: 'Applayout' */ '@/layouts/app-layout'),
-  { ssr: false }
+  () => import(/* webpackChunkName: 'Applayout' */ '@/layouts/app-layout')
 )
 
 const HomepageSlider = dynamic(

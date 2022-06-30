@@ -14,7 +14,7 @@ export default function MenuLinks() {
           +853 7073 5292
         </a>
       </div>
-      <ul className="md:flex lg:flex items-center justify-between w-3/5 md:w-full">
+      <ul className="md:flex lg:flex items-center justify-between w-3/5 lg:w-2/3 md:w-full">
         {menuLinks.primaryMenu.map((menuItem) => (
           <PageLink
             className="lg:text-md 2xl:text-lg font-normal"

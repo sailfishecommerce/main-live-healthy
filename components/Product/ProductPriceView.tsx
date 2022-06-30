@@ -10,6 +10,7 @@ import useShoppingCart from '@/hooks/useShoppingCart'
 import useSlidingTab from '@/hooks/useSlidingTab'
 import currentDate from '@/lib/incrementDate'
 import type { productType } from '@/typings'
+import { useCart } from '@/hooks'
 
 interface Props {
   product: productType
@@ -23,8 +24,12 @@ export default function ProductPriceView({ product, queryObject }: Props) {
   const { addItemToCart } = useShoppingCart()
   const { updateSlideTab } = useSlidingTab()
   const router = useRouter()
+  const { useCartData } = useCart()
+  const { data: cart } = useCartData()
   const { algoliaEvent } = useAlgoliaEvent()
 
+  console.log('cart', cart)
+  
   const listingDate: any = currentDate
 
   function algoliaEventHandler() {
@@ -43,7 +48,7 @@ export default function ProductPriceView({ product, queryObject }: Props) {
       { product, quantity: 1 },
       {
         onSuccess: () => {
-          router.push('/checkout')
+          router.push(`/checkout/${cart?.checkoutId}`)
         },
       }
     )
@@ -79,14 +84,16 @@ export default function ProductPriceView({ product, queryObject }: Props) {
                   <CartIcon />
                   Add to cart
                 </button>
-                <button
-                  type="button"
-                  aria-label="buy now"
-                  className="bg-tan-hide xl:text-lg lg:text-base rounded-lg bg-tan-hide text-white py-2 lg:py-2 px-4"
-                  onClick={buyNowHandler}
-                >
-                  Buy now
-                </button>
+                {cart && (
+                  <button
+                    type="button"
+                    aria-label="buy now"
+                    className="bg-tan-hide xl:text-lg lg:text-base rounded-lg bg-tan-hide text-white py-2 lg:py-2 px-4"
+                    onClick={buyNowHandler}
+                  >
+                    Buy now
+                  </button>
+                )}
               </div>
               <div className="lg:rounded-full hidden md:flex lg:border w-1/2 lg:w-1/4 px-2 lg:py-3 flex items-center justify-center px-1 my-2">
                 <CheckIcon />

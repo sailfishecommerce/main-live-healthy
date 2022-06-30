@@ -145,3 +145,4 @@ export const blogAuthorFormAtom = atom<blogFormDataType>({
 export const cookieConsentAtom = atomWithStorage('showCookieNotification', true)
 
 //
+export const selectShippingAddressAtom = atom(false)

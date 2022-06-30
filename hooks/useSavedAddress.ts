@@ -1,13 +1,16 @@
+import { useAtom } from 'jotai'
 import { useRef, useState } from 'react'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 
 import { useAccount, useToast } from '@/hooks'
+import { selectShippingAddressAtom } from '@/lib/atomConfig'
 
 export default function useSavedAddress() {
   const { listUserAddress, deleteUserAddress, updateShippingAddressById } =
     useAccount()
   const { loadingToast, updateToast } = useToast()
   const [dropdown, setDropdown] = useState(false)
+  const [, setSelectSavedAddress] = useAtom(selectShippingAddressAtom)
   const toastID = useRef(null)
 
   const {
@@ -40,9 +43,11 @@ export default function useSavedAddress() {
       .then(() => {
         updateToast(toastID, 'success', 'address selected')
         setDropdown(false)
+        setSelectSavedAddress(true)
       })
       .catch(() => {
         updateToast(toastID, 'error', 'error selecting address')
+        setSelectSavedAddress(false)
       })
   }
 

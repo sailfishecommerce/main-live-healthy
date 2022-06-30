@@ -54,3 +54,26 @@ export type selectedVendorAtomType = {
   vendor: string
   index: number
 } | null
+
+export type seemoreType =
+  | 'Directions'
+  | 'Product Information'
+  | 'STORAGE INSTUCTIONS'
+  | null
+
+export type slidingTabType =
+  | 'SLIDING-ACCOUNT'
+  | 'SLIDING-CART'
+  | 'SLIDING-INFO'
+  | null
+
+export type modalType = 'MODAL_LOGIN' | 'MODAL_LOGOUT' | null
+
+type cformType = {
+  form: string | null
+}
+
+export type checkoutFormType = {
+  shipping: cformType
+  billing: cformType
+}

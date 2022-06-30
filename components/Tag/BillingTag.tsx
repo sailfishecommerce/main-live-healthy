@@ -9,6 +9,7 @@ interface Props {
   updateShippingMethod: (value: string) => void
   shippingMethod: string | null
   className?: string
+  addressHandler?: () => void
 }
 
 export default function BillingTag({
@@ -16,16 +17,23 @@ export default function BillingTag({
   updateShippingMethod,
   shippingMethod,
   className,
+  addressHandler,
 }: Props) {
   const selectedMethodStyled =
     shippingMethod === content.value ? 'bg-gray-300 text-white' : ''
   const tagClassName = className ? className : ''
+
+  function billingTagHandler(contentValue: string) {
+    updateShippingMethod(contentValue)
+    return addressHandler !== undefined ? addressHandler() : null
+  }
+
   return (
     <button
       type="button"
       aria-label="button"
       className={`${tagClassName} shipping-method-tag ${selectedMethodStyled} my-1.5 rounded-xl border border-gray-300 p-2 justify-between flex items-cente`}
-      onClick={() => updateShippingMethod(content.value)}
+      onClick={() => billingTagHandler(content.value)}
     >
       <span className="flex items-center">
         {shippingMethod === content.value ? (

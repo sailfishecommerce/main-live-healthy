@@ -429,3 +429,6 @@ export type addressType = {
   state: string
   zip: string
 }
+export interface AddressFormProps {
+  addressType: 'billing' | 'shipping'
+}

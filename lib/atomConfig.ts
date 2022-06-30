@@ -4,6 +4,7 @@ import { atomWithStorage } from 'jotai/utils'
 import type {
   appModalAtomType,
   authAtomType,
+  checkoutFormType,
   mobileViewAtomType,
   paymentFormAtomType,
   selectedVendorAtomType,
@@ -145,4 +146,11 @@ export const blogAuthorFormAtom = atom<blogFormDataType>({
 export const cookieConsentAtom = atomWithStorage('showCookieNotification', true)
 
 // save shipping address
-export const selectShippingAddressAtom = atom(false)
+export const checkoutFormAtom = atom<checkoutFormType>({
+  shipping: {
+    form: 'shipping',
+  },
+  billing: {
+    form: '',
+  },
+})

@@ -3,16 +3,21 @@ import { useAtom } from 'jotai'
 
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import { useCart } from '@/hooks'
-import { selectShippingAddressAtom } from '@/lib/atomConfig'
+import { checkoutFormAtom } from '@/lib/atomConfig'
 import getCountry from '@/lib/getCountry'
 
-export default function DisplaySavedAddress() {
+export default function DisplaySavedAddress({ addressType }: any) {
   const { useCartData } = useCart()
   const { data: cart, status } = useCartData()
-  const [, setSelectSavedAddress] = useAtom(selectShippingAddressAtom)
+  const [checkoutForm, setCheckoutForm] = useAtom(checkoutFormAtom)
 
   function updateDropdownHandler() {
-    setSelectSavedAddress(false)
+    setCheckoutForm({
+      ...checkoutForm,
+      [addressType]: {
+        form: 'shipping',
+      },
+    })
   }
 
   return (

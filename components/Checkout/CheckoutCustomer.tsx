@@ -1,5 +1,5 @@
 import Breadcrumb from '@/components/Breadcrumb'
-import CheckoutForm from '@/components/Checkout/CheckoutForm'
+import CheckoutView from '@/components/Checkout/CheckoutView'
 import ReviewOrder from '@/components/Checkout/ReviewOrder'
 import breadcrumbContent from '@/json/breadcrumb.json'
 
@@ -11,7 +11,7 @@ export default function CheckoutCustomer() {
           <Breadcrumb breadcrumbItems={breadcrumbContent?.checkout} />
           <div className="content lg:grid lg:grid-cols-3 lg:gap-5 flex flex-col  w-full">
             <ReviewOrder />
-            <CheckoutForm />
+            <CheckoutView />
           </div>
         </div>
       </div>

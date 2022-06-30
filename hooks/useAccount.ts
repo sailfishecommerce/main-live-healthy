@@ -145,6 +145,27 @@ export default function useAccount() {
     })
   }
 
+  type addressFormType = 'billing' | 'shipping'
+
+  async function updateCheckoutAddress(
+    addressType: addressFormType,
+    data: createUserAccountAtCheckoutData
+  ) {
+    const { swell } = await swellInit()
+
+    return await swell.cart.update({
+      [addressType]: {
+        name: `${data.firstName} ${data.lastName}`,
+        address1: data.address,
+        city: data.district,
+        state: data.region,
+        zip: data.zip,
+        phone: data.phone,
+        country: data.country,
+      },
+    })
+  }
+
   async function listUserAddress() {
     const { swell } = await swellInit()
 
@@ -173,6 +194,7 @@ export default function useAccount() {
     forgotPassword,
     updateShippingAddressById,
     getUserAccount,
+    updateCheckoutAddress,
     createUserAccountAtCheckout,
     recoverPassword,
     updateUserShipping,

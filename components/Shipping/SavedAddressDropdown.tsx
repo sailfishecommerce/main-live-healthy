@@ -5,7 +5,7 @@ import useSavedAddress from '@/hooks/useSavedAddress'
 import getCountry from '@/lib/getCountry'
 import type { addressType } from '@/typings/types'
 
-export default function SavedAddress() {
+export default function SavedAddressDropdown() {
   const {
     dropdownHandler,
     addresses,

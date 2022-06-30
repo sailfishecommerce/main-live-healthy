@@ -57,6 +57,11 @@ export default function useSwellCart() {
     return await swell.cart.setItems([])
   }
 
+  async function recoverCart(checkoutId: string) {
+    const { swell } = await swellInit()
+    return await swell.cart.recover(checkoutId)
+  }
+
   async function submitOrder() {
     const { swell } = await swellInit()
     return await swell.cart.submitOrder()
@@ -91,6 +96,7 @@ export default function useSwellCart() {
     emptyCart,
     submitOrder,
     applyGiftCode,
+    recoverCart,
     deleteCart,
     addToCartModal,
     updateCartAccountID,

@@ -18,7 +18,7 @@ export default function BillingAddress() {
           content={billing}
           shippingMethod={billingAddress}
           updateShippingMethod={updateBillingAddress}
-          className="w-2/3 lg:my-3"
+          className="w-full md:w-2/3 lg:my-3"
         />
       ))}
       {billingAddress === 'use-a-different-billing-address' && (

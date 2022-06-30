@@ -3,7 +3,6 @@ import dynamic from 'next/dynamic'
 
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import { useCart, useMediaQuery } from '@/hooks'
-import Applayout from '@/layouts/app-layout'
 
 const CheckoutCustomer = dynamic(
   () =>
@@ -28,26 +27,30 @@ const EmptyCart = dynamic(
     )
 )
 
-export default function Checkout() {
+interface Props {
+  checkoutId: any
+}
+
+export default function CheckoutFlow({ checkoutId }: Props) {
   const mobileWidth = useMediaQuery('(max-width:768px)')
-  const { useCartData } = useCart()
-  const { data: cart, status } = useCartData()
+  const { useRecoverCartData } = useCart()
+  const { data: recoveredCart, status } = useRecoverCartData(checkoutId)
 
   return (
-    <Applayout title="Checkout - Thanks for shopping with us">
+    <>
       {status === 'error' ? (
         <EmptyCart />
       ) : status === 'loading' ? (
         <SpinnerRipple centerRipple />
-      ) : cart === null ||
-        cart?.items?.length === 0 ||
-        cart?.items === undefined ? (
+      ) : recoveredCart === null ||
+        recoveredCart?.items?.length === 0 ||
+        recoveredCart?.items === undefined ? (
         <EmptyCart />
       ) : (
         <main className="mx-auto bg-light-gray pb-12">
           {mobileWidth ? <MobileCheckoutView /> : <CheckoutCustomer />}
         </main>
       )}
-    </Applayout>
+    </>
   )
 }

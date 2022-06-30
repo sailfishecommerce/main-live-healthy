@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-import type { productType } from '@/types'
+import type { productType } from '@/typings/types'
 
 interface Props {
   product: productType

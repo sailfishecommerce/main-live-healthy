@@ -1,7 +1,6 @@
 import { atom } from 'jotai'
 import { atomWithStorage } from 'jotai/utils'
 
-import type { blogFormDataType } from '@/types'
 import type {
   appModalAtomType,
   authAtomType,
@@ -12,6 +11,7 @@ import type {
   submitOrderAtomType,
 } from '@/typings/atomtype'
 import type { FormInputsProps } from '@/typings/input-type'
+import type { blogFormDataType } from '@/typings/types'
 
 // ui-state
 export const appModalAtom = atom<appModalAtomType>({
@@ -144,5 +144,5 @@ export const blogAuthorFormAtom = atom<blogFormDataType>({
 // cookie consent atom
 export const cookieConsentAtom = atomWithStorage('showCookieNotification', true)
 
-//
+// save shipping address
 export const selectShippingAddressAtom = atom(false)

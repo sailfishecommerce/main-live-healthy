@@ -1,4 +1,4 @@
-import type { typeModal } from '@/types'
+import type { typeModal } from '@/typings/types'
 
 export type appModalAtomType = {
   active?: boolean

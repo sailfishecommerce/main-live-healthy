@@ -9,7 +9,7 @@ import type {
   addCategoryViewType,
   addProductSearchType,
   createVboutOrderType,
-} from '@/types'
+} from '@/typings/types'
 
 export function addNewUserToList(email: string) {
   const data: any = {

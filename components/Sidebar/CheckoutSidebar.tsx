@@ -7,7 +7,7 @@ import FormattedPrice from '@/components/Price/FormattedPrice'
 import { Button } from '@/components/UIElement'
 import CartWidget from '@/components/Widget/CartWidget'
 import useCoupon from '@/hooks/useCoupon'
-import type { cartType } from '@/types'
+import type { cartType } from '@/typings/types'
 
 interface CheckoutSidebarProps {
   cart: cartType | null

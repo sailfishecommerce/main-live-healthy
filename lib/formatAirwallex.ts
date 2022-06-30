@@ -1,7 +1,7 @@
 /* eslint-disable array-callback-return */
 import { v4 as uuidv4 } from 'uuid'
 
-import type { cartType } from '@/types'
+import type { cartType } from '@/typings/types'
 
 export function formatIntentData(cart: any, paymentForm: any) {
   const { form } = paymentForm

@@ -5,7 +5,7 @@ import { useAtom } from 'jotai'
 
 import countries from '@/json/countries.json'
 import { countryAtom } from '@/lib/atomConfig'
-import type { formType } from '@/types'
+import type { formType } from '@/typings/types'
 
 type countriesType = {
   name: string

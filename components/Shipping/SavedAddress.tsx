@@ -3,7 +3,7 @@ import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai'
 
 import useSavedAddress from '@/hooks/useSavedAddress'
 import getCountry from '@/lib/getCountry'
-import type { addressType } from '@/types'
+import type { addressType } from '@/typings/types'
 
 export default function SavedAddress() {
   const {

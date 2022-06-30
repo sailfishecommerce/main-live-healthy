@@ -4,7 +4,7 @@ import { useCallback, useMemo, useState } from 'react'
 import { useDropzone } from 'react-dropzone'
 
 import { styles } from '@/components/Admin/styles'
-import type { progressStateType } from '@/types'
+import type { progressStateType } from '@/typings/types'
 
 type uploadCSVType = (
   results: { data: any[] },

@@ -1,6 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import Dropzonebarlist from '@/components/Dropzonebar/Dropzonebarlist'
-import type { progressStateType } from '@/types'
+import type { progressStateType } from '@/typings/types'
 
 interface DropzonebarType {
   progress?: progressStateType

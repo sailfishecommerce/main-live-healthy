@@ -4,7 +4,7 @@ import type { Dispatch, SetStateAction } from 'react'
 
 import ContactForMoreForm from '@/components/Form/ContactForMoreForm'
 import Modal from '@/components/Modal'
-import type { ModalType } from '@/types'
+import type { ModalType } from '@/typings/types'
 
 interface Props extends ModalType {
   productName: string

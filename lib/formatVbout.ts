@@ -1,4 +1,4 @@
-import type { addCategoryViewType, createVboutOrderType } from '@/types'
+import type { addCategoryViewType, createVboutOrderType } from '@/typings/types'
 
 export function formatCreateVboutOrder(item: createVboutOrderType) {
   const data = {

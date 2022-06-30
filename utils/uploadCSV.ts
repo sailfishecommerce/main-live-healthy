@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import axios from 'axios'
 
-import type { progressStateType } from '@/types'
+import type { progressStateType } from '@/typings/types'
 
 export default function uploadCSV(
   results: { data: any[] },

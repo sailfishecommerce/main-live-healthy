@@ -1,31 +1,10 @@
 import useSwell from '@/hooks/useSwell'
-
-type checkoutData = {
-  firstName: string
-  lastName: string
-  email?: string
-}
-
-type userLoginType = {
-  email: string
-  password: string
-}
-
-type userDetailsType = {
-  firstName: string
-  lastName: string
-  email: string
-  password: string
-}
-
-type createUserAccountAtCheckoutData = checkoutData & {
-  address: string
-  district: string
-  region: string
-  zip: string
-  country: string
-  phone: string
-}
+import type {
+  checkoutData,
+  createUserAccountAtCheckoutData,
+  userDetailsType,
+  userLoginType,
+} from '@/typings/hook-types'
 
 export default function useAccount() {
   const { swellInit } = useSwell()
@@ -178,6 +157,12 @@ export default function useAccount() {
     return await swell.account.deleteAddress(addressId)
   }
 
+  async function listUserSavedCreditCards() {
+    const { swell } = await swellInit()
+
+    return await swell.account.listCards()
+  }
+
   return {
     createUserAccount,
     signedUserDetails,
@@ -193,5 +178,6 @@ export default function useAccount() {
     updateUserShipping,
     createUserAddresstAtCheckout,
     updateUserBillingInfo,
+    listUserSavedCreditCards,
   }
 }

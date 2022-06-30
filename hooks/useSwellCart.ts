@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 import useSwell from '@/hooks/useSwell'
-import type { productOptionType, productType } from '@/types'
+import type { productOptionType, productType } from '@/typings/types'
 
 export default function useSwellCart() {
   const { swellInit } = useSwell()

@@ -7,7 +7,7 @@ import CartIcon from '@/components/Icons/CartIcon'
 import FormattedPrice from '@/components/Price/FormattedPrice'
 import useAlgoliaEvent from '@/hooks/useAlgoliaEvent'
 import useShoppingCart from '@/hooks/useShoppingCart'
-import type { ProductProps } from '@/types'
+import type { ProductProps } from '@/typings/types'
 
 interface ProductTypes extends ProductProps {
   className?: string

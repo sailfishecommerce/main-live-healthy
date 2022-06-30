@@ -9,7 +9,7 @@ import DiscountTag from '@/components/Tag/DiscountTag'
 import { useMediaQuery } from '@/hooks'
 import useAlgoliaEvent from '@/hooks/useAlgoliaEvent'
 import useShoppingCart from '@/hooks/useShoppingCart'
-import type { ProductProps } from '@/types'
+import type { ProductProps } from '@/typings/types'
 
 interface ProductTypes extends ProductProps {
   row?: boolean

@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from '@/components/Image'
 import FormattedPrice from '@/components/Price/FormattedPrice'
 import useShoppingCart from '@/hooks/useShoppingCart'
-import type { cartType } from '@/types'
+import type { cartType } from '@/typings/types'
 
 interface CartWidgetProps {
   cart: cartType

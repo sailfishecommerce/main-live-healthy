@@ -6,7 +6,7 @@ import { Formik } from 'formik'
 import { displayFormElement } from '@/components/Form/FormElement'
 import { contactForMore } from '@/components/Form/schema/FormSchema'
 import formContent from '@/json/contactForMore.json'
-import type { contentType } from '@/types'
+import type { contentType } from '@/typings/types'
 
 export function mapContent(
   content: contentType,

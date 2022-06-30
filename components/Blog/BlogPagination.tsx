@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from 'react'
 
 import Icons from '@/components/Icons'
-import type { PaginationProps } from '@/types'
+import type { PaginationProps } from '@/typings/types'
 
 interface Props {
   label: string

@@ -7,7 +7,7 @@ import Magnifier from 'react-magnifier'
 
 import Image from '@/components/Image'
 import useMediaQuery from '@/hooks/useMediaQuery'
-import type { productType } from '@/types'
+import type { productType } from '@/typings/types'
 import 'react-image-lightbox/style.css'
 
 const Lightbox = dynamic(

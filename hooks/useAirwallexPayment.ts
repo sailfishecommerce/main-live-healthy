@@ -6,7 +6,7 @@ import { toast } from 'react-toastify'
 
 import { airwallexAtom } from '@/lib/atomConfig'
 import { formatIntentData } from '@/lib/formatAirwallex'
-import type { cartType } from '@/types'
+import type { cartType } from '@/typings/types'
 
 export default function useAirwallexPayment() {
   const router = useRouter()

@@ -3,7 +3,7 @@ import { useCallback, useMemo } from 'react'
 import { useDropzone } from 'react-dropzone'
 
 import { styles } from '@/components/Admin/styles'
-import type { blogFormDataType } from '@/types'
+import type { blogFormDataType } from '@/typings/types'
 import useUploadMediaToCloudinary from '@/utils/useUploadMediaToCloudinary'
 
 export default function useMediaUpload(

@@ -4,9 +4,8 @@
 
 import dynamic from 'next/dynamic'
 
-import HomepageSlider from '@/components/Slider/HomepageSlider'
 import productshowcaseGroup from '@/json/productshowcase.json'
-import Applayout from '@/layouts/app-layout'
+// import Applayout from '@/layouts/app-layout'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
 import {
   SearchPageLayout,
@@ -14,7 +13,21 @@ import {
 } from '@/layouts/search-page-layout'
 
 const Values = dynamic(
-  () => import(/* webpackChunkName: 'Values' */ '@/components/Values')
+  () => import(/* webpackChunkName: 'Values' */ '@/components/Values'),
+  { ssr: false }
+)
+
+const Applayout = dynamic(
+  () => import(/* webpackChunkName: 'Applayout' */ '@/layouts/app-layout'),
+  { ssr: false }
+)
+
+const HomepageSlider = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'HomepageSlider' */ '@/components/Slider/HomepageSlider'
+    ),
+  { ssr: false }
 )
 
 const ProductShowcaseGroup = dynamic(

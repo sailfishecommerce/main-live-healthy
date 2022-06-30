@@ -1,19 +1,19 @@
 /* eslint-disable no-nested-ternary */
-import { useState } from 'react'
 import { AiFillCaretDown, AiFillCaretUp } from 'react-icons/ai'
-import { useQuery } from 'react-query'
 
-import { useAccount } from '@/hooks'
+import useSavedAddress from '@/hooks/useSavedAddress'
 import getCountry from '@/lib/getCountry'
 
 export default function SavedAddress() {
-  const { listUserAddress } = useAccount()
-  const [dropdown, setDropdown] = useState(false)
+  const {
+    dropdownHandler,
+    addresses,
+    dropdown,
+    useDeleteAddressHandler,
+    status,
+  } = useSavedAddress()
 
-  const { data: addresses, status } = useQuery(
-    'listUserAddress',
-    listUserAddress
-  )
+  const deleteAddress = useDeleteAddressHandler()
 
   type addressType = {
     active: boolean
@@ -28,10 +28,6 @@ export default function SavedAddress() {
     phone: string
     state: string
     zip: string
-  }
-
-  function dropdownHandler() {
-    setDropdown(!dropdown)
   }
 
   return (
@@ -78,7 +74,8 @@ export default function SavedAddress() {
                         </button>
                         <button
                           type="button"
-                          className="bg-red-500 text-white px-2 py-1 text-xs"
+                          className="bg-red-500 text-white px-2 py-1 text-xs hover:bg-red-600"
+                          onClick={() => deleteAddress.mutate(address.id)}
                         >
                           Delete Address
                         </button>

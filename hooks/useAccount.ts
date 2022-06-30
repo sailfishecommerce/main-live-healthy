@@ -162,11 +162,18 @@ export default function useAccount() {
     return await swell.account.listAddresses()
   }
 
+  async function deleteUserAddress(addressId: string) {
+    const { swell } = await swellInit()
+
+    return await swell.account.deleteAddress(addressId)
+  }
+
   return {
     createUserAccount,
     signedUserDetails,
     loginUser,
     logoutUser,
+    deleteUserAddress,
     listUserAddress,
     forgotPassword,
     getUserAccount,

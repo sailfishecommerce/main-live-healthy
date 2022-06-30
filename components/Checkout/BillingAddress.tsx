@@ -26,9 +26,7 @@ export default function BillingAddress() {
           className="w-full lg:my-3"
         />
       ))}
-      {billingAddress === 'use-a-different-billing-address' && (
-        <CheckoutAddressForm addressType="billing" />
-      )}
+      {billingAddress && <CheckoutAddressForm addressType="billing" />}
     </div>
   )
 }

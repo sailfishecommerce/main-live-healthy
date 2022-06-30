@@ -10,7 +10,7 @@ export default function useBillingAddress() {
   const { updateCheckoutAddress } = useAccount()
   const { useCartData } = useCart()
   const { loadingToast, updateToast } = useToast()
-  const { data: cart } = useCartData()
+  const { data: cart, status } = useCartData()
   const toastID = useRef(null)
 
   const updateBillingAddressHandler = (address: string) =>
@@ -42,6 +42,8 @@ export default function useBillingAddress() {
     updateBillingAddressHandler,
     billingAddress,
     cart,
+    status,
     checkoutForm,
+    setCheckoutForm,
   }
 }

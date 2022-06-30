@@ -154,3 +154,5 @@ export const checkoutFormAtom = atom<checkoutFormType>({
     form: null,
   },
 })
+
+export const paymentFormStatusAtom = atom([])

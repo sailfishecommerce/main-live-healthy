@@ -58,13 +58,15 @@ export default function DisplaySavedAddress({ addressType }: any) {
               {cart[addressType].phone}
             </li>
           </ul>
-          <button
-            type="button"
-            className="bg-red-500 px-2 py-1 text-white rounded-md"
-            onClick={updateDropdownHandler}
-          >
-            Update Shipping Address
-          </button>
+          {addressType === 'shipping' && (
+            <button
+              type="button"
+              className="bg-red-500 px-2 py-1 text-white rounded-md"
+              onClick={updateDropdownHandler}
+            >
+              Update Shipping address
+            </button>
+          )}
         </div>
       )}
     </div>

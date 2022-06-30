@@ -10,10 +10,11 @@ export default function useSavedAddress() {
   const [dropdown, setDropdown] = useState(false)
   const toastID = useRef(null)
 
-  const { data: addresses, status } = useQuery(
-    'listUserAddress',
-    listUserAddress
-  )
+  const {
+    data: addresses,
+    status,
+    error,
+  }: any = useQuery('listUserAddress', listUserAddress)
 
   function useDeleteAddressHandler() {
     const queryClient = useQueryClient()
@@ -54,6 +55,7 @@ export default function useSavedAddress() {
     addresses,
     useDeleteAddressHandler,
     status,
+    error,
     dropdown,
     selectAddressHandler,
   }

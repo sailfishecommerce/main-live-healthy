@@ -414,3 +414,18 @@ export type blogFormDataType = {
     aboutAuthor: string
   }
 }
+
+export type addressType = {
+  active: boolean
+  id: string
+  address1: string
+  address2: string
+  city: string
+  country: string
+  firstName: string
+  lastName: string
+  name: string
+  phone: string
+  state: string
+  zip: string
+}

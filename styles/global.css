@@ -368,6 +368,10 @@ button.bg-mountain-green:disabled {
   margin: auto;
 }
 
+.cursor-arrow {
+  cursor: not-allowed;
+}
+
 @media (min-width: 768px) {
   nav.nav {
     height: auto;

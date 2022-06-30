@@ -61,7 +61,7 @@ export default function DisplaySavedAddress({ addressType }: any) {
           {addressType === 'shipping' && (
             <button
               type="button"
-              className="bg-red-500 px-2 py-1 text-white rounded-md"
+              className="bg-red-500 px-2 py-1 text-white rounded-md w-full"
               onClick={updateDropdownHandler}
             >
               Update Shipping address

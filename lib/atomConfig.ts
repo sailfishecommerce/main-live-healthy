@@ -155,4 +155,4 @@ export const checkoutFormAtom = atom<checkoutFormType>({
   },
 })
 
-export const paymentFormStatusAtom = atom([])
+export const watchCheckoutFormAtom = atom<string[]>([])

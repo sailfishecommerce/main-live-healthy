@@ -5,12 +5,12 @@ import OrderSummary from '@/components/Checkout/OrderSummary'
 import AirwallexPaymentMethod from '@/components/Payment/AirwallexPaymentMethod'
 import BankTransferPaymentMethod from '@/components/Payment/BankTransferPaymentMethod'
 import PaymentWithStripe from '@/components/Payment/PaymentWithStripe'
-import { paymentFormAtom } from '@/lib/atomConfig'
+import { watchCheckoutFormAtom } from '@/lib/atomConfig'
 
 export default function PaymentMethod({
   children,
 }: PropsWithChildren<Record<string, unknown>>) {
-  const [paymentForm] = useAtom(paymentFormAtom)
+  const [watchCheckoutForm] = useAtom(watchCheckoutFormAtom)
 
   return (
     <div className="flex flex-col w-full">
@@ -18,13 +18,13 @@ export default function PaymentMethod({
         <div className="payment-methods flex items-center justify-between">
           <h3 className="font-semibold text-xl mb-4">
             3.Payment method & Order Total
-          </h3>{' '}
+          </h3>
         </div>
         <p className="text-base mb-2">
           For credit/debit card, you can pay via Paypal. No Paypal account
           required.
         </p>
-        {paymentForm?.completed ? (
+        {watchCheckoutForm.length === 2 ? (
           <>
             <PaymentWithStripe title="Stripe" />
             <AirwallexPaymentMethod />

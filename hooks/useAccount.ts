@@ -156,11 +156,18 @@ export default function useAccount() {
     })
   }
 
+  async function listUserAddress() {
+    const { swell } = await swellInit()
+
+    return await swell.account.listAddresses()
+  }
+
   return {
     createUserAccount,
     signedUserDetails,
     loginUser,
     logoutUser,
+    listUserAddress,
     forgotPassword,
     getUserAccount,
     createUserAccountAtCheckout,

@@ -7,6 +7,7 @@ import { useQuery } from 'react-query'
 import ContactInformationForm from '@/components/Checkout/ContactInformationForm'
 import SelectFormElement from '@/components/Form/SelectFormElement'
 import { shippingSchema } from '@/components/Form/schema/ShippingSchema'
+import SavedAddress from '@/components/Shipping/SavedAddress'
 import { useAccount } from '@/hooks'
 import useVboutAction from '@/hooks/useVboutAction'
 import checkoutFormContent from '@/json/checkout-form.json'
@@ -35,6 +36,7 @@ export default function ShippingAddressForm() {
   return (
     <>
       <h3 className="font-bold my-5 text-lg">Shipping address</h3>
+      <SavedAddress />
       <FormProvider {...methods}>
         <form className="mt-4" onSubmit={methods.handleSubmit(onSubmit)}>
           <ContactInformationForm

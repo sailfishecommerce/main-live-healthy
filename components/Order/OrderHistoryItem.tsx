@@ -71,7 +71,7 @@ export default function OrderHistoryItem({ item }: OrderItemProps) {
         {showProducts && (
           <td className="bg-white left-20 top-36">
             {item.items.map((productItem, index) => (
-              <OrderHistoryProductItem
+              <p
                 key={`${item.number}-${index}`}
                 item={productItem}
               />

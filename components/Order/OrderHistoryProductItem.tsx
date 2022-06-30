@@ -41,7 +41,7 @@ export default function OrderHistoryProductItem({ item }: any) {
                 X{' '}
                 <FormattedPrice
                   className="text-black font-normal ml-2"
-                  price={data.price}
+                  price={data.salePrice}
                 />
               </span>
             </div>

@@ -5,12 +5,12 @@ import CheckIcon from '@/components/Icons/CheckIcon'
 import DeliveryboxIcon from '@/components/Icons/DeliveryboxIcon'
 import LockIcon from '@/components/Icons/LockIcon'
 import FormattedPrice from '@/components/Price/FormattedPrice'
+import { useCart } from '@/hooks'
 import useAlgoliaEvent from '@/hooks/useAlgoliaEvent'
 import useShoppingCart from '@/hooks/useShoppingCart'
 import useSlidingTab from '@/hooks/useSlidingTab'
 import currentDate from '@/lib/incrementDate'
 import type { productType } from '@/typings'
-import { useCart } from '@/hooks'
 
 interface Props {
   product: productType
@@ -28,8 +28,6 @@ export default function ProductPriceView({ product, queryObject }: Props) {
   const { data: cart } = useCartData()
   const { algoliaEvent } = useAlgoliaEvent()
 
-  console.log('cart', cart)
-  
   const listingDate: any = currentDate
 
   function algoliaEventHandler() {

@@ -148,9 +148,9 @@ export const cookieConsentAtom = atomWithStorage('showCookieNotification', true)
 // save shipping address
 export const checkoutFormAtom = atom<checkoutFormType>({
   shipping: {
-    form: 'shipping',
+    form: null,
   },
   billing: {
-    form: '',
+    form: null,
   },
 })

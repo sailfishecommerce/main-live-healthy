@@ -69,9 +69,9 @@ export default function useAccount() {
 
     return await swell.account.createAddress({
       name: `${data.firstName} ${data.lastName}`,
-      address1: data.address,
-      city: data.district,
-      state: data.region,
+      address1: data.address1,
+      city: data.city,
+      state: data.state,
       zip: data.zip,
       country: data.country,
       phone: data.phone,
@@ -97,9 +97,9 @@ export default function useAccount() {
     return await swell.cart.update({
       billing: {
         name: `${data.firstName} ${data.lastName}`,
-        address1: data.address,
-        city: data.district,
-        state: data.region,
+        address1: data.address1,
+        city: data.city,
+        state: data.state,
         zip: data.zip,
         country: data.country,
         card: {
@@ -108,9 +108,9 @@ export default function useAccount() {
       },
       shipping: {
         name: `${data.firstName} ${data.lastName}`,
-        address1: data.address,
-        city: data.district,
-        state: data.region,
+        address1: data.address1,
+        city: data.city,
+        state: data.state,
         zip: data.zip,
         country: data.country,
         phone: data.phone,
@@ -124,9 +124,9 @@ export default function useAccount() {
     return await swell.cart.update({
       shipping: {
         name: `${data.firstName} ${data.lastName}`,
-        address1: data.address,
-        city: data.district,
-        state: data.region,
+        address1: data.address1,
+        city: data.city,
+        state: data.state,
         zip: data.zip,
         country: data.country,
         phone: data.phone,
@@ -155,9 +155,9 @@ export default function useAccount() {
     return await swell.cart.update({
       [addressType]: {
         name: `${data.firstName} ${data.lastName}`,
-        address1: data.address,
-        city: data.district,
-        state: data.region,
+        address1: data.address1,
+        city: data.city,
+        state: data.state,
         zip: data.zip,
         phone: data.phone,
         country: data.country,

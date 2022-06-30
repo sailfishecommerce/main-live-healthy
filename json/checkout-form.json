@@ -27,7 +27,7 @@
       ],
       [
         {
-          "name": "address",
+          "name": "address1",
           "type": "input",
           "id": "checkout-address1",
           "inputType": "text",

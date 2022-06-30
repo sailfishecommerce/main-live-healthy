@@ -11,8 +11,7 @@ import type { FormInputsProps } from '@/typings/input-type'
 import type { AddressFormProps } from '@/typings/types'
 
 export default function CheckoutForm({ addressType }: AddressFormProps) {
-  const { onSubmitHandler, userDetails, displayBillingAddres } =
-    useSubmitCheckoutForm()
+  const { onSubmitHandler, userDetails } = useSubmitCheckoutForm()
 
   const methods = useForm<FormInputsProps>({
     resolver: yupResolver(shippingSchema),
@@ -22,12 +21,9 @@ export default function CheckoutForm({ addressType }: AddressFormProps) {
     <FormProvider {...methods}>
       <form
         className="mt-4"
-        onSubmit={methods.handleSubmit((data) => {
+        onSubmit={methods.handleSubmit((data) =>
           onSubmitHandler(addressType, data)
-          if (addressType === 'billing') {
-            displayBillingAddres()
-          }
-        })}
+        )}
       >
         {addressType === 'shipping' && (
           <ContactInformationForm

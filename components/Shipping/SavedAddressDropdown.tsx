@@ -47,8 +47,8 @@ export default function SavedAddressDropdown() {
                   >
                     <div className="content">
                       <h4 className="text-sm">
-                        {address.zip}, {address.address1}, {address.address1},{' '}
-                        {address.city}, {address.state},{country}
+                        {address.zip}, {address.address1}, {address.city},
+                        {address.state},{country}
                       </h4>
                       <p className="text-xs">
                         {address.name}- {address.phone}

@@ -85,7 +85,7 @@ export default function SlideCardTotal() {
             </div>
           </div>
         )}
-        <Link passHref href={`/checkout/${cart.checkoutId}`}>
+        <Link passHref href={`/checkout/${cart?.checkoutId}`}>
           <button
             type="button"
             className="bg-tan-hide w-full flex items-center p-2 mt-2 font-bold text-white rounded-md justify-center"

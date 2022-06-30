@@ -20,13 +20,16 @@ export default function useSubmitCheckoutForm() {
   const onSubmitHandler = (addressType: 'billing' | 'shipping', data: any) => {
     createVboutCartAction(data)
     addCartItemAction(data)
-    if (addressType === 'shipping') {
+    if (addressType === 'billing') {
+      displayBillingAddress()
+    }
+    if (addressType === 'shipping' && userDetails !== null) {
       createUserAddressMutate.mutate(data)
     }
     updateCheckoutAddressMutate.mutate({ addressType, data })
   }
 
-  function displayBillingAddres() {
+  function displayBillingAddress() {
     setCheckoutForm({
       ...checkoutForm,
       billing: {
@@ -35,5 +38,5 @@ export default function useSubmitCheckoutForm() {
     })
   }
 
-  return { onSubmitHandler, userDetails, checkoutForm, displayBillingAddres }
+  return { onSubmitHandler, userDetails, checkoutForm }
 }

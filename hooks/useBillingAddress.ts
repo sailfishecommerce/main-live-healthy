@@ -41,5 +41,7 @@ export default function useBillingAddress() {
     billingTagAddressHandler,
     updateBillingAddressHandler,
     billingAddress,
+    cart,
+    checkoutForm,
   }
 }

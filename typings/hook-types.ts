@@ -19,9 +19,9 @@ export type userDetailsType = {
 }
 
 export type createUserAccountAtCheckoutData = checkoutData & {
-  address: string
-  district: string
-  region: string
+  address1: string
+  city: string
+  state: string
   zip: string
   country: string
   phone: string

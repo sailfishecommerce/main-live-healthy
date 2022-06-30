@@ -1,28 +1,33 @@
-import { useAtom } from 'jotai'
+import { useCallback } from 'react'
 
 import CheckoutForm from '@/components/Checkout/CheckoutForm'
 import DisplaySavedAddress from '@/components/Shipping/DisplaySavedAddress'
 import SavedAddressDropdown from '@/components/Shipping/SavedAddressDropdown'
-import { checkoutFormAtom } from '@/lib/atomConfig'
+import useBillingAddress from '@/hooks/useBillingAddress'
 import type { AddressFormProps } from '@/typings/types'
 
 export default function CheckoutAddressForm({ addressType }: AddressFormProps) {
-  const [checkoutForm] = useAtom(checkoutFormAtom)
+  const { checkoutForm, cart } = useBillingAddress()
+
+  const toAddressValueArray = useCallback((cartObj: any) => {
+    const cartArray = cartObj !== undefined ? Object.values(cartObj) : []
+    return cartArray
+  }, [])
 
   return (
     <>
-      {addressType === 'shipping' && (
+      {toAddressValueArray(cart?.shipping).length > 2 && (
         <>
           <h3 className="font-bold my-5 text-lg">Shipping address</h3>
           <SavedAddressDropdown />
         </>
       )}
-      {checkoutForm[addressType].form === addressType ? (
-        <CheckoutForm addressType={addressType} />
+      {cart !== undefined &&
+      toAddressValueArray(cart[addressType]).length > 6 &&
+      checkoutForm.shipping.form === null ? (
+        <DisplaySavedAddress addressType={addressType} />
       ) : (
-        checkoutForm[addressType].form === null && (
-          <DisplaySavedAddress addressType={addressType} />
-        )
+        <CheckoutForm addressType={addressType} />
       )}
     </>
   )

@@ -18,7 +18,7 @@ interface OrderItemProps {
     paid: boolean
     delivered: boolean
     number: string
-    items: Array<{ product_id: string }>
+    items: Array<{ product_id: string }> | any
   }
 }
 
@@ -70,8 +70,8 @@ export default function OrderHistoryItem({ item }: OrderItemProps) {
       <tr>
         {showProducts && (
           <td className="bg-white left-20 top-36">
-            {item.items.map((productItem, index) => (
-              <p
+            {item.items.map((productItem: any, index: number) => (
+              <OrderHistoryProductItem
                 key={`${item.number}-${index}`}
                 item={productItem}
               />

@@ -141,5 +141,7 @@ export const blogAuthorFormAtom = atom<blogFormDataType>({
     aboutAuthor: '',
   },
 })
-
+// cookie consent atom
 export const cookieConsentAtom = atomWithStorage('showCookieNotification', true)
+
+//

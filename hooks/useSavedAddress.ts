@@ -4,9 +4,11 @@ import { useMutation, useQuery, useQueryClient } from 'react-query'
 import { useAccount, useToast } from '@/hooks'
 
 export default function useSavedAddress() {
-  const { listUserAddress, deleteUserAddress } = useAccount()
+  const { listUserAddress, deleteUserAddress, updateShippingAddressById } =
+    useAccount()
   const { loadingToast, updateToast } = useToast()
   const [dropdown, setDropdown] = useState(false)
+  const toastID = useRef(null)
 
   const { data: addresses, status } = useQuery(
     'listUserAddress',
@@ -14,7 +16,6 @@ export default function useSavedAddress() {
   )
 
   function useDeleteAddressHandler() {
-    const toastID = useRef(null)
     const queryClient = useQueryClient()
 
     return useMutation((addressId: any): any => deleteUserAddress(addressId), {
@@ -32,6 +33,18 @@ export default function useSavedAddress() {
     })
   }
 
+  function selectAddressHandler(addressId: string) {
+    loadingToast(toastID)
+    return updateShippingAddressById(addressId)
+      .then(() => {
+        updateToast(toastID, 'success', 'address selected')
+        setDropdown(false)
+      })
+      .catch(() => {
+        updateToast(toastID, 'error', 'error selecting address')
+      })
+  }
+
   function dropdownHandler() {
     setDropdown(!dropdown)
   }
@@ -42,5 +55,6 @@ export default function useSavedAddress() {
     useDeleteAddressHandler,
     status,
     dropdown,
+    selectAddressHandler,
   }
 }

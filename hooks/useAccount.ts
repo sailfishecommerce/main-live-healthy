@@ -156,6 +156,16 @@ export default function useAccount() {
     })
   }
 
+  async function updateShippingAddressById(addressId: string) {
+    const { swell } = await swellInit()
+
+    return await swell.cart.update({
+      shipping: {
+        account_address_id: addressId,
+      },
+    })
+  }
+
   async function listUserAddress() {
     const { swell } = await swellInit()
 
@@ -176,6 +186,7 @@ export default function useAccount() {
     deleteUserAddress,
     listUserAddress,
     forgotPassword,
+    updateShippingAddressById,
     getUserAccount,
     createUserAccountAtCheckout,
     recoverPassword,

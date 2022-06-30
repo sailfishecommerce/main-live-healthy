@@ -112,8 +112,6 @@ export const selectedVendorAtom = atom<selectedVendorAtomType>(null)
 export const productRatingAtom = atom(3)
 
 // checkout form
-export const submitCheckoutFormAtom = atom(false)
-
 export const shippingformAtom = atom<FormInputsProps | null>(null)
 
 // airwallex paymentArray

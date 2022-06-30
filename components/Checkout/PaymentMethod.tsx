@@ -1,5 +1,4 @@
 import { useAtom } from 'jotai'
-import type { PropsWithChildren } from 'react'
 
 import OrderSummary from '@/components/Checkout/OrderSummary'
 import AirwallexPaymentMethod from '@/components/Payment/AirwallexPaymentMethod'
@@ -7,9 +6,7 @@ import BankTransferPaymentMethod from '@/components/Payment/BankTransferPaymentM
 import PaymentWithStripe from '@/components/Payment/PaymentWithStripe'
 import { watchCheckoutFormAtom } from '@/lib/atomConfig'
 
-export default function PaymentMethod({
-  children,
-}: PropsWithChildren<Record<string, unknown>>) {
+export default function PaymentMethod() {
   const [watchCheckoutForm] = useAtom(watchCheckoutFormAtom)
 
   return (
@@ -31,7 +28,7 @@ export default function PaymentMethod({
             <BankTransferPaymentMethod />
           </>
         ) : (
-          <OrderSummary>{children}</OrderSummary>
+          <OrderSummary />
         )}
       </div>
     </div>

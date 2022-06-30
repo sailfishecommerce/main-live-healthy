@@ -1,11 +1,7 @@
-import type { PropsWithChildren } from 'react'
-
 import FormattedPrice from '@/components/Price/FormattedPrice'
 import { useCart } from '@/hooks'
 
-export default function OrderSummary({
-  children,
-}: PropsWithChildren<Record<string, unknown>>) {
+export default function OrderSummary() {
   const { useCartData } = useCart()
   const { data: cart } = useCartData()
 
@@ -38,8 +34,6 @@ export default function OrderSummary({
           price={cart?.grandTotal}
         />
       </div>
-
-      {children}
     </div>
   )
 }

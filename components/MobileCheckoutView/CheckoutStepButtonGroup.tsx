@@ -4,7 +4,7 @@ import { BsArrowLeft, BsArrowRight } from 'react-icons/bs'
 
 import CheckoutButton from '@/components/MobileCheckoutView/CheckoutButton'
 import useMakePayment from '@/hooks/useMakePayment'
-import { paymentFormAtom } from '@/lib/atomConfig'
+import { watchCheckoutFormAtom } from '@/lib/atomConfig'
 
 interface Props {
   onClick: (step: 'next' | 'prev') => void
@@ -16,7 +16,7 @@ export default function CheckoutStepButtonGroup({
   checkoutSteps,
 }: Props) {
   const { makePaymentHandler } = useMakePayment()
-  const [shippingForm] = useAtom(paymentFormAtom)
+  const [watchCheckoutForm] = useAtom(watchCheckoutFormAtom)
 
   return (
     <div className="controls px-4">
@@ -29,8 +29,8 @@ export default function CheckoutStepButtonGroup({
           Previous step
         </CheckoutButton>
       )}
-      {checkoutSteps === 1 && !shippingForm.completed ? null : checkoutSteps <=
-        1 ? (
+      {checkoutSteps === 1 &&
+      watchCheckoutForm.length < 2 ? null : checkoutSteps <= 1 ? (
         <CheckoutButton
           className="bg-tan-hide text-white"
           onClick={() => onClick('next')}

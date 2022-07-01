@@ -2,6 +2,7 @@ import type { GetServerSidePropsContext } from 'next'
 
 import Collection from '@/components/Collection'
 import ErrorBoundaryWrapper from '@/components/ErrorBoundary'
+import CategoryMetatag from '@/components/Metatag/CategoryMetatag'
 import Applayout from '@/layouts/app-layout'
 import {
   SearchPageLayout,
@@ -9,9 +10,14 @@ import {
 } from '@/layouts/search-page-layout'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
 
-function CollectionPage(props: SearchPageLayoutProps) {
+interface Props extends SearchPageLayoutProps {
+  slugs: string[]
+}
+
+function CollectionPage({ slugs, ...props }: Props) {
   return (
     <Applayout title="Collection page">
+      <CategoryMetatag slug={slugs[0]} />
       <SearchPageLayout {...props}>
         <ErrorBoundaryWrapper>
           <Collection />
@@ -22,6 +28,8 @@ function CollectionPage(props: SearchPageLayoutProps) {
 }
 
 export const getServerSideProps = (context: GetServerSidePropsContext) => {
-  return getServerSidePropsPage(CollectionPage, context)
+  return getServerSidePropsPage(CollectionPage, context, {
+    props: { slugs: context.params?.slugs },
+  })
 }
 export default CollectionPage

@@ -3,6 +3,7 @@ import { Configure } from 'react-instantsearch-dom'
 
 import Collection from '@/components/Collection'
 import ErrorBoundaryWrapper from '@/components/ErrorBoundary'
+import CategoryMetatag from '@/components/Metatag/CategoryMetatag'
 import Applayout from '@/layouts/app-layout'
 import {
   SearchPageLayout,
@@ -12,6 +13,7 @@ import {
 function CollectionPage({ slugs, ...props }: any) {
   return (
     <Applayout title="Collection page">
+      <CategoryMetatag slug={slugs[0]} type="vendor" />
       <SearchPageLayout {...props}>
         <ErrorBoundaryWrapper>
           <Configure filters={`vendor:${slugs}`} />

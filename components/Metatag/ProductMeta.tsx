@@ -16,7 +16,7 @@ export default function ProductMeta({ product }: Props) {
             "name":"${product.name}",
             "description":"${product.description}",      
             "image":"${product.images[0]}",
-            "url":"https://livehealthy.hk/products/${product.slug}",        
+            "url":"https://livehealthy.hk/product/${product.slug}",        
             "aggregateRating": {
               "@type": "AggregateRating",
               "ratingValue": "${product.rating}",
@@ -33,22 +33,22 @@ export default function ProductMeta({ product }: Props) {
                 "@type":"Organization",
                 "name":"Live healthy",
                 "url":"https://livehealthy.hk/",
-                "logo": "https://res.cloudinary.com/verrb-inc/image/upload/v1643186694/sailfish/logo_u4xg8w.webp"
+                "logo": "http://res.cloudinary.com/verrb-inc/image/upload/v1656462729/live-healthy-store/logo_ynasny.webp"
               }
             },
             "brand":{
               "@type":"Brand",
-              "name":"${product.name}"
+              "name":"${product.vendor}"
             },                  
             "isbn":"${product.id}",
-            "sku":"${product.id}",
+            "sku":"${product.sku}",
             "offers": {
               "@type": "Offer",
-              "url":"https://livehealthy.hk/products/${product.slug}",        
-              "priceValidUntil": "2022-12-31",
+              "url":"https://livehealthy.hk/product/${product.slug}",        
+              "priceValidUntil": "2024-12-31",
               "availability": "https://schema.org/InStock",
-              "price":"${product.price}",
-              "priceCurrency": "USD"
+              "price":"${product.sale_price}",
+              "priceCurrency": "HKD"
             }
           }
         `}

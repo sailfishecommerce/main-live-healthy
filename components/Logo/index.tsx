@@ -11,13 +11,13 @@ interface LogoProps {
 function LogoComponent({ className }: LogoProps) {
   const logoClassName = className ? className : ' w-full h-full'
   const { dbdata: logoUrl } = useDatabaseData('logo')
-
+  const siteLogo = logoUrl === null ? '/logo.webp' : logoUrl
   return (
     <Link passHref href="/">
       <a title="welcome to live healthy" className={logoClassName}>
         {logoUrl && (
           <Image
-            src={logoUrl}
+            src={siteLogo}
             alt="logo"
             height={50}
             width={150}

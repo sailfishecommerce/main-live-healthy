@@ -1,25 +1,14 @@
 import Head from 'next/head'
 import { memo } from 'react'
 
-interface Props {
-  pageProduct: {
-    description: string
-    meta_title: string
-    price: string
-    slug: string
-    images: string[]
-    tags: string[]
-  }
-}
-
-function ProductMetatagComponent({ pageProduct }: Props) {
+function ProductMetatagComponent({ pageProduct }: any) {
   const productDescription = pageProduct.description.replace(
     /<\/?[^>]+(>|$)/g,
     ''
   )
   return (
     <Head>
-      {pageProduct.tags && (
+      {pageProduct?.tags && (
         <meta name="keywords" content={pageProduct.tags[0]} />
       )}
       <meta name="description" content={productDescription} />
@@ -29,17 +18,21 @@ function ProductMetatagComponent({ pageProduct }: Props) {
         key="ogtitle"
       />
       <meta property="og:type" content="product" />
-      <meta property="og:price:amount" content={pageProduct.price} />
+      <meta property="og:price:amount" content={pageProduct.sale_price} />
       <meta
         property="og:url"
-        content={`https://www.livehealthy.hk/products/${pageProduct.slug}`}
+        content={`https://www.livehealthy.hk/product/${pageProduct.slug}`}
         key="ogurl"
       />
       <meta property="og:price:currency" content="HKD" />
-      <meta property="og:image" content={pageProduct.images[0]} key="ogimage" />
+      <meta
+        property="og:image"
+        content={pageProduct.images[0].file.url}
+        key="ogimage"
+      />
       <meta
         property="og:image:secure_url"
-        content={pageProduct.images[0]}
+        content={pageProduct.images[0].file.url}
         key="ogimage"
       />
       <meta property="og:site_name" content="Live healthy" key="ogsitename" />

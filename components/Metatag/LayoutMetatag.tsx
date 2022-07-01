@@ -4,7 +4,7 @@ export default function LayoutMetatag() {
   return (
     <>
       <Head>
-        <meta name="robots" content="noindex" />
+        {/* <meta name="robots" content="noindex" /> */}
         <meta charSet="utf-8" />
         <meta
           name="viewport"

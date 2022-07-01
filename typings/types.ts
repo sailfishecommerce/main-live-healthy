@@ -23,7 +23,7 @@ export type productType = {
   options: any[]
   quantity: string
   hkd_selling_price?: number
-  sku: string
+  sku?: string
   rating: number
   product_type?: string
   hkd_compare_at_price: number

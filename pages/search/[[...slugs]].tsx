@@ -5,6 +5,7 @@ import { Configure } from 'react-instantsearch-dom'
 
 import { NoResultsHandler } from '@/components/@instantsearch/widgets/no-results-handler/no-results-handler'
 import ProductHitCard from '@/components/Cards/ProductHitCard'
+import ErrorBoundaryWrapper from '@/components/ErrorBoundary'
 import { viewModeAtom } from '@/components/ViewModes'
 import { configAtom } from '@/config/config'
 import Applayout from '@/layouts/app-layout'
@@ -70,7 +71,7 @@ export default function SearchPage({ searchQuery, ...props }: SearchPageProps) {
   return (
     <Applayout title="Search for products">
       <SearchPageLayout {...props}>
-        <>
+        <ErrorBoundaryWrapper>
           <Configure query={searchQuery} />
           <div className="container flex items-center mx-auto justify-between">
             <h1 className="font-bold text-xl">
@@ -97,7 +98,7 @@ export default function SearchPage({ searchQuery, ...props }: SearchPageProps) {
               </div>
             </div>
           </div>
-        </>
+        </ErrorBoundaryWrapper>
       </SearchPageLayout>
     </Applayout>
   )

@@ -2,6 +2,7 @@ import type { GetServerSidePropsContext } from 'next'
 import { Configure } from 'react-instantsearch-dom'
 
 import Collection from '@/components/Collection'
+import ErrorBoundaryWrapper from '@/components/ErrorBoundary'
 import Applayout from '@/layouts/app-layout'
 import {
   SearchPageLayout,
@@ -12,8 +13,10 @@ function CollectionPage({ slugs, ...props }: any) {
   return (
     <Applayout title="Collection page">
       <SearchPageLayout {...props}>
-        <Configure filters={`vendor:${slugs}`} />
-        <Collection />
+        <ErrorBoundaryWrapper>
+          <Configure filters={`vendor:${slugs}`} />
+          <Collection />
+        </ErrorBoundaryWrapper>
       </SearchPageLayout>
     </Applayout>
   )

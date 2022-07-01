@@ -2,6 +2,7 @@ import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import type { PropsWithChildren } from 'react'
 
+import ErrorBoundaryWrapper from '@/components/ErrorBoundary'
 import Header from '@/components/Header'
 import DefaultLayout from '@/layouts/default-layout'
 
@@ -21,17 +22,19 @@ export default function Applayout({
   title,
 }: PropsWithChildren<Props>) {
   return (
-    <DefaultLayout>
-      <Head>
-        <title>{title} | Sailfish e-commerce online store </title>
-        <meta
-          name="viewport"
-          content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"
-        />
-      </Head>
-      <Header />
-      {children}
-      <Footer />
-    </DefaultLayout>
+    <ErrorBoundaryWrapper>
+      <DefaultLayout>
+        <Head>
+          <title>{title} | Sailfish e-commerce online store </title>
+          <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"
+          />
+        </Head>
+        <Header />
+        {children}
+        <Footer />
+      </DefaultLayout>
+    </ErrorBoundaryWrapper>
   )
 }

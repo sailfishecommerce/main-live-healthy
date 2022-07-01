@@ -8,7 +8,7 @@ import useNav from '@/hooks/useNav'
 const DynamicSecondaryMenu = dynamic(
   () =>
     import(
-      /* webpackChunkName: 'DynamicSecondaryMenu' */ '@/components/Menu/SecondaryMenu'
+      /* webpackChunkName: 'SecondaryMenu' */ '@/components/Menu/SecondaryMenu'
     ),
   { ssr: false }
 )
@@ -16,7 +16,7 @@ const DynamicSecondaryMenu = dynamic(
 const DynamicMobileSearchbar = dynamic(
   () =>
     import(
-      /* webpackChunkName: 'DynamicMobileSearchbar' */ '@/components/Search/MobileSearchbar'
+      /* webpackChunkName: 'MobileSearchbar' */ '@/components/Search/MobileSearchbar'
     )
 )
 

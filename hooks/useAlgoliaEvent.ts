@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import searchInsights from 'search-insights'
 
 import { indexName } from '@/utils/env'
@@ -22,12 +23,14 @@ export default function useAlgoliaEvent() {
     const eventQueryID = queryIDVal
       ? { queryID: queryIDVal, positions: [position] }
       : ''
-    return searchInsights(insightName, {
-      index: indexName,
-      eventName,
-      objectIDs: [hitObjectD],
-      ...eventQueryID,
-    })
+    if (hitObjectD) {
+      return searchInsights(insightName, {
+        index: indexName,
+        eventName,
+        objectIDs: [hitObjectD],
+        ...eventQueryID,
+      })
+    }
   }
 
   return { algoliaEvent }

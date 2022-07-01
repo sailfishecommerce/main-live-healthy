@@ -51,8 +51,8 @@ export default function Product({
   }
 
   function algoliaEventHandler() {
-    algoliaEvent('clickedObjectIDs', 'Product Clicked', product.objectID)
-    algoliaEvent('viewedObjectIDs', 'Product Viewed', product.objectID)
+    algoliaEvent('clickedObjectIDs', 'Product Clicked', product?.objectID)
+    algoliaEvent('viewedObjectIDs', 'Product Viewed', product?.objectID)
   }
 
   const productVendorLink = product?.vendor?.includes(' ')

@@ -92,12 +92,12 @@ export default function ProductOverview({ hit }: any) {
               <a className="text-green-500">{hit?.vendor}</a>
             </Link>
           </p>
-          {hit?.review_rating && (
+          {hit?.review_rating ? (
             <CustomerReview
               reviews={hit?.review_rating}
               ratings={hit?.rating}
             />
-          )}
+          ) : null}
           <ProductPriceView product={hit} queryObject={queryObject} />
         </ProductDetail>
         <ProductOffers className="md:hidden" />

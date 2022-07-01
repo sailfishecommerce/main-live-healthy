@@ -1,34 +1,33 @@
 import Image from 'next/image'
+import { useCallback } from 'react'
 
 import FormattedPrice from '@/components/Price/FormattedPrice'
 
 export default function InvoiceList({ currency, product, item }: any) {
-  const productImage =
-    typeof product?.images[0] === 'string'
+  const productImageCallback = useCallback(() => {
+    return typeof product?.images[0] === 'string'
       ? product?.images[0]
       : product?.images[0].file.url
+  }, [product.images])
 
+  const productImage = productImageCallback()
   return (
     <>
       {product !== undefined || product !== null ? (
         <tr className="view">
           <td className="w-1/2">
-            {productImage !== undefined && (
-              <div className="product-view flex items-center">
-                {productImage !== undefined && (
-                  <Image
-                    src={productImage}
-                    alt={product?.name}
-                    height={150}
-                    width={200}
-                  />
-                )}
-                <div className="content flex flex-col ml-2">
-                  <h1 className="font-thin  text-md">{product?.name}</h1>
-                  <p className="font-thin text-md mt-2">SKU {product?.sku}</p>
-                </div>
+            <div className="product-view flex items-center">
+              <Image
+                src={productImage}
+                alt={product?.name}
+                height={150}
+                width={200}
+              />
+              <div className="content flex flex-col ml-2">
+                <h1 className="font-thin  text-md">{product?.name}</h1>
+                <p className="font-thin text-md mt-2">SKU {product?.sku}</p>
               </div>
-            )}
+            </div>
           </td>
           <td className="w-1/6 text-center">
             {productImage !== undefined && (

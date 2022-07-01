@@ -82,16 +82,14 @@ export default function ProductPriceView({ product, queryObject }: Props) {
                   <CartIcon />
                   Add to cart
                 </button>
-                {cart && (
-                  <button
-                    type="button"
-                    aria-label="buy now"
-                    className="bg-tan-hide xl:text-lg lg:text-base rounded-lg bg-tan-hide text-white py-2 lg:py-2 px-4"
-                    onClick={buyNowHandler}
-                  >
-                    Buy now
-                  </button>
-                )}
+                <button
+                  type="button"
+                  aria-label="buy now"
+                  className="bg-tan-hide xl:text-lg lg:text-base rounded-lg bg-tan-hide text-white py-2 lg:py-2 px-4"
+                  onClick={buyNowHandler}
+                >
+                  Buy now
+                </button>
               </div>
               <div className="lg:rounded-full hidden md:flex lg:border w-1/2 lg:w-1/4 px-2 lg:py-3 flex items-center justify-center px-1 my-2">
                 <CheckIcon />

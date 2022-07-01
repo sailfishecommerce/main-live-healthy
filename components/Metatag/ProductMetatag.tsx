@@ -11,7 +11,7 @@ function ProductMetatagComponent({ pageProduct }: any) {
       {pageProduct?.tags && (
         <meta name="keywords" content={pageProduct.tags[0]} />
       )}
-      <meta name="description" content={pageProduct.meta_title} />
+      <meta name="description" content={pageProduct.meta_title} key="ogdesc" />
       <meta property="og:title" content={pageProduct.name} key="ogtitle" />
       <meta property="og:type" content="product" />
       <meta property="og:price:amount" content={pageProduct.sale_price} />
@@ -37,7 +37,7 @@ function ProductMetatagComponent({ pageProduct }: any) {
         content={pageProduct.meta_title}
         key="ogdesc"
       />
-      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:card" content="summary" key="twcard" />
       <meta
         name="twitter:url"
         content={`https://www.livehealthy.hk/product/${pageProduct.slug}`}

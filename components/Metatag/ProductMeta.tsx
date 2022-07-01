@@ -40,7 +40,6 @@ export default function ProductMeta({ product }: Props) {
               "@type":"Brand",
               "name":"${product.vendor}"
             },                  
-            "isbn":"${product.id}",
             "sku":"${product.sku}",
             "offers": {
               "@type": "Offer",

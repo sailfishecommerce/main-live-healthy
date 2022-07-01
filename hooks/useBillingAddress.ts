@@ -1,5 +1,6 @@
 import { useAtom } from 'jotai'
 import { useRef, useState } from 'react'
+import { useQuery } from 'react-query'
 
 import { useAccount, useCart, useToast } from '@/hooks'
 import { checkoutFormAtom } from '@/lib/atomConfig'
@@ -7,7 +8,9 @@ import { checkoutFormAtom } from '@/lib/atomConfig'
 export default function useBillingAddress() {
   const [billingAddress, setBillingAddress] = useState('')
   const [checkoutForm, setCheckoutForm] = useAtom(checkoutFormAtom)
-  const { updateCheckoutAddress } = useAccount()
+  const { updateCheckoutAddress, getUserAccount } = useAccount()
+  const { data: userDetails } = useQuery('userDetails', getUserAccount)
+
   const { useCartData } = useCart()
   const { loadingToast, updateToast } = useToast()
   const { data: cart, status } = useCartData()
@@ -19,7 +22,7 @@ export default function useBillingAddress() {
   function billingTagAddressHandler(tagValue: string) {
     if (tagValue === 'use-a-different-billing-address') {
       setCheckoutForm({ ...checkoutForm, billing: { form: 'billing' } })
-    } else {
+    } else if (!cart.guest) {
       loadingToast(toastID)
       updateCheckoutAddress('billing', cart.shipping)
         .then(() => {
@@ -42,6 +45,7 @@ export default function useBillingAddress() {
     updateBillingAddressHandler,
     billingAddress,
     cart,
+    userDetails,
     status,
     checkoutForm,
     setCheckoutForm,

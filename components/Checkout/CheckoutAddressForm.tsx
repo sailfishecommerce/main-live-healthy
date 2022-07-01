@@ -15,6 +15,8 @@ export default function CheckoutAddressForm({ addressType }: AddressFormProps) {
     watchCheckoutFormAtom
   )
 
+  console.log('cart', cart)
+
   const toAddressValueArray = (cartObj: any) => {
     const cartArray = cartObj !== undefined ? Object.values(cartObj) : []
     return cartArray
@@ -40,10 +42,10 @@ export default function CheckoutAddressForm({ addressType }: AddressFormProps) {
   return (
     <>
       {toAddressValueArray(cart?.shipping).length > 2 &&
-        checkoutForm[addressType].form === 'shipping' && (
+        addressType === 'shipping' && (
           <>
             <h3 className="font-bold my-5 text-lg">Shipping address</h3>
-            <SavedAddressDropdown />
+            {!cart.guest && <SavedAddressDropdown />}
           </>
         )}
       {cart !== undefined &&

@@ -96,25 +96,25 @@ export default function useAccount() {
 
     return await swell.cart.update({
       billing: {
-        name: `${data.firstName} ${data.lastName}`,
-        address1: data.address1,
-        city: data.city,
-        state: data.state,
-        zip: data.zip,
-        country: data.country,
+        // name: `${data.firstName} ${data.lastName}`,
+        // address1: data.address1,
+        // city: data.city,
+        // state: data.state,
+        // zip: data.zip,
+        // country: data.country,
         card: {
           token,
         },
       },
-      shipping: {
-        name: `${data.firstName} ${data.lastName}`,
-        address1: data.address1,
-        city: data.city,
-        state: data.state,
-        zip: data.zip,
-        country: data.country,
-        phone: data.phone,
-      },
+      // shipping: {
+      //   name: `${data.firstName} ${data.lastName}`,
+      //   address1: data.address1,
+      //   city: data.city,
+      //   state: data.state,
+      //   zip: data.zip,
+      //   country: data.country,
+      //   phone: data.phone,
+      // },
     })
   }
 

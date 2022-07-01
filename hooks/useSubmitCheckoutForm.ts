@@ -8,7 +8,7 @@ import { checkoutFormAtom } from '@/lib/atomConfig'
 
 export default function useSubmitCheckoutForm() {
   const { createVboutCartAction, addCartItemAction } = useVboutAction()
-  const { getUserAccount } = useAccount()
+  const { getUserAccount, createUserAccountAtCheckout } = useAccount()
   const { useCreateUserAddress, useUpdateUserAddress } =
     useSubmitCheckoutFormAction()
   const { data: userDetails } = useQuery('userDetails', getUserAccount)
@@ -24,6 +24,11 @@ export default function useSubmitCheckoutForm() {
       displayBillingAddress()
     }
     if (addressType === 'shipping' && userDetails !== null) {
+      createUserAddressMutate.mutate(data)
+    } else if (userDetails === null) {
+      createUserAccountAtCheckout(data)
+        .then((response) => console.log('response-crateuser', response))
+        .catch((err) => console.log('err-crateuser', err))
       createUserAddressMutate.mutate(data)
     }
     updateCheckoutAddressMutate.mutate({ addressType, data })

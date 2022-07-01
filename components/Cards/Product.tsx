@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import Link from 'next/link'
@@ -55,6 +56,8 @@ export default function Product({
   }
 
   const productVendorLink = product?.vendor?.includes(' ')
+    ? `/search/${product?.vendor}`
+    : product?.vendor?.includes("'")
     ? `/search/${product?.vendor}`
     : `/vendor/${product?.vendor}`
 

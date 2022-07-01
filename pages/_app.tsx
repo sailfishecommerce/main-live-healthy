@@ -26,12 +26,16 @@ const ProviderLayout = dynamic(
 
 const Loader: any = dynamic(
   (): any =>
-    import(/* webpackChunkName: 'Loader' */ '@/components/Loader/Loader')
+    import(/* webpackChunkName: 'Loader' */ '@/components/Loader/Loader'),
+  { ssr: false }
 )
 
 export default function App({ Component, pageProps, router }: AppProps) {
   const isCatalogPage = useMemo(
-    () => router?.pathname === '/collection/[[...slugs]]',
+    () =>
+      router?.pathname === '/collection/[[...slugs]]' ||
+      router?.pathname === '/vendor/[[...slugs]]' ||
+      router?.pathname === '/search/[[...slugs]]',
     [router?.pathname]
   )
   return (

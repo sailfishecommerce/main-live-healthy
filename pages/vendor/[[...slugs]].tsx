@@ -11,7 +11,6 @@ import {
 } from '@/layouts/search-page-layout'
 
 function CollectionPage({ slugs, ...props }: any) {
-  console.log('slugs', slugs)
   return (
     <Applayout title="Collection page">
       {slugs.length > 0 && <CategoryMetatag slug={slugs[0]} type="vendor" />}

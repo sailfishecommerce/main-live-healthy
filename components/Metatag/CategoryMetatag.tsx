@@ -6,7 +6,7 @@ interface Props {
 }
 
 function convertSlug(slug: string) {
-  const convertedSlug = slug?.replaceAll('-', ' ').toUpperCase()
+  const convertedSlug = slug?.replace(/-/g, ' ').toUpperCase()
   return convertedSlug
 }
 

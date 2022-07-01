@@ -11,9 +11,10 @@ import {
 } from '@/layouts/search-page-layout'
 
 function CollectionPage({ slugs, ...props }: any) {
+  console.log('slugs', slugs)
   return (
     <Applayout title="Collection page">
-      <CategoryMetatag slug={slugs[0]} type="vendor" />
+      {slugs.length > 0 && <CategoryMetatag slug={slugs[0]} type="vendor" />}
       <SearchPageLayout {...props}>
         <ErrorBoundaryWrapper>
           <Configure filters={`vendor:${slugs}`} />

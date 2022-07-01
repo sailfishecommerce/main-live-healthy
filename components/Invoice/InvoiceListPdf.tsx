@@ -1,14 +1,18 @@
 /* eslint-disable jsx-a11y/alt-text */
 import { Text, View, Image } from '@react-pdf/renderer'
+import { useCallback } from 'react'
 
 import { itemStyles } from '@/components/Invoice/invoice-style'
 import FormattedPrice from '@/components/Price/FormattedPrice'
 
 export default function InvoiceListPdf({ item, currency, product }: any) {
-  const productImage =
-    typeof product?.images[0] === 'string'
+  const productImageCallback = useCallback(() => {
+    return typeof product?.images[0] === 'string'
       ? product?.images[0]
       : product?.images[0].file.url
+  }, [product.images])
+
+  const productImage = productImageCallback()
   return (
     <>
       {product !== undefined || product !== null ? (

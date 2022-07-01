@@ -2,6 +2,7 @@ import { useAtom } from 'jotai'
 import { useRef, useState } from 'react'
 import { useQuery } from 'react-query'
 
+import { toAddressValueArray } from '@/components/Checkout/CheckoutAddressForm'
 import { useAccount, useCart, useToast } from '@/hooks'
 import { checkoutFormAtom } from '@/lib/atomConfig'
 
@@ -22,7 +23,10 @@ export default function useBillingAddress() {
   function billingTagAddressHandler(tagValue: string) {
     if (tagValue === 'use-a-different-billing-address') {
       setCheckoutForm({ ...checkoutForm, billing: { form: 'billing' } })
-    } else if (!cart.guest) {
+    } else if (
+      toAddressValueArray(cart.shipping).length > 5 &&
+      status === 'success'
+    ) {
       loadingToast(toastID)
       updateCheckoutAddress('billing', cart.shipping)
         .then(() => {

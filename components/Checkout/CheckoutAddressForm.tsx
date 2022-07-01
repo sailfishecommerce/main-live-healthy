@@ -9,18 +9,16 @@ import useBillingAddress from '@/hooks/useBillingAddress'
 import { watchCheckoutFormAtom } from '@/lib/atomConfig'
 import type { AddressFormProps } from '@/typings/types'
 
+export const toAddressValueArray = (cartObj: any) => {
+  const cartArray = cartObj !== undefined ? Object.values(cartObj) : []
+  return cartArray
+}
+
 export default function CheckoutAddressForm({ addressType }: AddressFormProps) {
   const { checkoutForm, cart, status, setCheckoutForm } = useBillingAddress()
   const [watchCheckoutForm, setWatchCheckoutForm] = useAtom(
     watchCheckoutFormAtom
   )
-
-  console.log('cart', cart)
-
-  const toAddressValueArray = (cartObj: any) => {
-    const cartArray = cartObj !== undefined ? Object.values(cartObj) : []
-    return cartArray
-  }
 
   useEffect(() => {
     if (status === 'success') {

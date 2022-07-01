@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useAtom } from 'jotai'
 
 import { useToast, useAccount, useCart } from '@/hooks'
+import useModal from '@/hooks/useModal'
 import usePayment from '@/hooks/usePayment'
 import useSwellCart from '@/hooks/useSwellCart'
 import { createVboutOrder } from '@/hooks/useVbout'
@@ -16,10 +17,15 @@ export default function useProcessPayment() {
   const { tokenizePayment, submitUserOrder } = usePayment()
   const { getACart } = useSwellCart()
   const { useCartData } = useCart()
+  const { updateModalView } = useModal()
   const { data: cart } = useCartData()
   const [, setLog] = useAtom(logsAtom)
 
-  const { updateUserBillingInfo } = useAccount()
+  const {
+    updateUserBillingInfo,
+    createUserAddresstAtCheckout,
+    getUserAccount,
+  } = useAccount()
   const [loadingState, setLoadingState] = useState(false)
   const { isLoading, isSuccessful, hasError } = useToast()
   const [, setSubmitOrder] = useAtom(submitOrderAtom)
@@ -29,6 +35,7 @@ export default function useProcessPayment() {
   function processPayment(data, loading) {
     function vboutOrder(order) {
       const formatVboutOrderData = vboutOrderData(cart, order)
+      console.log('formatVboutOrderData', formatVboutOrderData)
       return createVboutOrder(formatVboutOrderData, setLog)
     }
     setLoadingState(true)
@@ -39,7 +46,6 @@ export default function useProcessPayment() {
             .then((response) => {
               updateUserBillingInfo(data, response.billing.card?.token)
                 .then((response) => {
-                  console.log('updateUserBillingInfo-response', response)
                   submitUserOrder()
                     .then((response) => {
                       console.log('stripe-response', response)
@@ -84,17 +90,35 @@ export default function useProcessPayment() {
 
   function makePayment(data) {
     const loading = isLoading()
-    processPayment(data, loading)
-  }
-
-  function stripePayment(data) {
-    const loading = isLoading()
-    processPayment(data, loading)
+    getUserAccount()
+      .then((response) => {
+        if (response === null) {
+          createUserAddresstAtCheckout(data.form)
+            .then((response) => {
+              if (response !== null && response?.email?.code === 'UNIQUE') {
+                hasError(
+                  loading,
+                  'you have an existing account with us, please login'
+                )
+                updateModalView('MODAL_LOGIN')
+              } else {
+                processPayment(data, loading)
+              }
+            })
+            .catch((err) => {
+              hasError(loading, err?.message)
+            })
+        } else {
+          processPayment(data, loading)
+        }
+      })
+      .catch((error) => {
+        hasError(loading, error?.message)
+      })
   }
 
   return {
     makePayment,
     loadingState,
-    stripePayment,
   }
 }

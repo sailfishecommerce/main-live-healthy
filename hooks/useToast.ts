@@ -18,13 +18,15 @@ export default function useToast() {
     toastId: MutableRefObject<any>,
     toastType: any,
     message: string
-  ) =>
-    toast.update(toastId.current, {
+  ) => {
+    const autoCloseStatus = toastType === 'success' ? 800 : false
+    return toast.update(toastId.current, {
       type: toastType,
-      autoClose: 500,
+      autoClose: autoCloseStatus,
       render: message,
       isLoading: false,
     })
+  }
 
   function isLoading(): ReactText {
     setAppLoading(true)

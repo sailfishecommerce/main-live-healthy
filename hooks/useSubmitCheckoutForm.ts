@@ -1,7 +1,9 @@
 import { useAtom } from 'jotai'
+import { useRef } from 'react'
 import { useQuery } from 'react-query'
 
-import { useAccount } from '@/hooks'
+import { useAccount, useToast } from '@/hooks'
+import useModal from '@/hooks/useModal'
 import useSubmitCheckoutFormAction from '@/hooks/useSubmitCheckoutFormAction'
 import useVboutAction from '@/hooks/useVboutAction'
 import { checkoutFormAtom } from '@/lib/atomConfig'
@@ -11,6 +13,10 @@ export default function useSubmitCheckoutForm() {
   const { getUserAccount, createUserAccountAtCheckout } = useAccount()
   const { useCreateUserAddress, useUpdateUserAddress } =
     useSubmitCheckoutFormAction()
+  const { updateModalView } = useModal()
+  const { loadingToast, updateToast } = useToast()
+  const toastID = useRef(null)
+
   const { data: userDetails } = useQuery('userDetails', getUserAccount)
   const [checkoutForm, setCheckoutForm] = useAtom(checkoutFormAtom)
 
@@ -25,13 +31,28 @@ export default function useSubmitCheckoutForm() {
     }
     if (addressType === 'shipping' && userDetails !== null) {
       createUserAddressMutate.mutate(data)
+      updateCheckoutAddressMutate.mutate({ addressType, data })
     } else if (userDetails === null) {
+      loadingToast(toastID)
       createUserAccountAtCheckout(data)
-        .then((response) => console.log('response-crateuser', response))
-        .catch((err) => console.log('err-crateuser', err))
-      createUserAddressMutate.mutate(data)
+        .then((response) => {
+          if (response !== null && response?.email?.code === 'UNIQUE') {
+            updateToast(
+              toastID,
+              'error',
+              'you have an existing account with us, please login'
+            )
+            updateModalView('MODAL_LOGIN')
+          } else {
+            updateToast(toastID, 'success', 'account created')
+            createUserAddressMutate.mutate(data)
+            updateCheckoutAddressMutate.mutate({ addressType, data })
+          }
+        })
+        .catch((err) => {
+          updateToast(toastID, 'error', err.message)
+        })
     }
-    updateCheckoutAddressMutate.mutate({ addressType, data })
   }
 
   function displayBillingAddress() {

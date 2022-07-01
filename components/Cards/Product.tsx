@@ -1,4 +1,3 @@
-/* eslint-disable no-nested-ternary */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import Link from 'next/link'
@@ -21,6 +20,10 @@ interface ProductTypes extends ProductProps {
   smallerImage?: boolean
   imageClassName?: string
   tags?: string[]
+}
+
+function hasNumber(text: string) {
+  return /\d/.test(text)
 }
 
 export default function Product({
@@ -58,11 +61,12 @@ export default function Product({
     algoliaEvent('viewedObjectIDs', 'Product Viewed', product?.objectID)
   }
 
-  const productVendorLink = product?.vendor?.includes(' ')
-    ? `/search/${product?.vendor}`
-    : product?.vendor?.includes("'")
-    ? `/search/${product?.vendor}`
-    : `/vendor/${product?.vendor}`
+  const productVendorLink =
+    product?.vendor?.includes(' ') ||
+    product?.vendor?.includes("'") ||
+    hasNumber(product?.vendor)
+      ? `/search/${product?.vendor}`
+      : `/vendor/${product?.vendor}`
 
   const productImage =
     typeof product.images[0] === 'string'

@@ -24,6 +24,7 @@ export type SearchPageLayoutProps = BasicPageLayoutProps & {
   resultsState?: any
   searchState?: any
   userToken?: string
+  widgetsCollector?: any
 }
 
 function SearchPageLayoutComponent({
@@ -31,6 +32,7 @@ function SearchPageLayoutComponent({
   resultsState,
   searchState: initialSearchState,
   userToken: initialUserToken,
+  widgetsCollector,
   ...props
 }: SearchPageLayoutProps) {
   const { searchParameters: configSearchParameters } = useAtomValue(configAtom)
@@ -57,6 +59,7 @@ function SearchPageLayoutComponent({
         searchParameters={searchParameters}
         resultsState={resultsState}
         createURL={createURL}
+        widgetsCollector={widgetsCollector}
         onSearchStateChange={onSearchStateChange}
         {...props}
       >

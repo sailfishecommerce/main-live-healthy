@@ -7,6 +7,11 @@ interface Props {
 }
 
 export default function ProductMeta({ product }: Props) {
+  const productImage =
+    typeof product.images[0] === 'string'
+      ? product.images[0]
+      : product.images[0].file.url
+
   return (
     <Head>
       <script id="productLDJSon" type="application/ld+json">
@@ -15,19 +20,19 @@ export default function ProductMeta({ product }: Props) {
             "@type":"Product",
             "name":"${product.name}",
             "description":"${product.description}",      
-            "image":"${product.images[0]}",
+            "image":"${productImage}",
             "url":"https://livehealthy.hk/product/${product.slug}",        
             "aggregateRating": {
               "@type": "AggregateRating",
-              "ratingValue": "${product.rating}",
-              "reviewCount": "${product.review_rating}"
+              "ratingValue": "${product?.rating}",
+              "reviewCount": "${product?.review_rating}"
             },
             "review": {
               "@type": "Review",
               "reviewRating": {
                 "@type": "Rating",
-                "ratingValue":"${product.rating}",
-                "bestRating":"${product.review_rating}"
+                "ratingValue":"${product?.rating}",
+                "bestRating":"${product?.review_rating}"
                 },
               "author":{
                 "@type":"Organization",
@@ -40,13 +45,13 @@ export default function ProductMeta({ product }: Props) {
               "@type":"Brand",
               "name":"${product.vendor}"
             },                  
-            "sku":"${product.sku}",
+            "sku":"${product?.sku}",
             "offers": {
               "@type": "Offer",
               "url":"https://livehealthy.hk/product/${product.slug}",        
               "priceValidUntil": "2024-12-31",
               "availability": "https://schema.org/InStock",
-              "price":"${product.sale_price}",
+              "price":"${product?.sale_price}",
               "priceCurrency": "HKD"
             }
           }

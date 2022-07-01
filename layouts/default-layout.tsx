@@ -1,11 +1,14 @@
+import { useRouter } from 'next/router'
 import type { PropsWithChildren } from 'react'
 
+import Metatag from '@/components/Metatag'
 import useColorPicker from '@/hooks/useColorPicker'
 
 export default function DefaultLayout({
   children,
 }: PropsWithChildren<unknown>) {
   const { siteColors } = useColorPicker()
+  const router = useRouter()
 
   const siteColorcode: { [key: string]: string } = {}
 
@@ -16,6 +19,11 @@ export default function DefaultLayout({
   })
   return (
     <>
+      {!(
+        router?.pathname.includes('collection') ||
+        router?.pathname.includes('vendor') ||
+        router?.pathname.includes('product')
+      ) && <Metatag />}
       {children}
       <style global jsx>
         {`

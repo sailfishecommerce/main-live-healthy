@@ -6,17 +6,18 @@ import Accordion from '@/components/Accordion'
 import AirwallexDropin from '@/components/Payment/AirwallexDropin'
 import { useCart } from '@/hooks'
 import useAirwallexPayment from '@/hooks/useAirwallexPayment'
-import { airwallexAtom, paymentFormAtom } from '@/lib/atomConfig'
+import { airwallexAtom, checkoutAddressAtom } from '@/lib/atomConfig'
 
 export default function AirwallexPaymentMethod() {
-  const [paymentForm] = useAtom(paymentFormAtom)
+  const [checkoutAddress] = useAtom(checkoutAddressAtom)
+
   const { useCartData } = useCart()
   const { data: cart } = useCartData()
   const { checkoutHandler } = useAirwallexPayment()
   const [airwallex] = useAtom(airwallexAtom)
 
   function onCheckout() {
-    checkoutHandler(cart, paymentForm)
+    checkoutHandler(cart, checkoutAddress)
   }
 
   const { clientSecret, paymentIntentId } = airwallex

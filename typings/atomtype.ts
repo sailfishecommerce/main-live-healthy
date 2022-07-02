@@ -77,3 +77,17 @@ export type checkoutFormType = {
   shipping: cformType
   billing: cformType
 }
+
+type addressType = {
+  firstName: string
+  lastName: string
+  phone: string
+  state: string
+  city: string
+  address1: string
+}
+
+export type checkoutAddressType = {
+  shipping: addressType
+  billing: addressType
+}

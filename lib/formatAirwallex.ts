@@ -4,9 +4,9 @@ import { v4 as uuidv4 } from 'uuid'
 import type { cartType } from '@/typings/types'
 
 export function formatIntentData(cart: any, paymentForm: any) {
-  const { form } = paymentForm
+  const { shipping } = paymentForm
   const products = formatCartProduct(cart)
-  const street = form.address ? form.address : form.district
+  const street = shipping.address1 ? shipping.address1 : shipping.city
   const cartData = {
     amount: cart.grandTotal,
     currency: cart.currency,
@@ -14,7 +14,7 @@ export function formatIntentData(cart: any, paymentForm: any) {
     request_id: uuidv4(),
     metadata: {
       shipment_price: cart?.shipmentTotal,
-      email: form.email,
+      email: shipping.email,
       shipment_method: cart.shipmentRating.services.filter(
         (service: any) => service.price === cart.shipmentTotal
       )[0],
@@ -23,15 +23,15 @@ export function formatIntentData(cart: any, paymentForm: any) {
       products,
       shipping: {
         address: {
-          city: form.district,
-          country_code: form.country.toUpperCase(),
-          state: form.region,
-          postcode: form.zip,
+          city: shipping.city,
+          country_code: shipping.country.toUpperCase(),
+          state: shipping.state,
+          postcode: shipping.zip,
           street,
         },
-        first_name: form.firstName,
-        last_name: form.lastName,
-        phone_number: form.phone,
+        first_name: shipping.firstName,
+        last_name: shipping.lastName,
+        phone_number: shipping.phone,
         shipment_method: cart.shipmentRating.services.filter(
           (service: any) => service.price === cart.shipmentTotal
         )[0],

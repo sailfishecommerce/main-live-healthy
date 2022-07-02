@@ -156,3 +156,8 @@ export const checkoutFormAtom = atom<checkoutFormType>({
 export const watchCheckoutFormAtom = atom<string[]>([])
 
 export const reloadPageAtom = atomWithStorage('reloadPageAtom', false)
+
+export const checkoutAddressAtom = atomWithStorage<any>(
+  'checkoutAddressAtom',
+  null
+)

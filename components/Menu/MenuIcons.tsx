@@ -12,7 +12,6 @@ export default function MenuIcons() {
   const { updateSlideTab } = useSlidingTab()
   const { useCartData } = useCart()
   const { data: cart }: any = useCartData()
-
   function updateSlidingTabHandler(slidingTabState: slidingTabType) {
     return updateSlideTab(slidingTabState)
   }
@@ -24,12 +23,12 @@ export default function MenuIcons() {
         <button
           aria-label="cart"
           type="button"
-          className="cart-icon relative mx-4"
           title="cart"
+          className="cart-icon relative mx-4"
           onClick={() => updateSlidingTabHandler('SLIDING-CART')}
         >
           <CartIcon size={35} color="black" />
-          {cart?.items?.length > 0 && cart !== null && (
+          {cart !== null && (
             <div className="bg-yellow-500 rounded-full flex items-center text-white justify-center -mt-8 text-xs ml-2 z-5 absolute h-4 w-4">
               {cart?.items?.length}
             </div>

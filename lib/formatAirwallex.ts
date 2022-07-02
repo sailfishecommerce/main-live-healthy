@@ -4,6 +4,9 @@ import { v4 as uuidv4 } from 'uuid'
 import type { cartType } from '@/typings/types'
 
 export function formatIntentData(cart: any, paymentForm: any) {
+  const shippingServices = cart.shipmentRating.services.filter(
+    (service: any) => service.price === cart.shipmentTotal
+  )[0]
   const { shipping, billing } = paymentForm
   const products = formatCartProduct(cart)
   const street = shipping.address1 ? shipping.address1 : shipping.city
@@ -12,13 +15,18 @@ export function formatIntentData(cart: any, paymentForm: any) {
     currency: cart.currency,
     merchant_order_id: cart.checkoutId,
     request_id: uuidv4(),
+    descriptor: 'Paid Live healthy stores',
     metadata: {
       shipment_price: cart?.shipmentTotal,
-      email: shipping.email,
-      shipment_method: cart.shipmentRating.services.filter(
-        (service: any) => service.price === cart.shipmentTotal
-      )[0],
-      billing,
+      shipment_name: shippingServices.name,
+      shipment_id: shippingServices.id,
+      shipment_description: shippingServices.description,
+      address1: billing.address1,
+      city: billing.city,
+      state: billing.state,
+      zip: billing.zip,
+      country: billing.country,
+      phone: billing.phone,
     },
     order: {
       products,

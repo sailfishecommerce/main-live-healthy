@@ -25,12 +25,11 @@ export default function useBillingAddress() {
     const queryClient = useQueryClient()
 
     return useMutation(() => updateCheckoutAddress('billing', cart.shipping), {
-      mutationKey: 'createUserAddress',
+      mutationKey: 'updateCheckoutAddress',
       onMutate: () => {
         loadingToast(toastID)
       },
       onSettled: () => {
-        queryClient.invalidateQueries('listUserAddress')
         queryClient.invalidateQueries('cart')
       },
       onSuccess: () => {

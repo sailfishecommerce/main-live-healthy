@@ -40,7 +40,7 @@ export default function CheckoutAddressForm({ addressType }: AddressFormProps) {
         }
       }
     }
-  }, [status])
+  }, [status, addressType])
 
   return (
     <>
@@ -53,9 +53,10 @@ export default function CheckoutAddressForm({ addressType }: AddressFormProps) {
         )}
       {cart !== undefined &&
       toAddressValueArray(cart[addressType]).length > 5 &&
-      checkoutForm[addressType].form === null &&
-      addressType === 'shipping' ? (
-        <DisplaySavedAddress addressType={addressType} />
+      checkoutForm[addressType].form === null ? (
+        addressType === 'shipping' && (
+          <DisplaySavedAddress addressType={addressType} />
+        )
       ) : (
         <CheckoutForm addressType={addressType} />
       )}

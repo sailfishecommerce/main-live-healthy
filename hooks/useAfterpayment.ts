@@ -17,9 +17,6 @@ export default function useAfterPayment() {
     response: any,
     paymentType: 'airwallex' | 'stripe'
   ) {
-    //  set payment form to default
-    setCheckoutAddress(null)
-
     if (paymentType === 'airwallex') {
       emptyCart.mutate()
     }
@@ -27,8 +24,10 @@ export default function useAfterPayment() {
     const { writeData } = firebaseDatabase()
     const paymentDatabaseRefId = 'payment/' + paymentType + `/${response?.id}`
     writeData(paymentDatabaseRefId, JSON.stringify(response)).then(() => {
-      return router.push('/checkout-complete')
+      // return router.push('/checkout-complete')
     })
+    //  set payment form to default
+    setCheckoutAddress(null)
   }
 
   return {

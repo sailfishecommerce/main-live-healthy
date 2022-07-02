@@ -43,8 +43,8 @@ export default function useSubmitCheckoutForm() {
       [addressType]: data,
     })
     if (addressType === 'billing') {
-      updateCheckoutAddressMutate.mutate({ addressType, data })
       displayBillingAddress()
+      updateCheckoutAddressMutate.mutate({ addressType, data })
     }
     if (addressType === 'shipping' && userDetails !== null) {
       createUserAddressMutate.mutate(data)

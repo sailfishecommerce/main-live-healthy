@@ -6,7 +6,11 @@ import { useEffect } from 'react'
 import { toAddressValueArray } from '@/components/Checkout/CheckoutAddressForm'
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import { useCart } from '@/hooks'
-import { checkoutAddressAtom, checkoutFormAtom } from '@/lib/atomConfig'
+import {
+  checkoutAddressAtom,
+  checkoutFormAtom,
+  watchCheckoutFormAtom,
+} from '@/lib/atomConfig'
 import getCountry from '@/lib/getCountry'
 
 export default function DisplaySavedAddress({ addressType }: any) {
@@ -14,16 +18,24 @@ export default function DisplaySavedAddress({ addressType }: any) {
   const { data: cart, status } = useCartData()
   const [checkoutForm, setCheckoutForm] = useAtom(checkoutFormAtom)
   const [checkoutAddress, setCheckoutAddress] = useAtom(checkoutAddressAtom)
+  const [watchCheckoutForm, setWatchCheckoutForm] = useAtom(
+    watchCheckoutFormAtom
+  )
 
   useEffect(() => {
-    const addressValue = toAddressValueArray(cart[addressType])
-    if (addressValue.length > 2 && status === 'success') {
-      setCheckoutAddress({
-        ...checkoutAddress,
-        [addressType]: cart[addressType],
-      })
+    if (!watchCheckoutForm.includes(addressType)) {
+      setWatchCheckoutForm([...watchCheckoutForm, addressType])
     }
-  }, [status])
+    if (status === 'success' && addressType) {
+      const addressValue = toAddressValueArray(cart[addressType])
+      if (addressValue.length > 2) {
+        setCheckoutAddress({
+          ...checkoutAddress,
+          [addressType]: cart[addressType],
+        })
+      }
+    }
+  }, [status, addressType])
 
   function updateDropdownHandler() {
     setCheckoutForm({

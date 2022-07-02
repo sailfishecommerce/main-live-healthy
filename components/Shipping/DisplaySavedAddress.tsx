@@ -1,15 +1,29 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-nested-ternary */
 import { useAtom } from 'jotai'
+import { useEffect } from 'react'
 
+import { toAddressValueArray } from '@/components/Checkout/CheckoutAddressForm'
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import { useCart } from '@/hooks'
-import { checkoutFormAtom } from '@/lib/atomConfig'
+import { checkoutAddressAtom, checkoutFormAtom } from '@/lib/atomConfig'
 import getCountry from '@/lib/getCountry'
 
 export default function DisplaySavedAddress({ addressType }: any) {
   const { useCartData } = useCart()
   const { data: cart, status } = useCartData()
   const [checkoutForm, setCheckoutForm] = useAtom(checkoutFormAtom)
+  const [checkoutAddress, setCheckoutAddress] = useAtom(checkoutAddressAtom)
+
+  useEffect(() => {
+    const addressValue = toAddressValueArray(cart[addressType])
+    if (addressValue.length > 2 && status === 'success') {
+      setCheckoutAddress({
+        ...checkoutAddress,
+        [addressType]: cart[addressType],
+      })
+    }
+  }, [status])
 
   function updateDropdownHandler() {
     setCheckoutForm({

@@ -33,7 +33,7 @@ export default function CheckoutAddressForm({ addressType }: AddressFormProps) {
         })
         setCheckoutAddress({
           ...checkoutAddress,
-          addressType: cart[addressType],
+          [addressType]: cart[addressType],
         })
         if (!watchCheckoutForm.includes(addressType)) {
           setWatchCheckoutForm([...watchCheckoutForm, addressType])

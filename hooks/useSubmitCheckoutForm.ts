@@ -32,7 +32,7 @@ export default function useSubmitCheckoutForm() {
     addCartItemAction(data)
     setCheckoutAddress({
       ...checkoutAddress,
-      addressType: data,
+      [addressType]: data,
     })
     if (addressType === 'billing') {
       displayBillingAddress()

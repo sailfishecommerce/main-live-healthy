@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { memo } from 'react'
+import { memo, useEffect, useState } from 'react'
 
 import useDatabaseData from '@/hooks/useDatabaseData'
 
@@ -9,21 +9,26 @@ interface LogoProps {
 }
 
 function LogoComponent({ className }: LogoProps) {
+  const [logoURL, setLogoUrl] = useState('/logo.webp')
   const logoClassName = className ? className : ' w-full h-full'
-  const { dbdata: logoUrl } = useDatabaseData('logo')
-  const siteLogo = logoUrl === null ? '/logo.webp' : logoUrl
+  const { dbdata, loading } = useDatabaseData('logo')
+
+  useEffect(() => {
+    if (!loading && dbdata !== null) {
+      setLogoUrl(dbdata)
+    }
+  }, [])
+
   return (
     <Link passHref href="/">
       <a title="welcome to live healthy" className={logoClassName}>
-        {logoUrl && (
-          <Image
-            src={siteLogo}
-            alt="logo"
-            height={50}
-            width={150}
-            layout="responsive"
-          />
-        )}
+        <Image
+          src={logoURL}
+          alt="logo"
+          height={50}
+          width={150}
+          layout="responsive"
+        />
       </a>
     </Link>
   )

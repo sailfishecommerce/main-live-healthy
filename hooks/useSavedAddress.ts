@@ -11,8 +11,7 @@ export default function useSavedAddress() {
   const { loadingToast, updateToast } = useToast()
   const [dropdown, setDropdown] = useState(false)
   const [checkoutForm, setCheckoutForm] = useAtom(checkoutFormAtom)
-
-  const toastID = useRef(null)
+  const queryClient = useQueryClient()
 
   const {
     data: addresses,
@@ -21,7 +20,7 @@ export default function useSavedAddress() {
   }: any = useQuery('listUserAddress', listUserAddress)
 
   function useDeleteAddressHandler() {
-    const queryClient = useQueryClient()
+    const toastID = useRef(null)
 
     return useMutation((addressId: any): any => deleteUserAddress(addressId), {
       mutationKey: 'useDeleteAddressHandler',
@@ -38,28 +37,39 @@ export default function useSavedAddress() {
     })
   }
 
-  function selectAddressHandler(addressId: string) {
-    loadingToast(toastID)
-    return updateShippingAddressById(addressId)
-      .then(() => {
-        updateToast(toastID, 'success', 'address selected')
-        setDropdown(false)
-        setCheckoutForm({
-          ...checkoutForm,
-          shipping: {
-            form: null,
-          },
-        })
-      })
-      .catch(() => {
-        updateToast(toastID, 'error', 'error selecting address')
-        setCheckoutForm({
-          ...checkoutForm,
-          shipping: {
-            form: null,
-          },
-        })
-      })
+  function useSelectAddressHandler() {
+    const toastID2 = useRef(null)
+
+    return useMutation(
+      (addressId: string) => updateShippingAddressById(addressId),
+      {
+        mutationKey: 'useSelectAddressHandler',
+        onMutate: () => loadingToast(toastID2),
+        onSettled: () => {
+          queryClient.invalidateQueries('listUserAddress')
+          queryClient.invalidateQueries('cart')
+        },
+        onSuccess: () => {
+          updateToast(toastID2, 'success', 'address selected')
+          setDropdown(false)
+          setCheckoutForm({
+            ...checkoutForm,
+            shipping: {
+              form: null,
+            },
+          })
+        },
+        onError: () => {
+          updateToast(toastID2, 'error', 'error selecting address')
+          setCheckoutForm({
+            ...checkoutForm,
+            shipping: {
+              form: null,
+            },
+          })
+        },
+      }
+    )
   }
 
   function dropdownHandler() {
@@ -71,8 +81,8 @@ export default function useSavedAddress() {
     addresses,
     useDeleteAddressHandler,
     status,
+    useSelectAddressHandler,
     error,
     dropdown,
-    selectAddressHandler,
   }
 }

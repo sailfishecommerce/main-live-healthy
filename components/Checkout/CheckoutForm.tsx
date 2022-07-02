@@ -4,7 +4,10 @@ import { useForm, FormProvider } from 'react-hook-form'
 
 import ContactInformationForm from '@/components/Checkout/ContactInformationForm'
 import SelectFormElement from '@/components/Form/SelectFormElement'
-import { shippingSchema } from '@/components/Form/schema/ShippingSchema'
+import {
+  billingSchema,
+  shippingSchema,
+} from '@/components/Form/schema/ShippingSchema'
 import useSubmitCheckoutForm from '@/hooks/useSubmitCheckoutForm'
 import checkoutFormContent from '@/json/checkout-form.json'
 import type { FormInputsProps } from '@/typings/input-type'
@@ -13,8 +16,10 @@ import type { AddressFormProps } from '@/typings/types'
 export default function CheckoutForm({ addressType }: AddressFormProps) {
   const { onSubmitHandler, userDetails } = useSubmitCheckoutForm()
 
+  const formSchema = addressType === 'billing' ? billingSchema : shippingSchema
+
   const methods = useForm<FormInputsProps>({
-    resolver: yupResolver(shippingSchema),
+    resolver: yupResolver(formSchema),
   })
 
   return (
@@ -56,10 +61,12 @@ export default function CheckoutForm({ addressType }: AddressFormProps) {
             <p className="ml-4">Save this information for next time</p>
           </div>
         )}
-        <input
+        <button
           type="submit"
           className={`w-1/2 mx-auto flex items-center justify-center p-1 text-md my-4 mt-1 my-3 bg-mountain-green text-white shadow-lg rounded-xl`}
-        />
+        >
+          Submit
+        </button>
       </form>
     </FormProvider>
   )

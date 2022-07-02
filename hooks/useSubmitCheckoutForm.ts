@@ -18,16 +18,24 @@ export default function useSubmitCheckoutForm() {
   const [checkoutAddress, setCheckoutAddress] = useAtom(checkoutAddressAtom)
   const { loadingToast, updateToast } = useToast()
   const toastID = useRef(null)
-
-  console.log('checkoutAddress', checkoutAddress)
-
   const { data: userDetails } = useQuery('userDetails', getUserAccount)
   const [checkoutForm, setCheckoutForm] = useAtom(checkoutFormAtom)
-
   const createUserAddressMutate = useCreateUserAddress()
   const updateCheckoutAddressMutate = useUpdateUserAddress()
 
+  console.log('checkoutAddress', checkoutAddress)
+
+  function displayBillingAddress() {
+    setCheckoutForm({
+      ...checkoutForm,
+      billing: {
+        form: null,
+      },
+    })
+  }
+
   const onSubmitHandler = (addressType: 'billing' | 'shipping', data: any) => {
+    console.log('data', data)
     createVboutCartAction(data)
     addCartItemAction(data)
     setCheckoutAddress({
@@ -35,12 +43,13 @@ export default function useSubmitCheckoutForm() {
       [addressType]: data,
     })
     if (addressType === 'billing') {
+      updateCheckoutAddressMutate.mutate({ addressType, data })
       displayBillingAddress()
     }
     if (addressType === 'shipping' && userDetails !== null) {
       createUserAddressMutate.mutate(data)
       updateCheckoutAddressMutate.mutate({ addressType, data })
-    } else if (userDetails === null) {
+    } else if (userDetails === null && addressType === 'shipping') {
       loadingToast(toastID)
       createUserAccountAtCheckout(data)
         .then((response) => {
@@ -61,15 +70,6 @@ export default function useSubmitCheckoutForm() {
           updateToast(toastID, 'error', err.message)
         })
     }
-  }
-
-  function displayBillingAddress() {
-    setCheckoutForm({
-      ...checkoutForm,
-      billing: {
-        form: null,
-      },
-    })
   }
 
   return { onSubmitHandler, userDetails, checkoutForm }

@@ -4,13 +4,14 @@ import { useQuery } from 'react-query'
 
 import { toAddressValueArray } from '@/components/Checkout/CheckoutAddressForm'
 import { useAccount, useCart, useToast } from '@/hooks'
-import { checkoutFormAtom } from '@/lib/atomConfig'
+import { checkoutAddressAtom, checkoutFormAtom } from '@/lib/atomConfig'
 
 export default function useBillingAddress() {
   const [billingAddress, setBillingAddress] = useState('')
   const [checkoutForm, setCheckoutForm] = useAtom(checkoutFormAtom)
   const { updateCheckoutAddress, getUserAccount } = useAccount()
   const { data: userDetails } = useQuery('userDetails', getUserAccount)
+  const [checkoutAddress, setCheckoutAddress] = useAtom(checkoutAddressAtom)
 
   const { useCartData } = useCart()
   const { loadingToast, updateToast } = useToast()
@@ -36,6 +37,10 @@ export default function useBillingAddress() {
             billing: {
               form: null,
             },
+          })
+          setCheckoutAddress({
+            ...checkoutAddress,
+            billing: cart.shipping,
           })
         })
         .catch(() =>

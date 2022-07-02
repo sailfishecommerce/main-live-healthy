@@ -22,6 +22,7 @@ export default function useSubmitCheckoutFormAction() {
       },
       onSettled: () => {
         queryClient.invalidateQueries('listUserAddress')
+        queryClient.invalidateQueries('cart')
       },
       onSuccess: () => {
         updateToast(toastID, 'success', 'address created')
@@ -44,6 +45,7 @@ export default function useSubmitCheckoutFormAction() {
         },
         onSettled: () => {
           queryClient.invalidateQueries('listUserAddress')
+          queryClient.invalidateQueries('cart')
         },
         onSuccess: (_, variables) => {
           if (variables.addressType) {

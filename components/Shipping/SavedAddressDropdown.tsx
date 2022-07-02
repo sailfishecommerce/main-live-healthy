@@ -12,11 +12,12 @@ export default function SavedAddressDropdown() {
     dropdown,
     useDeleteAddressHandler,
     status,
+    useSelectAddressHandler,
     error,
-    selectAddressHandler,
   } = useSavedAddress()
 
   const deleteAddress = useDeleteAddressHandler()
+  const selectAddress = useSelectAddressHandler()
 
   return (
     <div>
@@ -58,7 +59,7 @@ export default function SavedAddressDropdown() {
                       <button
                         type="button"
                         className="bg-mountain-green mr-4 text-white px-2 py-1 text-xs"
-                        onClick={() => selectAddressHandler(address.id)}
+                        onClick={() => selectAddress.mutate(address.id)}
                       >
                         Select Address
                       </button>

@@ -8,22 +8,22 @@ import { toast } from 'react-toastify'
 import BankTransferList from '@/components/Form/BankTransferList'
 import { sendBankTransfer } from '@/hooks/useVbout'
 import checkoutFormContent from '@/json/checkout-form.json'
-import { paymentFormAtom } from '@/lib/atomConfig'
+import { checkoutAddressAtom } from '@/lib/atomConfig'
 
 export default function BankTransferForm() {
   const [bank, setBank] = useState('')
   const [submit, setSubmit] = useState(false)
-  const [paymentForm] = useAtom(paymentFormAtom)
+  const [checkoutAddress] = useAtom(checkoutAddressAtom)
   const setBankHandler = (e: any) => setBank(e.target.value)
   const router = useRouter()
 
   useEffect(() => {
     if (submit) {
-      const { email, firstName, lastName } = paymentForm.form
+      const { email, firstName, lastName } = checkoutAddress.shipping
       sendBankTransfer(email, bank, firstName, lastName)
         .then(() => {
           setSubmit(false)
-          toast.success(`An email has been sent to ${paymentForm?.form.email}`)
+          toast.success(`An email has been sent to ${email}`)
           router.push('/checkout-complete')
         })
         .catch(() => {

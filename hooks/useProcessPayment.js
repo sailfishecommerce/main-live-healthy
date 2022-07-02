@@ -93,7 +93,7 @@ export default function useProcessPayment() {
     getUserAccount()
       .then((response) => {
         if (response === null) {
-          createUserAddresstAtCheckout(data.form)
+          createUserAddresstAtCheckout(data.shipping)
             .then((response) => {
               if (response !== null && response?.email?.code === 'UNIQUE') {
                 hasError(

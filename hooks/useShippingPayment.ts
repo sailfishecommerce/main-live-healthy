@@ -3,23 +3,23 @@ import { useAtom } from 'jotai'
 import { useQuery } from 'react-query'
 
 import { useAccount } from '@/hooks'
-import { paymentFormAtom } from '@/lib/atomConfig'
+import { checkoutAddressAtom } from '@/lib/atomConfig'
 
 type fieldType =
-  | 'address'
+  | 'address1'
+  | 'city'
   | 'country'
-  | 'district'
   | 'email'
   | 'firstName'
   | 'lastName'
   | 'phone'
-  | 'region'
+  | 'state'
   | 'zip'
 
 export default function useShippingPayment() {
   const { getUserAccount } = useAccount()
   const { data: userDetail, status } = useQuery('userDetails', getUserAccount)
-  const [paymentForm] = useAtom(paymentFormAtom)
+  const [checkoutAddress] = useAtom(checkoutAddressAtom)
 
   function formatFormValues(field: fieldType) {
     const formValue =
@@ -29,15 +29,15 @@ export default function useShippingPayment() {
         ? ''
         : userDetail !== null
         ? userDetail[field]
-        : paymentForm !== null
-        ? paymentForm.form[field]
+        : checkoutAddress !== null
+        ? checkoutAddress.shipping[field]
         : ''
 
     return formValue
   }
 
   function formatFieldValue(field: fieldType) {
-    return paymentForm.form[field]
+    return checkoutAddress.form[field]
   }
 
   const formValues = {
@@ -45,9 +45,9 @@ export default function useShippingPayment() {
     lastName: formatFormValues('lastName'),
     email: formatFormValues('email'),
     country: formatFieldValue('country'),
-    address: formatFieldValue('address'),
-    region: formatFieldValue('region'),
-    district: formatFieldValue('district'),
+    address1: formatFieldValue('address1'),
+    state: formatFieldValue('state'),
+    city: formatFieldValue('city'),
     zip: formatFieldValue('zip'),
     phone: formatFieldValue('phone'),
   }

@@ -88,33 +88,15 @@ export default function useAccount() {
     })
   }
 
-  async function updateUserBillingInfo(
-    data: createUserAccountAtCheckoutData,
-    token: string
-  ) {
+  async function updateUserBillingInfo(token: string) {
     const { swell } = await swellInit()
 
     return await swell.cart.update({
       billing: {
-        // name: `${data.firstName} ${data.lastName}`,
-        // address1: data.address1,
-        // city: data.city,
-        // state: data.state,
-        // zip: data.zip,
-        // country: data.country,
         card: {
           token,
         },
       },
-      // shipping: {
-      //   name: `${data.firstName} ${data.lastName}`,
-      //   address1: data.address1,
-      //   city: data.city,
-      //   state: data.state,
-      //   zip: data.zip,
-      //   country: data.country,
-      //   phone: data.phone,
-      // },
     })
   }
 

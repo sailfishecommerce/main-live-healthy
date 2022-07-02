@@ -1,14 +1,14 @@
 import { useAtom } from 'jotai'
 
 import useProcessPayment from '@/hooks/useProcessPayment'
-import { paymentFormAtom } from '@/lib/atomConfig'
+import { checkoutAddressAtom } from '@/lib/atomConfig'
 
 export default function useMakePayment() {
-  const [paymentForm] = useAtom(paymentFormAtom)
+  const [checkoutAddress] = useAtom(checkoutAddressAtom)
   const { makePayment } = useProcessPayment()
 
   function makePaymentHandler() {
-    makePayment(paymentForm)
+    makePayment(checkoutAddress)
   }
 
   return { makePaymentHandler }

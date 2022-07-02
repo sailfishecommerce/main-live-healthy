@@ -11,7 +11,7 @@ export default function BlogArticleExcerpts() {
         {loading ? (
           <SpinnerRipple centerRipple />
         ) : (
-          blogData.map((content: any) => (
+          blogData?.map((content: any) => (
             <BlogArticleExcerpt key={content.title} content={content} />
           ))
         )}

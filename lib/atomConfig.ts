@@ -45,24 +45,6 @@ export const mobileViewAtom = atom<mobileViewAtomType>({
 })
 // end of ui-state
 
-// form
-export const paymentFormAtom = atomWithStorage<paymentFormAtomType>(
-  'paymentForm',
-  {
-    form: {
-      firstName: '',
-      lastName: '',
-      email: '',
-      country: '',
-      address: '',
-      region: '',
-      district: '',
-      zip: '',
-      phone: '',
-    },
-    completed: false,
-  }
-)
 export const completeOrderAtom = atom(false)
 export const countryAtom = atom<{ country: string } | null>(null)
 export const userAddressAtom = atom(null)

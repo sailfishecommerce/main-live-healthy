@@ -33,11 +33,11 @@ export default function CheckoutAddressForm({ addressType }: AddressFormProps) {
         })
         setCheckoutAddress({
           ...checkoutAddress,
-          [addressType]: cart[addressType],
+          shipping: cart[addressType],
         })
       }
     }
-  }, [status, addressType])
+  }, [])
 
   return (
     <>

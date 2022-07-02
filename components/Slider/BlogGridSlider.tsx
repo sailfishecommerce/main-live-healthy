@@ -41,7 +41,7 @@ function BlogGridSliderComponent() {
           }}
         >
           {blogData.length > 0 &&
-            blogData.map((content: any) => (
+            blogData?.map((content: any) => (
               <SplideSlide key={content.title}>
                 <article className="w-full relative flex flex-col">
                   <Link passHref href={`/blog/post/${toSlug(content.title)}`}>

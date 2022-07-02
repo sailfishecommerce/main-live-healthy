@@ -9,7 +9,7 @@ export function formatIntentData(cart: any, paymentForm: any) {
   )[0]
   const { shipping, billing } = paymentForm
   const products = formatCartProduct(cart)
-  const street = shipping.address1 ? shipping.address1 : shipping.city
+  const street = shipping?.address1 ? shipping.address1 : shipping.city
   const cartData = {
     amount: cart.grandTotal,
     currency: cart.currency,

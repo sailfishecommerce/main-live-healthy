@@ -17,7 +17,7 @@ interface Props extends SearchPageLayoutProps {
 function CollectionPage({ slugs, ...props }: Props) {
   return (
     <Applayout title="Collection page">
-      {slugs.length > 0 && <CategoryMetatag slug={slugs[0]} />}
+      {slugs?.length > 0 && <CategoryMetatag slug={slugs[0]} />}
       <SearchPageLayout {...props}>
         <ErrorBoundaryWrapper>
           <Collection />

@@ -35,7 +35,6 @@ export default function useSubmitCheckoutForm() {
   }
 
   const onSubmitHandler = (addressType: 'billing' | 'shipping', data: any) => {
-    console.log('data', data)
     createVboutCartAction(data)
     addCartItemAction(data)
     setCheckoutAddress({

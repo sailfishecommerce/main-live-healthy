@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react'
+
 import CheckoutAddressForm from '@/components/Checkout/CheckoutAddressForm'
 import DisplaySavedAddress from '@/components/Shipping/DisplaySavedAddress'
 import BillingTag from '@/components/Tag/BillingTag'
@@ -10,6 +12,20 @@ export default function BillingAddress() {
     updateBillingAddressHandler,
     billingAddress,
   } = useBillingAddress()
+
+  const [showAddress, setShowAddress] = useState(false)
+
+  useEffect(() => {
+    const timer: any =
+      !showAddress &&
+      setTimeout(() => {
+        setShowAddress(true)
+      }, 1500)
+
+    return () => {
+      clearTimeout(timer)
+    }
+  }, [])
 
   return (
     <div className="billingAddress mt-4">
@@ -28,7 +44,7 @@ export default function BillingAddress() {
         />
       ))}
       {billingAddress && <CheckoutAddressForm addressType="billing" />}
-      <DisplaySavedAddress addressType="billing" />
+      {showAddress && <DisplaySavedAddress addressType="billing" />}
     </div>
   )
 }

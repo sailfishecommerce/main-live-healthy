@@ -1,7 +1,5 @@
-/* eslint-disable no-unneeded-ternary */
 import axios from 'axios'
 import { useAtom } from 'jotai'
-import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
 
 import { airwallexAtom } from '@/lib/atomConfig'
@@ -9,8 +7,6 @@ import { formatIntentData } from '@/lib/formatAirwallex'
 import type { cartType } from '@/typings/types'
 
 export default function useAirwallexPayment() {
-  const router = useRouter()
-  const disableBtn = router.pathname.includes('checkout') ? true : false
   const [, setAirwallex] = useAtom(airwallexAtom)
 
   function createAccessToken() {
@@ -52,6 +48,5 @@ export default function useAirwallexPayment() {
     createAccessToken,
     createPaymentIntent,
     checkoutHandler,
-    disableBtn,
   }
 }

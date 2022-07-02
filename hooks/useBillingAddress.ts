@@ -1,6 +1,6 @@
 import { useAtom } from 'jotai'
 import { useRef, useState } from 'react'
-import { useQuery } from 'react-query'
+import { useMutation, useQuery, useQueryClient } from 'react-query'
 
 import { toAddressValueArray } from '@/components/Checkout/CheckoutAddressForm'
 import { useAccount, useCart, useToast } from '@/hooks'
@@ -21,6 +21,39 @@ export default function useBillingAddress() {
   const updateBillingAddressHandler = (address: string) =>
     setBillingAddress(address)
 
+  function useUpdateBillingAddress() {
+    const queryClient = useQueryClient()
+
+    return useMutation(() => updateCheckoutAddress('billing', cart.shipping), {
+      mutationKey: 'createUserAddress',
+      onMutate: () => {
+        loadingToast(toastID)
+      },
+      onSettled: () => {
+        queryClient.invalidateQueries('listUserAddress')
+        queryClient.invalidateQueries('cart')
+      },
+      onSuccess: () => {
+        updateToast(toastID, 'success', 'billing address updated')
+        setCheckoutForm({
+          ...checkoutForm,
+          billing: {
+            form: null,
+          },
+        })
+        setCheckoutAddress({
+          ...checkoutAddress,
+          billing: cart.shipping,
+        })
+      },
+      onError: () => {
+        updateToast(toastID, 'error', 'unable to update billing address')
+      },
+    })
+  }
+
+  const updateBillingAddress = useUpdateBillingAddress()
+
   function billingTagAddressHandler(tagValue: string) {
     if (tagValue === 'use-a-different-billing-address') {
       setCheckoutForm({ ...checkoutForm, billing: { form: 'billing' } })
@@ -28,24 +61,7 @@ export default function useBillingAddress() {
       toAddressValueArray(cart.shipping).length > 5 &&
       status === 'success'
     ) {
-      loadingToast(toastID)
-      updateCheckoutAddress('billing', cart.shipping)
-        .then(() => {
-          updateToast(toastID, 'success', 'billing address updated')
-          setCheckoutForm({
-            ...checkoutForm,
-            billing: {
-              form: null,
-            },
-          })
-          setCheckoutAddress({
-            ...checkoutAddress,
-            billing: cart.shipping,
-          })
-        })
-        .catch(() =>
-          updateToast(toastID, 'error', 'unable to update billing address')
-        )
+      updateBillingAddress.mutate()
     }
   }
 

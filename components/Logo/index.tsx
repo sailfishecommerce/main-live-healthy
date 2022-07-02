@@ -17,7 +17,7 @@ function LogoComponent({ className }: LogoProps) {
     if (!loading && dbdata !== null) {
       setLogoUrl(dbdata)
     }
-  }, [])
+  }, [dbdata, loading])
 
   return (
     <Link passHref href="/">

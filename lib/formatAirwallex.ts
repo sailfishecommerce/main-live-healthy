@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 import type { cartType } from '@/typings/types'
 
 export function formatIntentData(cart: any, paymentForm: any) {
-  const { shipping } = paymentForm
+  const { shipping, billing } = paymentForm
   const products = formatCartProduct(cart)
   const street = shipping.address1 ? shipping.address1 : shipping.city
   const cartData = {
@@ -18,6 +18,7 @@ export function formatIntentData(cart: any, paymentForm: any) {
       shipment_method: cart.shipmentRating.services.filter(
         (service: any) => service.price === cart.shipmentTotal
       )[0],
+      billing,
     },
     order: {
       products,

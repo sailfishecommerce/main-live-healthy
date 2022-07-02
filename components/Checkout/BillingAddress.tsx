@@ -1,4 +1,5 @@
 import CheckoutAddressForm from '@/components/Checkout/CheckoutAddressForm'
+import DisplaySavedAddress from '@/components/Shipping/DisplaySavedAddress'
 import BillingTag from '@/components/Tag/BillingTag'
 import useBillingAddress from '@/hooks/useBillingAddress'
 import shippingTagsJson from '@/json/shipping.json'
@@ -27,6 +28,7 @@ export default function BillingAddress() {
         />
       ))}
       {billingAddress && <CheckoutAddressForm addressType="billing" />}
+      <DisplaySavedAddress addressType="billing" />
     </div>
   )
 }

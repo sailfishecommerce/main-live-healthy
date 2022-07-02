@@ -4,7 +4,11 @@ import { useMutation, useQuery, useQueryClient } from 'react-query'
 
 import { toAddressValueArray } from '@/components/Checkout/CheckoutAddressForm'
 import { useAccount, useCart, useToast } from '@/hooks'
-import { checkoutAddressAtom, checkoutFormAtom } from '@/lib/atomConfig'
+import {
+  checkoutAddressAtom,
+  checkoutFormAtom,
+  watchCheckoutFormAtom,
+} from '@/lib/atomConfig'
 
 export default function useBillingAddress() {
   const [billingAddress, setBillingAddress] = useState('')
@@ -12,7 +16,9 @@ export default function useBillingAddress() {
   const { updateCheckoutAddress, getUserAccount } = useAccount()
   const { data: userDetails } = useQuery('userDetails', getUserAccount)
   const [checkoutAddress, setCheckoutAddress] = useAtom(checkoutAddressAtom)
-
+  const [watchCheckoutForm, setWatchCheckoutForm] = useAtom(
+    watchCheckoutFormAtom
+  )
   const { useCartData } = useCart()
   const { loadingToast, updateToast } = useToast()
   const { data: cart, status } = useCartData()
@@ -44,6 +50,9 @@ export default function useBillingAddress() {
           ...checkoutAddress,
           billing: cart.shipping,
         })
+        if (!watchCheckoutForm.includes('billing')) {
+          setWatchCheckoutForm([...watchCheckoutForm, 'billing'])
+        }
       },
       onError: () => {
         updateToast(toastID, 'error', 'unable to update billing address')

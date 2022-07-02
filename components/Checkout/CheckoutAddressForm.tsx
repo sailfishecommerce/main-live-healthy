@@ -6,7 +6,8 @@ import CheckoutForm from '@/components/Checkout/CheckoutForm'
 import DisplaySavedAddress from '@/components/Shipping/DisplaySavedAddress'
 import SavedAddressDropdown from '@/components/Shipping/SavedAddressDropdown'
 import useBillingAddress from '@/hooks/useBillingAddress'
-import { checkoutAddressAtom, watchCheckoutFormAtom } from '@/lib/atomConfig'
+import useWatchCheckout from '@/hooks/useWatchCheckout'
+import { checkoutAddressAtom } from '@/lib/atomConfig'
 import type { AddressFormProps } from '@/typings/types'
 
 export const toAddressValueArray = (cartObj: any) => {
@@ -16,10 +17,9 @@ export const toAddressValueArray = (cartObj: any) => {
 
 export default function CheckoutAddressForm({ addressType }: AddressFormProps) {
   const { checkoutForm, cart, status, setCheckoutForm } = useBillingAddress()
-  const [watchCheckoutForm, setWatchCheckoutForm] = useAtom(
-    watchCheckoutFormAtom
-  )
+
   const [checkoutAddress, setCheckoutAddress] = useAtom(checkoutAddressAtom)
+  useWatchCheckout(addressType)
 
   useEffect(() => {
     if (status === 'success') {
@@ -35,9 +35,6 @@ export default function CheckoutAddressForm({ addressType }: AddressFormProps) {
           ...checkoutAddress,
           [addressType]: cart[addressType],
         })
-        if (!watchCheckoutForm.includes(addressType)) {
-          setWatchCheckoutForm([...watchCheckoutForm, addressType])
-        }
       }
     }
   }, [status, addressType])

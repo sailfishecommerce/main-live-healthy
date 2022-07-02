@@ -6,11 +6,8 @@ import { useEffect } from 'react'
 import { toAddressValueArray } from '@/components/Checkout/CheckoutAddressForm'
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import { useCart } from '@/hooks'
-import {
-  checkoutAddressAtom,
-  checkoutFormAtom,
-  watchCheckoutFormAtom,
-} from '@/lib/atomConfig'
+import useWatchCheckout from '@/hooks/useWatchCheckout'
+import { checkoutAddressAtom, checkoutFormAtom } from '@/lib/atomConfig'
 import getCountry from '@/lib/getCountry'
 
 export default function DisplaySavedAddress({ addressType }: any) {
@@ -18,14 +15,9 @@ export default function DisplaySavedAddress({ addressType }: any) {
   const { data: cart, status } = useCartData()
   const [checkoutForm, setCheckoutForm] = useAtom(checkoutFormAtom)
   const [checkoutAddress, setCheckoutAddress] = useAtom(checkoutAddressAtom)
-  const [watchCheckoutForm, setWatchCheckoutForm] = useAtom(
-    watchCheckoutFormAtom
-  )
+  useWatchCheckout(addressType)
 
   useEffect(() => {
-    if (!watchCheckoutForm.includes(addressType)) {
-      setWatchCheckoutForm([...watchCheckoutForm, addressType])
-    }
     if (status === 'success' && addressType) {
       const addressValue = toAddressValueArray(cart[addressType])
       if (addressValue.length > 2) {

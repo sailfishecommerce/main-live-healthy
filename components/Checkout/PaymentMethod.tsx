@@ -21,7 +21,7 @@ export default function PaymentMethod() {
           For credit/debit card, you can pay via Paypal. No Paypal account
           required.
         </p>
-        {watchCheckoutForm.length === 2 ? (
+        {watchCheckoutForm.length === 3 ? (
           <>
             <PaymentWithStripe title="Stripe" />
             <AirwallexPaymentMethod />

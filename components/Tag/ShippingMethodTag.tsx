@@ -1,5 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useAtom } from 'jotai'
+import { useEffect } from 'react'
+
 import CheckedInputIcon from '@/components/Icons/CheckedInputIcon'
 import FormattedPrice from '@/components/Price/FormattedPrice'
+import { watchCheckoutFormAtom } from '@/lib/atomConfig'
 
 interface Props {
   content: {
@@ -23,6 +28,18 @@ export default function ShippingMethodTag({
   const selectedMethodStyled =
     shippingMethod === content.id ? 'bg-gray-300 text-white' : ''
   const tagClassName = className ? className : ''
+  const [watchCheckoutForm, setWatchCheckoutForm] = useAtom(
+    watchCheckoutFormAtom
+  )
+
+  useEffect(() => {
+    if (
+      shippingMethod !== undefined &&
+      !watchCheckoutForm.includes('shipping-rate')
+    ) {
+      setWatchCheckoutForm([...watchCheckoutForm, 'shipping-rate'])
+    }
+  }, [shippingMethod, watchCheckoutForm])
 
   return (
     <button

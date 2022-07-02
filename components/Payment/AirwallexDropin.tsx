@@ -61,7 +61,6 @@ function AirwallexCardElement({
       })
         .then((response: any) => {
           setIsSubmitting(false)
-          console.log('response-airwallex', response)
           isSuccessful(toastId, 'Payment successful')
           cleanUpAfterPayment(response, 'airwallex')
         })

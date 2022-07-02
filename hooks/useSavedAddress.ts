@@ -3,7 +3,7 @@ import { useRef, useState } from 'react'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 
 import { useAccount, useToast } from '@/hooks'
-import { checkoutFormAtom } from '@/lib/atomConfig'
+import { checkoutFormAtom, watchCheckoutFormAtom } from '@/lib/atomConfig'
 
 export default function useSavedAddress() {
   const { listUserAddress, deleteUserAddress, updateShippingAddressById } =
@@ -11,6 +11,9 @@ export default function useSavedAddress() {
   const { loadingToast, updateToast } = useToast()
   const [dropdown, setDropdown] = useState(false)
   const [checkoutForm, setCheckoutForm] = useAtom(checkoutFormAtom)
+  const [watchCheckoutForm, setWatchCheckoutForm] = useAtom(
+    watchCheckoutFormAtom
+  )
   const queryClient = useQueryClient()
 
   const {
@@ -58,6 +61,9 @@ export default function useSavedAddress() {
               form: null,
             },
           })
+          if (!watchCheckoutForm.includes('shipping')) {
+            setWatchCheckoutForm([...watchCheckoutForm, 'shipping'])
+          }
         },
         onError: () => {
           updateToast(toastID2, 'error', 'error selecting address')

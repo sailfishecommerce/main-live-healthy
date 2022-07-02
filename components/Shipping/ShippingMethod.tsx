@@ -1,7 +1,9 @@
+import { useAtom } from 'jotai'
 import { useQuery } from 'react-query'
 
 import ShippingMethodTag from '@/components/Tag/ShippingMethodTag'
 import useShipping, { useShippingMutation } from '@/hooks/useShipping'
+import { watchCheckoutFormAtom } from '@/lib/atomConfig'
 
 interface Props {
   shippingMethod: string
@@ -9,14 +11,18 @@ interface Props {
 
 export default function ShippingMethod({ shippingMethod }: Props) {
   const { useUpdateShippingRate } = useShippingMutation()
+  const { getShippingRates } = useShipping()
+  const { data, status } = useQuery('getShippingRate', getShippingRates)
   const updateShippingRate = useUpdateShippingRate()
-
+  const [watchCheckoutForm, setWatchCheckoutForm] = useAtom(
+    watchCheckoutFormAtom
+  )
   function updateShippingMethod(value: string) {
     updateShippingRate.mutate(value)
+    if (!watchCheckoutForm.includes('shipping-rate')) {
+      setWatchCheckoutForm([...watchCheckoutForm, 'shipping-rate'])
+    }
   }
-  const { getShippingRates } = useShipping()
-
-  const { data, status } = useQuery('getShippingRate', getShippingRates)
 
   return (
     <div className="mt-6">

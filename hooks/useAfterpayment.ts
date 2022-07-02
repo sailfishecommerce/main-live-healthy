@@ -3,11 +3,12 @@ import { useAtom } from 'jotai'
 import { useRouter } from 'next/router'
 
 import useMutationAction from '@/hooks/useMutationAction'
-import { checkoutAddressAtom } from '@/lib/atomConfig'
+import { checkoutAddressAtom, watchCheckoutFormAtom } from '@/lib/atomConfig'
 import firebaseDatabase from '@/lib/firebaseDatabase'
 
 export default function useAfterPayment() {
   const [, setCheckoutAddress] = useAtom(checkoutAddressAtom)
+  const [, setWatchCheckoutForm] = useAtom(watchCheckoutFormAtom)
 
   const router = useRouter()
   const { useEmptyCartForAirwallex } = useMutationAction()
@@ -20,14 +21,16 @@ export default function useAfterPayment() {
     if (paymentType === 'airwallex') {
       emptyCart.mutate()
     }
+    //  set payment form to default
+    setCheckoutAddress(null)
+    setWatchCheckoutForm([])
+
     // save payment response to database
     const { writeData } = firebaseDatabase()
     const paymentDatabaseRefId = 'payment/' + paymentType + `/${response?.id}`
     writeData(paymentDatabaseRefId, JSON.stringify(response)).then(() => {
-      // return router.push('/checkout-complete')
+      return router.push('/checkout-complete')
     })
-    //  set payment form to default
-    setCheckoutAddress(null)
   }
 
   return {

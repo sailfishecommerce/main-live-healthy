@@ -1,5 +1,3 @@
-// useToast hook
-
 /* eslint-disable no-param-reassign */
 import { useAtom } from 'jotai'
 import type { MutableRefObject } from 'react'

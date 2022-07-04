@@ -6,6 +6,9 @@ import { useCart } from '@/hooks'
 export default function ReviewOrder() {
   const { useCartData } = useCart()
   const { data: cart } = useCartData()
+
+  console.log('cart', cart)
+
   return (
     <div className="bg-white height-fit-content rounded-md w-full my-2 md:my-0  p-4">
       <h6 className="mb-2">

@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { toast } from 'react-toastify'
 
-import { useCart } from '.'
+import { useCart } from '@/hooks'
 
 export default function useCoupon() {
   const { applyDiscountCode } = useCart()
@@ -13,13 +13,13 @@ export default function useCoupon() {
     setDiscountCode(e.target.value)
   }
 
-  function onSubmitCoupon(e: any) {
-    e.preventDefault()
+  function onSubmitCoupon() {
     if (discountCode.length !== 0) {
       setLoading(true)
       applyDiscountCode(discountCode)
         .then((response) => {
           setLoading(false)
+          console.log('response', response)
           if (response.couponCode === discountCode) {
             toast.success('coupon discount successful')
             setAllDiscount([...allDiscount, response?.coupon])

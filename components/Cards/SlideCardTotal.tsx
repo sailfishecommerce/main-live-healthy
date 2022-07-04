@@ -17,9 +17,15 @@ export default function SlideCardTotal() {
   return (
     <>
       <div className="cart-total absolute bottom-0 bg-white p-6 py-4 w-full right-0">
+        <div className="note-view p-2 bg-blue-100 mb-4">
+          <h2 className="note text-red-500 text-sm text-center">
+            You can only apply{' '}
+            <span className="text-red-800 font-bold">ONE (1)</span> coupon code
+          </h2>
+        </div>
         <div className="total flex items-center">
           <h4 className="text-gray-500 mr-8">
-            Total:{' '}
+            Total:
             {cart !== null ? (
               <FormattedPrice
                 className="font-bold text-black text-md"
@@ -33,7 +39,7 @@ export default function SlideCardTotal() {
             )}
           </h4>{' '}
           <div className="discount rounded-md border text-sm text-red-500 hover:bg-red-500 hover:text-white px-2 py-1 border-red-500">
-            Discount: HK$ 0
+            Discount: HK$ {cart.discountTotal}
           </div>
         </div>
         {cart !== null ? (
@@ -71,20 +77,16 @@ export default function SlideCardTotal() {
             Add discount code
           </button>
         </div>
-        {allDiscount.length > 0 && (
-          <div className="applied-discounts">
-            <h3 className="font-bold text-sm">Applied Discounts</h3>
-            <div className="applied-discounts-tags flex flex-wrap">
-              {allDiscount.map((discount: any, index: number) => (
-                <AppliedDiscountTag
-                  key={discount?.id}
-                  discountTitle={discount.description}
-                  count={index}
-                />
-              ))}
-            </div>
+
+        <div className="applied-discounts">
+          <h3 className="font-bold text-sm">Applied Discounts</h3>
+          <div className="applied-discounts-tags flex flex-wrap">
+            {cart?.discounts.map((discount: any) => (
+              <AppliedDiscountTag key={discount.id} coupon={cart.coupon} />
+            ))}
           </div>
-        )}
+        </div>
+
         <Link passHref href={`/checkout/${cart?.checkoutId}`}>
           <button
             type="button"

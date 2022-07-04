@@ -1,43 +1,62 @@
-import { useState } from 'react'
-import { toast } from 'react-toastify'
+import { useRef, useState } from 'react'
+import { useMutation, useQueryClient } from 'react-query'
 
 import { useCart } from '@/hooks'
+import useSwellCart from '@/hooks/useSwellCart'
+import useToast from '@/hooks/useToast'
 
 export default function useCoupon() {
   const { applyDiscountCode } = useCart()
+  const { loadingToast, updateToast } = useToast()
+  const { removeCouponCode } = useSwellCart()
+
   const [discountCode, setDiscountCode] = useState('')
-  const [loading, setLoading] = useState(false)
-  const [allDiscount, setAllDiscount] = useState<any>([])
+  const queryClient = useQueryClient()
+  const toastID = useRef(null)
 
   function couponInputHandler(e: any) {
     setDiscountCode(e.target.value)
   }
 
-  function onSubmitCoupon() {
-    if (discountCode.length !== 0) {
-      setLoading(true)
-      applyDiscountCode(discountCode)
-        .then((response) => {
-          setLoading(false)
-          console.log('response', response)
-          if (response.couponCode === discountCode) {
-            toast.success('coupon discount successful')
-            setAllDiscount([...allDiscount, response?.coupon])
-          }
-        })
-        .catch((error) => {
-          setLoading(false)
-          toast.error(error?.message)
-        })
-    } else {
-      toast.error('please enter a coupon')
-    }
+  function useAddCoupon() {
+    return useMutation(() => applyDiscountCode(discountCode), {
+      mutationKey: 'useAddCoupon',
+      onMutate: () => loadingToast(toastID),
+      onSettled: () => {
+        queryClient.invalidateQueries('cart')
+      },
+      onSuccess: () => {
+        queryClient.invalidateQueries('cart')
+        updateToast(toastID, 'success', 'coupon added')
+      },
+      onError: () => {
+        queryClient.invalidateQueries('cart')
+        updateToast(toastID, 'error', 'error adding coupon')
+      },
+    })
+  }
+
+  function useRemoveCoupon() {
+    return useMutation(() => removeCouponCode(), {
+      mutationKey: 'useRemoveCoupon',
+      onMutate: () => loadingToast(toastID),
+      onSettled: () => {
+        queryClient.invalidateQueries('cart')
+      },
+      onSuccess: () => {
+        queryClient.invalidateQueries('cart')
+        updateToast(toastID, 'success', 'coupon removed')
+      },
+      onError: () => {
+        queryClient.invalidateQueries('cart')
+        updateToast(toastID, 'error', 'error removing coupon')
+      },
+    })
   }
 
   return {
-    loading,
     couponInputHandler,
-    onSubmitCoupon,
-    allDiscount,
+    useAddCoupon,
+    useRemoveCoupon,
   }
 }

@@ -73,9 +73,14 @@ export default function useSwellCart() {
     })
   }
 
-  async function applyGiftCode(code: string) {
+  async function applyCouponCode(code: string) {
     const { swell } = await swellInit()
     return await swell.cart.applyCoupon(code)
+  }
+
+  async function removeCouponCode() {
+    const { swell } = await swellInit()
+    return await swell.cart.removeCoupon()
   }
 
   async function updateCartAccountID(account_id: string) {
@@ -95,7 +100,8 @@ export default function useSwellCart() {
     updateCartItemQuantity,
     emptyCart,
     submitOrder,
-    applyGiftCode,
+    applyCouponCode,
+    removeCouponCode,
     recoverCart,
     deleteCart,
     addToCartModal,

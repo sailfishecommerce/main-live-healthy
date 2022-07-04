@@ -5,15 +5,16 @@ import useToast from '@/hooks/useToast'
 
 export default function useCart() {
   const { isLoading, isSuccessful, hasError } = useToast()
-  const { applyGiftCode, getACart, recoverCart } = useSwellCart()
+  const { applyCouponCode, getACart, recoverCart } = useSwellCart()
 
   const useCartData = () => useQuery('cart', getACart)
+
   const useRecoverCartData = (checkoutId: any | string) =>
     useQuery(`recoverCart-${checkoutId}`, () => recoverCart(checkoutId))
 
   function applyDiscountCode(code: string) {
     const loading = isLoading()
-    return applyGiftCode(code)
+    return applyCouponCode(code)
       .then((response) => {
         isSuccessful(loading, response?.message)
         return response

@@ -8,18 +8,20 @@ import { appLoadingAtom } from '@/lib/atomConfig'
 export default function useToast() {
   const [appLoading, setAppLoading] = useAtom(appLoadingAtom)
 
-  const loadingToast = (toastId: MutableRefObject<any>) =>
-    (toastId.current = toast('Processing ...', {
+  const loadingToast = (toastId: MutableRefObject<any>) => {
+    setAppLoading(true)
+    toastId.current = toast('Processing ...', {
       isLoading: true,
       autoClose: false,
-    }))
-
+    })
+  }
   const updateToast = (
     toastId: MutableRefObject<any>,
     toastType: any,
     message: string
   ) => {
     const autoCloseStatus = toastType === 'success' ? 800 : false
+    setAppLoading(false)
     return toast.update(toastId.current, {
       type: toastType,
       autoClose: autoCloseStatus,

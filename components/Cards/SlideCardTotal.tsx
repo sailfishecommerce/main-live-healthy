@@ -12,7 +12,8 @@ export default function SlideCardTotal() {
   const { useCartData } = useCart()
   const { data: cart }: cartType | any = useCartData()
   const { updateSlideTab } = useSlidingTab()
-  const { allDiscount, onSubmitCoupon, couponInputHandler } = useCoupon()
+  const { couponInputHandler, useAddCoupon } = useCoupon()
+  const addCoupon = useAddCoupon()
 
   return (
     <>
@@ -72,21 +73,22 @@ export default function SlideCardTotal() {
             aria-label="add discount code"
             type="button"
             className="rounded-xl  lg:w-2/5 bg-mountain-green text-white md:px-4 py-3 p-2 text-xs  lg:text-sm font-medium"
-            onClick={onSubmitCoupon}
+            onClick={() => addCoupon.mutate()}
           >
             Add discount code
           </button>
         </div>
 
-        <div className="applied-discounts">
-          <h3 className="font-bold text-sm">Applied Discounts</h3>
-          <div className="applied-discounts-tags flex flex-wrap">
-            {cart?.discounts.map((discount: any) => (
-              <AppliedDiscountTag key={discount.id} coupon={cart.coupon} />
-            ))}
+        {cart?.coupon && (
+          <div className="applied-discounts">
+            <h3 className="font-bold text-sm">Applied Discounts</h3>
+            <div className="applied-discounts-tags flex flex-wrap">
+              {cart?.discounts.map((discount: any) => (
+                <AppliedDiscountTag key={discount.id} coupon={cart.coupon} />
+              ))}
+            </div>
           </div>
-        </div>
-
+        )}
         <Link passHref href={`/checkout/${cart?.checkoutId}`}>
           <button
             type="button"

@@ -26,11 +26,10 @@ export default function useCoupon() {
         queryClient.invalidateQueries('cart')
       },
       onSuccess: () => {
-        queryClient.invalidateQueries('cart')
+        setDiscountCode('')
         updateToast(toastID, 'success', 'coupon added')
       },
       onError: () => {
-        queryClient.invalidateQueries('cart')
         updateToast(toastID, 'error', 'error adding coupon')
       },
     })
@@ -44,11 +43,10 @@ export default function useCoupon() {
         queryClient.invalidateQueries('cart')
       },
       onSuccess: () => {
-        queryClient.invalidateQueries('cart')
+        setDiscountCode('')
         updateToast(toastID, 'success', 'coupon removed')
       },
       onError: () => {
-        queryClient.invalidateQueries('cart')
         updateToast(toastID, 'error', 'error removing coupon')
       },
     })

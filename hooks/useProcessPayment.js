@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-shadow */
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { useAtom } from 'jotai'
 
 import { useToast, useAccount, useCart } from '@/hooks'
@@ -27,17 +27,19 @@ export default function useProcessPayment() {
     getUserAccount,
   } = useAccount()
   const [loadingState, setLoadingState] = useState(false)
-  const { isLoading, isSuccessful, hasError } = useToast()
+  const { loadingToast, updateToast } = useToast()
   const [, setSubmitOrder] = useAtom(submitOrderAtom)
   const [, setSendProductReview] = useAtom(sendProductReviewAtom)
   const { cleanUpAfterPayment } = useAfterPayment()
+  const toastID = useRef()
 
-  function processPayment(data, loading) {
+  function processPayment(data) {
     function vboutOrder(order) {
       const formatVboutOrderData = vboutOrderData(cart, order)
       console.log('formatVboutOrderData', formatVboutOrderData)
       return createVboutOrder(formatVboutOrderData, setLog)
     }
+    loadingToast(toastID)
     setLoadingState(true)
     tokenizePayment()
       .then((tokenPaymentResponse) => {
@@ -53,7 +55,7 @@ export default function useProcessPayment() {
                         setLoadingState(false)
                         setSendProductReview(true)
                         vboutOrder(response)
-                        isSuccessful(loading, 'payment successful')
+                        updateToast(toastID, 'success', 'payment successful')
                         setSubmitOrder({
                           account: response?.account,
                           orderNumber: response?.number,
@@ -64,56 +66,56 @@ export default function useProcessPayment() {
                       return response
                     })
                     .catch((error) => {
-                      hasError(loading, error?.message)
+                      updateToast(toastID, 'error', error?.message)
                       setLoadingState(false)
                     })
                 })
                 .catch((error) => {
-                  hasError(loading, error?.message)
+                  updateToast(toastID, 'error', error?.message)
                   setLoadingState(false)
                 })
             })
             .catch((error) => {
-              hasError(loading, error?.message)
+              updateToast(toastID, 'error', error?.message)
               setLoadingState(false)
             })
         } else {
-          hasError(loading, tokenPaymentResponse?.message)
+          updateToast(toastID, 'error', tokenPaymentResponse?.message)
           setLoadingState(false)
         }
       })
       .catch((err) => {
-        hasError(loading, err?.message)
+        updateToast(toastID, 'error', err?.message)
         setLoadingState(false)
       })
   }
 
   function makePayment(data) {
-    const loading = isLoading()
     getUserAccount()
       .then((response) => {
         if (response === null) {
           createUserAddresstAtCheckout(data.shipping)
             .then((response) => {
               if (response !== null && response?.email?.code === 'UNIQUE') {
-                hasError(
-                  loading,
+                updateToast(
+                  toastID,
+                  'error',
                   'you have an existing account with us, please login'
                 )
                 updateModalView('MODAL_LOGIN')
               } else {
-                processPayment(data, loading)
+                processPayment(data)
               }
             })
             .catch((err) => {
-              hasError(loading, err?.message)
+              updateToast(toastID, 'error', err?.message)
             })
         } else {
-          processPayment(data, loading)
+          processPayment(data)
         }
       })
       .catch((error) => {
-        hasError(loading, error?.message)
+        updateToast(toastID, 'error', error?.message)
       })
   }
 

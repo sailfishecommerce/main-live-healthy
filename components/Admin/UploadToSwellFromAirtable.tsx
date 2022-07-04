@@ -10,14 +10,14 @@ import uploadCSV from '@/utils/uploadCSV'
 export default function UploadToSwellFromAirtable() {
   const { progress, dropzone, style, isUploadSuccessful } =
     useCSVDropzone(uploadCSV)
-  const { loadingToast, toastUpdate } = useToast()
+  const { loadingToast, updateToast } = useToast()
   const toastID = useRef(null)
 
   useEffect(() => {
     if (progress.loading) {
       loadingToast(toastID)
     } else if (progress.uploaded > 0) {
-      toastUpdate(toastID)
+      updateToast(toastID)
     }
   }, [progress.loading])
 

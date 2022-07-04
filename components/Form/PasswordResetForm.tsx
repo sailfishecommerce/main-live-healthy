@@ -1,5 +1,6 @@
 import { Formik } from 'formik'
 import { useRouter } from 'next/router'
+import { useRef } from 'react'
 
 import { displayFormElement } from '@/components/Form/FormElement'
 import { forgotPasswordSchema } from '@/components/Form/schema/AuthSchema'
@@ -9,8 +10,10 @@ import passwordResetForm from '@/json/password-reset.json'
 export default function PasswordResetForm() {
   const router = useRouter()
   const { recoverPassword } = useAccount()
-  const { isLoading, isSuccessful, hasError } = useToast()
+  const { loadingToast, updateToast } = useToast()
   const searchParams = router.query
+  const toastID = useRef(null)
+
   const key: any | string = searchParams.key
 
   return (
@@ -21,17 +24,19 @@ export default function PasswordResetForm() {
       }}
       validationSchema={forgotPasswordSchema}
       onSubmit={(values, { setSubmitting, resetForm }) => {
-        const loading = isLoading()
+        loadingToast(toastID)
         recoverPassword(values.newPassword, key)
           .then((response) => {
             if (response?.success) {
-              isSuccessful(loading, 'Password reset successful')
+              updateToast(toastID, 'success', 'Password reset successful')
               router.push('/account')
             } else {
-              hasError(loading, 'error resetting password')
+              updateToast(toastID, 'error', 'error resetting password')
             }
           })
-          .catch(() => hasError(loading, 'error resetting password'))
+          .catch(() =>
+            updateToast(toastID, 'error', 'error resetting password')
+          )
         resetForm()
         setSubmitting(false)
       }}

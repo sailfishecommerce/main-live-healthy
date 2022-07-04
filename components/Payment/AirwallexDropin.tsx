@@ -1,5 +1,5 @@
 import { getElement, confirmPaymentIntent } from 'airwallex-payment-elements'
-import { useEffect, useState, memo } from 'react'
+import { useEffect, useState, memo, useRef } from 'react'
 
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import { useToast } from '@/hooks'
@@ -19,8 +19,8 @@ function AirwallexCardElement({
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [errorMessage, setErrorMessage] = useState('')
   const { cleanUpAfterPayment } = useAfterPayment()
-
-  const { isLoading, isSuccessful, hasError } = useToast()
+  const { loadingToast, updateToast } = useToast()
+  const toastID = useRef(null)
 
   useEffect(() => {
     loadAirwallexUi()
@@ -46,7 +46,7 @@ function AirwallexCardElement({
 
   const triggerConfirm = (): void => {
     setIsSubmitting(true)
-    const toastId = isLoading()
+    loadingToast(toastID)
     const card: any = getElement('card')
     if (card) {
       confirmPaymentIntent({
@@ -61,13 +61,13 @@ function AirwallexCardElement({
       })
         .then((response: any) => {
           setIsSubmitting(false)
-          isSuccessful(toastId, 'Payment successful')
+          updateToast(toastID, 'success', 'Payment successful')
           cleanUpAfterPayment(response, 'airwallex')
         })
         .catch((error) => {
           setIsSubmitting(false)
           setErrorMessage(error.message)
-          hasError(toastId, error.message)
+          updateToast(toastID, 'error', error.message)
         })
     }
   }

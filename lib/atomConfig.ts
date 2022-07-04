@@ -6,7 +6,6 @@ import type {
   authAtomType,
   checkoutFormType,
   mobileViewAtomType,
-  paymentFormAtomType,
   selectedVendorAtomType,
   socailAuthDetailsType,
   submitOrderAtomType,

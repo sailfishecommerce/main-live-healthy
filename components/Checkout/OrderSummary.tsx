@@ -21,7 +21,7 @@ export default function OrderSummary() {
         />
       </div>
       <div className="subtotal flex items-center justify-between my-1">
-        <h6 className="font-light text-base">Shipping Free</h6>
+        <h6 className="font-light text-base">Shipping Fee</h6>
         <FormattedPrice
           className="text-sm font-bold text-green-500"
           price={cart?.shipmentTotal}

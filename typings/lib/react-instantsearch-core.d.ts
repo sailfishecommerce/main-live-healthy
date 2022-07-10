@@ -1,5 +1,11 @@
 import 'react-instantsearch-core'
 
+export declare module 'react-instantsearch-core' {
+  interface InstantSearchProps {
+    widgetsCollector: any
+  }
+}
+
 declare module 'react-instantsearch-core' {
   // SortBy
   export interface SortByProvided {

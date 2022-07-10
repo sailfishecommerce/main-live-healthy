@@ -66,6 +66,12 @@ function SearchBox({ currentRefinement, refine }: any) {
           .search form.ais-SearchBox-form input {
             width: 140px;
           }
+          @media (max-width: 768px) {
+            .search form.ais-SearchBox-form input,
+            .ais-SearchBox {
+              width: 100%;
+            }
+          }
         `}
       </style>
     </>

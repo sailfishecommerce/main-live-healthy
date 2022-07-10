@@ -26,7 +26,7 @@ export default function SlideCardTotal() {
         </div>
         <div className="total flex items-center">
           <h4 className="text-gray-500 mr-8">
-            Total:
+            Total:{' '}
             {cart !== null ? (
               <FormattedPrice
                 className="font-bold text-black text-md"
@@ -40,7 +40,11 @@ export default function SlideCardTotal() {
             )}
           </h4>{' '}
           <div className="discount rounded-md border text-sm text-red-500 hover:bg-red-500 hover:text-white px-2 py-1 border-red-500">
-            Discount: HK$ {cart.discountTotal}
+            Discount:{' '}
+            <FormattedPrice
+              className="font-semibold text-red-500 text-md"
+              price={cart.discountTotal}
+            />
           </div>
         </div>
         {cart !== null ? (

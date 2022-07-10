@@ -77,7 +77,6 @@ export const socailAuthDetailsAtom = atomWithStorage<socailAuthDetailsType>(
     socialLoginMethod: null,
   }
 )
-export const logsAtom = atomWithStorage('logs', null)
 
 // admin-auth
 export const adminAuthAtom = atomWithStorage<any>('adminAuth', null)

@@ -11,7 +11,6 @@ import { createVboutOrder } from '@/hooks/useVbout'
 import { vboutOrderData } from '@/lib/vbout'
 import { sendProductReviewAtom, submitOrderAtom } from '@/lib/atomConfig'
 import useAfterPayment from '@/hooks/useAfterpayment'
-import { logsAtom } from '@/lib/atomConfig'
 
 export default function useProcessPayment() {
   const { tokenizePayment, submitUserOrder } = usePayment()
@@ -19,7 +18,6 @@ export default function useProcessPayment() {
   const { useCartData } = useCart()
   const { updateModalView } = useModal()
   const { data: cart } = useCartData()
-  const [, setLog] = useAtom(logsAtom)
 
   const { createUserAddresstAtCheckout, getUserAccount } = useAccount()
   const [loadingState, setLoadingState] = useState(false)

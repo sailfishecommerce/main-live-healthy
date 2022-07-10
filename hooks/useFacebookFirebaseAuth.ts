@@ -8,7 +8,7 @@ import {
 import type { SetStateAction } from 'jotai'
 import { useAtom } from 'jotai'
 
-import { logsAtom, socailAuthDetailsAtom } from '@/lib/atomConfig'
+import { socailAuthDetailsAtom } from '@/lib/atomConfig'
 import type { socailAuthDetailsType } from '@/typings/atomtype'
 
 export default function useFacebookFirebaseAuth() {
@@ -16,7 +16,6 @@ export default function useFacebookFirebaseAuth() {
   const [socailAuthDetails, setSocialAuthDetails]: any = useAtom<
     SetStateAction<socailAuthDetailsType | null>
   >(socailAuthDetailsAtom)
-  const [, setLogData] = useAtom(logsAtom)
 
   const facebookProvider = new FacebookAuthProvider()
   const FacebookSignin = () => {
@@ -32,7 +31,6 @@ export default function useFacebookFirebaseAuth() {
     getRedirectResult(auth)
       .then((result: any) => {
         console.log('facebook-response', result)
-        setLogData(result)
         const credential: any =
           FacebookAuthProvider.credentialFromResult(result)
         const token = credential.accessToken

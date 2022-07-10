@@ -6,7 +6,7 @@ import { useQuery } from 'react-query'
 
 import { useAccount } from '@/hooks'
 import useFirebaseAuth from '@/hooks/useFirebaseAuth'
-import { logsAtom, socailAuthDetailsAtom } from '@/lib/atomConfig'
+import { socailAuthDetailsAtom } from '@/lib/atomConfig'
 import type { socailAuthDetailsType } from '@/typings/atomtype'
 
 export default function useGreetuser() {
@@ -20,7 +20,6 @@ export default function useGreetuser() {
   })
 
   const { googleRedirect, facebookRedirect } = useFirebaseAuth()
-  const [logData] = useAtom(logsAtom)
 
   useEffect(() => {
     if (!loggedIn && socialLoginMethod === 'google') {

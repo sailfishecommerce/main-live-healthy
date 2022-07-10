@@ -21,11 +21,7 @@ export default function useProcessPayment() {
   const { data: cart } = useCartData()
   const [, setLog] = useAtom(logsAtom)
 
-  const {
-    updateUserBillingInfo,
-    createUserAddresstAtCheckout,
-    getUserAccount,
-  } = useAccount()
+  const { createUserAddresstAtCheckout, getUserAccount } = useAccount()
   const [loadingState, setLoadingState] = useState(false)
   const { loadingToast, updateToast } = useToast()
   const [, setSubmitOrder] = useAtom(submitOrderAtom)
@@ -36,39 +32,33 @@ export default function useProcessPayment() {
   function processPayment(data) {
     function vboutOrder(order) {
       const formatVboutOrderData = vboutOrderData(cart, order)
-      console.log('formatVboutOrderData', formatVboutOrderData)
       return createVboutOrder(formatVboutOrderData, setLog)
     }
     loadingToast(toastID)
     setLoadingState(true)
     tokenizePayment()
       .then((tokenPaymentResponse) => {
+        // console.log('tokenPaymentResponse,', tokenPaymentResponse)
         if (!tokenPaymentResponse?.code) {
           getACart()
-            .then((response) => {
-              updateUserBillingInfo(data, response.billing.card?.token)
+            .then(() => {
+              // console.log('getCart,', response)
+              return submitUserOrder()
                 .then((response) => {
-                  submitUserOrder()
-                    .then((response) => {
-                      console.log('stripe-response', response)
-                      if (response.paid) {
-                        setLoadingState(false)
-                        setSendProductReview(true)
-                        vboutOrder(response)
-                        updateToast(toastID, 'success', 'payment successful')
-                        setSubmitOrder({
-                          account: response?.account,
-                          orderNumber: response?.number,
-                          products: response?.items,
-                        })
-                        cleanUpAfterPayment(response, 'stripe')
-                      }
-                      return response
+                  // console.log('stripe-response', response)
+                  if (response.paid) {
+                    setLoadingState(false)
+                    setSendProductReview(true)
+                    vboutOrder(response)
+                    updateToast(toastID, 'success', 'payment successful')
+                    setSubmitOrder({
+                      account: response?.account,
+                      orderNumber: response?.number,
+                      products: response?.items,
                     })
-                    .catch((error) => {
-                      updateToast(toastID, 'error', error?.message)
-                      setLoadingState(false)
-                    })
+                    cleanUpAfterPayment(response, 'stripe')
+                  }
+                  return response
                 })
                 .catch((error) => {
                   updateToast(toastID, 'error', error?.message)

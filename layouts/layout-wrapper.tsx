@@ -24,12 +24,6 @@ const LoadingBar = dynamic(
       /* webpackChunkName: 'LoadingBar' */ '@/components/Loader/LoadingBar'
     )
 )
-const SpinnerOverlay = dynamic(
-  () =>
-    import(
-      /* webpackChunkName: 'SpinnerOverlay' */ '@/components/Loader/SpinnerOverlay'
-    )
-)
 
 const DynamicSlidingInformationTab = dynamic(
   () =>
@@ -102,7 +96,6 @@ export default function LayoutWrapper({ children }: PropsWithChildren<Props>) {
       </Head>
       <LayoutMetatag />
       <div id="head" />
-      {appLoading && <SpinnerOverlay />}
       {(appLoading || loading) && <LoadingBar />}
       <NextNProgress color="#95bf11" options={{ showSpinner: true }} />
       <ToastContainer />

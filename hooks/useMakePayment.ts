@@ -8,7 +8,7 @@ export default function useMakePayment() {
   const { makePayment } = useProcessPayment()
 
   function makePaymentHandler() {
-    makePayment(checkoutAddress)
+    return makePayment(checkoutAddress)
   }
 
   return { makePaymentHandler }

@@ -1,10 +1,18 @@
+import dynamic from 'next/dynamic'
+
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
-import CustomercareView from '@/components/View/CustomercareView'
 import useArticleData from '@/hooks/useArticleData'
 
 interface Props {
   dbNode: string
 }
+
+const DynamicCustomercareView = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'CustomercareView' */ '@/components/View/CustomercareView'
+    )
+)
 
 export default function PolicyView({ dbNode }: Props) {
   const { databaseData } = useArticleData(dbNode)
@@ -14,7 +22,9 @@ export default function PolicyView({ dbNode }: Props) {
       {databaseData === null ? (
         <SpinnerRipple centerRipple />
       ) : (
-        databaseData && <CustomercareView pageContent={databaseData?.blocks} />
+        databaseData && (
+          <DynamicCustomercareView pageContent={databaseData?.blocks} />
+        )
       )}
     </>
   )

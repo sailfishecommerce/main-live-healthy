@@ -1,10 +1,18 @@
-import BlogArticle from '@/components/Blog/BlogArticle'
+import dynamic from 'next/dynamic'
+
 import BlogAside from '@/components/Blog/BlogAside'
 import PopularArticles from '@/components/Blog/PopularArticles'
 import TableofContent from '@/components/Blog/TableofContent'
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import useArticleData from '@/hooks/useArticleData'
 import useDatabaseData from '@/hooks/useDatabaseData'
+
+const DynamicBlogArticle = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'BlogArticle' */ '@/components/Blog/BlogArticle'
+    )
+)
 
 interface Props {
   route: string
@@ -31,7 +39,10 @@ export default function BlogOverview({ route }: Props) {
       ) : (
         <>
           {blogPost !== undefined && databaseData !== null && (
-            <BlogArticle blogPost={blogPost} postContent={databaseData} />
+            <DynamicBlogArticle
+              blogPost={blogPost}
+              postContent={databaseData}
+            />
           )}
           <BlogAside>
             <TableofContent blogPost={blogPostContent} />

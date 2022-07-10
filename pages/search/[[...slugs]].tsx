@@ -3,7 +3,7 @@ import type { GetServerSidePropsContext } from 'next'
 import dynamic from 'next/dynamic'
 import { Configure } from 'react-instantsearch-dom'
 
-import { NoResultsHandler } from '@/components/@instantsearch/widgets/no-results-handler/no-results-handler'
+// import { NoResultsHandler } from '@/components/@instantsearch/widgets/no-results-handler/no-results-handler'
 import ProductHitCard from '@/components/Cards/ProductHitCard'
 import ErrorBoundaryWrapper from '@/components/ErrorBoundary'
 import { viewModeAtom } from '@/components/ViewModes'
@@ -14,6 +14,16 @@ import {
   SearchPageLayout,
   getServerSidePropsPage,
 } from '@/layouts/search-page-layout'
+
+const NoResultsHandler = dynamic(
+  (): any =>
+    import(
+      /* webpackChunkName: 'NoResultsHandler' */ '@/components/@instantsearch/widgets/no-results-handler/no-results-handler'
+    ).then((mod) => mod.NoResultsHandler),
+  {
+    ssr: false,
+  }
+)
 
 const RefinementsBar = dynamic(
   () =>

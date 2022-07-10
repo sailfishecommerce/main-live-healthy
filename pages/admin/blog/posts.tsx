@@ -1,11 +1,16 @@
 /* eslint-disable no-nested-ternary */
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 
-import BlogTable from '@/components/Blog/BlogTable'
 import DashboardMainView from '@/components/Dashboard/DashboardMainView'
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import useBlogTable from '@/hooks/useBlogTable'
 import DashboardLayout from '@/layouts/dashboard-layout'
+
+const DynamicBlogTable = dynamic(
+  () =>
+    import(/* webpackChunkName: 'BlogTable' */ '@/components/Blog/BlogTable')
+)
 
 export default function BlogPosts() {
   const { loading, columns, data } = useBlogTable()
@@ -25,7 +30,7 @@ export default function BlogPosts() {
           {loading ? (
             <SpinnerRipple centerRipple />
           ) : data !== undefined && data?.length > 0 ? (
-            <BlogTable data={data} columns={columns} />
+            <DynamicBlogTable data={data} columns={columns} />
           ) : (
             data?.length === 0 && (
               <h3 className="text-center text-xl">No Blog post yet</h3>

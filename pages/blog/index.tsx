@@ -1,13 +1,22 @@
 import dynamic from 'next/dynamic'
 
-import BlogArticleExcerpts from '@/components/Blog/BlogArticleExcerpts'
 import BlogBanner from '@/components/Blog/BlogBanner'
 import Applayout from '@/layouts/app-layout'
 
 const DynamicBlogGridSlider = dynamic(
   () =>
     import(
-      /* webpackChunkName: 'BlogGridSlide' */ '@/components/Slider/BlogGridSlider'
+      /* webpackChunkName: 'BlogGridSlider' */ '@/components/Slider/BlogGridSlider'
+    ),
+  {
+    ssr: false,
+  }
+)
+
+const DynamicBlogArticleExcerpts = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'BlogArticleExcerpts' */ '@/components/Blog/BlogArticleExcerpts'
     ),
   {
     ssr: false,
@@ -21,7 +30,7 @@ export default function Blog() {
       <div className="container mx-auto items-center justify-center pb-5 mb-2 md:mb-4">
         <DynamicBlogGridSlider />
         <hr className="mt-5" />
-        <BlogArticleExcerpts />
+        <DynamicBlogArticleExcerpts />
       </div>
     </Applayout>
   )

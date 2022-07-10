@@ -1,6 +1,14 @@
+import dynamic from 'next/dynamic'
+
 import DownloadInvoice from '@/components/Invoice/DownloadInvoice'
-import InvoicePage from '@/components/Invoice/InvoicePage'
 import InvoicePdf from '@/components/Invoice/InvoicePdf'
+
+const DynamicInvoicePage = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'InvoicePage' */ '@/components/Invoice/InvoicePage'
+    )
+)
 
 export default function Invoice({ invoice }: any) {
   return (
@@ -12,7 +20,7 @@ export default function Invoice({ invoice }: any) {
           invoicePdf={<InvoicePdf invoice={invoice} />}
         />
       )}
-      {invoice && <InvoicePage invoice={invoice} />}
+      {invoice && <DynamicInvoicePage invoice={invoice} />}
     </>
   )
 }

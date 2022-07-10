@@ -5,7 +5,6 @@
 import dynamic from 'next/dynamic'
 
 import productshowcaseGroup from '@/json/productshowcase.json'
-// import Applayout from '@/layouts/app-layout'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
 import {
   SearchPageLayout,
@@ -74,16 +73,6 @@ const ProductBanner = dynamic(
   }
 )
 
-// const TrustmateReview = dynamic(
-//   () =>
-//     import(
-//       /* webpackChunkName: 'TrustmateReview' */ '@/components/Reviews/TrustmateReview'
-//     ),
-//   {
-//     ssr: false,
-//   }
-// )
-
 export default function Home(props: SearchPageLayoutProps) {
   return (
     <Applayout title="Welcome to Livehealthy stores">
@@ -97,7 +86,6 @@ export default function Home(props: SearchPageLayoutProps) {
         <ShippingBanner />
         <ProductShowcaseGroup group={productshowcaseGroup[2]} />
         <ProductTabSlider />
-        {/* <TrustmateReview /> */}
         <div className="mb-6" />
       </SearchPageLayout>
     </Applayout>

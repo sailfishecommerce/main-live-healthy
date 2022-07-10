@@ -18,11 +18,6 @@ interface Props {
   pageProps: any
 }
 
-// const loadFramerMotionFeatures = () =>
-//   import(/* webpackChunkName: 'lib' */ '@/lib/framer-motion-features').then(
-//     (mod) => mod.default
-//   )
-
 export const searchClientAtom = atom<SearchClient | undefined>(undefined)
 
 export default function ProviderLayout({ children }: PropsWithChildren<Props>) {

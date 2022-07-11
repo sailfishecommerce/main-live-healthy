@@ -3,7 +3,7 @@ import { useMediaQuery } from '@/hooks'
 export default function HeaderBanner() {
   const mobile = useMediaQuery('(max-width:700px)')
 
-  const videoSrc = mobile ? '/mobile-promo-banner.mp4' : '/promo-banner.mp4'
+  const videoSrc = !mobile ? '/promo-banner.mp4' : '/mobile-promo-banner.mp4'
 
   return (
     <div className="w-full">

@@ -1,12 +1,19 @@
 /* eslint-disable no-nested-ternary */
+import dynamic from 'next/dynamic'
 import Link from 'next/link'
 
 import DashboardCard from '@/components/Dashboard/DashboardCard'
 import DashboardMainView from '@/components/Dashboard/DashboardMainView'
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
-import InvoiceTable from '@/components/Table/InvoiceTable'
 import useAdminOrder from '@/hooks/useAdminOrder'
 import DashboardLayout from '@/layouts/dashboard-layout'
+
+const DynamicInvoiceTable = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'InvoiceTable' */ '@/components/Table/InvoiceTable'
+    )
+)
 
 export default function Admin() {
   const { data, status } = useAdminOrder()
@@ -31,7 +38,7 @@ export default function Admin() {
             <SpinnerRipple centerRipple />
           ) : (
             dataResult && (
-              <InvoiceTable
+              <DynamicInvoiceTable
                 stripeData={dataResult}
                 showPagination={false}
                 selectRow={false}

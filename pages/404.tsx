@@ -1,10 +1,15 @@
-import Error404 from '@/components/Error'
+import dynamic from 'next/dynamic'
+
 import Applayout from '@/layouts/app-layout'
+
+const DynamicError404 = dynamic(
+  () => import(/* webpackChunkName: 'Error' */ '@/components/Error')
+)
 
 export default function Error404Page() {
   return (
     <Applayout title="Error page">
-      <Error404 />
+      <DynamicError404 />
     </Applayout>
   )
 }

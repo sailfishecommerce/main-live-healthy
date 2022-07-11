@@ -6,15 +6,10 @@ import dynamic from 'next/dynamic'
 
 import productshowcaseGroup from '@/json/productshowcase.json'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
-import { getStaticPropsPage } from '@/layouts/search-page-layout'
-
-const SearchPageLayout = dynamic(
-  (): any =>
-    import(
-      /* webpackChunkName: 'SearchPageLayout' */ '@/layouts/search-page-layout'
-    ).then((mod) => mod.SearchPageLayout),
-  { ssr: true }
-)
+import {
+  getStaticPropsPage,
+  SearchPageLayout,
+} from '@/layouts/search-page-layout'
 
 const Values = dynamic(
   () => import(/* webpackChunkName: 'Values' */ '@/components/Values'),

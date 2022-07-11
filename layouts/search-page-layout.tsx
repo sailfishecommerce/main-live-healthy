@@ -51,21 +51,19 @@ function SearchPageLayoutComponent({
   )
 
   return (
-    <main>
-      <Search
-        indexName={indexName}
-        searchClient={searchClient}
-        searchState={isBrowser ? searchState : initialSearchState}
-        searchParameters={searchParameters}
-        resultsState={resultsState}
-        createURL={createURL}
-        widgetsCollector={widgetsCollector}
-        onSearchStateChange={onSearchStateChange}
-        {...props}
-      >
-        {children}
-      </Search>
-    </main>
+    <Search
+      indexName={indexName}
+      searchClient={searchClient}
+      searchState={isBrowser ? searchState : initialSearchState}
+      searchParameters={searchParameters}
+      resultsState={resultsState}
+      createURL={createURL}
+      widgetsCollector={widgetsCollector}
+      onSearchStateChange={onSearchStateChange}
+      {...props}
+    >
+      {children}
+    </Search>
   )
 }
 

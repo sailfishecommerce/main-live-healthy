@@ -8,10 +8,12 @@ import productshowcaseGroup from '@/json/productshowcase.json'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
 import { getStaticPropsPage } from '@/layouts/search-page-layout'
 
-const SearchPageLayout = dynamic((): any =>
-  import(
-    /* webpackChunkName: 'SearchPageLayout' */ '@/layouts/search-page-layout'
-  ).then((mod) => mod.SearchPageLayout)
+const SearchPageLayout = dynamic(
+  (): any =>
+    import(
+      /* webpackChunkName: 'SearchPageLayout' */ '@/layouts/search-page-layout'
+    ).then((mod) => mod.SearchPageLayout),
+  { ssr: true }
 )
 
 const Values = dynamic(

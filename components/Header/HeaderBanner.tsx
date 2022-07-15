@@ -15,9 +15,6 @@ export default function HeaderBanner() {
       </div>
       <style jsx>
         {`
-          .headerBanner {
-            height: 80px;
-          }
           @media (max-width: 768px) {
             .headerBanner {
               height: 40px;

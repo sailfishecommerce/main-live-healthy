@@ -69,9 +69,9 @@ export default function Product({
       : `/vendor/${product?.vendor}`
 
   const productImage =
-    typeof product.images[0] === 'string'
-      ? product.images[0]
-      : product.images[0].file.url
+    typeof product?.images[0] === 'string'
+      ? product?.images[0]
+      : product?.images[0].file.url
 
   return (
     <>

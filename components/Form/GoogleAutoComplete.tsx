@@ -9,7 +9,6 @@ export default function GoogleAutoComplete() {
   const {
     formState: { errors },
     control,
-    setValue,
   } = useFormContext()
 
   const country = useWatch({
@@ -23,10 +22,7 @@ export default function GoogleAutoComplete() {
 
   function handleSelect(userInputAddress: string) {
     const userLocation = `${userInputAddress} ${country}`
-    console.log('userLocation', userLocation)
-    geocodeByAddress(userLocation).then((result: any) =>
-      console.log('result', result)
-    )
+    geocodeByAddress(userLocation)
   }
   return (
     <div>

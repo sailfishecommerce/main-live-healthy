@@ -53,10 +53,10 @@ const ShippingBanner = dynamic(
     )
 )
 
-const ProductTabSlider = dynamic(
+const ProductTabCarousel = dynamic(
   () =>
     import(
-      /* webpackChunkName: 'ProductTabSlider' */ '@/components/Slider/ProductTabSlider'
+      /* webpackChunkName: 'ProductTabCarousel' */ '@/components/Slider/ProductTabSlider'
     ),
   {
     ssr: false,
@@ -85,7 +85,7 @@ export default function Home(props: SearchPageLayoutProps) {
         <BestSellerSlider />
         <ShippingBanner />
         <ProductShowcaseGroup group={productshowcaseGroup[2]} />
-        <ProductTabSlider />
+        <ProductTabCarousel />
         <div className="mb-6" />
       </SearchPageLayout>
     </Applayout>

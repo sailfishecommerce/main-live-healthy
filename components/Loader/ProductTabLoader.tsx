@@ -4,7 +4,7 @@ import ContentLoader from 'react-content-loader'
 
 import useMediaQuery from '@/hooks/useMediaQuery'
 
-export function Loader(props: any) {
+export function ProductLoader(props: any) {
   return (
     <ContentLoader
       animate
@@ -38,7 +38,7 @@ export default function ProductTabLoader() {
     <div className="flex flex-wrap mt-5 w-full">
       {loaderArray.map((_, index: number) => (
         <div key={index} className={mobileStyle}>
-          <Loader />
+          <ProductLoader />
         </div>
       ))}
     </div>

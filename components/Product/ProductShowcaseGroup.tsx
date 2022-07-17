@@ -1,6 +1,6 @@
 import { useAtom } from 'jotai'
 
-import TrendingProductSlider from '@/components/Slider/TrendingProductSlider'
+import TrendingProduct from '@/components/Product/TrendingProduct'
 import { selectedVendorAtom } from '@/lib/atomConfig'
 
 interface Props {
@@ -20,7 +20,7 @@ export default function ProductShowcaseGroup({ group }: Props) {
   return (
     <>
       {group.map((groupItem, index) => (
-        <TrendingProductSlider
+        <TrendingProduct
           index={index}
           key={groupItem.category}
           category={groupItem.category}

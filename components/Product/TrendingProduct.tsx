@@ -4,29 +4,22 @@ import { useMemo } from 'react'
 import { useQuery } from 'react-query'
 
 import LoadProducts from '@/components/Loader/ProductsLoader'
-import CategoryProductSlider from '@/components/Slider/CategoryProductSlider'
+import TrendingProductSlider from '@/components/Slider/TrendingProductSlider'
 import ProductTags from '@/components/Tag/ProductTags'
 import useProduct from '@/hooks/useProduct'
+import useSlider from '@/hooks/useSlider'
 import getThreeVendors from '@/lib/getThreeVendors'
 import toSlug from '@/lib/toSlug'
 
-export type ProductsShowcaseProps = {
-  index: number
-  className?: string
-  category: string
-  tabColor: string
-  updateVendor: (vendor: string, index: number) => void
-  selectedVendor: { vendor: string; index: number } | null
-}
-
-export default function ProductShowcase({
+export default function TrendingProduct({
   index,
+  selectedVendor,
   category,
   tabColor,
   updateVendor,
-  selectedVendor,
-}: ProductsShowcaseProps) {
+}: any) {
   const { getProductsInACategory } = useProduct()
+  const { memoisedData } = useSlider()
   const categorySlug = toSlug(category)
   const { data, status } = useQuery(
     `get-products-in-${categorySlug}`,
@@ -34,6 +27,7 @@ export default function ProductShowcase({
     { staleTime: Infinity }
   )
   const products = data?.data
+  const threeFirstVendors = useMemo(() => getThreeVendors(products), [products])
 
   const selectedProducts =
     selectedVendor?.vendor && selectedVendor.index === index
@@ -42,7 +36,7 @@ export default function ProductShowcase({
         )
       : products
 
-  const threeFirstVendors = useMemo(() => getThreeVendors(products), [products])
+  const memoisedSelectedproducts = memoisedData(selectedProducts)
 
   return (
     <section className="lg:py-4 py-2 lg:my-6 rounded-xl container lg:px-4 pl-4 mx-auto lg:bg-gray-100">
@@ -58,20 +52,18 @@ export default function ProductShowcase({
       ) : status === 'loading' ? (
         <LoadProducts />
       ) : (
-        data?.data?.length > 0 && (
-          <CategoryProductSlider
+        <TrendingProductSlider
+          products={memoisedSelectedproducts}
+          threeFirstVendors={threeFirstVendors}
+        >
+          <ProductTags
+            index={index}
+            vendor={selectedVendor}
+            tags={threeFirstVendors}
             tabColor={tabColor}
-            selectedProducts={selectedProducts}
-          >
-            <ProductTags
-              index={index}
-              vendor={selectedVendor}
-              tags={threeFirstVendors}
-              tabColor={tabColor}
-              updateVendor={updateVendor}
-            />
-          </CategoryProductSlider>
-        )
+            updateVendor={updateVendor}
+          />
+        </TrendingProductSlider>
       )}
     </section>
   )

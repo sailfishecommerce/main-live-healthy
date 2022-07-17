@@ -6,19 +6,22 @@ import useMediaQuery from '@/hooks/useMediaQuery'
 
 export function ProductLoader(props: any) {
   const loaderStyle = useMemo(() => ({ width: '100%' }), [])
+  const bigger = props.bigger
+    ? { height: '50%', mainHeight: '240' }
+    : { height: '50%', mainHeight: '150' }
 
   return (
     <ContentLoader
       animate
       speed={2}
-      viewBox="0 0 150 150"
+      viewBox={`0 0 150 ${bigger.mainHeight}`}
       style={loaderStyle}
       backgroundColor="#e3d9d9"
       foregroundColor="#ada4a4"
       title="loading product..."
       {...props}
     >
-      <rect x="0" y="0%" rx="0" ry="0" width="100%" height="50%" />
+      <rect x="0" y="0%" rx="0" ry="0" width="100%" height={bigger.height} />
       <rect x="0%" y="55%" rx="3" ry="3" width="20%" height="5%" />
       <rect x="0" y="63%" rx="0" ry="0" width="100%" height="5%" />
       <rect x="0" y="72%" rx="0" ry="0" width="100%" height="15%" />

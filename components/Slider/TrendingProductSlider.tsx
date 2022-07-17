@@ -10,9 +10,9 @@ export default function TrendingProductSlider({
   const { deviceWidth } = useSlider()
 
   return (
-    <div className="group flex items-center justify-center mx-auto">
+    <>
       <div className="flex items-start flex-col list-products-window">
-        {children}
+        <div className="tag-view">{children}</div>
         <ItemSlider
           deviceWidth={deviceWidth}
           itemCount={products.length}
@@ -24,6 +24,15 @@ export default function TrendingProductSlider({
           {MemoizedTrendingProductRow}
         </ItemSlider>
       </div>
-    </div>
+      <style jsx>
+        {`
+          @media (max-width: 768px) {
+            .list-products-window {
+              width: 100%;
+            }
+          }
+        `}
+      </style>
+    </>
   )
 }

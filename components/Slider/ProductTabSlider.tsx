@@ -35,17 +35,31 @@ export default function ProductTabSlider() {
         ) : status === 'loading' ? (
           <ProductTabLoader />
         ) : (
-          <ItemSlider
-            deviceWidth={productTabWidth}
-            itemCount={memoisedProducts.length}
-            itemData={{
-              products: memoisedProducts,
-            }}
-          >
-            {MemoizeProductSliderItem}
-          </ItemSlider>
+          <div className="slide-view">
+            <ItemSlider
+              deviceWidth={productTabWidth}
+              itemCount={memoisedProducts.length}
+              itemData={{
+                products: memoisedProducts,
+              }}
+            >
+              {MemoizeProductSliderItem}
+            </ItemSlider>
+          </div>
         )}
       </div>
+      <style jsx>
+        {`
+          @media (max-width: 768px) {
+            .slide-view {
+              margin: 20px 0%;
+            }
+            .itemSlider {
+              margin: 10px 20px;
+            }
+          }
+        `}
+      </style>
     </section>
   )
 }

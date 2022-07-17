@@ -21,14 +21,14 @@ export default function useSlider() {
     : { size: 270, height: 400, width: 1450 }
 
   const productTabWidth = mobile
-    ? { size: 150, height: 170, width: 400 }
+    ? { size: 300, height: 135, width: 400 }
     : tablet
-    ? { size: 250, height: 170, width: 720 }
+    ? { size: 250, height: 135, width: 720 }
     : midLaptop
-    ? { size: 280, height: 170, width: 950 }
+    ? { size: 280, height: 140, width: 950 }
     : laptop
-    ? { size: 350, height: 170, width: 1200 }
-    : { size: 450, height: 170, width: 1500 }
+    ? { size: 350, height: 140, width: 1200 }
+    : { size: 450, height: 140, width: 1500 }
 
   return { memoisedData, deviceWidth, productTabWidth }
 }

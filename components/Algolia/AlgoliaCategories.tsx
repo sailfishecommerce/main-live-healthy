@@ -34,7 +34,7 @@ function RefinementListMenu({ items, selectedCategory }: any) {
       <h1 className="text-lg mb-4 font-medium mb-6">{selectedCategory}</h1>
 
       <ul className="flex flex-col pl-0 lg:grid lg:grid-cols-3 lg:gap-2">
-        {menuArray.length === 0 && <LineLoaderArray numberOfLine={5} />}
+        {menuArray.length === 0 && <LineLoaderArray numberOfLine={10} />}
         {menuArray.length > 0 &&
           menuArray.map((item, index: number) => {
             return (
@@ -59,7 +59,7 @@ function RefinementListMenu({ items, selectedCategory }: any) {
           })}
       </ul>
 
-      {selectedCategory && (
+      {selectedCategory && menuArray.length > 0 && (
         <Link
           passHref
           href={`/collection/${getCategorySlug(selectedCategory)}`}

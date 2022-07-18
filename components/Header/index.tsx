@@ -87,6 +87,11 @@ function HeaderComponent() {
               height: 215px;
             }
           }
+          @media (max-width: 350px) {
+            header.bg-white {
+              height: 225px;
+            }
+          }
         `}
       </style>
     </>

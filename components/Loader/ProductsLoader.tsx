@@ -33,7 +33,7 @@ export function LineLoader(props: any) {
     <ContentLoader
       animate
       speed={2}
-      viewBox="0 0 25 2"
+      viewBox="0 0 40 2"
       style={loaderStyle}
       backgroundColor="#e3d9d9"
       className="mx-2"
@@ -41,7 +41,7 @@ export function LineLoader(props: any) {
       title="loading ..."
       {...props}
     >
-      <rect x="0" y="0px" rx="0" ry="0" width="10" height="1" />
+      <rect x="0" y="0px" rx="0" ry="0" width="100%" height="1" />
     </ContentLoader>
   )
 }

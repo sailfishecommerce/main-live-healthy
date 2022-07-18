@@ -49,9 +49,11 @@ export function TrendLink({ trendingItem }: TrendLinkProps) {
               className="hover:scale-105 rounded-xl block"
               alt={trendingItem.name}
               layout="responsive"
+              blurDataURL={productImage}
+              placeholder="blur"
             />
           </div>
-          <p className="text-center hover:text-green-500 font-light mt-2 font-medium">
+          <p className="text-center flex mx-auto hover:text-green-500 font-light text-xs lg:mt-1 lg:text-base lg:font-medium">
             {trendingItem.name}
           </p>
         </a>

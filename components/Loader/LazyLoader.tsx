@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from 'react'
-import LazyLoad from 'react-lazy-load'
+import LazyLoad from 'react-lazyload'
 
 import { useMediaQuery } from '@/hooks'
 
@@ -17,7 +17,7 @@ export default function LazyLoader({
   const componentHeight = mobileDevice ? mobileHeight : height
   return (
     <>
-      <LazyLoad height={componentHeight} offsetVertical={50}>
+      <LazyLoad once height={componentHeight} offset={100}>
         {children}
       </LazyLoad>
     </>

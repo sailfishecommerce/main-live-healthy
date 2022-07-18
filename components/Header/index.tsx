@@ -71,13 +71,13 @@ function HeaderComponent() {
       <style jsx>
         {`
           @media (max-width: 1440px) {
-            header.bg-white {
+            .header.bg-white {
               height: 332px;
             }
           }
 
           @media (max-width: 1100px) {
-            header.bg-white {
+            .header.bg-white {
               height: 300px;
             }
           }

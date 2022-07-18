@@ -1,6 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import { useAtom } from 'jotai'
 
+import LazyLoader from '@/components/Loader/LazyLoader'
 import ProductTabLoader from '@/components/Loader/ProductTabLoader'
 import ItemSlider from '@/components/Slider/ItemSlider'
 import MemoizeProductSliderItem from '@/components/Slider/ProductSliderItem'
@@ -27,43 +28,45 @@ export default function ProductTabSlider() {
   const memoisedProducts = status === 'success' ? memoisedData(data) : []
 
   return (
-    <section className="itemSlider py-2 lg:py-6 product-tab-slider items-start container">
-      <ProductTabSliderDropdown />
-      <div className="tab-products mt-0 flex items-center">
-        {status === 'error' ? (
-          'unable to load products'
-        ) : status === 'loading' ? (
-          <ProductTabLoader />
-        ) : (
-          <div className="slide-view">
-            <ItemSlider
-              deviceWidth={productTabWidth}
-              itemCount={memoisedProducts.length}
-              itemData={{
-                products: memoisedProducts,
-              }}
-            >
-              {MemoizeProductSliderItem}
-            </ItemSlider>
-          </div>
-        )}
-      </div>
-      <style jsx>
-        {`
-          .itemSlider {
-            margin: 10px auto;
-          }
-          @media (max-width: 768px) {
-            .slide-view {
-              margin: 20px 0%;
-            }
+    <LazyLoader height={250} mobileHeight={200}>
+      <section className="itemSlider py-2 lg:py-6 product-tab-slider items-start container">
+        <ProductTabSliderDropdown />
+        <div className="tab-products mt-0 flex items-center">
+          {status === 'error' ? (
+            'unable to load products'
+          ) : status === 'loading' ? (
+            <ProductTabLoader />
+          ) : (
+            <div className="slide-view">
+              <ItemSlider
+                deviceWidth={productTabWidth}
+                itemCount={memoisedProducts.length}
+                itemData={{
+                  products: memoisedProducts,
+                }}
+              >
+                {MemoizeProductSliderItem}
+              </ItemSlider>
+            </div>
+          )}
+        </div>
+        <style jsx>
+          {`
             .itemSlider {
-              overflow-x: scoll;
-              margin: 10px 0px;
+              margin: 10px auto;
             }
-          }
-        `}
-      </style>
-    </section>
+            @media (max-width: 768px) {
+              .slide-view {
+                margin: 20px 0%;
+              }
+              .itemSlider {
+                overflow-x: scoll;
+                margin: 10px 0px;
+              }
+            }
+          `}
+        </style>
+      </section>
+    </LazyLoader>
   )
 }

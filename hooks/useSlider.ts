@@ -7,7 +7,6 @@ import useWindowDimensions from '@/hooks/useWindowDimensions'
 export default function useSlider() {
   const { width } = useWindowDimensions()
   const sliderWidth = width ? width - 15 : width
-  console.log('width', width)
   const memoisedData = memoize((selectedProducts: any) => selectedProducts)
   const mobile = useMediaQuery(`(max-width:426px)`)
   const laptop = useMediaQuery('(max-width:1440px)')
@@ -25,7 +24,7 @@ export default function useSlider() {
     : { size: 270, height: 400, width: 1450 }
 
   const productTabWidth = mobile
-    ? { size: 300, height: 150, width: 400 }
+    ? { size: 300, height: 150, width: sliderWidth }
     : tablet
     ? { size: 250, height: 165, width: 720 }
     : midLaptop

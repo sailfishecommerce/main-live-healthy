@@ -27,11 +27,13 @@ function MenuComponent() {
   const { scrollUp } = useNavStyle()
 
   return (
-    <nav className="nav mx-auto container px-4 pb-3 md:pb-0">
-      <PrimaryMenu />
-      {!mobileWidth && !scrollUp && <DynamicSecondaryMenu />}
-      {mobileWidth && showMobileSearch && <DynamicMobileSearchbar />}
-    </nav>
+    <>
+      <nav className="nav mx-auto container px-4 pb-3 md:pb-0">
+        <PrimaryMenu />
+        {!mobileWidth && !scrollUp && <DynamicSecondaryMenu />}
+        {mobileWidth && showMobileSearch && <DynamicMobileSearchbar />}
+      </nav>
+    </>
   )
 }
 const Menu = memo(MenuComponent)

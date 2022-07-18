@@ -7,7 +7,7 @@ import { useMediaQuery } from '@/hooks'
 const DynamicMobilePrimaryMenu = dynamic(
   () =>
     import(
-      /* webpackChunkName: 'DynamicMobilePrimaryMenu' */ '@/components/Menu/MobilePrimaryMenu'
+      /* webpackChunkName: 'MobilePrimaryMenu' */ '@/components/Menu/MobilePrimaryMenu'
     )
 )
 

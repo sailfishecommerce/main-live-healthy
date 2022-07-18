@@ -28,6 +28,11 @@ export default function HeaderBanner() {
               height: 40px;
             }
           }
+          @media (max-width: 330px) {
+            .headerBanner {
+              height: 35px;
+            }
+          }
         `}
       </style>
     </>

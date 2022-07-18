@@ -3,6 +3,7 @@ import { BsSearch } from 'react-icons/bs'
 import { FaTimes } from 'react-icons/fa'
 import { HiMenuAlt4 } from 'react-icons/hi'
 import { IoPersonOutline } from 'react-icons/io5'
+import { toast } from 'react-toastify'
 
 import CartIcon from '@/components/Icons/CartIcon'
 import AuthIcons from '@/components/Menu/AuthIcon'
@@ -18,6 +19,14 @@ export default function MobilePrimaryMenu() {
     useNav()
   const { updateSlideTab } = useSlidingTab()
 
+  function showCartHandler() {
+    if (cart?.items?.length > 0) {
+      updateSlideTab('SLIDING-CART')
+    } else {
+      toast.error('cart is empty')
+    }
+  }
+
   return (
     <div className="mobile-menu flex flex-col w-1/2 pt-2">
       <div className="flex items-center justify-between">
@@ -27,7 +36,7 @@ export default function MobilePrimaryMenu() {
             type="button"
             aria-label="cart"
             className="cart-icon relative mx-2"
-            onClick={() => updateSlideTab('SLIDING-CART')}
+            onClick={showCartHandler}
           >
             <CartIcon color="#080708" />
             {cart?.items?.length > 0 && (

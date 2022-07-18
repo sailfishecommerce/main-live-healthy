@@ -25,8 +25,8 @@ function LogoComponent({ className }: LogoProps) {
         <Image
           src={logoURL}
           alt="logo"
-          height={50}
-          width={100}
+          height={25}
+          width={80}
           layout="responsive"
         />
       </a>

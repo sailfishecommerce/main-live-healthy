@@ -51,7 +51,7 @@ export default function ProductTabSlider() {
       <style jsx>
         {`
           .itemSlider {
-            margin: 10px 20px;
+            margin: 10px auto;
           }
           @media (max-width: 768px) {
             .slide-view {

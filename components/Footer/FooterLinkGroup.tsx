@@ -40,7 +40,7 @@ export default function FooterLinkGroup({
 }: FooterLinkGroupProps) {
   return (
     <ul className="mt-4">
-      <span className="flex lg:flex-row md:flex-col items-start lg:items-center md:mb-6 mb-2">
+      <li className="flex lg:flex-row md:flex-col items-start lg:items-center md:mb-6 mb-2">
         <h4 className="font-bold text-lg lg:text-xl">{title}</h4>
         {tag && (
           <button
@@ -53,7 +53,7 @@ export default function FooterLinkGroup({
             {tag}
           </button>
         )}
-      </span>
+      </li>
       {linkGroup.map((item: footerLinkType) => (
         <FooterLinkItem linkPrefix={linkPrefix} item={item} key={item.slug} />
       ))}

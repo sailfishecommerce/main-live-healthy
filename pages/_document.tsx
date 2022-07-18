@@ -47,13 +47,14 @@ export default class MyDocument extends Document {
             <meta property="og:type" content="website" />
             <link rel="preconnect" href="https://fonts.googleapis.com" />
             <link
+              as="font"
               rel="preconnect"
               href="https://fonts.gstatic.com"
               crossOrigin="true"
             />
             <link
-              href="https://fonts.googleapis.com/css2?family=Commissioner:wght@300;400;500;600;700&display=swap"
-              rel="stylesheet"
+              data-href="https://fonts.googleapis.com/css2?family=Commissioner:wght@300;400;500;600;700&display=optional"
+              rel="styleheet"
             />
           </Head>
         </>

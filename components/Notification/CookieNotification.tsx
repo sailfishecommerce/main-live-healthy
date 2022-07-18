@@ -11,7 +11,7 @@ export default function CookieNotification() {
   }
   return (
     <>
-      <div className="flex items-center justify-between xl:px-20 lg:px-16 px-6  py-2 bg-mountain-mist">
+      <div className="flex items-center justify-between xl:px-20 lg:px-16 px-3 md:px-8 py-2 bg-mountain-mist">
         <div className="text-content white lg:text-sm text-xs w-4/5 lg:w-auto">
           This website uses cookies. Cookies improve your experience, by
           browsing our site you agree to our

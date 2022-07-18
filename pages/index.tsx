@@ -88,7 +88,6 @@ export default function Home(props: SearchPageLayoutProps) {
           <ShippingBanner />
           <ProductShowcaseGroup group={productshowcaseGroup[2]} />
           <ProductTabSlider />
-          <div className="mb-6" />
         </SearchPageLayout>
       </ErrorBoundary>
     </Applayout>

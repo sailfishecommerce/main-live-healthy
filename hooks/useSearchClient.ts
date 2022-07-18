@@ -2,7 +2,6 @@ import type { SearchClient } from 'algoliasearch/lite'
 import algoliasearch from 'algoliasearch/lite'
 import { useMemo } from 'react'
 
-import packageJson from '@/package.json'
 import { querySuggestionsIndexName } from '@/utils/env'
 
 export type SearchClientHookOptions = {
@@ -15,9 +14,7 @@ export function getSearchClient(
   searchApiKey: string
 ): SearchClient {
   const client = algoliasearch(appId, searchApiKey)
-  client.addAlgoliaAgent(
-    `LIVEHEALTHY_PRODUCTION_INDEX (${packageJson.version})`
-  )
+  client.addAlgoliaAgent('LIVEHEALTHY_PRODUCTION_INDEX')
 
   return {
     ...client,
@@ -32,12 +29,6 @@ export function getSearchClient(
           tagFilters: [],
         }
 
-        // In React InstantSearch, `Index` components inherit search
-        // parameters from their parents. However, when displaying results
-        // for result suggestions or Query Suggestions, we want to reset these
-        // search parameters because we expect different results.
-        // We cannot reset these search parameters with React components, we
-        // need to use a client proxy.
         if (searchParameters.indexName === querySuggestionsIndexName) {
           if (!querySuggestionsIndexName) {
             throw new Error(

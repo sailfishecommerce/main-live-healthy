@@ -21,19 +21,20 @@ function ProductTabCardComponent({ product }: any) {
         title={`Buy ${product.name}`}
         className="producttab-card flex p-2 md:p-4 justify-between items-center rounded-xl bg-light-gray mr-8"
       >
-        <div className="image-wrapper flex flex-col w-1/2 md:w-1/3">
+        <div className="image-wrapper block relative w-1/2 md:w-1/3">
           <Image
             src={productImage}
             alt={product.name}
-            height={120}
-            width={120}
+            height={100}
+            width={100}
             className="bg-white flex rounded-lg"
             blurDataURL={product.images[0]}
+            layout="responsive"
           />
           <button
             type="button"
             aria-label="add to cart"
-            className="bg-mountain-green text-xs xl:text-sm bg-mountain-green mx-auto absolute py-1 px-2 rounded-md text-white"
+            className="bg-mountain-green add-to-cart-btn text-xs xl:text-sm bg-mountain-green mx-auto absolute py-1 px-2 rounded-md text-white"
             onClick={addToCartHandler}
           >
             Add to cart
@@ -41,7 +42,7 @@ function ProductTabCardComponent({ product }: any) {
         </div>
         <Link passHref href={`/product/${product.slug}`}>
           <a className="content flex flex-col ml-3 w-2/3 md:w-3/5">
-            <h3 className="text-xs md:text-md lg:text-lg product-name mb-3">
+            <h3 className="text-xs md:text-md lg:text-base product-name mb-3">
               {product.name}
             </h3>
             <div className="price-view xl:flex-row flex-col flex xl:items-center justify-between">
@@ -75,7 +76,10 @@ function ProductTabCardComponent({ product }: any) {
           .add-to-cart:hover {
             background-color: var(--color-2);
           }
-
+          .add-to-cart-btn {
+            top: 40%;
+            left: 7%;
+          }
           .producttab-card:hover .add-to-cart {
             display: flex;
           }
@@ -83,8 +87,8 @@ function ProductTabCardComponent({ product }: any) {
             margin: auto;
             align-items: center;
             position: relative;
-            height: 120px;
-            width: 120px;
+            height: 100px;
+            width: 100px;
             justify-content: center;
             position: relative;
           }

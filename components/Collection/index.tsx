@@ -46,7 +46,7 @@ export default function Index() {
 
   return (
     <div className="flex flex-col px-2 lg:px-0 gap-2 container lg:mx-auto lg:mb-10 lg:mt-0 lg:gap-0">
-      <Breadcrumb attributes={breadcrumbAttributes} />
+      <Breadcrumb attributes={breadcrumbAttributes} className="mt-2" />
       <div className="flex flex-col lg:flex-row">
         {(refinementsLayout === 'panel' || !laptop) && <RefinementsPanel />}
 

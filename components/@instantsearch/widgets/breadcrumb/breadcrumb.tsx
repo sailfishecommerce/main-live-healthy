@@ -16,9 +16,16 @@ import { ClientOnly } from '@/components/client-only/client-only'
 import { searchResultsAtom } from '@instantsearch/widgets/virtual-state-results/virtual-state-results'
 import { nbHitsAtom } from '@instantsearch/widgets/virtual-stats/virtual-stats'
 
-export type BreadcrumbProps = BreadcrumbProvided
+export type BreadcrumbProps = BreadcrumbProvided & {
+  className?: string
+}
 
-function BreadcrumbComponent({ items, refine, createURL }: BreadcrumbProps) {
+function BreadcrumbComponent({
+  items,
+  refine,
+  className,
+  createURL,
+}: BreadcrumbProps) {
   const nbHits = useAtomValue(nbHitsAtom)
   const currentQuery = useAtomValue(searchQueryAtom)
   const setSearchState = useUpdateAtom(searchStateAtom)
@@ -43,9 +50,13 @@ function BreadcrumbComponent({ items, refine, createURL }: BreadcrumbProps) {
   if ((!currentQuery && !items.length) || searchResults?.nbHits === 0)
     return null
 
+  const breadcrumbClassname = className ? className : 'mt-12'
+
   return (
     <ClientOnly>
-      <div className="flex flex-col gap-1 mt-12 ml-4 lg:ml-0 lg:mt-0 capitalize">
+      <div
+        className={`flex flex-col gap-1 ${breadcrumbClassname} ml-4 lg:ml-0 lg:mt-0 capitalize`}
+      >
         <ul className="flex items-center gap-1 text-neutral-dark">
           {navItems.map((item) => (
             <li

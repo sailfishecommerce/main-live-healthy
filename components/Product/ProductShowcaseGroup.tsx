@@ -14,7 +14,15 @@ export default function ProductShowcaseGroup({ group }: Props) {
   const [selectedVendor, setSelectedVendor] = useAtom(selectedVendorAtom)
 
   function updateVendor(vendor: string, index: number) {
-    setSelectedVendor({ vendor, index })
+    if (
+      selectedVendor !== null &&
+      selectedVendor.vendor === vendor &&
+      selectedVendor.index === index
+    ) {
+      setSelectedVendor({ vendor: '', index })
+    } else {
+      setSelectedVendor({ vendor, index })
+    }
   }
 
   return (

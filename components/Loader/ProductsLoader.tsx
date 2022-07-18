@@ -11,7 +11,7 @@ export function ProductLoader(props: any) {
     <ContentLoader
       animate
       speed={2}
-      viewBox="0 0 150 240"
+      viewBox="0 0 150 265"
       style={loaderStyle}
       backgroundColor="#e3d9d9"
       foregroundColor="#ada4a4"

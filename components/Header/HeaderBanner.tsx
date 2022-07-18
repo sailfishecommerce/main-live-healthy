@@ -18,6 +18,11 @@ export default function HeaderBanner() {
           .headerBanner {
             height: 80px;
           }
+          @media (max-width: 1440px) {
+            .headerBanner {
+              height: 61px;
+            }
+          }
           @media (max-width: 768px) {
             .headerBanner {
               height: 40px;

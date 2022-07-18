@@ -28,7 +28,7 @@ export default function useSlider() {
     ? { size: 280, height: 165, width: 950 }
     : laptop
     ? { size: 350, height: 165, width: 1200 }
-    : { size: 450, height: 165, width: 1500 }
+    : { size: 450, height: 170, width: 1500 }
 
   return { memoisedData, deviceWidth, productTabWidth }
 }

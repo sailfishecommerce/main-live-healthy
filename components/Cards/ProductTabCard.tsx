@@ -1,10 +1,13 @@
+import memoize from 'memoize-one'
 import Image from 'next/image'
 import Link from 'next/link'
 
 import FormattedPrice from '@/components/Price/FormattedPrice'
 import useShoppingCart from '@/hooks/useShoppingCart'
 
-export default function ProductTabCard({ product }: any) {
+const memoiseComponent = memoize((comp: any) => comp)
+
+function ProductTabCardComponent({ product }: any) {
   const { addItemToCart } = useShoppingCart()
 
   const addToCartHandler = () => addItemToCart.mutate({ product, quantity: 1 })
@@ -22,15 +25,15 @@ export default function ProductTabCard({ product }: any) {
           <Image
             src={productImage}
             alt={product.name}
-            height={200}
-            width={200}
+            height={120}
+            width={120}
             className="bg-white flex rounded-lg"
             blurDataURL={product.images[0]}
           />
           <button
             type="button"
             aria-label="add to cart"
-            className="bg-mountain-green text-xs xl:text-sm bg-mountain-green mx-auto absolute top-12 py-1 px-2 rounded-md text-white"
+            className="bg-mountain-green text-xs xl:text-sm bg-mountain-green mx-auto absolute py-1 px-2 rounded-md text-white"
             onClick={addToCartHandler}
           >
             Add to cart
@@ -38,7 +41,7 @@ export default function ProductTabCard({ product }: any) {
         </div>
         <Link passHref href={`/product/${product.slug}`}>
           <a className="content flex flex-col ml-3 w-2/3 md:w-3/5">
-            <h3 className="text-xs md:text-md product-name mb-3">
+            <h3 className="text-xs md:text-md lg:text-lg product-name mb-3">
               {product.name}
             </h3>
             <div className="price-view xl:flex-row flex-col flex xl:items-center justify-between">
@@ -80,9 +83,16 @@ export default function ProductTabCard({ product }: any) {
             margin: auto;
             align-items: center;
             position: relative;
+            height: 120px;
+            width: 120px;
+            justify-content: center;
+            position: relative;
           }
         `}
       </style>
     </>
   )
 }
+
+const ProductTabCard = memoiseComponent(ProductTabCardComponent)
+export default ProductTabCard

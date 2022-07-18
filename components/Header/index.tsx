@@ -77,7 +77,7 @@ function HeaderComponent() {
           }
           @media (max-width: 768px) {
             .header {
-              height: 230px;
+              height: 215px;
             }
           }
         `}

@@ -469,9 +469,6 @@ button.bg-mountain-green:disabled {
   .bg-mountain-green p {
     font-size: 11px;
   }
-  button.bg-mountain-green {
-    padding: 0px;
-  }
   .bg-mountain-green svg {
     width: 20px;
   }

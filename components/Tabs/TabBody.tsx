@@ -1,7 +1,7 @@
 import SigninForm from '@/components/Form/SigninForm'
 import SignupForm from '@/components/Form/SignupForm'
-import SocialAuthIcons from '@/components/Icons/SocialAuthIcons'
 import Tabpanel from '@/components/Tabs/Tabpanel'
+// import SocialAuthIcons from '@/components/Icons/SocialAuthIcons'
 
 interface Props {
   tab: number
@@ -23,10 +23,10 @@ export default function TabBody({ tab }: Props) {
             </Tabpanel>
           )}
         </div>
-        <div className="social-login my-2 mt-4">
+        {/* <div className="social-login my-2 mt-4">
           <div className="text-center text-sm font-bold">OR LOGIN WITH</div>
           <SocialAuthIcons />
-        </div>
+        </div> */}
         <style jsx>
           {`
             .auth-tab {

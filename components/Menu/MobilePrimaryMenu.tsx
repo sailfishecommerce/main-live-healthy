@@ -19,7 +19,7 @@ export default function MobilePrimaryMenu() {
   const { updateSlideTab } = useSlidingTab()
 
   return (
-    <div className="mobile-menu flex flex-col w-2/5 pt-2">
+    <div className="mobile-menu flex flex-col w-1/2 pt-2">
       <div className="flex items-center justify-between">
         <span className="mr-1 md:w-4/5 w-full justify-between flex items-center">
           <AuthIcons />

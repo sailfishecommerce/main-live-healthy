@@ -1,10 +1,18 @@
 import dynamic from 'next/dynamic'
 import { memo } from 'react'
 
-import PrimaryMenu from '@/components/Menu/PrimaryMenu'
+// import PrimaryMenu from '@/components/Menu/PrimaryMenu'
 import { useMediaQuery } from '@/hooks'
 import useNav from '@/hooks/useNav'
 import useNavStyle from '@/hooks/useNavStyle'
+
+const PrimaryMenu = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'PrimaryMenu' */ '@/components/Menu/PrimaryMenu'
+    ),
+  { ssr: false }
+)
 
 const DynamicSecondaryMenu = dynamic(
   () =>

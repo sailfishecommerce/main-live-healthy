@@ -32,13 +32,6 @@ export default function Applayout({
       <Header />
       <main className="main-view">{children}</main>
       <Footer />
-      <style jsx>
-        {`
-          .main-view {
-            min-height: 100vh;
-          }
-        `}
-      </style>
     </DefaultLayout>
   )
 }

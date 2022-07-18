@@ -76,18 +76,27 @@ const ProductBanner = dynamic(
 export default function Home(props: SearchPageLayoutProps) {
   return (
     <Applayout title="Welcome to Livehealthy stores">
-      <SearchPageLayout {...props}>
-        <HomepageSlider />
-        <Values />
-        <ProductShowcaseGroup group={productshowcaseGroup[0]} />
-        <ProductBanner />
-        <ProductShowcaseGroup group={productshowcaseGroup[1]} />
-        <BestSellerSlider />
-        <ShippingBanner />
-        <ProductShowcaseGroup group={productshowcaseGroup[2]} />
-        <ProductTabSlider />
-        <div className="mb-6" />
-      </SearchPageLayout>
+      <div className="homeview">
+        <SearchPageLayout {...props}>
+          <HomepageSlider />
+          <Values />
+          <ProductShowcaseGroup group={productshowcaseGroup[0]} />
+          <ProductBanner />
+          <ProductShowcaseGroup group={productshowcaseGroup[1]} />
+          <BestSellerSlider />
+          <ShippingBanner />
+          <ProductShowcaseGroup group={productshowcaseGroup[2]} />
+          <ProductTabSlider />
+          <div className="mb-6" />
+        </SearchPageLayout>
+      </div>
+      <style jsx>
+        {`
+          .homeview {
+            min-height: 100vh;
+          }
+        `}
+      </style>
     </Applayout>
   )
 }

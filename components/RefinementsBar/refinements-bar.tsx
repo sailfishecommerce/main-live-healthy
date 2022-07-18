@@ -46,7 +46,7 @@ function RefinementsBarComponent({
   const setMobileExpanded = useUpdateAtom(refinementsPanelMobileExpandedAtom)
   const refinementCount = useAtomValue(refinementCountAtom)
   const searchResults = useAtomValue(searchResultsAtom)
-  const filterClassName = noticebar ? 'top-40' : 'top-28'
+  const filterClassName = noticebar ? 'top-25' : 'top-40'
   return (
     <section
       className={classNames(

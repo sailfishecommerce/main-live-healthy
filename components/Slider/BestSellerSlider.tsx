@@ -17,7 +17,7 @@ export default function BestSellerSlider() {
     <>
       <section className="itemSlider best-seller-slider py-4 px-4 xl:py-8 relative  bg-gray-platinum mx-auto flex relative z-10 flex-col my-4">
         <div className="container mb-0 xl:mb-8 mx-auto">
-          <h1 className="font-bold text-xl md:text-3xl">Best Sellers</h1>
+          <h1 className="font-bold text-xl md:text-3xl mb-2">Best Sellers</h1>
         </div>
         {status === 'error' ? (
           'unable to load products'

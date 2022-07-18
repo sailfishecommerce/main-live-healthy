@@ -24,7 +24,7 @@ export default function useSlider() {
     : { size: 270, height: 400, width: 1450 }
 
   const productTabWidth = mobile
-    ? { size: 300, height: 150, width: sliderWidth }
+    ? { size: 300, height: 120, width: sliderWidth }
     : tablet
     ? { size: 250, height: 165, width: 720 }
     : midLaptop

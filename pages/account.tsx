@@ -46,7 +46,7 @@ export default function Account() {
   return (
     <>
       <Applayout title="Account Details">
-        <main className="container mx-auto px-4 md:px-0">
+        <section className="container mx-auto px-4 md:px-0">
           <Breadcrumb breadcrumbItems={breadcrumb.account} />
 
           {status === 'error' ? (
@@ -73,7 +73,7 @@ export default function Account() {
               )}
             </>
           )}
-        </main>
+        </section>
       </Applayout>
     </>
   )

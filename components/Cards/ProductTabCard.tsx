@@ -7,8 +7,6 @@ import useShoppingCart from '@/hooks/useShoppingCart'
 export default function ProductTabCard({ product }: any) {
   const { addItemToCart } = useShoppingCart()
 
-  // loadingState(addItemToCart, `${product.name} added to cart`)
-
   const addToCartHandler = () => addItemToCart.mutate({ product, quantity: 1 })
   const productImage =
     typeof product.images[0] === 'string'

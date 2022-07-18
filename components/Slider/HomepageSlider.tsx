@@ -39,7 +39,7 @@ function HomepageSliderComponent() {
       }
 
   return (
-    <LazyLoader height={600} mobileHeight={300}>
+    <LazyLoader height={400} mobileHeight={300}>
       <section className="mt-6 md:px-4 px-0 xl:px-0 xl:mb-12 mb-2 lg:mb-8 homepage-slider container mx-auto">
         <Splide id="splide" onActive={(item) => setActiveIndex(item.index)}>
           {homepageSliderContent.map((content, index) => (

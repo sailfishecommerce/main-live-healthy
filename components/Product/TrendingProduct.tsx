@@ -40,7 +40,7 @@ export default function TrendingProduct({
   const memoisedSelectedproducts = memoisedData(selectedProducts)
 
   return (
-    <LazyLoader height={500} mobileHeight={400}>
+    <LazyLoader height={400} mobileHeight={300}>
       <>
         <section className="trendingProduct lg:py-4 py-2 lg:my-6 rounded-xl container lg:px-4 pl-4 mx-auto lg:bg-gray-100">
           {category && (

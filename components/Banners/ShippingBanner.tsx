@@ -32,7 +32,7 @@ export default function ShippingBanner() {
     ? imageSize[2]
     : imageSize[0]
   return (
-    <LazyLoader height={300} mobileHeight={280}>
+    <LazyLoader height={250} mobileHeight={200}>
       <section className="container mb-8 -ml-2 md:ml-0 px-4 xl:px-0 lg:mb-0 flex justify-center lg:mx-auto my-1">
         <div className="w-full">
           <Image

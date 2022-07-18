@@ -8,6 +8,7 @@ export default function useNavStyle() {
   const { scroll } = useScroll()
   const scrollUp = Number(scroll) > scrollGap ? true : false
   const navStyle = scrollUp ? 'fixed top-0 z-40 shadow-lg border-b' : ''
+  const menuStyle = scrollUp ? 'flex' : 'hidden'
 
-  return { navStyle, scrollUp }
+  return { navStyle, scrollUp, menuStyle }
 }

@@ -4,6 +4,7 @@ import { memo } from 'react'
 import PrimaryMenu from '@/components/Menu/PrimaryMenu'
 import { useMediaQuery } from '@/hooks'
 import useNav from '@/hooks/useNav'
+import useNavStyle from '@/hooks/useNavStyle'
 
 const DynamicSecondaryMenu = dynamic(
   () =>
@@ -23,11 +24,12 @@ const DynamicMobileSearchbar = dynamic(
 function MenuComponent() {
   const mobileWidth = useMediaQuery('(max-width:768px)')
   const { showMobileSearch } = useNav()
+  const { scrollUp } = useNavStyle()
 
   return (
     <nav className="nav mx-auto container px-4 pb-3 md:pb-0">
       <PrimaryMenu />
-      {!mobileWidth && <DynamicSecondaryMenu />}
+      {!mobileWidth && !scrollUp && <DynamicSecondaryMenu />}
       {mobileWidth && showMobileSearch && <DynamicMobileSearchbar />}
     </nav>
   )

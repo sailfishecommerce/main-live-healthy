@@ -4,6 +4,7 @@
 
 import dynamic from 'next/dynamic'
 
+import ErrorBoundary from '@/components/ErrorBoundary'
 import productshowcaseGroup from '@/json/productshowcase.json'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
 import {
@@ -76,7 +77,7 @@ const ProductBanner = dynamic(
 export default function Home(props: SearchPageLayoutProps) {
   return (
     <Applayout title="Welcome to Livehealthy stores">
-      <div className="homeview">
+      <ErrorBoundary>
         <SearchPageLayout {...props}>
           <HomepageSlider />
           <Values />
@@ -89,14 +90,7 @@ export default function Home(props: SearchPageLayoutProps) {
           <ProductTabSlider />
           <div className="mb-6" />
         </SearchPageLayout>
-      </div>
-      <style jsx>
-        {`
-          .homeview {
-            min-height: 100vh;
-          }
-        `}
-      </style>
+      </ErrorBoundary>
     </Applayout>
   )
 }

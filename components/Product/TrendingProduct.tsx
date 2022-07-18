@@ -55,6 +55,7 @@ export default function TrendingProduct({
         <TrendingProductSlider
           products={memoisedSelectedproducts}
           threeFirstVendors={threeFirstVendors}
+          tabColor={tabColor}
         >
           <ProductTags
             index={index}

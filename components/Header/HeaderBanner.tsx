@@ -8,7 +8,7 @@ export default function HeaderBanner() {
   return (
     <>
       <div className="w-full headerBanner">
-        <video autoPlay loop muted playsInline width="100%" height="30">
+        <video autoPlay loop muted playsInline width="100%" height="30px">
           <source src={videoSrc} type="video/webm" />
           <source src={videoSrc} type="video/mp4" />
         </video>
@@ -16,19 +16,19 @@ export default function HeaderBanner() {
       <style jsx>
         {`
           .headerBanner {
-            height: 10ß0%;
+            height: 100%;
           }
-          @media (max-width: 770px) {
+          @media (max-width: 770px) and (min-width: 460px) {
             .headerBanner {
               height: 32px;
             }
           }
-          @media (max-width: 460px) {
+          @media (max-width: 460px) and (min-width: 370px) {
             .headerBanner {
               height: 45px;
             }
           }
-          @media (max-width: 375px) {
+          @media (max-width: 375px) and (min-width: 330px) {
             .headerBanner {
               height: 40px;
             }

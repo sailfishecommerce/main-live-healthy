@@ -70,19 +70,19 @@ function HeaderComponent() {
       )}
       <style jsx>
         {`
-          @media (max-width: 1440px) {
+          @media (max-width: 1440px) and (min-width: 1100px) {
             .header.bg-white {
               height: 332px;
             }
           }
 
-          @media (max-width: 1100px) {
+          @media (max-width: 1100px) and (min-width: 768px) {
             .header.bg-white {
               height: 300px;
             }
           }
 
-          @media (max-width: 768px) {
+          @media (max-width: 768px) and (min-width: 350px) {
             header.bg-white {
               height: 215px;
             }

@@ -2,7 +2,6 @@ import { BiLogOut } from 'react-icons/bi'
 
 import Modal from '@/components/Modal'
 import { useAuth, useMediaQuery } from '@/hooks'
-import useFirebaseAuth from '@/hooks/useFirebaseAuth'
 import useGreetuser from '@/hooks/useGreetuser'
 
 interface Props {
@@ -12,18 +11,13 @@ interface Props {
 
 export default function LogoutModal({ show, onHide }: Props) {
   const mobileWidth = useMediaQuery('(max-width:768px)')
-  const { name, loggedIn, userDetails } = useGreetuser()
-  const { signout } = useFirebaseAuth()
+  const { name } = useGreetuser()
   const iconSize = mobileWidth ? 16 : 22
   const { useLogout } = useAuth()
   const logout = useLogout()
 
   function logoutHandler() {
-    if (loggedIn) {
-      signout()
-    } else if (userDetails !== null) {
-      logout.mutate()
-    }
+    return logout.mutate()
   }
 
   return (

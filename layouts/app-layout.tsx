@@ -30,7 +30,7 @@ export default function Applayout({
         />
       </Head>
       <Header />
-      <main className="main-view">{children}</main>
+      <main>{children}</main>
       <Footer />
     </DefaultLayout>
   )

@@ -16,14 +16,19 @@ export default function HeaderBanner() {
       <style jsx>
         {`
           .headerBanner {
-            height: 80px;
+            height: 10ß0%;
           }
-          @media (max-width: 1440px) {
+          @media (max-width: 770px) {
             .headerBanner {
-              height: 61px;
+              height: 32px;
             }
           }
-          @media (max-width: 768px) {
+          @media (max-width: 460px) {
+            .headerBanner {
+              height: 45px;
+            }
+          }
+          @media (max-width: 375px) {
             .headerBanner {
               height: 40px;
             }
@@ -31,6 +36,11 @@ export default function HeaderBanner() {
           @media (max-width: 330px) {
             .headerBanner {
               height: 35px;
+            }
+          }
+          @media (max-width: 1100px) and (min-width: 770px) {
+            .headerBanner {
+              height: 40px;
             }
           }
         `}

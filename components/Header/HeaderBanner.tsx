@@ -16,7 +16,7 @@ export default function HeaderBanner() {
       <style jsx>
         {`
           .headerBanner {
-            height: 82px;
+            height: 60px;
           }
           @media (max-width: 770px) and (min-width: 460px) {
             .headerBanner {
@@ -41,6 +41,16 @@ export default function HeaderBanner() {
           @media (max-width: 1100px) and (min-width: 770px) {
             .headerBanner {
               height: 40px;
+            }
+          }
+          @media (max-width: 1440px) and (min-width: 1100px) {
+            .headerBanner {
+              height: 60px;
+            }
+          }
+          @media (min-width: 1900px) {
+            .headerBanner {
+              height: 80px;
             }
           }
         `}

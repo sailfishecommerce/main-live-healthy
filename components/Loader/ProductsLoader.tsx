@@ -4,9 +4,13 @@ import ContentLoader from 'react-content-loader'
 
 import useMediaQuery from '@/hooks/useMediaQuery'
 
-export function ProductLoader(props: any) {
+interface Props {
+  bigger?: boolean
+}
+
+export function ProductLoader(props: any, { bigger }: Props) {
   const loaderStyle = useMemo(() => ({ width: '100%' }), [])
-  const bigger = props.bigger
+  const dimension = bigger
     ? { height: '50%', mainHeight: '240' }
     : { height: '50%', mainHeight: '150' }
 
@@ -14,14 +18,14 @@ export function ProductLoader(props: any) {
     <ContentLoader
       animate
       speed={2}
-      viewBox={`0 0 150 ${bigger.mainHeight}`}
+      viewBox={`0 0 150 ${dimension.mainHeight}`}
       style={loaderStyle}
       backgroundColor="#e3d9d9"
       foregroundColor="#ada4a4"
       title="loading product..."
       {...props}
     >
-      <rect x="0" y="0%" rx="0" ry="0" width="100%" height={bigger.height} />
+      <rect x="0" y="0%" rx="0" ry="0" width="100%" height={dimension.height} />
       <rect x="0%" y="55%" rx="3" ry="3" width="20%" height="5%" />
       <rect x="0" y="63%" rx="0" ry="0" width="100%" height="5%" />
       <rect x="0" y="72%" rx="0" ry="0" width="100%" height="15%" />

@@ -19,16 +19,28 @@ export default function ItemSlider({
   itemCount,
 }: PropsWithChildren<Props>) {
   return (
-    <List
-      useIsScrolling
-      height={deviceWidth.height}
-      itemCount={itemCount}
-      itemData={itemData}
-      itemSize={deviceWidth.size}
-      layout="horizontal"
-      width={deviceWidth.width}
-    >
-      {children}
-    </List>
+    <>
+      <div className="list">
+        <List
+          useIsScrolling
+          height={deviceWidth.height}
+          itemCount={itemCount}
+          itemData={itemData}
+          itemSize={deviceWidth.size}
+          layout="horizontal"
+          width={deviceWidth.width}
+        >
+          {children}
+        </List>
+        <style jsx>{`
+          @media (max-width: 768px) {
+            .list {
+              width: 100%;
+              overflow-x: scroll;
+            }
+          }
+        `}</style>
+      </div>
+    </>
   )
 }

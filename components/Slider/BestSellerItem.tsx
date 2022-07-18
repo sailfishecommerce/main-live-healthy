@@ -13,7 +13,7 @@ function BestSellerItem({ index, isScrolling, style, data }: any) {
       {isScrolling ? (
         <div style={style}>
           <div className="mr-4">
-            <ProductLoader className="mr-4" bigger={true} />
+            <ProductLoader bigger={true} />
           </div>
         </div>
       ) : (

@@ -68,6 +68,20 @@ function HeaderComponent() {
           updateDropdown={toggleCategoryDropdownHandler}
         />
       )}
+      <style jsx>
+        {`
+          @media (max-width: 1440px) {
+            .header {
+              height: 332px;
+            }
+          }
+          @media (max-width: 768px) {
+            .header {
+              height: 216px;
+            }
+          }
+        `}
+      </style>
     </>
   )
 }

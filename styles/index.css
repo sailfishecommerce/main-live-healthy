@@ -301,9 +301,6 @@ div.product-list-view + div {
     height: 400px;
     overflow-y: auto;
   }
-  header.bg-white {
-    height: unset !important;
-  }
 }
 
 @media (min-width: 1440px) {

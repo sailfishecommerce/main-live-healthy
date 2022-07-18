@@ -29,6 +29,7 @@ export default function TrendingProductSlider({
           @media (max-width: 768px) {
             .list-products-window {
               width: 100%;
+              overflow-x: scroll;
             }
           }
         `}

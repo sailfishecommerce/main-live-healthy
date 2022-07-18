@@ -2,16 +2,20 @@
 import memoize from 'memoize-one'
 
 import { useMediaQuery } from '@/hooks'
+import useWindowDimensions from '@/hooks/useWindowDimensions'
 
 export default function useSlider() {
+  const { width } = useWindowDimensions()
+  const sliderWidth = width ? width - 15 : width
+  console.log('width', width)
   const memoisedData = memoize((selectedProducts: any) => selectedProducts)
-  const mobile = useMediaQuery('(max-width:426px)')
+  const mobile = useMediaQuery(`(max-width:426px)`)
   const laptop = useMediaQuery('(max-width:1440px)')
   const midLaptop = useMediaQuery('(max-width:1024px)')
   const tablet = useMediaQuery('(max-width:768px)')
 
   const deviceWidth = mobile
-    ? { size: 190, height: 300, width: 400 }
+    ? { size: 190, height: 300, width: sliderWidth }
     : tablet
     ? { size: 220, height: 400, width: 720 }
     : midLaptop

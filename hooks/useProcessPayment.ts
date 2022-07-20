@@ -1,16 +1,16 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-shadow */
-import { useRef, useState } from 'react'
 import { useAtom } from 'jotai'
+import { useRef, useState } from 'react'
 
 import { useToast, useAccount, useCart } from '@/hooks'
+import useAfterPayment from '@/hooks/useAfterpayment'
 import useModal from '@/hooks/useModal'
 import usePayment from '@/hooks/usePayment'
 import useSwellCart from '@/hooks/useSwellCart'
 import { createVboutOrder } from '@/hooks/useVbout'
-import { vboutOrderData } from '@/lib/vbout'
 import { sendProductReviewAtom, submitOrderAtom } from '@/lib/atomConfig'
-import useAfterPayment from '@/hooks/useAfterpayment'
+import { vboutOrderData } from '@/lib/vbout'
 
 export default function useProcessPayment() {
   const { tokenizePayment, submitUserOrder } = usePayment()
@@ -19,7 +19,8 @@ export default function useProcessPayment() {
   const { updateModalView } = useModal()
   const { data: cart } = useCartData()
 
-  const { createUserAddresstAtCheckout, getUserAccount } = useAccount()
+  const { createUserAddress, getUserAccount, createUserAccountAtCheckout } =
+    useAccount()
   const [loadingState, setLoadingState] = useState(false)
   const { loadingToast, updateToast } = useToast()
   const [, setSubmitOrder] = useAtom(submitOrderAtom)
@@ -27,10 +28,10 @@ export default function useProcessPayment() {
   const { cleanUpAfterPayment } = useAfterPayment()
   const toastID = useRef()
 
-  function processPayment(data) {
-    function vboutOrder(order) {
+  function processPayment() {
+    function vboutOrder(order: any) {
       const formatVboutOrderData = vboutOrderData(cart, order)
-      return createVboutOrder(formatVboutOrderData, setLog)
+      return createVboutOrder(formatVboutOrderData)
     }
     loadingToast(toastID)
     setLoadingState(true)
@@ -78,12 +79,12 @@ export default function useProcessPayment() {
       })
   }
 
-  function makePayment(data) {
+  function makePayment(data: any) {
     getUserAccount()
       .then((response) => {
         if (response === null) {
-          createUserAddresstAtCheckout(data.shipping)
-            .then((response) => {
+          createUserAddress(data.shipping)
+            .then((response: any) => {
               if (response !== null && response?.email?.code === 'UNIQUE') {
                 updateToast(
                   toastID,
@@ -92,14 +93,17 @@ export default function useProcessPayment() {
                 )
                 updateModalView('MODAL_LOGIN')
               } else {
-                processPayment(data)
+                createUserAccountAtCheckout(data).then((response) => {
+                  console.log('response', response)
+                  processPayment()
+                })
               }
             })
-            .catch((err) => {
+            .catch((err: any) => {
               updateToast(toastID, 'error', err?.message)
             })
         } else {
-          processPayment(data)
+          processPayment()
         }
       })
       .catch((error) => {

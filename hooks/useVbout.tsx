@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import axios from 'axios'
 
 import {
@@ -66,21 +65,12 @@ export function removeVboutCartItem(item: removeVboutCartType) {
   )
 }
 
-export function createVboutOrder(item: createVboutOrderType, setLog: any) {
+export function createVboutOrder(item: createVboutOrderType) {
   const data = formatCreateVboutOrder(item)
-  return axios
-    .post(
-      `https://api.vbout.com/1/ecommerce/createorder?api_key=${process.env.NEXT_PUBLIC_VBOUT_API_KEY}`,
-      data
-    )
-    .then((response) => {
-      console.log('createVboutOrder', response)
-      setLog(response.data)
-    })
-    .catch((err) => {
-      console.log('error', err)
-      setLog(err)
-    })
+  return axios.post(
+    `https://api.vbout.com/1/ecommerce/createorder?api_key=${process.env.NEXT_PUBLIC_VBOUT_API_KEY}`,
+    data
+  )
 }
 
 export function sendBankTransfer(

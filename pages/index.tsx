@@ -3,10 +3,8 @@
  */
 
 import dynamic from 'next/dynamic'
-// import { useEffect } from 'react'
 
 import ErrorBoundary from '@/components/ErrorBoundary'
-// import useEasyShip from '@/hooks/useEasyShip'
 import productshowcaseGroup from '@/json/productshowcase.json'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
 import {

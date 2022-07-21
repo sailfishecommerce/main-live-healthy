@@ -1,13 +1,14 @@
 import OrderSummary from '@/components/Checkout/OrderSummary'
 import ReviewOrderlist from '@/components/Checkout/ReviewOrderlist'
 // import ShippingMethod from '@/components/Shipping/ShippingMethod'
-import { useCart } from '@/hooks'
+import { useCart, useMediaQuery } from '@/hooks'
 
 export default function ReviewOrder() {
   const { useCartData } = useCart()
   const { data: cart } = useCartData()
+  const mobileDevice = useMediaQuery('(max-width:768px)')
 
-  console.log('cart', cart)
+  // console.log('cart', cart)
 
   return (
     <div className="bg-white height-fit-content rounded-md w-full my-2 md:my-0  p-4">
@@ -21,12 +22,12 @@ export default function ReviewOrder() {
           <ReviewOrderlist key={item.productId} content={item} />
         ))}
       </div>
-      <OrderSummary />
+      {mobileDevice && <OrderSummary />}
       {/* <ShippingMethod shippingMethod={cart?.shipping?.service} /> */}
       <style jsx>
         {`
           .cart-group {
-            max-height: 600px;
+            max-height: 700px;
             overflow-y: scroll;
           }
         `}

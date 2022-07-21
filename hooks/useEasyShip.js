@@ -1,4 +1,5 @@
 import axios from 'axios'
+import useCart from '@/hooks/useCart'
 
 export default function useEasyShip() {
   const { useCartData } = useCart()
@@ -52,7 +53,7 @@ export default function useEasyShip() {
         unit: { weight: 'kg', dimensions: 'cm' },
         output_currency: currency,
       },
-      parcels: [],
+      parcels: [{ items: [] }],
     }
     items.map((item) => {
       const parcelItem = {
@@ -69,16 +70,17 @@ export default function useEasyShip() {
           height: 21.6,
         },
       }
-      data.parcels.push(parcelItem)
+      data.parcels[0].items.push(parcelItem)
     })
-    axios
-      .post(`${process.env.NEXT_PUBLIC_EASYSHIP_BASE_URL}/rates`, data, {
+    return axios.post(
+      `${process.env.NEXT_PUBLIC_EASYSHIP_BASE_URL}/rates`,
+      data,
+      {
         headers: {
           Authorization: `Bearer ${process.env.NEXT_PUBLIC_EASYSHP_SAND}`,
         },
-      })
-      .then((res) => console.log('requestRate-easyship', res.data))
-      .catch((err) => console.error('error-easyship', err))
+      }
+    )
   }
 
   return { listCouriers, requestRate }

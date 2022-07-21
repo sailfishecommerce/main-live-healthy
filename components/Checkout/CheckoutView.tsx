@@ -1,10 +1,10 @@
-import CheckoutAddress from '@/components/Checkout/CheckoutAddress'
+import DisplayCheckoutView from '@/components/Checkout/DisplayCheckoutView'
 import PaymentMethod from '@/components/Checkout/PaymentMethod'
 
 export default function CheckoutView() {
   return (
     <>
-      <CheckoutAddress />
+      <DisplayCheckoutView />
       <PaymentMethod />
     </>
   )

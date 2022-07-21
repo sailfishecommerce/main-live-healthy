@@ -21,6 +21,8 @@ export default function CheckoutAddressForm({ addressType }: AddressFormProps) {
   const [checkoutAddress, setCheckoutAddress] = useAtom(checkoutAddressAtom)
   useWatchCheckout(addressType)
 
+  console.log('checkoutAddress', checkoutAddress)
+
   useEffect(() => {
     if (status === 'success') {
       const cartAddressLength = toAddressValueArray(cart[addressType]).length

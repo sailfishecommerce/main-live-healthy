@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { useAtom } from 'jotai'
 import { useRef } from 'react'
 import { useQuery } from 'react-query'
@@ -22,8 +21,6 @@ export default function useSubmitCheckoutForm() {
   const [checkoutForm, setCheckoutForm] = useAtom(checkoutFormAtom)
   const createUserAddressMutate = useCreateUserAddress()
   const updateCheckoutAddressMutate = useUpdateUserAddress()
-
-  console.log('checkoutAddress', checkoutAddress)
 
   function displayBillingAddress() {
     setCheckoutForm({

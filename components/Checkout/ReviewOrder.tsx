@@ -1,11 +1,13 @@
 import OrderSummary from '@/components/Checkout/OrderSummary'
 import ReviewOrderlist from '@/components/Checkout/ReviewOrderlist'
-import ShippingMethod from '@/components/Shipping/ShippingMethod'
+// import ShippingMethod from '@/components/Shipping/ShippingMethod'
 import { useCart } from '@/hooks'
 
 export default function ReviewOrder() {
   const { useCartData } = useCart()
   const { data: cart } = useCartData()
+
+  console.log('cart', cart)
 
   return (
     <div className="bg-white height-fit-content rounded-md w-full my-2 md:my-0  p-4">
@@ -20,7 +22,7 @@ export default function ReviewOrder() {
         ))}
       </div>
       <OrderSummary />
-      <ShippingMethod shippingMethod={cart?.shipping?.service} />
+      {/* <ShippingMethod shippingMethod={cart?.shipping?.service} /> */}
       <style jsx>
         {`
           .cart-group {

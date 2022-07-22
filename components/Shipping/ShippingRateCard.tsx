@@ -65,11 +65,11 @@ export default function ShippingRateCard({ rate, index }: any) {
         text="Shipment Charge Total"
         price={rate.shipment_charge_total}
       />
-      <ShippingList
+      {/* <ShippingList
         currency={rate.currency}
         text="Total Charge"
         price={rate.total_charge}
-      />
+      /> */}
       <h5 className="font-semibold mt-1">Tax</h5>
       <ShippingList
         currency={rate.currency}
@@ -113,7 +113,7 @@ export default function ShippingRateCard({ rate, index }: any) {
       />
       <h5 className="font-semibold mt-1">Rating</h5>
       <ShippingRating rating={rate.tracking_rating} text="Tracking Rating" />
-      <ShippingRating rating={rate.tracking_rating} text="Tracking Rating" />
+      {/* <ShippingRating rating={rate.tracking_rating} text="Tracking Rating" /> */}
 
       {/* {rate.easyship_rating > 0 && (
                     <span>

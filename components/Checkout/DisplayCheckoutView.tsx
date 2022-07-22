@@ -14,8 +14,8 @@ export default function DisplayCheckoutView() {
   return (
     <div className="displayCheckoutView flex flex-col">
       <div>
-        {cart.shipping !== null &&
-        cart.billing !== null &&
+        {cart?.shipping !== null &&
+        cart?.billing !== null &&
         progressIndicator === 'address' ? (
           <CheckoutAddress />
         ) : (

@@ -10,7 +10,7 @@ import { productRatingAtom } from '@/lib/atomConfig'
 
 export default function ProductTabSlider() {
   const [productRating] = useAtom(productRatingAtom)
-  const { productTabWidth, memoisedData } = useSlider()
+  const { productTabDimension, memoisedData } = useSlider()
 
   let query
   if (productRating === 3) {
@@ -34,7 +34,7 @@ export default function ProductTabSlider() {
         ) : (
           <div className="slide-view">
             <ItemSlider
-              deviceWidth={productTabWidth}
+              deviceDimension={productTabDimension}
               itemCount={memoisedProducts.length}
               itemData={{
                 products: memoisedProducts,

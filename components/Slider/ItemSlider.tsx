@@ -2,7 +2,7 @@ import type { PropsWithChildren } from 'react'
 import { FixedSizeList as List } from 'react-window'
 
 interface Props {
-  deviceWidth: {
+  deviceDimension: {
     height: number
     width: number
     size: number
@@ -13,7 +13,7 @@ interface Props {
 }
 
 export default function ItemSlider({
-  deviceWidth,
+  deviceDimension,
   children,
   itemData,
   itemCount,
@@ -23,12 +23,12 @@ export default function ItemSlider({
       <div className="list">
         <List
           useIsScrolling
-          height={deviceWidth.height}
+          height={deviceDimension.height}
           itemCount={itemCount}
           itemData={itemData}
-          itemSize={deviceWidth.size}
+          itemSize={deviceDimension.size}
           layout="horizontal"
-          width={deviceWidth.width}
+          width={deviceDimension.width}
         >
           {children}
         </List>

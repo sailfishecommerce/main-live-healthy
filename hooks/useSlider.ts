@@ -13,7 +13,7 @@ export default function useSlider() {
   const midLaptop = useMediaQuery('(max-width:1024px)')
   const tablet = useMediaQuery('(max-width:768px)')
 
-  const deviceWidth = mobile
+  const deviceDimension = mobile
     ? { size: 190, height: 300, width: sliderWidth }
     : tablet
     ? { size: 220, height: 290, width: 720 }
@@ -23,7 +23,7 @@ export default function useSlider() {
     ? { size: 260, height: 380, width: 1200 }
     : { size: 270, height: 400, width: 1450 }
 
-  const productTabWidth = mobile
+  const productTabDimension = mobile
     ? { size: 300, height: 120, width: sliderWidth }
     : tablet
     ? { size: 250, height: 165, width: 720 }
@@ -33,5 +33,20 @@ export default function useSlider() {
     ? { size: 350, height: 165, width: 1200 }
     : { size: 450, height: 170, width: 1500 }
 
-  return { memoisedData, deviceWidth, productTabWidth }
+  const recommendationDimension = mobile
+    ? { size: 300, height: 240, width: sliderWidth }
+    : tablet
+    ? { size: 250, height: 250, width: 600 }
+    : midLaptop
+    ? { size: 280, height: 260, width: 500 }
+    : laptop
+    ? { size: 200, height: 260, width: 400 }
+    : { size: 200, height: 280, width: 800 }
+
+  return {
+    memoisedData,
+    deviceDimension,
+    productTabDimension,
+    recommendationDimension,
+  }
 }

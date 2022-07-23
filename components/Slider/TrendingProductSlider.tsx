@@ -7,14 +7,14 @@ export default function TrendingProductSlider({
   tabColor,
   children,
 }: any) {
-  const { deviceWidth } = useSlider()
+  const { deviceDimension } = useSlider()
 
   return (
     <>
       <div className="flex items-start flex-col list-products-window">
         <div className="tag-view">{children}</div>
         <ItemSlider
-          deviceWidth={deviceWidth}
+          deviceDimension={deviceDimension}
           itemCount={products.length}
           itemData={{
             products,

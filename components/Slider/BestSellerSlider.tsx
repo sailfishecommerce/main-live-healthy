@@ -6,7 +6,7 @@ import useProductInRange from '@/hooks/useLivehealthyProduct'
 import useSlider from '@/hooks/useSlider'
 
 export default function BestSellerSlider() {
-  const { deviceWidth, memoisedData } = useSlider()
+  const { deviceDimension, memoisedData } = useSlider()
   const [data, status] = useProductInRange({
     query: { $gt: 4 },
     id: 'bestSeller',
@@ -28,7 +28,7 @@ export default function BestSellerSlider() {
           ) : (
             <div className="wrapper mx-auto flex items-center justify-center">
               <ItemSlider
-                deviceWidth={deviceWidth}
+                deviceDimension={deviceDimension}
                 itemCount={memoisedProducts.length}
                 itemData={{
                   products: memoisedProducts,

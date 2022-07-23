@@ -24,6 +24,13 @@ function TrendingProductRow({ index, isScrolling, style, data }: any) {
           />
         </div>
       )}
+      <style jsx>
+        {`
+          .productView {
+            overflow-y: hidden;
+          }
+        `}
+      </style>
     </>
   )
 }

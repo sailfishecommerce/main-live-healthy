@@ -1,11 +1,11 @@
 /* eslint-disable no-nested-ternary */
-import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { memo } from 'react'
 
-import RecommendedProductCard from '@/components/Cards/RecommendedProductCard'
-import '@splidejs/splide/dist/css/splide.min.css'
 import ProductTabLoader from '@/components/Loader/ProductTabLoader'
+import ItemSlider from '@/components/Slider/ItemSlider'
+import MemoizedRecommendationItem from '@/components/Slider/RecommendationItem'
 import useRecommendedProduct from '@/hooks/useRecommendedProduct'
+import useSlider from '@/hooks/useSlider'
 
 interface Props {
   cartItems: any[]
@@ -13,6 +13,11 @@ interface Props {
 
 function RecommendationSliderComponent({ cartItems }: Props) {
   const [data, status] = useRecommendedProduct(cartItems)
+
+  const { recommendationDimension, memoisedData } = useSlider()
+
+  const memoisedRecommendedProducts =
+    status === 'success' ? memoisedData(data) : []
 
   return (
     <section className="itemSlider recommendation-slider">
@@ -27,23 +32,15 @@ function RecommendationSliderComponent({ cartItems }: Props) {
         ) : status === 'loading' ? (
           <ProductTabLoader />
         ) : (
-          <Splide
-            options={{
-              perPage: 2,
-              padding: '2rem',
-              breakpoints: {
-                800: {
-                  perPage: 1,
-                },
-              },
+          <ItemSlider
+            deviceDimension={recommendationDimension}
+            itemCount={memoisedRecommendedProducts.length}
+            itemData={{
+              products: memoisedRecommendedProducts,
             }}
           >
-            {data.map((product: any) => (
-              <SplideSlide key={product.id}>
-                <RecommendedProductCard product={product} />
-              </SplideSlide>
-            ))}
-          </Splide>
+            {MemoizedRecommendationItem}
+          </ItemSlider>
         )}
       </div>
     </section>

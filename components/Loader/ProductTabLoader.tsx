@@ -9,7 +9,7 @@ export function ProductLoader(props: any) {
     <ContentLoader
       animate
       speed={2}
-      height={150}
+      height={245}
       width="100%"
       backgroundColor="#e3d9d9"
       foregroundColor="#ada4a4"

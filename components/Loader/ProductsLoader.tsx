@@ -21,7 +21,7 @@ export function ProductLoader(props: any) {
       <rect x="0" y="0%" rx="0" ry="0" width="100%" height="50%" />
       <rect x="0%" y="55%" rx="3" ry="3" width="20%" height="5%" />
       <rect x="0" y="63%" rx="0" ry="0" width="100%" height="5%" />
-      <rect x="0" y="72%" rx="0" ry="0" width="100%" height="10%" />
+      <rect x="0" y="72%" rx="0" ry="0" width="100%" height="15%" />
     </ContentLoader>
   )
 }

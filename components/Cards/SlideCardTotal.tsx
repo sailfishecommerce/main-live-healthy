@@ -43,7 +43,7 @@ export default function SlideCardTotal() {
           <div className="discount discount-view rounded-md border text-sm text-red-500 hover:bg-red-500 hover:text-white px-2 py-1 border-red-500">
             Discount:{' '}
             <FormattedPrice
-              className="font-semibold text-red-500 text-md"
+              className="font-semibold text-md"
               price={cart?.discountTotal}
             />
           </div>
@@ -90,24 +90,26 @@ export default function SlideCardTotal() {
             />
           </h1>
         )}
-        <div className="discount flex  md:flex-row  items-center justify-between my-2">
-          <div className="input-wrapper md:w-1/2 w-1/2 my-2 md:my-0 relative">
-            <input
-              placeholder="Enter promocode"
-              type="text"
-              className="border rounded-lg px-2 py-2 w-full"
-              onChange={couponInputHandler}
-            />
+        {!(cart.discountTotal > 0) && (
+          <div className="discount flex  md:flex-row  items-center justify-between my-2">
+            <div className="input-wrapper md:w-1/2 w-1/2 my-2 md:my-0 relative">
+              <input
+                placeholder="Enter promocode"
+                type="text"
+                className="border rounded-lg px-2 py-2 w-full"
+                onChange={couponInputHandler}
+              />
+            </div>
+            <button
+              aria-label="add discount code"
+              type="button"
+              className="rounded-xl flex items-center discountCode lg:w-2/5 bg-mountain-green text-white md:px-4 py-3 p-2 text-xs lg:text-sm font-medium"
+              onClick={() => addCoupon.mutate()}
+            >
+              Add discount code
+            </button>
           </div>
-          <button
-            aria-label="add discount code"
-            type="button"
-            className="rounded-xl flex items-center discountCode lg:w-2/5 bg-mountain-green text-white md:px-4 py-3 p-2 text-xs lg:text-sm font-medium"
-            onClick={() => addCoupon.mutate()}
-          >
-            Add discount code
-          </button>
-        </div>
+        )}
 
         {cart?.coupon && (
           <div className="applied-discounts">

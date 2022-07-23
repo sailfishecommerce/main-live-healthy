@@ -71,7 +71,7 @@ export default function SlidingCart() {
                 height: 65vh;
               }
               .slide-items.withDiscount {
-                height: 55vh;
+                height: 60vh;
                 overflow-y: scroll;
               }
               .cart-total.withDiscount {

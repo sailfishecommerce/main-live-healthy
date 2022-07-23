@@ -14,7 +14,7 @@ export default function SlidingCart() {
   return (
     <>
       <SlidingTab>
-        <div className="cart-content bg-white w-full flex flex-col h-full p-6">
+        <div className="cart-content bg-white w-full flex flex-col h-full p-4">
           <div className={`slide-items flex flex-col ${withDiscount}`}>
             <div className="cart flex items-center pt-1">
               <h3 className="text-xl font-medium">Cart </h3>
@@ -69,6 +69,13 @@ export default function SlidingCart() {
             @media (max-width: 768px) {
               .slide-items {
                 height: 65vh;
+              }
+              .slide-items.withDiscount {
+                height: 55vh;
+                overflow-y: scroll;
+              }
+              .cart-total.withDiscount {
+                height: 35vh;
               }
             }
           `}

@@ -40,7 +40,7 @@ export default function SlideCardTotal() {
               />
             )}
           </h4>{' '}
-          <div className="discount rounded-md border text-sm text-red-500 hover:bg-red-500 hover:text-white px-2 py-1 border-red-500">
+          <div className="discount discount-view rounded-md border text-sm text-red-500 hover:bg-red-500 hover:text-white px-2 py-1 border-red-500">
             Discount:{' '}
             <FormattedPrice
               className="font-semibold text-red-500 text-md"
@@ -49,8 +49,8 @@ export default function SlideCardTotal() {
           </div>
         </div>
         {cart !== null && cart.discountTotal > 0 ? (
-          <div className="total-view border my-2 border-2 px-2  bg-gray-100">
-            <h3 className="md:text-xl text-lg font-medium mt-2">
+          <div className="total-view border my-2 border-2 p-2  bg-gray-100">
+            <h3 className="md:text-xl text-md font-medium ">
               Subtotal:{' '}
               <FormattedPrice
                 className="font-bold text-black text-md"
@@ -58,7 +58,7 @@ export default function SlideCardTotal() {
               />
             </h3>
             {cart?.discountTotal > 0 && (
-              <h3 className="md:text-xl text-lg font-medium mt-2 flex">
+              <h3 className="md:text-xl text-md font-medium my-1 lg:my-2 flex">
                 Discount:{' '}
                 <span className="flex items-center ml-1 font-semibold text-green-500 text-md">
                   <AiOutlineMinus />
@@ -70,7 +70,7 @@ export default function SlideCardTotal() {
               </h3>
             )}
             {cart?.grandTotal > 0 && (
-              <h3 className="md:text-xl text-lg font-medium mt-2 flex">
+              <h3 className="md:text-xl text-md font-medium  lg:mt-2 flex">
                 Total:{' '}
                 {cart !== null && cart?.grandTotal > 0 && (
                   <FormattedPrice
@@ -102,7 +102,7 @@ export default function SlideCardTotal() {
           <button
             aria-label="add discount code"
             type="button"
-            className="rounded-xl  lg:w-2/5 bg-mountain-green text-white md:px-4 py-3 p-2 text-xs  lg:text-sm font-medium"
+            className="rounded-xl flex items-center discountCode lg:w-2/5 bg-mountain-green text-white md:px-4 py-3 p-2 text-xs lg:text-sm font-medium"
             onClick={() => addCoupon.mutate()}
           >
             Add discount code
@@ -139,6 +139,23 @@ export default function SlideCardTotal() {
           }
           button.bg-mountain-green:hover {
             background-color: var(--color-2);
+          }
+          @media (max-width: 768px) {
+            .text-gray-500 {
+              font-size: 12px;
+            }
+            .input-wrapper input {
+              height: 25px;
+            }
+            .discountCode {
+              height: 25px;
+              display: flex;
+              align-items: center;
+            }
+            .discount-view {
+              font-size: 12px;
+              padding: 2px 5px;
+            }
           }
         `}
       </style>

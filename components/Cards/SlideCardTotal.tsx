@@ -18,7 +18,7 @@ export default function SlideCardTotal() {
 
   return (
     <>
-      <div className="cart-total absolute bottom-0 bg-white p-6 py-4 w-full right-0">
+      <div className="cart-total-view absolute bottom-0 bg-white p-6 py-4 w-full right-0">
         <div className="note-view p-2 bg-blue-100 mb-4">
           <h2 className="note text-red-500 text-sm text-center">
             You can only apply{' '}
@@ -48,7 +48,7 @@ export default function SlideCardTotal() {
             />
           </div>
         </div>
-        {cart !== null ? (
+        {cart !== null && cart.discountTotal > 0 ? (
           <div className="total-view border my-2 border-2 px-2  bg-gray-100">
             <h3 className="md:text-xl text-lg font-medium mt-2">
               Subtotal:{' '}
@@ -131,7 +131,7 @@ export default function SlideCardTotal() {
       </div>
       <style jsx>
         {`
-          .cart-total {
+          .cart-total-view {
             box-shadow: 0px -4px 32px 0px #0000001a;
           }
           button.bg-tan-hide:hover {

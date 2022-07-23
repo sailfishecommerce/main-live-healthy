@@ -9,11 +9,13 @@ export default function SlidingCart() {
   const { useCartData } = useCart()
   const { data: cart }: any = useCartData()
 
+  const withDiscount = cart && cart?.discountTotal > 0 ? 'withDiscount' : ''
+
   return (
     <>
       <SlidingTab>
         <div className="cart-content bg-white w-full flex flex-col h-full p-6">
-          <div className="slide-items flex flex-col">
+          <div className={`slide-items flex flex-col ${withDiscount}`}>
             <div className="cart flex items-center pt-1">
               <h3 className="text-xl font-medium">Cart </h3>
               {cart !== null && (
@@ -22,18 +24,20 @@ export default function SlidingCart() {
                 </span>
               )}
             </div>
-            <div className="content mb-4">
+            <div className="content product-row  mb-4">
               {cart?.items.map((cartItem: any) => (
                 <ProductRow key={cartItem.id} cart={cartItem} />
               ))}
             </div>
-            {cart?.items.length > 0 ? (
-              <RecommendationSlider cartItems={cart?.items} />
-            ) : (
-              <EmptyCart />
-            )}
+            <div className="slider">
+              {cart?.items.length > 0 ? (
+                <RecommendationSlider cartItems={cart?.items} />
+              ) : (
+                <EmptyCart />
+              )}
+            </div>
           </div>
-          <div className="cart-total">
+          <div className={`cart-total ${withDiscount}`}>
             <SlideCardTotal />
           </div>
         </div>
@@ -44,19 +48,22 @@ export default function SlidingCart() {
               height: 100vh;
             }
             .slider {
-              max-height: 40vh;
-              position: absolute;
-              left: 0;
-              bottom: 0;
+              max-height: 28vh;
             }
-            .slide-items {
-              height: 100vh;
-              position: relative;
+            .slide-items.withDiscount {
+              height: 58vh;
               overflow-y: scroll;
             }
-
+            .cart-total.withDiscount {
+              height: 42vh;
+            }
             .cart-total {
-              height: 40vh;
+              height: 30vh;
+            }
+            .slide-items {
+              height: 70vh;
+              position: relative;
+              overflow-y: scroll;
             }
 
             @media (max-width: 768px) {

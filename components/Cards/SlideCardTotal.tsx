@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { AiOutlineMinus } from 'react-icons/ai'
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
 
 import FormattedPrice from '@/components/Price/FormattedPrice'
@@ -24,7 +25,7 @@ export default function SlideCardTotal() {
             <span className="text-red-800 font-bold">ONE (1)</span> coupon code
           </h2>
         </div>
-        <div className="total flex items-center">
+        <div className="total flex items-center justify-between">
           <h4 className="text-gray-500 mr-8">
             Total:{' '}
             {cart !== null ? (
@@ -48,13 +49,38 @@ export default function SlideCardTotal() {
           </div>
         </div>
         {cart !== null ? (
-          <h1 className="md:text-xl text-lg font-medium mt-2">
-            Subtotal:{' '}
-            <FormattedPrice
-              className="font-bold text-black text-md"
-              price={cart?.subTotal}
-            />
-          </h1>
+          <div className="total-view border my-2 border-2 px-2  bg-gray-100">
+            <h3 className="md:text-xl text-lg font-medium mt-2">
+              Subtotal:{' '}
+              <FormattedPrice
+                className="font-bold text-black text-md"
+                price={cart?.subTotal}
+              />
+            </h3>
+            {cart?.discountTotal > 0 && (
+              <h3 className="md:text-xl text-lg font-medium mt-2 flex">
+                Discount:{' '}
+                <span className="flex items-center ml-1 font-semibold text-green-500 text-md">
+                  <AiOutlineMinus />
+                  <FormattedPrice
+                    className="text-green-500"
+                    price={cart?.discountTotal}
+                  />
+                </span>
+              </h3>
+            )}
+            {cart?.grandTotal > 0 && (
+              <h3 className="md:text-xl text-lg font-medium mt-2 flex">
+                Total:{' '}
+                {cart !== null && cart?.grandTotal > 0 && (
+                  <FormattedPrice
+                    className="font-bold text-black text-md"
+                    price={cart?.grandTotal}
+                  />
+                )}
+              </h3>
+            )}
+          </div>
         ) : (
           <h1 className="md:text-xl text-lg font-medium mt-2">
             Subtotal:{' '}

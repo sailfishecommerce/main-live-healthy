@@ -1,7 +1,7 @@
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import { useAtom } from 'jotai'
 import dynamic from 'next/dynamic'
-import { memo } from 'react'
+import { memo, useEffect } from 'react'
 
 import Noticebar from '@/components/Alerts/Noticebar'
 import HeaderBanner from '@/components/Header/HeaderBanner'
@@ -38,13 +38,13 @@ function HeaderComponent() {
     return setCategoryDropdown((prev) => !prev)
   }
 
-  if (typeof window !== 'undefined') {
+  useEffect(() => {
     if (categoryDropdown) {
       disableBodyScroll(document.body)
     } else {
       enableBodyScroll(document.body)
     }
-  }
+  }, [categoryDropdown])
 
   function toggleNoticebar() {
     return setNoticebar((prevState) => !prevState)

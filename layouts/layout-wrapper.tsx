@@ -1,8 +1,10 @@
 /* eslint-disable no-unneeded-ternary */
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import { useAtom } from 'jotai'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import type { PropsWithChildren } from 'react'
+import { useEffect, useRef } from 'react'
 import { ToastContainer } from 'react-toastify'
 
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
@@ -84,6 +86,15 @@ export default function LayoutWrapper({ children }: PropsWithChildren<Props>) {
   const mobileWidth = useMediaQuery('(max-width:768px)')
   const { scroll } = useScroll()
   const showPointer = scroll > 450 ? true : false
+  const ref = useRef(null)
+
+  useEffect(() => {
+    if (slidingTab !== null) {
+      disableBodyScroll(ref.current)
+    } else {
+      enableBodyScroll(ref.current)
+    }
+  }, [slidingTab])
 
   return (
     <div className="relative">
@@ -121,7 +132,9 @@ export default function LayoutWrapper({ children }: PropsWithChildren<Props>) {
       )}
       {mobileWidth && mobileMenu && <DynamicMobileSlideMenu />}
 
-      <div className="content position-relative h-100">{children}</div>
+      <div className="content position-relative h-100" ref={ref}>
+        {children}
+      </div>
 
       {showPointer && (
         <a aria-label="go up" href="#head" className="goUp position-fixed flex">

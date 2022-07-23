@@ -30,7 +30,7 @@
     "airwallex-payment-elements": "^0.2.58",
     "algoliasearch": "^4.11.0",
     "axios": "^0.26.1",
-    "body-scroll-lock": "^4.0.0-beta.0",
+    "body-scroll-lock": "^3.1.5",
     "classnames": "^2.3.1",
     "draft-js": "^0.11.7",
     "firebase": "^9.8.1",

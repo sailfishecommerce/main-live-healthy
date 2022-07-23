@@ -43,7 +43,7 @@ export default function SlideCardTotal() {
             Discount:{' '}
             <FormattedPrice
               className="font-semibold text-red-500 text-md"
-              price={cart.discountTotal}
+              price={cart?.discountTotal}
             />
           </div>
         </div>
@@ -88,7 +88,7 @@ export default function SlideCardTotal() {
             <h3 className="font-bold text-sm">Applied Discounts</h3>
             <div className="applied-discounts-tags flex flex-wrap">
               {cart?.discounts.map((discount: any) => (
-                <AppliedDiscountTag key={discount.id} coupon={cart.coupon} />
+                <AppliedDiscountTag key={discount.id} coupon={cart?.coupon} />
               ))}
             </div>
           </div>

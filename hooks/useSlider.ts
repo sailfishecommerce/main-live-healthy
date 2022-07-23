@@ -20,7 +20,7 @@ export default function useSlider() {
     : midLaptop
     ? { size: 240, height: 370, width: 900 }
     : laptop
-    ? { size: 260, height: 385, width: 1200 }
+    ? { size: 260, height: 380, width: 1200 }
     : { size: 270, height: 400, width: 1450 }
 
   const productTabWidth = mobile

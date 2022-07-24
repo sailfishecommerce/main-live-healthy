@@ -10,6 +10,8 @@ export default function useEasyShip() {
   const { useCartData } = useCart()
   const { data: cart } = useCartData()
 
+  console.log('cart', cart)
+
   function listCouriers() {
     axios
       .get(`${process.env.NEXT_PUBLIC_EASYSHIP_BASE_URL}/couriers`, {
@@ -41,7 +43,7 @@ export default function useEasyShip() {
     )
   }
 
-  function createShipment() {
+  function createShipment(selectedCourierId: string) {
     const { shipping, billing, account, currency } = cart
 
     const createShipmentData = {
@@ -69,7 +71,13 @@ export default function useEasyShip() {
       insurance: {
         is_insured: false,
       },
-      courier_selection: { apply_shipping_rules: true },
+      order_data: {
+        platform_name: 'Swell - Livehealthy store',
+      },
+      courier_selection: {
+        apply_shipping_rules: true,
+        selected_courier_id: selectedCourierId,
+      },
       shipping_settings: {
         unit: { weight: 'kg', dimensions: 'cm' },
         output_currency: currency,
@@ -79,5 +87,5 @@ export default function useEasyShip() {
     return createShipmentData
   }
 
-  return { listCouriers, requestRate, createShipment }
+  return { listCouriers, requestRate, cart, createShipment }
 }

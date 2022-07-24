@@ -438,3 +438,34 @@ export type addressType = {
 export interface AddressFormProps {
   addressType: 'billing' | 'shipping'
 }
+
+export type ShippingRateCardType = {
+  currency: string
+  courier_id: string
+  shipment_charge: number
+  fuel_surcharge: number
+  courier_name: string
+  total_charge: number
+  shipment_charge_total: number
+  oversized_surcharge: number
+  additional_services_surcharge: number
+  residential_full_fee: number
+  residential_discounted_fee: number
+  insurance_fee: number
+  remote_area_surcharge: number
+  ddp_handling_fee: number
+  warehouse_handling_fee: number
+  import_duty_charge: number
+  sales_tax: number
+  provincial_sales_tax: number
+  import_tax_charge: number
+  estimated_import_tax: number
+  import_tax_non_chargeable: number
+  estimated_import_duty: number
+  minimum_pickup_fee: number
+  payment_recipient: string
+  tracking_rating: number
+  easyship_rating: number
+  courier_remarks: string
+  full_description: string
+}

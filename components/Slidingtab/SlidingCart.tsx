@@ -1,4 +1,4 @@
-import SlideCardTotal from '@/components/Cards/SlideCardTotal'
+import SlideCardTotal from '@/components/Cards/SlideCartTotal'
 import EmptyCart from '@/components/Checkout/EmptyCart'
 import ProductRow from '@/components/Product/ProductRow'
 import RecommendationSlider from '@/components/Slider/RecommendationSlider'
@@ -67,9 +67,6 @@ export default function SlidingCart() {
             }
 
             @media (max-width: 768px) {
-              .slide-items {
-                height: 65vh;
-              }
               .slide-items.withDiscount {
                 height: 60vh;
                 overflow-y: scroll;

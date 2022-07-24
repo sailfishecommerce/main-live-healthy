@@ -1,15 +1,15 @@
 import Link from 'next/link'
-import { AiOutlineMinus } from 'react-icons/ai'
 import { HiOutlineArrowNarrowRight } from 'react-icons/hi'
 
 import FormattedPrice from '@/components/Price/FormattedPrice'
+import SlidecartPriceView from '@/components/Slidecart/SlidecartPriceView'
 import AppliedDiscountTag from '@/components/Tag/AppliedDiscountTag'
 import { useCart } from '@/hooks'
 import useCoupon from '@/hooks/useCoupon'
 import useSlidingTab from '@/hooks/useSlidingTab'
 import type { cartType } from '@/typings'
 
-export default function SlideCardTotal() {
+export default function SlideCartTotal() {
   const { useCartData } = useCart()
   const { data: cart }: cartType | any = useCartData()
   const { updateSlideTab } = useSlidingTab()
@@ -26,20 +26,17 @@ export default function SlideCardTotal() {
           </h2>
         </div>
         <div className="total flex items-center justify-between">
-          <h4 className="text-gray-500 mr-8">
-            Total:{' '}
-            {cart !== null ? (
-              <FormattedPrice
-                className="font-bold text-black text-md"
-                price={cart?.grandTotal}
-              />
-            ) : (
-              <FormattedPrice
-                className="font-bold text-black text-md"
-                price={0}
-              />
-            )}
-          </h4>{' '}
+          {cart.discounts.length === 0 && (
+            <h4 className="text-gray-500 mr-8">
+              Subtotal:{' '}
+              {cart !== null && (
+                <FormattedPrice
+                  className="font-bold text-black text-md"
+                  price={cart?.subTotal}
+                />
+              )}
+            </h4>
+          )}
           <div className="discount discount-view rounded-md border text-sm text-red-500 hover:bg-red-500 hover:text-white px-2 py-1 border-red-500">
             Discount:{' '}
             <FormattedPrice
@@ -48,49 +45,8 @@ export default function SlideCardTotal() {
             />
           </div>
         </div>
-        {cart !== null && cart.discountTotal > 0 ? (
-          <div className="total-view border my-2 border-2 p-2  bg-gray-100">
-            <h3 className="md:text-xl text-md font-medium ">
-              Subtotal:{' '}
-              <FormattedPrice
-                className="font-bold text-black text-md"
-                price={cart?.subTotal}
-              />
-            </h3>
-            {cart?.discountTotal > 0 && (
-              <h3 className="md:text-xl text-md font-medium my-1 lg:my-2 flex">
-                Discount:{' '}
-                <span className="flex items-center ml-1 font-semibold text-green-500 text-md">
-                  <AiOutlineMinus />
-                  <FormattedPrice
-                    className="text-green-500"
-                    price={cart?.discountTotal}
-                  />
-                </span>
-              </h3>
-            )}
-            {cart?.grandTotal > 0 && (
-              <h3 className="md:text-xl text-md font-medium  lg:mt-2 flex">
-                Total:{' '}
-                {cart !== null && cart?.grandTotal > 0 && (
-                  <FormattedPrice
-                    className="font-bold text-black text-md"
-                    price={cart?.grandTotal}
-                  />
-                )}
-              </h3>
-            )}
-          </div>
-        ) : (
-          <h1 className="md:text-xl text-lg font-medium mt-2">
-            Subtotal:{' '}
-            <FormattedPrice
-              className="font-bold text-black text-md"
-              price={0}
-            />
-          </h1>
-        )}
-        {!(cart.discountTotal > 0) && (
+        <SlidecartPriceView />
+        {cart?.discounts?.length === 0 && (
           <div className="discount flex  md:flex-row  items-center justify-between my-2">
             <div className="input-wrapper md:w-1/2 w-1/2 my-2 md:my-0 relative">
               <input

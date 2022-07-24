@@ -69,6 +69,7 @@ export type cartType = {
   options: any[]
   salePrice: number
   slug: string
+  discounts: any[]
   tags: string[]
   priceTotal: number
   product: productType

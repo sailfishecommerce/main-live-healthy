@@ -17,10 +17,11 @@ function FormattedPriceComponent({
 
   const nPrice = Number(price)
   const itemNPrice = formatPrice(nPrice)
-  const storeCurrency = currency ? currency : 'HK $'
+  const storeCurrency = currency ? currency : 'HK$'
   return (
     <span className={priceClassName}>
-      {storeCurrency} {itemNPrice}
+      {storeCurrency}
+      {itemNPrice}
     </span>
   )
 }

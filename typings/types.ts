@@ -71,6 +71,10 @@ export type cartType = {
   priceTotal: number
   product: productType
   productId: string
+  currency: string
+  shipping: { [key: string]: any }
+  billing: { [key: string]: any }
+  account: { [key: string]: any }
   shipmentTotal: number
   taxTotal: number
   id: string

@@ -26,3 +26,24 @@ export type createUserAccountAtCheckoutData = checkoutData & {
   country: string
   phone: string
 }
+
+export type useEasyShipRequestRateDataType = {
+  origin_address: { [key: string]: string }
+  destination_address: { [key: string]: string }
+  incoterms: string
+  insurance: { [key: string]: boolean }
+  courier_selection: { [key: string]: boolean }
+  shipping_settings: {
+    unit: { [key: string]: string }
+    output_currency: string
+  }
+  parcels: [
+    {
+      items: useEasyShipParcelType[]
+    }
+  ]
+}
+
+export type useEasyShipParcelType = {
+  [key: string]: number | string | { [key: string]: number }
+}

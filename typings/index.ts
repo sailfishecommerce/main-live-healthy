@@ -67,13 +67,17 @@ export type cartType = {
   price: number
   quantity: number
   options: any[]
+  discounts: any[]
   salePrice: number
   slug: string
-  discounts: any[]
   tags: string[]
   priceTotal: number
   product: productType
   productId: string
+  currency: string
+  shipping: { [key: string]: any }
+  billing: { [key: string]: any }
+  account: { [key: string]: any }
   shipmentTotal: number
   taxTotal: number
   id: string

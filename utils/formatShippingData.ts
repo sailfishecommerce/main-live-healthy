@@ -15,9 +15,9 @@ export function formatParcelData(item: cartType['items'], currency: string) {
     declared_currency: currency,
     declared_customs_value: item.price,
     dimensions: {
-      length: 7.6,
-      width: 3.8,
-      height: 21.6,
+      length: 10,
+      width: 15,
+      height: 10,
     },
   }
 

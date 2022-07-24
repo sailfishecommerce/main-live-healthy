@@ -14,7 +14,7 @@ export default function useEasyShip() {
     axios
       .get(`${process.env.NEXT_PUBLIC_EASYSHIP_BASE_URL}/couriers`, {
         headers: {
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_EASYSHP_SAND}`,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_EASYSHP_PROD}`,
         },
       })
       .then((res) => console.log('res-list-all-courier', res.data))
@@ -40,7 +40,7 @@ export default function useEasyShip() {
       requestRateData,
       {
         headers: {
-          Authorization: `Bearer ${process.env.NEXT_PUBLIC_EASYSHP_SAND}`,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_EASYSHP_PROD}`,
         },
       }
     )

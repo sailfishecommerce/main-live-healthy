@@ -31,7 +31,7 @@ export default function ContactUs() {
           <DynamicContactusCardGroup contactusData={contactusData} />
         ) : (
           <p className="text-center font-bold text-xl">
-            unable to fetch contact detals
+            unable to fetch contact details
           </p>
         )}
         <div

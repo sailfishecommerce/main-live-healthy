@@ -16,9 +16,9 @@ export default function OrderSummary() {
       <div className="subtotal flex items-center justify-between my-1">
         <h6 className="font-light text-base">Discount</h6>
         <div>
-          <span className="minus mr-1 text-xl text-red-500">-</span>
+          <span className="minus mr-1 text-xl text-green-500">-</span>
           <FormattedPrice
-            className="text-sm font-bold text-red-500"
+            className="text-sm font-bold text-green-500"
             price={cart?.discountTotal}
           />
         </div>
@@ -26,7 +26,7 @@ export default function OrderSummary() {
       <div className="subtotal flex items-center justify-between my-1">
         <h6 className="font-light text-base">Shipping Fee</h6>
         <FormattedPrice
-          className="text-sm font-bold text-green-500"
+          className="text-sm font-bold"
           price={cart?.shipmentTotal}
         />
       </div>

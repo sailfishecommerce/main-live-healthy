@@ -16,7 +16,7 @@ export default function BillingAddress() {
   } = useBillingAddress()
   const [showAddress, setShowAddress] = useState(false)
 
-  const billingAddressArray = cart !== null ? Object.values(cart.billing) : []
+  const billingAddressArray = cart !== null ? Object.values(cart?.billing) : []
 
   useEffect(() => {
     const timer: any =
@@ -54,7 +54,9 @@ export default function BillingAddress() {
         )
       })}
       {billingAddress && <CheckoutAddressForm addressType="billing" />}
-      {showAddress && <DisplaySavedAddress addressType="billing" />}
+      {showAddress && billingAddressArray.length > 0 && (
+        <DisplaySavedAddress addressType="billing" />
+      )}
     </div>
   )
 }

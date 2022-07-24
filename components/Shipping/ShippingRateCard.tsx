@@ -113,16 +113,7 @@ export default function ShippingRateCard({ rate, index }: any) {
       />
       <h5 className="font-semibold mt-1">Rating</h5>
       <ShippingRating rating={rate.tracking_rating} text="Tracking Rating" />
-      {/* <ShippingRating rating={rate.tracking_rating} text="Tracking Rating" /> */}
-
-      {/* {rate.easyship_rating > 0 && (
-                    <span>
-                      <p>
-                        Easyship Rating:{' '}
-                        <Ratings ratings={rate.easyship_rating} />
-                      </p>
-                    </span>
-                  )} */}
+      <ShippingRating rating={rate.easyship_rating} text="Tracking Rating" />
       <h5 className="font-semibold mt-1">Note</h5>
       {rate.payment_recipient && (
         <p className="text-sm">Payment Recipent: {rate.payment_recipient}</p>

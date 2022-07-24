@@ -23,7 +23,7 @@ export default function ShippingRate() {
         ) : (
           <div>
             <ul>
-              {data?.data.rates.map((rate: any, index: number) => (
+              {data?.data?.rates.map((rate: any, index: number) => (
                 <ShippingRateCard
                   rate={rate}
                   key={rate.courier_id}

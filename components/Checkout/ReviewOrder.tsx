@@ -16,10 +16,13 @@ export default function ReviewOrder() {
       </h6>
       <div className="cart-group">
         {cart?.items.map((item: any) => (
-          <ReviewOrderlist key={item.productId} content={item} />
+          <ReviewOrderlist key={item?.productId} content={item} />
         ))}
       </div>
-      {mobileDevice && <OrderSummary />}
+      {mobileDevice ||
+        (!mobileDevice && cart?.shipmentTotal > 0 && (
+          <OrderSummary cart={cart} />
+        ))}
       <style jsx>
         {`
           .cart-group {

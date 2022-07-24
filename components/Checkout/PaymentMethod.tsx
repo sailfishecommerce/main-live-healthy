@@ -1,13 +1,12 @@
-import { useAtom } from 'jotai'
-
 import OrderSummary from '@/components/Checkout/OrderSummary'
 import AirwallexPaymentMethod from '@/components/Payment/AirwallexPaymentMethod'
 import BankTransferPaymentMethod from '@/components/Payment/BankTransferPaymentMethod'
 import PaymentWithStripe from '@/components/Payment/PaymentWithStripe'
-import { watchCheckoutFormAtom } from '@/lib/atomConfig'
+import { useCart } from '@/hooks'
 
 export default function PaymentMethod() {
-  const [watchCheckoutForm] = useAtom(watchCheckoutFormAtom)
+  const { useCartData } = useCart()
+  const { data: cart } = useCartData()
 
   return (
     <div className="flex flex-col w-full">
@@ -21,14 +20,14 @@ export default function PaymentMethod() {
           For credit/debit card, you can pay via Paypal. No Paypal account
           required.
         </p>
-        {watchCheckoutForm.length === 3 ? (
+        {cart?.shipmentTotal > 0 ? (
           <>
             <PaymentWithStripe title="Stripe" />
             <AirwallexPaymentMethod />
             <BankTransferPaymentMethod />
           </>
         ) : (
-          <OrderSummary />
+          cart !== null && <OrderSummary cart={cart} />
         )}
       </div>
     </div>

@@ -1,10 +1,11 @@
 import FormattedPrice from '@/components/Price/FormattedPrice'
-import { useCart } from '@/hooks'
+import type { cartType } from '@/typings'
 
-export default function OrderSummary() {
-  const { useCartData } = useCart()
-  const { data: cart } = useCartData()
+interface Props {
+  cart: cartType
+}
 
+export default function OrderSummary({ cart }: Props) {
   return (
     <div className="rounded-md pt-4 bg-white rounded-md p-4 my-2 h-full">
       <h4 className="text-xl font-semibold mb-4">Order Total</h4>

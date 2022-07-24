@@ -32,7 +32,7 @@ export default function BillingTag({
     <button
       type="button"
       aria-label="button"
-      className={`${tagClassName} shipping-method-tag ${selectedMethodStyled} my-1.5 rounded-xl border border-gray-300 p-2 justify-between flex items-cente`}
+      className={`${tagClassName} hover:bg-gray-100 shipping-method-tag ${selectedMethodStyled} my-1.5 rounded-xl border border-gray-300 p-2 justify-between flex items-cente`}
       onClick={() => billingTagHandler(content.value)}
     >
       <span className="flex items-center">

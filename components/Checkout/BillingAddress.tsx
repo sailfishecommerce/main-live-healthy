@@ -11,10 +11,12 @@ export default function BillingAddress() {
   const {
     billingTagAddressHandler,
     updateBillingAddressHandler,
+    cart,
     billingAddress,
   } = useBillingAddress()
-
   const [showAddress, setShowAddress] = useState(false)
+
+  const billingAddressArray = cart !== null ? Object.values(cart.billing) : []
 
   useEffect(() => {
     const timer: any =
@@ -36,14 +38,19 @@ export default function BillingAddress() {
       </p>
       {shippingTagsJson.map((billing) => {
         return (
-          <BillingTag
-            key={billing.value}
-            content={billing}
-            shippingMethod={billingAddress}
-            updateShippingMethod={updateBillingAddressHandler}
-            addressHandler={() => billingTagAddressHandler(billing.value)}
-            className="w-full lg:my-3"
-          />
+          !(
+            billingAddressArray.length > 0 &&
+            billing.value === 'same-shipping-address'
+          ) && (
+            <BillingTag
+              key={billing.value}
+              content={billing}
+              shippingMethod={billingAddress}
+              updateShippingMethod={updateBillingAddressHandler}
+              addressHandler={() => billingTagAddressHandler(billing.value)}
+              className="w-full lg:my-3"
+            />
+          )
         )
       })}
       {billingAddress && <CheckoutAddressForm addressType="billing" />}

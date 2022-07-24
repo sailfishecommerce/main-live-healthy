@@ -1,6 +1,5 @@
 import OrderSummary from '@/components/Checkout/OrderSummary'
 import ReviewOrderlist from '@/components/Checkout/ReviewOrderlist'
-// import ShippingMethod from '@/components/Shipping/ShippingMethod'
 import { useCart, useMediaQuery } from '@/hooks'
 
 export default function ReviewOrder() {
@@ -21,7 +20,6 @@ export default function ReviewOrder() {
         ))}
       </div>
       {mobileDevice && <OrderSummary />}
-      {/* <ShippingMethod shippingMethod={cart?.shipping?.service} /> */}
       <style jsx>
         {`
           .cart-group {

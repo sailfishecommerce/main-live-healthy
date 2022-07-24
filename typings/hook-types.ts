@@ -28,7 +28,7 @@ export type createUserAccountAtCheckoutData = checkoutData & {
 }
 
 export type useEasyShipRequestRateDataType = {
-  origin_address: { [key: string]: string }
+  origin_address: { [key: string]: string | null }
   destination_address: { [key: string]: string }
   incoterms: string
   insurance: { [key: string]: boolean }

@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 /* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable no-nested-ternary */
 import { useState } from 'react'
@@ -12,8 +11,6 @@ export default function ShippingRate() {
   const { requestRate } = useEasyShip()
   const { data, status } = useQuery('requestRate', requestRate)
   const [courier, setCourier] = useState('')
-
-  console.log('data?.data?.rates', data?.data?.rates)
 
   return (
     <div className="w-full height-fit-content bg-white p-4 my-4 md:my-0 mx-0 rounded-md">

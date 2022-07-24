@@ -26,19 +26,20 @@ export function formatParcelData(item: cartType['items'], currency: string) {
 
 export function formatRequestRate(
   shipping: cartType['shipping'],
-  billing: cartType['billing'],
   currency: string,
   account: cartType['account']
 ) {
   const data: useEasyShipRequestRateDataType = {
     origin_address: {
-      line_1: billing.address1,
-      state: billing.state,
-      city: billing.city,
-      postal_code: billing.zip,
-      contact_phone: billing.phone,
-      contact_name: billing.name,
-      contact_email: account.email,
+      line_1: 'Flat B, 16/F,Tower 7',
+      line_2: 'The Beaumount, 8 Shek Kok Road',
+      state: 'Hong Kong',
+      city: 'Hong Kong',
+      postal_code: null,
+      contact_phone: '+85269600055',
+      company_name: 'LiveHealthy stores',
+      contact_name: 'Wong',
+      contact_email: 'info@sailfish.com.hk',
     },
     destination_address: {
       line_1: shipping.address1,

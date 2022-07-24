@@ -23,13 +23,8 @@ export default function useEasyShip() {
 
   function requestRate() {
     const cartItem: cartType = cart
-    const { shipping, billing, account, currency, items } = cartItem
-    const requestRateData = formatRequestRate(
-      shipping,
-      billing,
-      currency,
-      account
-    )
+    const { shipping, account, currency, items } = cartItem
+    const requestRateData = formatRequestRate(shipping, currency, account)
 
     items.map((item: any) => {
       const parcelItem = formatParcelData(item, currency)

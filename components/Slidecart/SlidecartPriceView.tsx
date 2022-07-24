@@ -9,7 +9,7 @@ export default function SlidecartPriceView() {
   const { data: cart }: cartType | any = useCartData()
   return (
     <>
-      {cart !== null && cart.discountTotal > 0 ? (
+      {cart !== null && cart?.discountTotal > 0 ? (
         <div className="total-view border my-2 border-2 p-2  bg-gray-100">
           <h3 className="md:text-xl text-md font-medium justify-between flex">
             Subtotal:{' '}

@@ -1,6 +1,6 @@
-import SlideCardTotal from '@/components/Cards/SlideCartTotal'
 import EmptyCart from '@/components/Checkout/EmptyCart'
 import ProductRow from '@/components/Product/ProductRow'
+import CartTotal from '@/components/Slidecart/CartTotal'
 import RecommendationSlider from '@/components/Slider/RecommendationSlider'
 import SlidingTab from '@/components/Slidingtab'
 import { useCart } from '@/hooks'
@@ -38,7 +38,7 @@ export default function SlidingCart() {
             </div>
           </div>
           <div className={`cart-total ${withDiscount}`}>
-            <SlideCardTotal />
+            <CartTotal />
           </div>
         </div>
 

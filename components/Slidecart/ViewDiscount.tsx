@@ -15,7 +15,7 @@ export default function ViewDiscount({ cart }: Props) {
         </h2>
       </div>
       <div className="total flex items-center justify-between">
-        {cart.discounts.length === 0 && (
+        {cart?.discounts !== null && cart?.discounts.length === 0 && (
           <h4 className="text-gray-500 mr-8">
             Subtotal:{' '}
             {cart !== null && (

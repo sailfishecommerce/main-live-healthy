@@ -34,16 +34,18 @@ export default function BillingAddress() {
       <p className="my-2 text-base">
         Select the address that matches your card or payment method
       </p>
-      {shippingTagsJson.billing.map((billing) => (
-        <BillingTag
-          key={billing.value}
-          content={billing}
-          shippingMethod={billingAddress}
-          updateShippingMethod={updateBillingAddressHandler}
-          addressHandler={() => billingTagAddressHandler(billing.value)}
-          className="w-full lg:my-3"
-        />
-      ))}
+      {shippingTagsJson.map((billing) => {
+        return (
+          <BillingTag
+            key={billing.value}
+            content={billing}
+            shippingMethod={billingAddress}
+            updateShippingMethod={updateBillingAddressHandler}
+            addressHandler={() => billingTagAddressHandler(billing.value)}
+            className="w-full lg:my-3"
+          />
+        )
+      })}
       {billingAddress && <CheckoutAddressForm addressType="billing" />}
       {showAddress && <DisplaySavedAddress addressType="billing" />}
     </div>

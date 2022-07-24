@@ -1,4 +1,7 @@
+/* eslint-disable no-console */
+/* eslint-disable unused-imports/no-unused-vars */
 /* eslint-disable no-nested-ternary */
+import { useState } from 'react'
 import { useQuery } from 'react-query'
 
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
@@ -8,6 +11,9 @@ import useEasyShip from '@/hooks/useEasyShip'
 export default function ShippingRate() {
   const { requestRate } = useEasyShip()
   const { data, status } = useQuery('requestRate', requestRate)
+  const [courier, setCourier] = useState('')
+
+  console.log('data?.data?.rates', data?.data?.rates)
 
   return (
     <div className="w-full height-fit-content bg-white p-4 my-4 md:my-0 mx-0 rounded-md">
@@ -18,7 +24,9 @@ export default function ShippingRate() {
         ) : status === 'loading' ? (
           <>
             <SpinnerRipple centerRipple />
-            <p className="text-center -mt-14">fetching shipping rate(s)...</p>
+            <p className="text-center -mt-14">
+              fetching courier shipping rate(s)...
+            </p>
           </>
         ) : (
           <div>

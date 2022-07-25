@@ -141,3 +141,5 @@ export const checkoutAddressAtom = atomWithStorage<any>(
   'checkoutAddressAtom',
   null
 )
+
+export const courierAtom = atomWithStorage<string | null>('courier', null)

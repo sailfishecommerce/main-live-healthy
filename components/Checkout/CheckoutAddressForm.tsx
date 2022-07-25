@@ -6,6 +6,7 @@ import CheckoutForm from '@/components/Checkout/CheckoutForm'
 import DisplaySavedAddress from '@/components/Shipping/DisplaySavedAddress'
 import SavedAddressDropdown from '@/components/Shipping/SavedAddressDropdown'
 import useBillingAddress from '@/hooks/useBillingAddress'
+import useModal from '@/hooks/useModal'
 import useWatchCheckout from '@/hooks/useWatchCheckout'
 import { checkoutAddressAtom } from '@/lib/atomConfig'
 import type { AddressFormProps } from '@/typings/types'
@@ -20,6 +21,7 @@ export const toAddressValueArray = (cartObj: any) => {
 
 export default function CheckoutAddressForm({ addressType }: AddressFormProps) {
   const { checkoutForm, cart, status, setCheckoutForm } = useBillingAddress()
+  const { updateModalView } = useModal()
 
   const [checkoutAddress, setCheckoutAddress] = useAtom(checkoutAddressAtom)
   useWatchCheckout(addressType)
@@ -48,7 +50,19 @@ export default function CheckoutAddressForm({ addressType }: AddressFormProps) {
         addressType === 'shipping' && (
           <>
             <h3 className="font-bold my-5 text-lg">Shipping address</h3>
-            {!cart.guest && <SavedAddressDropdown />}
+            {cart?.guest && (
+              <p className="font-semibold">
+                Hello Guest, click here to{' '}
+                <button
+                  type="button"
+                  className="font-bold text-red-500"
+                  onClick={() => updateModalView('MODAL_LOGIN')}
+                >
+                  Login
+                </button>
+              </p>
+            )}
+            {!cart?.guest && <SavedAddressDropdown />}
           </>
         )}
       {cart !== undefined &&

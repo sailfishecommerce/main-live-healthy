@@ -1,18 +1,19 @@
 /* eslint-disable no-console */
 /* eslint-disable no-nested-ternary */
-import { useState } from 'react'
+import { useAtom } from 'jotai'
 import { useQuery } from 'react-query'
 
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import ShippingRateCard from '@/components/Shipping/ShippingRateCard'
 import useEasyShip from '@/hooks/useEasyShip'
 import useShippingMutation from '@/hooks/useShipping'
+import { courierAtom } from '@/lib/atomConfig'
 import type { ShippingRateCardType } from '@/typings/types'
 
 export default function ShippingRate() {
   const { requestRate, cart } = useEasyShip()
   const { data, status } = useQuery('requestRate', requestRate)
-  const [courier, setCourier] = useState<string | null>(null)
+  const [courier, setCourier] = useAtom(courierAtom)
   const { useUpdateShippingRate } = useShippingMutation()
   const updateShippingRate = useUpdateShippingRate()
 

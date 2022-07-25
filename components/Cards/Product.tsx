@@ -22,9 +22,9 @@ interface ProductTypes extends ProductProps {
   tags?: string[]
 }
 
-function hasNumber(text: string) {
-  return /\d/.test(text)
-}
+// function hasNumber(text: string) {
+//   return /\d/.test(text)
+// }
 
 export default function Product({
   product,
@@ -61,12 +61,12 @@ export default function Product({
     algoliaEvent('viewedObjectIDs', 'Product Viewed', product?.objectID)
   }
 
-  const productVendorLink =
-    product?.vendor?.includes(' ') ||
-    product?.vendor?.includes("'") ||
-    hasNumber(product?.vendor)
-      ? `/search/${product?.vendor}`
-      : `/vendor/${product?.vendor}`
+  // const productVendorLink =
+  //   product?.vendor?.includes(' ') ||
+  //   product?.vendor?.includes("'") ||
+  //   hasNumber(product?.vendor)
+  //     ? `/search/${product?.vendor}`
+  //     : `/vendor/${product?.vendor}`
 
   const productImage =
     typeof product?.images[0] === 'string'
@@ -103,15 +103,15 @@ export default function Product({
               )}
             </div>
             <div className={`${isRowText} ${imageWidth} text`}>
-              <Link passHref href={productVendorLink}>
-                <button
-                  aria-label="vendor"
-                  type="button"
-                  className="vendor text-xs md:text-md font-bold pl-2 my-0 py-0 mb-1 md:mb-0 md:h-5"
-                >
-                  {product.vendor}
-                </button>
-              </Link>
+              {/* <Link passHref href={productVendorLink}> */}
+              <button
+                aria-label="vendor"
+                type="button"
+                className="vendor text-xs md:text-md font-bold pl-2 my-0 py-0 mb-1 md:mb-0 md:h-5"
+              >
+                {product.vendor}
+              </button>
+              {/* </Link> */}
               <div className="product-name-view md:mb-4 mb-2">
                 <h3 className="text-xs md:text-md product-name">
                   {product.name}

@@ -11,7 +11,10 @@ import { checkoutAddressAtom } from '@/lib/atomConfig'
 import type { AddressFormProps } from '@/typings/types'
 
 export const toAddressValueArray = (cartObj: any) => {
-  const cartArray = cartObj !== undefined ? Object.values(cartObj) : []
+  const cartArray =
+    cartObj !== null && typeof cartObj === 'object'
+      ? Object.values(cartObj)
+      : []
   return cartArray
 }
 

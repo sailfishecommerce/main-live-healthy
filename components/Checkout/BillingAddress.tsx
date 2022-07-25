@@ -17,7 +17,9 @@ export default function BillingAddress() {
   const [showAddress, setShowAddress] = useState(false)
 
   const billingAddressArray =
-    cart !== null || cart !== undefined ? Object.values(cart?.billing) : []
+    cart !== null && typeof cart === 'object'
+      ? Object.values(cart?.billing)
+      : []
 
   useEffect(() => {
     const timer: any =

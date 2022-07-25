@@ -13,7 +13,7 @@ import {
 function CollectionPage({ slugs, ...props }: any) {
   return (
     <Applayout title="Collection page">
-      {slugs.length > 0 && <CategoryMetatag slug={slugs[0]} type="vendor" />}
+      {slugs?.length > 0 && <CategoryMetatag slug={slugs[0]} type="vendor" />}
       <SearchPageLayout {...props}>
         <ErrorBoundaryWrapper>
           <Configure filters={`vendor:${slugs}`} />

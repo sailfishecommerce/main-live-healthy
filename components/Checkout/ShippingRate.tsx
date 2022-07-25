@@ -1,19 +1,18 @@
-/* eslint-disable no-console */
 /* eslint-disable no-nested-ternary */
 import { useAtom } from 'jotai'
 import { useQuery } from 'react-query'
 
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import ShippingRateCard from '@/components/Shipping/ShippingRateCard'
-import useEasyShip from '@/hooks/useEasyShip'
 import useShippingMutation from '@/hooks/useShipping'
+import useShippingRate from '@/hooks/useShippingRate'
 import { courierAtom } from '@/lib/atomConfig'
 import type { ShippingRateCardType } from '@/typings/types'
 
 export default function ShippingRate() {
-  const { requestRate, cart } = useEasyShip()
+  const { requestRate, cart } = useShippingRate()
   const { data, status } = useQuery('requestRate', requestRate)
-  const [courier, setCourier] = useAtom(courierAtom)
+  const [, setCourier] = useAtom(courierAtom)
   const { useUpdateShippingRate } = useShippingMutation()
   const updateShippingRate = useUpdateShippingRate()
 
@@ -21,8 +20,6 @@ export default function ShippingRate() {
     setCourier(rate.courier_id)
     updateShippingRate.mutate({ cartId: cart.id, rate })
   }
-
-  console.log('courier', courier)
 
   return (
     <div className="w-full height-fit-content bg-white p-4 my-4 md:my-0 mx-0 rounded-md">

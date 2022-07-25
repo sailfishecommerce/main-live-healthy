@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import axios from 'axios'
 import { useRef } from 'react'
 import { useMutation, useQueryClient } from 'react-query'
@@ -22,6 +23,7 @@ export default function useShippingMutation() {
     cartId: string,
     rate: shippingMutationType['rate']
   ) {
+    console.log('rate-rate', rate)
     return axios.put('/api/update-shipping', {
       cartId,
       shipping: {

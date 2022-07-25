@@ -1,18 +1,14 @@
 import type { cartType } from '@/typings'
 import type { useEasyShipRequestRateDataType } from '@/typings/hook-types'
 
-function trimDescription(description: string) {
-  const trimmedDescription = description.substring(0, 180)
-  return trimmedDescription
-}
-export function formatParcelData(item: cartType['items'], currency: string) {
+export function formatParcelData(item: cartType['items']) {
   const parcelItem = {
     quantity: item.quantity,
     category: 'Health & Beauty',
-    description: trimDescription(item.product.description),
+    description: item.product.name,
     sku: item.product.sku,
     actual_weight: 0.1,
-    declared_currency: currency,
+    declared_currency: 'HKD',
     declared_customs_value: item.price,
     dimensions: {
       length: 10,
@@ -26,7 +22,6 @@ export function formatParcelData(item: cartType['items'], currency: string) {
 
 export function formatDataRate(
   shipping: cartType['shipping'],
-  currency: string,
   account: cartType['account']
 ) {
   const data: useEasyShipRequestRateDataType = {
@@ -57,7 +52,7 @@ export function formatDataRate(
     },
     shipping_settings: {
       unit: { weight: 'kg', dimensions: 'cm' },
-      output_currency: currency,
+      output_currency: 'HKD',
     },
     parcels: [{ items: [] }],
   }
@@ -66,10 +61,9 @@ export function formatDataRate(
 
 export function formatRequestRate(
   shipping: cartType['shipping'],
-  currency: string,
   account: cartType['account']
 ) {
-  const requestData = formatDataRate(shipping, currency, account)
+  const requestData = formatDataRate(shipping, account)
   const data: useEasyShipRequestRateDataType = {
     ...requestData,
     courier_selection: { apply_shipping_rules: true },
@@ -85,15 +79,16 @@ type formatShippingDataType = useEasyShipRequestRateDataType & {
 
 export function formatShippingData(
   shipping: cartType['shipping'],
-  currency: string,
   account: cartType['account'],
-  selectedCourierId: string | null
+  selectedCourierId: string | null,
+  orderNumber: string
 ) {
-  const requestData = formatDataRate(shipping, currency, account)
+  const requestData = formatDataRate(shipping, account)
   const data: formatShippingDataType = {
     ...requestData,
     order_data: {
       platform_name: 'Swell - Livehealthy store',
+      platform_order_number: orderNumber,
     },
     courier_selection: {
       apply_shipping_rules: true,

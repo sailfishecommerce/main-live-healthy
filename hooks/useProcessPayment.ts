@@ -7,6 +7,7 @@ import { useToast, useAccount, useCart } from '@/hooks'
 import useAfterPayment from '@/hooks/useAfterpayment'
 import useEasyShip from '@/hooks/useEasyShip'
 import useModal from '@/hooks/useModal'
+import useOrder from '@/hooks/useOrder'
 import usePayment from '@/hooks/usePayment'
 import useSwellCart from '@/hooks/useSwellCart'
 import { createVboutOrder } from '@/hooks/useVbout'
@@ -29,6 +30,7 @@ export default function useProcessPayment() {
   const { cleanUpAfterPayment } = useAfterPayment()
   const toastID = useRef()
   const { createShipment } = useEasyShip()
+  const { getLastOrderDetails } = useOrder()
 
   function processPayment() {
     function vboutOrder(order: any) {
@@ -48,11 +50,19 @@ export default function useProcessPayment() {
                 .then((response) => {
                   console.log('stripe-response', response)
                   if (response.paid) {
+                    getLastOrderDetails()
+                      .then((response) => {
+                        console.log('getLastOrderDetails', response)
+                        createShipment(response)
+                      })
+                      .catch((err) =>
+                        console.log('err-getLastOrderDetails', err)
+                      )
                     setLoadingState(false)
                     setSendProductReview(true)
                     vboutOrder(response)
                     updateToast(toastID, 'success', 'payment successful')
-                    createShipment()
+
                     setSubmitOrder({
                       account: response?.account,
                       orderNumber: response?.number,

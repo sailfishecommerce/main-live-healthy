@@ -12,7 +12,7 @@ export default function CartCoupon({ discounts, coupon }: Props) {
 
   return (
     <>
-      {discounts !== null && discounts?.length === 0 && (
+      {discounts === null && (
         <div className="discount flex  md:flex-row  items-center justify-between my-2">
           <div className="input-wrapper md:w-1/2 w-1/2 my-2 md:my-0 relative">
             <input

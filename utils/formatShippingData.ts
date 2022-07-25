@@ -24,7 +24,7 @@ export function formatParcelData(item: cartType['items'], currency: string) {
   return parcelItem
 }
 
-export function formatRequestRate(
+export function formatDataRate(
   shipping: cartType['shipping'],
   currency: string,
   account: cartType['account']
@@ -55,12 +55,50 @@ export function formatRequestRate(
     insurance: {
       is_insured: false,
     },
-    courier_selection: { apply_shipping_rules: true },
     shipping_settings: {
       unit: { weight: 'kg', dimensions: 'cm' },
       output_currency: currency,
     },
     parcels: [{ items: [] }],
+  }
+  return data
+}
+
+export function formatRequestRate(
+  shipping: cartType['shipping'],
+  currency: string,
+  account: cartType['account']
+) {
+  const requestData = formatDataRate(shipping, currency, account)
+  const data: useEasyShipRequestRateDataType = {
+    ...requestData,
+    courier_selection: { apply_shipping_rules: true },
+  }
+  return data
+}
+
+type formatShippingDataType = useEasyShipRequestRateDataType & {
+  order_data: {
+    [key: string]: string
+  }
+}
+
+export function formatShippingData(
+  shipping: cartType['shipping'],
+  currency: string,
+  account: cartType['account'],
+  selectedCourierId: string
+) {
+  const requestData = formatDataRate(shipping, currency, account)
+  const data: formatShippingDataType = {
+    ...requestData,
+    order_data: {
+      platform_name: 'Swell - Livehealthy store',
+    },
+    courier_selection: {
+      apply_shipping_rules: true,
+      selected_courier_id: selectedCourierId,
+    },
   }
   return data
 }

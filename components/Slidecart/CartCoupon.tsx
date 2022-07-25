@@ -10,9 +10,6 @@ export default function CartCoupon({ discounts, coupon }: Props) {
   const { couponInputHandler, useAddCoupon } = useCoupon()
   const addCoupon = useAddCoupon()
 
-  console.log('discounts', discounts)
-  console.log('coupon', coupon)
-
   return (
     <>
       {discounts !== null && discounts?.length === 0 && (

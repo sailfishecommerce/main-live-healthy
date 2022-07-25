@@ -32,7 +32,7 @@ export type useEasyShipRequestRateDataType = {
   destination_address: { [key: string]: string }
   incoterms: string
   insurance: { [key: string]: boolean }
-  courier_selection: { [key: string]: boolean }
+  courier_selection?: { [key: string]: boolean | string }
   shipping_settings: {
     unit: { [key: string]: string }
     output_currency: string

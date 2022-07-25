@@ -1,5 +1,4 @@
 /* eslint-disable array-callback-return */
-/* eslint-disable no-console */
 import axios from 'axios'
 import { useAtom } from 'jotai'
 
@@ -25,19 +24,15 @@ export default function useEasyShip() {
       shipmentData.parcels[0].items.push(parcelItem)
     })
 
-    axios
-      .post(
-        `${process.env.NEXT_PUBLIC_EASYSHIP_BASE_URL}/shipments`,
-        shipmentData,
-        {
-          headers: {
-            Authorization: `Bearer ${process.env.NEXT_PUBLIC_EASYSHP_PROD}`,
-          },
-        }
-      )
-      .then((response) => console.log('createShipment-response', response))
-      .catch((error) => console.log('error-createShipment', error))
-    return shipmentData
+    return axios.post(
+      `${process.env.NEXT_PUBLIC_EASYSHIP_BASE_URL}/shipments`,
+      shipmentData,
+      {
+        headers: {
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_EASYSHP_PROD}`,
+        },
+      }
+    )
   }
   return { createShipment }
 }

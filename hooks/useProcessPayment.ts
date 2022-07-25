@@ -11,7 +11,11 @@ import useOrder from '@/hooks/useOrder'
 import usePayment from '@/hooks/usePayment'
 import useSwellCart from '@/hooks/useSwellCart'
 import { createVboutOrder } from '@/hooks/useVbout'
-import { sendProductReviewAtom, submitOrderAtom } from '@/lib/atomConfig'
+import {
+  courierAtom,
+  sendProductReviewAtom,
+  submitOrderAtom,
+} from '@/lib/atomConfig'
 import { vboutOrderData } from '@/lib/vbout'
 
 export default function useProcessPayment() {
@@ -31,6 +35,7 @@ export default function useProcessPayment() {
   const toastID = useRef()
   const { createShipment } = useEasyShip()
   const { getLastOrderDetails } = useOrder()
+  const [, setCourierId] = useAtom(courierAtom)
 
   function processPayment() {
     function vboutOrder(order: any) {
@@ -54,6 +59,14 @@ export default function useProcessPayment() {
                       .then((response) => {
                         console.log('getLastOrderDetails', response)
                         createShipment(response)
+                          .then((response) => {
+                            console.log('createShipment-response', response)
+                            setCourierId(null)
+                          })
+                          .catch((error) => {
+                            console.log('error-createShipment', error)
+                            setCourierId(null)
+                          })
                       })
                       .catch((err) =>
                         console.log('err-getLastOrderDetails', err)

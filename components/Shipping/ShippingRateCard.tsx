@@ -28,7 +28,7 @@ export default function ShippingRateCard({
         <div className="index rounded-full hover:bg-gray-600 bg-black text-white w-4 h-4 flex items-center justify-center mb-4">
           {indexValue}
         </div>
-        <h4 className="font-medium">Courier: {rate.courier_name}</h4>
+        <h4 className="font-bold underline">Courier: {rate.courier_name}</h4>
         <h5 className="font-semibold mt-1">Pricing</h5>
         <ShippingList
           currency={rate.currency}
@@ -86,7 +86,15 @@ export default function ShippingRateCard({
           className="font-bold"
           price={totalCharge}
         />
-        <h5 className="font-semibold mt-1">Tax</h5>
+        {rate.provincial_sales_tax ||
+        rate.estimated_import_tax ||
+        rate.estimated_import_duty ||
+        rate.import_duty_charge ||
+        rate.import_tax_non_chargeable ? (
+          <h5 className="font-semibold mt-1">Tax</h5>
+        ) : (
+          ''
+        )}
         <ShippingList
           currency={rate.currency}
           text="Import Duty charge"
@@ -134,8 +142,12 @@ export default function ShippingRateCard({
         {rate.payment_recipient && (
           <p className="text-sm">Payment Recipent: {rate.payment_recipient}</p>
         )}
-        <p className="text-sm">Courier Remarks: {rate.courier_remarks}</p>
-        <p className="text-xs italic">{rate.full_description}</p>
+        {rate?.courier_remarks && (
+          <p className="text-sm">Courier Remarks: {rate?.courier_remarks}</p>
+        )}
+        {rate?.full_description && (
+          <p className="text-xs italic">{rate.full_description}</p>
+        )}
       </button>
     </li>
   )

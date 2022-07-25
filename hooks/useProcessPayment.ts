@@ -5,6 +5,7 @@ import { useRef, useState } from 'react'
 
 import { useToast, useAccount, useCart } from '@/hooks'
 import useAfterPayment from '@/hooks/useAfterpayment'
+import useEasyShip from '@/hooks/useEasyShip'
 import useModal from '@/hooks/useModal'
 import usePayment from '@/hooks/usePayment'
 import useSwellCart from '@/hooks/useSwellCart'
@@ -27,6 +28,7 @@ export default function useProcessPayment() {
   const [, setSendProductReview] = useAtom(sendProductReviewAtom)
   const { cleanUpAfterPayment } = useAfterPayment()
   const toastID = useRef()
+  const { createShipment } = useEasyShip()
 
   function processPayment() {
     function vboutOrder(order: any) {
@@ -44,12 +46,13 @@ export default function useProcessPayment() {
               // console.log('getCart,', response)
               return submitUserOrder()
                 .then((response) => {
-                  // console.log('stripe-response', response)
+                  console.log('stripe-response', response)
                   if (response.paid) {
                     setLoadingState(false)
                     setSendProductReview(true)
                     vboutOrder(response)
                     updateToast(toastID, 'success', 'payment successful')
+                    createShipment()
                     setSubmitOrder({
                       account: response?.account,
                       orderNumber: response?.number,

@@ -87,7 +87,7 @@ export function formatShippingData(
   shipping: cartType['shipping'],
   currency: string,
   account: cartType['account'],
-  selectedCourierId: string
+  selectedCourierId: string | null
 ) {
   const requestData = formatDataRate(shipping, currency, account)
   const data: formatShippingDataType = {

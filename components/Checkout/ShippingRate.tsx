@@ -12,7 +12,7 @@ import type { ShippingRateCardType } from '@/typings/types'
 export default function ShippingRate() {
   const { requestRate, cart } = useShippingRate()
   const { data, status } = useQuery('requestRate', requestRate)
-  const [, setCourier] = useAtom(courierAtom)
+  const [courier, setCourier] = useAtom(courierAtom)
   const { useUpdateShippingRate } = useShippingMutation()
   const updateShippingRate = useUpdateShippingRate()
 
@@ -43,6 +43,7 @@ export default function ShippingRate() {
                   rate={rate}
                   key={rate.courier_id}
                   index={index}
+                  selectedCourier={courier}
                   onClickHandler={selectCourierHandler}
                 />
               ))}

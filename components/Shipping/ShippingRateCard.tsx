@@ -6,11 +6,13 @@ interface Props {
   index: number
   rate: ShippingRateCardType
   onClickHandler: (rate: ShippingRateCardType) => void
+  selectedCourier: string | null
 }
 
 export default function ShippingRateCard({
   rate,
   index,
+  selectedCourier,
   onClickHandler,
 }: Props) {
   const totalCharge =
@@ -18,8 +20,12 @@ export default function ShippingRateCard({
       ? rate.shipment_charge_total
       : rate.total_charge
   const indexValue = index + 1
+  const activeRateStyle =
+    selectedCourier === rate.courier_id ? 'bg-gray-200' : ''
   return (
-    <li className="border border-2 p-3 rounded-lg hover:bg-gray-100 my-3">
+    <li
+      className={`${activeRateStyle} border border-2 p-3 rounded-lg hover:bg-gray-100 my-3`}
+    >
       <button
         type="button"
         className="items-start flex flex-col"

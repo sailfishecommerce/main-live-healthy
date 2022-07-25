@@ -28,7 +28,12 @@ export default function useEasyShip() {
     axios
       .post(
         `${process.env.NEXT_PUBLIC_EASYSHIP_BASE_URL}/shipments`,
-        shipmentData
+        shipmentData,
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.NEXT_PUBLIC_EASYSHP_PROD}`,
+          },
+        }
       )
       .then((response) => console.log('createShipment-response', response))
       .catch((error) => console.log('error-createShipment', error))

@@ -27,9 +27,9 @@ export function formatDataRate(
   const data: useEasyShipRequestRateDataType = {
     origin_address: {
       line_1: 'Flat B, 16/F,Tower 7, kennedy town',
-      line_2: 'The Beaumount, 8 Shek Kok Road,kennedy town',
+      line_2: 'The Beaumount, 8 Shek Kok Road',
       state: 'Hong Kong',
-      city: 'Hong Kong',
+      city: 'kennedy town',
       postal_code: null,
       contact_phone: '+85269600055',
       company_name: 'LiveHealthy stores',

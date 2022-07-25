@@ -47,9 +47,9 @@ export default function CheckoutFlow({ checkoutId }: Props) {
         recoveredCart?.items === undefined ? (
         <EmptyCart />
       ) : (
-        <main className="mx-auto bg-light-gray pb-12">
+        <div className="mx-auto bg-light-gray pb-12">
           {mobileWidth ? <MobileCheckoutView /> : <CheckoutCustomer />}
-        </main>
+        </div>
       )}
     </>
   )

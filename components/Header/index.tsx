@@ -72,24 +72,24 @@ function HeaderComponent() {
         {`
           @media (max-width: 1440px) and (min-width: 1100px) {
             .header.bg-white {
-              height: 332px;
+              max-height: 332px;
             }
           }
 
           @media (max-width: 1100px) and (min-width: 768px) {
             .header.bg-white {
-              height: 300px;
+              max-height: 300px;
             }
           }
 
           @media (max-width: 768px) and (min-width: 350px) {
             header.bg-white {
-              height: 215px;
+              max-height: 215px;
             }
           }
           @media (max-width: 350px) {
             header.bg-white {
-              height: 225px;
+              max-height: 225px;
             }
           }
         `}

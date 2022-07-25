@@ -461,7 +461,7 @@ button.bg-mountain-green:disabled {
   }
 
   header {
-    height: 160px;
+    max-height: 160px;
   }
 }
 

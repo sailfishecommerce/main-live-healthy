@@ -26,8 +26,8 @@ export function formatDataRate(
 ) {
   const data: useEasyShipRequestRateDataType = {
     origin_address: {
-      line_1: 'Flat B, 16/F,Tower 7',
-      line_2: 'The Beaumount, 8 Shek Kok Road',
+      line_1: 'Flat B, 16/F,Tower 7, kennedy town',
+      line_2: 'The Beaumount, 8 Shek Kok Road,kennedy town',
       state: 'Hong Kong',
       city: 'Hong Kong',
       postal_code: null,

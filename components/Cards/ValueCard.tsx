@@ -29,9 +29,12 @@ export default function ValueCard({ content }: ValuecardProps) {
         <h2 className="font-medium text-lg md:text-xl my-2">{content.title}</h2>
         <p>{content.text}</p>
         {content.link && (
-          <span className="font-bold text-sm text-blue-500 text-wrap flex-wrap">
+          <a
+            href={`mailto:${content.link}`}
+            className="font-bold text-sm text-blue-500 text-wrap flex-wrap"
+          >
             {content.link}
-          </span>
+          </a>
         )}
       </div>
       <style jsx>

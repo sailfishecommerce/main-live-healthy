@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic'
 
 import InfiniteHits from '@/components/@instantsearch/widgets/infinite-hits/infinite-hits'
 import { NoResultsHandler } from '@/components/@instantsearch/widgets/no-results-handler/no-results-handler'
+import ToggleMobileFilter from '@/components/RefinementsBar/ToggleMobileFilter'
 import { viewModeAtom } from '@/components/ViewModes'
 import { configAtom } from '@/config/config'
 import { useMediaQuery } from '@/hooks'
@@ -56,6 +57,7 @@ export default function Index() {
           />
 
           <NoResultsHandler>
+            <ToggleMobileFilter />
             <InfiniteHits viewMode={viewMode} showLess={true} showMore={true} />
           </NoResultsHandler>
         </div>

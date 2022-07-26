@@ -40,6 +40,12 @@ export default function CartTotal() {
           button.bg-mountain-green:hover {
             background-color: var(--color-2);
           }
+          @media (max-width: 768px) {
+            .cart-total-view {
+              height: 330px;
+              overflow-y: scroll;
+            }
+          }
         `}
       </style>
     </>

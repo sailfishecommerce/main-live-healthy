@@ -1,10 +1,11 @@
 /* eslint-disable no-console */
 import axios from 'axios'
+import { useAtom } from 'jotai'
 import { useRef } from 'react'
 import { useMutation, useQueryClient } from 'react-query'
-import { toast } from 'react-toastify'
 
 import useToast from '@/hooks/useToast'
+import { courierAtom } from '@/lib/atomConfig'
 
 type shippingMutationType = {
   cartId: string
@@ -18,6 +19,7 @@ type shippingMutationType = {
 export default function useShippingMutation() {
   const { loadingToast, updateToast } = useToast()
   const queryClient = useQueryClient()
+  const [, setCourier] = useAtom(courierAtom)
 
   function updateCartShipping(
     cartId: string,
@@ -47,11 +49,14 @@ export default function useShippingMutation() {
         onSettled: () => {
           queryClient.invalidateQueries('cart')
         },
-        onSuccess: () => {
-          updateToast(toastID, toast.TYPE.SUCCESS, 'shipping rate updated')
+        onSuccess: (_, variables) => {
+          const { rate } = variables
+          console.log('rate-success', rate)
+          updateToast(toastID, 'success', 'shipping rate updated')
+          setCourier(rate.courier_id)
         },
         onError: () => {
-          updateToast(toastID, toast.TYPE.ERROR, 'error updating shipping rate')
+          updateToast(toastID, 'error', 'error updating shipping rate')
         },
       }
     )

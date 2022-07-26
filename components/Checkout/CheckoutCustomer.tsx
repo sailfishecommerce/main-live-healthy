@@ -19,7 +19,7 @@ export default function CheckoutCustomer() {
         {`
           .checkoutcustomer {
             max-height: 1000px;
-            height: 800px;
+            height: 900px;
           }
         `}
       </style>

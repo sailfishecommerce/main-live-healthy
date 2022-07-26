@@ -19,10 +19,9 @@ export default function ReviewOrder() {
           <ReviewOrderlist key={item?.productId} content={item} />
         ))}
       </div>
-      {mobileDevice ||
-        (!mobileDevice && cart?.shipmentTotal > 0 && (
-          <OrderSummary cart={cart} />
-        ))}
+      {(mobileDevice || (!mobileDevice && cart?.shipmentTotal > 0)) && (
+        <OrderSummary cart={cart} />
+      )}
       <style jsx>
         {`
           .cart-group {

@@ -45,21 +45,35 @@ export default function Index() {
   const laptop = useMediaQuery('(min-width:1200px)') && isMounted()
 
   return (
-    <div className="flex flex-col px-2 lg:px-0 gap-2 container lg:mx-auto lg:mb-10 lg:mt-0 lg:gap-0">
-      <Breadcrumb attributes={breadcrumbAttributes} className="mt-2" />
-      <div className="flex flex-col lg:flex-row">
-        {(refinementsLayout === 'panel' || !laptop) && <RefinementsPanel />}
+    <>
+      <div className="flex flex-col px-2 lg:px-0 gap-2 collection-view container lg:mx-auto lg:mb-10 lg:mt-0 lg:gap-0">
+        <Breadcrumb attributes={breadcrumbAttributes} className="mt-2" />
+        <div className="flex flex-col lg:flex-row">
+          {(refinementsLayout === 'panel' || !laptop) && <RefinementsPanel />}
 
-        <div className="grow relative flex flex-col gap-2 lg:gap-5 w-full">
-          <RefinementsBar
-            showRefinements={refinementsLayout === 'bar' && laptop}
-          />
+          <div className="grow relative flex flex-col gap-2 lg:gap-5 w-full">
+            <RefinementsBar
+              showRefinements={refinementsLayout === 'bar' && laptop}
+            />
 
-          <NoResultsHandler>
-            <InfiniteHits viewMode={viewMode} showLess={true} showMore={true} />
-          </NoResultsHandler>
+            <NoResultsHandler>
+              <InfiniteHits
+                viewMode={viewMode}
+                showLess={true}
+                showMore={true}
+              />
+            </NoResultsHandler>
+          </div>
         </div>
       </div>
-    </div>
+      <style jsx>
+        {`
+          .collection-view {
+            max-height: 100%;
+            height: 100%;
+          }
+        `}
+      </style>
+    </>
   )
 }

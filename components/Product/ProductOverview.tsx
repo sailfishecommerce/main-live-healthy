@@ -1,6 +1,5 @@
 /* eslint-disable no-nested-ternary */
 import dynamic from 'next/dynamic'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useQuery } from 'react-query'
 
@@ -75,10 +74,6 @@ export default function ProductOverview({ hit }: any) {
     alsoBoughtProducts = productData.slice(15, 30)
   }
 
-  const productVendorLink = hit?.vendor?.includes(' ')
-    ? `/search/${hit?.vendor}`
-    : `/collection/${hit?.vendor}`
-
   return (
     <div className="flex container mx-auto flex-col items-start">
       <Breadcrumb breadcrumbItems={breadcrumbItems} />
@@ -87,10 +82,7 @@ export default function ProductOverview({ hit }: any) {
         <ProductDetail product={hit}>
           <h3 className="lg:text-2xl text-lg font-bold">{hit?.name}</h3>
           <p>
-            By{' '}
-            <Link passHref href={productVendorLink}>
-              <a className="text-green-500">{hit?.vendor}</a>
-            </Link>
+            By <span className="text-green-500 ml-1">{hit?.vendor}</span>
           </p>
           {hit?.review_rating ? (
             <CustomerReview

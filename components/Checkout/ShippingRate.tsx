@@ -17,8 +17,10 @@ export default function ShippingRate() {
   const updateShippingRate = useUpdateShippingRate()
 
   function selectCourierHandler(rate: ShippingRateCardType) {
-    setCourier(rate.courier_id)
     updateShippingRate.mutate({ cartId: cart.id, rate })
+    if (updateShippingRate.isSuccess) {
+      setCourier(rate.courier_id)
+    }
   }
 
   return (

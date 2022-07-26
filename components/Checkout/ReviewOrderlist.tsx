@@ -55,18 +55,19 @@ function ReviewOrderlistComponent({ content }: any) {
             </select>
           </div>
           <div className="price-view mt-2 flex items-center">
-            <span className="px-1 xl:px-4 font-semibold rounded-full h-6 flex items-center text-xs py-1 border">
+            <div></div>
+            <span className="px-1 xl:px-4 item-quantity font-semibold rounded-full h-6 flex items-center text-xs py-1 border">
               {content.quantity} {content.quantity > 1 ? 'items' : 'item'}
             </span>
             <FaTimes size={15} className="mx-2 text-gray-400" />
             <FormattedPrice
-              className="font-medium text-sm"
+              className="font-medium text-xs lg:text-sm"
               price={content.price}
             />
             <span className="ml-2 flex items-center text-xs">
               <FaEquals className="mr-2" />
               <FormattedPrice
-                className="font-medium text-sm"
+                className="font-medium text-xs lg:text-sm"
                 price={content.priceTotal}
               />
             </span>
@@ -94,9 +95,16 @@ function ReviewOrderlistComponent({ content }: any) {
               padding: 5px;
             }
           }
-          @media (max-width: 768px) {
+          @media (max-width: 400px) {
+            .item-quantity {
+              font-size: 11px;
+              padding: 0px;
+              text-align: center;
+            }
+          }
+          @media (max-width: 330px) {
             .price-view {
-              font-size: 12px;
+              flex-wrap: wrap;
             }
           }
         `}

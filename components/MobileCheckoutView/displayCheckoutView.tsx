@@ -1,4 +1,5 @@
-import CheckoutAddress from '@/components/Checkout/CheckoutAddress'
+// import CheckoutAddress from '@/components/Checkout/CheckoutAddress'
+import DisplayCheckoutView from '@/components/Checkout/DisplayCheckoutView'
 import PaymentMethod from '@/components/Checkout/PaymentMethod'
 import ReviewOrder from '@/components/Checkout/ReviewOrder'
 
@@ -7,7 +8,7 @@ export default function displayCheckoutView(checkoutStep: number) {
     case 0:
       return <ReviewOrder />
     case 1:
-      return <CheckoutAddress />
+      return <DisplayCheckoutView />
     case 2:
       return <PaymentMethod />
     default:

@@ -30,7 +30,7 @@ export default function ProductTabSlider() {
         {status === 'error' ? (
           'unable to load products'
         ) : status === 'loading' ? (
-          <ProductTabLoader />
+          <ProductTabLoader height={100} />
         ) : (
           <div className="slide-view">
             <ItemSlider

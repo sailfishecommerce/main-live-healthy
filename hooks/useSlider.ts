@@ -34,13 +34,13 @@ export default function useSlider() {
     : { size: 450, height: 170, width: 1500 }
 
   const recommendationDimension = mobile
-    ? { size: 200, height: 260, width: 400 }
+    ? { size: 200, height: 320, width: 400 }
     : tablet
-    ? { size: 250, height: 260, width: 600 }
+    ? { size: 250, height: 320, width: 600 }
     : midLaptop
-    ? { size: 280, height: 260, width: 500 }
+    ? { size: 280, height: 310, width: 500 }
     : laptop
-    ? { size: 200, height: 260, width: 600 }
+    ? { size: 200, height: 290, width: 600 }
     : { size: 200, height: 280, width: 800 }
 
   return {

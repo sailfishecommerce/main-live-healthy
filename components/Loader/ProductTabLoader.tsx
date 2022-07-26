@@ -5,6 +5,10 @@ interface Props {
   height?: number
 }
 
+interface ProductTabLoaderProps extends Props {
+  itemNumber: number
+}
+
 export function ProductLoader({ height }: Props) {
   const loaderHeight = height ? height : 245
   return (
@@ -22,8 +26,11 @@ export function ProductLoader({ height }: Props) {
   )
 }
 
-export default function ProductTabLoader({ height }: Props) {
-  const loaderArray = new Array(2).fill(0)
+export default function ProductTabLoader({
+  height,
+  itemNumber,
+}: ProductTabLoaderProps) {
+  const loaderArray = new Array(itemNumber).fill(0)
 
   return (
     <div className="flex flex-wrap mt-5 w-full">

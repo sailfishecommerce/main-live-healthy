@@ -15,7 +15,7 @@ export default function CartTotal() {
 
   return (
     <>
-      <div className="cart-total-view absolute bottom-0 bg-white p-6 py-4 w-full right-0">
+      <div className="cart-total-view absolute bottom-0 bg-white lg:p-6 p-3 w-full right-0">
         <ViewDiscount cart={cart} />
         <SlidecartPriceView />
         <CartCoupon coupon={cart?.coupon} discounts={cart?.discounts} />
@@ -39,12 +39,6 @@ export default function CartTotal() {
           }
           button.bg-mountain-green:hover {
             background-color: var(--color-2);
-          }
-          @media (max-width: 768px) {
-            .cart-total-view {
-              height: 330px;
-              overflow-y: scroll;
-            }
           }
         `}
       </style>

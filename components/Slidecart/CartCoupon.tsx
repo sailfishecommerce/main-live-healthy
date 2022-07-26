@@ -12,7 +12,7 @@ export default function CartCoupon({ discounts, coupon }: Props) {
 
   return (
     <>
-      <div className="discount flex  md:flex-row  items-center justify-between my-2">
+      <div className="discount flex  md:flex-row  items-center justify-between mt-2">
         <div className="input-wrapper md:w-1/2 w-1/2 my-2 md:my-0 relative">
           <input
             placeholder="Enter promocode"

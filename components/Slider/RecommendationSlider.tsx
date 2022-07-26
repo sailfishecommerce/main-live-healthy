@@ -31,7 +31,7 @@ function RecommendationSliderComponent({ cartItems }: Props) {
           {status === 'error' ? (
             'unable to load products'
           ) : status === 'loading' ? (
-            <ProductTabLoader />
+            <ProductTabLoader itemNumber={2} />
           ) : (
             <ItemSlider
               deviceDimension={recommendationDimension}

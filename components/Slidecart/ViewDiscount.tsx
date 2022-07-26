@@ -8,7 +8,7 @@ interface Props {
 export default function ViewDiscount({ cart }: Props) {
   return (
     <>
-      <div className="note-view p-2 bg-blue-100 mb-4">
+      <div className="note-view p-2 bg-blue-100 mb-2">
         <h2 className="note text-red-500 text-sm text-center">
           You can only apply{' '}
           <span className="text-red-800 font-bold">ONE (1)</span> coupon code

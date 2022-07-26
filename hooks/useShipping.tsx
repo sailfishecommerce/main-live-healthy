@@ -51,7 +51,6 @@ export default function useShippingMutation() {
         },
         onSuccess: (_, variables) => {
           const { rate } = variables
-          console.log('rate-success', rate)
           updateToast(toastID, 'success', 'shipping rate updated')
           setCourier(rate.courier_id)
         },

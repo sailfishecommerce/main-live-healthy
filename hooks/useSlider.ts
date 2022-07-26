@@ -40,7 +40,7 @@ export default function useSlider() {
     : midLaptop
     ? { size: 280, height: 260, width: 500 }
     : laptop
-    ? { size: 200, height: 260, width: 400 }
+    ? { size: 200, height: 260, width: 600 }
     : { size: 200, height: 280, width: 800 }
 
   return {

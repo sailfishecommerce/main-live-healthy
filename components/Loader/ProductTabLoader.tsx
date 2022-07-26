@@ -1,8 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-/* eslint-disable no-nested-ternary */
 import ContentLoader from 'react-content-loader'
-
-import useMediaQuery from '@/hooks/useMediaQuery'
 
 export function ProductLoader(props: any) {
   return (
@@ -22,22 +19,12 @@ export function ProductLoader(props: any) {
 }
 
 export default function ProductTabLoader() {
-  const tabWidth = useMediaQuery('(max-width:768px)')
-  const mobileWidth = useMediaQuery('(max-width:500px)')
-
-  const arrayCount = mobileWidth ? 2 : 3
-
-  const loaderArray = new Array(arrayCount).fill(0)
-  const mobileStyle = mobileWidth
-    ? 'w-1/2 pr-4'
-    : tabWidth
-    ? 'w-1/2 pr-4'
-    : 'w-1/3 pr-4'
+  const loaderArray = new Array(2).fill(0)
 
   return (
     <div className="flex flex-wrap mt-5 w-full">
       {loaderArray.map((_, index: number) => (
-        <div key={index} className={mobileStyle}>
+        <div key={index} className="w-1/2 pr-4">
           <ProductLoader />
         </div>
       ))}

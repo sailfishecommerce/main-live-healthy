@@ -41,6 +41,9 @@ export default function BestSellerSlider() {
         </section>
         <style jsx>
           {`
+            .best-seller-slider {
+              overflow-x: hidden;
+            }
             @media (max-width: 768px) {
               .best-seller-slider {
                 overflow-x: scroll;

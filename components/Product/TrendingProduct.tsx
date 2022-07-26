@@ -72,6 +72,9 @@ export default function TrendingProduct({
         </section>
         <style jsx>
           {`
+            .trendingProduct {
+              overflow-x: hidden;
+            }
             @media (max-width: 768px) {
               .trendingProduct {
                 overflow-x: scoll;

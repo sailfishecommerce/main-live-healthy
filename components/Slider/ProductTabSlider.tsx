@@ -47,6 +47,9 @@ export default function ProductTabSlider() {
       </div>
       <style jsx>
         {`
+          .slide-view {
+            overflow-x: hidden;
+          }
           @media (max-width: 768px) {
             .slide-view {
               margin: 20px 0%;

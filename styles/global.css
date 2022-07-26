@@ -513,3 +513,9 @@ button.bg-mountain-green:disabled {
     font-size: 11px;
   }
 }
+
+@media (min-width: 1000px) {
+  .blogGrid {
+    height: 400px;
+  }
+}

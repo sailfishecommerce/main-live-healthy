@@ -13,7 +13,7 @@ function BlogGridSliderComponent() {
   const { blogData, loading } = useBlogData()
 
   return (
-    <div className="pt-5 relative blogGrid">
+    <div className="pt-4 mt-4 relative blogGrid lg:border rounded">
       {loading ? (
         <SpinnerRipple centerRipple />
       ) : (
@@ -43,7 +43,7 @@ function BlogGridSliderComponent() {
           {blogData.length > 0 &&
             blogData?.map((content: any) => (
               <SplideSlide key={content.title}>
-                <article className="w-full relative flex flex-col">
+                <article className="w-full relative flex flex-col border lg:border-0 rounded">
                   <Link passHref href={`/blog/post/${toSlug(content.title)}`}>
                     <a
                       aria-label="date"
@@ -58,16 +58,16 @@ function BlogGridSliderComponent() {
                         {content.date}
                       </button>
                       <img
-                        className="sliderPostImg rounded-md"
+                        className="sliderPostImg rounded-md items-center lg:items-start"
                         src={content.postImg}
                         alt="Featured post"
                         height="500px"
                       />
                     </a>
                   </Link>
-                  <div className="text-content flex items-center px-5 w-full bottom-0 m-auto justify-between">
-                    <div className="flex justify-between mb-2 pt-1">
-                      <h2 className="text-xl">
+                  <div className="text-content flex flex-col lg:flex-row items-start lg:items-center px-5 w-full bottom-0 m-auto justify-between">
+                    <div className="flex justify-between mb-2 pt-1 border-b lg:border-0  w-full pb-1">
+                      <h2 className="lg:text-xl text-sm">
                         {content.title && (
                           <Link
                             passHref
@@ -83,6 +83,7 @@ function BlogGridSliderComponent() {
                         )}
                       </h2>
                     </div>
+                    <hr className="border" />
                     <div className="flex items-center">
                       <a
                         aria-label="author"
@@ -104,12 +105,13 @@ function BlogGridSliderComponent() {
                 <style jsx>
                   {`
                     .sliderPostImg {
-                      height: 400px;
+                      height: 300px;
                       width: 98%;
                     }
                     @media (max-width: 768px) {
                       .sliderPostImg {
                         height: 200px;
+                        width: 100%;
                       }
                     }
                   `}

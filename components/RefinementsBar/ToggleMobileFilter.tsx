@@ -26,7 +26,7 @@ export default function ToggleMobileFilter() {
             height: 40px;
             width: 40px;
             position: fixed;
-            right: 0px;
+            right: 5px;
             top: 50%;
             z-index: 20;
             border: 1px solid gray;

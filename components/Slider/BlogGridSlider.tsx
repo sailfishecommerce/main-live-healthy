@@ -86,7 +86,7 @@ function BlogGridSliderComponent() {
                     <div className="flex items-center">
                       <a
                         aria-label="author"
-                        className="flex items-center text-sm"
+                        className="flex items-center text-sm blog-link"
                         href="#author"
                       >
                         <img
@@ -106,6 +106,11 @@ function BlogGridSliderComponent() {
                     .sliderPostImg {
                       height: 400px;
                       width: 98%;
+                    }
+                    @media (max-width: 768px) {
+                      .sliderPostImg {
+                        height: 200px;
+                      }
                     }
                   `}
                 </style>

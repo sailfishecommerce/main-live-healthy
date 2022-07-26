@@ -108,7 +108,11 @@ export default function LayoutWrapper({ children }: PropsWithChildren<Props>) {
       <LayoutMetatag />
       <div id="head" />
       {(appLoading || loading) && <LoadingBar />}
-      <NextNProgress color="#95bf11" options={{ showSpinner: true }} />
+      <NextNProgress
+        color="#f54c4c"
+        height={5}
+        options={{ showSpinner: true }}
+      />
       <ToastContainer />
       {modal === 'MODAL_LOGIN' && (
         <DynamicAuthModal show={modalState} onHide={closeAuthModalHandler} />

@@ -44,6 +44,7 @@ export default function Index() {
   const refinementsLayout = useAtomValue(refinementsLayoutAtom)
   const viewMode = useAtomValue(viewModeAtom)
   const laptop = useMediaQuery('(min-width:1200px)') && isMounted()
+  const mobileDevice = useMediaQuery('(max-width:768px')
 
   return (
     <div className="flex flex-col px-2 lg:px-0 gap-2 collection-view container lg:mx-auto lg:mb-10 lg:mt-0 lg:gap-0">
@@ -57,7 +58,7 @@ export default function Index() {
           />
 
           <NoResultsHandler>
-            <ToggleMobileFilter />
+            {mobileDevice && <ToggleMobileFilter />}
             <InfiniteHits viewMode={viewMode} showLess={true} showMore={true} />
           </NoResultsHandler>
         </div>

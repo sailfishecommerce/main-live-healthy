@@ -4,41 +4,41 @@
     "category": "Baby Care",
     "description": "Baby and toddler drinking and feeding accessories. functional innovative and award-winning essentials to make like easier for parents and babies.",
     "image": "/b-box.webp",
-    "link": "/collection?refinementList%5Bvendor%5D%5B0%5D=b.box&p=1"
+    "link": "/vendor/b.box"
   },
   {
     "title": "Ostelin",
     "category": "Vitamines",
     "description": "Baby and toddler drinking and feeding accessories. functional innovative and award-winning essentials to make like easier for parents and babies.",
     "image": "/ostelin-banner.webp",
-    "link": "/collection?refinementList%5Bvendor%5D%5B0%5D=Ostelin&p=1"
+    "link": "/vendor/ostelin"
   },
   {
     "title": "Baby Formula",
     "category": "Kids Care",
     "description": "Baby and toddler drinking and feeding accessories. functional innovative and award-winning essentials to make like easier for parents and babies.",
     "image": "/baby-formula.webp",
-    "link": "/collection?p=1&refinementList%5Bvendor%5D%5B0%5D=Aptamil"
+    "link": "/vendor/aptamil"
   },
   {
-    "title": "Nature's Way",
-    "category": "Weight Loss",
+    "title": "Blackmores",
+    "category": "health",
     "description": "Baby and toddler drinking and feeding accessories. functional innovative and award-winning essentials to make like easier for parents and babies.",
-    "image": "/nature-way.webp",
-    "link": "/collection?p=1&refinementList%5Bvendor%5D%5B0%5D=Nature%27s%20Way"
+    "image": "/blackmores-vitamin.webp",
+    "link": "/vendor/blackmores"
   },
   {
     "title": "Swisse",
     "category": "Sports Nutrition",
     "description": "Baby and toddler drinking and feeding accessories. functional innovative and award-winning essentials to make like easier for parents and babies.",
     "image": "/swisse-banner.webp",
-    "link": "/collection?p=1&refinementList%5Bvendor%5D%5B0%5D=Swisse"
+    "link": "/vendor/swisse"
   },
   {
     "title": "Nuetrogena",
     "category": "Cosmetics",
     "description": "Baby and toddler drinking and feeding accessories. functional innovative and award-winning essentials to make like easier for parents and babies.",
     "image": "/neutrogena.webp",
-    "link": "/collection?p=1&refinementList%5Bvendor%5D%5B0%5D=Neutrogena"
+    "link": "/vendor/neutrogena"
   }
 ]

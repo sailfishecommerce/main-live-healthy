@@ -32,7 +32,6 @@ export async function getResultsState({
 }: GetResultsStateParams): Promise<InstantSearchProps['resultsState']> {
   // 'useSearchClient' hook is not used here as this function runs on server-side only
   const searchClient = getSearchClient(appId, searchApiKey)
-
   // We need two 'findResultsState' for 'DynamicWidgets' to work properly
   const firstResultsState = await findResultsState(component, {
     ...customProps,

@@ -24,7 +24,7 @@ export default function MobileCheckoutView() {
       <style jsx>
         {`
           .content {
-            min-height: 500px;
+            min-height: 350px;
           }
         `}
       </style>

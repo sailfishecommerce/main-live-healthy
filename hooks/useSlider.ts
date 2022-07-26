@@ -34,7 +34,7 @@ export default function useSlider() {
     : { size: 450, height: 170, width: 1500 }
 
   const recommendationDimension = mobile
-    ? { size: 200, height: 320, width: 400 }
+    ? { size: 200, height: 340, width: 400 }
     : tablet
     ? { size: 250, height: 320, width: 600 }
     : midLaptop

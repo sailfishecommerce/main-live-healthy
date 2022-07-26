@@ -61,6 +61,7 @@ export default function SlidingTab({
             justify-content: center;
             align-items: center;
             z-index: 100;
+            background-color: white;
           }
           button.closeButton:hover {
             background-color: red;

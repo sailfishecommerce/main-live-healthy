@@ -1,10 +1,15 @@
+/* eslint-disable import/order */
+/* eslint-disable no-console */
 import { getElement, confirmPaymentIntent } from 'airwallex-payment-elements'
 import { useEffect, useState, memo, useRef } from 'react'
+import { useAtom } from 'jotai'
 
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import { useToast } from '@/hooks'
 import useAfterPayment from '@/hooks/useAfterpayment'
 import { loadAirwallexUi } from '@/lib/airwallex-payment'
+import useEasyShip from '@/hooks/useEasyShip'
+import { courierAtom } from '@/lib/atomConfig'
 
 interface AirwallexDropinProps {
   intent_id: any | string
@@ -21,6 +26,8 @@ function AirwallexCardElement({
   const { cleanUpAfterPayment } = useAfterPayment()
   const { loadingToast, updateToast } = useToast()
   const toastID = useRef(null)
+  const { createShipment } = useEasyShip()
+  const [, setCourierId] = useAtom(courierAtom)
 
   useEffect(() => {
     loadAirwallexUi()
@@ -60,9 +67,19 @@ function AirwallexCardElement({
         },
       })
         .then((response: any) => {
+          console.log('response-airwallexpayment', response)
           setIsSubmitting(false)
           updateToast(toastID, 'success', 'Payment successful')
           cleanUpAfterPayment(response, 'airwallex')
+          createShipment(response)
+            .then((responseVal) => {
+              console.log('createShipment-response', responseVal)
+              setCourierId(null)
+            })
+            .catch((error) => {
+              console.log('error-createShipment', error)
+              setCourierId(null)
+            })
         })
         .catch((error) => {
           setIsSubmitting(false)

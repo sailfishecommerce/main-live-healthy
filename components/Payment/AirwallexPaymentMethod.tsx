@@ -16,8 +16,6 @@ export default function AirwallexPaymentMethod() {
   const { checkoutHandler } = useAirwallexPayment()
   const [airwallex] = useAtom(airwallexAtom)
 
-  console.log('checkoutAddress', checkoutAddress)
-
   function onCheckout() {
     checkoutHandler(cart, checkoutAddress)
   }

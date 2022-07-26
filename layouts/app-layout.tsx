@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useAtom } from 'jotai'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'

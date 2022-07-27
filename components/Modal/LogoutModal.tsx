@@ -42,7 +42,7 @@ export default function LogoutModal({ show, onHide }: Props) {
           onClick={logoutHandler}
         >
           <BiLogOut
-            className="lg:mr-2 mr-0 hover:text-green-500"
+            className="lg:mr-2 mr-1 hover:text-green-500"
             size={iconSize}
           />
           Logout

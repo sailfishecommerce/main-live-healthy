@@ -76,7 +76,7 @@ export default function ProductPriceView({ product, queryObject }: Props) {
               <div className="button-group my-2 lg:mb-6 flex lg:w-3/5 justify-between w-full items-center my-2">
                 <button
                   type="button"
-                  className="bg-mountain-mist xl:text-lg lg:text-base rounded-lg mr-4 xl:w-1/2 flex items-center justify-center text-white py-1 lg:py-2 lg:px-1  xl:px-4"
+                  className="bg-mountain-mist px-2 xl:text-lg lg:text-base rounded-lg mr-4 xl:w-1/2 flex items-center justify-center text-white py-1 lg:py-2 lg:px-1  xl:px-4"
                   onClick={addToCartHandler}
                 >
                   <CartIcon />

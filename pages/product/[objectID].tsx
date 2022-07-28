@@ -4,6 +4,7 @@ import { Suspense } from 'react'
 import { Configure } from 'react-instantsearch-dom'
 
 import { Container } from '@/components/Container'
+import SpinnerRipple from '@/components/Loader/SpinnerLoader'
 import Applayout from '@/layouts/app-layout'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
 import {
@@ -26,7 +27,6 @@ const DynamicProductOverview = dynamic(
 )
 
 export default function Product({ objectID, ...props }: ProductPageProps) {
-  console.log('props', props)
   const hit = props?.resultsState?.rawResults[0]?.hits[0]
 
   return (
@@ -34,7 +34,7 @@ export default function Product({ objectID, ...props }: ProductPageProps) {
       <SearchPageLayout {...props}>
         <Container className="mt-0">
           <Configure filters={`slug:${objectID}`} />
-          <Suspense fallback={'Loading...'}>
+          <Suspense fallback={<SpinnerRipple centerRipple />}>
             <DynamicProductOverview hit={hit} />
           </Suspense>
         </Container>

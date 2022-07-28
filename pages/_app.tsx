@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import { useMemo } from 'react'
 
+import ErrorBoundaryWrapper from '@/components/ErrorBoundary'
 import { scrollToTop } from '@/utils/scrollToTop'
 
 import '@/styles/_index.css'
@@ -41,23 +42,25 @@ export default function App({ Component, pageProps, router }: AppProps) {
   )
   return (
     <>
-      <ProviderLayout>
-        <LayoutWrapper>
-          <Head>
-            <meta
-              name="viewport"
-              content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"
-            />
-          </Head>
-          <Loader layout={isCatalogPage ? 'bar' : 'overlay'} />
-          <AnimatePresence exitBeforeEnter={true} onExitComplete={scrollToTop}>
-            <Component {...pageProps} key={router.route} />
-          </AnimatePresence>
-        </LayoutWrapper>
-      </ProviderLayout>
-      <style jsx global>
-        {``}
-      </style>
+      <ErrorBoundaryWrapper>
+        <ProviderLayout>
+          <LayoutWrapper>
+            <Head>
+              <meta
+                name="viewport"
+                content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"
+              />
+            </Head>
+            <Loader layout={isCatalogPage ? 'bar' : 'overlay'} />
+            <AnimatePresence
+              exitBeforeEnter={true}
+              onExitComplete={scrollToTop}
+            >
+              <Component {...pageProps} key={router.route} />
+            </AnimatePresence>
+          </LayoutWrapper>
+        </ProviderLayout>
+      </ErrorBoundaryWrapper>
     </>
   )
 }

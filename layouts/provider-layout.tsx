@@ -4,7 +4,7 @@ import { atom, Provider as JotaiProvider } from 'jotai'
 import { useAtomValue } from 'jotai/utils'
 import type { PropsWithChildren } from 'react'
 import { QueryClient, QueryClientProvider } from 'react-query'
-import { ReactQueryDevtools } from 'react-query/devtools'
+// import { ReactQueryDevtools } from 'react-query/devtools'
 
 import { configAtom } from '@/config/config'
 import { useSearchClient } from '@/hooks/useSearchClient'
@@ -48,7 +48,7 @@ export default function ProviderLayout({ children }: PropsWithChildren<Props>) {
             {children}
           </LazyMotion>
         </MediaContextProvider>
-        <ReactQueryDevtools />
+        {/* <ReactQueryDevtools /> */}
       </JotaiProvider>
     </QueryClientProvider>
   )

@@ -7,7 +7,7 @@ interface Props {
 export default function Pagetitle({ title }: Props) {
   return (
     <Head>
-      <title>{title} | Sailfish e-commerce online store </title>
+      <title>{title} | Livehealthy e-commerce store </title>
       <meta
         name="viewport"
         content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"

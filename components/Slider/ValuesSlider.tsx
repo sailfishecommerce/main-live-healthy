@@ -22,7 +22,7 @@ export default function ValuesSlider() {
           },
         },
       }}
-      className="values-slider container mx-auto mt-8"
+      className="values-slider container mx-auto"
     >
       {values.map((value: any) => (
         <SplideSlide key={value.title}>

@@ -6,8 +6,8 @@
       "type": "button"
     },
     {
-      "title": "Sailfish Points",
-      "text": "Earn more Sailfish Points for different actions, and turn those Sailfish Points into awesome rewards!",
+      "title": "Livehealthy-store Points",
+      "text": "Earn more Livehealthy-store Points for different actions, and turn those Livehealthy-store Points into awesome rewards!",
       "type": "links",
       "links": [
         {
@@ -46,22 +46,22 @@
       {
         "icon": "/signup.svg",
         "text1": "Signup",
-        "text2": "500 Sailfish Points"
+        "text2": "500 Livehealthy-store Points"
       },
       {
         "icon": "/order-online.svg",
         "text1": "Place an order",
-        "text2": "1 Sailfish Point for every $1 spent"
+        "text2": "1 Livehealthy-store Point for every $1 spent"
       },
       {
         "icon": "/facebook-share.svg",
         "text1": "Share on Facebook",
-        "text2": "100 Sailfish Points"
+        "text2": "100 Livehealthy-store Points"
       },
       {
         "icon": "/birthday.svg",
         "text1": "Celebrate a birthday",
-        "text2": "1000 Sailfish Points"
+        "text2": "1000 Livehealthy-store Points"
       }
     ]
   },
@@ -71,22 +71,22 @@
       {
         "icon": "/fixed-amount.svg",
         "text1": "$60 off coupon",
-        "text2": "1000 Sailfish Points"
+        "text2": "1000 Livehealthy-store Points"
       },
       {
         "icon": "/fixed-amount.svg",
         "text1": "$12 off coupon",
-        "text2": "2000 Sailfish Points"
+        "text2": "2000 Livehealthy-store Points"
       },
       {
         "icon": "/fixed-amount.svg",
         "text1": "$300 off coupon",
-        "text2": "5000 Sailfish Points"
+        "text2": "5000 Livehealthy-store Points"
       },
       {
         "icon": "/fixed-amount.svg",
         "text1": "Order discount",
-        "text2": "500 Sailfish Points = $30"
+        "text2": "500 Livehealthy-store Points = $30"
       }
     ]
   }

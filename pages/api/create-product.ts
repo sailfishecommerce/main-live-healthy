@@ -3,7 +3,10 @@ import swell from 'swell-node'
 
 import productModel from '../../lib/productModel'
 
-swell.init('sailfish-e-commerce-limited', '5qBYeK0FS6djOP7TzCWOQ5hWQZZzzvnr')
+swell.init(
+  'sailfish-e-commerce-limited',
+  `${process.env.NEXT_PUBLIC_SWELL_SECRET_KEY}`
+)
 
 export default async function createSwellProductHandler(
   req: NextApiRequest,

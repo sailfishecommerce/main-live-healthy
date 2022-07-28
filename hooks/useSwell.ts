@@ -8,7 +8,7 @@ export default function useSwell() {
     const swell = await import('swell-js')
     swell.init(
       'sailfish-e-commerce-limited',
-      'pk_392OXy2LAsQCLz7F9EQHEQ5tnVhAak6x',
+      `${process.env.NEXT_PUBLIC_SWELL_PUBLIC_KEY}`,
       options
     )
     return { swell }

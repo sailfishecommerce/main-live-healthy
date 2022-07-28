@@ -34,7 +34,7 @@ export function formatDataRate(
       contact_phone: '+85269600055',
       company_name: 'LiveHealthy stores',
       contact_name: 'Wong',
-      contact_email: 'info@sailfish.com.hk',
+      contact_email: 'care@livehealthy.com.hk',
     },
     destination_address: {
       line_1: shipping.address1,

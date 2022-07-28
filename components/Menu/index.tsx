@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic'
-import { memo } from 'react'
+import { memo, Suspense } from 'react'
 
 import PrimaryMenu from '@/components/Menu/PrimaryMenu'
 import { useMediaQuery } from '@/hooks'
@@ -30,8 +30,10 @@ function MenuComponent() {
     <>
       <nav className="nav mx-auto container px-4 pb-3 md:pb-0">
         <PrimaryMenu />
-        {!mobileWidth && !scrollUp && <DynamicSecondaryMenu />}
-        {mobileWidth && showMobileSearch && <DynamicMobileSearchbar />}
+        <Suspense fallback={'Loading...'}>
+          {!mobileWidth && !scrollUp && <DynamicSecondaryMenu />}
+          {mobileWidth && showMobileSearch && <DynamicMobileSearchbar />}
+        </Suspense>
       </nav>
     </>
   )

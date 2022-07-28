@@ -8,7 +8,7 @@ export default function SlideCartNote() {
           industry insights and enhanced data profiles.
         </h5>
         <button
-          aria-label="Sailfish Pro Club - Learn more"
+          aria-label="Livehealthy Pro Club - Learn more"
           className="bg-red-500 text-white text-xs rounded-md p-2 mx-auto flex my-2"
           type="button"
         >

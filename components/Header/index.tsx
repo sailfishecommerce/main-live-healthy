@@ -1,7 +1,7 @@
 import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import { useAtom } from 'jotai'
 import dynamic from 'next/dynamic'
-import { memo, useEffect } from 'react'
+import { memo, useEffect, Suspense } from 'react'
 
 import Noticebar from '@/components/Alerts/Noticebar'
 import HeaderBanner from '@/components/Header/HeaderBanner'
@@ -58,16 +58,20 @@ function HeaderComponent() {
       <header
         className={`${navStyle} ${displayShadow} bg-white w-full pb-0  md:pb-2`}
       >
-        {showCookie && <DynamicCookieNotification />}
+        <Suspense fallback={'Loading...'}>
+          {showCookie && <DynamicCookieNotification />}
+        </Suspense>
         <HeaderBanner />
         {noticebar && <Noticebar toggleBarVisibility={toggleNoticebar} />}
         <Menu />
       </header>
-      {categoryDropdown && !mobileWidth && (
-        <DynamicAllCategoriesDropdownView
-          updateDropdown={toggleCategoryDropdownHandler}
-        />
-      )}
+      <Suspense fallback={'Loading...'}>
+        {categoryDropdown && !mobileWidth && (
+          <DynamicAllCategoriesDropdownView
+            updateDropdown={toggleCategoryDropdownHandler}
+          />
+        )}
+      </Suspense>
       <style jsx>
         {`
           @media (max-width: 1440px) and (min-width: 1100px) {

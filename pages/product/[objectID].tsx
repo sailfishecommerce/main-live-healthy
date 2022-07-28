@@ -1,5 +1,6 @@
 import type { GetServerSidePropsContext } from 'next'
 import dynamic from 'next/dynamic'
+import { Suspense } from 'react'
 import { Configure } from 'react-instantsearch-dom'
 
 import { Container } from '@/components/Container'
@@ -32,7 +33,9 @@ export default function Product({ objectID, ...props }: ProductPageProps) {
       <SearchPageLayout {...props}>
         <Container className="mt-0">
           <Configure filters={`slug:${objectID}`} />
-          <DynamicProductOverview hit={hit} />
+          <Suspense fallback={'Loading...'}>
+            <DynamicProductOverview hit={hit} />
+          </Suspense>
         </Container>
       </SearchPageLayout>
     </Applayout>

@@ -1,3 +1,7 @@
+/**
+ * @type {import('next').NextConfig}
+ */
+
 const withNextPlugins = require('next-compose-plugins')
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
@@ -20,9 +24,8 @@ const securityHeaders = [
     style-src 'self' 'unsafe-inline' https://fonts.googleapis.com`,
   },
 ]
-
-/** @type {import('next').NextConfig} */
 module.exports = withNextPlugins([withBundleAnalyzer], {
+
   async header() {
     return [
       {

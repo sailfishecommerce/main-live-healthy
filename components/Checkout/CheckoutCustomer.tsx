@@ -18,7 +18,7 @@ export default function CheckoutCustomer() {
       <style jsx>
         {`
           .checkoutcustomer {
-            max-height: 1000px;
+            min-height: 1000px;
             height: 900px;
           }
         `}

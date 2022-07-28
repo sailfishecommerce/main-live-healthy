@@ -25,16 +25,15 @@ export default function ToggleMobileFilter() {
             border-radius: 50%;
             height: 40px;
             width: 40px;
-            position: relative;
+            position: fixed;
             right: 5px;
-            top: 0%;
+            top: 50%;
             z-index: 20;
             border: 1px solid gray;
             background-color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 100;
           }
         `}
       </style>

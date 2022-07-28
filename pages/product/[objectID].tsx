@@ -26,6 +26,7 @@ const DynamicProductOverview = dynamic(
 )
 
 export default function Product({ objectID, ...props }: ProductPageProps) {
+  console.log('props', props)
   const hit = props?.resultsState?.rawResults[0]?.hits[0]
 
   return (

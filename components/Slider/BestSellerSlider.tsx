@@ -1,5 +1,6 @@
 /* eslint-disable no-nested-ternary */
 import LazyLoader from '@/components/Loader/LazyLoader'
+import LoadProducts from '@/components/Loader/ProductsLoader'
 import MemoizedBestSellerItem from '@/components/Slider/BestSellerItem'
 import ItemSlider from '@/components/Slider/ItemSlider'
 import useProductInRange from '@/hooks/useLivehealthyProduct'
@@ -24,7 +25,7 @@ export default function BestSellerSlider() {
           {status === 'error' ? (
             'unable to load products'
           ) : status === 'loading' ? (
-            'loading'
+            <LoadProducts />
           ) : (
             <div className="wrapper mx-auto flex items-center justify-center">
               <ItemSlider

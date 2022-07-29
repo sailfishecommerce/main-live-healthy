@@ -4,7 +4,6 @@
 
 import dynamic from 'next/dynamic'
 
-import ShippingBanner from '@/components/Banners/ShippingBanner'
 import ErrorBoundary from '@/components/ErrorBoundary'
 import productshowcaseGroup from '@/json/productshowcase.json'
 import type { SearchPageLayoutProps } from '@/layouts/search-page-layout'
@@ -46,6 +45,13 @@ const BestSellerSlider = dynamic(
   {
     ssr: false,
   }
+)
+
+const ShippingBanner = dynamic(
+  () =>
+    import(
+      /* webpackChunkName: 'ShippingBanner' */ '@/components/Banners/ShippingBanner'
+    )
 )
 
 const ProductTabs = dynamic(

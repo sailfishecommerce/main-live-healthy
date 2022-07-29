@@ -33,7 +33,7 @@ export default function ProductBannerCard({ product, color }: any) {
             height={250}
             width={250}
             blurDataURL={productImage}
-            layout="responsive"
+            loading="lazy"
           />
         </span>
         <div className="w-3/5 pl-2 text">

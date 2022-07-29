@@ -99,6 +99,7 @@ export default function Product({
                   blurDataURL={productImage}
                   placeholder="blur"
                   layout="responsive"
+                  loading="lazy"
                 />
               )}
             </div>

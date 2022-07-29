@@ -30,7 +30,7 @@ export default function Product({ objectID, ...props }: ProductPageProps) {
   const hit = props?.resultsState?.rawResults[0]?.hits[0]
 
   return (
-    <Applayout title="Product page">
+    <Applayout>
       <SearchPageLayout {...props}>
         <Container className="mt-0">
           <Configure filters={`slug:${objectID}`} />

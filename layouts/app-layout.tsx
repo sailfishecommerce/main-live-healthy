@@ -17,7 +17,7 @@ const Footer = dynamic(
 )
 
 interface Props {
-  title: string
+  title?: string
 }
 
 export default function Applayout({

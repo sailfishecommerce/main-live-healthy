@@ -4,7 +4,6 @@ import Link from 'next/link'
 
 import CartIcon from '@/components/Icons/CartIcon'
 import Image from '@/components/Image'
-import ProductMetatag from '@/components/Metatag/ProductMetatag'
 import FormattedPrice from '@/components/Price/FormattedPrice'
 import DiscountTag from '@/components/Tag/DiscountTag'
 import { useMediaQuery } from '@/hooks'
@@ -74,7 +73,6 @@ export default function Product({
 
   return (
     <>
-      <ProductMetatag product={product} />
       <div
         className={`hover:bg-white mr-4 px-2 relative hover:shadow-lg product hover:rounded-lg product ${productClassName}  ${isRow} p-2 md:p-4 lg:p-6 hover:border`}
       >

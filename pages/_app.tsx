@@ -4,13 +4,13 @@ import dynamic from 'next/dynamic'
 import { useMemo } from 'react'
 
 import ErrorBoundaryWrapper from '@/components/ErrorBoundary'
+import LayoutMetatag from '@/components/Metatag/LayoutMetatag'
 import { scrollToTop } from '@/utils/scrollToTop'
 
 import '@/styles/_index.css'
 import '@/styles/index.css'
 import '@/styles/global.css'
 import 'react-toastify/dist/ReactToastify.css'
-import LayoutMetatag from '@/components/Metatag/LayoutMetatag'
 
 const LayoutWrapper = dynamic(
   (): any =>
@@ -40,6 +40,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
       router?.pathname === '/search/[[...slugs]]',
     [router?.pathname]
   )
+
   return (
     <>
       {!router.pathname.includes('product') && <LayoutMetatag />}

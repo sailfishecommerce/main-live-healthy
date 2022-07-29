@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import { useQuery } from 'react-query'
 
 import Breadcrumb from '@/components/Breadcrumb'
+import ProductMetatag from '@/components/Metatag/ProductMetatag'
 import ProductDetail from '@/components/Product/ProductDetail'
 import ProductMagnifier from '@/components/Product/ProductMagnifier'
 import ProductPriceView from '@/components/Product/ProductPriceView'
@@ -75,50 +76,53 @@ export default function ProductOverview({ hit }: any) {
   }
 
   return (
-    <div className="flex container mx-auto flex-col items-start">
-      <Breadcrumb breadcrumbItems={breadcrumbItems} />
-      <div className="flex flex-col px-4 md:px-0 lg:flex-row md:justify-start">
-        <ProductMagnifier product={hit} />
-        <ProductDetail product={hit}>
-          <h3 className="lg:text-2xl text-lg font-bold">{hit?.name}</h3>
-          <p>
-            By <span className="text-green-500 ml-1">{hit?.vendor}</span>
-          </p>
-          {hit?.review_rating ? (
-            <CustomerReview
-              reviews={hit?.review_rating}
-              ratings={hit?.rating}
-            />
-          ) : null}
-          <ProductPriceView product={hit} queryObject={queryObject} />
-        </ProductDetail>
-        <ProductOffers className="md:hidden" />
-      </div>
-      <ProductReview rating={hit?.rating} />
-      <div className="mt-6 px-0 mx-0" />
-      {status === 'error' ? (
-        'unable to load related products'
-      ) : status === 'loading' ? (
-        'loading...'
-      ) : (
-        <>
-          <ProductSlider
-            randomColor
-            products={relatedProducts}
-            title="Customers also purchased"
-            productClassName="border border-gray-200 mr-6 rounded-lg"
-          />
-          {productData.length > 15 && (
+    <>
+      <ProductMetatag product={hit} />
+      <div className="flex container mx-auto flex-col items-start">
+        <Breadcrumb breadcrumbItems={breadcrumbItems} />
+        <div className="flex flex-col px-4 md:px-0 lg:flex-row md:justify-start">
+          <ProductMagnifier product={hit} />
+          <ProductDetail product={hit}>
+            <h3 className="lg:text-2xl text-lg font-bold">{hit?.name}</h3>
+            <p>
+              By <span className="text-green-500 ml-1">{hit?.vendor}</span>
+            </p>
+            {hit?.review_rating ? (
+              <CustomerReview
+                reviews={hit?.review_rating}
+                ratings={hit?.rating}
+              />
+            ) : null}
+            <ProductPriceView product={hit} queryObject={queryObject} />
+          </ProductDetail>
+          <ProductOffers className="md:hidden" />
+        </div>
+        <ProductReview rating={hit?.rating} />
+        <div className="mt-6 px-0 mx-0" />
+        {status === 'error' ? (
+          'unable to load related products'
+        ) : status === 'loading' ? (
+          'loading...'
+        ) : (
+          <>
             <ProductSlider
-              title="Popular with"
-              productName={hit?.name}
-              products={alsoBoughtProducts}
+              randomColor
+              products={relatedProducts}
+              title="Customers also purchased"
               productClassName="border border-gray-200 mr-6 rounded-lg"
-              randomColor={true}
             />
-          )}
-        </>
-      )}
-    </div>
+            {productData.length > 15 && (
+              <ProductSlider
+                title="Popular with"
+                productName={hit?.name}
+                products={alsoBoughtProducts}
+                productClassName="border border-gray-200 mr-6 rounded-lg"
+                randomColor={true}
+              />
+            )}
+          </>
+        )}
+      </div>
+    </>
   )
 }

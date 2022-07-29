@@ -6,6 +6,7 @@ import type { PropsWithChildren } from 'react'
 import { useEffect } from 'react'
 
 import Header from '@/components/Header'
+import LayoutMetatag from '@/components/Metatag/LayoutMetatag'
 import DefaultLayout from '@/layouts/default-layout'
 import { reloadPageAtom } from '@/lib/atomConfig'
 
@@ -36,11 +37,8 @@ export default function Applayout({
     <DefaultLayout>
       <Head>
         <title>{title} | Livehealthy e-commerce store </title>
-        <meta
-          name="viewport"
-          content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"
-        />
       </Head>
+      <LayoutMetatag />
       <Header />
       <main>{children}</main>
       <Footer />

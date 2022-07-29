@@ -8,7 +8,6 @@ import { useEffect, useRef } from 'react'
 import { ToastContainer } from 'react-toastify'
 
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
-import LayoutMetatag from '@/components/Metatag/LayoutMetatag'
 import { useMediaQuery } from '@/hooks'
 import useNav from '@/hooks/useNav'
 import useScroll from '@/hooks/useScroll'
@@ -109,8 +108,6 @@ export default function LayoutWrapper({ children }: PropsWithChildren<Props>) {
           content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"
         />
       </Head>
-      <LayoutMetatag />
-      <div id="head" />
       {(appLoading || loading) && <LoadingBar />}
       <NextNProgress
         color="#f54c4c"

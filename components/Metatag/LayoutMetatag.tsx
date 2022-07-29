@@ -4,11 +4,11 @@ export default function LayoutMetatag() {
   return (
     <>
       <Head>
-        {/* <meta name="robots" content="noindex" /> */}
+        <meta name="robots" content="noindex" />
         <meta charSet="utf-8" />
         <meta
           name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+          content="width=device-width,initial-scale=1,shrink-to-fit=no,maximum-scale=1,viewport-fit=cover"
         />
         <link
           rel="apple-touch-icon"
@@ -75,14 +75,6 @@ export default function LayoutMetatag() {
             "@type": "Organization",
             "url":"https://livehealthy.hk",
             "content":"http://res.cloudinary.com/verrb-inc/image/upload/v1656462729/live-healthy-store/logo_ynasny.webp"
-          }`}
-        </script>
-        <script type="application/ld+json">
-          {`{
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "url":"https://livehealthy.hk",
-            "logo": "http://res.cloudinary.com/verrb-inc/image/upload/v1656462729/live-healthy-store/logo_ynasny.webp"
           }`}
         </script>
       </Head>

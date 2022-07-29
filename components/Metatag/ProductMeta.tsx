@@ -14,6 +14,64 @@ export default function ProductMeta({ product }: Props) {
 
   return (
     <Head>
+      <meta charSet="utf-8" />
+      <meta
+        name="viewport"
+        content="width=device-width,initial-scale=1,shrink-to-fit=no,maximum-scale=1,viewport-fit=cover"
+      />
+      <link
+        rel="apple-touch-icon"
+        sizes="180x180"
+        href="/apple-touch-icon.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="32x32"
+        href="/favicon-32x32.png"
+      />
+      <link
+        rel="icon"
+        type="image/png"
+        sizes="16x16"
+        href="/favicon-16x16.png"
+      />
+      <link rel="manifest" href="/site.webmanifest" />
+      <link rel="mask-icon" color="#fe6a6a" href="/safari-pinned-tab.svg" />
+      <meta name="msapplication-TileColor" content="#ffffff" />
+      <meta name="theme-color" content="#ffffff" />
+      <meta
+        name="google-site-verification"
+        content="jzOTMxF7oUbLPiv-axyDSRh7yVdltNu-gP2gKfcBIpc"
+      />
+      <title>Buy {product.name} | Live healthy store</title>
+      <meta name="description" content={product.meta_title} />
+      {/* open graph */}
+      <meta property="og:site_name" content="Livehealthy store" />
+      <meta property="og:type" content="product" />
+      <meta property="og:title" content={product.name} />
+      <meta
+        property="og:url"
+        content={`https://livehealthy.hk/product/${product.slug}`}
+      />
+      <meta property="og:image:width" content="1000" />
+      <meta property="og:image:height" content="1000" />
+      <meta
+        property="og:image"
+        content="http://res.cloudinary.com/verrb-inc/image/upload/v1656462729/live-healthy-store/logo_ynasny.webp"
+      />
+
+      {/* Twitter meta */}
+      <meta name="twitter:site" content="@https://livehealthy.hk" />
+      <meta name="twitter:card" content="summary" />
+      <meta
+        name="twitter:url"
+        content={`https://livehealthy.hk/product/${product.slug}`}
+      />
+      <meta name="twitter:image" content={productImage} />
+      <meta name="twitter:description" content={product.meta_title} />
+      <meta name="twitter:title" content={`Buy ${product.name}`} />
+
       <script id="productLDJSon" type="application/ld+json">
         {`{
             "@context":"https://schema.org",
@@ -57,8 +115,6 @@ export default function ProductMeta({ product }: Props) {
           }
         `}
       </script>
-      <meta title={product.meta_title} />
-      <meta name="description" content={product.description} />
     </Head>
   )
 }

@@ -103,10 +103,6 @@ export default function LayoutWrapper({ children }: PropsWithChildren<Props>) {
           rel="preconnect"
           crossOrigin="true"
         />
-        <meta
-          name="viewport"
-          content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"
-        />
       </Head>
       {(appLoading || loading) && <LoadingBar />}
       <NextNProgress

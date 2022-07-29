@@ -4,7 +4,7 @@ export default function LayoutMetatag() {
   return (
     <>
       <Head>
-        <meta name="robots" content="noindex" />
+        {/* <meta name="robots" content="noindex" /> */}
         <meta charSet="utf-8" />
         <meta
           name="viewport"
@@ -31,6 +31,10 @@ export default function LayoutMetatag() {
         <link rel="mask-icon" color="#fe6a6a" href="/safari-pinned-tab.svg" />
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="theme-color" content="#ffffff" />
+        <meta
+          name="keywords"
+          content="Medicines, Health, Beauty, Hair Colours, Personal Care, ,Confectionery, Veterinary and Pet Care, Medical Aids"
+        />
         <meta
           name="google-site-verification"
           content="jzOTMxF7oUbLPiv-axyDSRh7yVdltNu-gP2gKfcBIpc"

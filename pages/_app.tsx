@@ -44,7 +44,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
 
   return (
     <>
-      {!router.pathname.includes('product') && <LayoutMetatag />}
+      <LayoutMetatag />
       <ErrorBoundaryWrapper>
         <ProviderLayout>
           <LayoutWrapper>

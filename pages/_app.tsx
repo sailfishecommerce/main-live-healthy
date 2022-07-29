@@ -1,7 +1,6 @@
 import { AnimatePresence } from 'framer-motion'
 import type { AppProps } from 'next/app'
 import dynamic from 'next/dynamic'
-import Head from 'next/head'
 import { useMemo } from 'react'
 
 import ErrorBoundaryWrapper from '@/components/ErrorBoundary'
@@ -45,12 +44,6 @@ export default function App({ Component, pageProps, router }: AppProps) {
       <ErrorBoundaryWrapper>
         <ProviderLayout>
           <LayoutWrapper>
-            <Head>
-              <meta
-                name="viewport"
-                content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover"
-              />
-            </Head>
             <Loader layout={isCatalogPage ? 'bar' : 'overlay'} />
             <AnimatePresence
               exitBeforeEnter={true}

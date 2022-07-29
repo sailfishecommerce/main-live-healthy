@@ -53,8 +53,12 @@ export default function LayoutMetatag() {
           name="google-site-verification"
           content="jzOTMxF7oUbLPiv-axyDSRh7yVdltNu-gP2gKfcBIpc"
         />
-        <meta property="og:site_name" content="Live Healthy Store HK" />
-        <meta property="og:url" content="https://livehealthy.hk" />
+        <meta
+          property="og:site_name"
+          content="Live Healthy Store HK"
+          key="og:site_name"
+        />
+        <meta property="og:url" content="https://livehealthy.hk" key="og:url" />
         <meta
           property="og:title"
           content="Welcome to Live healthy Store - Quality Australian Products - Free Shipping to HK"

@@ -34,6 +34,17 @@ export default function LayoutMetatag() {
         />
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="mask-icon" color="#fe6a6a" href="/safari-pinned-tab.svg" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          as="font"
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="true"
+        />
+        <link
+          data-href="https://fonts.googleapis.com/css2?family=Commissioner:wght@300;400;500;600;700&display=optional"
+          rel="styleheet"
+        />
         <meta
           name="keywords"
           content="Medicines, Health, Beauty, Hair Colours, Personal Care, ,Confectionery, Veterinary and Pet Care, Medical Aids"

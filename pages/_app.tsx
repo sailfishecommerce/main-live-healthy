@@ -37,6 +37,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
       router?.pathname === '/collection/[[...slugs]]' ||
       router?.pathname === '/vendor/[[...slugs]]' ||
       router?.pathname === '/' ||
+      router?.pathname.includes('/product') ||
       router?.pathname === '/search/[[...slugs]]',
     [router?.pathname]
   )

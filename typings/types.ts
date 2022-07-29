@@ -32,6 +32,7 @@ export type productType = {
   rrp?: any
   origPrice?: number
   slug: string
+  tags?: string[]
   review_rating?: number
   price: number
   colorOption?: string[]

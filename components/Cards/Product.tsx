@@ -4,7 +4,6 @@ import Link from 'next/link'
 
 import CartIcon from '@/components/Icons/CartIcon'
 import Image from '@/components/Image'
-import ProductMeta from '@/components/Metatag/ProductMeta'
 import ProductMetatag from '@/components/Metatag/ProductMetatag'
 import FormattedPrice from '@/components/Price/FormattedPrice'
 import DiscountTag from '@/components/Tag/DiscountTag'
@@ -75,8 +74,7 @@ export default function Product({
 
   return (
     <>
-      <ProductMeta product={product} />
-      <ProductMetatag pageProduct={product} />
+      <ProductMetatag product={product} />
       <div
         className={`hover:bg-white mr-4 px-2 relative hover:shadow-lg product hover:rounded-lg product ${productClassName}  ${isRow} p-2 md:p-4 lg:p-6 hover:border`}
       >

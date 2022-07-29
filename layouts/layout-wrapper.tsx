@@ -3,11 +3,13 @@ import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock'
 import { useAtom } from 'jotai'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import type { PropsWithChildren } from 'react'
 import { useEffect, useRef } from 'react'
 import { ToastContainer } from 'react-toastify'
 
 import SpinnerRipple from '@/components/Loader/SpinnerLoader'
+import LayoutMetatag from '@/components/Metatag/LayoutMetatag'
 import { useMediaQuery } from '@/hooks'
 import useNav from '@/hooks/useNav'
 import useScroll from '@/hooks/useScroll'
@@ -77,6 +79,7 @@ export default function LayoutWrapper({ children }: PropsWithChildren<Props>) {
   const [modal, setModal] = useAtom(modalAtom)
   const { slidingTab, activeProductSlide } = useSlidingTab()
   const { appLoading } = useToast()
+  const router = useRouter()
   const [loading] = useAtom(loadingInvoiceAtom)
   const closeAuthModalHandler = () => setModal(null)
   const modalState = modal === 'MODAL_LOGIN' ? true : false
@@ -104,6 +107,7 @@ export default function LayoutWrapper({ children }: PropsWithChildren<Props>) {
           crossOrigin="true"
         />
       </Head>
+      {!router.pathname.includes('product') && <LayoutMetatag />}
       {(appLoading || loading) && <LoadingBar />}
       <NextNProgress
         color="#f54c4c"

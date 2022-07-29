@@ -5,7 +5,12 @@ export default function LayoutMetatag() {
     <>
       <Head>
         {/* <meta name="robots" content="noindex" /> */}
+        <meta name="application-name" content="Live healthy Stores" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="theme-color" content="#95bf11" />
+        <meta name="mobile-web-app-capable" content="yes" />
         <meta charSet="utf-8" />
+        <meta property="og:type" content="website" />
         <meta
           name="viewport"
           content="width=device-width,initial-scale=1,shrink-to-fit=no,maximum-scale=1,viewport-fit=cover"
@@ -29,8 +34,6 @@ export default function LayoutMetatag() {
         />
         <link rel="manifest" href="/site.webmanifest" />
         <link rel="mask-icon" color="#fe6a6a" href="/safari-pinned-tab.svg" />
-        <meta name="msapplication-TileColor" content="#ffffff" />
-        <meta name="theme-color" content="#ffffff" />
         <meta
           name="keywords"
           content="Medicines, Health, Beauty, Hair Colours, Personal Care, ,Confectionery, Veterinary and Pet Care, Medical Aids"

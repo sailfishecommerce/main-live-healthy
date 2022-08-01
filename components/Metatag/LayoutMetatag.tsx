@@ -13,7 +13,7 @@ export default function LayoutMetatag() {
         <meta property="og:type" content="website" />
         <meta
           name="viewport"
-          content="width=device-width,initial-scale=1,shrink-to-fit=no,maximum-scale=1,viewport-fit=cover"
+          content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
         />
         <link
           rel="apple-touch-icon"

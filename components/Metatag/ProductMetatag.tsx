@@ -17,7 +17,7 @@ export default function ProductMeta({ product }: Props) {
       <meta charSet="utf-8" />
       <meta
         name="viewport"
-        content="width=device-width,initial-scale=1,shrink-to-fit=no,maximum-scale=1,viewport-fit=cover"
+        content="width=device-width,initial-scale=1,shrink-to-fit=no,viewport-fit=cover"
       />
       <meta name="theme-color" content="#ffffff" />
       <meta

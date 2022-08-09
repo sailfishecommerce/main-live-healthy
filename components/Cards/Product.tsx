@@ -59,13 +59,6 @@ export default function Product({
     algoliaEvent('viewedObjectIDs', 'Product Viewed', product?.objectID)
   }
 
-  // const productVendorLink =
-  //   product?.vendor?.includes(' ') ||
-  //   product?.vendor?.includes("'") ||
-  //   hasNumber(product?.vendor)
-  //     ? `/search/${product?.vendor}`
-  //     : `/vendor/${product?.vendor}`
-
   const productImage =
     typeof product?.images[0] === 'string'
       ? product?.images[0]

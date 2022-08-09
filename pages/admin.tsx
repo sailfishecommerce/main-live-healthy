@@ -8,7 +8,7 @@ export default function Admin() {
   const router = useRouter()
 
   useEffect(() => {
-    router.push('https://stores-dashboard.vercel.app/login')
+    router.push('https://stores-dashboard.vercel.app/admin/login')
   }, [])
 
   return (

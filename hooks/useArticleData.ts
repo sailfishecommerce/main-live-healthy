@@ -1,7 +1,6 @@
+/* eslint-disable import/dynamic-import-chunkname */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { convertFromRaw, convertToRaw } from 'draft-js'
 import { initializeApp } from 'firebase/app'
-import { getDatabase, ref, onValue } from 'firebase/database'
 import { useEffect, useState } from 'react'
 
 import firebaseConfig from '@/lib/firebaseConfig'
@@ -11,14 +10,16 @@ export default function useArticleData(databaseNode: string) {
     null
   )
 
-  function readDatabase() {
+  async function readDatabase() {
     initializeApp(firebaseConfig)
-    const db = getDatabase()
-    const dbRef = ref(db, databaseNode)
-    onValue(dbRef, (snapshot) => {
+    const firebaseDatabase = await import('firebase/database')
+    const db = firebaseDatabase.getDatabase()
+    const dbRef = firebaseDatabase.ref(db, databaseNode)
+    firebaseDatabase.onValue(dbRef, async (snapshot: any) => {
       const dbArticle = snapshot.val()
-      const contentState = convertFromRaw(JSON.parse(dbArticle))
-      const contentStateRaw = convertToRaw(contentState)
+      const draftJs = await import('draft-js')
+      const contentState = draftJs.convertFromRaw(JSON.parse(dbArticle))
+      const contentStateRaw = draftJs.convertToRaw(contentState)
       setDatabaseData(contentStateRaw)
     })
   }
